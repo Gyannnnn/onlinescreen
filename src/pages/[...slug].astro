@@ -11,6 +11,7 @@ import MacOSUpdate from '../components/MacOSUpdate.astro';
 import UbuntuScreen from '../components/UbuntuScreen.astro';
 import AndroidUpdate from '../components/AndroidUpdate.astro';
 import ToolArticle from '../components/ToolArticle.astro';
+import RadarScreen from '../components/RadarScreen.astro';
 import { localeOrder, locales, type Locale } from '../data/locales';
 import { getRelatedTools, tools, type Tool } from '../data/tools';
 import { t, toolName, toolSummary } from '../data/translations';
@@ -98,6 +99,8 @@ const props = Astro.props as PageProps;
           <UbuntuScreen tool={props.tool} locale={props.locale} />
         ) : props.tool.slug === 'android-update' ? (
           <AndroidUpdate tool={props.tool} locale={props.locale} />
+        ) : props.tool.slug === 'radar-screen' ? (
+          <RadarScreen tool={props.tool} locale={props.locale} />
         ) : (
           <ScreenTool tool={props.tool} locale={props.locale} />
         )}
@@ -152,6 +155,14 @@ const props = Astro.props as PageProps;
             <>
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> Fullscreen</p>
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Space</kbd> Pause / Resume</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
+            </>
+          ) : props.tool.slug === 'radar-screen' ? (
+            <>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> Fullscreen</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Space</kbd> Pause / Resume Sweep</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">S</kbd> Toggle Sonar Audio</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">L</kbd> Detect Live Location</p>
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
             </>
           ) : (

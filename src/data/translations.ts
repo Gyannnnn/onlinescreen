@@ -458,6 +458,7 @@ const toolNames: Record<string, Partial<Record<Locale, string>>> = {
   'brown-screen': { es: 'Pantalla Marrón', pt: 'Tela Marrom', fr: 'Écran Marron', de: 'Brauner Bildschirm', hi: 'भूरी स्क्रीन', ja: '茶色の画面' },
   'grey-screen': { es: 'Pantalla Gris', pt: 'Tela Cinza', fr: 'Écran Gris', de: 'Grauer Bildschirm', hi: 'स्लेटी स्क्रीन', ja: '灰色の画面' },
   'macos-screen': { es: 'Actualización de macOS', pt: 'Atualização do macOS', fr: 'Mise à jour macOS', de: 'macOS-Aktualisierung', hi: 'macOS अपडेट', ja: 'macOSアップデート' },
+  'radar-screen': { es: 'Pantalla de Radar', pt: 'Tela de Radar', fr: 'Écran Radar', de: 'Radar-Bildschirm', hi: 'रडार स्क्रीन', ja: 'レーダー画面' },
 };
 
 const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
@@ -465,6 +466,14 @@ const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
   'black-screen': { hi: 'OLED जांच, डेड पिक्सल खोज, चकाचौंध कम करने और अंधेरे कमरे में उपयोग के लिए एक वास्तविक काली फुलस्क्रीन सतह।' },
   'green-screen': { hi: 'क्रोमा की प्रीव्यू, पैनल जांच और रंग संदर्भ के लिए एक जीवंत हरा फुलस्क्रीन पेज।' },
   'blue-screen': { hi: 'डिस्प्ले रंग जांच, एम्बिएंट टोन और वीडियो सेटअप के लिए एक संतृप्त नीला फुलस्क्रीन क्षेत्र।' },
+  'radar-screen': {
+    es: 'Una pantalla de radar a pantalla completa para tableros teatrales, videos y configuraciones divertidas.',
+    pt: 'Uma tela de radar em tela cheia para painéis teatrais, vídeos e setups divertidos.',
+    fr: 'Un affichage radar en plein écran pour les tableaux de bord théâtraux, les vidéos et les configurations ludiques.',
+    de: 'Ein Radar-Vollbildschirm für theatralische Dashboards, Videos und spielerische Setups.',
+    hi: 'नाटकीय डैशबोर्ड, वीडियो और चंचल सेटअप के लिए रडार-शैली का फुलस्क्रीन डिस्प्ले।',
+    ja: '演劇用ダッシュボード、ビデオ、および遊び心のあるセットアップ用のレーダー風全画面表示。',
+  },
 };
 
 export function t(locale: Locale, key: string, params?: Record<string, string>): string {

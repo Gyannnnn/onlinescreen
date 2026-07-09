@@ -1,0 +1,1144 @@
+---
+import type { Tool } from "../data/tools";
+import type { Locale } from "../data/locales";
+import { t } from "../data/translations";
+
+type Props = { tool: Tool; locale: Locale };
+const { tool, locale } = Astro.props;
+---
+
+<section 
+  class="relative rounded-lg border border-hairline bg-[#020d06] shadow-soft flex flex-col overflow-hidden w-full h-[450px]"
+  data-radar-screen
+  aria-label="Radar Simulation Screen"
+>
+  <!-- Fullscreen Interactive Screen -->
+  <div class="radar-root relative w-full h-full bg-[#000d05] overflow-hidden cursor-crosshair select-none outline-none" id="radarRoot">
+    
+    <!-- Canvas for high resolution radar graphics -->
+    <canvas id="radarCanvas" class="absolute inset-0 w-full h-full block z-0"></canvas>
+
+    <!-- Top-Left System Context HUD -->
+    <div class="absolute top-4 left-4 text-[#33ff33] font-mono text-[10px] md:text-xs z-10 space-y-0.5 tracking-wide backdrop-blur-xs bg-black/35 p-2 rounded border border-emerald-950 pointer-events-none select-none">
+      <div>SYSTEM: <span class="text-emerald-400 font-bold">ONLINE</span></div>
+      <div>RANGE: <span class="text-emerald-400">400 NM</span></div>
+      <div class="flex items-center gap-1">
+        <span>LAT/LON:</span>
+        <span id="radarCoordsDisplay" class="text-emerald-300">34.0522° N, 118.2437° W</span>
+      </div>
+      <div>FREQUENCY: <span class="text-emerald-400">9.375 GHz</span></div>
+    </div>
+
+    <!-- Top-Right Metrics Status HUD -->
+    <div class="absolute top-4 right-4 text-[#33ff33] font-mono text-xs md:text-sm z-10 flex flex-col items-end gap-1 select-none pointer-events-none tracking-wider bg-black/45 p-2.5 rounded border border-emerald-950/60 backdrop-blur-xs">
+      <div class="flex items-center gap-2">
+        <span>INTERCEPTED:</span> 
+        <span id="radarCountIntercepted" class="font-bold text-emerald-400 text-sm md:text-base">0</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span>IMPACT INTRUSION:</span> 
+        <span id="radarCountImpact" class="font-bold text-red-500 text-sm md:text-base">0</span>
+      </div>
+    </div>
+
+    <!-- Alert / System Warnings Banner -->
+    <div id="radarAlertBanner" class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 z-15 pointer-events-none text-center bg-red-950/80 border border-red-500 px-4 py-3 rounded shadow-xl backdrop-blur-sm transition-opacity duration-300 opacity-0">
+      <div class="text-red-500 font-mono text-sm md:text-base font-bold uppercase tracking-widest animate-pulse">
+        ⚠️ IMPACT INTRUSION WARNING ⚠️
+      </div>
+      <div class="text-red-300 font-mono text-[10px] md:text-xs mt-1">
+        BOGEY ENTERED CRITICAL CENTER CORRIDOR
+      </div>
+    </div>
+
+    <!-- Fullscreen Button Trigger -->
+    <button 
+      class="absolute right-3 bottom-3 z-20 grid size-10 place-items-center rounded-lg bg-black/40 text-white/90 shadow-sm ring-1 ring-white/10 backdrop-blur-xs transition-colors hover:bg-black/60 hover:text-white cursor-pointer" 
+      type="button" 
+      id="radarFsBtn" 
+      aria-label="Fullscreen simulation"
+    >
+      <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v6.5m0-6.5h6.5m-6.5 0 6.082 6.082m10.168-6.082V10.25m0-6.5h-6.5m6.5 0-6.082 6.082M3.75 20.25v-6.5m0 6.5h6.5m-6.5 0 6.082-6.082m10.168 6.082v-6.5m0 6.5h-6.5m6.5 0-6.082-6.082" />
+      </svg>
+    </button>
+
+    <!-- Settings Gear Button -->
+    <button 
+      class="absolute left-3 bottom-3 z-20 grid size-10 place-items-center rounded-lg bg-black/40 text-white/90 shadow-sm ring-1 ring-white/10 backdrop-blur-xs transition-colors hover:bg-black/60 hover:text-white cursor-pointer" 
+      type="button" 
+      id="radarGearBtn" 
+      aria-label="Radar Calibration Settings"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+
+    <!-- Calibration Settings Panel -->
+    <div class="radar-controls-overlay" id="radarControlsOverlay">
+      <div class="radar-co-header">
+        <span class="radar-co-title">Tactical Radar Calibration</span>
+        <button class="radar-co-close" id="radarCoClose" type="button" aria-label="Close panel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="size-4">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="radar-co-body">
+        <div class="radar-co-grid">
+          <!-- Audio control -->
+          <div class="radar-co-group">
+            <label class="radar-co-label" for="radarVolRange">Sonar Ping Sound Volume</label>
+            <div class="radar-co-row">
+              <button type="button" id="radarMuteBtn" class="radar-co-btn">Mute</button>
+              <input type="range" min="0" max="100" value="30" id="radarVolRange" class="radar-co-slider" />
+              <span class="radar-co-val" id="radarVolVal">30%</span>
+            </div>
+          </div>
+          <!-- Sweep speed controls -->
+          <div class="radar-co-group">
+            <label class="radar-co-label" for="radarRPMInput">Sweep Speed (RPM)</label>
+            <div class="radar-co-row">
+              <input type="range" min="4" max="30" value="12" id="radarRPMInput" class="radar-co-slider" />
+              <span class="radar-co-val" id="radarRPMVal">12 RPM</span>
+            </div>
+          </div>
+          <!-- Target density controls -->
+          <div class="radar-co-group">
+            <label class="radar-co-label" for="radarDensityInput">Target Intrusion Density</label>
+            <div class="radar-co-row">
+              <input type="range" min="5" max="50" value="20" id="radarDensityInput" class="radar-co-slider" />
+              <span class="radar-co-val" id="radarDensityVal">Medium</span>
+            </div>
+          </div>
+          <!-- Geolocation options -->
+          <div class="radar-co-group">
+            <label class="radar-co-label">Dynamic Geolocator Nodes</label>
+            <div class="radar-co-row button-row">
+              <button type="button" id="radarLocateBtn" class="radar-co-btn locate-btn">Locate Live Transponder</button>
+              <span id="radarLocateStatus" class="radar-co-status">Mocked coordinates active</span>
+            </div>
+          </div>
+          <!-- Style theme selection -->
+          <div class="radar-co-group md:col-span-2">
+            <label class="radar-co-label">Styling Frequency Theme</label>
+            <div class="radar-co-row gap-2">
+              <button type="button" class="radar-color-choice active" data-style="green">Military Green</button>
+              <button type="button" class="radar-color-choice" data-style="blue">Oceanic Blue</button>
+              <button type="button" class="radar-color-choice" data-style="red">Red Alert</button>
+              <button type="button" id="radarResetCounters" class="radar-co-btn reset-btn ml-auto h-8 px-4">Reset Logs</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style is:global>
+  /* Localized overrides for premium full screen experience */
+  .radar-root.is-fullscreen {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    max-height: none;
+    z-index: 9999;
+    border-radius: 0;
+  }
+
+  .radar-controls-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 25;
+    background: rgba(3, 17, 7, 0.94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(50, 255, 100, 0.15);
+    color: #fff;
+    padding: 14px 18px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .radar-controls-overlay.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .radar-co-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(50, 255, 100, 0.1);
+    padding-bottom: 6px;
+  }
+
+  .radar-co-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #33ff33;
+  }
+
+  .radar-co-close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 4px;
+    display: grid;
+    place-items: center;
+  }
+
+  .radar-co-close:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+
+  .radar-co-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  @media (min-width: 768px) {
+    .radar-co-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+  }
+
+  .radar-co-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .radar-co-label {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .radar-co-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .radar-co-row.button-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .radar-co-btn {
+    background: rgba(25, 60, 35, 0.6);
+    border: 1px solid rgba(50, 255, 100, 0.3);
+    color: #33ff33;
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+    text-transform: uppercase;
+  }
+
+  .radar-co-btn:hover {
+    background: rgba(25, 60, 35, 0.9);
+    border-color: #33ff33;
+  }
+
+  .radar-co-btn.locate-btn {
+    background: rgba(20, 45, 80, 0.6);
+    border-color: rgba(0, 150, 255, 0.4);
+    color: #66c2ff;
+  }
+
+  .radar-co-btn.locate-btn:hover {
+    background: rgba(20, 45, 80, 0.9);
+    border-color: #66c2ff;
+  }
+
+  .radar-co-btn.reset-btn {
+    background: rgba(80, 20, 20, 0.5);
+    border-color: rgba(255, 50, 50, 0.3);
+    color: #ff6666;
+  }
+
+  .radar-co-btn.reset-btn:hover {
+    background: rgba(80, 20, 20, 0.8);
+    border-color: #ff5555;
+  }
+
+  .radar-co-slider {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.15);
+    outline: none;
+    cursor: pointer;
+  }
+
+  .radar-co-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #33ff33;
+    cursor: pointer;
+  }
+
+  .radar-co-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #33ff33;
+    border: none;
+    cursor: pointer;
+  }
+
+  .radar-co-val {
+    font-size: 11px;
+    color: #33ff33;
+    min-width: 50px;
+    text-align: right;
+  }
+
+  .radar-co-status {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .radar-color-choice {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 10px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    text-transform: uppercase;
+    transition: all 0.15s;
+  }
+
+  .radar-color-choice[data-style="green"].active {
+    background: rgba(20, 60, 30, 0.7);
+    border-color: #33ff33;
+    color: #33ff33;
+  }
+
+  .radar-color-choice[data-style="blue"].active {
+    background: rgba(10, 30, 60, 0.7);
+    border-color: #0099ff;
+    color: #66c2ff;
+  }
+
+  .radar-color-choice[data-style="red"].active {
+    background: rgba(60, 10, 10, 0.7);
+    border-color: #ff3333;
+    color: #ff7777;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var root = document.getElementById("radarRoot");
+    var canvas = document.getElementById("radarCanvas");
+    var fsBtn = document.getElementById("radarFsBtn");
+    var gearBtn = document.getElementById("radarGearBtn");
+    var overlay = document.getElementById("radarControlsOverlay");
+    var closeBtn = document.getElementById("radarCoClose");
+    var coordsDisplay = document.getElementById("radarCoordsDisplay");
+    var interceptedCounter = document.getElementById("radarCountIntercepted");
+    var impactCounter = document.getElementById("radarCountImpact");
+    var alertBanner = document.getElementById("radarAlertBanner");
+    
+    // Sliders
+    var volumeRange = document.getElementById("radarVolRange");
+    var volumeVal = document.getElementById("radarVolVal");
+    var rpmInput = document.getElementById("radarRPMInput");
+    var rpmVal = document.getElementById("radarRPMVal");
+    var densityInput = document.getElementById("radarDensityInput");
+    var densityVal = document.getElementById("radarDensityVal");
+    var locateBtn = document.getElementById("radarLocateBtn");
+    var locateStatus = document.getElementById("radarLocateStatus");
+    var muteBtn = document.getElementById("radarMuteBtn");
+    var styleChoices = document.querySelectorAll(".radar-color-choice");
+    var resetCountersBtn = document.getElementById("radarResetCounters");
+
+    // Sim Parameters
+    var rpm = 12;
+    var sweepAngle = 0; // degrees
+    var volume = 0.3;
+    var isMuted = false;
+    var targetLimit = 20; 
+    var counters = { intercepted: 0, impact: 0 };
+    var bogeys = [];
+    var lastFrameTime = performance.now();
+    var running = true;
+
+    // Web Audio State
+    var audioCtx = null;
+
+    // Location Coordinates mapping parameters
+    var liveCoords = { lat: 34.0522, lon: -118.2437 }; // Default LA
+    var mapOffset = { x: 0, y: 0 };
+
+    // Set Theme palettes
+    var themes = {
+      green: {
+        bg: "#000d05",
+        grid: "rgba(51, 255, 51, 0.16)",
+        sweepColor: "rgba(51, 255, 51, 1.0)",
+        trailColorPrefix: "rgba(20, 200, 50, ",
+        bogeyColor: "rgba(51, 255, 51, ",
+        hostileColor: "rgba(255, 30, 30, ",
+        terrainBorder: "rgba(0, 100, 25, 0.15)",
+        terrainFill: "rgba(0, 80, 20, 0.05)"
+      },
+      blue: {
+        bg: "#000512",
+        grid: "rgba(0, 153, 255, 0.18)",
+        sweepColor: "rgba(51, 153, 255, 1.0)",
+        trailColorPrefix: "rgba(0, 110, 220, ",
+        bogeyColor: "rgba(80, 180, 255, ",
+        hostileColor: "rgba(255, 190, 0, ",
+        terrainBorder: "rgba(0, 60, 150, 0.18)",
+        terrainFill: "rgba(0, 40, 120, 0.04)"
+      },
+      red: {
+        bg: "#0f0101",
+        grid: "rgba(255, 51, 51, 0.16)",
+        sweepColor: "rgba(255, 51, 51, 1.0)",
+        trailColorPrefix: "rgba(230, 20, 20, ",
+        bogeyColor: "rgba(255, 90, 90, ",
+        hostileColor: "rgba(255, 230, 0, ",
+        terrainBorder: "rgba(120, 10, 10, 0.16)",
+        terrainFill: "rgba(100, 5, 5, 0.05)"
+      }
+    };
+    var currentThemeName = "green";
+
+    // Standard static coordinates for coastlines / terrain
+    var mainCoastline = [
+      [-0.85, -0.6], [-0.7, -0.55], [-0.55, -0.3], [-0.4, -0.32],
+      [-0.25, -0.15], [-0.1, -0.2], [0.1, -0.05], [0.25, -0.18],
+      [0.45, -0.1], [0.65, -0.3], [0.8, -0.22], [0.85, 0.1],
+      [0.7, 0.32], [0.48, 0.25], [0.35, 0.45], [0.1, 0.35],
+      [-0.15, 0.55], [-0.35, 0.4], [-0.5, 0.65], [-0.7, 0.55],
+      [-0.85, 0.35], [-0.75, 0.05], [-0.9, -0.25]
+    ];
+    var subIslands = [
+      [ [0.4, -0.6], [0.55, -0.62], [0.5, -0.5], [0.38, -0.52] ],
+      [ [-0.3, 0.1], [-0.15, 0.05], [-0.2, 0.2] ],
+      [ [0.15, -0.45], [0.24, -0.48], [0.2, -0.38] ]
+    ];
+
+    // Initialize Audio
+    function initSynth() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === "suspended") {
+        audioCtx.resume();
+      }
+    }
+
+    function playPing(type) {
+      if (isMuted || !audioCtx) return;
+      try {
+        if (audioCtx.state === "suspended") audioCtx.resume();
+        
+        var osc = audioCtx.createOscillator();
+        var gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        var t = audioCtx.currentTime;
+        
+        if (type === "hostile") {
+          osc.type = "sawtooth";
+          osc.frequency.setValueAtTime(650, t);
+          osc.frequency.exponentialRampToValueAtTime(300, t + 0.5);
+          gain.gain.setValueAtTime(volume * 0.4, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.6);
+          osc.start(t);
+          osc.stop(t + 0.65);
+        } else if (type === "intercept") {
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(880, t);
+          osc.frequency.setValueAtTime(1320, t + 0.08);
+          gain.gain.setValueAtTime(volume * 0.35, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.3);
+          osc.start(t);
+          osc.stop(t + 0.32);
+        } else if (type === "warning") {
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(140, t);
+          osc.frequency.linearRampToValueAtTime(180, t + 0.15);
+          osc.frequency.linearRampToValueAtTime(140, t + 0.3);
+          gain.gain.setValueAtTime(volume * 0.5, t);
+          gain.gain.linearRampToValueAtTime(0.0001, t + 0.35);
+          osc.start(t);
+          osc.stop(t + 0.36);
+        } else {
+          // Standard radar ping
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(800, t);
+          osc.frequency.exponentialRampToValueAtTime(200, t + 1.2);
+          gain.gain.setValueAtTime(volume * 0.3, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 1.3);
+          osc.start(t);
+          osc.stop(t + 1.4);
+        }
+      } catch (err) {}
+    }
+
+    // Geolocation handlers
+    if (locateBtn) {
+      locateBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        initSynth();
+        if (navigator.geolocation) {
+          locateStatus.textContent = "Negotiating transponder request...";
+          navigator.geolocation.getCurrentPosition(
+            function (position) {
+              var lat = position.coords.latitude;
+              var lon = position.coords.longitude;
+              liveCoords = { lat: lat, lon: lon };
+              
+              // format display nicely
+              var latText = Math.abs(lat).toFixed(4) + "° " + (lat >= 0 ? "N" : "S");
+              var lonText = Math.abs(lon).toFixed(4) + "° " + (lon >= 0 ? "E" : "W");
+              if (coordsDisplay) coordsDisplay.textContent = latText + ", " + lonText;
+              
+              locateStatus.textContent = "Live transponder coordinates locked.";
+              
+              // Shift map slightly based on coordinates
+              mapOffset.x = (lon % 10) * 0.05;
+              mapOffset.y = (lat % 10) * 0.05;
+              
+              playPing("intercept");
+            },
+            function (err) {
+              locateStatus.textContent = "Access denied. Falling back to mock coordinates.";
+              playPing("warning");
+            }
+          );
+        } else {
+          locateStatus.textContent = "Browser localization API not available.";
+        }
+      });
+    }
+
+    // Canvas size sync
+    function resizeCanvas() {
+      var dpr = window.devicePixelRatio || 1;
+      var rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    // Spawning target blips
+    function createBogey(forceType) {
+      // random polar coordinates
+      var angle = Math.random() * Math.PI * 2;
+      var dist = 0.4 + Math.random() * 0.55; 
+      var type = forceType || (Math.random() < 0.65 ? "friendly" : "hostile");
+      
+      // motion directed general centerwards
+      var speed = 0.0003 + Math.random() * 0.0008;
+      var targetAngle = angle + Math.PI + (Math.random() - 0.5) * 0.6;
+      
+      return {
+        id: Math.random().toString(36).substr(2, 5),
+        x: Math.cos(angle) * dist,
+        y: Math.sin(angle) * dist,
+        vx: Math.cos(targetAngle) * speed,
+        vy: Math.sin(targetAngle) * speed,
+        type: type,
+        intensity: 0,
+        soundPlayed: false,
+        lastCrossAngle: -1,
+        active: true
+      };
+    }
+
+    // Populate initial targets
+    for (var i = 0; i < 6; i++) {
+      bogeys.push(createBogey(i === 0 ? "hostile" : null));
+    }
+
+    // Canvas rendering Loop
+    function render(time) {
+      if (!running) return;
+      requestAnimationFrame(render);
+      
+      var dt = time - lastFrameTime;
+      lastFrameTime = time;
+      
+      var dpr = window.devicePixelRatio || 1;
+      var W = canvas.width;
+      var H = canvas.height;
+      var cx = W / 2;
+      var cy = H / 2;
+      var R = Math.min(cx, cy) * 0.88;
+      
+      var ctx = canvas.getContext("2d");
+      
+      var theme = themes[currentThemeName];
+      
+      // Clear entire board with theme background color
+      ctx.fillStyle = theme.bg;
+      ctx.fillRect(0, 0, W, H);
+      
+      // Draw procedural terrain lines
+      ctx.strokeStyle = theme.terrainBorder;
+      ctx.fillStyle = theme.terrainFill;
+      
+      // Main landmass
+      ctx.beginPath();
+      for (var k = 0; k < mainCoastline.length; k++) {
+        var lx = cx + (mainCoastline[k][0] + mapOffset.x) * R;
+        var ly = cy + (mainCoastline[k][1] + mapOffset.y) * R;
+        if (k === 0) ctx.moveTo(lx, ly);
+        else ctx.lineTo(lx, ly);
+      }
+      ctx.closePath();
+      ctx.stroke();
+      ctx.fill();
+      
+      // Oceanic Islands
+      for (var s = 0; s < subIslands.length; s++) {
+        ctx.beginPath();
+        var island = subIslands[s];
+        for (var p = 0; p < island.length; p++) {
+          var ix = cx + (island[p][0] + mapOffset.x) * R;
+          var iy = cy + (island[p][1] + mapOffset.y) * R;
+          if (p === 0) ctx.moveTo(ix, iy);
+          else ctx.lineTo(ix, iy);
+        }
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+      }
+
+      // Draw Concentric Radar Grid Circles
+      ctx.strokeStyle = theme.grid;
+      ctx.lineWidth = 1 * dpr;
+      
+      var rings = [0.25, 0.5, 0.75, 1.0];
+      for (var rIndex = 0; rIndex < rings.length; rIndex++) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, R * rings[rIndex], 0, Math.PI * 2);
+        ctx.stroke();
+        
+        // Ring Labels
+        ctx.font = (8 * dpr) + "px ui-monospace, Courier";
+        ctx.fillStyle = theme.sweepColor;
+        ctx.fillText((rings[rIndex] * 400).toFixed(0) + "NM", cx + 4, cy - (R * rings[rIndex]) + 10);
+      }
+
+      // Compass Degree markings on outer ring
+      ctx.beginPath();
+      ctx.arc(cx, cy, R, 0, Math.PI * 2);
+      ctx.strokeStyle = theme.sweepColor;
+      ctx.lineWidth = 1.5 * dpr;
+      ctx.stroke();
+
+      for (var deg = 0; deg < 360; deg += 10) {
+        var rad = deg * Math.PI / 180;
+        var cos = Math.cos(rad);
+        var sin = Math.sin(rad);
+        
+        var startLen = R;
+        var endLen = R - (deg % 30 === 0 ? 12 : 6) * dpr;
+        
+        ctx.beginPath();
+        ctx.moveTo(cx + cos * startLen, cy + sin * startLen);
+        ctx.lineTo(cx + cos * endLen, cy + sin * endLen);
+        ctx.strokeStyle = theme.sweepColor;
+        ctx.stroke();
+        
+        if (deg % 30 === 0) {
+          ctx.font = (9 * dpr) + "px ui-monospace, Courier";
+          ctx.fillStyle = theme.sweepColor;
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          var labelDist = R + 14 * dpr;
+          
+          var markText = deg.toString();
+          if (deg === 0) markText = "N";
+          else if (deg === 90) markText = "E";
+          else if (deg === 180) markText = "S";
+          else if (deg === 270) markText = "W";
+          
+          ctx.fillText(markText, cx + cos * labelDist, cy + sin * labelDist);
+        }
+      }
+
+      // Degree radial segment lines
+      ctx.beginPath();
+      for (var radialDeg = 0; radialDeg < 360; radialDeg += 30) {
+        var radialRad = radialDeg * Math.PI / 180;
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + Math.cos(radialRad) * R, cy + Math.sin(radialRad) * R);
+      }
+      ctx.strokeStyle = theme.grid;
+      ctx.lineWidth = 0.5 * dpr;
+      ctx.stroke();
+
+      // Update sweep direction
+      var degPerSec = (rpm * 360) / 60;
+      sweepAngle = (sweepAngle + (degPerSec * dt) / 1000) % 360;
+      var sweepRad = (sweepAngle - 90) * Math.PI / 180; // offset so 0 points upwards (North)
+
+      // Draw Phosphor Tail Sector
+      var tailSlices = 70;
+      for (var slice = 0; slice < tailSlices; slice++) {
+        var sliceAngle = sweepAngle - (slice * 0.7);
+        var sliceRad = (sliceAngle - 90) * Math.PI / 180;
+        var opacity = 1.0 - (slice / tailSlices);
+        // Exponential decay curve for CRT look
+        opacity = Math.pow(opacity, 1.6) * 0.7;
+        
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + Math.cos(sliceRad) * R, cy + Math.sin(sliceRad) * R);
+        ctx.strokeStyle = theme.trailColorPrefix + opacity + ")";
+        ctx.lineWidth = 2.5 * dpr;
+        ctx.stroke();
+      }
+
+      // Play Sonar Echo Ping when sweep hits top-dead-center index boundary
+      var currentIntDeg = Math.floor(sweepAngle);
+      if (currentIntDeg === 0) {
+        playPing("sweep");
+      }
+
+      // Sweep Beam leading edge
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + Math.cos(sweepRad) * R, cy + Math.sin(sweepRad) * R);
+      ctx.strokeStyle = theme.sweepColor;
+      ctx.lineWidth = 2.0 * dpr;
+      ctx.stroke();
+
+      // Update and Draw targets (Bogeys)
+      var coreLimit = R * 0.15; // center impact radius
+      
+      for (var bIdx = 0; bIdx < bogeys.length; bIdx++) {
+        var b = bogeys[bIdx];
+        if (!b.active) continue;
+
+        // Apply velocities
+        b.x += b.vx;
+        b.y += b.vy;
+        
+        var bxReal = cx + b.x * R;
+        var byReal = cy + b.y * R;
+        var bRadius = Math.sqrt(b.x*b.x + b.y*b.y);
+        
+        // Bogey Angle relative to sweep coordinates
+        var bogeyAngleRad = Math.atan2(b.y, b.x); // -PI to PI
+        var bogeyAngleDeg = (bogeyAngleRad * 180 / Math.PI + 360 + 90) % 360; 
+
+        // Compute angle delta relative to Sweep Edge
+        var angleDiff = (sweepAngle - bogeyAngleDeg + 360) % 360;
+
+        // If sweep line rolls over bogey, trigger bright illuminate & Sonar sound feedback close proximity
+        if (angleDiff >= 0 && angleDiff < 3) {
+          if (!b.soundPlayed) {
+            b.intensity = 1.0; 
+            b.soundPlayed = true;
+            playPing(b.type);
+          }
+        } else if (angleDiff > 10) {
+          b.soundPlayed = false; // Reset to play sound on next pass
+        }
+
+        // Bogey display opacity decay
+        b.intensity -= 0.005; // slowly decay luminescence
+        if (b.intensity < 0.15) b.intensity = 0.15; // keep minimum visibility ghosting on HUD
+
+        // Check if bogey entered collision corridor (Impact)
+        if (bRadius * R < coreLimit) {
+          if (b.type === "hostile") {
+            counters.impact++;
+            if (impactCounter) impactCounter.textContent = counters.impact;
+            
+            // alert banner trigger
+            if (alertBanner) {
+              alertBanner.style.opacity = "1";
+              playPing("warning");
+              setTimeout(function() {
+                if (alertBanner) alertBanner.style.opacity = "0";
+              }, 2500);
+            }
+          }
+          // recycle bogey
+          bogeys[bIdx] = createBogey();
+          continue;
+        }
+
+        // Check if bogey moved out of range
+        if (bRadius > 1.0) {
+          bogeys[bIdx] = createBogey();
+          continue;
+        }
+
+        // Render Blip Dot
+        var dotRadius = (b.type === "hostile" ? 5 : 4) * dpr;
+        
+        ctx.beginPath();
+        ctx.arc(bxReal, byReal, dotRadius, 0, Math.PI * 2);
+        
+        var alphaBogey = b.intensity;
+        
+        if (b.type === "hostile") {
+          ctx.fillStyle = theme.hostileColor + alphaBogey + ")";
+          ctx.fill();
+          
+          // Draw standard tracking box or cross around target
+          ctx.strokeStyle = theme.hostileColor + (alphaBogey * 0.8) + ")";
+          ctx.lineWidth = 1 * dpr;
+          ctx.strokeRect(bxReal - 7 * dpr, byReal - 7 * dpr, 14 * dpr, 14 * dpr);
+          
+          // Draw little ID tag
+          ctx.font = (7 * dpr) + "px ui-monospace, monospace";
+          ctx.fillStyle = theme.hostileColor + alphaBogey + ")";
+          ctx.fillText("TRK-" + b.id, bxReal + 9 * dpr, byReal - 2 * dpr);
+        } else if (b.type === "intercepted") {
+          // Yellow flashing indicator before fade reset
+          ctx.fillStyle = "rgba(255, 170, 0, " + alphaBogey + ")";
+          ctx.fill();
+          ctx.strokeStyle = "rgba(255, 170, 0, " + (alphaBogey * 0.7) + ")";
+          ctx.lineWidth = 1 * dpr;
+          ctx.beginPath();
+          ctx.moveTo(bxReal - 10 * dpr, byReal);
+          ctx.lineTo(bxReal + 10 * dpr, byReal);
+          ctx.moveTo(bxReal, byReal - 10 * dpr);
+          ctx.lineTo(bxReal, byReal + 10 * dpr);
+          ctx.stroke();
+        } else {
+          // Friendly / Bogey Green circle with velocity direction vector
+          ctx.fillStyle = theme.bogeyColor + alphaBogey + ")";
+          ctx.fill();
+          
+          ctx.strokeStyle = theme.bogeyColor + (alphaBogey * 0.4) + ")";
+          ctx.lineWidth = 1 * dpr;
+          ctx.beginPath();
+          ctx.moveTo(bxReal, byReal);
+          // heading vector lines representation
+          ctx.lineTo(bxReal + b.vx * 30 * R, byReal + b.vy * 30 * R);
+          ctx.stroke();
+          
+          ctx.font = (7 * dpr) + "px ui-monospace, monospace";
+          ctx.fillStyle = theme.sweepColor;
+          ctx.fillText("UNK-" + b.id, bxReal + 7 * dpr, byReal - 2 * dpr);
+        }
+      }
+
+      // Draw Center Sweep origin ring
+      ctx.beginPath();
+      ctx.arc(cx, cy, coreLimit, 0, Math.PI * 2);
+      ctx.strokeStyle = theme.grid;
+      ctx.lineWidth = 1 * dpr;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, 3 * dpr, 0, Math.PI * 2);
+      ctx.fillStyle = theme.sweepColor;
+      ctx.fill();
+    }
+
+    // Spawn / Add manual Hostile Bogey on click
+    function onScreenInteraction(clientX, clientY) {
+      initSynth();
+      var rect = canvas.getBoundingClientRect();
+      var dpr = window.devicePixelRatio || 1;
+      
+      // Calculate coordinates relative to canvas center
+      var cx = canvas.width / 2;
+      var cy = canvas.height / 2;
+      var R = Math.min(cx, cy) * 0.88;
+      
+      var clickX = (clientX - rect.left) * dpr;
+      var clickY = (clientY - rect.top) * dpr;
+      
+      var relX = (clickX - cx) / R;
+      var relY = (clickY - cy) / R;
+      var clickRadius = Math.sqrt(relX*relX + relY*relY);
+
+      if (clickRadius <= 1.0) {
+        // Check if cursor clicked an existing bogey to intercept it
+        var clickedABogey = false;
+        
+        for (var bIdx = 0; bIdx < bogeys.length; bIdx++) {
+          var b = bogeys[bIdx];
+          if (!b.active) continue;
+          
+          var dx = relX - b.x;
+          var dy = relY - b.y;
+          var dist = Math.sqrt(dx*dx + dy*dy);
+          
+          // Click hit bounds (relative to radial radius)
+          if (dist < 0.08) {
+            clickedABogey = true;
+            b.type = "intercepted";
+            b.intensity = 1.0;
+            counters.intercepted++;
+            if (interceptedCounter) interceptedCounter.textContent = counters.intercepted;
+            
+            playPing("intercept");
+            
+            // clear/recycle after short delay
+            (function(idx) {
+              setTimeout(function() {
+                bogeys[idx] = createBogey();
+              }, 600);
+            })(bIdx);
+            
+            break;
+          }
+        }
+
+        // If didn't click existing bogey, manually spawn new hostile blip at mouse location
+        if (!clickedABogey) {
+          var newBogey = createBogey("hostile");
+          newBogey.x = relX;
+          newBogey.y = relY;
+          newBogey.intensity = 1.0;
+          bogeys.push(newBogey);
+          if (bogeys.length > targetLimit) {
+            bogeys.shift();
+          }
+          playPing("hostile");
+        }
+      }
+    }
+
+    // Toggle settings layout
+    if (gearBtn && overlay && closeBtn) {
+      gearBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        overlay.classList.toggle("is-visible");
+      });
+
+      closeBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        overlay.classList.remove("is-visible");
+      });
+
+      overlay.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+
+      // Avoid triggering full screen on settings input edits
+      var blockEvents = ["mousedown", "mouseup", "click", "dblclick", "touchstart", "touchmove", "touchend"];
+      blockEvents.forEach(function (evt) {
+        overlay.addEventListener(evt, function (e) {
+          e.stopPropagation();
+        });
+      });
+    }
+
+    // Slider inputs listeners
+    if (volumeRange && volumeVal) {
+      volumeRange.addEventListener("input", function (e) {
+        initSynth();
+        var val = parseInt(e.target.value, 10);
+        volumeVal.textContent = val + "%";
+        volume = val / 100;
+        isMuted = (val === 0);
+        if (muteBtn) {
+          muteBtn.classList.toggle("active", isMuted);
+          muteBtn.textContent = isMuted ? "Unmute" : "Mute";
+        }
+      });
+    }
+
+    if (muteBtn) {
+      muteBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        initSynth();
+        isMuted = !isMuted;
+        muteBtn.textContent = isMuted ? "Unmute" : "Mute";
+        muteBtn.classList.toggle("active", isMuted);
+        if (volumeRange && volumeVal) {
+          volumeRange.value = isMuted ? 0 : Math.round(volume * 100);
+          volumeVal.textContent = volumeRange.value + "%";
+        }
+      });
+    }
+
+    if (rpmInput && rpmVal) {
+      rpmInput.addEventListener("input", function (e) {
+        rpm = parseInt(e.target.value, 10);
+        rpmVal.textContent = rpm + " RPM";
+      });
+    }
+
+    if (densityInput && densityVal) {
+      densityInput.addEventListener("input", function (e) {
+        var density = parseInt(e.target.value, 10);
+        targetLimit = density;
+        densityVal.textContent = density <= 10 ? "Low" : (density >= 35 ? "High" : "Medium");
+        
+        // Adjust bogeys pool based on settings
+        while (bogeys.length < targetLimit / 2) {
+          bogeys.push(createBogey());
+        }
+      });
+    }
+
+    // Switch theme colors
+    styleChoices.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var styleName = btn.getAttribute("data-style");
+        if (themes[styleName]) {
+          currentThemeName = styleName;
+          styleChoices.forEach(function (b) {
+            b.classList.remove("active");
+          });
+          btn.classList.add("active");
+          playPing("sweep");
+        }
+      });
+    });
+
+    if (resetCountersBtn) {
+      resetCountersBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        counters.intercepted = 0;
+        counters.impact = 0;
+        if (interceptedCounter) interceptedCounter.textContent = "0";
+        if (impactCounter) impactCounter.textContent = "0";
+        playPing("warning");
+      });
+    }
+
+    // Fullscreen behavior handlers
+    function goFS() {
+      initSynth();
+      if (!document.fullscreenElement) {
+        root.requestFullscreen().catch(function () {});
+      }
+    }
+
+    function exitFS() {
+      if (document.fullscreenElement === root) {
+        document.exitFullscreen().catch(function () {});
+      }
+    }
+
+    if (fsBtn) {
+      fsBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        goFS();
+      });
+    }
+
+    root.addEventListener("click", function (e) {
+      if (!document.fullscreenElement) {
+        goFS();
+      } else {
+        // Spawns/intercepts targets on click while in fullscreen mode
+        onScreenInteraction(e.clientX, e.clientY);
+      }
+    });
+
+    document.addEventListener("fullscreenchange", function () {
+      var isFS = document.fullscreenElement === root;
+      root.classList.toggle("is-fullscreen", isFS);
+
+      if (isFS) {
+        if (fsBtn) fsBtn.style.display = "none";
+        if (gearBtn) gearBtn.style.display = "none";
+        if (overlay) overlay.classList.remove("is-visible");
+      } else {
+        if (fsBtn) fsBtn.style.display = "";
+        if (gearBtn) gearBtn.style.display = "";
+      }
+      setTimeout(resizeCanvas, 60);
+    });
+
+    // Keyboard Shortcuts support
+    document.addEventListener("keydown", function (e) {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) return;
+      
+      var key = e.key.toLowerCase();
+      var isFS = document.fullscreenElement === root;
+      
+      if (isFS || isMouseOverRadar()) {
+        if (key === "f") {
+          e.preventDefault();
+          if (isFS) exitFS();
+          else goFS();
+        } else if (key === "escape") {
+          if (isFS) exitFS();
+        } else if (key === "s") {
+          e.preventDefault();
+          initSynth();
+          isMuted = !isMuted;
+          if (muteBtn) {
+            muteBtn.textContent = isMuted ? "Unmute" : "Mute";
+            muteBtn.classList.toggle("active", isMuted);
+          }
+          if (volumeRange && volumeVal) {
+            volumeRange.value = isMuted ? 0 : Math.round(volume * 100);
+            volumeVal.textContent = volumeRange.value + "%";
+          }
+        } else if (key === "l") {
+          e.preventDefault();
+          if (locateBtn) locateBtn.click();
+        } else if (key === "space" || e.keyCode === 32) {
+          e.preventDefault();
+          running = !running;
+          if (running) {
+            lastFrameTime = performance.now();
+            requestAnimationFrame(render);
+          }
+        }
+      }
+    });
+
+    function isMouseOverRadar() {
+      // helper to check if cursor is over component
+      var matches = document.querySelectorAll(":hover");
+      for (var i = 0; i < matches.length; i++) {
+        if (matches[i] === root) return true;
+      }
+      return false;
+    }
+
+    // Start simulation
+    requestAnimationFrame(render);
+  })();
+</script>
