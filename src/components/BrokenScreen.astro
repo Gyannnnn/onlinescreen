@@ -1,0 +1,204 @@
+---
+import type { Tool } from "../data/tools";
+import type { Locale } from "../data/locales";
+import { t } from "../data/translations";
+import fs from "fs";
+import path from "path";
+
+type Props = { tool: Tool; locale: Locale };
+const { tool, locale } = Astro.props;
+
+const imagesDir = path.join(process.cwd(), "public", "assets", "broken-screen");
+const imageExtensions = [".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"];
+let images: string[] = [];
+try {
+  images = fs
+    .readdirSync(imagesDir)
+    .filter((file) => imageExtensions.includes(path.extname(file).toLowerCase()))
+    .sort()
+    .map((file) => `/assets/broken-screen/${file}`);
+} catch {}
+---
+
+<section
+  class="rounded-lg border border-hairline bg-canvas shadow-soft flex flex-col overflow-hidden w-full"
+  data-broken-screen
+  data-images={JSON.stringify(images)}
+  aria-label="Broken Screen Prank"
+>
+  <!-- Screen Preview Area -->
+  <div class="bs-root group relative flex h-[420px] items-center justify-center overflow-hidden rounded-lg bg-black cursor-pointer outline-none" id="bsRoot">
+    <div class="bs-preview absolute inset-0 flex items-center justify-center bg-black" id="bsPreview">
+      {images.length > 0 ? (
+        <img id="bsActiveImg" src={images[0]} alt="Broken screen" class="bs-active-img h-full w-full object-contain pointer-events-none transition-all duration-300" />
+      ) : (
+        <div class="bs-empty text-white/25 text-xs font-mono p-5 text-center">Add images to public/assets/broken-screen/</div>
+      )}
+    </div>
+
+    <!-- Fullscreen Button -->
+    <button class="absolute right-3 top-3 z-20 grid size-11 place-items-center rounded-lg bg-black/25 text-white/90 shadow-xs ring-1 ring-white/15 backdrop-blur-xs transition-all hover:bg-black/45 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white cursor-pointer" type="button" id="bsFsBtn" aria-label={t(locale, 'screen.fullscreen')}>
+      <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v6.5m0-6.5h6.5m-6.5 0 6.082 6.082m10.168-6.082V10.25m0-6.5h-6.5m6.5 0-6.082 6.082M3.75 20.25v-6.5m0 6.5h6.5m-6.5 0 6.082-6.082m10.168 6.082v-6.5m0 6.5h-6.5m6.5 0-6.082-6.082" />
+      </svg>
+    </button>
+
+    <!-- Floating Variant selector overlapping the preview component at the bottom -->
+    {images.length > 1 && (
+      <div 
+        class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex flex-wrap items-center justify-center gap-2 rounded-xl bg-black/60 p-2.5 backdrop-blur-md shadow-lg ring-1 ring-white/10 max-w-[90%] transition-opacity duration-300" 
+        id="bsControlsBar"
+      >
+        {images.map((src, i) => (
+          <button 
+            class="bs-thumb relative w-12 h-9 rounded-md overflow-hidden border border-white/20 bg-neutral-900 transition-all hover:scale-105 active:scale-95 focus:outline-none cursor-pointer" 
+            data-index={i} 
+            data-src={src} 
+            type="button" 
+            aria-label={`Select style ${i + 1}`}
+          >
+            <img src={src} alt={`Style ${i + 1}`} class="h-full w-full object-cover pointer-events-none" loading="lazy" />
+          </button>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<style is:global>
+  /* Styling and Fullscreen styles */
+  .bs-root {
+    transition: background 0.3s ease;
+  }
+  .bs-root.is-fullscreen {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    max-height: none;
+    aspect-ratio: unset;
+    border-radius: 0;
+    border: none;
+    z-index: 9999;
+    outline: none;
+  }
+  .bs-root.is-fullscreen:focus,
+  .bs-root.is-fullscreen:focus-visible,
+  .bs-root.is-fullscreen:active {
+    outline: none;
+  }
+  .bs-active-img {
+    transition: filter 0.3s ease;
+  }
+  .bs-root.is-fullscreen .bs-active-img {
+    object-fit: cover; /* Fill the screen completely when fullscreen prank is active */
+  }
+
+  .bs-thumb {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .bs-thumb:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+  .bs-thumb.is-selected {
+    border-color: #ffffff;
+    box-shadow: 0 0 0 2px #000000, 0 0 0 4px #ffffff;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var root = document.getElementById("bsRoot");
+    var activeImg = document.getElementById("bsActiveImg");
+    var thumbs = document.querySelectorAll(".bs-thumb");
+    var wrapper = document.querySelector("[data-broken-screen]");
+    var controlsBar = document.getElementById("bsControlsBar");
+    var fsBtn = document.getElementById("bsFsBtn");
+
+    var images = [];
+    try {
+      var parsed = JSON.parse(wrapper.getAttribute("data-images") || "[]");
+      if (Array.isArray(parsed)) images = parsed;
+    } catch (_) {}
+    var currentIndex = 0;
+
+    function selectImage(index) {
+      if (index < 0 || index >= images.length) return;
+      currentIndex = index;
+      
+      var src = images[index];
+      
+      if (activeImg) {
+        activeImg.src = src;
+        activeImg.alt = "Broken screen " + (index + 1);
+      }
+      
+      thumbs.forEach(function (t, i) {
+        t.classList.toggle("is-selected", i === index);
+      });
+    }
+
+    function goFS() {
+      if (!document.fullscreenElement) {
+        root.requestFullscreen().catch(function () {});
+      }
+    }
+
+    function exitFS() {
+      if (document.fullscreenElement === root) {
+        document.exitFullscreen().catch(function () {});
+      }
+    }
+
+    thumbs.forEach(function (t) {
+      t.addEventListener("click", function (e) {
+        e.stopPropagation(); // Avoid triggering fullscreen on thumb select click
+        selectImage(parseInt(t.getAttribute("data-index"), 10));
+      });
+    });
+
+    if (fsBtn) {
+      fsBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        goFS();
+      });
+    }
+
+    // Enter fullscreen mode on preview block click (never exit via click)
+    root.addEventListener("click", function () {
+      if (!document.fullscreenElement) {
+        goFS();
+      }
+    });
+
+    document.addEventListener("fullscreenchange", function () {
+      var isFS = document.fullscreenElement === root;
+      root.classList.toggle("is-fullscreen", isFS);
+      
+      if (isFS) {
+        root.style.height = "100vh";
+        root.style.maxHeight = "none";
+        if (controlsBar) controlsBar.style.display = "none";
+        if (fsBtn) fsBtn.style.display = "none";
+      } else {
+        root.style.height = "";
+        root.style.maxHeight = "";
+        if (controlsBar) controlsBar.style.display = "";
+        if (fsBtn) fsBtn.style.display = "";
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) return;
+      var key = e.key.toLowerCase();
+      if (key === "escape") exitFS();
+      if (key === "f") {
+        e.preventDefault();
+        goFS();
+      }
+    });
+
+    // Initialize state
+    selectImage(0);
+  })();
+</script>

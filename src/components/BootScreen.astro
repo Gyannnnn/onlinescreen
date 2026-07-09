@@ -1,0 +1,55 @@
+---
+import type { BootScreenConfig } from '../data/boot-screens';
+import BootLogo from './BootLogo.astro';
+import BootLoader from './BootLoader.astro';
+
+type Props = {
+  config: BootScreenConfig;
+  class?: string;
+};
+
+const { config, class: className } = Astro.props;
+
+const justifyMap = {
+  center: 'center',
+  start: 'flex-start',
+  end: 'flex-end',
+};
+
+const alignMap = {
+  center: 'center',
+  start: 'flex-start',
+  end: 'flex-end',
+};
+---
+
+<div
+  class={`bs-screen ${className ?? ''}`}
+  style={`background: ${config.background}; justify-content: ${justifyMap[config.layout.justify]}; align-items: ${alignMap[config.layout.align]};`}
+>
+  <div class="bs-inner" style={`gap: ${config.layout.spacing}px;`}>
+    <BootLogo config={config.logo} class="bs-logo" />
+    <BootLoader config={config.loader} class="bs-loader-el" />
+  </div>
+</div>
+
+<style>
+  .bs-screen {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    overflow: hidden;
+  }
+  .bs-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .bs-logo {
+    display: block;
+    height: auto;
+  }
+  .bs-loader-el {
+    flex-shrink: 0;
+  }
+</style>

@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import SeoHead from '../components/SeoHead.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { type Locale, locales } from '../data/locales';
+
+type Props = {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  alternates?: { lang: string; href: string }[];
+  jsonLd?: unknown;
+  lang?: string;
+  locale?: Locale;
+  currentToolSlug?: string;
+  currentToolLocalizedSlugs?: Partial<Record<Exclude<Locale, 'en'>, string>>;
+};
+
+const { title, description, canonicalPath, alternates, jsonLd, lang = 'en', locale = 'en', currentToolSlug, currentToolLocalizedSlugs } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <SeoHead title={title} description={description} canonicalPath={canonicalPath} alternates={alternates} />
+    {jsonLd && <JsonLd data={jsonLd} />}
+    <script>
+      const saved = window.localStorage.getItem('freescreen-theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    </script>
+  </head>
+  <body>
+    <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-3 focus:py-2 focus:text-canvas" href="#main">
+      Skip to content
+    </a>
+    <Navbar locale={locale} currentToolSlug={currentToolSlug} currentToolLocalizedSlugs={currentToolLocalizedSlugs} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

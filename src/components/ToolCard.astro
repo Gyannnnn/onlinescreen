@@ -1,0 +1,40 @@
+---
+import type { Tool } from '../data/tools';
+import { type Locale } from '../data/locales';
+import { toolName, toolSummary } from '../data/translations';
+import { categories } from '../data/tools';
+import { getThumbnail } from '../data/thumbnails';
+
+type Props = {
+  tool: Tool;
+  locale: Locale;
+};
+
+const { tool, locale } = Astro.props;
+const category = categories[tool.category];
+const thumbnailSvg = tool.thumbnail ?? getThumbnail(tool.id, tool.color);
+const altText = `${toolName(locale, tool)} preview`;
+---
+
+<a
+  class="group relative flex flex-col rounded-2xl border border-hairline bg-canvas outline-none transition-all duration-200 hover:-translate-y-1 hover:shadow-soft focus-visible:-translate-y-1 focus-visible:shadow-soft"
+  style={`box-shadow: 0 0 24px -4px ${tool.color}33, 0 1px 1px rgb(0 0 0 / 0.03)`}
+  href={`/${tool.slug}/`}
+>
+  <div class="relative aspect-video overflow-hidden rounded-t-2xl bg-canvas-soft-2">
+    <div class="size-full" set:html={thumbnailSvg} aria-label={altText} role="img" />
+  </div>
+  <div class="flex flex-1 flex-col gap-2 p-4">
+    <div class="flex items-start justify-between gap-2">
+      <h3 class="text-sm font-medium leading-snug text-ink transition-colors duration-200 group-hover:text-link">
+        {toolName(locale, tool)}
+      </h3>
+      <span class="shrink-0 rounded-full border border-hairline px-2 py-0.5 text-[10px] font-medium leading-normal text-muted">
+        {category.name}
+      </span>
+    </div>
+    <p class="line-clamp-2 text-sm leading-relaxed text-body">
+      {toolSummary(locale, tool)}
+    </p>
+  </div>
+</a>

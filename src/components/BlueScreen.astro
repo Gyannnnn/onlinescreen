@@ -1,0 +1,767 @@
+---
+import type { Tool } from "../data/tools";
+import type { Locale } from "../data/locales";
+
+type Props = { tool: Tool; locale: Locale };
+const { tool, locale } = Astro.props;
+---
+
+<div class="bsod" id="bsod" data-blue-screen aria-label="Blue Screen Prank">
+  <div class="bsod-inner">
+    <div class="bsod-body">
+      <div class="bsod-sad">:(</div>
+      <p class="bsod-msg">Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you.</p>
+      <p class="bsod-pct"><span id="bsodPct">0</span>% complete</p>
+      <div class="bsod-bottom">
+        <div class="bsod-qr">
+          <canvas id="bsodQr" width="112" height="112"></canvas>
+        </div>
+        <div class="bsod-info">
+          <p class="bsod-info-line">For more information about this issue and possible fixes, visit https://www.windows.com/stopcode</p>
+          <div class="bsod-support-block">
+            <p class="bsod-support">If you call a support person, give them this info:</p>
+            <p class="bsod-code">Stop code: <span id="bsodStopCode">CRITICAL_PROCESS_DIED</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="bsod-fs-btn" id="bsodFsBtn" type="button" aria-label="Fullscreen">
+    <svg class="bsod-fs-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v6.5m0-6.5h6.5m-6.5 0 6.082 6.082m10.168-6.082V10.25m0-6.5h-6.5m6.5 0-6.082 6.082M3.75 20.25v-6.5m0 6.5h6.5m-6.5 0 6.082-6.082m10.168 6.082v-6.5m0 6.5h-6.5m6.5 0-6.082-6.082" />
+    </svg>
+  </button>
+
+  <button class="bsod-gear-btn" id="bsodGearBtn" type="button" aria-label="Settings">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bsod-gear-icon" aria-hidden="true">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+    </svg>
+  </button>
+
+  <div class="bsod-controls-overlay" id="bsodControlsOverlay">
+    <div class="bsod-co-header">
+      <span class="bsod-co-title">Prank Simulation Settings</span>
+      <button class="bsod-co-close" id="bsodCoClose" type="button" aria-label="Close settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="bsod-co-body">
+      <div class="bsod-co-row">
+        <div class="bsod-co-group">
+          <label class="bsod-co-label" for="bsodDuration">Duration (Seconds)</label>
+          <div class="bsod-co-slider-row">
+            <input type="range" min="5" max="180" value="30" id="bsodDuration" />
+            <span class="bsod-co-val" id="bsodDurationVal">30s</span>
+          </div>
+        </div>
+        <div class="bsod-co-group">
+          <label class="bsod-co-label" for="bsodStartPct">Start Percentage</label>
+          <div class="bsod-co-slider-row">
+            <input type="range" min="0" max="95" value="0" id="bsodStartPct" />
+            <span class="bsod-co-val" id="bsodStartPctVal">0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ──── Default Preview Mode (Compact Cards) ──── */
+  .bsod {
+    background: #0078D7 !important;
+    color: #ffffff !important;
+    font-family: "Segoe UI Light", "Segoe UI", -apple-system, system-ui, sans-serif;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+  }
+
+  .bsod-inner {
+    width: 100%;
+  }
+
+  .bsod-body {
+    padding: 32px 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .bsod-sad {
+    font-size: 72px;
+    line-height: 1;
+    font-weight: 300;
+    margin: 0;
+    margin-bottom: 20px;
+    letter-spacing: 0;
+    user-select: none;
+  }
+
+  .bsod-msg {
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 350;
+    margin: 0;
+    margin-bottom: 12px;
+    max-width: 60%;
+  }
+
+  .bsod-pct {
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 350;
+    margin: 0;
+    margin-bottom: 28px;
+  }
+
+  .bsod-bottom {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .bsod-qr {
+    flex-shrink: 0;
+    background: #ffffff;
+    padding: 4px;
+    box-sizing: border-box;
+  }
+
+  .bsod-qr canvas {
+    display: block;
+    width: 60px;
+    height: 60px;
+    background: #ffffff;
+    box-sizing: border-box;
+  }
+
+  .bsod-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 2px;
+  }
+
+  .bsod-info-line {
+    font-size: 10px;
+    line-height: 1.45;
+    font-weight: 300;
+    margin: 0;
+    margin-bottom: 12px;
+    max-width: 100%;
+  }
+
+  .bsod-support-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .bsod-support {
+    font-size: 8.5px;
+    line-height: 1.45;
+    font-weight: 300;
+    margin: 0;
+    opacity: 0.95;
+  }
+
+  .bsod-code {
+    font-size: 8.5px;
+    line-height: 1.45;
+    font-weight: 300;
+    margin: 0;
+    opacity: 0.95;
+  }
+
+  .bsod-fs-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.25);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .bsod-fs-btn:hover {
+    background: rgba(0, 0, 0, 0.45);
+  }
+
+  .bsod-fs-btn:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+  }
+
+  .bsod-fs-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ──── Fullscreen Crash Simulator Mode (Ultra Scale & Realism) ──── */
+  :global(.bsod.is-fullscreen) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 99999 !important;
+    cursor: none !important;
+    overflow: hidden !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    background: #0078D7 !important;
+    color: #ffffff !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important; /* Centered Vertically */
+    align-items: flex-start !important;
+  }
+
+  :global(.bsod.is-fullscreen .bsod-body) {
+    padding: 0 10vw !important; /* Horizontal margin only, vertically centered */
+    max-width: 90vw !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  :global(.bsod.is-fullscreen .bsod-sad) {
+    font-size: clamp(140px, 16vh, 185px) !important; /* Increased sad face size */
+    margin-bottom: clamp(30px, 4vh, 45px) !important;
+  }
+
+  :global(.bsod.is-fullscreen .bsod-msg) {
+    font-size: clamp(24px, 2.8vh, 38px) !important; /* Corrected clamp bounds */
+    margin-bottom: clamp(16px, 2.2vh, 26px) !important;
+    max-width: clamp(650px, 60vw, 980px) !important;
+  }
+
+  :global(.bsod.is-fullscreen .bsod-pct) {
+    font-size: clamp(24px, 2.8vh, 38px) !important; /* Corrected clamp bounds */
+    margin-bottom: clamp(55px, 7vh, 85px) !important;
+  }
+
+  :global(.bsod.is-fullscreen .bsod-bottom) {
+    gap: clamp(28px, 3.5vw, 42px) !important;
+  }
+
+  :global(.bsod.is-fullscreen .bsod-qr) {
+    padding: 8px !important;
+  }
+
+  :global(.bsod.is-fullscreen .bsod-qr canvas) {
+    width: clamp(80px, 10vh, 110px) !important;
+    height: clamp(80px, 10vh, 110px) !important;
+  }
+
+  :global(.bsod.is-fullscreen .bsod-info-line) {
+    font-size: clamp(14px, 1.6vh, 18px) !important;
+    margin-bottom: clamp(24px, 3vh, 36px) !important; /* Increased gap */
+    max-width: clamp(550px, 50vw, 800px) !important;
+  }
+
+  :global(.bsod.is-fullscreen .bsod-support-block) {
+    gap: 4px !important;
+  }
+
+  :global(.bsod.is-fullscreen .bsod-support) {
+    font-size: clamp(11px, 1.3vh, 14px) !important;
+  }
+
+  :global(.bsod.is-fullscreen .bsod-code) {
+    font-size: clamp(11px, 1.3vh, 14px) !important;
+  }
+
+  :global(.bsod.is-fullscreen .bsod-fs-btn) {
+    display: none !important;
+  }
+
+  /* Global scroll lock when BSOD is fullscreen */
+  :global(html.is-bsod-fullscreen) {
+    overflow: hidden !important;
+  }
+  :global(html.is-bsod-fullscreen body) {
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .bsod-gear-btn {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.25);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .bsod-gear-btn:hover {
+    background: rgba(0, 0, 0, 0.45);
+  }
+
+  .bsod-gear-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .bsod-controls-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 25;
+    background: rgba(0, 48, 92, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    font-family: inherit;
+    color: #fff;
+    padding: 12px 16px;
+    box-sizing: border-box;
+  }
+
+  .bsod-controls-overlay.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .bsod-co-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .bsod-co-title {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .bsod-co-close {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.12s, color 0.12s;
+  }
+
+  .bsod-co-close:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+
+  .bsod-co-close svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .bsod-co-body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bsod-co-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 480px) {
+    .bsod-co-row {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+
+  .bsod-co-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .bsod-co-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .bsod-co-slider-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .bsod-co-slider-row input[type="range"] {
+    flex: 1;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .bsod-co-slider-row input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  .bsod-co-slider-row input[type="range"]::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .bsod-co-val {
+    font-size: 11px;
+    font-weight: 600;
+    min-width: 28px;
+    text-align: right;
+  }
+
+  :global(.bsod.is-fullscreen .bsod-gear-btn),
+  :global(.bsod.is-fullscreen .bsod-controls-overlay) {
+    display: none !important;
+  }
+
+  /* ──── Responsive controls for mobile screen preview ──── */
+  @media (max-width: 580px) {
+    .bsod-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var root = document.getElementById("bsod");
+    var fsBtn = document.getElementById("bsodFsBtn");
+    var pctEl = document.getElementById("bsodPct");
+    var canvas = document.getElementById("bsodQr");
+    var stopCodeEl = document.getElementById("bsodStopCode");
+
+    var gearBtn = document.getElementById("bsodGearBtn");
+    var overlay = document.getElementById("bsodControlsOverlay");
+    var closeBtn = document.getElementById("bsodCoClose");
+    var durationSlider = document.getElementById("bsodDuration");
+    var durationVal = document.getElementById("bsodDurationVal");
+    var startSlider = document.getElementById("bsodStartPct");
+    var startVal = document.getElementById("bsodStartPctVal");
+
+    var animFrame = null;
+    var customDuration = 30; // seconds
+    var customStartPct = 0; // %
+
+    var stopCodes = [
+      "CRITICAL_PROCESS_DIED",
+      "SYSTEM_SERVICE_EXCEPTION",
+      "MEMORY_MANAGEMENT",
+      "IRQL_NOT_LESS_OR_EQUAL",
+      "KMODE_EXCEPTION_NOT_HANDLED",
+      "PAGE_FAULT_IN_NONPAGED_AREA",
+      "DRIVER_IRQL_NOT_LESS_OR_EQUAL",
+      "BAD_POOL_HEADER"
+    ];
+
+    if (stopCodeEl) {
+      stopCodeEl.textContent = stopCodes[Math.floor(Math.random() * stopCodes.length)];
+    }
+
+    if (gearBtn && overlay && closeBtn) {
+      gearBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        overlay.classList.toggle("is-visible");
+      });
+
+      closeBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        overlay.classList.remove("is-visible");
+      });
+
+      overlay.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+
+      var eventsToBlockInput = ["mousedown", "mouseup", "dblclick", "touchstart", "touchmove", "touchend"];
+      eventsToBlockInput.forEach(function (evt) {
+        overlay.addEventListener(evt, function (e) {
+          e.stopPropagation();
+        });
+      });
+    }
+
+    if (durationSlider && durationVal) {
+      durationSlider.addEventListener("input", function (e) {
+        customDuration = parseInt(e.target.value, 10);
+        durationVal.textContent = customDuration + "s";
+      });
+    }
+
+    if (startSlider && startVal) {
+      startSlider.addEventListener("input", function (e) {
+        customStartPct = parseInt(e.target.value, 10);
+        startVal.textContent = customStartPct + "%";
+        if (!document.fullscreenElement && pctEl) {
+          pctEl.textContent = customStartPct;
+        }
+      });
+    }
+
+    function drawQr() {
+      if (!canvas) return;
+      var ctx = canvas.getContext("2d");
+      var S = canvas.width;
+      var M = S / 21;
+
+      // Draw white background
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(0, 0, S, S);
+
+      // Draw finder patterns using Windows Blue code modules
+      function finder(x, y) {
+        ctx.fillStyle = "#0078D7";
+        ctx.fillRect(x, y, 7 * M, 7 * M);
+        ctx.fillStyle = "#fff";
+        ctx.fillRect(x + M, y + M, 5 * M, 5 * M);
+        ctx.fillStyle = "#0078D7";
+        ctx.fillRect(x + 2 * M, y + 2 * M, 3 * M, 3 * M);
+      }
+
+      finder(0, 0);
+      finder(14 * M, 0);
+      finder(0, 14 * M);
+
+      var seed = 42;
+      function prng() {
+        seed = (seed * 1103515245 + 12345) & 0x7fffffff;
+        return seed;
+      }
+
+      // Draw modules
+      ctx.fillStyle = "#0078D7";
+      for (var r = 0; r < 21; r++) {
+        for (var c = 0; c < 21; c++) {
+          if (r < 7 && c < 7) continue;
+          if (r < 7 && c > 13) continue;
+          if (r > 13 && c < 7) continue;
+          if (r === 6 || c === 6) continue;
+          if (r === 7 && c < 7) continue;
+          if (c === 7 && r < 7) continue;
+          if (r === 14 && c < 7) continue;
+          if (c === 14 && r > 6 && r < 14) continue;
+          if (prng() % 3 === 0) {
+            ctx.fillRect(c * M, r * M, M, M);
+          }
+        }
+      }
+    }
+
+    drawQr();
+
+    function goFS() {
+      if (!document.fullscreenElement) {
+        root.requestFullscreen().catch(function () {});
+      }
+    }
+
+    function exitFS() {
+      if (document.fullscreenElement === root) {
+        document.exitFullscreen().catch(function () {});
+      }
+    }
+
+    function startAnimation() {
+      var startTime = null;
+      var duration = customDuration * 1000;
+      var startPct = customStartPct;
+      var pauses = [];
+      var pausePoints = [5, 12, 27, 44, 50, 68, 76, 88, 94];
+      pausePoints.forEach(function (p) {
+        if (p > startPct && Math.random() > 0.5) {
+          pauses.push({ at: p, delay: 500 + Math.random() * 1500 });
+        }
+      });
+
+      function windowsEasing(t) {
+        if (t < 0.15) {
+          return 0.6 * t * t * 7;
+        } else if (t < 0.75) {
+          return 8 + (t - 0.15) * 1.25 * 100;
+        } else {
+          var tail = (t - 0.75) / 0.25;
+          return 83 + Math.pow(tail, 0.55) * 17;
+        }
+      }
+
+      function tick(now) {
+        if (!startTime) startTime = now;
+        var elapsed = now - startTime;
+        var t = Math.min(elapsed / duration, 1);
+        var raw = windowsEasing(t);
+        var adjusted = startPct + (100 - startPct) * (raw / 100);
+        adjusted = Math.min(100, Math.max(startPct, adjusted));
+
+        for (var i = 0; i < pauses.length; i++) {
+          var p = pauses[i];
+          if (p.done) continue;
+          if (adjusted >= p.at && adjusted < p.at + 1) {
+            if (!p.triggered) {
+              p.triggered = true;
+              p.triggerTime = elapsed;
+            }
+            var pauseElapsed = elapsed - p.triggerTime;
+            if (pauseElapsed < p.delay) {
+              adjusted = p.at;
+            } else {
+              p.done = true;
+            }
+          }
+        }
+
+        var display = Math.floor(adjusted);
+        if (pctEl) pctEl.textContent = display;
+
+        if (display < 100) {
+          animFrame = requestAnimationFrame(tick);
+        }
+      }
+
+      animFrame = requestAnimationFrame(tick);
+    }
+
+    document.addEventListener("fullscreenchange", function () {
+      var isFS = document.fullscreenElement === root;
+      root.classList.toggle("is-fullscreen", isFS);
+
+      if (isFS) {
+        if (fsBtn) fsBtn.style.display = "none";
+        if (gearBtn) gearBtn.style.display = "none";
+        if (overlay) overlay.classList.remove("is-visible");
+        document.documentElement.classList.add("is-bsod-fullscreen");
+        startAnimation();
+      } else {
+        if (fsBtn) fsBtn.style.display = "";
+        if (gearBtn) gearBtn.style.display = "";
+        document.documentElement.classList.remove("is-bsod-fullscreen");
+        if (animFrame) {
+          cancelAnimationFrame(animFrame);
+          animFrame = null;
+        }
+        if (pctEl) pctEl.textContent = customStartPct;
+      }
+    });
+
+    document.addEventListener("contextmenu", function (e) {
+      if (document.fullscreenElement === root) {
+        e.preventDefault();
+      }
+    });
+
+    function blockEvent(e) {
+      if (document.fullscreenElement === root) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }
+
+    document.addEventListener("keydown", function (e) {
+      var key = e.key.toLowerCase();
+      if (document.fullscreenElement === root) {
+        if (key === "escape") {
+          exitFS();
+        } else {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        return;
+      }
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) return;
+      if (key === "f") {
+        e.preventDefault();
+        goFS();
+      }
+    });
+
+    var blockEvents = ["mousedown", "mouseup", "click", "dblclick", "dragstart", "touchstart", "touchmove", "touchend"];
+    for (var i = 0; i < blockEvents.length; i++) {
+      document.addEventListener(blockEvents[i], blockEvent);
+    }
+
+    if (fsBtn) {
+      fsBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        goFS();
+      });
+    }
+
+    root.addEventListener("click", function (e) {
+      if (!document.fullscreenElement) {
+        e.stopPropagation();
+        goFS();
+      }
+    });
+  })();
+</script>

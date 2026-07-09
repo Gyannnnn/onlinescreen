@@ -1,0 +1,292 @@
+---
+import type { Tool } from '../data/tools';
+import { type Locale } from '../data/locales';
+import { t } from '../data/translations';
+import { hackerCodes } from '../data/hacker-codes';
+
+type Props = { tool: Tool; locale: Locale };
+const { tool, locale } = Astro.props;
+const themes = ['CLASSIC GREEN', 'AMBER', 'CLASSIC WHITE', 'CYAN DREAM'];
+---
+
+<section class="rounded-lg border border-hairline bg-canvas shadow-soft" aria-label="Hacker Typer Terminal">
+  <div class="overflow-hidden rounded-md border border-hairline" data-hacker-terminal>
+    <div class="overflow-auto bg-[#0a0a0f] text-[#00ff41] p-4" style="max-height:560px; height:420px" data-ht-output>
+      <pre class="font-mono text-sm leading-relaxed" data-ht-content>
+        <span id="typer"></span><span id="cursor">|</span>
+        <div id="bottom_padding"></div>
+      </pre>
+    </div>
+    <div class="border-t border-white/10 bg-black/80 px-4 py-2" data-ht-controls>
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="flex items-center gap-1">
+          <button class="inline-flex h-7 items-center gap-1 rounded bg-[#00ff41]/15 px-2.5 text-xs font-medium text-[#00ff41] hover:bg-[#00ff41]/25 transition-colors" type="button" data-ht-fullscreen>
+            <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+            Fullscreen
+          </button>
+          <button class="inline-flex h-7 items-center gap-1 rounded px-2.5 text-xs font-medium text-white/50 hover:bg-white/10 hover:text-white/80 transition-colors" type="button" data-ht-clear>
+            <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" x2="15" y1="20" y2="20"/><line x1="12" x2="12" y1="4" y2="20"/></svg>
+            Clear
+          </button>
+          <button class="inline-flex h-7 items-center gap-1 rounded px-2.5 text-xs font-medium text-white/50 hover:bg-white/10 hover:text-white/80 transition-colors" type="button" data-ht-pause>
+            <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            <span data-ht-pause-label>Pause</span>
+          </button>
+          <button class="inline-flex h-7 items-center gap-1 rounded px-2.5 text-xs font-medium text-white/50 hover:bg-white/10 hover:text-white/80 transition-colors" type="button" data-ht-restart>
+            <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Restart
+          </button>
+        </div>
+        <div class="flex items-center gap-2 ml-auto">
+          <span class="text-xs text-white/30 whitespace-nowrap">Speed</span>
+          <input class="h-4 w-20 accent-[#00ff41]" type="range" min="1" max="10" value="5" data-ht-speed aria-label="Typing speed" />
+          <button class="grid size-7 place-items-center rounded text-white/40 hover:bg-white/10 hover:text-white/80 transition-colors" type="button" data-ht-auto aria-label="Auto type">
+            <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+          <button class="grid size-7 place-items-center rounded text-white/40 hover:bg-white/10 hover:text-white/80 transition-colors" type="button" data-ht-sound aria-label="Toggle sound">
+            <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          </button>
+          <button class="grid size-7 place-items-center rounded text-white/40 hover:bg-white/10 hover:text-white/80 transition-colors" type="button" data-ht-theme aria-label="Change theme">
+            <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>@keyframes ht-blink{0%,100%{opacity:1}50%{opacity:0}}#cursor{animation:ht-blink 1s step-end infinite}</style>
+
+<script define:vars={{ codes: hackerCodes }} is:inline>
+const source = codes.join('\n');
+let charIndex = 0;
+
+function resetAD() {
+  const term = document.querySelector('[data-hacker-terminal]');
+  if (!term) return;
+  const typer = document.getElementById('typer');
+  if (typer) typer.innerHTML = '';
+  charIndex = 0;
+  const output = term.querySelector('[data-ht-output]');
+  if (output) output.scrollTop = 0;
+  if (window.__htState) {
+    window.__htState.idx = 0;
+    window.__htState.paused = false;
+    window.__htState.auto = false;
+  }
+}
+
+function type(speed) {
+  const typer = document.getElementById('typer');
+  if (!typer) return;
+  const n = Math.max(1, speed || 1);
+  const chunk = source.substring(charIndex, charIndex + n);
+  if (!chunk) return;
+  typer.innerHTML += chunk
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+  charIndex += n;
+  if (charIndex >= source.length) {
+    charIndex = 0;
+    typer.innerHTML = '';
+  }
+  const bp = document.getElementById('bottom_padding');
+  if (bp) bp.scrollIntoView(false);
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement || e.target instanceof HTMLSelectElement) return;
+
+  const term = document.querySelector('[data-hacker-terminal]');
+  if (!term) return;
+
+  const output = term.querySelector('[data-ht-output]');
+  const pauseLabel = term.querySelector('[data-ht-pause-label]');
+  const autoBtn = term.querySelector('[data-ht-auto]');
+  const soundBtn = term.querySelector('[data-ht-sound]');
+
+  if (!window.__htState) {
+    window.__htState = { idx: 0, paused: false, auto: false, speed: 5, sound: true, theme: 0 };
+  }
+  const state = window.__htState;
+
+  const colors = ['#00ff41', '#ffb000', '#e0e0e0', '#0ff'];
+  const bgs = ['#0a0a0f', '#0a0a0f', '#0a0a0f', '#001010'];
+
+  function setTheme(idx) {
+    state.theme = idx % colors.length;
+    output.style.backgroundColor = bgs[state.theme];
+    output.style.color = colors[state.theme];
+    for (const btn of term.querySelectorAll('[data-ht-fullscreen]')) btn.style.color = colors[state.theme];
+  }
+
+  function playSound() {
+    if (!state.sound) return;
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.frequency.value = 800 + Math.random() * 400;
+      osc.type = 'square';
+      gain.gain.value = 0.03;
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.03);
+    } catch (_) {}
+  }
+
+  switch (e.key) {
+    case 'Escape':
+      if (document.fullscreenElement) document.exitFullscreen();
+      return;
+    case ' ':
+    case 'Space':
+      e.preventDefault();
+      state.paused = !state.paused;
+      if (state.auto && state.paused) state.auto = false;
+      pauseLabel.textContent = state.paused ? 'Resume' : 'Pause';
+      return;
+    case 'r':
+    case 'R':
+      resetAD();
+      return;
+    case 'c':
+    case 'C':
+      if (!state.paused) resetAD();
+      return;
+    case 's':
+    case 'S':
+      state.sound = !state.sound;
+      soundBtn.style.opacity = state.sound ? '1' : '0.4';
+      return;
+    case 't':
+    case 'T':
+      setTheme(state.theme + 1);
+      return;
+    case 'a':
+    case 'A':
+      state.auto = !state.auto;
+      if (state.auto) state.paused = false;
+      pauseLabel.textContent = 'Pause';
+      autoBtn.style.opacity = state.auto ? '1' : '0.5';
+      return;
+  }
+
+  if (state.paused) return;
+  type(state.speed || 5);
+  playSound();
+});
+
+for (const trigger of ['click', 'touchstart']) {
+  document.addEventListener(trigger, (e) => {
+    const term = document.querySelector('[data-hacker-terminal]');
+    if (!term) return;
+    const btn = e.target.closest?.('[data-ht-clear]');
+    const pauseBtn = e.target.closest?.('[data-ht-pause]');
+    const restartBtn = e.target.closest?.('[data-ht-restart]');
+    const autoBtn = e.target.closest?.('[data-ht-auto]');
+    const soundBtn = e.target.closest?.('[data-ht-sound]');
+    const themeBtn = e.target.closest?.('[data-ht-theme]');
+    const fullBtn = e.target.closest?.('[data-ht-fullscreen]');
+
+    if (!btn && !pauseBtn && !restartBtn && !autoBtn && !soundBtn && !themeBtn && !fullBtn) return;
+
+    if (!window.__htState) {
+      window.__htState = { idx: 0, paused: false, auto: false, speed: 5, sound: true, theme: 0 };
+    }
+    const state = window.__htState;
+
+    if (fullBtn) {
+      if (!document.fullscreenElement) term.requestFullscreen?.();
+      else document.exitFullscreen();
+      return;
+    }
+
+    if (btn) { if (!state.paused) resetAD(); return; }
+    if (pauseBtn) {
+      state.paused = !state.paused;
+      if (state.auto && state.paused) state.auto = false;
+      term.querySelector('[data-ht-pause-label]').textContent = state.paused ? 'Resume' : 'Pause';
+      return;
+    }
+    if (restartBtn) { resetAD(); return; }
+    if (autoBtn) {
+      state.auto = !state.auto;
+      if (state.auto) state.paused = false;
+      term.querySelector('[data-ht-pause-label]').textContent = 'Pause';
+      autoBtn.style.opacity = state.auto ? '1' : '0.5';
+      return;
+    }
+    if (soundBtn) {
+      state.sound = !state.sound;
+      soundBtn.style.opacity = state.sound ? '1' : '0.4';
+      return;
+    }
+    if (themeBtn) {
+      const colors = ['#00ff41', '#ffb000', '#e0e0e0', '#0ff'];
+      const bgs = ['#0a0a0f', '#0a0a0f', '#0a0a0f', '#001010'];
+      const output = term.querySelector('[data-ht-output]');
+      const n = (state.theme + 1) % colors.length;
+      state.theme = n;
+      output.style.backgroundColor = bgs[n];
+      output.style.color = colors[n];
+      for (const fb of term.querySelectorAll('[data-ht-fullscreen]')) fb.style.color = colors[n];
+      return;
+    }
+  });
+}
+
+document.addEventListener('fullscreenchange', () => {
+  const term = document.querySelector('[data-hacker-terminal]');
+  if (!term) return;
+  const output = term.querySelector('[data-ht-output]');
+  const controls = term.querySelector('[data-ht-controls]');
+  const isFS = document.fullscreenElement === term;
+  if (isFS) {
+    output.style.height = '';
+    output.style.maxHeight = '';
+    output.style.flex = '1';
+    controls.style.display = 'none';
+  } else {
+    output.style.height = '420px';
+    output.style.maxHeight = '560px';
+    output.style.flex = '';
+    controls.style.display = '';
+  }
+});
+
+document.addEventListener('input', (e) => {
+  const speedInput = e.target.closest?.('[data-ht-speed]');
+  if (!speedInput) return;
+  if (window.__htState) window.__htState.speed = Number(speedInput.value);
+});
+
+const colors = ['#00ff41', '#ffb000', '#e0e0e0', '#0ff'];
+function autoType() {
+  const state = window.__htState;
+  if (!state || !state.auto || state.paused) {
+    requestAnimationFrame(autoType);
+    return;
+  }
+  type(state.speed || 5);
+  if (state.sound) {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator(); const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.value = 800 + Math.random() * 400;
+      osc.type = 'square'; gain.gain.value = 0.02;
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.03);
+      osc.start(); osc.stop(ctx.currentTime + 0.03);
+    } catch (_) {}
+  }
+  const speed = state.speed || 5;
+  setTimeout(autoType, Math.max(30, 500 - speed * 47));
+}
+requestAnimationFrame(autoType);
+</script>

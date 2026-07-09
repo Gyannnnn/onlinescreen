@@ -1,0 +1,1121 @@
+---
+import type { Tool } from '../data/tools';
+import type { Locale } from '../data/locales';
+
+type Props = { tool: Tool; locale: Locale };
+const { tool, locale } = Astro.props;
+---
+
+<section class="windows-update-wrapper" data-win-update aria-label="Windows Update Simulator">
+  <div class="wu-simulator group" data-wu-simulator id="wuSimulator">
+    <button class="wu-fs-btn" id="wuFullscreenBtn" type="button" aria-label="Fullscreen" onclick="window.__wuUpdate?.fullscreen()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+        <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
+        <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+        <path d="M3 16v3a2 2 0 0 0 2 2h3" />
+      </svg>
+    </button>
+    <button class="wu-gear-btn" id="wuGearBtn" type="button" aria-label="Settings" onclick="window.__wuUpdate?.toggleControls()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+    <div class="wu-content" id="wuContent">
+      <svg class="wu-logo" viewBox="0 0 100 100" aria-hidden="true">
+        <rect x="2" y="2" width="46" height="46" rx="6" fill="currentColor"/>
+        <rect x="52" y="2" width="46" height="46" rx="6" fill="currentColor"/>
+        <rect x="2" y="52" width="46" height="46" rx="6" fill="currentColor"/>
+        <rect x="52" y="52" width="46" height="46" rx="6" fill="currentColor"/>
+      </svg>
+      <h1 class="wu-heading" id="wuHeading">Working on updates</h1>
+      <p class="wu-subtitle" id="wuSubtitle">Please keep your computer on.</p>
+      <div class="wu-progress-area" id="wuProgressArea">
+        <svg class="wu-ring" viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="wu-dot-track" id="wuDotTrack" cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="3" opacity="0.35" stroke-dasharray="4.5 8.2" stroke-linecap="round"/>
+          <circle class="wu-ring-fill" id="wuRingFill" cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="326.73" stroke-dashoffset="326.73" transform="rotate(-90 60 60)"/>
+        </svg>
+        <span class="wu-pct" id="wuPct">0%</span>
+      </div>
+      <p class="wu-note" id="wuNote">Don't turn off your computer</p>
+      <p class="wu-status" id="wuStatus">Preparing...</p>
+      <p class="wu-eta" id="wuEta">&#8203;</p>
+    </div>
+
+    <div class="wu-restart-overlay" id="wuRestartOverlay">
+      <div class="wu-restart-phase" id="wuRestartPhase1">
+        <div class="wu-restart-inner">
+          <svg class="wu-logo wu-restart-logo" viewBox="0 0 100 100" aria-hidden="true">
+            <rect x="2" y="2" width="46" height="46" rx="6" fill="currentColor"/>
+            <rect x="52" y="2" width="46" height="46" rx="6" fill="currentColor"/>
+            <rect x="2" y="52" width="46" height="46" rx="6" fill="currentColor"/>
+            <rect x="52" y="52" width="46" height="46" rx="6" fill="currentColor"/>
+          </svg>
+          <p class="wu-restart-text">Restarting...</p>
+          <p class="wu-restart-sub">Please don't turn off your computer</p>
+          <div class="wu-boot-dots"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+      <div class="wu-restart-phase" id="wuRestartPhase2" style="display:none">
+        <div class="wu-restart-inner">
+          <svg class="wu-logo wu-restart-logo wu-logo-boot" viewBox="0 0 100 100" aria-hidden="true">
+            <rect x="2" y="2" width="46" height="46" rx="6" fill="currentColor"/>
+            <rect x="52" y="2" width="46" height="46" rx="6" fill="currentColor"/>
+            <rect x="2" y="52" width="46" height="46" rx="6" fill="currentColor"/>
+            <rect x="52" y="52" width="46" height="46" rx="6" fill="currentColor"/>
+          </svg>
+          <p class="wu-restart-text wu-restart-boot-text">Getting things ready</p>
+          <div class="wu-boot-dots"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wu-controls-overlay" id="wuControlsOverlay">
+      <div class="wu-co-header">
+        <span class="wu-co-title">Settings</span>
+        <button class="wu-co-close" type="button" aria-label="Close settings" onclick="window.__wuUpdate?.toggleControls()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="wu-co-body">
+        <div class="wu-co-row">
+          <div class="wu-co-group">
+            <label class="wu-co-label">Theme</label>
+            <select id="wuTheme" onchange="window.__wuUpdate?.theme(this.value)">
+              <option value="default">Windows 11 Blue</option>
+              <option value="dark">Dark Update</option>
+              <option value="light">Light Update</option>
+            </select>
+          </div>
+          <div class="wu-co-group">
+            <label class="wu-co-label">Mode</label>
+            <select id="wuMode" onchange="window.__wuUpdate?.mode(this.value)">
+              <option value="realistic">Realistic</option>
+              <option value="manual">Manual</option>
+              <option value="timer">Timer</option>
+              <option value="infinite">Infinite</option>
+            </select>
+          </div>
+          <div class="wu-co-group">
+            <label class="wu-co-label">Speed</label>
+            <input type="range" min="1" max="10" value="5" id="wuSpeed" oninput="window.__wuUpdate?.speed(this.value)"/>
+          </div>
+          <div class="wu-co-group" id="wuTimerGroup" style="display:none">
+            <label class="wu-co-label">Duration</label>
+            <select id="wuTimerDuration" onchange="window.__wuUpdate?.timerDuration(this.value)">
+              <option value="5">5 minutes</option>
+              <option value="10">10 minutes</option>
+              <option value="15">15 minutes</option>
+              <option value="30">30 minutes</option>
+              <option value="60">1 hour</option>
+            </select>
+          </div>
+          <div class="wu-co-group" id="wuManualGroup" style="display:none">
+            <label class="wu-co-label">Progress</label>
+            <div class="wu-co-slider-row">
+              <input type="range" min="0" max="100" value="0" id="wuManualSlider" oninput="document.getElementById('wuManualVal').textContent=this.value+'%';window.__wuUpdate?.manualValue(this.value)"/>
+              <span class="wu-co-val" id="wuManualVal">0%</span>
+            </div>
+          </div>
+          <div class="wu-co-group">
+            <label class="wu-co-label">Scenario</label>
+            <select id="wuScenario" onchange="window.__wuUpdate?.scenario(this.value)">
+              <option value="security">Security Update</option>
+              <option value="feature">Feature Update</option>
+              <option value="cumulative">Cumulative Update</option>
+              <option value="driver">Driver Update</option>
+              <option value="insider">Insider Preview</option>
+            </select>
+          </div>
+          <div class="wu-co-group">
+            <label class="wu-co-check">
+              <input type="checkbox" id="wuAutoRestart" onchange="window.__wuUpdate?.autoRestart(this.checked)"/>
+              Auto Restart
+            </label>
+            <label class="wu-co-check">
+              <input type="checkbox" id="wuSound" onchange="window.__wuUpdate?.sound(this.checked)"/>
+              Sound
+            </label>
+          </div>
+        </div>
+        <div class="wu-co-actions">
+          <button onclick="window.__wuUpdate?.restart()">Restart</button>
+          <button onclick="window.__wuUpdate?.reset()">Reset</button>
+          <button class="wu-co-fs" onclick="window.__wuUpdate?.fullscreen()">Fullscreen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<style is:global>
+  .windows-update-wrapper {
+    --wu-bg: #0078d7;
+    --wu-fg: #ffffff;
+  }
+  .windows-update-wrapper[data-theme="dark"] {
+    --wu-bg: #1b1b1b;
+    --wu-fg: #e0e0e0;
+  }
+  .windows-update-wrapper[data-theme="light"] {
+    --wu-bg: #f0f0f0;
+    --wu-fg: #1a1a1a;
+  }
+
+  .wu-simulator {
+    font-family: 'Segoe UI', 'Segoe UI Historic', system-ui, -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+    position: relative;
+    width: 100%;
+    height: 420px;
+    max-height: 560px;
+    background: var(--wu-bg);
+    color: var(--wu-fg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 6px;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: background 0.5s ease, color 0.5s ease;
+    cursor: default;
+  }
+  .wu-fs-btn {
+    position: absolute;
+    right: 0.75rem;
+    top: 0.75rem;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.625rem;
+    background: rgba(0,0,0,0.25);
+    color: rgba(255,255,255,0.9);
+    opacity: 1;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+  .wu-fs-btn svg { width: 1.5625rem; height: 1.5625rem; }
+  .wu-fs-btn:hover { background: rgba(0,0,0,0.45); color: #fff; }
+  .wu-fs-btn:focus-visible { outline: 2px solid rgba(255,255,255,0.8); outline-offset: 2px; }
+
+  .wu-gear-btn {
+    position: absolute;
+    left: 0.75rem;
+    bottom: 0.75rem;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.5rem;
+    background: rgba(0,0,0,0.25);
+    color: rgba(255,255,255,0.8);
+    opacity: 0.55;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+  .wu-gear-btn svg { width: 1.25rem; height: 1.25rem; }
+  .wu-gear-btn:hover { background: rgba(0,0,0,0.45); color: #fff; opacity: 1; }
+  .wu-gear-btn:focus-visible { outline: 2px solid rgba(255,255,255,0.8); outline-offset: 2px; opacity: 1; }
+
+  .wu-controls-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 55%;
+    z-index: 25;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.25s ease;
+    border-radius: 6px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #fff;
+    overflow: hidden;
+  }
+  .wu-controls-overlay.wu-co-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .wu-simulator:fullscreen .wu-controls-overlay { border-radius: 0; }
+  .wu-simulator:fullscreen .wu-gear-btn { display: none; }
+
+  .wu-co-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    flex-shrink: 0;
+  }
+  .wu-co-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .wu-co-close {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.375rem;
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .wu-co-close:hover { background: rgba(255,255,255,0.12); color: #fff; }
+  .wu-co-close svg { width: 1.125rem; height: 1.125rem; }
+  .wu-co-close:focus-visible { outline: 2px solid rgba(255,255,255,0.6); outline-offset: 2px; }
+
+  .wu-co-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.75rem 1rem 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .wu-co-body::-webkit-scrollbar { width: 4px; }
+  .wu-co-body::-webkit-scrollbar-track { background: transparent; }
+  .wu-co-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.25); border-radius: 2px; }
+
+  .wu-co-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.625rem 0.75rem;
+  }
+  @media (max-width: 480px) {
+    .wu-co-row { grid-template-columns: 1fr; }
+  }
+
+  .wu-co-group { min-width: 0; }
+  .wu-co-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0.7;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.01em;
+  }
+  .wu-co-group select {
+    width: 100%;
+    padding: 0.375rem 0.5rem;
+    border-radius: 0.375rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 0.8125rem;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+  .wu-co-group select:hover { border-color: rgba(255,255,255,0.35); }
+  .wu-co-group select:focus { border-color: rgba(255,255,255,0.55); }
+  .wu-co-group select option { background: #222; color: #fff; }
+
+  .wu-co-group input[type="range"] {
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  .wu-co-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+  .wu-co-group input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .wu-co-slider-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .wu-co-slider-row input[type="range"] { flex: 1; }
+  .wu-co-val {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    min-width: 2.2rem;
+    text-align: right;
+    opacity: 0.85;
+  }
+
+  .wu-co-check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    cursor: pointer;
+    padding: 0.25rem 0;
+    opacity: 0.85;
+  }
+  .wu-co-check input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: #60a5fa;
+    cursor: pointer;
+  }
+
+  .wu-co-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .wu-co-actions button {
+    padding: 0.375rem 0.875rem;
+    border-radius: 0.375rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 0.8125rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .wu-co-actions button:hover { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.35); }
+  .wu-co-actions button:focus-visible { outline: 2px solid rgba(255,255,255,0.6); outline-offset: 2px; }
+  .wu-co-fs { margin-left: auto; }
+
+  .wu-simulator:fullscreen .wu-fs-btn { display: none; }
+
+  .wu-simulator:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    max-height: none;
+    border-radius: 0;
+    cursor: none;
+  }
+  .wu-simulator:fullscreen .wu-content { cursor: none; }
+  .wu-simulator:fullscreen:hover { cursor: none; }
+
+  .wu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    max-width: 520px;
+    gap: 0;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+  }
+  .wu-content.fade-out { opacity: 0; }
+  .wu-content.fade-in { opacity: 1; }
+
+  .wu-logo {
+    width: 60px;
+    height: 60px;
+    opacity: 0.85;
+    flex-shrink: 0;
+  }
+
+  .wu-heading {
+    font-size: 1.625rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 1rem 0 0 0;
+    line-height: 1.2;
+    transition: opacity 0.4s ease;
+  }
+  .wu-subtitle {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    opacity: 0.8;
+    margin: 0.35rem 0 0 0;
+    line-height: 1.4;
+  }
+
+  .wu-progress-area {
+    position: relative;
+    margin: 1.75rem 0 0 0;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wu-ring {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: 0; left: 0;
+  }
+  .wu-dot-track {
+    transform-origin: center;
+    animation: wu-dot-spin 2s linear infinite;
+  }
+  .wu-dot-track.paused { animation-play-state: paused; }
+  .wu-ring-fill {
+    opacity: 1;
+    transition: stroke-dashoffset 0.25s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
+  }
+  .wu-ring-fill.hidden { opacity: 0; }
+
+  @keyframes wu-dot-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .wu-pct {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    opacity: 0.75;
+    position: relative;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+  }
+  .wu-pct.hidden { opacity: 0; }
+
+  .wu-note {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    opacity: 0.55;
+    margin: 0.5rem 0 0 0;
+    line-height: 1.4;
+    transition: opacity 0.3s ease;
+  }
+  .wu-status {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    opacity: 0.75;
+    margin: 0.75rem 0 0 0;
+    min-height: 1.4em;
+    transition: opacity 0.35s ease;
+  }
+  .wu-status.fading { opacity: 0; }
+  .wu-eta {
+    font-size: 0.75rem;
+    font-weight: 400;
+    opacity: 0.45;
+    margin: 0.35rem 0 0 0;
+    min-height: 1em;
+    transition: opacity 0.3s ease;
+  }
+  .wu-eta.hidden { opacity: 0; }
+
+  .wu-restart-overlay {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 15;
+  }
+  .wu-restart-overlay.visible { display: flex; }
+  .wu-restart-overlay.fade-in { animation: wu-fade-in 0.5s ease forwards; }
+  .wu-restart-overlay.fade-out { animation: wu-fade-out 0.4s ease forwards; }
+
+  @keyframes wu-fade-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes wu-fade-out { from { opacity: 1; } to { opacity: 0; } }
+
+  .wu-restart-phase {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wu-restart-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    gap: 0.5rem;
+  }
+  .wu-restart-logo { opacity: 0.8; width: 52px; height: 52px; }
+  .wu-logo-boot {
+    opacity: 0;
+    animation: wu-logo-fade-in 0.8s ease 0.3s forwards;
+  }
+  @keyframes wu-logo-fade-in { from { opacity: 0; transform: scale(0.9); } to { opacity: 0.8; transform: scale(1); } }
+  .wu-restart-text {
+    font-size: 1.375rem;
+    font-weight: 600;
+    margin: 0.25rem 0 0;
+  }
+  .wu-restart-sub {
+    font-size: 0.875rem;
+    opacity: 0.7;
+    margin: 0;
+  }
+  .wu-restart-boot-text {
+    font-size: 1.125rem;
+    font-weight: 500;
+    opacity: 0.9;
+  }
+  .wu-boot-dots {
+    display: flex;
+    gap: 6px;
+    margin-top: 0.5rem;
+  }
+  .wu-boot-dots span {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    animation: wu-dot-bounce 1.4s ease-in-out infinite both;
+  }
+  .wu-boot-dots span:nth-child(1) { animation-delay: 0s; }
+  .wu-boot-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .wu-boot-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes wu-dot-bounce {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+    40% { transform: scale(1); opacity: 1; }
+  }
+
+
+  @media (prefers-reduced-motion: reduce) {
+    .wu-dot-track { animation: none; }
+    .wu-ring-fill { transition: none; }
+    .wu-boot-dots span { animation: none; opacity: 0.6; }
+    .wu-chevron { transition: none; }
+    .wu-controls-body { transition: none; }
+    .wu-content { transition: none; }
+    .wu-restart-overlay.fade-in,
+    .wu-restart-overlay.fade-out { animation: none; opacity: 1; }
+    .wu-logo-boot { animation: none; opacity: 0.8; }
+  }
+  @media (max-width: 480px) {
+    .wu-heading { font-size: 1.375rem; }
+    .wu-logo { width: 48px; height: 48px; }
+    .wu-ring { width: 100px; height: 100px; }
+    .wu-progress-area { width: 100px; height: 100px; }
+    .wu-c-row { flex-direction: column; }
+    .wu-c-group { min-width: 0; }
+  }
+</style>
+
+<script is:inline>
+(function() {
+  const C = 2 * Math.PI * 52;
+  const sim = document.getElementById('wuSimulator');
+  const wrapper = sim.closest('[data-win-update]');
+  const ringFill = document.getElementById('wuRingFill');
+  const dotTrack = document.getElementById('wuDotTrack');
+  const pctEl = document.getElementById('wuPct');
+  const statusEl = document.getElementById('wuStatus');
+  const etaEl = document.getElementById('wuEta');
+  const content = document.getElementById('wuContent');
+  const restartOverlay = document.getElementById('wuRestartOverlay');
+  const restartPhase1 = document.getElementById('wuRestartPhase1');
+  const restartPhase2 = document.getElementById('wuRestartPhase2');
+
+  let mouseHideTimer = null;
+
+  const state = {
+    progress: 0,
+    mode: 'realistic',
+    theme: 'default',
+    speed: 5,
+    timerDuration: 10,
+    manualValue: 0,
+    autoRestart: false,
+    sound: false,
+    scenario: 'security',
+    paused: false,
+    timerStart: null,
+    pauseTimer: 0,
+    isPaused: false,
+    pauseAtPercent: null,
+    statusIndex: 0,
+    statusTimer: 0,
+    lastMessages: null,
+    restarting: false,
+    restartCount: 0,
+    speedHistory: [],
+    etaJitter: 0,
+    etaMode: 0,
+    etaCooldown: 0,
+    lastEtaText: '',
+  };
+
+  const scenarios = {
+    security: { title: 'Security Update', phases: [
+      { r: [0,4], m: ['Preparing...','Checking for security updates...','Getting things ready...'] },
+      { r: [4,12], m: ['Downloading security intelligence...','Downloading updates...','Downloading update 1 of 3...'] },
+      { r: [12,28], m: ['Downloading security update...','Downloading cumulative update...'] },
+      { r: [28,50], m: ['Installing security updates...','Installing update 1 of 3...','Installing cumulative update...'] },
+      { r: [50,68], m: ['Applying security patches...','Configuring Windows...','Configuring system settings...'] },
+      { r: [68,82], m: ['Applying settings...','Optimizing system...','Performing maintenance...'] },
+      { r: [82,93], m: ['Cleaning up...','Cleaning up temporary files...','Finalizing...'] },
+      { r: [93,100], m: ['Almost there...','Finalizing updates...','Please wait...'] },
+    ]},
+    feature: { title: 'Feature Update', phases: [
+      { r: [0,3], m: ['Preparing...','Checking compatibility...','Getting your PC ready...'] },
+      { r: [3,10], m: ['Downloading feature update...','Downloading Windows update...','Downloading update...'] },
+      { r: [10,22], m: ['Downloading update...','Downloading additional files...'] },
+      { r: [22,45], m: ['Installing feature update...','Installing new components...'] },
+      { r: [45,60], m: ['Configuring features...','Configuring Windows...'] },
+      { r: [60,75], m: ['Migrating data...','Moving files...','Applying settings...'] },
+      { r: [75,88], m: ['Cleaning up...','Optimizing your PC...','Performing maintenance...'] },
+      { r: [88,95], m: ['Finalizing...','Almost there...'] },
+      { r: [95,100], m: ['Please wait...','Finalizing your update...'] },
+    ]},
+    cumulative: { title: 'Cumulative Update', phases: [
+      { r: [0,4], m: ['Preparing...','Checking for updates...','Getting ready...'] },
+      { r: [4,15], m: ['Downloading cumulative update...','Downloading update...'] },
+      { r: [15,30], m: ['Downloading updates...','Downloading additional files...'] },
+      { r: [30,55], m: ['Installing cumulative update...','Installing update...'] },
+      { r: [55,70], m: ['Applying patches...','Configuring system...'] },
+      { r: [70,82], m: ['Optimizing system...','Applying settings...'] },
+      { r: [82,94], m: ['Cleaning up...','Finalizing...'] },
+      { r: [94,100], m: ['Almost done...','Finalizing updates...'] },
+    ]},
+    driver: { title: 'Driver Update', phases: [
+      { r: [0,5], m: ['Preparing...','Checking for driver updates...'] },
+      { r: [5,18], m: ['Downloading driver updates...','Downloading device drivers...'] },
+      { r: [18,35], m: ['Downloading drivers...','Downloading additional drivers...'] },
+      { r: [35,58], m: ['Installing driver updates...','Installing device drivers...'] },
+      { r: [58,72], m: ['Configuring devices...','Applying driver settings...'] },
+      { r: [72,85], m: ['Optimizing system...','Finalizing driver setup...'] },
+      { r: [85,100], m: ['Cleaning up...','Finalizing installation...'] },
+    ]},
+    insider: { title: 'Windows Insider Update', phases: [
+      { r: [0,3], m: ['Preparing...','Connecting to Insider Preview...','Getting ready...'] },
+      { r: [3,12], m: ['Downloading Insider Preview...','Downloading build...'] },
+      { r: [12,25], m: ['Downloading preview build...','Downloading update...'] },
+      { r: [25,48], m: ['Installing preview...','Installing new build...'] },
+      { r: [48,63], m: ['Configuring preview features...','Configuring Windows...'] },
+      { r: [63,78], m: ['Migrating user data...','Moving files...','Applying settings...'] },
+      { r: [78,90], m: ['Cleaning up...','Optimizing...'] },
+      { r: [90,100], m: ['Almost done...','Finalizing preview build...'] },
+    ]},
+  };
+
+  function sc() { return scenarios[state.scenario] || scenarios.security; }
+
+  function phaseFor(p) {
+    const s = sc();
+    for (let i = 0; i < s.phases.length; i++) {
+      if (p >= s.phases[i].r[0] && p < s.phases[i].r[1]) return i;
+    }
+    return s.phases.length - 1;
+  }
+  function msgsFor(p) {
+    return sc().phases[phaseFor(p)].m;
+  }
+
+  function setProgress(val) {
+    state.progress = Math.max(0, Math.min(100, val));
+    const offset = C * (1 - state.progress / 100);
+    ringFill.style.strokeDashoffset = offset;
+    pctEl.textContent = Math.round(state.progress) + '%';
+    const showFill = state.progress > 0.5;
+    ringFill.classList.toggle('hidden', !showFill);
+    dotTrack.classList.toggle('paused', showFill);
+    pctEl.classList.toggle('hidden', !showFill);
+    updateStatus();
+    updateEta();
+  }
+
+  function updateStatus() {
+    const ms = msgsFor(state.progress);
+    if (ms !== state.lastMessages) {
+      state.statusIndex = 0;
+      state.lastMessages = ms;
+    }
+    statusEl.textContent = ms[state.statusIndex % ms.length];
+  }
+
+  function advanceStatus() {
+    const ms = msgsFor(state.progress);
+    state.statusIndex = (state.statusIndex + 1) % ms.length;
+    statusEl.classList.add('fading');
+    setTimeout(() => {
+      statusEl.textContent = ms[state.statusIndex];
+      statusEl.classList.remove('fading');
+    }, 250);
+  }
+
+  function updateEta() {
+    if (state.paused || state.progress <= 0 || state.progress >= 100) {
+      if (state.progress <= 0) {
+        etaEl.textContent = 'Estimating...';
+        etaEl.classList.remove('hidden');
+      } else if (state.progress >= 100) {
+        etaEl.textContent = 'Completing...';
+      }
+      return;
+    }
+
+    if (state.mode === 'timer' && state.timerStart) {
+      const elapsed = (Date.now() - state.timerStart) / 1000;
+      const total = state.timerDuration * 60;
+      const r = Math.max(0, total - elapsed);
+      etaEl.textContent = r < 60 ? Math.round(r) + ' seconds remaining' : Math.round(r / 60) + ' minutes remaining';
+      etaEl.classList.remove('hidden');
+      return;
+    }
+
+    const recent = state.speedHistory;
+    state.etaCooldown = Math.max(0, state.etaCooldown - 1);
+
+    if (state.etaMode === 0 && state.etaCooldown <= 0) {
+      state.etaMode = 1;
+      state.etaCooldown = 3 + Math.floor(Math.random() * 8);
+      etaEl.textContent = 'Estimating...';
+      etaEl.classList.remove('hidden');
+      return;
+    }
+    state.etaCooldown--;
+    if (state.etaCooldown <= 0 && Math.random() < 0.06) {
+      state.etaCooldown = 4 + Math.floor(Math.random() * 10);
+      state.etaMode = state.etaMode === 1 ? 0 : 1;
+      if (state.etaMode === 0) { etaEl.textContent = 'Estimating...'; return; }
+    }
+
+    if (state.etaMode === 1 && recent.length > 3) {
+      const avg = recent.slice(-20).reduce((a,b) => a + b, 0) / Math.min(20, recent.length);
+      if (avg > 0) {
+        let remaining = (100 - state.progress) / avg * (0.6 + Math.random() * 0.5);
+        if (Math.random() < 0.1) remaining *= 1.5 + Math.random() * 2;
+        let text;
+        if (remaining < 60) text = Math.max(1, Math.round(remaining)) + ' seconds remaining';
+        else if (remaining < 3600) text = Math.max(1, Math.round(remaining / 60)) + ' minutes remaining';
+        else text = (remaining / 60 / 60).toFixed(1) + ' hours remaining';
+        if (text !== state.lastEtaText) {
+          etaEl.textContent = text;
+          state.lastEtaText = text;
+          etaEl.classList.remove('hidden');
+        }
+        return;
+      }
+    }
+    if (state.etaMode === 0 || recent.length <= 3) {
+      etaEl.textContent = 'Estimating...';
+      etaEl.classList.remove('hidden');
+    }
+  }
+
+  function realisticTick() {
+    if (state.isPaused) {
+      state.pauseTimer -= 50;
+      if (state.pauseTimer <= 0) state.isPaused = false;
+      return;
+    }
+    const base = 0.005 * (state.speed / 5);
+    let inc = base;
+    const p = state.progress;
+
+    if (p < 3) inc = base * 0.1;
+    else if (p < 8) inc = base * (0.15 + Math.random() * 0.3);
+    else if (p < 20) inc = base * (0.4 + Math.random() * 0.6);
+    else if (p < 40) inc = base * (0.6 + Math.random() * 0.8);
+    else if (p < 60) inc = base * (0.5 + Math.random() * 0.7);
+    else if (p < 75) inc = base * (0.3 + Math.random() * 0.5);
+    else if (p < 88) inc = base * (0.2 + Math.random() * 0.3);
+    else if (p < 97) inc = base * (0.08 + Math.random() * 0.15);
+    else inc = base * (0.02 + Math.random() * 0.06);
+
+    if (state.speed <= 2) inc *= 0.5;
+    if (state.speed >= 9) inc *= 1.8;
+
+    if (Math.random() < 0.006) inc += (0.3 + Math.random() * 1.5) * (state.speed / 5);
+    if (Math.random() < 0.0015) inc += (2 + Math.random() * 3);
+
+    const stick = [12, 24, 33, 45, 56, 67, 78, 84, 91, 95, 98];
+    for (const s of stick) {
+      if (Math.abs(p - s) < 0.3 && Math.random() < 0.02) {
+        state.isPaused = true;
+        state.pauseTimer = 1500 + Math.random() * 3000;
+        return;
+      }
+    }
+
+    if (Math.random() < 0.002) {
+      state.isPaused = true;
+      state.pauseTimer = 1000 + Math.random() * 2500;
+      return;
+    }
+
+    const np = p + inc;
+    if (np >= 100) return;
+    setProgress(np);
+    state.speedHistory.push(inc);
+    if (state.speedHistory.length > 80) state.speedHistory.shift();
+    if (Math.random() < 0.008) advanceStatus();
+  }
+
+  function timerTick() {
+    if (!state.timerStart) return;
+    const elapsed = (Date.now() - state.timerStart) / 1000;
+    const total = state.timerDuration * 60;
+    const expected = (elapsed / total) * 100;
+    if (expected >= 100) { setProgress(100); return; }
+    setProgress(expected);
+    if (Math.random() < 0.01) advanceStatus();
+  }
+
+  function infiniteTick() {
+    if (state.isPaused) {
+      state.pauseTimer -= 50;
+      if (state.pauseTimer <= 0) state.isPaused = false;
+      return;
+    }
+    let inc = 0.004 * (state.speed / 5);
+    const p = state.progress;
+    if (p > 95) {
+      inc *= 0.1;
+      if (Math.random() < 0.008) { state.isPaused = true; state.pauseTimer = 2000 + Math.random() * 3000; return; }
+      if (Math.random() < 0.001) { setProgress(0); return; }
+    } else if (p > 85) inc *= 0.3;
+    if (Math.random() < 0.003) { state.isPaused = true; state.pauseTimer = 1500 + Math.random() * 2500; return; }
+    if (Math.random() < 0.004) inc += (0.3 + Math.random()) * (state.speed / 5);
+    const np = p + inc;
+    if (np > 99.5) { setProgress(99.5); return; }
+    setProgress(np);
+    state.speedHistory.push(inc);
+    if (state.speedHistory.length > 80) state.speedHistory.shift();
+    if (Math.random() < 0.007) advanceStatus();
+  }
+
+  function manualTick() {
+    if (state.manualValue !== state.progress) setProgress(state.manualValue);
+  }
+
+  function playSound(type) {
+    if (!state.sound) return;
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      if (type === 'notification') {
+        osc.frequency.value = 600; osc.type = 'sine'; gain.gain.value = 0.04;
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+        osc.start(); osc.stop(ctx.currentTime + 0.12);
+      } else if (type === 'restart') {
+        osc.frequency.value = 400; osc.type = 'sine'; gain.gain.value = 0.05;
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+        osc.start(); osc.stop(ctx.currentTime + 0.22);
+      } else if (type === 'boot') {
+        osc.frequency.setValueAtTime(300, ctx.currentTime);
+        osc.frequency.linearRampToValueAtTime(600, ctx.currentTime + 0.2);
+        osc.type = 'sine'; gain.gain.value = 0.04;
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+        osc.start(); osc.stop(ctx.currentTime + 0.28);
+      }
+    } catch (_) {}
+  }
+
+  function triggerRestart() {
+    if (state.restarting) return;
+    state.restarting = true;
+    state.paused = true;
+    playSound('restart');
+
+    restartOverlay.classList.remove('fade-out');
+    restartOverlay.style.display = 'flex';
+    restartOverlay.classList.add('fade-in');
+    restartPhase1.style.display = 'flex';
+    restartPhase2.style.display = 'none';
+
+    if (state.autoRestart && state.restartCount < 2) {
+      state.restartCount++;
+      const phase1Duration = 3000 + Math.random() * 2000;
+      setTimeout(() => {
+        restartPhase1.style.display = 'none';
+        restartPhase2.style.display = 'flex';
+        playSound('boot');
+        const phase2Duration = 2000 + Math.random() * 1500;
+        setTimeout(() => {
+          restartOverlay.classList.remove('fade-in');
+          restartOverlay.classList.add('fade-out');
+          setTimeout(() => {
+            restartOverlay.style.display = 'none';
+            restartOverlay.classList.remove('fade-out');
+            state.restarting = false;
+            state.paused = false;
+          }, 450);
+        }, phase2Duration);
+      }, phase1Duration);
+    } else {
+      setTimeout(() => {
+        restartOverlay.classList.remove('fade-in');
+        restartOverlay.classList.add('fade-out');
+        setTimeout(() => {
+          restartOverlay.style.display = 'none';
+          restartOverlay.classList.remove('fade-out');
+          state.restarting = false;
+          state.paused = false;
+        }, 450);
+      }, 2500);
+    }
+  }
+
+  function checkRestart() {
+    if (state.autoRestart && !state.restarting && state.progress >= 100) triggerRestart();
+  }
+
+  let tickTimer = 0;
+
+  function tick() {
+    if (state.restarting) { requestAnimationFrame(tick); return; }
+    tickTimer += 50;
+    if (tickTimer < 50) { requestAnimationFrame(tick); return; }
+    tickTimer = 0;
+    if (!state.paused) {
+      state.statusTimer += 50;
+      if (state.statusTimer > 6000) { state.statusTimer = 0; advanceStatus(); }
+      switch (state.mode) {
+        case 'realistic': realisticTick(); break;
+        case 'timer': timerTick(); break;
+        case 'infinite': infiniteTick(); break;
+        case 'manual': manualTick(); break;
+      }
+      checkRestart();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function resetProgress() {
+    state.progress = 0;
+    state.isPaused = false;
+    state.pauseTimer = 0;
+    state.restarting = false;
+    state.restartCount = 0;
+    state.speedHistory = [];
+    state.timerStart = null;
+    state.statusIndex = 0;
+    state.statusTimer = 0;
+    state.lastMessages = null;
+    state.etaMode = 0;
+    state.etaCooldown = 0;
+    state.lastEtaText = '';
+    restartOverlay.style.display = 'none';
+    restartOverlay.classList.remove('fade-in', 'fade-out');
+    state.paused = false;
+    setProgress(0);
+    statusEl.textContent = 'Preparing...';
+    etaEl.textContent = 'Estimating...';
+  }
+
+  function restartSim() { resetProgress(); state.restartCount = 0; }
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      sim.requestFullscreen?.();
+    } else {
+      document.exitFullscreen();
+    }
+  }
+
+  var _controlsOpen = false;
+
+  function toggleControls() {
+    var el = document.getElementById('wuControlsOverlay');
+    if (!el) return;
+    _controlsOpen = !_controlsOpen;
+    el.classList.toggle('wu-co-visible', _controlsOpen);
+  }
+
+  window.__wuUpdate = {
+    mode: function(v) {
+      state.mode = v;
+      var tg = document.getElementById('wuTimerGroup');
+      var mg = document.getElementById('wuManualGroup');
+      if (tg) tg.style.display = v === 'timer' ? '' : 'none';
+      if (mg) mg.style.display = v === 'manual' ? '' : 'none';
+      if (v === 'timer') state.timerStart = Date.now();
+      resetProgress();
+    },
+    theme: function(v) { state.theme = v; wrapper.setAttribute('data-theme', v === 'default' ? '' : v); },
+    speed: function(v) { state.speed = Number(v); },
+    timerDuration: function(v) { state.timerDuration = Number(v); state.timerStart = Date.now(); resetProgress(); },
+    manualValue: function(v) { state.manualValue = Number(v); if (state.mode === 'manual') setProgress(state.manualValue); },
+    scenario: function(v) { state.scenario = v; resetProgress(); },
+    autoRestart: function(v) { state.autoRestart = v; },
+    sound: function(v) { state.sound = v; },
+    reset: function() { resetProgress(); },
+    restart: function() { restartSim(); },
+    fullscreen: function() { toggleFullscreen(); },
+    toggleControls: function() { toggleControls(); },
+  };
+
+  document.addEventListener('fullscreenchange', () => {
+    if (document.fullscreenElement === sim) {
+      sim.style.height = '';
+      sim.style.maxHeight = '';
+    } else {
+      sim.style.maxHeight = '560px';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.fullscreenElement) { document.exitFullscreen(); return; }
+    if (e.key === 'f' && !e.ctrlKey && !e.metaKey && !e.altKey && !(e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement)) {
+      toggleFullscreen();
+    }
+    if (e.key === ' ' && !(e.target instanceof HTMLInputElement)) {
+      e.preventDefault();
+      state.paused = !state.paused;
+    }
+  });
+
+  document.addEventListener('contextmenu', (e) => {
+    if (sim.contains(e.target) || sim === e.target) e.preventDefault();
+  });
+  document.addEventListener('selectstart', (e) => {
+    if (sim.contains(e.target)) e.preventDefault();
+  });
+  document.addEventListener('dragstart', (e) => {
+    if (sim.contains(e.target)) e.preventDefault();
+  });
+  document.addEventListener('dblclick', (e) => {
+    if (sim.contains(e.target)) e.preventDefault();
+  });
+
+  sim.addEventListener('mousemove', () => {
+    sim.style.cursor = '';
+    clearTimeout(mouseHideTimer);
+    if (document.fullscreenElement === sim) {
+      mouseHideTimer = setTimeout(() => { sim.style.cursor = 'none'; }, 2000);
+    }
+  });
+
+  resetProgress();
+  requestAnimationFrame(tick);
+})();
+</script>

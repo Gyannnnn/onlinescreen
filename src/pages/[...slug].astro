@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HomePage from '../components/HomePage.astro';
+import RelatedTools from '../components/RelatedTools.astro';
+import ScreenTool from '../components/ScreenTool.astro';
+import HackerTyper from '../components/HackerTyper.astro';
+import BlueScreen from '../components/BlueScreen.astro';
+import BrokenScreen from '../components/BrokenScreen.astro';
+import WindowsUpdate from '../components/WindowsUpdate.astro';
+import MacOSUpdate from '../components/MacOSUpdate.astro';
+import UbuntuScreen from '../components/UbuntuScreen.astro';
+import AndroidUpdate from '../components/AndroidUpdate.astro';
+import ToolArticle from '../components/ToolArticle.astro';
+import { localeOrder, locales, type Locale } from '../data/locales';
+import { getRelatedTools, tools, type Tool } from '../data/tools';
+import { t, toolName, toolSummary } from '../data/translations';
+import {
+  alternatesForHome,
+  alternatesForTool,
+  allToolPaths,
+  descriptionForTool,
+  landingJsonLd,
+  titleForTool,
+  toolJsonLd,
+  toolPath,
+} from '../data/seo';
+
+type PageProps =
+  | { kind: 'home'; locale: Locale; path: string }
+  | { kind: 'tool'; locale: Locale; path: string; tool: Tool };
+
+export function getStaticPaths() {
+  const homePaths = localeOrder
+    .filter((locale) => locale !== 'en')
+    .map((locale) => ({ params: { slug: locale }, props: { kind: 'home', locale, path: `${locales[locale].pathPrefix}/` } }));
+
+  const toolPaths = allToolPaths().map(({ tool, locale, path }) => ({
+    params: { slug: path.replace(/^\/|\/$/g, '') },
+    props: { kind: 'tool', locale, path, tool },
+  }));
+
+  return [...homePaths, ...toolPaths];
+}
+
+const props = Astro.props as PageProps;
+---
+
+{props.kind === 'home' ? (
+  <BaseLayout
+    title="Free Online Screen - Premium Fullscreen Utilities"
+    description="Open fullscreen color screens, screen tests, screen savers, prank screens, and fake update screens from one fast, accessible web app."
+    canonicalPath={props.path}
+    jsonLd={landingJsonLd()}
+    lang={locales[props.locale].lang}
+    locale={props.locale}
+    alternates={alternatesForHome()}
+  >
+    <HomePage locale={props.locale} />
+  </BaseLayout>
+) : (
+  <BaseLayout
+    title={titleForTool(props.tool)}
+    description={descriptionForTool(props.tool)}
+    canonicalPath={toolPath(props.tool, props.locale)}
+    alternates={alternatesForTool(props.tool)}
+    jsonLd={toolJsonLd(props.tool, props.path)}
+    lang={locales[props.locale].lang}
+    locale={props.locale}
+    currentToolSlug={props.tool.slug}
+    currentToolLocalizedSlugs={props.tool.localizedSlugs}
+  >
+    <section class="site-shell py-10 md:py-16">
+      <nav class="text-sm text-body" aria-label="Breadcrumb">
+        <a class="hover:text-ink" href="/">{t(props.locale, 'tool.breadcrumb_home')}</a>
+        <span class="mx-2">/</span>
+        <span>{toolName(props.locale, props.tool)}</span>
+      </nav>
+      <div class="mt-8 grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+        <div>
+          <p class="font-mono text-xs text-muted">{props.tool.category.toUpperCase()}</p>
+          <h1 class="mt-4 text-5xl font-semibold leading-[0.95] text-balance text-ink md:text-6xl">{toolName(props.locale, props.tool)}.</h1>
+          <p class="mt-5 text-lg leading-8 text-body">{toolSummary(props.locale, props.tool)}</p>
+          <div class="mt-6 flex flex-wrap gap-2">
+            {props.tool.controls.slice(0, 5).map((control) => <span class="rounded-full border border-hairline bg-canvas px-3 py-1 text-xs text-body">{control}</span>)}
+          </div>
+        </div>
+        {props.tool.slug === 'blue-screen-prank' ? (
+          <BlueScreen tool={props.tool} locale={props.locale} />
+        ) : props.tool.slug === 'broken-screen' ? (
+          <BrokenScreen tool={props.tool} locale={props.locale} />
+        ) : props.tool.slug === 'hacker-typer' ? (
+          <HackerTyper tool={props.tool} locale={props.locale} />
+        ) : props.tool.slug === 'windows-update' ? (
+          <WindowsUpdate tool={props.tool} locale={props.locale} />
+        ) : props.tool.slug === 'macos-screen' ? (
+          <MacOSUpdate tool={props.tool} locale={props.locale} />
+        ) : props.tool.slug === 'ubuntu-screen' ? (
+          <UbuntuScreen tool={props.tool} locale={props.locale} />
+        ) : props.tool.slug === 'android-update' ? (
+          <AndroidUpdate tool={props.tool} locale={props.locale} />
+        ) : (
+          <ScreenTool tool={props.tool} locale={props.locale} />
+        )}
+      </div>
+    </section>
+
+    <section class="border-y border-hairline bg-canvas">
+      <div class="site-shell grid gap-6 py-12 md:grid-cols-3">
+        <div>
+          <p class="font-mono text-xs text-muted">{t(props.locale, 'tool.shortcuts')}</p>
+          <h2 class="mt-3 text-2xl font-semibold text-balance text-ink">{t(props.locale, 'tool.shortcuts_heading')}</h2>
+        </div>
+        <div class="grid gap-3 text-sm text-body md:col-span-2 sm:grid-cols-3">
+          {props.tool.slug === 'blue-screen-prank' ? (
+            <>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> Fullscreen</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
+            </>
+          ) : props.tool.slug === 'broken-screen' ? (
+            <>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> Fullscreen</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
+            </>
+          ) : props.tool.slug === 'hacker-typer' ? (
+            <>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Space</kbd> Pause / Resume</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">R</kbd> Restart Session</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">C</kbd> Clear Terminal</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">S</kbd> Toggle Sound</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">T</kbd> Change Theme</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">A</kbd> Auto Type</p>
+            </>
+          ) : props.tool.slug === 'windows-update' ? (
+            <>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> Fullscreen</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Space</kbd> Pause / Resume</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
+            </>
+          ) : props.tool.slug === 'macos-screen' ? (
+            <>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> Fullscreen</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Space</kbd> Pause / Resume</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
+            </>
+          ) : props.tool.slug === 'ubuntu-screen' ? (
+            <>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> Fullscreen</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Space</kbd> Pause / Resume</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
+            </>
+          ) : props.tool.slug === 'android-update' ? (
+            <>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> Fullscreen</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Space</kbd> Pause / Resume</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
+            </>
+          ) : (
+            <>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> {t(props.locale, 'tool.shortcut_fullscreen')}</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">R</kbd> {t(props.locale, 'tool.shortcut_random')}</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">C</kbd> {t(props.locale, 'tool.shortcut_copy')}</p>
+            </>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <RelatedTools tools={getRelatedTools(props.tool)} locale={props.locale} />
+
+    <section class="site-shell max-w-3xl py-10">
+      <p class="font-mono text-xs text-muted">{t(props.locale, 'tool.faq')}</p>
+      <h2 class="mt-3 text-3xl font-semibold text-balance text-ink">{t(props.locale, 'tool.faq_heading', { name: toolName(props.locale, props.tool) })}</h2>
+      <div class="mt-6 divide-y divide-hairline rounded-lg border border-hairline bg-canvas">
+        {props.tool.faqs.map((faq) => (
+          <details class="group p-5">
+            <summary class="list-none cursor-pointer text-base font-medium text-ink">{faq.question}</summary>
+            <p class="mt-3 text-sm leading-6 text-body">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <ToolArticle tool={props.tool} locale={props.locale} />
+  </BaseLayout>
+)}

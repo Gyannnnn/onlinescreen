@@ -1,0 +1,82 @@
+---
+import type { Tool } from '../data/tools';
+import { type Locale } from '../data/locales';
+import { toolName } from '../data/translations';
+
+type Props = {
+  tool: Tool;
+  locale: Locale;
+};
+
+const { tool, locale } = Astro.props;
+const useCases = tool.useCases.join(', ');
+const controls = tool.controls.join(', ');
+const name = toolName(locale, tool);
+---
+
+<article class="site-shell rich-article max-w-3xl py-16">
+  <h2>How to use {name} well.</h2>
+  <p>
+    {name} is designed for people who need a fast, dependable fullscreen utility instead of a noisy page wrapped around a tiny demo.
+    The goal is {tool.intent}. That matters because screen tools are usually opened in the middle of another workflow: checking a new
+    monitor, lighting a quick shot, preparing a classroom display, testing color output, staging a video scene, or creating a calm ambient
+    background on a spare device.
+  </p>
+  <p>
+    The page starts with the screen itself, then keeps the controls close enough to be useful without making them the product. Open fullscreen
+    mode when you want the most accurate view. Browser tabs, bookmark bars, and desktop UI can hide edge defects, change perceived contrast,
+    or make a color feel less even than it really is. Fullscreen mode gives the entire panel to the utility, and the Escape hint keeps the
+    interaction understandable for keyboard and assistive-technology users.
+  </p>
+  <p>
+    Common use cases for {name.toLowerCase()} include {useCases}. Each use case benefits from a clean page because surrounding graphics
+    influence perception. A white border can make grey look darker. A colorful header can change how saturated a solid color appears. A heavy
+    animation can distract from pixel-level inspection. This page keeps the interface quiet and lets the screen state take priority.
+  </p>
+  <h2>Controls and workflow.</h2>
+  <p>
+    The reusable screen component includes {controls}. These controls are intentionally consistent across the site, so a person who learns one
+    screen can move through color screens, testing tools, ambient screens, fake screens, and prank screens without relearning the interface.
+    Designers can copy values, testers can adjust brightness, creators can enter an exact color, and casual users can simply press Fullscreen.
+  </p>
+  <p>
+    Brightness should be changed gradually. Displays do not all respond the same way, and a phone, OLED television, office monitor, and projector
+    can produce very different perceived output at the same nominal brightness. If you are checking for panel defects, raise brightness enough
+    to reveal the issue, then lower it again to a comfortable level. If you are using the screen as light, test the scene through the camera or
+    the viewer that matters rather than relying on how the panel looks from your chair.
+  </p>
+  <p>
+    Keyboard shortcuts make repeat use faster. Press F for fullscreen, R for a random color where available, and C to copy the current color.
+    The controls are standard form controls wherever possible, which keeps the page accessible and predictable. The page also respects reduced
+    motion preferences for motion-heavy effects, because a screen saver or prank page should not become uncomfortable for users who prefer a
+    calmer interface.
+  </p>
+  <h2>Display testing notes.</h2>
+  <p>
+    If you are using {name.toLowerCase()} to inspect a device, clean the glass first and check in stable lighting. Dust, fingerprints,
+    reflections, and screen protectors can look like panel defects. View the screen straight on, then from shallow angles. Some issues only show
+    in one position. For pixel checks, compare multiple solid colors. A pixel that disappears on black but appears on red may be a stuck subpixel
+    rather than a completely dead pixel.
+  </p>
+  <p>
+    Browser tools are useful for discovery and documentation, but they are not lab instruments. A color value shown by the page is exact in the
+    code, while the emitted light depends on the display, brightness curve, panel technology, operating-system color management, browser behavior,
+    and ambient light. For professional color-critical work, pair this utility with calibrated hardware and a color-managed workflow.
+  </p>
+  <h2>Why this page is built differently.</h2>
+  <p>
+    Many screen utility sites treat every page as a keyword container. Free Online Screen is structured as a product: consistent navigation,
+    clear categories, related tools, accessible controls, schema, canonical URLs, hreflang support, and static rendering. The result is faster for
+    users and easier for search engines to understand. It also means the page can grow into offline mode, recent colors, favorites, wallpaper
+    downloads, timers, and ambient modes without turning into a pile of unrelated widgets.
+  </p>
+  <p>
+    For best results, bookmark the exact page you use most often. Color pages are useful for quick lighting and display checks. Testing pages
+    are better when you need a repeatable inspection sequence. Ambient pages are designed for long-running, low-distraction use. Fake and prank
+    pages are browser visuals only; they should be used responsibly and never to deceive someone in a harmful context.
+  </p>
+  <p>
+    {name} is free, accountless, and static-first. That keeps load time low, avoids unnecessary tracking, and makes the tool feel immediate.
+    The screen should be available when the user needs it, not after a heavy bundle, a modal, or a signup prompt.
+  </p>
+</article>

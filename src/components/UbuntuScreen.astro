@@ -1,0 +1,241 @@
+---
+import type { Tool } from '../data/tools';
+import type { Locale } from '../data/locales';
+import BootScreen from './BootScreen.astro';
+import { ubuntuBootScreen } from '../data/boot-screens/ubuntu';
+
+type Props = { tool: Tool; locale: Locale };
+const { tool, locale } = Astro.props;
+---
+
+<section class="ubuntu-update-wrapper" data-ubuntu-update aria-label="Ubuntu Update Simulator">
+  <div class="uu-simulator group" data-uu-simulator id="uuSimulator">
+    <button class="uu-fs-btn" id="uuFsBtn" type="button" aria-label="Fullscreen" onclick="window.__uuUpdate?.fullscreen()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+        <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
+        <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+        <path d="M3 16v3a2 2 0 0 0 2 2h3" />
+      </svg>
+    </button>
+    <BootScreen config={ubuntuBootScreen} class="uu-main-bs" />
+
+    <div class="uu-restart-overlay" id="uuRestartOverlay">
+      <div class="uu-restart-phase" id="uuRestartPhase1">
+        <BootScreen config={ubuntuBootScreen} class="uu-boot-bs" />
+      </div>
+      <div class="uu-restart-phase" id="uuRestartPhase2" style="display:none">
+        <BootScreen config={ubuntuBootScreen} class="uu-boot-bs" />
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style is:global>
+  .ubuntu-update-wrapper {
+    --uu-bg: #300a24;
+    --uu-fg: #ffffff;
+    --uu-accent: #e95420;
+  }
+
+  .uu-simulator {
+    font-family: 'Ubuntu', 'Ubuntu Beta', 'Ubuntu Condensed', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    position: relative;
+    width: 100%;
+    height: 420px;
+    max-height: 560px;
+    background: var(--uu-bg);
+    color: var(--uu-fg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 6px;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+  }
+
+  .uu-main-bs { z-index: 2; }
+
+  .uu-fs-btn {
+    position: absolute;
+    right: 0.75rem;
+    top: 0.75rem;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.625rem;
+    background: rgba(0,0,0,0.35);
+    color: rgba(255,255,255,0.9);
+    opacity: 1;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+  .uu-fs-btn svg { width: 1.5625rem; height: 1.5625rem; }
+  .uu-fs-btn:hover { background: rgba(0,0,0,0.5); color: #fff; }
+  .uu-fs-btn:focus-visible { outline: 2px solid rgba(255,255,255,0.6); outline-offset: 2px; }
+
+
+
+  .uu-simulator:fullscreen .uu-fs-btn { display: none; }
+  .uu-simulator:fullscreen {
+    width: 100vw; height: 100vh; max-height: none; border-radius: 0; cursor: none;
+  }
+  .uu-simulator:fullscreen:hover { cursor: none; }
+  .uu-simulator:fullscreen .bs-logo img { width: 340px; }
+
+  .uu-restart-overlay {
+    position: absolute; inset: 0; background: #300a24;
+    display: none; align-items: center; justify-content: center; z-index: 15;
+  }
+  .uu-restart-overlay.visible { display: flex; }
+  .uu-restart-overlay.fade-in { animation: uu-fade-in 0.5s ease forwards; }
+  .uu-restart-overlay.fade-out { animation: uu-fade-out 0.4s ease forwards; }
+
+  @keyframes uu-fade-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes uu-fade-out { from { opacity: 1; } to { opacity: 0; } }
+
+  .uu-restart-phase { position: absolute; inset: 0; }
+  .uu-boot-bs { z-index: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .uu-restart-overlay.fade-in, .uu-restart-overlay.fade-out { animation: none; opacity: 1; }
+  }
+</style>
+
+<script is:inline>
+(function() {
+  const sim = document.getElementById('uuSimulator');
+  const restartOverlay = document.getElementById('uuRestartOverlay');
+  const restartPhase1 = document.getElementById('uuRestartPhase1');
+  const restartPhase2 = document.getElementById('uuRestartPhase2');
+
+  let mouseHideTimer = null;
+
+  const state = {
+    progress: 0,
+    pauseTimer: 0,
+    isPaused: false,
+    restarting: false,
+  };
+
+  function setProgress(val) {
+    state.progress = Math.max(0, Math.min(100, val));
+  }
+
+  function tick() {
+    if (state.restarting) { requestAnimationFrame(tick); return; }
+
+    if (state.isPaused) {
+      state.pauseTimer -= 50;
+      if (state.pauseTimer <= 0) state.isPaused = false;
+    } else {
+      const base = 0.004;
+      let inc = base;
+      const p = state.progress;
+
+      if (p < 2) inc = base * 0.06;
+      else if (p < 6) inc = base * (0.1 + Math.random() * 0.2);
+      else if (p < 14) inc = base * (0.3 + Math.random() * 0.5);
+      else if (p < 30) inc = base * (0.5 + Math.random() * 0.8);
+      else if (p < 50) inc = base * (0.4 + Math.random() * 0.6);
+      else if (p < 68) inc = base * (0.3 + Math.random() * 0.5);
+      else if (p < 82) inc = base * (0.2 + Math.random() * 0.35);
+      else if (p < 94) inc = base * (0.08 + Math.random() * 0.18);
+      else inc = base * (0.03 + Math.random() * 0.08);
+
+      if (Math.random() < 0.005) inc += (0.3 + Math.random() * 1.5);
+      if (Math.random() < 0.001) inc += (2 + Math.random() * 3);
+
+      const stick = [5, 14, 28, 40, 55, 65, 76, 84, 92, 97];
+      for (const s of stick) {
+        if (Math.abs(p - s) < 0.3 && Math.random() < 0.025) {
+          state.isPaused = true;
+          state.pauseTimer = 2000 + Math.random() * 4000;
+          return;
+        }
+      }
+
+      if (Math.random() < 0.003) {
+        state.isPaused = true;
+        state.pauseTimer = 1500 + Math.random() * 3500;
+        return;
+      }
+
+      const np = p + inc;
+      if (np >= 100) { setProgress(100); return; }
+      setProgress(np);
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      sim.requestFullscreen?.();
+    } else {
+      document.exitFullscreen();
+    }
+  }
+
+  window.__uuUpdate = {
+    fullscreen: function() { toggleFullscreen(); },
+  };
+
+  document.addEventListener('fullscreenchange', () => {
+    if (document.fullscreenElement === sim) {
+      sim.style.height = '';
+      sim.style.maxHeight = '';
+    } else {
+      sim.style.maxHeight = '560px';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.fullscreenElement) { document.exitFullscreen(); return; }
+    if (e.key === 'f' && !e.ctrlKey && !e.metaKey && !e.altKey && !(e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement)) {
+      toggleFullscreen();
+    }
+  });
+
+  document.addEventListener('contextmenu', (e) => {
+    if (sim.contains(e.target) || sim === e.target) e.preventDefault();
+  });
+  document.addEventListener('selectstart', (e) => {
+    if (sim.contains(e.target)) e.preventDefault();
+  });
+  document.addEventListener('dragstart', (e) => {
+    if (sim.contains(e.target)) e.preventDefault();
+  });
+  document.addEventListener('dblclick', (e) => {
+    if (sim.contains(e.target)) e.preventDefault();
+  });
+
+  sim.addEventListener('mousemove', () => {
+    sim.style.cursor = '';
+    clearTimeout(mouseHideTimer);
+    if (document.fullscreenElement === sim) {
+      mouseHideTimer = setTimeout(() => { sim.style.cursor = 'none'; }, 2000);
+    }
+  });
+
+  setProgress(0);
+  requestAnimationFrame(tick);
+})();
+</script>
