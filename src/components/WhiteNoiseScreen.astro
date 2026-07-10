@@ -1,0 +1,729 @@
+---
+import type { Tool } from "../data/tools";
+import type { Locale } from "../data/locales";
+import { t } from "../data/translations";
+
+type Props = { tool: Tool; locale: Locale };
+const { tool, locale } = Astro.props;
+---
+
+<div class="wn" id="wn" data-white-noise-screen aria-label="White Noise Screen">
+  <!-- Screen Wrapper -->
+  <div class="wn-viewport">
+    <canvas class="wn-canvas" id="wnCanvas"></canvas>
+    
+    <!-- Retro overlays -->
+    <div class="wn-overlay" id="wnOverlay"></div>
+    <div class="wn-vignette"></div>
+    
+    <!-- CRT TV Bad Signal Indicator -->
+    <div class="wn-tv-indicator hidden" id="wnIndicator">
+      <div class="wn-tv-channel">AV-1</div>
+      <div class="wn-tv-label">NO SIGNAL</div>
+    </div>
+  </div>
+
+  <!-- Settings overlay Gear -->
+  <button class="wn-gear-btn" id="wnGearBtn" type="button" aria-label="Settings">
+    ⚙️
+  </button>
+  <button class="wn-fs-btn" id="wnFsBtn" type="button" aria-label="Fullscreen">
+    ⛶
+  </button>
+
+  <!-- Settings Panel -->
+  <div class="wn-settings" id="wnSettings">
+    <div class="wn-settings-header">
+      <span>White Noise Settings</span>
+      <button class="wn-close-settings" id="wnCloseSettings" type="button">✕</button>
+    </div>
+    <div class="wn-settings-body">
+      <div class="wn-setting-row">
+        <label for="wnStyleSelect">Static Style:</label>
+        <select id="wnStyleSelect">
+          <option value="analog">Analog TV Gray Static</option>
+          <option value="color">Rainbow Color Static</option>
+          <option value="vhs">VHS Glitch & Drift Static</option>
+        </select>
+      </div>
+
+      <div class="wn-setting-row">
+        <label class="checkbox-label">
+          <input type="checkbox" id="wnScanToggle" checked /> Enable CRT Scanlines
+        </label>
+      </div>
+
+      <div class="wn-setting-row">
+        <label class="checkbox-label">
+          <input type="checkbox" id="wnIndicatorToggle" /> Show "NO SIGNAL" Logo
+        </label>
+      </div>
+
+      <div class="wn-setting-row">
+        <label for="wnAudioToggle">Audio Noise:</label>
+        <select id="wnAudioToggle">
+          <option value="static">Pulsing TV Static ("Seee...")</option>
+          <option value="white">Flat White Noise Hisss</option>
+          <option value="pink">Pink Noise (Deep Rain)</option>
+          <option value="off">Muted</option>
+        </select>
+      </div>
+
+      <div class="wn-setting-row flex-col items-start gap-1">
+        <div class="flex justify-between w-full text-xs">
+          <span>Volume:</span>
+          <span id="wnVolVal">30%</span>
+        </div>
+        <input type="range" id="wnVolume" min="0" max="100" value="30" class="w-full h-1 bg-neutral-700 rounded-lg appearance-none cursor-pointer" />
+      </div>
+
+      <div class="wn-setting-row flex-col items-start gap-1">
+        <div class="flex justify-between w-full text-xs">
+          <span>Static Speed:</span>
+          <span id="wnSpeedVal">1.0x</span>
+        </div>
+        <input type="range" id="wnSpeed" min="20" max="200" value="100" class="w-full h-1 bg-neutral-700 rounded-lg appearance-none cursor-pointer" />
+      </div>
+
+      <div class="wn-setting-hint">
+        Click preview or press <strong>F</strong> for Fullscreen. Press <strong>S</strong> to toggle static sound, <strong>1-3</strong> to switch static styles, <strong>&uarr;&darr;</strong> to adjust volume, and <strong>Esc</strong> to exit.
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Core layout style */
+  .wn {
+    background: #0d0d0d;
+    position: relative;
+    width: 100%;
+    height: 440px;
+    border-radius: 8px;
+    overflow: hidden;
+    color: #fff;
+    user-select: none;
+    outline: none;
+  }
+
+  .wn-viewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .wn-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Scanlines Overlay */
+  .wn-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      rgba(15, 15, 15, 0) 50%,
+      rgba(0, 0, 0, 0.4) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 10;
+    display: block;
+  }
+
+  .wn-overlay.hidden {
+    display: none !important;
+  }
+
+  /* CRT TV Screen Edge Vignette */
+  .wn-vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.6) 100%);
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.8);
+    z-index: 12;
+  }
+
+  /* Green TV Channel Badge */
+  .wn-tv-indicator {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    color: #00ff00;
+    font-family: monospace, sans-serif;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.8), 2px 2px 2px #000;
+    line-height: 1.2;
+    z-index: 20;
+  }
+  .wn-tv-channel {
+    font-size: clamp(24px, 5vw, 42px);
+  }
+  .wn-tv-label {
+    font-size: clamp(14px, 2.5vw, 20px);
+  }
+
+  /* Control buttons */
+  .wn-gear-btn, .wn-fs-btn {
+    position: absolute;
+    z-index: 100;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: background 0.15s;
+    font-size: 16px;
+  }
+  .wn-gear-btn {
+    left: 10px;
+    bottom: 10px;
+    width: 32px;
+    height: 32px;
+  }
+  .wn-fs-btn {
+    right: 10px;
+    top: 10px;
+    width: 36px;
+    height: 36px;
+    font-weight: bold;
+  }
+  .wn-gear-btn:hover, .wn-fs-btn:hover {
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  /* Settings drawer styling */
+  .wn-settings {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 105;
+    background: rgba(18, 18, 18, 0.96);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 16px;
+    text-align: left;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    transform: translateY(100%);
+    transition: transform 0.2s ease-out;
+  }
+  .wn-settings.is-visible {
+    transform: translateY(0);
+  }
+  .wn-settings-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 12px;
+    color: #eee;
+  }
+  .wn-close-settings {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .wn-settings-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .wn-setting-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+  }
+  .wn-setting-row select {
+    background: #2b2b2b;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 4px 8px;
+    border-radius: 4px;
+    outline: none;
+  }
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .wn-setting-hint {
+    font-size: 10px;
+    color: #888;
+    line-height: 1.4;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 8px;
+  }
+
+  /* Fullscreen Mode overrides */
+  :global(.wn.is-fullscreen) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 99999 !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  :global(.wn.is-fullscreen .wn-gear-btn),
+  :global(.wn.is-fullscreen .wn-fs-btn),
+  :global(.wn.is-fullscreen .wn-settings) {
+    display: none !important;
+  }
+
+  /* HTML lock */
+  :global(html.is-wn-fullscreen) {
+    overflow: hidden !important;
+  }
+  :global(html.is-wn-fullscreen body) {
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var root = document.getElementById("wn");
+    var canvas = document.getElementById("wnCanvas");
+    var ctx = canvas.getContext("2d");
+
+    var fsBtn = document.getElementById("wnFsBtn");
+    var gearBtn = document.getElementById("wnGearBtn");
+    var settingsOverlay = document.getElementById("wnSettings");
+    var closeSettingsBtn = document.getElementById("wnCloseSettings");
+    var overlay = document.getElementById("wnOverlay");
+    var indicator = document.getElementById("wnIndicator");
+
+    // Inputs
+    var styleSelect = document.getElementById("wnStyleSelect");
+    var scanToggle = document.getElementById("wnScanToggle");
+    var indicatorToggle = document.getElementById("wnIndicatorToggle");
+    var audioSelect = document.getElementById("wnAudioToggle");
+    var volInput = document.getElementById("wnVolume");
+    var volVal = document.getElementById("wnVolVal");
+    var speedInput = document.getElementById("wnSpeed");
+    var speedVal = document.getElementById("wnSpeedVal");
+
+    // State Variables
+    var currentStyle = "analog"; // analog, color, vhs
+    var enableScanlines = true;
+    var showIndicator = false;
+    var audioMode = "static"; // static, white, pink, off
+    var volume = 0.3;
+    var speedFactor = 1.0;
+
+    // Animation Loop
+    var requestID = null;
+    var nextDrawTime = 0;
+    var rollingY = 0;
+
+    // Precomputed Grayscale & Color Noise maps to avoid CPU overhead
+    var noiseWidth = 256;
+    var noiseHeight = 256;
+    var numMaps = 8;
+    var grayNoiseMaps = [];
+    var colorNoiseMaps = [];
+
+    function generateNoiseAssets() {
+      // 1. Grayscale Static Maps
+      for (var m = 0; m < numMaps; m++) {
+        var tempCanvas = document.createElement("canvas");
+        tempCanvas.width = noiseWidth;
+        tempCanvas.height = noiseHeight;
+        var tempCtx = tempCanvas.getContext("2d");
+        var imgData = tempCtx.createImageData(noiseWidth, noiseHeight);
+        var data = imgData.data;
+        var len = data.length;
+
+        for (var i = 0; i < len; i += 4) {
+          var v = Math.floor(Math.random() * 256);
+          data[i] = v;     // R
+          data[i+1] = v;   // G
+          data[i+2] = v;   // B
+          data[i+3] = 255; // A
+        }
+        tempCtx.putImageData(imgData, 0, 0);
+        grayNoiseMaps.push(tempCanvas);
+      }
+
+      // 2. Color Static Maps
+      for (var m = 0; m < numMaps; m++) {
+        var tempCanvas = document.createElement("canvas");
+        tempCanvas.width = noiseWidth;
+        tempCanvas.height = noiseHeight;
+        var tempCtx = tempCanvas.getContext("2d");
+        var imgData = tempCtx.createImageData(noiseWidth, noiseHeight);
+        var data = imgData.data;
+        var len = data.length;
+
+        for (var i = 0; i < len; i += 4) {
+          data[i] = Math.floor(Math.random() * 256);   // R
+          data[i+1] = Math.floor(Math.random() * 256); // G
+          data[i+2] = Math.floor(Math.random() * 256); // B
+          data[i+3] = 255;                             // A
+        }
+        tempCtx.putImageData(imgData, 0, 0);
+        colorNoiseMaps.push(tempCanvas);
+      }
+    }
+
+    generateNoiseAssets();
+
+    function resizeCanvas() {
+      var dpr = window.devicePixelRatio || 1;
+      canvas.width = canvas.clientWidth * dpr;
+      canvas.height = canvas.clientHeight * dpr;
+    }
+    
+    // Resize initially and listen to events
+    window.addEventListener("resize", function() {
+      resizeCanvas();
+    });
+    setTimeout(resizeCanvas, 100);
+
+    // Audio setup variables
+    var audioCtx = null;
+    var noiseSourceNode = null;
+    var filterNode = null;
+    var gainNode = null;
+    var mainGainNode = null;
+    var lfoNode = null;
+    var lfoGainNode = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // Main volume nodes
+        gainNode = audioCtx.createGain();
+        mainGainNode = audioCtx.createGain();
+        
+        // High frequency dampening filter
+        filterNode = audioCtx.createBiquadFilter();
+        filterNode.type = "lowpass";
+        filterNode.frequency.setValueAtTime(3200, audioCtx.currentTime);
+
+        gainNode.connect(filterNode);
+        filterNode.connect(mainGainNode);
+        mainGainNode.connect(audioCtx.destination);
+      }
+    }
+
+    function createWhiteNoiseBuffer() {
+      var bufferSize = 2 * audioCtx.sampleRate;
+      var buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      var output = buffer.getChannelData(0);
+      for (var i = 0; i < bufferSize; i++) {
+        output[i] = Math.random() * 2 - 1;
+      }
+      return buffer;
+    }
+
+    function createPinkNoiseBuffer() {
+      var bufferSize = 2 * audioCtx.sampleRate;
+      var buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      var output = buffer.getChannelData(0);
+      
+      // Pink noise filter approximation (Paul Kellet's refined method)
+      var b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+      for (var i = 0; i < bufferSize; i++) {
+        var white = Math.random() * 2 - 1;
+        b0 = 0.99886 * b0 + white * 0.0555179;
+        b1 = 0.99332 * b1 + white * 0.0750759;
+        b2 = 0.96900 * b2 + white * 0.1538520;
+        b3 = 0.86650 * b3 + white * 0.3104856;
+        b4 = 0.55000 * b4 + white * 0.5329522;
+        b5 = -0.7616 * b5 - white * 0.0168980;
+        output[i] = b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362;
+        output[i] *= 0.11; // Gain normalization
+        b6 = white * 0.115926;
+      }
+      return buffer;
+    }
+
+    function startAudioStatic() {
+      stopAudioStatic();
+      if (audioMode === "off") return;
+      initAudio();
+
+      if (audioCtx.state === "suspended") {
+        audioCtx.resume();
+      }
+
+      // Configure gain and properties based on modes
+      gainNode.gain.setValueAtTime(0.08, audioCtx.currentTime);
+      mainGainNode.gain.setValueAtTime(volume, audioCtx.currentTime);
+
+      // Create Buffer
+      var activeBuffer = null;
+      if (audioMode === "pink") {
+        activeBuffer = createPinkNoiseBuffer();
+        // dampener low cutoff
+        filterNode.frequency.setValueAtTime(1500, audioCtx.currentTime);
+      } else {
+        activeBuffer = createWhiteNoiseBuffer();
+        filterNode.frequency.setValueAtTime(audioMode === "static" ? 2800 : 5000, audioCtx.currentTime);
+      }
+
+      // Buffer source creation
+      noiseSourceNode = audioCtx.createBufferSource();
+      noiseSourceNode.buffer = activeBuffer;
+      noiseSourceNode.loop = true;
+      noiseSourceNode.connect(gainNode);
+
+      // ── "seee seee seee" pulsing LFO modulation ──
+      if (audioMode === "static") {
+        lfoNode = audioCtx.createOscillator();
+        lfoNode.frequency.value = 1.3; // 1.3 Hz breathing frequency
+        
+        lfoGainNode = audioCtx.createGain();
+        lfoGainNode.gain.value = 0.04; // volume sway
+        
+        // Offset volume to center modulation
+        gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
+        
+        lfoNode.connect(lfoGainNode);
+        lfoGainNode.connect(gainNode.gain);
+
+        lfoNode.start();
+      }
+
+      noiseSourceNode.start();
+    }
+
+    function stopAudioStatic() {
+      if (noiseSourceNode) {
+        try { noiseSourceNode.stop(); } catch(e){}
+        noiseSourceNode = null;
+      }
+      if (lfoNode) {
+        try { lfoNode.stop(); } catch(e){}
+        lfoNode = null;
+      }
+      if (lfoGainNode) {
+        lfoGainNode = null;
+      }
+    }
+
+    // Toggle Settings drawer
+    if (gearBtn && settingsOverlay && closeSettingsBtn) {
+      gearBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        settingsOverlay.classList.toggle("is-visible");
+      });
+      closeSettingsBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        settingsOverlay.classList.remove("is-visible");
+      });
+      settingsOverlay.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+    }
+
+    // Settings elements updates
+    if (styleSelect) {
+      styleSelect.addEventListener("change", function (e) {
+        currentStyle = e.target.value;
+      });
+    }
+    if (scanToggle) {
+      scanToggle.addEventListener("change", function (e) {
+        enableScanlines = e.target.checked;
+        overlay.classList.toggle("hidden", !enableScanlines);
+      });
+    }
+    if (indicatorToggle) {
+      indicatorToggle.addEventListener("change", function (e) {
+        showIndicator = e.target.checked;
+        indicator.classList.toggle("hidden", !showIndicator);
+      });
+    }
+    if (audioSelect) {
+      audioSelect.addEventListener("change", function (e) {
+        audioMode = e.target.value;
+        if (document.fullscreenElement === root || audioCtx) {
+          startAudioStatic();
+        }
+      });
+    }
+    if (volInput) {
+      volInput.addEventListener("input", function (e) {
+        setVolume(e.target.value / 100);
+      });
+    }
+    if (speedInput) {
+      speedInput.addEventListener("input", function (e) {
+        speedFactor = e.target.value / 100;
+        speedVal.textContent = speedFactor.toFixed(1) + "x";
+      });
+    }
+
+    function setVolume(v) {
+      volume = v;
+      if (volInput) volInput.value = Math.round(v * 100);
+      if (volVal) volVal.textContent = Math.round(v * 100) + "%";
+      if (mainGainNode && audioCtx) {
+        mainGainNode.gain.setValueAtTime(v, audioCtx.currentTime);
+      }
+    }
+
+    // Custom Canvas Render Loop
+    function drawStatic(timestamp) {
+      requestID = requestAnimationFrame(drawStatic);
+
+      // Frame-rate limiter based on speed factor
+      var delay = 1000 / (30 * speedFactor);
+      if (timestamp < nextDrawTime) return;
+      nextDrawTime = timestamp + delay;
+
+      var w = canvas.width;
+      var h = canvas.height;
+      if (w === 0 || h === 0) return;
+
+      // Select random texture asset from our precomputed map array
+      var mapIndex = Math.floor(Math.random() * numMaps);
+      var activeMap = currentStyle === "color" ? colorNoiseMaps[mapIndex] : grayNoiseMaps[mapIndex];
+
+      // Draw the static stretched across screen
+      ctx.drawImage(activeMap, 0, 0, w, h);
+
+      // Standard VHS Glitch / Horizontal interference bars
+      if (currentStyle === "vhs") {
+        // Draw 2 to 3 drifting white static bands
+        var scale = h / 240;
+        for (var b = 0; b < 2; b++) {
+          var yPos = ((timestamp / 40 + b * 130) % (h + 60)) - 30;
+          var barH = (Math.random() * 24 + 6) * scale;
+          ctx.fillStyle = "rgba(255, 255, 255, " + (Math.random() * 0.35 + 0.15) + ")";
+          ctx.fillRect(0, yPos, w, barH);
+        }
+        
+        // Draw randomized noise streak lines
+        var lineY = Math.random() * h;
+        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+        ctx.fillRect(0, lineY, w, Math.random() * 3 + 1);
+
+        // Simulated screen horizontal sync sway (pixel skew)
+        if (Math.random() < 0.2) {
+          ctx.save();
+          var offsetOffset = Math.floor(Math.random() * 12) - 6;
+          var offsetHeight = Math.floor(Math.random() * 40) + 10;
+          var offsetY = Math.random() * (h - offsetHeight);
+          ctx.drawImage(canvas, 0, offsetY, w, offsetHeight, offsetOffset, offsetY, w, offsetHeight);
+          ctx.restore();
+        }
+      }
+
+      // Draw rolling analog grid hum bar
+      rollingY = (rollingY + (speedFactor * 3)) % h;
+      var grad = ctx.createLinearGradient(0, rollingY - 120, 0, rollingY + 120);
+      grad.addColorStop(0, "rgba(0,0,0,0)");
+      grad.addColorStop(0.5, "rgba(0,0,0,0.14)");
+      grad.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
+    }
+
+    // Trigger loop immediately
+    requestID = requestAnimationFrame(drawStatic);
+
+    // Fullscreen Trigger handlers
+    function goFS() {
+      if (!document.fullscreenElement) {
+        root.requestFullscreen().catch(function () {});
+      }
+    }
+
+    function exitFS() {
+      if (document.fullscreenElement === root) {
+        document.exitFullscreen().catch(function () {});
+      }
+    }
+
+    document.addEventListener("fullscreenchange", function () {
+      var isFS = document.fullscreenElement === root;
+      root.classList.toggle("is-fullscreen", isFS);
+
+      if (isFS) {
+        if (settingsOverlay) settingsOverlay.classList.remove("is-visible");
+        document.documentElement.classList.add("is-wn-fullscreen");
+        resizeCanvas();
+        startAudioStatic();
+      } else {
+        document.documentElement.classList.remove("is-wn-fullscreen");
+        stopAudioStatic();
+        resizeCanvas();
+      }
+    });
+
+    // Keyboard Shortcuts
+    document.addEventListener("keydown", function (e) {
+      var key = e.key.toLowerCase();
+      
+      // Fullscreen checks
+      if (document.fullscreenElement === root) {
+        if (key === "escape") {
+          exitFS();
+        } else if (key === "1") {
+          e.preventDefault(); currentStyle = "analog";
+          if (styleSelect) styleSelect.value = "analog";
+        } else if (key === "2") {
+          e.preventDefault(); currentStyle = "color";
+          if (styleSelect) styleSelect.value = "color";
+        } else if (key === "3") {
+          e.preventDefault(); currentStyle = "vhs";
+          if (styleSelect) styleSelect.value = "vhs";
+        } else if (key === "s") {
+          e.preventDefault();
+          audioMode = (audioMode === "off") ? "static" : "off";
+          if (audioSelect) audioSelect.value = audioMode;
+          startAudioStatic();
+        } else if (e.key === "ArrowUp") {
+          e.preventDefault();
+          setVolume(Math.min(1.0, volume + 0.05));
+        } else if (e.key === "ArrowDown") {
+          e.preventDefault();
+          setVolume(Math.max(0.0, volume - 0.05));
+        } else {
+          // Block keys to keep fullscreen prank immersive
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        return;
+      }
+
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) return;
+
+      if (key === "f") {
+        e.preventDefault();
+        goFS();
+      }
+    });
+
+    // Hover button clicks
+    if (fsBtn) {
+      fsBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        goFS();
+      });
+    }
+
+    root.addEventListener("click", function(e) {
+      if (!document.fullscreenElement) {
+        e.stopPropagation();
+        goFS();
+      }
+    });
+  })();
+</script>
