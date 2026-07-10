@@ -1,0 +1,1455 @@
+---
+import type { Tool } from "../data/tools";
+import type { Locale } from "../data/locales";
+import { t } from "../data/translations";
+
+type Props = { tool: Tool; locale: Locale };
+const { tool, locale } = Astro.props;
+---
+
+<div class="fv" id="fv" data-fake-virus-screen aria-label="Fake Virus Screen Prank">
+  <!-- Chrome Block Template -->
+  <div class="fv-template fv-chrome" id="tplChrome">
+    <div class="chrome-box">
+      <div class="chrome-icon-row">
+        <svg viewBox="0 0 100 100" class="chrome-svg">
+          <circle cx="50" cy="50" r="46" fill="#fff" />
+          <path d="M50 20v35M50 68h.02" stroke="#d93025" stroke-width="10" stroke-linecap="round" />
+        </svg>
+      </div>
+      <h1 class="chrome-title">Deceptive site ahead</h1>
+      <p class="chrome-p">
+        Attackers on this site may trick you into doing something dangerous like installing software or revealing your personal information (for example, passwords, phone numbers, or credit cards). <a href="#" class="chrome-link" id="chromeLearnMore">Learn more</a>
+      </p>
+      <div class="chrome-actions">
+        <button class="chrome-btn btn-details" id="chromeDetailsBtn" type="button">Details</button>
+        <button class="chrome-btn btn-green" id="chromeBackBtn" type="button">Go back to safety</button>
+      </div>
+      <div class="chrome-collapsed hidden" id="chromeDetailsPanel">
+        <p>Google Safe Browsing recently detected malware on this site. Web browsers use this warning to prevent you from visiting websites that are reported as unsafe.</p>
+        <p>If you understand the risks, you can <a href="#" class="chrome-link-unsafe" id="chromeVisitAnyway">visit this unsafe site</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SmartScreen Block Template -->
+  <div class="fv-template fv-smartscreen hidden" id="tplSmartScreen">
+    <div class="ss-box">
+      <div class="ss-header">
+        <svg viewBox="0 0 24 24" class="ss-shield">
+          <path d="M12 2L4 5v6c0 5.5 3.5 10.5 8 12 4.5-1.5 8-6.5 8-12V5l-8-3z" fill="#fff"/>
+          <path d="M12 7v6M12 17h.01" stroke="#e02424" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Microsoft Defender SmartScreen</span>
+      </div>
+      <h1 class="ss-title">This site has been blocked by Microsoft Defender SmartScreen</h1>
+      <p class="ss-p">
+        Microsoft Defender SmartScreen has blocked this website because it has been reported for containing dangerous files or phishing threats. We recommend that you do not continue to this site.
+      </p>
+      <div class="ss-actions">
+        <button class="ss-btn-back" id="ssBackBtn" type="button">Go back to my start page</button>
+        <a href="#" class="ss-link-more" id="ssMoreBtn">More information</a>
+      </div>
+      <div class="ss-expanded hidden" id="ssExpanded">
+        <p>This website has been reported to Microsoft for containing threats to your personal data or device. Microsoft Defender SmartScreen assists you by warning you of suspicious content on websites.</p>
+        <div class="ss-expanded-links">
+          <a href="#" class="ss-ex-link" id="ssReportSafe">Report that this site is safe</a>
+          <a href="#" class="ss-ex-link" id="ssProceed">Disregard and proceed (unsafe)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Windows Security Dashboard Template -->
+  <div class="fv-template fv-defender hidden" id="tplDefender">
+    <div class="def-window">
+      <div class="def-head">
+        <div class="def-logo-block">
+          <svg viewBox="0 0 24 24" class="def-logo">
+            <path d="M12 2L4 5v6c0 5.5 3.5 10.5 8 12 4.5-1.5 8-6.5 8-12V5l-8-3z" fill="#0078d7"/>
+          </svg>
+          <span>Windows Security</span>
+        </div>
+        <div class="def-window-ctrl">
+          <span class="def-ctrl-btn">―</span>
+          <span class="def-ctrl-btn">❑</span>
+          <span class="def-ctrl-btn def-close-btn" id="defCloseBtn">✕</span>
+        </div>
+      </div>
+      <div class="def-body">
+        <div class="def-side">
+          <div class="def-side-item hamburger">☰</div>
+          <div class="def-side-item icon-shield active">🛡️</div>
+          <div class="def-side-item">🌐</div>
+          <div class="def-side-item">💻</div>
+          <div class="def-side-item">⚙️</div>
+        </div>
+        <div class="def-main">
+          <h2 class="def-main-title">Virus & threat protection</h2>
+          <div class="def-banner">
+            <div class="def-banner-shield">🛡️</div>
+            <div class="def-banner-text">
+              <h3>Severe threats found.</h3>
+              <p>Antivirus detected malicious files on your machine. Start actions immediately to remove them.</p>
+            </div>
+          </div>
+          <div class="def-section-lbl">Current threats</div>
+          <div class="def-threat-card">
+            <div class="def-threat-name">Trojan:Win32/Wacatac.B!rfn</div>
+            <div class="def-details">
+              <div><span>Alert level:</span> <strong class="red-txt">Severe</strong></div>
+              <div><span>Status:</span> <strong class="red-txt">Active</strong></div>
+              <div><span>Date:</span> <span id="defThreatDate">7/10/2026, 9:25:00 AM</span></div>
+              <div><span>Category:</span> Trojan</div>
+              <div><span>Details:</span> This program is dangerous and executes commands from an attacker.</div>
+              <div>
+                <span>Affected items:</span>
+                <div class="def-files-list">
+                  <code>file: C:\Users\Admin\Downloads\setup_installer.exe</code>
+                  <code>file: C:\Windows\System32\drivers\host.sys</code>
+                </div>
+              </div>
+            </div>
+            <div class="def-threat-actions">
+              <button class="def-action-btn" id="defActionBtn" type="button">Start actions</button>
+              <div class="def-action-progress hidden" id="defProgress">
+                <span>Removing threats... <span id="defProgressPct">0</span>%</span>
+                <div class="def-progress-bar"><div class="def-progress-fill" id="defProgressFill"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Windows Toast Notification -->
+    <div class="def-toast hidden" id="defToast">
+      <div class="def-toast-h">
+        <svg viewBox="0 0 24 24" class="def-toast-logo">
+          <path d="M12 2L4 5v6c0 5.5 3.5 10.5 8 12 4.5-1.5 8-6.5 8-12V5l-8-3z" fill="#0078d7"/>
+        </svg>
+        <span>Windows Security</span>
+        <span class="def-toast-x" id="defToastClose">✕</span>
+      </div>
+      <div class="def-toast-b">
+        <strong>Threats detected</strong>
+        <p>Microsoft Defender Antivirus detected malware or other potentially unwanted software. Click to react in Windows Security.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WannaCry Ransomware Template -->
+  <div class="fv-template fv-wc hidden" id="tplWannaCry">
+    <div class="wc-app">
+      <div class="wc-side">
+        <div class="wc-warning">
+          <span class="wc-padlock">🔒</span>
+          <p class="wc-warning-txt">Ooops, your files have been encrypted!</p>
+        </div>
+        <div class="wc-timer-card">
+          <div class="wc-timer-section">
+            <span class="wc-timer-title">Payment will be raised on</span>
+            <span class="wc-timer-clock" id="wcTimerRaise">02:23:59:59</span>
+          </div>
+          <div class="wc-timer-section">
+            <span class="wc-timer-title">Files will be lost on</span>
+            <span class="wc-timer-clock" id="wcTimerLost">06:23:59:59</span>
+          </div>
+        </div>
+        <div class="wc-payment">
+          <span class="wc-btc-lbl">Send $300 worth of bitcoin to this address:</span>
+          <div class="wc-btc-input">
+            <input type="text" value="1ACoM15f21QWD3156v156Dfg3161dfg16" id="wcBtcAddr" readonly />
+            <button class="wc-copy-btn" id="wcBtnCopy" type="button">Copy</button>
+          </div>
+          <div class="wc-actions">
+            <button class="wc-action-btn" id="wcCheckPayment" type="button">Check Payment</button>
+            <button class="wc-action-btn" id="wcDecrypt" type="button">Decrypt</button>
+          </div>
+        </div>
+      </div>
+      <div class="wc-main">
+        <div class="wc-banner">Wana Decrypt0r 2.0</div>
+        <div class="wc-scroll">
+          <h3>What Happened to My Computer?</h3>
+          <p>Your important files are encrypted. Many of your documents, photos, videos, databases and other files are no longer accessible because they have been encrypted. Maybe you are busy looking for a way to recover your files, but do not waste your time. Nobody can recover your files without our decryption service.</p>
+          <h3>Can I Recover My Files?</h3>
+          <p>Sure. We guarantee that you can recover all your files safely and easily. But you don't have enough time. You can try to decrypt some files for free. Click Decrypt to try. But if you want to decrypt all your files, you need to pay.</p>
+          <h3>How Do I Pay?</h3>
+          <p>Payment is accepted in Bitcoin only. Send $300 worth of Bitcoin to the address specified on this screen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings overlay Gear -->
+  <button class="fv-gear-btn" id="fvGearBtn" type="button" aria-label="Prank Settings">
+    ⚙️
+  </button>
+  <button class="fv-fs-btn" id="fvFsBtn" type="button" aria-label="Fullscreen">
+    ⛶
+  </button>
+
+  <div class="fv-settings" id="fvSettings">
+    <div class="fv-settings-header">
+      <span>Virus Prank Settings</span>
+      <button class="fv-close-settings" id="fvCloseSettings" type="button">✕</button>
+    </div>
+    <div class="fv-settings-body">
+      <div class="fv-setting-row">
+        <label for="fvTemplateSelect">Alert Interface:</label>
+        <select id="fvTemplateSelect">
+          <option value="chrome">Google Chrome Malware Warning</option>
+          <option value="smartscreen">Microsoft Defender SmartScreen</option>
+          <option value="defender">Windows Security Antivirus Dashboard</option>
+          <option value="wannacry">WannaCry Ransomware Screen</option>
+        </select>
+      </div>
+      <div class="fv-setting-row">
+        <label class="checkbox-label">
+          <input type="checkbox" id="fvSoundToggle" checked /> Play Security Siren/Alarms
+        </label>
+      </div>
+      <div class="fv-setting-hint">
+        Prank Instructions: Click Fullscreen (or press <strong>F</strong>). Once in Fullscreen, press keys <strong>1</strong> to <strong>4</strong> to switch alert styles instantly. Press <strong>S</strong> to toggle alarm sound, and <strong>Esc</strong> to exit.
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Base Container Grid/Style */
+  .fv {
+    background: #000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    position: relative;
+    width: 100%;
+    height: 440px;
+    border-radius: 8px;
+    overflow: hidden;
+    color: #fff;
+    user-select: none;
+    outline: none;
+  }
+
+  .fv-template {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    overflow: auto;
+    font-size: 14px;
+  }
+
+  .fv-template.hidden {
+    display: none !important;
+  }
+
+  /* 1. Chrome Malware Red warning Styles */
+  .fv-chrome {
+    background: #d93025;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    box-sizing: border-box;
+  }
+  .chrome-box {
+    max-width: 600px;
+    text-align: left;
+  }
+  .chrome-icon-row {
+    margin-bottom: 20px;
+  }
+  .chrome-svg {
+    width: 64px;
+    height: 64px;
+  }
+  .chrome-title {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 300;
+    margin: 0 0 15px 0;
+    letter-spacing: -0.5px;
+  }
+  .chrome-p {
+    font-size: 15px;
+    line-height: 1.5;
+    opacity: 0.9;
+    margin: 0 0 25px 0;
+  }
+  .chrome-link, .chrome-link-unsafe {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  .chrome-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  .chrome-btn {
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.1s;
+    border: none;
+  }
+  .btn-details {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  .btn-details:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .btn-green {
+    background: #1a73e8;
+    color: #fff;
+  }
+  .btn-green:hover {
+    background: #1557b0;
+  }
+  .chrome-collapsed {
+    background: rgba(0, 0, 0, 0.15);
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 20px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .chrome-collapsed p {
+    margin: 0 0 10px 0;
+  }
+
+  /* 2. SmartScreen Block Styles */
+  .fv-smartscreen {
+    background: #e02424;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    box-sizing: border-box;
+  }
+  .ss-box {
+    max-width: 640px;
+    text-align: left;
+  }
+  .ss-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    margin-bottom: 25px;
+    opacity: 0.9;
+  }
+  .ss-shield {
+    width: 24px;
+    height: 24px;
+  }
+  .ss-title {
+    font-size: clamp(20px, 3.5vw, 30px);
+    font-weight: 300;
+    margin: 0 0 15px 0;
+    line-height: 1.25;
+  }
+  .ss-p {
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.9;
+    margin: 0 0 30px 0;
+  }
+  .ss-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .ss-btn-back {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 8px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .ss-btn-back:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .ss-link-more {
+    color: #fff;
+    text-decoration: underline;
+    font-size: 13px;
+  }
+  .ss-expanded {
+    margin-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 15px;
+    font-size: 13px;
+    opacity: 0.95;
+    line-height: 1.5;
+  }
+  .ss-expanded-links {
+    margin-top: 12px;
+    display: flex;
+    gap: 20px;
+  }
+  .ss-ex-link {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  /* 3. Windows Security Antivirus dashboard Styles */
+  .fv-defender {
+    background: #f3f3f3;
+    color: #000;
+  }
+  .def-window {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+  .def-head {
+    height: 36px;
+    background: #e8e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    border-bottom: 1px solid #d2d2d2;
+    font-size: 12px;
+  }
+  .def-logo-block {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .def-logo {
+    width: 16px;
+    height: 16px;
+  }
+  .def-window-ctrl {
+    display: flex;
+  }
+  .def-ctrl-btn {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 10px;
+  }
+  .def-ctrl-btn:hover {
+    background: #dddddd;
+  }
+  .def-close-btn:hover {
+    background: #e81123 !important;
+    color: #fff;
+  }
+  .def-body {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+  .def-side {
+    width: 48px;
+    background: #e1e1e1;
+    border-right: 1px solid #d5d5d5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    gap: 15px;
+    font-size: 16px;
+  }
+  .def-side-item {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+  .def-side-item.active {
+    background: #d0d0d0;
+  }
+  .def-side-item:hover {
+    background: #d8d8d8;
+  }
+  .def-main {
+    flex: 1;
+    padding: 24px;
+    overflow: auto;
+    text-align: left;
+  }
+  .def-main-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+  }
+  .def-banner {
+    background: #fde8e8;
+    border: 1px solid #f8b4b4;
+    border-radius: 6px;
+    padding: 16px;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  .def-banner-shield {
+    font-size: 24px;
+  }
+  .def-banner-text h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #9b1c1c;
+  }
+  .def-banner-text p {
+    margin: 4px 0 0 0;
+    font-size: 12px;
+    color: #7f1d1d;
+  }
+  .def-section-lbl {
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+  }
+  .def-threat-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .def-threat-name {
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .def-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 12px;
+  }
+  .def-details span {
+    color: #666;
+    display: inline-block;
+    width: 100px;
+  }
+  .red-txt {
+    color: #e02424;
+  }
+  .def-files-list {
+    margin-top: 8px;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #eaeaea;
+  }
+  .def-files-list code {
+    display: block;
+    font-family: monospace;
+    font-size: 11px;
+    color: #444;
+  }
+  .def-threat-actions {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .def-action-btn {
+    background: #0078d7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .def-action-btn:hover {
+    background: #106ebe;
+  }
+  .def-action-progress {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+  }
+  .def-progress-bar {
+    height: 4px;
+    background: #eee;
+    border-radius: 2px;
+    overflow: hidden;
+    width: 200px;
+  }
+  .def-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #0078d7;
+    transition: width 0.1s;
+  }
+
+  /* Windows Alert Toast styles */
+  .def-toast {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 320px;
+    background: #1f1f1d;
+    color: #fff;
+    border: 1px solid #333331;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 12px;
+    box-sizing: border-box;
+    text-align: left;
+    animation: slideIn 0.3s ease-out;
+  }
+  @keyframes slideIn {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .def-toast-h {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: #ccc;
+    margin-bottom: 8px;
+  }
+  .def-toast-logo {
+    width: 14px;
+    height: 14px;
+  }
+  .def-toast-x {
+    margin-left: auto;
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  .def-toast-x:hover {
+    opacity: 1;
+  }
+  .def-toast-b strong {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  .def-toast-b p {
+    margin: 0;
+    font-size: 11px;
+    color: #aaa;
+    line-height: 1.4;
+  }
+
+  /* 4. WannaCry Ransomware screen Styles */
+  .fv-wc {
+    background: #7f0e0e;
+    color: #ffffff;
+    font-family: "Courier New", Courier, monospace;
+    padding: 10px;
+  }
+  .wc-app {
+    display: flex;
+    border: 3px double #d93025;
+    background: #000000;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .wc-side {
+    width: 38%;
+    border-right: 2px solid #5a0f0f;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    text-align: left;
+  }
+  .wc-warning {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #5a0f0f;
+    padding: 10px;
+  }
+  .wc-padlock {
+    font-size: 32px;
+    margin-bottom: 5px;
+  }
+  .wc-warning-txt {
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    color: #ffcc00;
+  }
+  .wc-timer-card {
+    border: 1px solid #5a0f0f;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .wc-timer-section {
+    display: flex;
+    flex-direction: column;
+  }
+  .wc-timer-title {
+    font-size: 9px;
+    color: #fff;
+  }
+  .wc-timer-clock {
+    font-size: 15px;
+    color: #ff0000;
+    font-weight: bold;
+  }
+  .wc-payment {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    /* margin-bottom: 20px; */
+  }
+  .wc-btc-lbl {
+    font-size: 9px;
+    color: #ffcc00;
+  }
+  .wc-btc-input {
+    display: flex;
+    gap: 4px;
+  }
+  .wc-btc-input input {
+    flex: 1;
+    background: #000;
+    border: 1px solid #5a0f0f;
+    color: #ffcc00;
+    font-family: inherit;
+    font-size: 8px;
+    padding: 4px;
+    outline: none;
+  }
+  .wc-copy-btn {
+    background: #5a0f0f;
+    color: #fff;
+    border: 1px solid #d93025;
+    font-family: inherit;
+    font-size: 10px;
+    cursor: pointer;
+    padding: 2px 8px;
+  }
+  .wc-btc-actions {
+    display: flex;
+    gap: 6px;
+  }
+  .wc-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .wc-action-btn {
+    flex: 1;
+    background: #5a0f0f;
+    color: #fff;
+    border: 2px solid #ff0000;
+    font-family: inherit;
+    font-size: 11px;
+    padding: 6px 0;
+    cursor: pointer;
+  }
+  .wc-action-btn:hover {
+    background: #7f0e0e;
+  }
+  .wc-main {
+    flex: 1;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    overflow: hidden;
+    text-align: left;
+  }
+  .wc-banner {
+    font-size: clamp(14px, 2.5vw, 20px);
+    color: #ffcc00;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #5a0f0f;
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+  }
+  .wc-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 6px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  .wc-scroll h3 {
+    font-size: 12px;
+    margin: 10px 0 4px 0;
+    color: #ffcc00;
+  }
+  .wc-scroll p {
+    margin: 0 0 10px 0;
+  }
+
+  /* Overlay Buttons styles */
+  .fv-gear-btn, .fv-fs-btn {
+    position: absolute;
+    z-index: 100;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: background 0.15s;
+    font-size: 16px;
+  }
+  .fv-gear-btn {
+    left: 10px;
+    bottom: 10px;
+    width: 32px;
+    height: 32px;
+  }
+  .fv-fs-btn {
+    right: 10px;
+    top: 10px;
+    width: 36px;
+    height: 36px;
+    font-weight: bold;
+  }
+  .fv-gear-btn:hover, .fv-fs-btn:hover {
+    background: rgba(0, 0, 0, 0.75);
+  }
+
+  /* Setting overlay Drawer styles */
+  .fv-settings {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 105;
+    background: rgba(20, 20, 20, 0.95);
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding: 16px;
+    text-align: left;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    transform: translateY(100%);
+    transition: transform 0.2s ease-out;
+  }
+  .fv-settings.is-visible {
+    transform: translateY(0);
+  }
+  .fv-settings-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 12px;
+    color: #eee;
+  }
+  .fv-close-settings {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .fv-settings-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .fv-setting-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+  }
+  .fv-setting-row select {
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 4px 8px;
+    border-radius: 4px;
+    outline: none;
+  }
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .fv-setting-hint {
+    font-size: 10px;
+    color: #999;
+    line-height: 1.4;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 8px;
+  }
+
+  /* Fullscreen Mode overrides */
+  :global(.fv.is-fullscreen) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 99999 !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  :global(.fv.is-fullscreen .fv-gear-btn),
+  :global(.fv.is-fullscreen .fv-fs-btn),
+  :global(.fv.is-fullscreen .fv-settings) {
+    display: none !important;
+  }
+  :global(.fv.is-fullscreen .def-window),
+  :global(.fv.is-fullscreen .wc-app) {
+    border-radius: 0 !important;
+    border: none !important;
+  }
+
+  /* Force Scroll Locks */
+  :global(html.is-fv-fullscreen) {
+    overflow: hidden !important;
+  }
+  :global(html.is-fv-fullscreen body) {
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var root = document.getElementById("fv");
+    var fsBtn = document.getElementById("fvFsBtn");
+    var gearBtn = document.getElementById("fvGearBtn");
+    var settingsOverlay = document.getElementById("fvSettings");
+    var closeSettingsBtn = document.getElementById("fvCloseSettings");
+
+    // Template elements
+    var tplChrome = document.getElementById("tplChrome");
+    var tplSmartScreen = document.getElementById("tplSmartScreen");
+    var tplDefender = document.getElementById("tplDefender");
+    var tplWannaCry = document.getElementById("tplWannaCry");
+
+    // Inputs
+    var templateSelect = document.getElementById("fvTemplateSelect");
+    var soundToggle = document.getElementById("fvSoundToggle");
+
+    // Details tabs
+    var chromeLearnMore = document.getElementById("chromeLearnMore");
+    var chromeDetailsBtn = document.getElementById("chromeDetailsBtn");
+    var chromeDetailsPanel = document.getElementById("chromeDetailsPanel");
+    var chromeVisitAnyway = document.getElementById("chromeVisitAnyway");
+    var chromeBackBtn = document.getElementById("chromeBackBtn");
+
+    var ssMoreBtn = document.getElementById("ssMoreBtn");
+    var ssExpanded = document.getElementById("ssExpanded");
+    var ssBackBtn = document.getElementById("ssBackBtn");
+    var ssProceed = document.getElementById("ssProceed");
+    var ssReportSafe = document.getElementById("ssReportSafe");
+
+    var defCloseBtn = document.getElementById("defCloseBtn");
+    var defActionBtn = document.getElementById("defActionBtn");
+    var defProgress = document.getElementById("defProgress");
+    var defProgressPct = document.getElementById("defProgressPct");
+    var defProgressFill = document.getElementById("defProgressFill");
+    var defThreatDate = document.getElementById("defThreatDate");
+    var defToast = document.getElementById("defToast");
+    var defToastClose = document.getElementById("defToastClose");
+
+    var wcTimerRaise = document.getElementById("wcTimerRaise");
+    var wcTimerLost = document.getElementById("wcTimerLost");
+    var wcBtnCopy = document.getElementById("wcBtnCopy");
+    var wcBtcAddr = document.getElementById("wcBtcAddr");
+    var wcDecrypt = document.getElementById("wcDecrypt");
+    var wcCheckPayment = document.getElementById("wcCheckPayment");
+
+    // State Variables
+    var currentTemplate = "chrome"; // Default
+    var audioEnabled = true;
+    var audioCtx = null;
+    var soundInterval = null;
+    var sirenOsc = null;
+    var sirenGain = null;
+    var defenderScanning = false;
+    var defenderProgressInterval = null;
+
+    // Set Dynamic Date in Defender Dashboard
+    if (defThreatDate) {
+      defThreatDate.textContent = new Date().toLocaleString();
+    }
+
+    // Toggle Settings drawer
+    if (gearBtn && settingsOverlay && closeSettingsBtn) {
+      gearBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        settingsOverlay.classList.toggle("is-visible");
+      });
+      closeSettingsBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        settingsOverlay.classList.remove("is-visible");
+      });
+      settingsOverlay.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+      // Block dragging / touch input leaks on settings overlay
+      var eventsToBlock = ["mousedown", "mouseup", "touchstart", "touchmove", "touchend"];
+      eventsToBlock.forEach(function (evt) {
+        settingsOverlay.addEventListener(evt, function (e) {
+          e.stopPropagation();
+        });
+      });
+    }
+
+    // Settings logic
+    if (templateSelect) {
+      templateSelect.addEventListener("change", function (e) {
+        switchTemplate(e.target.value);
+        settingsOverlay.classList.remove("is-visible");
+      });
+    }
+    if (soundToggle) {
+      soundToggle.addEventListener("change", function (e) {
+        audioEnabled = e.target.checked;
+        if (!document.fullscreenElement) return;
+        if (audioEnabled) {
+          playAlertSound(currentTemplate);
+        } else {
+          stopSound();
+        }
+      });
+    }
+
+    // Template Switching Function
+    function switchTemplate(tpl) {
+      currentTemplate = tpl;
+      if (templateSelect) templateSelect.value = tpl;
+      
+      tplChrome.classList.add("hidden");
+      tplSmartScreen.classList.add("hidden");
+      tplDefender.classList.add("hidden");
+      tplWannaCry.classList.add("hidden");
+
+      if (tpl === "chrome") {
+        tplChrome.classList.remove("hidden");
+      } else if (tpl === "smartscreen") {
+        tplSmartScreen.classList.remove("hidden");
+      } else if (tpl === "defender") {
+        tplDefender.classList.remove("hidden");
+        // Trigger simulated Toast popup with delay
+        showDefenderToast();
+      } else if (tpl === "wannacry") {
+        tplWannaCry.classList.remove("hidden");
+        startWannaCryClocks();
+      }
+
+      if (document.fullscreenElement === root) {
+        playAlertSound(tpl);
+      }
+    }
+
+    // ── Chrome Template Interactivity ──
+    if (chromeDetailsBtn && chromeDetailsPanel) {
+      chromeDetailsBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        chromeDetailsPanel.classList.toggle("hidden");
+      });
+    }
+    if (chromeLearnMore) {
+      chromeLearnMore.addEventListener("click", function(e) {
+        e.preventDefault(); e.stopPropagation();
+        alert("This warning is a simulation for pranks. Your device is running normally.");
+      });
+    }
+    if (chromeVisitAnyway) {
+      chromeVisitAnyway.addEventListener("click", function(e) {
+        e.preventDefault(); e.stopPropagation();
+        exitFS();
+      });
+    }
+    if (chromeBackBtn) {
+      chromeBackBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        exitFS();
+      });
+    }
+
+    // ── SmartScreen Template Interactivity ──
+    if (ssMoreBtn && ssExpanded) {
+      ssMoreBtn.addEventListener("click", function (e) {
+        e.preventDefault(); e.stopPropagation();
+        ssExpanded.classList.toggle("hidden");
+      });
+    }
+    if (ssBackBtn) {
+      ssBackBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        exitFS();
+      });
+    }
+    if (ssProceed || ssReportSafe) {
+      var actv = [ssProceed, ssReportSafe];
+      actv.forEach(function (el) {
+        if (el) {
+          el.addEventListener("click", function (e) {
+            e.preventDefault(); e.stopPropagation();
+            exitFS();
+          });
+        }
+      });
+    }
+
+    // ── Windows Defender Template Interactivity ──
+    if (defToastClose) {
+      defToastClose.addEventListener("click", function(e) {
+        e.stopPropagation();
+        defToast.classList.add("hidden");
+      });
+    }
+    if (defCloseBtn) {
+      defCloseBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        exitFS();
+      });
+    }
+
+    function showDefenderToast() {
+      if (!defToast) return;
+      defToast.classList.add("hidden");
+      setTimeout(function() {
+        if (currentTemplate === "defender") {
+          defToast.classList.remove("hidden");
+          // Play notification chime
+          if (audioEnabled) {
+            playSingleChime();
+          }
+        }
+      }, 2000);
+    }
+
+    if (defActionBtn && defProgress && defProgressPct && defProgressFill) {
+      defActionBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        if (defenderScanning) return;
+        defenderScanning = true;
+        defActionBtn.classList.add("hidden");
+        defProgress.classList.remove("hidden");
+
+        var pct = 0;
+        defProgressPct.textContent = "0";
+        defProgressFill.style.width = "0%";
+
+        if (defenderProgressInterval) clearInterval(defenderProgressInterval);
+        
+        defenderProgressInterval = setInterval(function() {
+          pct += Math.floor(Math.random() * 8) + 2;
+          if (pct >= 95) {
+            pct = 95; // Stuck at 95 to create tension
+            clearInterval(defenderProgressInterval);
+            // Play fake critical error alert pop-up
+            setTimeout(function() {
+              alert("Windows Security: Threat quarantine failed. System files at C:\\Windows\\System32 are compromised. Secondary scan required.");
+              exitFS();
+              resetDefenderState();
+            }, 1000);
+          }
+          defProgressPct.textContent = pct;
+          defProgressFill.style.width = pct + "%";
+        }, 300);
+      });
+    }
+
+    function resetDefenderState() {
+      defenderScanning = false;
+      if (defenderProgressInterval) clearInterval(defenderProgressInterval);
+      if (defProgress) defProgress.classList.add("hidden");
+      if (defActionBtn) defActionBtn.classList.remove("hidden");
+    }
+
+    // ── WannaCry Countdown Clocks ──
+    var raiseSeconds = 2 * 24 * 3600 + 23 * 3600 + 59 * 60 + 59;
+    var lostSeconds = 6 * 24 * 3600 + 23 * 3600 + 59 * 60 + 59;
+    var wcClockInterval = null;
+
+    function formatWcTime(seconds) {
+      var d = Math.floor(seconds / (24 * 3600));
+      seconds %= 24 * 3600;
+      var h = Math.floor(seconds / 3600);
+      seconds %= 3600;
+      var m = Math.floor(seconds / 60);
+      var s = seconds % 60;
+
+      function pad(num) {
+        return num < 10 ? "0" + num : num;
+      }
+      return pad(d) + ":" + pad(h) + ":" + pad(m) + ":" + pad(s);
+    }
+
+    function startWannaCryClocks() {
+      if (wcClockInterval) clearInterval(wcClockInterval);
+      wcClockInterval = setInterval(function() {
+        if (currentTemplate !== "wannacry") {
+          clearInterval(wcClockInterval);
+          return;
+        }
+        if (raiseSeconds > 0) raiseSeconds--;
+        if (lostSeconds > 0) lostSeconds--;
+
+        if (wcTimerRaise) wcTimerRaise.textContent = formatWcTime(raiseSeconds);
+        if (wcTimerLost) wcTimerLost.textContent = formatWcTime(lostSeconds);
+      }, 1000);
+    }
+
+    if (wcBtnCopy && wcBtcAddr) {
+      wcBtnCopy.addEventListener("click", function(e) {
+        e.stopPropagation();
+        wcBtcAddr.select();
+        navigator.clipboard.writeText(wcBtcAddr.value).then(function() {
+          wcBtnCopy.textContent = "Copied!";
+          setTimeout(function() {
+            wcBtnCopy.textContent = "Copy";
+          }, 1500);
+        });
+      });
+    }
+
+    if (wcDecrypt || wcCheckPayment) {
+      var wbtns = [wcDecrypt, wcCheckPayment];
+      wbtns.forEach(function(btn) {
+        if (btn) {
+          btn.addEventListener("click", function(e) {
+            e.stopPropagation();
+            alert("No decryption keys found. Please transfer $300 to start recovery.");
+          });
+        }
+      });
+    }
+
+    // ── Synthesized Sound Alert System ──
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    function stopSound() {
+      if (soundInterval) {
+        clearInterval(soundInterval);
+        soundInterval = null;
+      }
+      if (sirenOsc) {
+        try { sirenOsc.stop(); } catch(e){}
+        sirenOsc = null;
+      }
+      if (sirenGain) {
+        sirenGain = null;
+      }
+    }
+
+    function playSingleChime() {
+      initAudio();
+      if (!audioCtx) return;
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      var t = audioCtx.currentTime;
+      var freqs = [350, 480, 520];
+      freqs.forEach(function(f) {
+        var osc = audioCtx.createOscillator();
+        var gain = audioCtx.createGain();
+        osc.frequency.value = f;
+        osc.type = "sine";
+        gain.gain.setValueAtTime(0.04, t);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.4);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(t + 0.45);
+      });
+    }
+
+    function playAlertSound(tpl) {
+      stopSound();
+      if (!audioEnabled) return;
+      initAudio();
+      if (!audioCtx) return;
+      if (audioCtx.state === "suspended") audioCtx.resume();
+
+      if (tpl === "chrome" || tpl === "smartscreen") {
+        // Continuous Alarm Siren
+        sirenOsc = audioCtx.createOscillator();
+        sirenGain = audioCtx.createGain();
+        sirenOsc.type = "sawtooth";
+        sirenOsc.frequency.setValueAtTime(320, audioCtx.currentTime);
+        sirenGain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+        sirenOsc.connect(sirenGain);
+        sirenGain.connect(audioCtx.destination);
+        sirenOsc.start();
+
+        soundInterval = setInterval(function() {
+          if (!sirenOsc) return;
+          var now = audioCtx.currentTime;
+          sirenOsc.frequency.setValueAtTime(320, now);
+          sirenOsc.frequency.linearRampToValueAtTime(500, now + 0.4);
+          sirenOsc.frequency.linearRampToValueAtTime(320, now + 0.8);
+        }, 800);
+      } else if (tpl === "wannacry") {
+        // High pitch system warning beeps every 4 seconds
+        function wcBeep() {
+          var t = audioCtx.currentTime;
+          var osc1 = audioCtx.createOscillator();
+          var gain1 = audioCtx.createGain();
+          osc1.frequency.value = 880;
+          gain1.gain.setValueAtTime(0.05, t);
+          gain1.gain.exponentialRampToValueAtTime(0.001, t + 0.1);
+          osc1.connect(gain1);
+          gain1.connect(audioCtx.destination);
+          osc1.start(); osc1.stop(t + 0.12);
+
+          // Second part
+          setTimeout(function() {
+            if (currentTemplate !== "wannacry") return;
+            var t2 = audioCtx.currentTime;
+            var osc2 = audioCtx.createOscillator();
+            var gain2 = audioCtx.createGain();
+            osc2.frequency.value = 880;
+            gain2.gain.setValueAtTime(0.05, t2);
+            gain2.gain.exponentialRampToValueAtTime(0.001, t2 + 0.1);
+            osc2.connect(gain2);
+            gain2.connect(audioCtx.destination);
+            osc2.start(); osc2.stop(t2 + 0.12);
+          }, 150);
+        }
+        wcBeep();
+        soundInterval = setInterval(wcBeep, 4000);
+      } else if (tpl === "defender") {
+        // Windows Defender warning triple-beep plays every 10 seconds
+        function defenderChime() {
+          var t = audioCtx.currentTime;
+          var freqs = [180, 240, 360];
+          freqs.forEach(function(f) {
+            var osc = audioCtx.createOscillator();
+            var gain = audioCtx.createGain();
+            osc.frequency.value = f;
+            osc.type = "triangle";
+            gain.gain.setValueAtTime(0.04, t);
+            gain.gain.exponentialRampToValueAtTime(0.001, t + 0.5);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(); osc.stop(t + 0.55);
+          });
+        }
+        defenderChime();
+        soundInterval = setInterval(defenderChime, 10000);
+      }
+    }
+
+    // ── Fullscreen Controls ──
+    function goFS() {
+      if (!document.fullscreenElement) {
+        root.requestFullscreen().catch(function () {});
+      }
+    }
+
+    function exitFS() {
+      if (document.fullscreenElement === root) {
+        document.exitFullscreen().catch(function () {});
+      }
+    }
+
+    document.addEventListener("fullscreenchange", function () {
+      var isFS = document.fullscreenElement === root;
+      root.classList.toggle("is-fullscreen", isFS);
+
+      if (isFS) {
+        if (settingsOverlay) settingsOverlay.classList.remove("is-visible");
+        document.documentElement.classList.add("is-fv-fullscreen");
+        playAlertSound(currentTemplate);
+        if (currentTemplate === "defender") {
+          showDefenderToast();
+        }
+      } else {
+        document.documentElement.classList.remove("is-fv-fullscreen");
+        stopSound();
+        resetDefenderState();
+        if (defToast) defToast.classList.add("hidden");
+      }
+    });
+
+    // Keyboard Shortcuts
+    document.addEventListener("keydown", function (e) {
+      var key = e.key.toLowerCase();
+      
+      // Fullscreen overrides
+      if (document.fullscreenElement === root) {
+        if (key === "escape") {
+          exitFS();
+        } else if (key === "1") {
+          e.preventDefault(); switchTemplate("chrome");
+        } else if (key === "2") {
+          e.preventDefault(); switchTemplate("smartscreen");
+        } else if (key === "3") {
+          e.preventDefault(); switchTemplate("defender");
+        } else if (key === "4") {
+          e.preventDefault(); switchTemplate("wannacry");
+        } else if (key === "s") {
+          e.preventDefault();
+          audioEnabled = !audioEnabled;
+          if (soundToggle) soundToggle.checked = audioEnabled;
+          if (audioEnabled) {
+            playAlertSound(currentTemplate);
+          } else {
+            stopSound();
+          }
+        } else {
+          // Block keys to keep user locked in
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        return;
+      }
+
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) return;
+
+      if (key === "f") {
+        e.preventDefault();
+        goFS();
+      }
+    });
+
+    // Context menu blocking when in fullscreen
+    document.addEventListener("contextmenu", function (e) {
+      if (document.fullscreenElement === root) {
+        e.preventDefault();
+      }
+    });
+
+    // Standard clicks on button triggers
+    if (fsBtn) {
+      fsBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        goFS();
+      });
+    }
+
+    root.addEventListener("click", function(e) {
+      if (!document.fullscreenElement) {
+        e.stopPropagation();
+        goFS();
+      }
+    });
+  })();
+</script>
