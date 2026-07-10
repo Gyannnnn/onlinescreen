@@ -1,0 +1,1095 @@
+---
+import type { Tool } from "../data/tools";
+import type { Locale } from "../data/locales";
+import { t } from "../data/translations";
+
+type Props = { tool: Tool; locale: Locale };
+const { tool, locale } = Astro.props;
+---
+
+<div class="xp" id="xp" data-xp-crash-screen aria-label="Windows XP Crash Prank">
+  <div class="xp-inner">
+    <!-- Desktop Mode Viewport -->
+    <div class="xp-desktop" id="xpDesktop">
+      <!-- Bliss Wallpaper CSS mockup fields -->
+      <div class="bliss-bg">
+        <div class="bliss-sky"></div>
+        <div class="bliss-hill-rear"></div>
+        <div class="bliss-hill-front"></div>
+        <div class="bliss-sun"></div>
+      </div>
+
+      <!-- Canvas Glitch Trails Overlay -->
+      <canvas class="xp-trail-canvas" id="xpCanvas"></canvas>
+
+      <!-- Desktop Shortcut Icons Grid -->
+      <div class="xp-icons">
+        <div class="xp-icon-item">
+          <div class="icon MyComputer"></div>
+          <span class="icon-label">My Computer</span>
+        </div>
+        <div class="xp-icon-item">
+          <div class="icon RecycleBin"></div>
+          <span class="icon-label">Recycle Bin</span>
+        </div>
+        <div class="xp-icon-item">
+          <div class="icon InternetExplorer"></div>
+          <span class="icon-label">Internet Explorer</span>
+        </div>
+        <div class="xp-icon-item">
+          <div class="icon MyDocuments"></div>
+          <span class="icon-label">My Documents</span>
+        </div>
+      </div>
+
+      <!-- Dynamic Dialog Container -->
+      <div class="xp-dialog-layer" id="xpDialogLayer">
+        <!-- Explorer Encountered Error window -->
+        <div class="xp-dialog" id="xpBaseDialog" style="top: 80px; left: 100px;">
+          <div class="dialog-header" id="dialogHeader">
+            <span class="dialog-title">explorer.exe</span>
+            <button class="dialog-close" id="dialogCloseBtn" type="button" aria-label="Close">×</button>
+          </div>
+          <div class="dialog-body">
+            <div class="dialog-error-row">
+              <div class="dialog-warn-icon"></div>
+              <div class="dialog-msg-block">
+                <h4 class="dialog-strong">explorer.exe has encountered a problem and needs to close. We are sorry for the inconvenience.</h4>
+                <p class="dialog-p">If you were in the middle of something, the information you were working on might be lost.</p>
+              </div>
+            </div>
+            <div class="dialog-report-desc">
+              <p>Please tell Microsoft about this problem.</p>
+              <p>We have created an error report that you can send to help us improve explorer.exe. We will treat this report as confidential and anonymous.</p>
+            </div>
+            <div class="dialog-buttons">
+              <button class="dialog-btn action" id="sendReportBtn" type="button">Send Error Report</button>
+              <button class="dialog-btn" id="dontSendBtn" type="button">Don't Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Taskbar at bottom -->
+      <div class="xp-taskbar">
+        <button class="xp-start" type="button">
+          <div class="green-flag">
+            <span class="flag-part r"></span>
+            <span class="flag-part g"></span>
+            <span class="flag-part b"></span>
+            <span class="flag-part y"></span>
+          </div>
+          <span class="start-text">start</span>
+        </button>
+        <div class="xp-taskbar-items">
+          <div class="xp-taskbar-item active">
+            <span class="tab-icon">⚙️</span>
+            <span class="tab-label">explorer.exe</span>
+          </div>
+        </div>
+        <div class="xp-system-tray">
+          <span class="tray-icon network"></span>
+          <span class="tray-icon volume"></span>
+          <span class="systray-clock" id="xpClock">12:00 PM</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blue Screen of Death Viewport -->
+    <div class="xp-bsod hidden" id="xpBsod">
+      <div class="bsod-font-container">
+        <p class="bsod-header-line">A problem has been detected and Windows has been shut down to prevent damage</p>
+        <p class="bsod-header-line">to your computer.</p>
+        
+        <p class="bsod-gap"></p>
+        <p class="bsod-error-code">UNEXPECTED_KERNEL_MODE_TRAP</p>
+        <p class="bsod-gap"></p>
+        
+        <p>If this is the first time you've seen this Stop error screen,</p>
+        <p>restart your computer. If this screen appears again, follow</p>
+        <p>these steps:</p>
+        
+        <p class="bsod-gap"></p>
+        <p>Check to make sure any new hardware or software is properly installed.</p>
+        <p>If this is a new installation, ask your hardware or software manufacturer</p>
+        <p>for any Windows updates you might need.</p>
+        
+        <p class="bsod-gap"></p>
+        <p>If problems continue, disable or remove any newly installed hardware</p>
+        <p>or software. Disable BIOS memory options such as caching or shadowing.</p>
+        <p>If you need to use Safe Mode to remove or disable components, restart</p>
+        <p>your computer, press F8 to select Advanced Startup Options, and then</p>
+        <p>select Safe Mode.</p>
+        
+        <p class="bsod-gap"></p>
+        <div class="bsod-tech-block">
+          <p>Technical information:</p>
+          <p class="tech-stop">*** STOP: 0x0000007F (0x00000008, 0x00000000, 0x00000000, 0x00000000)</p>
+          <p class="tech-file">*** Ntfs.sys - Address F8924C28 base at F891F000, DateStamp 3d6de182</p>
+        </div>
+        
+        <p class="bsod-gap"></p>
+        <div id="bsodDumpBlock">
+          <p>Beginning dump of physical memory...</p>
+          <p>Physical memory dump complete (<span id="bsodCounter">0</span>%).</p>
+          <p>Contact your system administrator or technical support group for further assistance.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick action controls panel -->
+    <div class="xp-controls">
+      <button class="ctrl-btn main" id="xpFsBtn" type="button">
+        ⛶ Fullscreen Prank
+      </button>
+      <button class="ctrl-btn" id="xpResetBtn" type="button">
+        ⎚ Reset Desktop
+      </button>
+
+      <div class="ctrl-item">
+        <label for="xpTriggerSelect">On Start:</label>
+        <select id="xpTriggerSelect">
+          <option value="cascade">Encounter Dialog -> Cascade -> BSOD</option>
+          <option value="instant">Instant BSOD</option>
+        </select>
+      </div>
+
+      <div class="ctrl-item">
+        <label for="xpDelay">BSOD Delay:</label>
+        <select id="xpDelay">
+          <option value="5">5 Seconds</option>
+          <option value="12" selected>12 Seconds</option>
+          <option value="20">20 Seconds</option>
+          <option value="30">30 Seconds</option>
+        </select>
+      </div>
+
+      <div class="ctrl-item">
+        <label for="xpAudio">Sound Alert:</label>
+        <select id="xpAudio">
+          <option value="on">XP Warning Bell</option>
+          <option value="mute">Muted</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  /* ──── Main XP Frame ──── */
+  .xp {
+    background: #000;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    position: relative;
+    width: 100%;
+    height: 480px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-sizing: border-box;
+    user-select: none;
+    outline: none;
+  }
+
+  .xp-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ──── XP Desktop Layout ──── */
+  .xp-desktop {
+    flex: 1;
+    position: relative;
+    background: #245edb;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Bliss Wallpaper Mock styling */
+  .bliss-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .bliss-sky {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, #0d71e8 0%, #68b1f8 55%, #bcdcfa 85%, #f4f8fe 100%);
+  }
+  .bliss-hill-rear {
+    position: absolute;
+    bottom: -60px;
+    left: -20%;
+    width: 80%;
+    height: 240px;
+    background: radial-gradient(circle at 50% 0%, #3e9819 0%, #1d5f0b 70%);
+    border-top-left-radius: 65% 100%;
+    border-top-right-radius: 65% 100%;
+    transform: rotate(-5deg);
+  }
+  .bliss-hill-front {
+    position: absolute;
+    bottom: -90px;
+    right: -20%;
+    width: 90%;
+    height: 280px;
+    background: radial-gradient(circle at 35% 0%, #58b61c 0%, #2f7e10 75%);
+    border-top-left-radius: 50% 100%;
+    border-top-right-radius: 70% 100%;
+    transform: rotate(3deg);
+  }
+  .bliss-sun {
+    position: absolute;
+    top: 30px;
+    right: 80px;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,248,190,0.5) 40%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+  }
+
+  /* Canvas trails */
+  .xp-trail-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Shortcut Icons */
+  .xp-icons {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 90px;
+  }
+  .xp-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+  }
+  .xp-icon-item .icon {
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    image-rendering: pixelated;
+    margin-bottom: 4px;
+  }
+
+  /* Mock XP Pixels Icons */
+  .xp-icon-item .icon.MyComputer {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='3' width='26' height='18' rx='2' fill='%2366a3ff' stroke='%23333' stroke-width='2'/%3E%3Crect x='6' y='6' width='20' height='12' fill='%23fff'/%3E%3Cpath d='M10 21l-3 6h18l-3-6z' fill='%23999' stroke='%23333' stroke-width='2'/%3E%3Crect x='10' y='27' width='12' height='2' fill='%23333'/%3E%3C/svg%3E");
+  }
+  .xp-icon-item .icon.RecycleBin {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='8' y='8' width='16' height='20' rx='1' fill='%23fff' stroke='%23333' stroke-width='2'/%3E%3Crect x='6' y='5' width='20' height='3' fill='%23ece9d8' stroke='%23333' stroke-width='2'/%3E%3Cpath d='M10 12l2 10h8l2-10z' fill='%2399ffaa'/%3E%3C/svg%3E");
+  }
+  .xp-icon-item .icon.InternetExplorer {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23ffcc00' stroke-width='3' transform='rotate(-25 16 16)'/%3E%3Ccircle cx='16' cy='16' r='8' fill='%232979ff'/%3E%3Cpath d='M9 16h14M16 9v14' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E");
+  }
+  .xp-icon-item .icon.MyDocuments {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4 6h8l3 4h13v16H4z' fill='%23ffe082' stroke='%23333' stroke-width='2'/%3E%3C/svg%3E");
+  }
+
+  .icon-label {
+    color: #fff;
+    font-size: 11px;
+    font-family: Tahoma, Arial, sans-serif;
+    text-shadow: 1px 1px 1px #000;
+  }
+
+  /* ──── XP Dialogue styling ──── */
+  .xp-dialog-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+  }
+  .xp-dialog {
+    position: absolute;
+    width: 380px;
+    background: #ece9d8;
+    border: 3px solid #0058e6;
+    border-top: none;
+    border-radius: 4px 4px 0 0;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    font-family: Tahoma, Arial, sans-serif;
+    color: #000;
+    z-index: 5;
+    pointer-events: auto;
+  }
+  .dialog-header {
+    height: 25px;
+    background: linear-gradient(to right, #0058e6 0%, #3a93ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6px 0 10px;
+    font-weight: bold;
+    font-size: 12px;
+    color: #fff;
+    cursor: move;
+  }
+  .dialog-title {
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+  }
+  .dialog-close {
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(to bottom, #ff5f56 0%, #cc3300 100%);
+    color: white;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 13px;
+    border: 1.5px solid #fff;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 1px 1px 1px rgba(255,255,255,0.4);
+  }
+  .dialog-close:hover {
+    filter: brightness(1.2);
+  }
+  .dialog-body {
+    padding: 12px;
+  }
+  .dialog-error-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .dialog-warn-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23cc3300' stroke='%23fff' stroke-width='2'/%3E%3Cpath d='M9 9l14 14M23 9L9 23' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .dialog-msg-block {
+    text-align: left;
+  }
+  .dialog-strong {
+    margin: 0 0 6px 0;
+    font-size: 11.5px;
+    font-weight: bold;
+    color: #000;
+    line-height: 1.3;
+  }
+  .dialog-p {
+    margin: 0;
+    font-size: 11px;
+    color: #444;
+  }
+  .dialog-report-desc {
+    text-align: left;
+    font-size: 11px;
+    border-top: 1.5px solid #d4d0c8;
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+  .dialog-report-desc p {
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+  .dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .dialog-btn {
+    min-width: 80px;
+    height: 22px;
+    font-family: inherit;
+    font-size: 11px;
+    background: #ece9d8;
+    border: 1px solid #003c9e;
+    border-radius: 3px;
+    color: #000;
+    cursor: pointer;
+    box-shadow: inset -1px -1px 1px rgba(0,0,0,0.1), inset 1px 1px 1px rgba(255,255,255,0.7);
+  }
+  .dialog-btn.action {
+    min-width: 120px;
+  }
+  .dialog-btn:hover {
+    background: #f1efe2;
+    border-color: #002e7a;
+  }
+  .dialog-btn:active {
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+    padding: 1px 0 0 1px;
+  }
+
+  /* ──── XP Taskbar ──── */
+  .xp-taskbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(to bottom, #245edb 0%, #3f8cf3 9%, #245edb 18%, #1b49b8 87%, #1b49b8 100%);
+    border-top: 1px solid #1a3b8b;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .xp-start {
+    height: 100%;
+    padding: 0 12px 0 8px;
+    background: linear-gradient(to bottom, #388e3c 0%, #4caf50 50%, #2e7d32 100%);
+    border: none;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3), inset 1px 1px 1px rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .xp-start:hover {
+    filter: brightness(1.15);
+  }
+  .start-text {
+    color: #fff;
+    font-family: "Lucida Calligraphy", "Palatino Linotype", serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 14.5px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+  }
+
+  /* Green start button wave logo */
+  .green-flag {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    transform: rotate(5deg);
+  }
+  .flag-part {
+    width: 5px;
+    height: 5px;
+    border-radius: 1px;
+    display: inline-block;
+  }
+  .flag-part.r { background: #ff3300; }
+  .flag-part.g { background: #4caf50; }
+  .flag-part.b { background: #2979ff; }
+  .flag-part.y { background: #ffcc00; }
+
+  .xp-taskbar-items {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+  }
+  .xp-taskbar-item {
+    background: #3c7ce7;
+    border: 1px solid #1a3b8b;
+    border-radius: 3px;
+    height: 22px;
+    max-width: 140px;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    font-size: 11px;
+    font-family: Tahoma, Arial, sans-serif;
+    cursor: pointer;
+    box-shadow: inset 1px 1px 1px rgba(255,255,255,0.2);
+  }
+  .xp-taskbar-item.active {
+    background: #1e52c4;
+    box-shadow: inset -1px -1px 1px rgba(255,255,255,0.1), inset 1px 1px 2px rgba(0,0,0,0.3);
+  }
+  .tab-icon {
+    font-size: 9px;
+  }
+
+  .xp-system-tray {
+    width: 85px;
+    height: 100%;
+    background: #0f59d5;
+    border-left: 1px solid #0a3a9b;
+    box-shadow: inset 2px 0 2px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 8px;
+    font-family: inherit;
+  }
+  .systray-clock {
+    color: #fff;
+    font-size: 11px;
+    font-family: Tahoma, Arial, sans-serif;
+  }
+
+  /* ──── XP BSOD Technical Screen ──── */
+  .xp-bsod {
+    flex: 1;
+    background: #000082 !important; /* Flat exact XP blue */
+    color: #ffffff !important;
+    text-align: left;
+    padding: 40px 30px;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    font-size: 12.5px;
+    line-height: 1.45;
+    overflow-y: auto;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .bsod-font-container {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .bsod-header-line {
+    color: #ffffff;
+    display: block;
+    font-weight: bold;
+  }
+  .bsod-error-code {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .bsod-gap {
+    height: 18px;
+  }
+  .bsod-tech-block {
+    border-top: 1.5px solid #fff;
+    border-bottom: 1.5px solid #fff;
+    padding: 10px 0;
+    margin: 15px 0;
+  }
+  .tech-stop {
+    font-weight: bold;
+    margin: 4px 0;
+  }
+
+  /* ──── Controls panel ──── */
+  .xp-controls {
+    background: #111116;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 10px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+  .xp .ctrl-btn {
+    background: #24283b;
+    color: #c0caf5;
+    border: 1px solid #383e56;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .xp .ctrl-btn:hover {
+    background: #2f354e;
+    color: #fff;
+  }
+  .xp .ctrl-btn.main {
+    background: #2e7d32;
+    color: #fff;
+    border-color: #1b5e20;
+  }
+  .xp .ctrl-btn.main:hover {
+    background: #1b5e20;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+  }
+
+  .xp .ctrl-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: #787c99;
+  }
+  .xp .ctrl-item select {
+    background: #24283b;
+    color: #c0caf5;
+    border: 1px solid #383e56;
+    border-radius: 4px;
+    padding: 3px 6px;
+    font-size: 11px;
+    outline: none;
+  }
+
+  /* ──── Fullscreen Mode overrides ──── */
+  .xp.is-fullscreen {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 99999 !important;
+    border-radius: 0 !important;
+  }
+  .xp.is-fullscreen .xp-desktop {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 32 32'%3E%3Cpath d='M2 2l12 18-3 1.5 5 8-3.5 2-5-8.5-3 3z' fill='%23fff' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E"), auto;
+  }
+  .xp.is-fullscreen .xp-controls {
+    display: none !important;
+  }
+
+  /* Hide default items */
+  .hidden {
+    display: none !important;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const root = document.getElementById("xp");
+    if (!root) return;
+
+    const desktop = document.getElementById("xpDesktop");
+    const canvas = document.getElementById("xpCanvas");
+    const dialogLayer = document.getElementById("xpDialogLayer");
+    const baseDialog = document.getElementById("xpBaseDialog");
+    const closeBtn = document.getElementById("dialogCloseBtn");
+    const sendBtn = document.getElementById("sendReportBtn");
+    const dontSendBtn = document.getElementById("dontSendBtn");
+    const clock = document.getElementById("xpClock");
+    
+    // BSOD elements
+    const bsod = document.getElementById("xpBsod");
+    const bsodCounter = document.getElementById("bsodCounter");
+
+    // Controls Panel
+    const fsBtn = document.getElementById("xpFsBtn");
+    const resetBtn = document.getElementById("xpResetBtn");
+    const triggerSelect = document.getElementById("xpTriggerSelect");
+    const delaySelect = document.getElementById("xpDelay");
+    const audioSelect = document.getElementById("xpAudio");
+
+    // Simulation State
+    let isDragging = false;
+    let dragOffset = { x: 0, y: 0 };
+    let activeDialog = baseDialog;
+    let crashTimer = null;
+    let crashDelay = 12 * 1000; // default 12s
+    let hasCrashed = false;
+    let windowCounter = 1;
+    let triggerMode = "cascade";
+    let soundSetting = "on";
+    
+    // Audio synthesis context
+    let audioCtx = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    // Windows XP Bell alarm warning chord synthesizer
+    function playWarningChime() {
+      if (soundSetting !== "on") return;
+      initAudio();
+      if (!audioCtx) return;
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      
+      const now = audioCtx.currentTime;
+      // XP warning chime consists of C5 + E5 + G5 with clean sine/triangle shape
+      const freqs = [523.25, 659.25, 783.99, 1046.5]; // C5, E5, G5, C6
+      freqs.forEach((freq, idx) => {
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        
+        osc.type = idx % 2 === 0 ? "sine" : "triangle";
+        osc.frequency.setValueAtTime(freq, now);
+        
+        gainNode.gain.setValueAtTime(0, now);
+        gainNode.gain.linearRampToValueAtTime(0.06 / freqs.length, now + 0.01);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, now + 0.6);
+        
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        
+        osc.start(now);
+        osc.stop(now + 0.65);
+      });
+    }
+
+    // Update Windows XP Taskbar clock dynamically
+    function updateClock() {
+      const now = new Date();
+      let hours = now.getHours();
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+      const ampm = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12;
+      hours = hours ? hours : 12; // hour '0' should be '12'
+      if (clock) clock.textContent = `${hours}:${minutes} ${ampm}`;
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
+
+    // Setup canvas dimension sizes
+    function resizeCanvas() {
+      if (!canvas || !desktop) return;
+      const rect = desktop.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+    }
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    // Draw dialog frame directly into trail canvas (repainting trail glitch simulation)
+    function drawDialogTrail(x, y) {
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      const w = 380;
+      const h = 188; // Approximate height of the error dialog
+
+      // Grey dialogue shell
+      ctx.fillStyle = "#ece9d8";
+      ctx.fillRect(x, y, w, h);
+
+      // Dialog box outer borders
+      ctx.strokeStyle = "#0058e6";
+      ctx.lineWidth = 3;
+      ctx.strokeRect(x + 1.5, y + 1.5, w - 3, h - 3);
+
+      // Blue dialog title bar
+      const grad = ctx.createLinearGradient(x, y, x + w, y);
+      grad.addColorStop(0, "#0058e6");
+      grad.addColorStop(1, "#3a93ff");
+      ctx.fillStyle = grad;
+      ctx.fillRect(x + 3, y + 3, w - 6, 22);
+
+      // White title text
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 11px Tahoma, Arial, sans-serif";
+      ctx.fillText("explorer.exe", x + 10, y + 18);
+
+      // Red close box mock graphic
+      ctx.fillStyle = "#cc3300";
+      ctx.fillRect(x + w - 21, y + 6, 15, 14);
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 9px Tahoma, Arial, sans-serif";
+      ctx.fillText("×", x + w - 16, y + 15);
+
+      // Warning circle icon
+      ctx.fillStyle = "#cc3300";
+      ctx.beginPath();
+      ctx.arc(x + 28, y + 50, 14, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(x + 23, y + 45);
+      ctx.lineTo(x + 33, y + 55);
+      ctx.moveTo(x + 33, y + 45);
+      ctx.lineTo(x + 23, y + 55);
+      ctx.stroke();
+
+      // Mock lines for message content text
+      ctx.fillStyle = "#000000";
+      ctx.font = "bold 11px Tahoma, Arial, sans-serif";
+      ctx.fillText("explorer.exe has encountered a problem and needs to close.", x + 50, y + 45);
+      
+      ctx.fillStyle = "#333333";
+      ctx.font = "9.5px Tahoma, Arial, sans-serif";
+      ctx.fillText("If you were in the middle of something, the information you were working", x + 50, y + 62);
+      ctx.fillText("on might be lost.", x + 50, y + 74);
+
+      // Mock button squares
+      ctx.fillStyle = "#ece9d8";
+      ctx.strokeStyle = "#003c9e";
+      ctx.lineWidth = 1;
+
+      // Button 1: Send Report
+      ctx.fillRect(x + 130, y + 150, 120, 20);
+      ctx.strokeRect(x + 130, y + 150, 120, 20);
+      ctx.fillStyle = "#000000";
+      ctx.fillText("Send Error Report", x + 145, y + 163);
+
+      // Button 2: Don't Send
+      ctx.fillStyle = "#ece9d8";
+      ctx.fillRect(x + 270, y + 150, 80, 20);
+      ctx.strokeRect(x + 270, y + 150, 80, 20);
+      ctx.fillStyle = "#000000";
+      ctx.fillText("Don't Send", x + 288, y + 163);
+    }
+
+    // Handle Dragging Events on the dialogue boxes
+    function setupDrag(element) {
+      const header = element.querySelector(".dialog-header");
+      if (!header) return;
+
+      header.addEventListener("mousedown", function(e) {
+        if (hasCrashed) return;
+        isDragging = true;
+        activeDialog = element;
+        
+        // Push active window to top stack
+        dialogLayer.appendChild(element);
+
+        const rect = element.getBoundingClientRect();
+        const parentRect = desktop.getBoundingClientRect();
+        
+        dragOffset.x = e.clientX - rect.left;
+        dragOffset.y = e.clientY - rect.top;
+        
+        e.preventDefault();
+      });
+    }
+
+    document.addEventListener("mousemove", function(e) {
+      if (!isDragging || !activeDialog || hasCrashed) return;
+
+      const parentRect = desktop.getBoundingClientRect();
+      let left = e.clientX - parentRect.left - dragOffset.x;
+      let top = e.clientY - parentRect.top - dragOffset.y;
+
+      activeDialog.style.left = `${left}px`;
+      activeDialog.style.top = `${top}px`;
+
+      // Draw the pixel trail on overlay canvas
+      drawDialogTrail(left, top);
+    });
+
+    document.addEventListener("mouseup", function() {
+      isDragging = false;
+    });
+
+    // Setup base window dragging
+    setupDrag(baseDialog);
+
+    // Dynamic warning dialog box spawner
+    function spawnErrorDialog() {
+      if (hasCrashed) return;
+      playWarningChime();
+
+      const newDlg = baseDialog.cloneNode(true);
+      newDlg.id = `xpDialog-${windowCounter++}`;
+      
+      // Calculate random viewport offset offsets
+      const parentRect = desktop.getBoundingClientRect();
+      const maxW = Math.max(50, parentRect.width - 400);
+      const maxH = Math.max(50, parentRect.height - 240);
+      
+      const left = Math.floor(Math.random() * maxW);
+      const top = Math.floor(Math.random() * maxH);
+      
+      newDlg.style.left = `${left}px`;
+      newDlg.style.top = `${top}px`;
+      
+      // Setup dynamic event bindings
+      setupDrag(newDlg);
+      
+      // Alert button bindings to spawn even more dialogs
+      const localClose = newDlg.querySelector(".dialog-close");
+      const localSend = newDlg.querySelector("#sendReportBtn");
+      const localDont = newDlg.querySelector("#dontSendBtn");
+
+      const nestedTrigger = () => {
+        spawnErrorDialog();
+        setTimeout(spawnErrorDialog, 150);
+      };
+      
+      if (localClose) localClose.addEventListener("click", nestedTrigger);
+      if (localSend) localSend.addEventListener("click", nestedTrigger);
+      if (localDont) localDont.addEventListener("click", nestedTrigger);
+
+      dialogLayer.appendChild(newDlg);
+    }
+
+    // Standard buttons trigger cascade loops
+    [closeBtn, sendBtn, dontSendBtn].forEach(btn => {
+      if (btn) {
+        btn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          spawnErrorDialog();
+          spawnErrorDialog();
+          
+          // Triggers timer if not already running
+          if (!crashTimer && triggerMode === "cascade") {
+            startCrashTimer();
+          }
+        });
+      }
+    });
+
+    // Clicking anywhere on desktop in cascade mode spawns dialogues
+    desktop.addEventListener("click", function(e) {
+      if (hasCrashed) return;
+      if (e.target.closest(".xp-controls") || e.target.closest(".xp-dialog")) return;
+      
+      if (triggerMode === "cascade") {
+        spawnErrorDialog();
+        if (!crashTimer) startCrashTimer();
+      }
+    });
+
+    // Launch timed countdown transition to BSOD
+    function startCrashTimer() {
+      if (crashTimer) clearTimeout(crashTimer);
+      
+      crashTimer = setTimeout(function() {
+        triggerBlueScreen();
+      }, crashDelay);
+    }
+
+    // Trigger Windows XP BSoD blue screen sequence
+    function triggerBlueScreen() {
+      hasCrashed = true;
+      if (crashTimer) clearTimeout(crashTimer);
+      
+      // Play warning sound before black screen transition
+      playWarningChime();
+      
+      desktop.classList.add("hidden");
+      bsod.classList.remove("hidden");
+      
+      // Fast memory dump loader
+      let pct = 0;
+      bsodCounter.textContent = "0";
+
+      const dumpInterval = setInterval(function() {
+        if (!hasCrashed) {
+          clearInterval(dumpInterval);
+          return;
+        }
+
+        pct += Math.floor(Math.random() * 8) + 2;
+        if (pct >= 100) {
+          pct = 100;
+          clearInterval(dumpInterval);
+        }
+        bsodCounter.textContent = String(pct);
+      }, 250);
+    }
+
+    // Reset Simulation
+    function resetSimulation() {
+      hasCrashed = false;
+      isDragging = false;
+      if (crashTimer) clearTimeout(crashTimer);
+      crashTimer = null;
+
+      // Clear Canvas
+      if (canvas) {
+        const ctx = canvas.getContext("2d");
+        if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+
+      // Remove spawned dialogs
+      const list = dialogLayer.querySelectorAll(".xp-dialog");
+      list.forEach(dlg => {
+        if (dlg.id !== "xpBaseDialog") {
+          dlg.remove();
+        }
+      });
+
+      // Reset base dialog
+      baseDialog.style.left = "100px";
+      baseDialog.style.top = "80px";
+      baseDialog.classList.remove("hidden");
+
+      bsod.classList.add("hidden");
+      desktop.classList.remove("hidden");
+      resizeCanvas();
+    }
+
+    // Controls binders
+    if (resetBtn) resetBtn.addEventListener("click", resetSimulation);
+
+    if (triggerSelect) {
+      triggerSelect.addEventListener("change", function(e) {
+        triggerMode = e.target.value;
+        if (triggerMode === "instant" && document.fullscreenElement === root) {
+          triggerBlueScreen();
+        }
+      });
+    }
+
+    if (delaySelect) {
+      delaySelect.addEventListener("change", function(e) {
+        crashDelay = Number(e.target.value) * 1000;
+      });
+    }
+
+    if (audioSelect) {
+      audioSelect.addEventListener("change", function(e) {
+        soundSetting = e.target.value;
+      });
+    }
+
+    // Fullscreen binders
+    function goFS() {
+      if (!document.fullscreenElement) {
+        root.requestFullscreen().then(() => {
+          if (triggerMode === "instant") {
+            triggerBlueScreen();
+          } else {
+            playWarningChime();
+          }
+        }).catch(() => {});
+      }
+    }
+    
+    function exitFS() {
+      if (document.fullscreenElement === root) {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    if (fsBtn) fsBtn.addEventListener("click", goFS);
+
+    document.addEventListener("fullscreenchange", function() {
+      const isFS = document.fullscreenElement === root;
+      root.classList.toggle("is-fullscreen", isFS);
+      
+      if (!isFS) {
+        resetSimulation();
+      } else {
+        setTimeout(resizeCanvas, 150);
+      }
+    });
+
+    // Keyboard controls fullscreen trigger
+    document.addEventListener("keydown", function(e) {
+      const key = e.key.toLowerCase();
+      if (document.fullscreenElement === root) {
+        if (key === "escape") {
+          exitFS();
+        } else if (key === "f") {
+          e.preventDefault();
+        } else {
+          // Play sounds or spawn errors if not fully crashed
+          if (!hasCrashed && triggerMode === "cascade") {
+            spawnErrorDialog();
+          }
+        }
+      } else {
+        if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement || e.target instanceof HTMLTextAreaElement) return;
+        if (key === "f") {
+          e.preventDefault();
+          goFS();
+        }
+      }
+    });
+  })();
+</script>

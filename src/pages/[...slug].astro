@@ -14,6 +14,7 @@ import ToolArticle from '../components/ToolArticle.astro';
 import RadarScreen from '../components/RadarScreen.astro';
 import FakeVirusScreen from '../components/FakeVirusScreen.astro';
 import WhiteNoiseScreen from '../components/WhiteNoiseScreen.astro';
+import WindowsXpCrash from '../components/WindowsXpCrash.astro';
 import { localeOrder, locales, type Locale } from '../data/locales';
 import { getRelatedTools, tools, type Tool } from '../data/tools';
 import { t, toolName, toolSummary } from '../data/translations';
@@ -107,6 +108,8 @@ const props = Astro.props as PageProps;
           <FakeVirusScreen tool={props.tool} locale={props.locale} />
         ) : props.tool.slug === 'white-noise-screen' ? (
           <WhiteNoiseScreen tool={props.tool} locale={props.locale} />
+        ) : props.tool.slug === 'windows-xp-crash' ? (
+          <WindowsXpCrash tool={props.tool} locale={props.locale} />
         ) : (
           <ScreenTool tool={props.tool} locale={props.locale} />
         )}
@@ -132,12 +135,12 @@ const props = Astro.props as PageProps;
             </>
           ) : props.tool.slug === 'hacker-typer' ? (
             <>
-              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Space</kbd> Pause / Resume</p>
-              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">R</kbd> Restart Session</p>
-              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">C</kbd> Clear Terminal</p>
-              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">S</kbd> Toggle Sound</p>
-              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">T</kbd> Change Theme</p>
-              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">A</kbd> Auto Type</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> Fullscreen</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">1-3</kbd> Switch File Tabs</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">S</kbd> Toggle Key Switch Audio</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">A</kbd> Toggle Auto-Pilot</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Tab/Enter</kbd> Run Exploit Console</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
             </>
           ) : props.tool.slug === 'windows-update' ? (
             <>
@@ -185,6 +188,13 @@ const props = Astro.props as PageProps;
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">S</kbd> Toggle Static Sound</p>
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">&uarr;&darr;</kbd> Adjust Volume</p>
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
+            </>
+          ) : props.tool.slug === 'windows-xp-crash' ? (
+            <>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> Fullscreen / Active Prank</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Click</kbd> Spawn More Error Dialogs</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Drag Header</kbd> Infinite Drag Cascade Glitch</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Reset & Exit Fullscreen</p>
             </>
           ) : (
             <>

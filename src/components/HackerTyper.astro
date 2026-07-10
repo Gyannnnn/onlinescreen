@@ -2,291 +2,1152 @@
 import type { Tool } from '../data/tools';
 import { type Locale } from '../data/locales';
 import { t } from '../data/translations';
-import { hackerCodes } from '../data/hacker-codes';
 
 type Props = { tool: Tool; locale: Locale };
 const { tool, locale } = Astro.props;
-const themes = ['CLASSIC GREEN', 'AMBER', 'CLASSIC WHITE', 'CYAN DREAM'];
 ---
 
-<section class="rounded-lg border border-hairline bg-canvas shadow-soft" aria-label="Hacker Typer Terminal">
-  <div class="overflow-hidden rounded-md border border-hairline" data-hacker-terminal>
-    <div class="overflow-auto bg-[#0a0a0f] text-[#00ff41] p-4" style="max-height:560px; height:420px" data-ht-output>
-      <pre class="font-mono text-sm leading-relaxed" data-ht-content>
-        <span id="typer"></span><span id="cursor">|</span>
-        <div id="bottom_padding"></div>
-      </pre>
+<div class="ht" id="ht" data-hacker-terminal aria-label="Hacker Typer Terminal">
+  <!-- Code Editor Window Frame -->
+  <div class="ht-window">
+    <!-- Window Titlebar -->
+    <div class="ht-head">
+      <div class="ht-dots">
+        <span class="ht-dot red"></span>
+        <span class="ht-dot yellow"></span>
+        <span class="ht-dot green"></span>
+      </div>
+      <div class="ht-title">exploit-node — bash — 120×43</div>
     </div>
-    <div class="border-t border-white/10 bg-black/80 px-4 py-2" data-ht-controls>
-      <div class="flex flex-wrap items-center gap-2">
-        <div class="flex items-center gap-1">
-          <button class="inline-flex h-7 items-center gap-1 rounded bg-[#00ff41]/15 px-2.5 text-xs font-medium text-[#00ff41] hover:bg-[#00ff41]/25 transition-colors" type="button" data-ht-fullscreen>
-            <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/></svg>
-            Fullscreen
-          </button>
-          <button class="inline-flex h-7 items-center gap-1 rounded px-2.5 text-xs font-medium text-white/50 hover:bg-white/10 hover:text-white/80 transition-colors" type="button" data-ht-clear>
-            <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" x2="15" y1="20" y2="20"/><line x1="12" x2="12" y1="4" y2="20"/></svg>
-            Clear
-          </button>
-          <button class="inline-flex h-7 items-center gap-1 rounded px-2.5 text-xs font-medium text-white/50 hover:bg-white/10 hover:text-white/80 transition-colors" type="button" data-ht-pause>
-            <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-            <span data-ht-pause-label>Pause</span>
-          </button>
-          <button class="inline-flex h-7 items-center gap-1 rounded px-2.5 text-xs font-medium text-white/50 hover:bg-white/10 hover:text-white/80 transition-colors" type="button" data-ht-restart>
-            <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-            Restart
-          </button>
+
+    <!-- IDE Sidebar + File Tree + Editor Pane Grid -->
+    <div class="ht-body">
+      <!-- Mini Side Icon Bar -->
+      <div class="ht-sidebar-icons">
+        <div class="ht-icon active" title="Explorer">📂</div>
+        <div class="ht-icon" title="Search">🔍</div>
+        <div class="ht-icon" title="Source Control">🌿</div>
+        <div class="ht-icon" title="Extensions">🧩</div>
+        <div class="ht-icon" style="margin-top: auto;" title="Settings">⚙️</div>
+      </div>
+
+      <!-- File tree panel -->
+      <div class="ht-file-tree" id="htFileTree">
+        <div class="tree-header">WORKSPACE</div>
+        <div class="tree-root">📁 exploit-kit</div>
+        <div class="tree-file active" data-file-key="exploit">
+          <span>📄</span> cve_exploit.c
         </div>
-        <div class="flex items-center gap-2 ml-auto">
-          <span class="text-xs text-white/30 whitespace-nowrap">Speed</span>
-          <input class="h-4 w-20 accent-[#00ff41]" type="range" min="1" max="10" value="5" data-ht-speed aria-label="Typing speed" />
-          <button class="grid size-7 place-items-center rounded text-white/40 hover:bg-white/10 hover:text-white/80 transition-colors" type="button" data-ht-auto aria-label="Auto type">
-            <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </button>
-          <button class="grid size-7 place-items-center rounded text-white/40 hover:bg-white/10 hover:text-white/80 transition-colors" type="button" data-ht-sound aria-label="Toggle sound">
-            <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-          </button>
-          <button class="grid size-7 place-items-center rounded text-white/40 hover:bg-white/10 hover:text-white/80 transition-colors" type="button" data-ht-theme aria-label="Change theme">
-            <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          </button>
+        <div class="tree-file" data-file-key="sniffer">
+          <span>📄</span> sniffer.py
+        </div>
+        <div class="tree-file" data-file-key="cracker">
+          <span>📄</span> brute_force.go
+        </div>
+      </div>
+
+      <!-- Main Editor view -->
+      <div class="ht-editor">
+        <!-- Editor view Tab bar -->
+        <div class="ht-tab-bar" id="htTabBar">
+          <div class="ht-tab active" data-file-key="exploit">cve_exploit.c <span class="tab-close">×</span></div>
+          <div class="ht-tab" data-file-key="sniffer">sniffer.py <span class="tab-close">×</span></div>
+          <div class="ht-tab" data-file-key="cracker">brute_force.go <span class="tab-close">×</span></div>
+        </div>
+
+        <!-- Scrollable editor pane -->
+        <div class="ht-code-view" id="htCodeView">
+          <div class="ht-line-numbers" id="htLineNumbers">
+            <div>1</div>
+          </div>
+          <div class="ht-editor-content">
+            <pre class="ht-pre"><code id="htCodeArea"></code><span class="ht-cursor" id="htCursor">_</span></pre>
+          </div>
+        </div>
+
+        <!-- Terminal Exploit Action Overlay (Hidden by default, triggered on completion/button) -->
+        <div class="ht-exploit-overlay hidden" id="htExploitOverlay">
+          <div class="overlay-title">SYSTEM PRIVILEGE TERMINAL OVERFLOW</div>
+          <div class="overlay-logs" id="htExploitLogs"></div>
+          <div class="overlay-actions">
+            <button class="overlay-btn red" id="htOverlayCloseBtn" type="button">DISMISS CONSOLE</button>
+          </div>
+        </div>
+
+        <!-- Editor Status bar -->
+        <div class="ht-status-bar">
+          <div class="status-left">
+            <span class="badge">admin@node-x1</span>
+            <span class="branch">⎇ main*</span>
+          </div>
+          <div class="status-right">
+            <span>Spaces: 4</span>
+            <span>UTF-8</span>
+            <span>C/C++</span>
+            <span id="htCursorPos">Ln 1, Col 1</span>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Quick action controls panel -->
+    <div class="ht-controls">
+      <button class="ctrl-btn main" id="htFsBtn" type="button">
+        ⛶ Fullscreen
+      </button>
+      <button class="ctrl-btn" id="htClearBtn" type="button">
+        ⎚ Reset Area
+      </button>
+      <button class="ctrl-btn" id="htAutoBtn" type="button">
+        ▶ Auto-Pilot
+      </button>
+      <button class="ctrl-btn red-glow" id="htExploitTriggerBtn" type="button">
+        ⚡ Run Exploit
+      </button>
+
+      <div class="ctrl-item">
+        <label for="htStyleSelect">MX Switch:</label>
+        <select id="htStyleSelect">
+          <option value="blue">Blue Switch (Clicky)</option>
+          <option value="brown">Brown Switch (Tactile)</option>
+          <option value="typewriter">Typewriter (Metallic)</option>
+          <option value="mute">Muted</option>
+        </select>
+      </div>
+
+      <div class="ctrl-item">
+        <label for="htThemeSelect">Theme:</label>
+        <select id="htThemeSelect">
+          <option value="dark">VS Code Dark</option>
+          <option value="monokai">Monokai Retro</option>
+          <option value="amber">Amber Terminal</option>
+          <option value="matrix">Matrix Green</option>
+        </select>
+      </div>
+
+      <div class="ctrl-item">
+        <label for="htSpeed">Speed:</label>
+        <input type="range" id="htSpeed" min="1" max="15" value="6" class="speed-range" aria-label="Typing speed" />
+      </div>
+    </div>
   </div>
-</section>
+</div>
 
-<style is:global>@keyframes ht-blink{0%,100%{opacity:1}50%{opacity:0}}#cursor{animation:ht-blink 1s step-end infinite}</style>
-
-<script define:vars={{ codes: hackerCodes }} is:inline>
-const source = codes.join('\n');
-let charIndex = 0;
-
-function resetAD() {
-  const term = document.querySelector('[data-hacker-terminal]');
-  if (!term) return;
-  const typer = document.getElementById('typer');
-  if (typer) typer.innerHTML = '';
-  charIndex = 0;
-  const output = term.querySelector('[data-ht-output]');
-  if (output) output.scrollTop = 0;
-  if (window.__htState) {
-    window.__htState.idx = 0;
-    window.__htState.paused = false;
-    window.__htState.auto = false;
+<style is:global>
+  /* Base Container Grid/Style */
+  .ht {
+    background: #181824;
+    color: #a9b1d6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    position: relative;
+    width: 100%;
+    height: 480px;
+    border-radius: 8px;
+    overflow: hidden;
+    outline: none;
+    box-sizing: border-box;
   }
+
+  .ht-window {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  /* Linux/Mac Window Header bar */
+  .ht-head {
+    height: 38px;
+    background: #1a1b26;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border-bottom: 1px solid #10101a;
+    cursor: default;
+    user-select: none;
+  }
+  .ht-dots {
+    display: flex;
+    gap: 8px;
+  }
+  .ht-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .ht-dot.red { background: #ff5f56; }
+  .ht-dot.yellow { background: #ffbd2e; }
+  .ht-dot.green { background: #27c93f; }
+  .ht-title {
+    font-family: monospace;
+    font-size: 12px;
+    color: #787c99;
+    flex: 1;
+    text-align: center;
+    margin-right: 36px;
+  }
+
+  .ht-body {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    background: #1a1b26;
+  }
+
+  /* IDE Left Mini-sidebar */
+  .ht-sidebar-icons {
+    width: 48px;
+    background: #16161e;
+    border-right: 1px solid #24283b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    gap: 18px;
+  }
+  .ht-icon {
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.45;
+    transition: opacity 0.15s;
+    user-select: none;
+  }
+  .ht-icon.active, .ht-icon:hover {
+    opacity: 0.95;
+  }
+
+  /* IDE File tree explorer panel */
+  .ht-file-tree {
+    width: 156px;
+    background: #1e1e2e;
+    border-right: 1px solid #24283b;
+    padding: 12px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 12px;
+    color: #a9b1d6;
+    user-select: none;
+  }
+  .ht .tree-header {
+    font-size: 9px;
+    font-weight: bold;
+    color: #565f89;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    padding-left: 6px;
+  }
+  .ht .tree-root {
+    font-weight: 600;
+    padding-left: 4px;
+    margin-bottom: 4px;
+  }
+  .ht .tree-file {
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ht .tree-file:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .ht .tree-file.active {
+    background: rgba(41, 121, 255, 0.15);
+    color: #4196ff;
+  }
+
+  .ht-editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Tabs Navigation list */
+  .ht-tab-bar {
+    height: 35px;
+    background: #16161f;
+    display: flex;
+    border-bottom: 1px solid #24283b;
+    overflow-x: auto;
+    user-select: none;
+  }
+  .ht-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px;
+    font-size: 12px;
+    color: #787c99;
+    border-right: 1px solid #1f2335;
+    background: #1a1b26;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .ht-tab.active {
+    background: #1e1e2e;
+    color: #a9b1d6;
+    border-bottom: 2px solid #3d59a1;
+  }
+  .ht .tab-close {
+    font-size: 11px;
+    opacity: 0.5;
+  }
+  .ht .tab-close:hover {
+    opacity: 1;
+  }
+
+  /* Scrolling code workspace area */
+  .ht-code-view {
+    flex: 1;
+    display: flex;
+    font-family: inherit;
+    overflow: auto;
+    background: #1e1e2e;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .ht-line-numbers {
+    width: 32px;
+    text-align: right;
+    padding: 16px 8px 16px 0;
+    color: #565f89;
+    font-family: Menlo, Monaco, Consolas, "Fira Code", monospace;
+    font-size: 11px;
+    border-right: 1px solid rgba(255, 255, 255, 0.04);
+    user-select: none;
+  }
+
+  .ht-editor-content {
+    flex: 1;
+    padding: 16px 12px;
+  }
+
+  .ht-pre {
+    margin: 0;
+    font-family: Menlo, Monaco, Consolas, "Fira Code", monospace;
+    white-space: pre-wrap;
+    word-break: break-all;
+    text-align: left;
+    color: #9ece6a; /* Default light green */
+  }
+
+  /* Styled Cursor effect */
+  .ht-cursor {
+    color: #2ac3de;
+    animation: ht-blink 0.9s step-end infinite;
+    font-weight: bold;
+    display: inline-block;
+    width: 6px;
+  }
+
+  @keyframes ht-blink {
+    50% { opacity: 0; }
+  }
+
+  /* Console privilege output overlay */
+  .ht-exploit-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    text-align: left;
+    font-family: monospace;
+    font-size: 12px;
+    color: #2ac3de;
+  }
+  .ht-exploit-overlay.hidden {
+    display: none !important;
+  }
+
+  .ht .overlay-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #f7768e;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .ht .overlay-logs {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    line-height: 1.4;
+    color: rgb(0, 240, 0);
+  }
+
+  .ht .overlay-actions {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .ht .overlay-btn {
+    border-radius: 4px;
+    padding: 6px 16px;
+    font-size: 11px;
+    font-family: monospace;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+  }
+  .ht .overlay-btn.red {
+    background: #ff5f56;
+    color: #fff;
+  }
+
+  /* Workspace Status Bar */
+  .ht-status-bar {
+    height: 24px;
+    background: #16161f;
+    border-top: 1px solid #24283b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 11px;
+    color: #565f89;
+    user-select: none;
+  }
+  .ht .status-left, .ht .status-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .ht .badge {
+    background: #24283b;
+    color: #a9b1d6;
+    padding: 1px 6px;
+    border-radius: 2px;
+  }
+  .ht .branch {
+    color: #2ac3de;
+  }
+
+  /* Control buttons in base panel */
+  .ht-controls {
+    background: #111116;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 10px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    user-select: none;
+  }
+  .ht .ctrl-btn {
+    background: #24283b;
+    color: #c0caf5;
+    border: 1px solid #383e56;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .ht .ctrl-btn:hover {
+    background: #2f354e;
+    color: #fff;
+  }
+  .ht .ctrl-btn.main {
+    background: #4196ff;
+    color: #fff;
+    border-color: #2979ff;
+  }
+  .ht .ctrl-btn.main:hover {
+    background: #1e71ff;
+  }
+  .ht .ctrl-btn.red-glow {
+    background: #ff5f56;
+    color: #fff;
+    border-color: #e04c44;
+  }
+  .ht .ctrl-btn.red-glow:hover {
+    background: #e04c44;
+    box-shadow: 0 0 12px rgba(255, 95, 86, 0.45);
+  }
+
+  .ht .ctrl-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: #787c99;
+  }
+  .ht .ctrl-item select {
+    background: #24283b;
+    color: #c0caf5;
+    border: 1px solid #383e56;
+    border-radius: 4px;
+    padding: 3px 6px;
+    font-size: 11px;
+    outline: none;
+  }
+  .ht .speed-range {
+    width: 70px;
+    accent-color: #2ac3de;
+    height: 4px;
+  }
+
+  /* Fullscreen overrides */
+  .ht.is-fullscreen {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 99999 !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  .ht.is-fullscreen .ht-window {
+    border-radius: 0 !important;
+  }
+  .ht.is-fullscreen .ht-status-bar {
+    height: 28px;
+    font-size: 12px;
+  }
+  .ht.is-fullscreen .ht-controls {
+    display: none !important;
+  }
+
+  /* Themes overrides */
+  .ht.theme-monokai .ht-pre { color: #a6e22e; }
+  .ht.theme-monokai .ht-cursor { color: #f92672; }
+  .ht.theme-monokai .ht-code-view { background: #272822; }
+  .ht.theme-monokai .ht-line-numbers { color: #75715e; }
+
+  .ht.theme-amber .ht-pre { color: #ffb000; }
+  .ht.theme-amber .ht-cursor { color: #ffb000; }
+  .ht.theme-amber .ht-code-view { background: #120b00; }
+  .ht.theme-amber .ht-line-numbers { color: #9A6a00; }
+
+  .ht.theme-matrix .ht-pre { color: #00ff41; font-weight: bold; }
+  .ht.theme-matrix .ht-cursor { color: #00ff41; }
+  .ht.theme-matrix .ht-code-view { background: #000; }
+  .ht.theme-matrix .ht-line-numbers { color: #00661a; }
+</style>
+
+<script is:inline>
+  (function () {
+    const root = document.getElementById("ht");
+    const codeArea = document.getElementById("htCodeArea");
+    const lineNumbers = document.getElementById("htLineNumbers");
+    const codeView = document.getElementById("htCodeView");
+
+    // Controls
+    const fsBtn = document.getElementById("htFsBtn");
+    const clearBtn = document.getElementById("htClearBtn");
+    const autoBtn = document.getElementById("htAutoBtn");
+    const triggerBtn = document.getElementById("htExploitTriggerBtn");
+    const overlay = document.getElementById("htExploitOverlay");
+    const overlayClose = document.getElementById("htOverlayCloseBtn");
+    const logsContainer = document.getElementById("htExploitLogs");
+
+    const styleSelect = document.getElementById("htStyleSelect");
+    const themeSelect = document.getElementById("htThemeSelect");
+    const speedInput = document.getElementById("htSpeed");
+    const cursorPosVal = document.getElementById("htCursorPos");
+
+    // File structure data
+    const fileBuffers = {
+      exploit: `#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/mman.h>
+#include <sys/types.h>
+#include <fcntl.h>
+
+#define COMMIT_CREDS 0xffffffff810b42f6
+#define PREPARE_KERNEL_CREDS 0xffffffff810b45d0
+
+typedef int __attribute__((regparm(3))) (* _commit_creds)(unsigned long cred);
+typedef unsigned long __attribute__((regparm(3))) (* _prepare_kernel_creds)(unsigned long cred);
+
+void get_root() {
+    _commit_creds commit_creds = (_commit_creds)COMMIT_CREDS;
+    _prepare_kernel_creds prepare_kernel_creds = (_prepare_kernel_creds)PREPARE_KERNEL_CREDS;
+    commit_creds(prepare_kernel_creds(0));
 }
 
-function type(speed) {
-  const typer = document.getElementById('typer');
-  if (!typer) return;
-  const n = Math.max(1, speed || 1);
-  const chunk = source.substring(charIndex, charIndex + n);
-  if (!chunk) return;
-  typer.innerHTML += chunk
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-  charIndex += n;
-  if (charIndex >= source.length) {
-    charIndex = 0;
-    typer.innerHTML = '';
-  }
-  const bp = document.getElementById('bottom_padding');
-  if (bp) bp.scrollIntoView(false);
-}
-
-document.addEventListener('keydown', (e) => {
-  if (e.ctrlKey || e.metaKey || e.altKey) return;
-  if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement || e.target instanceof HTMLSelectElement) return;
-
-  const term = document.querySelector('[data-hacker-terminal]');
-  if (!term) return;
-
-  const output = term.querySelector('[data-ht-output]');
-  const pauseLabel = term.querySelector('[data-ht-pause-label]');
-  const autoBtn = term.querySelector('[data-ht-auto]');
-  const soundBtn = term.querySelector('[data-ht-sound]');
-
-  if (!window.__htState) {
-    window.__htState = { idx: 0, paused: false, auto: false, speed: 5, sound: true, theme: 0 };
-  }
-  const state = window.__htState;
-
-  const colors = ['#00ff41', '#ffb000', '#e0e0e0', '#0ff'];
-  const bgs = ['#0a0a0f', '#0a0a0f', '#0a0a0f', '#001010'];
-
-  function setTheme(idx) {
-    state.theme = idx % colors.length;
-    output.style.backgroundColor = bgs[state.theme];
-    output.style.color = colors[state.theme];
-    for (const btn of term.querySelectorAll('[data-ht-fullscreen]')) btn.style.color = colors[state.theme];
-  }
-
-  function playSound() {
-    if (!state.sound) return;
-    try {
-      const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.frequency.value = 800 + Math.random() * 400;
-      osc.type = 'square';
-      gain.gain.value = 0.03;
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.03);
-    } catch (_) {}
-  }
-
-  switch (e.key) {
-    case 'Escape':
-      if (document.fullscreenElement) document.exitFullscreen();
-      return;
-    case ' ':
-    case 'Space':
-      e.preventDefault();
-      state.paused = !state.paused;
-      if (state.auto && state.paused) state.auto = false;
-      pauseLabel.textContent = state.paused ? 'Resume' : 'Pause';
-      return;
-    case 'r':
-    case 'R':
-      resetAD();
-      return;
-    case 'c':
-    case 'C':
-      if (!state.paused) resetAD();
-      return;
-    case 's':
-    case 'S':
-      state.sound = !state.sound;
-      soundBtn.style.opacity = state.sound ? '1' : '0.4';
-      return;
-    case 't':
-    case 'T':
-      setTheme(state.theme + 1);
-      return;
-    case 'a':
-    case 'A':
-      state.auto = !state.auto;
-      if (state.auto) state.paused = false;
-      pauseLabel.textContent = 'Pause';
-      autoBtn.style.opacity = state.auto ? '1' : '0.5';
-      return;
-  }
-
-  if (state.paused) return;
-  type(state.speed || 5);
-  playSound();
-});
-
-for (const trigger of ['click', 'touchstart']) {
-  document.addEventListener(trigger, (e) => {
-    const term = document.querySelector('[data-hacker-terminal]');
-    if (!term) return;
-    const btn = e.target.closest?.('[data-ht-clear]');
-    const pauseBtn = e.target.closest?.('[data-ht-pause]');
-    const restartBtn = e.target.closest?.('[data-ht-restart]');
-    const autoBtn = e.target.closest?.('[data-ht-auto]');
-    const soundBtn = e.target.closest?.('[data-ht-sound]');
-    const themeBtn = e.target.closest?.('[data-ht-theme]');
-    const fullBtn = e.target.closest?.('[data-ht-fullscreen]');
-
-    if (!btn && !pauseBtn && !restartBtn && !autoBtn && !soundBtn && !themeBtn && !fullBtn) return;
-
-    if (!window.__htState) {
-      window.__htState = { idx: 0, paused: false, auto: false, speed: 5, sound: true, theme: 0 };
+int main() {
+    printf("[+] Initializing privilege escalation payload...\\n");
+    
+    // mapping zero page payload
+    void *page = mmap(0, 0x1000, PROT_READ|PROT_WRITE|PROT_EXEC, MAP_ANONYMOUS|MAP_PRIVATE|MAP_FIXED, -1, 0);
+    if (page == MAP_FAILED) {
+        perror("[-] mmap failed");
+        return -1;
     }
-    const state = window.__htState;
+    
+    printf("[+] Mapped payload to secure Virtual address block at %p\\n", page);
+    unsigned char payload[] = {
+        0x48, 0xc7, 0xc0, 0xf6, 0x42, 0x0b, 0x81, // mov rax, COMMIT_CREDS
+        0xff, 0xd0,                               // call rax
+        0xc3                                      // ret
+    };
+    
+    memcpy(page, payload, sizeof(payload));
+    printf("[*] Overwriting interrupt descriptor table gates...\\n");
+    
+    // trigger kernel panic
+    int fd = open("/dev/exploit_device", O_RDWR);
+    if (fd < 0) {
+        perror("[-] Failed target connection");
+        return -1;
+    }
+    
+    ioctl(fd, 0x1337, page);
+    printf("[+] Injecting ring-0 thread pivot...\\n");
+    get_root();
+    
+    if (getuid() == 0) {
+        printf("[+] SUCCESS: Elevated to root shell.\\n");
+        system("/bin/sh");
+    } else {
+        printf("[-] Exploit payload failed. Target patched.\\n");
+    }
+    return 0;
+}`,
+      sniffer: `import socket
+import struct
+import textwrap
 
-    if (fullBtn) {
-      if (!document.fullscreenElement) term.requestFullscreen?.();
-      else document.exitFullscreen();
-      return;
+def main():
+    conn = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(3))
+    print("[*] Starting raw socket network sniffer. Listening on eth0...")
+    
+    while True:
+        raw_data, addr = conn.recvfrom(65535)
+        dest_mac, src_mac, eth_proto, data = ethernet_frame(raw_data)
+        print('\\nEthernet Frame:')
+        print('  ' + f'Destination: {dest_mac}, Source: {src_mac}, Protocol: {eth_proto}')
+        
+        if eth_proto == 8: # IPv4
+            (version, header_length, ttl, proto, src, target, data) = ipv4_packet(data)
+            print('  ' + f'IPv4 Packet:')
+            print('    ' + f'Version: {version}, Header Length: {header_length}, TTL: {ttl}')
+            print('    ' + f'Protocol: {proto}, Source: {src}, Target: {target}')
+            
+            # TCP details
+            if proto == 6:
+                (src_port, dest_port, sequence, acknowledgment, flag_urg, flag_ack, flag_psh, flag_rst, flag_syn, flag_fin, data) = tcp_segment(data)
+                print('    ' + f'TCP Segment:')
+                print('      ' + f'Source Port: {src_port}, Destination Port: {dest_port}')
+                print('      ' + f'Sequence: {sequence}, Acknowledgment: {acknowledgment}')
+                print('      ' + f'Flags: URG:{flag_urg} ACK:{flag_ack} PSH:{flag_psh} RST:{flag_rst} SYN:{flag_syn} FIN:{flag_fin}')
+
+def ethernet_frame(data):
+    dest_mac, src_mac, proto = struct.unpack('! 6s 6s H', data[:14])
+    return get_mac_addr(dest_mac), get_mac_addr(src_mac), socket.htons(proto), data[14:]
+
+def get_mac_addr(bytes_addr):
+    bytes_str = map('{:02x}'.format, bytes_addr)
+    return ':'.join(bytes_str).upper()
+
+def ipv4_packet(data):
+    version_header_len = data[0]
+    version = version_header_len >> 4
+    header_len = (version_header_len & 15) * 4
+    ttl, proto, src, target = struct.unpack('! 8x B B 2x 4s 4s', data[:20])
+    return version, header_len, ttl, proto, ipv4(src), ipv4(target), data[header_len:]
+
+def ipv4(addr):
+    return '.'.join(map(str, addr))
+
+if __name__ == '__main__':
+    main()`,
+      cracker: `package main
+
+import (
+	"crypto/sha256"
+	"encoding/hex"
+	"fmt"
+	"time"
+)
+
+const TargetHash = "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3" // SHA-256 target
+
+func main() {
+	fmt.Println("[*] GPU Thread Ring Initialized...")
+	fmt.Println("[*] Brute forcing password hashes. Speed: 231,000 H/s")
+	
+	words := []string{"admin", "guest", "passwd", "db_system", "123456", "security", "exploit"}
+	start := time.Now()
+	
+	for i, word := range words {
+		time.Sleep(200 * time.Millisecond)
+		hash := sha256.New()
+		hash.Write([]byte(word))
+		sum := hex.EncodeToString(hash.Sum(nil))
+		
+		fmt.Printf("[Thread #%d] Testing: '%s' -> %s\\n", i+1, word, sum)
+		
+		if sum == TargetHash {
+			fmt.Printf("\\n[+] PASSWORD CRACK SUCCESSFUL!\\n")
+			fmt.Printf("    Time elapsed: %s\\n", time.Since(start))
+			fmt.Printf("    Match candidate found: '%s'\\n", word)
+			return
+		}
+	}
+	fmt.Println("[-] Brute force cycle finished. Password not matched.")
+}`
+    };
+
+    // State
+    var activeFile = "exploit";
+    var indices = { exploit: 0, sniffer: 0, cracker: 0 };
+    var activeTheme = "dark";
+    var volume = 0.5;
+    var speed = 6;
+    var mxSwitchType = "blue"; // blue, brown, typewriter, mute
+    var autoPilotActive = false;
+    var autoPilotTimer = null;
+    var audioCtx = null;
+    var inExploitSimulation = false;
+
+    // Line number manager
+    function updateLineNumbers() {
+      const codeText = codeArea.textContent || "";
+      const linesCount = codeText.split("\n").length;
+      let html = "";
+      for (let i = 1; i <= linesCount; i++) {
+        html += `<div>${i}</div>`;
+      }
+      lineNumbers.innerHTML = html;
+      
+      // Update cursor coordinate display
+      const col = codeText.substring(codeText.lastIndexOf("\n") + 1).length + 1;
+      cursorPosVal.textContent = `Ln ${linesCount}, Col ${col}`;
     }
 
-    if (btn) { if (!state.paused) resetAD(); return; }
-    if (pauseBtn) {
-      state.paused = !state.paused;
-      if (state.auto && state.paused) state.auto = false;
-      term.querySelector('[data-ht-pause-label]').textContent = state.paused ? 'Resume' : 'Pause';
-      return;
+    // Tab switcher
+    function switchTab(key) {
+      if (inExploitSimulation) return;
+      activeFile = key;
+      
+      // Toggle Tab navigation UI
+      document.querySelectorAll(".ht-tab").forEach(tab => {
+        tab.classList.toggle("active", tab.getAttribute("data-file-key") === key);
+      });
+      document.querySelectorAll(".tree-file").forEach(file => {
+        file.classList.toggle("active", file.getAttribute("data-file-key") === key);
+      });
+
+      // Clear & rebuild output
+      const idx = indices[key];
+      const buffer = fileBuffers[key];
+      codeArea.textContent = buffer.substring(0, idx);
+      updateLineNumbers();
+      codeView.scrollTop = codeView.scrollHeight;
     }
-    if (restartBtn) { resetAD(); return; }
+
+    // Hook tab clicks
+    document.querySelectorAll(".ht-tab").forEach(tab => {
+      tab.addEventListener("click", function(e) {
+        e.stopPropagation();
+        switchTab(tab.getAttribute("data-file-key"));
+      });
+    });
+    document.querySelectorAll(".tree-file").forEach(file => {
+      file.addEventListener("click", function(e) {
+        e.stopPropagation();
+        switchTab(file.getAttribute("data-file-key"));
+      });
+    });
+
+    // Write text
+    function typeCharacters(count) {
+      if (inExploitSimulation) return;
+      
+      const buffer = fileBuffers[activeFile];
+      let idx = indices[activeFile];
+      
+      if (idx >= buffer.length) {
+        // loop back
+        idx = 0;
+      }
+      
+      const chunk = buffer.substring(idx, idx + count);
+      codeArea.textContent += chunk;
+      indices[activeFile] = idx + count;
+      
+      updateLineNumbers();
+      codeView.scrollTop = codeView.scrollHeight;
+
+      // Automatically trigger exploit popup after typing a complete block of 350 chars
+      if (indices[activeFile] > 350 && Math.random() < 0.05) {
+        triggerExploitSim();
+      }
+    }
+
+    // Mechanical keypress switch sounds synthesizer
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    function playKeyAudio() {
+      if (mxSwitchType === "mute") return;
+      initAudio();
+      if (!audioCtx) return;
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      
+      const t = audioCtx.currentTime;
+
+      if (mxSwitchType === "blue") {
+        // Cherry MX Blue Sound: Quick metallic click + housing switch puff
+        const osc = audioCtx.createOscillator();
+        const gain1 = audioCtx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(5800 + Math.random() * 800, t);
+        
+        gain1.gain.setValueAtTime(0.02 * volume, t);
+        gain1.gain.exponentialRampToValueAtTime(0.001, t + 0.006);
+        
+        osc.connect(gain1);
+        gain1.connect(audioCtx.destination);
+        osc.start(t);
+        osc.stop(t + 0.008);
+
+        // Plastic casing thud sound
+        const bufferSize = audioCtx.sampleRate * 0.015;
+        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = Math.random() * 2 - 1;
+        }
+        
+        const noise = audioCtx.createBufferSource();
+        noise.buffer = buffer;
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = "bandpass";
+        filter.frequency.setValueAtTime(1200 + Math.random() * 300, t);
+        filter.Q.setValueAtTime(3.0, t);
+
+        const gain2 = audioCtx.createGain();
+        gain2.gain.setValueAtTime(0.07 * volume, t);
+        gain2.gain.exponentialRampToValueAtTime(0.001, t + 0.012);
+
+        noise.connect(filter);
+        filter.connect(gain2);
+        gain2.connect(audioCtx.destination);
+        noise.start(t);
+        noise.stop(t + 0.015);
+
+      } else if (mxSwitchType === "brown") {
+        // Cherry MX Brown: Only plastic housing thud
+        const bufferSize = audioCtx.sampleRate * 0.025;
+        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = Math.random() * 2 - 1;
+        }
+        
+        const noise = audioCtx.createBufferSource();
+        noise.buffer = buffer;
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = "bandpass";
+        filter.frequency.setValueAtTime(800 + Math.random() * 150, t);
+        filter.Q.setValueAtTime(2.0, t);
+
+        const gain = audioCtx.createGain();
+        gain.gain.setValueAtTime(0.09 * volume, t);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.016);
+
+        noise.connect(filter);
+        filter.connect(gain);
+        gain.connect(audioCtx.destination);
+        noise.start(t);
+        noise.stop(t + 0.02);
+
+      } else if (mxSwitchType === "typewriter") {
+        // Vintage Typewriter: Double metallic hammer strikes + spring reverb tail
+        const osc1 = audioCtx.createOscillator();
+        const gain1 = audioCtx.createGain();
+        osc1.type = "triangle";
+        osc1.frequency.setValueAtTime(1400 + Math.random() * 200, t);
+        
+        gain1.gain.setValueAtTime(0.03 * volume, t);
+        gain1.gain.exponentialRampToValueAtTime(0.001, t + 0.04);
+        
+        osc1.connect(gain1);
+        gain1.connect(audioCtx.destination);
+        osc1.start(t);
+        osc1.stop(t + 0.045);
+
+        // Spring reverb ring
+        const osc2 = audioCtx.createOscillator();
+        const gain2 = audioCtx.createGain();
+        osc2.type = "sine";
+        osc2.frequency.setValueAtTime(320 + Math.random() * 50, t);
+        
+        gain2.gain.setValueAtTime(0.015 * volume, t);
+        gain2.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
+        
+        osc2.connect(gain2);
+        gain2.connect(audioCtx.destination);
+        osc2.start(t);
+        osc2.stop(t + 0.13);
+      }
+    }
+
+    // Privilege exploit simulator pop-up logs
+    function triggerExploitSim() {
+      if (inExploitSimulation) return;
+      inExploitSimulation = true;
+      stopAutoPilot();
+      
+      overlay.classList.remove("hidden");
+      logsContainer.innerHTML = "";
+
+      const exploitPhrases = [
+        "[*] Establishing root console connection to remote client gateway...",
+        "[*] SSH Handshake successful. Protocol version 2.0.",
+        "[+] Target IP address allocated at: 10.0.12.89",
+        "[*] Parsing local sys privileges ... Local UID = 1002 (gyan)",
+        "[*] Triggering dirty-c0w vulnerability patch bypass...",
+        "[*] Mapping virtual shared memory tables at address 0x7fffbc221000...",
+        "[*] Overwriting cred struct mapping index arrays...",
+        "[+] Syscall table patches applied correctly.",
+        "[*] Escalating host privileges to admin scope...",
+        "============================================================",
+        "[!] SUCCESS: SYSTEM SHELL ESCALATED TO WHOAMI = ROOT (UID 0)",
+        "============================================================",
+        "[root@server-gateway-ch1]# id",
+        "uid=0(root) gid=0(root) groups=0(root) context=unconfined",
+        "[root@server-gateway-ch1]# echo \"Access Granted. System fully compromised.\"",
+        "Access Granted. System fully compromised."
+      ];
+
+      initAudio();
+      let logIdx = 0;
+      function printNextLog() {
+        if (!inExploitSimulation) return;
+        if (logIdx >= exploitPhrases.length) return;
+
+        const line = document.createElement("div");
+        line.textContent = exploitPhrases[logIdx];
+        
+        // Critical alerts
+        if (exploitPhrases[logIdx].startsWith("[!]")) {
+          line.style.cssText = "color: #ff5f56; font-weight: bold; text-shadow: 0 0 4px rgba(255, 95, 86, 0.4);";
+          // Play critical alarm chime sound
+          if (audioCtx && mxSwitchType !== "mute") {
+            const now = audioCtx.currentTime;
+            const freqs = [520, 680, 880];
+            freqs.forEach(f => {
+              const osc = audioCtx.createOscillator();
+              const g = audioCtx.createGain();
+              osc.type = "sine";
+              osc.frequency.setValueAtTime(f, now);
+              g.gain.setValueAtTime(0.04 * volume, now);
+              g.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+              osc.connect(g);
+              g.connect(audioCtx.destination);
+              osc.start();
+              osc.stop(now + 0.45);
+            });
+          }
+        } else if (exploitPhrases[logIdx].startsWith("[+]")) {
+          line.style.color = "#27c93f";
+        }
+        
+        logsContainer.appendChild(line);
+        logsContainer.scrollTop = logsContainer.scrollHeight;
+        logIdx++;
+        
+        setTimeout(printNextLog, Math.random() * 300 + 150);
+      }
+      
+      printNextLog();
+    }
+
+    // Auto-pilot
+    function startAutoPilot() {
+      if (autoPilotActive) return;
+      autoPilotActive = true;
+      if (autoBtn) {
+        autoBtn.textContent = "⏸ Pause Auto";
+        autoBtn.classList.add("main");
+      }
+      
+      function runStep() {
+        if (!autoPilotActive) return;
+        typeCharacters(speed);
+        playKeyAudio();
+        
+        const delay = Math.max(25, 300 - speed * 18);
+        autoPilotTimer = setTimeout(runStep, delay);
+      }
+      runStep();
+    }
+
+    function stopAutoPilot() {
+      autoPilotActive = false;
+      if (autoPilotTimer) clearTimeout(autoPilotTimer);
+      if (autoBtn) {
+        autoBtn.textContent = "▶ Auto-Pilot";
+        autoBtn.classList.remove("main");
+      }
+    }
+
+    // Settings Panel Inputs hooks
+    if (styleSelect) {
+      styleSelect.addEventListener("change", function(e) {
+        mxSwitchType = e.target.value;
+      });
+    }
+    if (themeSelect) {
+      themeSelect.addEventListener("change", function(e) {
+        // Remove existing themes
+        root.classList.remove("theme-monokai", "theme-amber", "theme-matrix");
+        activeTheme = e.target.value;
+        if (activeTheme !== "dark") {
+          root.classList.add("theme-" + activeTheme);
+        }
+      });
+    }
+    if (speedInput) {
+      speedInput.addEventListener("input", function(e) {
+        speed = Number(e.target.value);
+      });
+    }
+
+    // Action buttons click listeners
+    if (clearBtn) {
+      clearBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        indices[activeFile] = 0;
+        codeArea.textContent = "";
+        updateLineNumbers();
+        stopAutoPilot();
+      });
+    }
     if (autoBtn) {
-      state.auto = !state.auto;
-      if (state.auto) state.paused = false;
-      term.querySelector('[data-ht-pause-label]').textContent = 'Pause';
-      autoBtn.style.opacity = state.auto ? '1' : '0.5';
-      return;
+      autoBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        if (autoPilotActive) {
+          stopAutoPilot();
+        } else {
+          startAutoPilot();
+        }
+      });
     }
-    if (soundBtn) {
-      state.sound = !state.sound;
-      soundBtn.style.opacity = state.sound ? '1' : '0.4';
-      return;
+    if (triggerBtn) {
+      triggerBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        triggerExploitSim();
+      });
     }
-    if (themeBtn) {
-      const colors = ['#00ff41', '#ffb000', '#e0e0e0', '#0ff'];
-      const bgs = ['#0a0a0f', '#0a0a0f', '#0a0a0f', '#001010'];
-      const output = term.querySelector('[data-ht-output]');
-      const n = (state.theme + 1) % colors.length;
-      state.theme = n;
-      output.style.backgroundColor = bgs[n];
-      output.style.color = colors[n];
-      for (const fb of term.querySelectorAll('[data-ht-fullscreen]')) fb.style.color = colors[n];
-      return;
+    if (overlayClose) {
+      overlayClose.addEventListener("click", function(e) {
+        e.stopPropagation();
+        overlay.classList.add("hidden");
+        inExploitSimulation = false;
+      });
     }
-  });
-}
 
-document.addEventListener('fullscreenchange', () => {
-  const term = document.querySelector('[data-hacker-terminal]');
-  if (!term) return;
-  const output = term.querySelector('[data-ht-output]');
-  const controls = term.querySelector('[data-ht-controls]');
-  const isFS = document.fullscreenElement === term;
-  if (isFS) {
-    output.style.height = '';
-    output.style.maxHeight = '';
-    output.style.flex = '1';
-    controls.style.display = 'none';
-  } else {
-    output.style.height = '420px';
-    output.style.maxHeight = '560px';
-    output.style.flex = '';
-    controls.style.display = '';
-  }
-});
+    // Fullscreen bindings
+    function goFS() {
+      if (!document.fullscreenElement) {
+        root.requestFullscreen().catch(function () {});
+      }
+    }
+    function exitFS() {
+      if (document.fullscreenElement === root) {
+        document.exitFullscreen().catch(function () {});
+      }
+    }
 
-document.addEventListener('input', (e) => {
-  const speedInput = e.target.closest?.('[data-ht-speed]');
-  if (!speedInput) return;
-  if (window.__htState) window.__htState.speed = Number(speedInput.value);
-});
+    if (fsBtn) {
+      fsBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        goFS();
+      });
+    }
 
-const colors = ['#00ff41', '#ffb000', '#e0e0e0', '#0ff'];
-function autoType() {
-  const state = window.__htState;
-  if (!state || !state.auto || state.paused) {
-    requestAnimationFrame(autoType);
-    return;
-  }
-  type(state.speed || 5);
-  if (state.sound) {
-    try {
-      const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      const osc = ctx.createOscillator(); const gain = ctx.createGain();
-      osc.connect(gain); gain.connect(ctx.destination);
-      osc.frequency.value = 800 + Math.random() * 400;
-      osc.type = 'square'; gain.gain.value = 0.02;
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.03);
-      osc.start(); osc.stop(ctx.currentTime + 0.03);
-    } catch (_) {}
-  }
-  const speed = state.speed || 5;
-  setTimeout(autoType, Math.max(30, 500 - speed * 47));
-}
-requestAnimationFrame(autoType);
+    document.addEventListener("fullscreenchange", function () {
+      const isFS = document.fullscreenElement === root;
+      root.classList.toggle("is-fullscreen", isFS);
+      
+      if (!isFS) {
+        stopAutoPilot();
+      }
+      setTimeout(updateLineNumbers, 80);
+    });
+
+    // Keyboard trigger typing hook
+    document.addEventListener("keydown", function (e) {
+      const key = e.key.toLowerCase();
+      
+      // Fullscreen checks
+      if (document.fullscreenElement === root) {
+        if (key === "escape") {
+          exitFS();
+        } else if (key === "1") {
+          e.preventDefault(); switchTab("exploit");
+        } else if (key === "2") {
+          e.preventDefault(); switchTab("sniffer");
+        } else if (key === "3") {
+          e.preventDefault(); switchTab("cracker");
+        } else if (key === "s") {
+          e.preventDefault();
+          mxSwitchType = (mxSwitchType === "mute") ? "blue" : "mute";
+          if (styleSelect) styleSelect.value = mxSwitchType;
+        } else if (key === "a") {
+          e.preventDefault();
+          if (autoPilotActive) stopAutoPilot();
+          else startAutoPilot();
+        } else if (key === "tab" || key === "enter") {
+          e.preventDefault(); e.stopPropagation();
+          triggerExploitSim();
+        } else {
+          // Type characters
+          e.preventDefault();
+          e.stopPropagation();
+          typeCharacters(speed);
+          playKeyAudio();
+        }
+        return;
+      }
+
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement || e.target instanceof HTMLTextAreaElement) return;
+
+      if (key === "f") {
+        e.preventDefault();
+        goFS();
+      } else {
+        // Standard typing inside preview container
+        typeCharacters(speed);
+        playKeyAudio();
+      }
+    });
+
+    // Block right-clicks when in fullscreen mode
+    document.addEventListener("contextmenu", function (e) {
+      if (document.fullscreenElement === root) {
+        e.preventDefault();
+      }
+    });
+
+    // Initial lineup Setup
+    updateLineNumbers();
+  })();
 </script>
