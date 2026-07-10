@@ -15,92 +15,92 @@ export function thumbnailMonitor(inner: string, color = '#111'): string {
 </svg>`;
 }
 
-export function thumbnailDeadPixelTest(): string {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <rect width="320" height="200" fill="#fff"/>
-  <g opacity="0.5">
-    <rect x="20" y="20" width="30" height="30" fill="#f00"/><rect x="55" y="20" width="30" height="30" fill="#0f0"/><rect x="90" y="20" width="30" height="30" fill="#00f"/><rect x="125" y="20" width="30" height="30" fill="#ff0"/>
-    <rect x="160" y="20" width="30" height="30" fill="#0ff"/><rect x="195" y="20" width="30" height="30" fill="#f0f"/><rect x="230" y="20" width="30" height="30" fill="#fff"/><rect x="265" y="20" width="30" height="30" fill="#000"/>
-    <rect x="20" y="55" width="30" height="30" fill="#000"/><rect x="55" y="55" width="30" height="30" fill="#fff"/><rect x="90" y="55" width="30" height="30" fill="#f00"/><rect x="125" y="55" width="30" height="30" fill="#0f0"/>
-    <rect x="160" y="55" width="30" height="30" fill="#00f"/><rect x="195" y="55" width="30" height="30" fill="#ff0"/><rect x="230" y="55" width="30" height="30" fill="#0ff"/><rect x="265" y="55" width="30" height="30" fill="#f0f"/>
-  </g>
-  <text x="160" y="130" text-anchor="middle" fill="#666" font-family="system-ui" font-size="11" font-weight="600">Dead Pixel Test</text>
-  <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
-</svg>`;
-}
+// export function thumbnailDeadPixelTest(): string {
+//   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+//   <rect width="320" height="200" fill="#fff"/>
+//   <g opacity="0.5">
+//     <rect x="20" y="20" width="30" height="30" fill="#f00"/><rect x="55" y="20" width="30" height="30" fill="#0f0"/><rect x="90" y="20" width="30" height="30" fill="#00f"/><rect x="125" y="20" width="30" height="30" fill="#ff0"/>
+//     <rect x="160" y="20" width="30" height="30" fill="#0ff"/><rect x="195" y="20" width="30" height="30" fill="#f0f"/><rect x="230" y="20" width="30" height="30" fill="#fff"/><rect x="265" y="20" width="30" height="30" fill="#000"/>
+//     <rect x="20" y="55" width="30" height="30" fill="#000"/><rect x="55" y="55" width="30" height="30" fill="#fff"/><rect x="90" y="55" width="30" height="30" fill="#f00"/><rect x="125" y="55" width="30" height="30" fill="#0f0"/>
+//     <rect x="160" y="55" width="30" height="30" fill="#00f"/><rect x="195" y="55" width="30" height="30" fill="#ff0"/><rect x="230" y="55" width="30" height="30" fill="#0ff"/><rect x="265" y="55" width="30" height="30" fill="#f0f"/>
+//   </g>
+//   <text x="160" y="130" text-anchor="middle" fill="#666" font-family="system-ui" font-size="11" font-weight="600">Dead Pixel Test</text>
+//   <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+// </svg>`;
+// }
 
-export function thumbnailStuckPixel(): string {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <rect width="320" height="200" fill="#111"/>
-  <rect x="40" y="30" width="240" height="140" rx="6" fill="none" stroke="#f00" stroke-width="3"/>
-  <text x="160" y="106" text-anchor="middle" fill="#ff4444" font-family="monospace" font-size="13" font-weight="700">FIXING...</text>
-  <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
-</svg>`;
-}
+// export function thumbnailStuckPixel(): string {
+//   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+//   <rect width="320" height="200" fill="#111"/>
+//   <rect x="40" y="30" width="240" height="140" rx="6" fill="none" stroke="#f00" stroke-width="3"/>
+//   <text x="160" y="106" text-anchor="middle" fill="#ff4444" font-family="monospace" font-size="13" font-weight="700">FIXING...</text>
+//   <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+// </svg>`;
+// }
 
-export function thumbnailBurnIn(): string {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <rect width="320" height="200" fill="#1a1a1a"/>
-  <text x="160" y="80" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-family="system-ui" font-size="18" font-weight="700">CNN</text>
-  <text x="160" y="105" text-anchor="middle" fill="rgba(255,255,255,0.1)" font-family="system-ui" font-size="14">BREAKING NEWS</text>
-  <text x="160" y="130" text-anchor="middle" fill="rgba(255,255,255,0.08)" font-family="system-ui" font-size="10">LIVE</text>
-  <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
-</svg>`;
-}
+// export function thumbnailBurnIn(): string {
+//   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+//   <rect width="320" height="200" fill="#1a1a1a"/>
+//   <text x="160" y="80" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-family="system-ui" font-size="18" font-weight="700">CNN</text>
+//   <text x="160" y="105" text-anchor="middle" fill="rgba(255,255,255,0.1)" font-family="system-ui" font-size="14">BREAKING NEWS</text>
+//   <text x="160" y="130" text-anchor="middle" fill="rgba(255,255,255,0.08)" font-family="system-ui" font-size="10">LIVE</text>
+//   <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+// </svg>`;
+// }
 
-export function thumbnailBrightnessTest(): string {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <rect width="320" height="200" fill="#f5f5f5"/>
-  <circle cx="160" cy="100" r="50" fill="#fff" stroke="#ddd" stroke-width="2"/>
-  <g stroke="#ccc" stroke-width="2" stroke-linecap="round">
-    <line x1="160" y1="35" x2="160" y2="25"/><line x1="160" y1="165" x2="160" y2="175"/>
-    <line x1="95" y1="100" x2="85" y2="100"/><line x1="225" y1="100" x2="235" y2="100"/>
-    <line x1="110" y1="50" x2="103" y2="43"/><line x1="210" y1="150" x2="217" y2="157"/>
-    <line x1="210" y1="50" x2="217" y2="43"/><line x1="110" y1="150" x2="103" y2="157"/>
-  </g>
-  <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
-</svg>`;
-}
+// export function thumbnailBrightnessTest(): string {
+//   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+//   <rect width="320" height="200" fill="#f5f5f5"/>
+//   <circle cx="160" cy="100" r="50" fill="#fff" stroke="#ddd" stroke-width="2"/>
+//   <g stroke="#ccc" stroke-width="2" stroke-linecap="round">
+//     <line x1="160" y1="35" x2="160" y2="25"/><line x1="160" y1="165" x2="160" y2="175"/>
+//     <line x1="95" y1="100" x2="85" y2="100"/><line x1="225" y1="100" x2="235" y2="100"/>
+//     <line x1="110" y1="50" x2="103" y2="43"/><line x1="210" y1="150" x2="217" y2="157"/>
+//     <line x1="210" y1="50" x2="217" y2="43"/><line x1="110" y1="150" x2="103" y2="157"/>
+//   </g>
+//   <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+// </svg>`;
+// }
 
-export function thumbnailContrastTest(): string {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <rect width="160" height="200" fill="#fff"/><rect x="160" width="160" height="200" fill="#000"/>
-  <circle cx="80" cy="100" r="30" fill="#eee"/><circle cx="240" cy="100" r="30" fill="#222"/>
-  <text x="80" y="165" text-anchor="middle" fill="#999" font-family="system-ui" font-size="10">100%</text>
-  <text x="240" y="165" text-anchor="middle" fill="#666" font-family="system-ui" font-size="10">0%</text>
-  <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
-</svg>`;
-}
+// export function thumbnailContrastTest(): string {
+//   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+//   <rect width="160" height="200" fill="#fff"/><rect x="160" width="160" height="200" fill="#000"/>
+//   <circle cx="80" cy="100" r="30" fill="#eee"/><circle cx="240" cy="100" r="30" fill="#222"/>
+//   <text x="80" y="165" text-anchor="middle" fill="#999" font-family="system-ui" font-size="10">100%</text>
+//   <text x="240" y="165" text-anchor="middle" fill="#666" font-family="system-ui" font-size="10">0%</text>
+//   <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+// </svg>`;
+// }
 
-export function thumbnailGammaTest(): string {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <rect width="320" height="200" fill="#f0f0f0"/>
-  <rect x="40" y="40" width="240" height="120" rx="4" fill="none" stroke="#ccc" stroke-width="1"/>
-  <rect x="40" y="40" width="240" height="120" fill="url(#g)"/>
-  <defs><linearGradient id="g"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#000"/></linearGradient></defs>
-  <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
-</svg>`;
-}
+// export function thumbnailGammaTest(): string {
+//   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+//   <rect width="320" height="200" fill="#f0f0f0"/>
+//   <rect x="40" y="40" width="240" height="120" rx="4" fill="none" stroke="#ccc" stroke-width="1"/>
+//   <rect x="40" y="40" width="240" height="120" fill="url(#g)"/>
+//   <defs><linearGradient id="g"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#000"/></linearGradient></defs>
+//   <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+// </svg>`;
+// }
 
-export function thumbnailGradientTest(): string {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <defs><linearGradient id="gt" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#000"/><stop offset="25%" stop-color="#666"/><stop offset="50%" stop-color="#aaa"/><stop offset="75%" stop-color="#ddd"/><stop offset="100%" stop-color="#fff"/></linearGradient></defs>
-  <rect width="320" height="200" fill="url(#gt)"/>
-  <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
-</svg>`;
-}
+// export function thumbnailGradientTest(): string {
+//   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+//   <defs><linearGradient id="gt" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#000"/><stop offset="25%" stop-color="#666"/><stop offset="50%" stop-color="#aaa"/><stop offset="75%" stop-color="#ddd"/><stop offset="100%" stop-color="#fff"/></linearGradient></defs>
+//   <rect width="320" height="200" fill="url(#gt)"/>
+//   <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+// </svg>`;
+// }
 
-export function thumbnailColorAccuracy(): string {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <rect width="320" height="200" fill="#fafafa"/>
-  <circle cx="110" cy="80" r="40" fill="#ff4444" opacity="0.7"/>
-  <circle cx="170" cy="110" r="40" fill="#44ff44" opacity="0.7"/>
-  <circle cx="140" cy="60" r="40" fill="#4444ff" opacity="0.7"/>
-  <circle cx="160" cy="140" r="40" fill="#ffff44" opacity="0.7"/>
-  <text x="160" y="175" text-anchor="middle" fill="#999" font-family="system-ui" font-size="9">Color Accuracy</text>
-  <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
-</svg>`;
-}
+// export function thumbnailColorAccuracy(): string {
+//   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+//   <rect width="320" height="200" fill="#fafafa"/>
+//   <circle cx="110" cy="80" r="40" fill="#ff4444" opacity="0.7"/>
+//   <circle cx="170" cy="110" r="40" fill="#44ff44" opacity="0.7"/>
+//   <circle cx="140" cy="60" r="40" fill="#4444ff" opacity="0.7"/>
+//   <circle cx="160" cy="140" r="40" fill="#ffff44" opacity="0.7"/>
+//   <text x="160" y="175" text-anchor="middle" fill="#999" font-family="system-ui" font-size="9">Color Accuracy</text>
+//   <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+// </svg>`;
+// }
 
 export function thumbnailFireplace(): string {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
@@ -359,25 +359,25 @@ export function thumbnailFakeVirus(): string {
 </svg>`;
 }
 
-export function thumbnailTerminalScreen(): string {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <rect width="320" height="200" fill="#050505"/>
-  <g fill="#a1a1aa" font-family="monospace" font-size="7">
-    <text x="15" y="25">user@dev:~$ npm run build</text>
-    <text x="15" y="38">> freescreen@1.0.0 build</text>
-    <text x="15" y="51">> astro build</text>
-    <text x="15" y="64" fill="#22c55e">✓ Build complete</text>
-    <text x="15" y="77">user@dev:~$ git push origin main</text>
-    <text x="15" y="90" fill="#22c55e">✓ Pushed successfully</text>
-    <text x="15" y="103">user@dev:~$ node server.js</text>
-    <text x="15" y="116">Server running on port 3000...</text>
-    <text x="15" y="129" fill="#22c55e">✓ Ready</text>
-    <text x="15" y="142">user@dev:~$ </text>
-    <text x="15" y="142" fill="#22c55e" opacity="0.8">▊</text>
-  </g>
-  <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
-</svg>`;
-}
+// export function thumbnailTerminalScreen(): string {
+//   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+//   <rect width="320" height="200" fill="#050505"/>
+//   <g fill="#a1a1aa" font-family="monospace" font-size="7">
+//     <text x="15" y="25">user@dev:~$ npm run build</text>
+//     <text x="15" y="38">> freescreen@1.0.0 build</text>
+//     <text x="15" y="51">> astro build</text>
+//     <text x="15" y="64" fill="#22c55e">✓ Build complete</text>
+//     <text x="15" y="77">user@dev:~$ git push origin main</text>
+//     <text x="15" y="90" fill="#22c55e">✓ Pushed successfully</text>
+//     <text x="15" y="103">user@dev:~$ node server.js</text>
+//     <text x="15" y="116">Server running on port 3000...</text>
+//     <text x="15" y="129" fill="#22c55e">✓ Ready</text>
+//     <text x="15" y="142">user@dev:~$ </text>
+//     <text x="15" y="142" fill="#22c55e" opacity="0.8">▊</text>
+//   </g>
+//   <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+// </svg>`;
+// }
 
 export function thumbnailWindowsUpdate(): string {
   return '<img src="/assets/thumbnails/fakescreen/windows-update-screen.png" alt="" class="size-full object-cover" />';
@@ -434,14 +434,14 @@ export function thumbnailAndroidUpdate(): string {
 
 export function getThumbnail(toolId: string, color?: string): string {
   switch (toolId) {
-    case 'dead-pixel-test': return thumbnailDeadPixelTest();
-    case 'stuck-pixel-fix': return thumbnailStuckPixel();
-    case 'burn-in-test': return thumbnailBurnIn();
-    case 'brightness-test': return thumbnailBrightnessTest();
-    case 'contrast-test': return thumbnailContrastTest();
-    case 'gamma-test': return thumbnailGammaTest();
-    case 'gradient-test': return thumbnailGradientTest();
-    case 'color-accuracy-test': return thumbnailColorAccuracy();
+    // case 'dead-pixel-test': return thumbnailDeadPixelTest();
+    // case 'stuck-pixel-fix': return thumbnailStuckPixel();
+    // case 'burn-in-test': return thumbnailBurnIn();
+    // case 'brightness-test': return thumbnailBrightnessTest();
+    // case 'contrast-test': return thumbnailContrastTest();
+    // case 'gamma-test': return thumbnailGammaTest();
+    // case 'gradient-test': return thumbnailGradientTest();
+    // case 'color-accuracy-test': return thumbnailColorAccuracy();
     case 'fireplace-screen': return thumbnailFireplace();
     case 'aquarium-screen': return thumbnailAquarium();
     case 'matrix-screen': return thumbnailMatrix();
@@ -458,7 +458,7 @@ export function getThumbnail(toolId: string, color?: string): string {
     case 'radar-screen': return thumbnailRadarScreen();
     case 'white-noise-screen': return thumbnailWhiteNoise();
     case 'fake-virus-screen': return thumbnailFakeVirus();
-    case 'terminal-screen': return thumbnailTerminalScreen();
+    // case 'terminal-screen': return thumbnailTerminalScreen();
     case 'windows-update': return thumbnailWindowsUpdate();
     // case 'windows-xp-screen': return thumbnailWindowsXp();
     // case 'windows-11-screen': return thumbnailWindows11();
