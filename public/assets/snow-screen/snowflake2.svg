@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Small center shape -->
+  <polygon points="50,45 54.3,47.5 54.3,52.5 50,55 45.7,52.5 45.7,47.5" fill="#ffffff" stroke-width="1"/>
+  
+  <!-- 6 primary lines -->
+  <line x1="50" y1="5" x2="50" y2="95" />
+  <line x1="11.03" y1="27.5" x2="88.97" y2="72.5" />
+  <line x1="11.03" y1="72.5" x2="88.97" y2="27.5" />
+
+  <!-- Diamond nodes on tips -->
+  <polygon points="50,5 47,11 50,17 53,11" fill="none" stroke-width="1.8" />
+  <polygon points="50,95 47,89 50,83 53,89" fill="none" stroke-width="1.8" />
+  <polygon points="11.03,27.5 17.5,28.5 19.3,22 12.8,21" fill="none" stroke-width="1.8" />
+  <polygon points="88.97,72.5 82.5,71.5 80.7,78 87.2,79" fill="none" stroke-width="1.8" />
+  <polygon points="11.03,72.5 12.8,79 19.3,78 17.5,71.5" fill="none" stroke-width="1.8" />
+  <polygon points="88.97,27.5 87.2,21 80.7,22 82.5,28.5" fill="none" stroke-width="1.8" />
+
+  <!-- Mid-spoke chevrons pointing outwards -->
+  <path d="M44,24 L50,18 L56,24" />
+  <path d="M44,76 L50,82 L56,76" />
+  
+  <path d="M22,35 L26,29 L32,32" />
+  <path d="M78,65 L74,71 L68,68" />
+  
+  <path d="M22,65 L26,71 L32,68" />
+  <path d="M78,35 L74,29 L68,32" />
+
+  <!-- Concentric inner star structure -->
+  <path d="M50,30 L58.66,45 L75.98,35 L67.32,50 L84.64,65 L58.66,55 L50,70 L41.34,55 L15.36,65 L32.68,50 L15.36,35 L41.34,45 Z" stroke-width="1.2" opacity="0.6"/>
+</svg>

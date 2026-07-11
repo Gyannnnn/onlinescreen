@@ -8,6 +8,7 @@
   var flameSizeSlider = document.getElementById('fpFlameSize'), crackleSlider = document.getElementById('fpCrackle');
   var rainSlider = document.getElementById('fpRain'), timerSelect = document.getElementById('fpTimer');
   var soundToggle = document.getElementById('fpSoundToggle'), volSettings = document.getElementById('fpVolSettings');
+  var fsGearBtn = document.getElementById('fpFsGearBtn');
 
   var PALETTES = {
     classic: { core: '#fffdd0', c1: '#ff9f00', c2: '#ff3c00', glow: '#ff5a0f', room: 'rgba(255,90,15,0.16)', brick: '#482012', lit: '#ff6c00' },
@@ -188,7 +189,8 @@
   }
 
   function drawScene() {
-    if (!canvas || !ctx) return;
+    try {
+    if (!canvas || !ctx) { requestAnimationFrame(drawScene); return; }
     if (!sizeInitialized) {
       requestAnimationFrame(drawScene);
       return;
@@ -401,6 +403,7 @@
     updateAndDrawSmoke(pal);
 
     TIME++;
+    } catch (e) { /* keep the loop alive */ }
     requestAnimationFrame(drawScene);
   }
 
@@ -510,26 +513,6 @@
     embers = nextEmbers;
   }
 
-  function triggerSparkBurst() {
-    var archCx = W * 0.5, archBotY = H * 0.81;
-    var count = 8 + Math.floor(Math.random() * 10);
-    for (var i = 0; i < count; i++) {
-      var angle = -Math.PI/2 + (Math.random() - 0.5) * 0.85;
-      var speed = 3.2 + Math.random() * 4.2;
-      embers.push({
-        x: archCx + (Math.random() - 0.5) * 45,
-        y: archBotY - 15,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        decay: 0.015 + Math.random() * 0.015,
-        life: 1.0,
-        size: 1.2 + Math.random() * 1.5,
-        wobble: Math.random() * 10,
-        wSpeed: 0.05
-      });
-    }
-  }
-
   function updateAndDrawSmoke(pal) {
     var archCx = W * 0.5, archTop = H * 0.28;
     if (smoke.length < 25 && Math.random() < 0.12) {
@@ -545,6 +528,7 @@
     }
 
     var nextSmoke = [];
+    var currentStyle = styleSelect ? styleSelect.value : 'classic';
     for (var i = 0; i < smoke.length; i++) {
       var s = smoke[i];
       s.x += s.vx; s.y += s.vy;
@@ -554,7 +538,7 @@
         nextSmoke.push(s);
         var sizeNow = s.size * s.life;
         var sGrad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, sizeNow);
-        var col = pName === 'classic' ? 'rgba(70,60,60,' : 'rgba(60,65,70,';
+        var col = currentStyle === 'classic' ? 'rgba(70,60,60,' : 'rgba(60,65,70,';
         sGrad.addColorStop(0, col + (s.life * 0.08) + ')');
         sGrad.addColorStop(0.5, col + (s.life * 0.03) + ')');
         sGrad.addColorStop(1, 'rgba(0,0,0,0)');
@@ -565,86 +549,22 @@
   }
 
   // ─── AUDIO ENGINE ──────────────────────────────────────────────────────────
-  var AC = null, audioStarted = false;
-  var crackleGain = null, rainGain = null;
-  var nextCrackle = 0;
-
-  function buildBrownNoise(audioCtx, secs) {
-    var n = Math.ceil(audioCtx.sampleRate * secs), buf = audioCtx.createBuffer(1, n, audioCtx.sampleRate);
-    var d = buf.getChannelData(0), last = 0;
-    for (var i = 0; i < n; i++) {
-      var w = Math.random() * 2 - 1; last = (last + 0.02 * w) / 1.02; d[i] = last * 3.5;
-    }
-    return buf;
-  }
-
-  function buildWhiteNoise(audioCtx, secs) {
-    var n = Math.ceil(audioCtx.sampleRate * secs), buf = audioCtx.createBuffer(1, n, audioCtx.sampleRate);
-    var d = buf.getChannelData(0);
-    for (var i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
-    return buf;
-  }
+  var audioEl = null, audioStarted = false;
 
   function startAudio() {
     if (audioStarted) return;
-    try { AC = new (window.AudioContext || window.webkitAudioContext)(); }
-    catch(e) { return; }
+    audioEl = new Audio('/assets/fire-screen/fire-screen.mp3');
+    audioEl.loop = true;
+    audioEl.preload = 'auto';
     audioStarted = true;
-
-    var brownSrc = AC.createBufferSource();
-    brownSrc.buffer = buildBrownNoise(AC, 4); brownSrc.loop = true;
-    var fireLp = AC.createBiquadFilter(); fireLp.type = 'lowpass'; fireLp.frequency.value = 420; fireLp.Q.value = 0.5;
-    crackleGain = AC.createGain(); brownSrc.connect(fireLp); fireLp.connect(crackleGain);
-    crackleGain.connect(AC.destination); brownSrc.start(0);
-
-    var rainSrc = AC.createBufferSource();
-    rainSrc.buffer = buildWhiteNoise(AC, 3); rainSrc.loop = true;
-    var rainBp = AC.createBiquadFilter(); rainBp.type = 'bandpass'; rainBp.frequency.value = 950; rainBp.Q.value = 0.5;
-    var rainHp = AC.createBiquadFilter(); rainHp.type = 'highpass'; rainHp.frequency.value = 550;
-    rainGain = AC.createGain(); rainSrc.connect(rainBp); rainBp.connect(rainHp); rainHp.connect(rainGain);
-    rainGain.connect(AC.destination); rainSrc.start(0);
-
     applyVolumes();
-    nextCrackle = AC.currentTime + 0.3;
+    audioEl.play().catch(function () {});
   }
 
   function applyVolumes() {
-    if (!AC || !audioStarted) return;
-    var t = AC.currentTime, mv = S.muted ? 0 : S.volume;
-    if (crackleGain) crackleGain.gain.setTargetAtTime(S.crackle * mv * 0.5, t, 0.1);
-    if (rainGain)    rainGain.gain.setTargetAtTime(S.rain * mv * 0.38, t, 0.15);
+    if (!audioEl) return;
+    audioEl.volume = S.muted ? 0 : S.volume;
   }
-
-  function scheduleCrackle() {
-    if (!AC || !audioStarted || !crackleGain) return;
-    var now = AC.currentTime; if (now < nextCrackle) return;
-    if (!S.muted && S.crackle > 0.08 && S.volume > 0.05) {
-      var count = 1 + (Math.random() < 0.3 ? 1 : 0);
-      for (var k = 0; k < count; k++) firePop(now + k * (0.04 + Math.random() * 0.1));
-    }
-    var fsValue = flameSizeSlider ? parseFloat(flameSizeSlider.value) : 110;
-    var flameScale = fsValue / 110;
-    nextCrackle = now + (0.4 + Math.random() * 2.4) / Math.max(flameScale, 0.5);
-  }
-
-  function firePop(t) {
-    var sr = AC.sampleRate, dur = 0.03 + Math.random() * 0.05;
-    var buf = AC.createBuffer(1, Math.ceil(sr * (dur + 0.02)), sr), d = buf.getChannelData(0), last = 0;
-    for (var i = 0; i < d.length; i++) {
-      var w = Math.random() * 2 - 1; last = (last + 0.02 * w) / 1.02; d[i] = last * 5 * Math.exp(-i / (sr * dur * 0.5));
-    }
-    var src = AC.createBufferSource(); src.buffer = buf; src.playbackRate.value = 0.8 + Math.random() * 0.5;
-    var bp = AC.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 220 + Math.random() * 680; bp.Q.value = 1.5 + Math.random()*2;
-    var g = AC.createGain(), vol = (0.3 + Math.random() * 0.7) * S.crackle * (S.muted ? 0 : S.volume);
-    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol * 0.9, t + 0.003); g.gain.exponentialRampToValueAtTime(0.0001, t + dur + 0.02);
-    src.connect(bp); bp.connect(g); g.connect(AC.destination);
-    src.start(t); src.stop(t + dur + 0.05);
-
-    // Sync visual sparks
-    setTimeout(triggerSparkBurst, Math.max(0, Math.round((t - AC.currentTime) * 1000)));
-  }
-
-  (function loop() { scheduleCrackle(); setTimeout(loop, 170); })();
 
   // UI Syncs
   function syncUIControls() {
@@ -660,14 +580,12 @@
   soundBtn.addEventListener('click', function (e) {
     e.stopPropagation(); S.muted = !S.muted; syncUIControls(); applyVolumes();
     if (!audioStarted && !S.muted) startAudio();
-    else if (!S.muted && AC && AC.state === 'suspended') AC.resume();
   });
 
   if (soundToggle) {
     soundToggle.addEventListener('change', function () {
       S.muted = !this.checked; syncUIControls(); applyVolumes();
       if (!audioStarted && !S.muted) startAudio();
-      else if (!S.muted && AC && AC.state === 'suspended') AC.resume();
     });
   }
 
@@ -697,18 +615,7 @@
   if (styleSelect) {
     styleSelect.addEventListener('change', function () { applyPalette(this.value); });
   }
-  if (crackleSlider) {
-    crackleSlider.addEventListener('input', function () {
-      S.crackle = this.value / 100; applyVolumes();
-      if (!audioStarted) startAudio();
-    });
-  }
-  if (rainSlider) {
-    rainSlider.addEventListener('input', function () {
-      S.rain = this.value / 100; applyVolumes();
-      if (!audioStarted && S.rain > 0) startAudio();
-    });
-  }
+
 
   var _timerInterval = null;
   if (timerSelect) {
@@ -731,10 +638,18 @@
     });
   }
 
+  if (fsGearBtn && settingsPanel) {
+    fsGearBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      settingsPanel.classList.toggle('open');
+    });
+  }
+
   document.addEventListener('fullscreenchange', function () {
     var isFS = document.fullscreenElement === wrap;
     wrap.classList.toggle('is-fullscreen', isFS);
     document.documentElement.classList.toggle('fp-fs-active', isFS);
+    if (!isFS && settingsPanel) settingsPanel.classList.remove('open');
     setTimeout(resizeCanvas, 120);
   });
 
@@ -745,6 +660,7 @@
       return;
     }
     if (k === 'escape') document.exitFullscreen();
+    else if (k === 'c') { e.preventDefault(); if (settingsPanel) settingsPanel.classList.toggle('open'); }
     else if (k === 'm') soundBtn.click();
     else if (e.key === 'ArrowUp') { e.preventDefault(); S.volume = Math.min(1, S.volume + 0.05); syncUIControls(); applyVolumes(); }
     else if (e.key === 'ArrowDown') { e.preventDefault(); S.volume = Math.max(0, S.volume - 0.05); syncUIControls(); applyVolumes(); }

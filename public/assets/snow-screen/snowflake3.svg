@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+  <!-- 6 primary lines -->
+  <line x1="50" y1="12" x2="50" y2="88" />
+  <line x1="17.1" y1="31" x2="82.9" y2="69" />
+  <line x1="17.1" y1="69" x2="82.9" y2="31" />
+
+  <!-- Dots at the ends of main branches -->
+  <circle cx="50" cy="12" r="2.5" fill="#ffffff" stroke="none" />
+  <circle cx="50" cy="88" r="2.5" fill="#ffffff" stroke="none" />
+  <circle cx="17.1" cy="31" r="2.5" fill="#ffffff" stroke="none" />
+  <circle cx="82.9" cy="69" r="2.5" fill="#ffffff" stroke="none" />
+  <circle cx="17.1" cy="69" r="2.5" fill="#ffffff" stroke="none" />
+  <circle cx="82.9" cy="31" r="2.5" fill="#ffffff" stroke="none" />
+
+  <!-- Leafy branches along spokes -->
+  <!-- Top vertical branch -->
+  <path d="M42,26 L50,18 L58,26" />
+  <path d="M40,36 L50,28 L60,36" />
+  <!-- Bottom vertical branch -->
+  <path d="M42,74 L50,82 L58,74" />
+  <path d="M40,64 L50,72 L60,64" />
+
+  <!-- Diagonal components -->
+  <!-- Top-left -->
+  <path d="M22,25 Q28,23 27,17" />
+  <path d="M29,32 Q35,30 33,23" />
+  <path d="M22,25 Q25,31 31,30" />
+  <path d="M29,32 Q32,38 38,36" />
+
+  <!-- Bottom-right -->
+  <path d="M78,75 Q72,77 73,83" />
+  <path d="M71,68 Q65,70 67,77" />
+  <path d="M78,75 Q75,69 69,70" />
+  <path d="M71,68 Q68,62 62,64" />
+
+  <!-- Bottom-left -->
+  <path d="M22,75 Q28,77 27,83" />
+  <path d="M29,68 Q35,70 33,77" />
+  <path d="M22,75 Q25,69 31,70" />
+  <path d="M29,68 Q32,62 38,64" />
+
+  <!-- Top-right -->
+  <path d="M78,25 Q72,23 73,17" />
+  <path d="M71,32 Q65,30 67,23" />
+  <path d="M78,25 Q75,31 69,30" />
+  <path d="M71,32 Q68,38 62,36" />
+</svg>
