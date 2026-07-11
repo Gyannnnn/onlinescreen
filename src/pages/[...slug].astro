@@ -15,6 +15,7 @@ import RadarScreen from '../components/RadarScreen.astro';
 import FakeVirusScreen from '../components/FakeVirusScreen.astro';
 import WhiteNoiseScreen from '../components/WhiteNoiseScreen.astro';
 import WindowsXpCrash from '../components/WindowsXpCrash.astro';
+import FireplaceScreen from '../components/FireplaceScreen.astro';
 import { localeOrder, locales, type Locale } from '../data/locales';
 import { getRelatedTools, tools, type Tool } from '../data/tools';
 import { t, toolName, toolSummary } from '../data/translations';
@@ -110,6 +111,8 @@ const props = Astro.props as PageProps;
           <WhiteNoiseScreen tool={props.tool} locale={props.locale} />
         ) : props.tool.slug === 'windows-xp-crash' ? (
           <WindowsXpCrash tool={props.tool} locale={props.locale} />
+        ) : props.tool.slug === 'fireplace-screen' ? (
+          <FireplaceScreen tool={props.tool} locale={props.locale} />
         ) : (
           <ScreenTool tool={props.tool} locale={props.locale} />
         )}
@@ -195,6 +198,14 @@ const props = Astro.props as PageProps;
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Click</kbd> Spawn More Error Dialogs</p>
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Drag Header</kbd> Infinite Drag Cascade Glitch</p>
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Reset & Exit Fullscreen</p>
+            </>
+          ) : props.tool.slug === 'fireplace-screen' ? (
+            <>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> Fullscreen / Active Fire</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">1-5</kbd> Switch Styles</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">S</kbd> Toggle Sound Mode</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">&uarr;&darr;</kbd> Adjust Volume</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
             </>
           ) : (
             <>

@@ -459,6 +459,7 @@ const toolNames: Record<string, Partial<Record<Locale, string>>> = {
   'grey-screen': { es: 'Pantalla Gris', pt: 'Tela Cinza', fr: 'Écran Gris', de: 'Grauer Bildschirm', hi: 'स्लेटी स्क्रीन', ja: '灰色の画面' },
   'macos-screen': { es: 'Actualización de macOS', pt: 'Atualização do macOS', fr: 'Mise à jour macOS', de: 'macOS-Aktualisierung', hi: 'macOS अपडेट', ja: 'macOSアップデート' },
   'radar-screen': { es: 'Pantalla de Radar', pt: 'Tela de Radar', fr: 'Écran Radar', de: 'Radar-Bildschirm', hi: 'रडार स्क्रीन', ja: 'レーダー画面' },
+  'fireplace-screen': { es: 'Pantalla de Chimenea', pt: 'Tela de Lareira', fr: 'Écran de Cheminée', de: 'Kaminfeuer-Bildschirm', hi: 'फायरप्लेस स्क्रीन', ja: '暖炉の画面' },
 };
 
 const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
@@ -473,6 +474,14 @@ const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
     de: 'Ein Radar-Vollbildschirm für theatralische Dashboards, Videos und spielerische Setups.',
     hi: 'नाटकीय डैशबोर्ड, वीडियो और चंचल सेटअप के लिए रडार-शैली का फुलस्क्रीन डिस्प्ले।',
     ja: '演劇用ダッシュボード、ビデオ、および遊び心のあるセットアップ用のレーダー風全画面表示。',
+  },
+  'fireplace-screen': {
+    es: 'Un protector de pantalla cálido inspirado en una chimenea para ambientación, calor de fondo y configuraciones de escritorio acogedoras.',
+    pt: 'Um protetor de tela quente inspirado em lareiras para ambiente, calor de fundo e setups de mesa aconchegantes.',
+    fr: 'Un économiseur d\'écran chaleureux inspiré d\'une cheminée pour l\'ambiance, la chaleur de fond et les installations de bureau douillettes.',
+    de: 'Ein warmer Kaminfeuer-Bildschirmschoner für Ambiente, Hintergrundwärme und gemütliche Schreibtische.',
+    hi: 'एम्बिएंस, बैकग्राउंड गर्मी और आरामदायक डेस्क सेटअप के लिए एक गर्म फायरप्लेस से प्रेरित स्क्रीन सेवर।',
+    ja: '雰囲気、背景の温かさ、心地よいデスクセットアップのための、温かみのある暖炉風スクリーンセーバー。',
   },
 };
 

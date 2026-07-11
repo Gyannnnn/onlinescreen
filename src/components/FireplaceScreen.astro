@@ -1,0 +1,323 @@
+---
+import type { Tool } from '../data/tools';
+import type { Locale } from '../data/locales';
+
+type Props = { tool: Tool; locale: Locale };
+const { tool, locale } = Astro.props;
+---
+
+<div class="fp-wrap" id="fpWrap">
+  <!-- Scene canvas: bricks, arch, mantle, logs -->
+  <canvas class="fp-canvas" id="fpCanvas"></canvas>
+
+  <!-- Dummy fire element hidden, to preserve selectors without errors -->
+  <div class="fp-fire-stage" id="fpFireStage" style="display: none;">
+    <div class="fire" id="fpFire"></div>
+  </div>
+
+  <!-- Warm room-glow overlay (flickering light on walls) -->
+  <div class="fp-room-glow" id="fpRoomGlow"></div>
+
+  <!-- Cinematic vignette -->
+  <div class="fp-vignette"></div>
+
+  <!-- HUD: fades in on hover / after start -->
+  <div class="fp-hud" id="fpHud">
+    <div class="fp-hud-left">
+      <button class="fp-btn" id="fpSoundBtn" type="button" aria-label="Toggle Sound">
+        <svg id="fpSoundIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        </svg>
+      </button>
+      <div class="fp-vol-wrap">
+        <input type="range" id="fpVol" class="fp-vol-slider" min="0" max="100" value="70" aria-label="Volume" />
+      </div>
+    </div>
+    <div class="fp-hud-right">
+      <button class="fp-btn" id="fpSettingsBtn" type="button" aria-label="Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+      <button class="fp-btn" id="fpFsBtn" type="button" aria-label="Fullscreen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Settings panel -->
+  <div class="fp-settings" id="fpSettings">
+    <div class="fp-settings-inner">
+      <div class="fp-settings-header">
+        <span>Fireplace Settings</span>
+        <button class="fp-btn fp-close-btn" id="fpCloseSettings" type="button" aria-label="Close">✕</button>
+      </div>
+
+      <div class="fp-setting-row">
+        <label for="fpSoundToggle">🔊 Enable Sound</label>
+        <input type="checkbox" id="fpSoundToggle" class="fp-checkbox" />
+      </div>
+
+      <div class="fp-setting-row">
+        <label for="fpVolSettings">🔈 Volume</label>
+        <input type="range" id="fpVolSettings" min="0" max="100" value="70" class="fp-slider" />
+      </div>
+
+      <div class="fp-setting-row">
+        <label for="fpStyle">Flame Color</label>
+        <select id="fpStyle">
+          <option value="classic">Classic Orange</option>
+          <option value="blue">Blue Mystic</option>
+          <option value="green">Emerald Wood</option>
+          <option value="purple">Violet Phantom</option>
+        </select>
+      </div>
+
+      <div class="fp-setting-row">
+        <label for="fpFlameSize">Flame Size</label>
+        <input type="range" id="fpFlameSize" min="60" max="160" value="110" class="fp-slider" />
+      </div>
+
+      <div class="fp-setting-row">
+        <label for="fpCrackle">Fire Crackle</label>
+        <input type="range" id="fpCrackle" min="0" max="100" value="70" class="fp-slider" />
+      </div>
+
+      <div class="fp-setting-row">
+        <label for="fpRain">Rain</label>
+        <input type="range" id="fpRain" min="0" max="100" value="0" class="fp-slider" />
+      </div>
+
+      <div class="fp-setting-row">
+        <label for="fpTimer">Sleep Timer</label>
+        <select id="fpTimer">
+          <option value="0">Off</option>
+          <option value="15">15 min</option>
+          <option value="30">30 min</option>
+          <option value="60">60 min</option>
+          <option value="90">90 min</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ── Wrapper ───────────────────────────────────────────────────────────── */
+  .fp-wrap {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    background: #080503;
+    border-radius: 16px;
+    overflow: hidden;
+    user-select: none;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.04);
+  }
+
+  /* ── Canvas (scene backdrop) ───────────────────────────────────────────── */
+  .fp-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 1;
+  }
+
+  /* ── CSS Fire stage (hidden now) ───────────────────────────────────────── */
+  .fp-fire-stage {
+    display: none !important;
+  }
+
+  /* ── Room glow ─────────────────────────────────────────────────────────── */
+  .fp-room-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse 70% 45% at 50% 85%, rgba(255,90,15,0.16) 0%, transparent 70%);
+    mix-blend-mode: screen;
+    z-index: 5;
+    animation: fp-roomFlicker 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes fp-roomFlicker {
+    0%   { opacity: 0.75; }
+    40%  { opacity: 1.0; }
+    70%  { opacity: 0.82; }
+    100% { opacity: 0.95; }
+  }
+
+  /* ── Vignette ──────────────────────────────────────────────────────────── */
+  .fp-vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 50% 42%, transparent 28%, rgba(0,0,0,0.65) 100%);
+    z-index: 6;
+  }
+
+  /* ── HUD ───────────────────────────────────────────────────────────────── */
+  .fp-hud {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .fp-wrap:hover .fp-hud,
+  .fp-hud.is-visible { opacity: 1; }
+
+  .fp-hud-left,
+  .fp-hud-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .fp-btn {
+    width: 36px;
+    height: 36px;
+    background: rgba(10,6,4,0.6);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    color: rgba(255,255,255,0.8);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    flex-shrink: 0;
+  }
+  .fp-btn svg { width: 16px; height: 16px; }
+  .fp-btn:hover {
+    background: rgba(15,10,8,0.85);
+    border-color: rgba(255,100,20,0.45);
+    color: #fff;
+  }
+  .fp-close-btn { font-size: 14px; font-family: system-ui, sans-serif; width: 28px; height: 28px; border-radius: 6px; }
+
+  .fp-vol-wrap { width: 80px; }
+  .fp-vol-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.18);
+    outline: none;
+    cursor: pointer;
+  }
+  .fp-vol-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: #ff7030;
+    box-shadow: 0 0 6px rgba(255,110,30,0.7);
+    cursor: pointer;
+  }
+
+  /* ── Settings drawer ───────────────────────────────────────────────────── */
+  .fp-settings {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 25;
+    transform: translateY(100%);
+    transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+    background: rgba(12,8,6,0.97);
+    border-top: 1px solid rgba(255,100,20,0.15);
+    backdrop-filter: blur(20px);
+  }
+  .fp-settings.open { transform: translateY(0); }
+
+  .fp-settings-inner {
+    padding: 18px 20px 22px;
+    display: flex; flex-direction: column; gap: 14px;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  .fp-settings-header {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; font-weight: 600;
+    color: rgba(255,160,80,0.95);
+    letter-spacing: 0.8px; text-transform: uppercase;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .fp-setting-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    font-size: 12px; color: rgba(255,255,255,0.7);
+  }
+  .fp-setting-row label { flex-shrink: 0; min-width: 110px; }
+  .fp-setting-row select {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff; border-radius: 6px; padding: 5px 10px; font-size: 12px; outline: none; cursor: pointer;
+  }
+  .fp-setting-row select:hover { border-color: rgba(255,100,20,0.45); }
+
+  .fp-slider {
+    flex: 1;
+    -webkit-appearance: none; appearance: none;
+    height: 3px; border-radius: 2px;
+    background: rgba(255,255,255,0.12); outline: none; cursor: pointer;
+  }
+  .fp-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 13px; height: 13px; border-radius: 50%;
+    background: #ff6020;
+    box-shadow: 0 0 8px rgba(255,90,20,0.6); cursor: pointer;
+    transition: transform 0.1s;
+  }
+  .fp-slider::-webkit-slider-thumb:hover { transform: scale(1.25); }
+
+  /* Premium switch for sound checkbox */
+  .fp-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 38px; height: 20px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.15);
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .fp-checkbox:checked {
+    background: #ff6020;
+  }
+  .fp-checkbox::before {
+    content: '';
+    position: absolute;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    top: 2px; left: 2px;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+  .fp-checkbox:checked::before {
+    transform: translateX(18px);
+  }
+
+  /* ── Fullscreen ────────────────────────────────────────────────────────── */
+  :global(.fp-wrap.is-fullscreen) {
+    position: fixed !important; inset: 0 !important;
+    width: 100vw !important; height: 100vh !important;
+    z-index: 99999 !important; border-radius: 0 !important;
+  }
+  :global(html.fp-fs-active) { overflow: hidden !important; }
+</style>
+
+<script>
+  import './fireplace-engine.js';
+</script>
