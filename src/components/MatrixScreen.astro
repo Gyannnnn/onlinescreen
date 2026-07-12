@@ -1,0 +1,134 @@
+---
+import type { Tool } from '../data/tools';
+import type { Locale } from '../data/locales';
+import ReactMatrixScreen from './MatrixScreen.tsx';
+import fs from 'fs';
+import path from 'path';
+
+type Props = { tool: Tool; locale: Locale };
+const { tool, locale } = Astro.props;
+
+// Dynamically read audio files from public/assets/rain-screen/bgm so we can reuse relaxing rain sounds
+const bgmDir = path.join(process.cwd(), 'public/assets/rain-screen/bgm');
+let audioFiles: string[] = [];
+try {
+  if (fs.existsSync(bgmDir)) {
+    audioFiles = fs.readdirSync(bgmDir)
+      .filter(file => {
+        const ext = path.extname(file).toLowerCase();
+        return ['.mp3', '.ogg', '.wav', '.m4a'].includes(ext);
+      })
+      .map(file => `/assets/rain-screen/bgm/${file}`);
+  }
+} catch (err) {
+  console.error("Failed to read rain bgm directory for Matrix screen:", err);
+}
+---
+
+<ReactMatrixScreen 
+  tool={tool} 
+  locale={locale} 
+  audioFiles={audioFiles} 
+  client:only="react" 
+/>
+
+<style>
+  /* Dual Range Slider Thumb CSS overrides */
+  :global(.slider-thumb-pointer) {
+    pointer-events: none;
+  }
+
+  :global(.slider-thumb-pointer::-webkit-slider-thumb) {
+    pointer-events: auto !important;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ffffff !important;
+    border: 2px solid #22c55e !important;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.15s, background-color 0.15s;
+  }
+
+  :global(.slider-thumb-pointer::-webkit-slider-thumb:hover) {
+    transform: scale(1.25);
+    background: #22c55e !important;
+    border-color: #ffffff !important;
+  }
+
+  :global(.slider-thumb-pointer::-moz-range-thumb) {
+    pointer-events: auto !important;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ffffff !important;
+    border: 2px solid #22c55e !important;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.15s, background-color 0.15s;
+  }
+
+  :global(.slider-thumb-pointer::-moz-range-thumb:hover) {
+    transform: scale(1.25);
+    background: #22c55e !important;
+    border-color: #ffffff !important;
+  }
+
+  /* Fade-in Animation for secondary control elements */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  :global(.animate-fadeIn) {
+    animation: fadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Disable transitions on size properties during fullscreen transitions */
+  :global(.matrix-container) {
+    transition: none !important;
+  }
+
+  :global(.matrix-container:fullscreen) {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    max-width: none !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+
+  /* Scroll lock styling on body when fullscreen is active */
+  :global(html.is-matrix-fullscreen) {
+    overflow: hidden !important;
+  }
+  :global(html.is-matrix-fullscreen body) {
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Thin premium custom scrollbar for drawer settings card */
+  :global(.custom-scrollbar::-webkit-scrollbar) {
+    width: 6px;
+  }
+  :global(.custom-scrollbar::-webkit-scrollbar-track) {
+    background: transparent;
+  }
+  :global(.custom-scrollbar::-webkit-scrollbar-thumb) {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+  }
+  :global(.custom-scrollbar::-webkit-scrollbar-thumb:hover) {
+    background: rgba(34, 197, 94, 0.4);
+  }
+</style>

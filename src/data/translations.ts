@@ -461,6 +461,7 @@ const toolNames: Record<string, Partial<Record<Locale, string>>> = {
   'radar-screen': { es: 'Pantalla de Radar', pt: 'Tela de Radar', fr: 'Écran Radar', de: 'Radar-Bildschirm', hi: 'रडार स्क्रीन', ja: 'レーダー画面' },
   'fireplace-screen': { es: 'Pantalla de Chimenea', pt: 'Tela de Lareira', fr: 'Écran de Cheminée', de: 'Kaminfeuer-Bildschirm', hi: 'फायरप्लेस स्क्रीन', ja: '暖炉の画面' },
   'snow-screen': { es: 'Pantalla de Nieve', pt: 'Tela de Neve', fr: 'Écran de Neige', de: 'Schneefall-Bildschirm', hi: 'स्नो स्क्रीन', ja: '雪の画面' },
+  'matrix-screen': { es: 'Pantalla Matrix', pt: 'Tela Matrix', fr: 'Écran Matrix', de: 'Matrix-Bildschirm', hi: 'मैट्रिक्स स्क्रीन', ja: 'マトリックス画面' },
 };
 
 const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
@@ -490,7 +491,15 @@ const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
     fr: 'Un économiseur d\'écran de neige interactif et esthétique avec vent, vitesse et taille de flocons personnalisables, ainsi que des modes couleur ou image.',
     de: 'Ein interaktiver und ästhetischer Schneefall-Bildschirmschoner mit anpassbarem Wind, Geschwindigkeit, Flakengröße, Farb- oder Grafikmodus.',
     hi: 'एक इंटरैक्टिव और सौंदर्य स्नो स्क्रीन सेवर जिसमें अनुकूलन योग्य हवा, गति, बर्फ के आकार और चुनिंदा रंग या छवियों का समर्थन है।',
-    ja: '風向き、速度、雪片の大きさ、カラーまたは画像モードを自由にカスタマイズできる、インタラクティブで美しい雪のスクリーンセーバー。',
+    ja: '風向き、速度、雪片の大きさ、カラーまたは画像モードを自由にカスタマイズできる、インタラクティブで美しい雪 of スクリーンセーバー。',
+  },
+  'matrix-screen': {
+    es: 'Un salvapantallas interactivo con efecto de lluvia de código de Matrix, velocidad ajustable, colores de brillo cyberpunk y texto/nombre personalizado.',
+    pt: 'Um protetor de tela do Matrix interativo com efeito de chuva de código, velocidade ajustável, cores cyberpunk e texto/nome personalizado.',
+    fr: 'Un économiseur d\'écran Matrix interactif avec effet de pluie de code, vitesse ajustable, couleurs cyberpunk et texte/nom personnalisé.',
+    de: 'Ein interaktiver Matrix-Coderegen-Bildschirmschoner mit anpassbarer Geschwindigkeit, leuchtenden Cyberpunk-Farben und eigenem Text oder Namen.',
+    hi: 'एक इंटरैक्टिव मैट्रिक्स कोड रेन स्क्रीन सेवर जिसमें अनुकूलन योग्य गति, नियॉन ग्लो रंग और कस्टम टेक्स्ट या नाम का समर्थन है।',
+    ja: '速度、サイバーパンクのグローカラー、カスタムテキストや名前をカスタマイズできる、インタラクティブなマトリックス・コードレイン・スクリーンセーバー。',
   },
 };
 

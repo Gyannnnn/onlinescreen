@@ -839,8 +839,8 @@ export default function RainScreen({ tool, locale, backgrounds, audioFiles }: Ra
                   />
                   <label 
                     htmlFor="streaksSplashes" 
-                    className={`text-xs font-semibold text-neutral-250 cursor-pointer select-none ${
-                      rainType === 'glass' ? 'opacity-40 cursor-not-allowed' : ''
+                    className={`text-xs font-semibold text-neutral-300 cursor-pointer select-none ${
+                      rainType === 'glass' ? 'opacity-45 cursor-not-allowed' : ''
                     }`}
                   >
                     💦 Floor Splashes
@@ -857,7 +857,7 @@ export default function RainScreen({ tool, locale, backgrounds, audioFiles }: Ra
                   />
                   <label 
                     htmlFor="thunderEnabled" 
-                    className="text-xs font-semibold text-neutral-250 cursor-pointer select-none"
+                    className="text-xs font-semibold text-neutral-300 cursor-pointer select-none"
                   >
                     ⚡ Ambient Lightning
                   </label>
