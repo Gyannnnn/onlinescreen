@@ -282,15 +282,30 @@ export default function RainScreen({ tool, locale, backgrounds, audioFiles }: Ra
   const [selectedBg, setSelectedBg] = useState(backgrounds[0] || '');
 
   // Sound States
-  const [selectedBgm, setSelectedBgm] = useState(audioFiles[0] || 'none');
+  const [selectedBgm, setSelectedBgm] = useState('none');
   const [bgmPlaying, setBgmPlaying] = useState(false);
-  const [bgmVolume, setBgmVolume] = useState(0.2);
+  const [bgmVolume, setBgmVolume] = useState(0.5);
+
+  // Thunder / Lightning States
+  const [thunderEnabled, setThunderEnabled] = useState(false);
+  const [thunderInterval, setThunderInterval] = useState(15);
 
   // Refs
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const thunderEnabledRef = useRef(thunderEnabled);
+  const thunderIntervalRef = useRef(thunderInterval);
+
+  useEffect(() => {
+    thunderEnabledRef.current = thunderEnabled;
+  }, [thunderEnabled]);
+
+  useEffect(() => {
+    thunderIntervalRef.current = thunderInterval;
+  }, [thunderInterval]);
 
   // Default parameters for quick reset
   const resetToDefaults = () => {
@@ -301,9 +316,11 @@ export default function RainScreen({ tool, locale, backgrounds, audioFiles }: Ra
     setSplashesEnabled(true);
     setColor(AESTHETIC_RAIN_COLORS[0].value);
     setSelectedBg(backgrounds[0] || '');
-    setSelectedBgm(audioFiles[0] || 'none');
-    setBgmVolume(0.2);
+    setSelectedBgm('none');
+    setBgmVolume(0.5);
     setBgmPlaying(false);
+    setThunderEnabled(false);
+    setThunderInterval(15);
   };
 
   // Keyboard controls
@@ -443,6 +460,14 @@ export default function RainScreen({ tool, locale, backgrounds, audioFiles }: Ra
     const staticDrops: { x: number; y: number; r: number; opacity: number }[] = [];
     let splashParticles: RainSplashParticle[] = [];
 
+    // Lightning variables
+    let lastFlashTime = performance.now();
+    let nextFlashDelay = thunderIntervalRef.current * 1000 * (0.7 + Math.random() * 0.6);
+    let flashActive = false;
+    let flashStartTime = 0;
+    let flashIntensity = 0;
+    let flashX = width * 0.5;
+
     // Helper to spawn static condensation beads on window
     const spawnStaticDrops = () => {
       staticDrops.length = 0;
@@ -529,6 +554,64 @@ export default function RainScreen({ tool, locale, backgrounds, audioFiles }: Ra
           gd.update(width, height);
           gd.draw(ctx, color);
         });
+      }
+
+      // Update lightning/thunder if enabled
+      if (thunderEnabledRef.current) {
+        const now = performance.now();
+        if (!flashActive && now - lastFlashTime > nextFlashDelay) {
+          flashActive = true;
+          flashStartTime = now;
+          flashX = width * (0.2 + Math.random() * 0.6);
+          lastFlashTime = now;
+          nextFlashDelay = thunderIntervalRef.current * 1000 * (0.75 + Math.random() * 0.5);
+        }
+      } else {
+        flashActive = false;
+        flashIntensity = 0;
+      }
+
+      if (flashActive) {
+        const elapsed = performance.now() - flashStartTime;
+        const flashDuration = 1000;
+        if (elapsed > flashDuration) {
+          flashActive = false;
+          flashIntensity = 0;
+        } else {
+          // Double pulse lightning:
+          // Peak 1: at 60ms, intensity up to 0.12
+          // Valley: at 160ms, intensity down to 0.02
+          // Peak 2: at 240ms, intensity up to 0.06
+          // Fade: from 240ms to 1000ms, decays to 0
+          if (elapsed < 60) {
+            flashIntensity = (elapsed / 60) * 0.12;
+          } else if (elapsed < 160) {
+            const t = (elapsed - 60) / 100;
+            flashIntensity = 0.12 - t * 0.10;
+          } else if (elapsed < 240) {
+            const t = (elapsed - 160) / 80;
+            flashIntensity = 0.02 + t * 0.04;
+          } else {
+            const t = (elapsed - 240) / 760;
+            flashIntensity = 0.06 * (1 - t);
+          }
+        }
+      }
+
+      if (flashIntensity > 0) {
+        ctx.save();
+        const grad = ctx.createRadialGradient(
+          flashX, 0, 10,
+          flashX, 0, Math.max(width, height) * 0.9
+        );
+        grad.addColorStop(0, `rgba(255, 255, 255, ${flashIntensity * 1.5})`);
+        grad.addColorStop(0.2, `rgba(240, 248, 255, ${flashIntensity * 0.9})`);
+        grad.addColorStop(0.5, `rgba(230, 242, 255, ${flashIntensity * 0.4})`);
+        grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, width, height);
+        ctx.restore();
       }
 
       animId = requestAnimationFrame(tick);
@@ -742,28 +825,66 @@ export default function RainScreen({ tool, locale, backgrounds, audioFiles }: Ra
 
           {/* Side-by-side controls for Color Tint & Sound */}
           <div className="border-t border-white/5 pt-3 mt-1 grid grid-cols-1 lg:grid-cols-2 gap-4">
-            {/* Left Block - Color selections */}
+            {/* Left Block - Color & Effects selections */}
             <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-3">
-                <input
-                  type="checkbox"
-                  id="streaksSplashes"
-                  checked={splashesEnabled}
-                  onChange={(e) => setSplashesEnabled(e.target.checked)}
-                  disabled={rainType === 'glass'}
-                  className="w-4 h-4 rounded border-neutral-700 bg-neutral-800 text-sky-500 checked:bg-sky-500 checked:border-sky-500 focus:ring-sky-500/20 focus:ring-2 cursor-pointer disabled:opacity-40"
-                />
-                <label 
-                  htmlFor="streaksSplashes" 
-                  className={`text-xs font-semibold text-neutral-250 cursor-pointer select-none ${
-                    rainType === 'glass' ? 'opacity-40 cursor-not-allowed' : ''
-                  }`}
-                >
-                  💦 Enable Splash Ripples on Floor Contact
-                </label>
+              <div className="flex flex-wrap gap-x-4 gap-y-2 items-center">
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="streaksSplashes"
+                    checked={splashesEnabled}
+                    onChange={(e) => setSplashesEnabled(e.target.checked)}
+                    disabled={rainType === 'glass'}
+                    className="w-4 h-4 rounded border-neutral-700 bg-neutral-800 text-sky-500 checked:bg-sky-500 checked:border-sky-500 focus:ring-sky-500/20 focus:ring-2 cursor-pointer disabled:opacity-40"
+                  />
+                  <label 
+                    htmlFor="streaksSplashes" 
+                    className={`text-xs font-semibold text-neutral-250 cursor-pointer select-none ${
+                      rainType === 'glass' ? 'opacity-40 cursor-not-allowed' : ''
+                    }`}
+                  >
+                    💦 Floor Splashes
+                  </label>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="thunderEnabled"
+                    checked={thunderEnabled}
+                    onChange={(e) => setThunderEnabled(e.target.checked)}
+                    className="w-4 h-4 rounded border-neutral-700 bg-neutral-800 text-sky-500 checked:bg-sky-500 checked:border-sky-500 focus:ring-sky-500/20 focus:ring-2 cursor-pointer"
+                  />
+                  <label 
+                    htmlFor="thunderEnabled" 
+                    className="text-xs font-semibold text-neutral-250 cursor-pointer select-none"
+                  >
+                    ⚡ Ambient Lightning
+                  </label>
+                </div>
               </div>
 
-              <div className="flex flex-col gap-2 bg-white/5 rounded-xl p-3 border border-white/5 mt-1 animate-fadeIn h-full justify-center">
+              {thunderEnabled && (
+                <div className="flex flex-col gap-1.5 bg-sky-950/20 rounded-xl p-3 border border-sky-500/10 animate-fadeIn">
+                  <div className="flex justify-between items-center text-[10px] text-neutral-300">
+                    <span className="flex items-center gap-1">⚡ Lightning Flash Interval</span>
+                    <span className="font-mono text-sky-400 bg-neutral-900/60 px-1.5 py-0.5 rounded border border-white/5">
+                      every ~{thunderInterval}s
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min="5"
+                    max="60"
+                    step="5"
+                    value={thunderInterval}
+                    onChange={(e) => setThunderInterval(Number(e.target.value))}
+                    className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-sky-450"
+                  />
+                </div>
+              )}
+
+              <div className="flex flex-col gap-2 bg-white/5 rounded-xl p-3 border border-white/5 animate-fadeIn">
                 <span className="text-[11px] font-semibold text-neutral-350 uppercase tracking-wider">Select Glow/Color Preset</span>
                 <div className="flex flex-wrap gap-2 mt-1 justify-start">
                   {AESTHETIC_RAIN_COLORS.map((item) => (
