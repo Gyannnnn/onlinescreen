@@ -1,0 +1,73 @@
+---
+import type { Tool } from '../data/tools';
+import type { Locale } from '../data/locales';
+import ReactAquariumScreen from './AquariumScreen.tsx';
+import fs from 'fs';
+import path from 'path';
+
+type Props = {
+  tool: Tool;
+  locale: Locale;
+};
+
+const { tool, locale } = Astro.props;
+
+// Dynamically scan for uploaded audio assets
+const bgmDir = path.join(process.cwd(), 'public/assets/aquarium-screen/bgm');
+let aquariumAudioFiles: string[] = [];
+try {
+  if (fs.existsSync(bgmDir)) {
+    aquariumAudioFiles = fs.readdirSync(bgmDir)
+      .filter(file => {
+        const ext = path.extname(file).toLowerCase();
+        return ['.mp3', '.ogg', '.wav', '.m4a'].includes(ext);
+      })
+      .map(file => `/assets/aquarium-screen/bgm/${file}`);
+  }
+} catch (err) {
+  console.error("Failed to read aquarium bgm directory:", err);
+}
+---
+
+<ReactAquariumScreen 
+  tool={tool} 
+  locale={locale} 
+  aquariumAudioFiles={aquariumAudioFiles}
+  client:only="react" 
+/>
+
+<style>
+  /* Custom scrollbars inside settings controls drawer */
+  :global(.custom-scrollbar::-webkit-scrollbar) {
+    width: 6px;
+    height: 6px;
+  }
+  :global(.custom-scrollbar::-webkit-scrollbar-track) {
+    background: transparent;
+  }
+  :global(.custom-scrollbar::-webkit-scrollbar-thumb) {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+  }
+  :global(.custom-scrollbar::-webkit-scrollbar-thumb:hover) {
+    background: rgba(255, 255, 255, 0.35);
+  }
+
+  /* Fade-in animation overlays */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0);
+    }
+  }
+
+  :global(.animate-fadeIn) {
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>

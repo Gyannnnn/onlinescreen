@@ -20,6 +20,7 @@ import SnowScreen from '../components/SnowScreen.astro';
 import RainScreen from '../components/RainScreen.astro';
 import MatrixScreen from '../components/MatrixScreen.astro';
 import ClockScreen from '../components/ClockScreen.astro';
+import AquariumScreen from '../components/AquariumScreen.astro';
 import { localeOrder, locales, type Locale } from '../data/locales';
 import { getRelatedTools, tools, type Tool } from '../data/tools';
 import { t, toolName, toolSummary } from '../data/translations';
@@ -125,6 +126,8 @@ const props = Astro.props as PageProps;
           <MatrixScreen tool={props.tool} locale={props.locale} />
         ) : props.tool.slug === 'clock-screen' ? (
           <ClockScreen tool={props.tool} locale={props.locale} />
+        ) : props.tool.slug === 'aquarium-screen' ? (
+          <AquariumScreen tool={props.tool} locale={props.locale} />
         ) : (
           <ScreenTool tool={props.tool} locale={props.locale} />
         )}
@@ -252,6 +255,14 @@ const props = Astro.props as PageProps;
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">S</kbd> Toggle Ticking Sound Mode</p>
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">T</kbd> Toggle Clock vs. Timer Mode</p>
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">R</kbd> Reset Controls</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
+            </>
+          ) : props.tool.slug === 'aquarium-screen' ? (
+            <>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> Fullscreen</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Space</kbd> Toggle Settings Panel</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">C</kbd> Toggle Clock Mode</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">B</kbd> Toggle Guided Breathing</p>
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
             </>
           ) : (
