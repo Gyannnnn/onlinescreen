@@ -1,0 +1,182 @@
+---
+import type { Tool } from '../data/tools';
+import type { Locale } from '../data/locales';
+import ReactClockScreen from './ClockScreen.tsx';
+
+type Props = {
+  tool: Tool;
+  locale: Locale;
+};
+
+const { tool, locale } = Astro.props;
+---
+
+<ReactClockScreen 
+  tool={tool} 
+  locale={locale} 
+  client:only="react" 
+/>
+
+<style>
+  /* 3D Perspective and backface visibility support */
+  :global(.clock-perspective) {
+    perspective: 300px;
+    -webkit-perspective: 300px;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+
+  :global(.backface-hidden) {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  :global(.origin-bottom) {
+    transform-origin: bottom center;
+  }
+
+  :global(.origin-top) {
+    transform-origin: top center;
+  }
+
+  :global(.rotate-x-180) {
+    transform: rotateX(180deg);
+  }
+
+  /* 3D folding animations styling */
+  :global(.animate-flip-top) {
+    animation: flip-top 0.75s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  :global(.animate-flip-bottom) {
+    animation: flip-bottom 0.75s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  /* Snappy yet butter smooth flip keyframes */
+  @keyframes flip-top {
+    0% {
+      transform: rotateX(0deg);
+    }
+    100% {
+      transform: rotateX(-180deg);
+    }
+  }
+
+  @keyframes flip-bottom {
+    0% {
+      transform: rotateX(180deg);
+    }
+    100% {
+      transform: rotateX(0deg);
+    }
+  }
+
+  /* Responsive card sizes using CSS variables */
+  :global(.clock-screen-container) {
+    transition: background-color 0.5s ease-in-out, filter 0.2s;
+    --card-w: 36px;
+    --card-h: 54px;
+    --card-fs: 38px;
+  }
+  @media (min-width: 380px) {
+    :global(.clock-screen-container) {
+      --card-w: 46px;
+      --card-h: 70px;
+      --card-fs: 48px;
+    }
+  }
+  @media (min-width: 480px) {
+    :global(.clock-screen-container) {
+      --card-w: 58px;
+      --card-h: 88px;
+      --card-fs: 64px;
+    }
+  }
+  @media (min-width: 640px) {
+    :global(.clock-screen-container) {
+      --card-w: 66px;
+      --card-h: 98px;
+      --card-fs: 70px;
+    }
+  }
+  @media (min-width: 768px) {
+    :global(.clock-screen-container) {
+      --card-w: 72px;
+      --card-h: 108px;
+      --card-fs: 78px;
+    }
+  }
+  @media (min-width: 1024px) {
+    :global(.clock-screen-container) {
+      --card-w: 78px;
+      --card-h: 114px;
+      --card-fs: 82px;
+    }
+  }
+
+  /* Fullscreen Mode fluid sizing */
+  :global(.clock-screen-container:fullscreen) {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    max-width: none !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+    --card-w: 10vw;
+    --card-h: 15vw;
+    --card-fs: 11vw;
+  }
+  @media (min-width: 1280px) {
+    :global(.clock-screen-container:fullscreen) {
+      --card-w: 8vw;
+      --card-h: 12vw;
+      --card-fs: 9vw;
+    }
+  }
+  @media (max-aspect-ratio: 1/1) {
+    :global(.clock-screen-container:fullscreen) {
+      --card-w: 9vh;
+      --card-h: 13.5vh;
+      --card-fs: 10.5vh;
+    }
+  }
+
+  /* Apply sizes to card unit */
+  :global(.flip-card-unit) {
+    width: var(--card-w);
+    height: var(--card-h);
+  }
+  :global(.flip-card-unit span) {
+    font-size: var(--card-fs);
+  }
+
+  /* Scroll lock styling on body when fullscreen is active */
+  :global(html.is-clock-fullscreen) {
+    overflow: hidden !important;
+  }
+  :global(html.is-clock-fullscreen body) {
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Thin premium custom scrollbar for drawer settings card */
+  :global(.custom-scrollbar::-webkit-scrollbar) {
+    width: 6px;
+  }
+  :global(.custom-scrollbar::-webkit-scrollbar-track) {
+    background: transparent;
+  }
+  :global(.custom-scrollbar::-webkit-scrollbar-thumb) {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+  }
+  :global(.custom-scrollbar::-webkit-scrollbar-thumb:hover) {
+    background: rgba(255, 255, 255, 0.35);
+  }
+</style>

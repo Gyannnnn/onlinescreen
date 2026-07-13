@@ -462,6 +462,7 @@ const toolNames: Record<string, Partial<Record<Locale, string>>> = {
   'fireplace-screen': { es: 'Pantalla de Chimenea', pt: 'Tela de Lareira', fr: 'Écran de Cheminée', de: 'Kaminfeuer-Bildschirm', hi: 'फायरप्लेस स्क्रीन', ja: '暖炉の画面' },
   'snow-screen': { es: 'Pantalla de Nieve', pt: 'Tela de Neve', fr: 'Écran de Neige', de: 'Schneefall-Bildschirm', hi: 'स्नो स्क्रीन', ja: '雪の画面' },
   'matrix-screen': { es: 'Pantalla Matrix', pt: 'Tela Matrix', fr: 'Écran Matrix', de: 'Matrix-Bildschirm', hi: 'मैट्रिक्स स्क्रीन', ja: 'マトリックス画面' },
+  'clock-screen': { es: 'Reloj Flip', pt: 'Relógio Flip', fr: 'Horloge à Volets', de: 'Klipp-Klapp-Uhr', hi: 'फ्लिप घड़ी', ja: 'フリップ時計' },
 };
 
 const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
@@ -500,6 +501,14 @@ const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
     de: 'Ein interaktiver Matrix-Coderegen-Bildschirmschoner mit anpassbarer Geschwindigkeit, leuchtenden Cyberpunk-Farben und eigenem Text oder Namen.',
     hi: 'एक इंटरैक्टिव मैट्रिक्स कोड रेन स्क्रीन सेवर जिसमें अनुकूलन योग्य गति, नियॉन ग्लो रंग और कस्टम टेक्स्ट या नाम का समर्थन है।',
     ja: '速度、サイバーパンクのグローカラー、カスタムテキストや名前をカスタマイズできる、インタラクティブなマトリックス・コードレイン・スクリーンセーバー。',
+  },
+  'clock-screen': {
+    es: 'Un salvapantallas de reloj flip estético y minimalista con soporte para formato de 12/24 horas, temas premium (OLED, cristal) y un temporizador Pomodoro integrado.',
+    pt: 'Um protetor de tela de relógio flip estético e minimalista com suporte a formato de 12/24 horas, temas premium (OLED, vidro) e um temporizador Pomodoro integrado.',
+    fr: 'Un économiseur d\'écran d\'horloge à volets esthétique et minimaliste avec prise en charge du format 12/24 heures, des thèmes premium (OLED, verre) et un minuteur Pomodoro intégré.',
+    de: 'Ein ästhetischer und minimalistischer Klipp-Klapp-Uhr-Bildschirmschoner mit Unterstützung für das 12/24-Stunden-Format, Premium-Designs (OLED, Glas) und integriertem Pomodoro-Timer.',
+    hi: '12/24 घंटे के प्रारूप, प्रीमियम थीम (OLED, ग्लास) और एक एकीकृत पोमोडोरो टाइमर के समर्थन के साथ एक सौंदर्यपूर्ण और न्यूनतम फ्लिप घड़ी स्क्रीनसेवर।',
+    ja: '12/24時間表示、プレミアムテーマ（OLED、ガラス）、および統合されたポモドーロタイマーをサポートした、美しくミニマルなフリップ時計スクリーンセーバー。',
   },
 };
 
