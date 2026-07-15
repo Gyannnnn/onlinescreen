@@ -1,0 +1,11 @@
+---
+export const ssr = false;
+export const prerender = false;
+import type { Tool } from '../data/tools';
+import type { Locale } from '../data/locales';
+import ReactStarsScreen from './StarsScreen.tsx';
+
+const { tool, locale } = Astro.props;
+---
+
+<ReactStarsScreen tool={tool} locale={locale} client:only="react" />

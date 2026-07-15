@@ -20,6 +20,8 @@ import SnowScreen from '../components/SnowScreen.astro';
 import RainScreen from '../components/RainScreen.astro';
 import MatrixScreen from '../components/MatrixScreen.astro';
 import ClockScreen from '../components/ClockScreen.astro';
+import StarsScreen from '../components/StarsScreen.astro';
+// import StarsScreen from '../components/StarsScreen';
 import AmbientScreen from '../components/AmbientScreen.astro';
 import AquariumScreen from '../components/AquariumScreen.astro';
 import { localeOrder, locales, type Locale } from '../data/locales';
@@ -125,6 +127,8 @@ const props = Astro.props as PageProps;
           <RainScreen tool={props.tool} locale={props.locale} />
         ) : props.tool.slug === 'matrix-screen' ? (
           <MatrixScreen tool={props.tool} locale={props.locale} />
+        ) : props.tool.slug === 'stars-screen' ? (
+          <StarsScreen tool={props.tool} locale={props.locale} />
         ) : props.tool.slug === 'clock-screen' ? (
           <ClockScreen tool={props.tool} locale={props.locale} />
         ) : props.tool.slug === 'ambient-screen' ? (
