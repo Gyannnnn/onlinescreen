@@ -123,9 +123,13 @@ export default function AmbientScreen({ tool, locale, ambientAudioFiles = [] }: 
   const [showDate, setShowDate] = useState(true);
 
   // Interactive controls
-  const [showSettings, setShowSettings] = useState(false);
+  // Settings panel removed for simplified UI
+
+
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isIdle, setIsIdle] = useState(false);
+  // Settings panel visibility (kept for potential future use)
+  const [showSettings, setShowSettings] = useState(false);
 
   // Soundscape Mixer States
   const [isLofiOn, setIsLofiOn] = useState(false);

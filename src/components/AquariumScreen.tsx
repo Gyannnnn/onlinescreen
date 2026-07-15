@@ -919,10 +919,12 @@ export default function AquariumScreen({ tool, locale, aquariumAudioFiles }: Pro
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(2,6,23,0.65)_100%)] pointer-events-none z-1" />
 
       {/* 2. Top-left Status Indicator */}
-      <div className="absolute top-4 left-4 z-10 flex flex-col gap-1 text-[10px] sm:text-xs text-cyan-200/80 font-mono tracking-widest pointer-events-none select-none">
-        <span>AQUATIC SIMULATOR SYSTEM // ONLINE</span>
-        <span className="text-emerald-400 opacity-90">ORGANISMS STATE: ACTIVE ({fishCount} Fish)</span>
-      </div>
+      {!isFullscreen && (
+        <div className="absolute top-4 left-4 z-10 flex flex-col gap-1 text-[10px] sm:text-xs text-cyan-200/80 font-mono tracking-widest pointer-events-none select-none">
+          <span>AQUATIC SIMULATOR SYSTEM</span>
+          <span className="text-emerald-400 opacity-90">ORGANISMS STATE: ACTIVE ({fishCount} Fish)</span>
+        </div>
+      )}
 
       {/* 3. FOCUS MODES OVERLAYS */}
       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-5">
