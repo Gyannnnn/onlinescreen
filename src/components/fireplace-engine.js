@@ -1,6 +1,7 @@
 (function () {
   'use strict';
   var wrap = document.getElementById('fpWrap'), canvas = document.getElementById('fpCanvas'), ctx = canvas.getContext('2d');
+  var isCardMode = wrap && wrap.getAttribute('data-is-card') === 'true';
   var fireEl = document.getElementById('fpFire'), fireStage = document.getElementById('fpFireStage');
   var hud = document.getElementById('fpHud'), soundBtn = document.getElementById('fpSoundBtn'), soundIcon = document.getElementById('fpSoundIcon');
   var volSlider = document.getElementById('fpVol'), settingsBtn = document.getElementById('fpSettingsBtn'), settingsPanel = document.getElementById('fpSettings');
@@ -413,9 +414,13 @@
     var flameScale = sizeSliderVal / 110;
 
     var genRate = isBackLayer ? (5 + Math.floor(flameScale*3)) : (2 + Math.floor(flameScale*1.5));
+    if (isCardMode) {
+      genRate = Math.max(1, Math.floor(genRate * 0.4));
+    }
     var archCx = W * 0.5, archBotY = H * 0.81;
 
-    if (particles.length < 160) {
+    var maxParticles = isCardMode ? 60 : 160;
+    if (particles.length < maxParticles) {
       for (var i = 0; i < genRate; i++) {
         var sideOffset = (Math.random() - 0.5) * W * 0.15;
         var pType = Math.random() < 0.22 ? 'core' : (Math.random() < 0.65 ? 'mid' : 'outer');
@@ -480,7 +485,9 @@
     var flameScale = sizeSliderVal / 110;
     var archCx = W * 0.5, archBotY = H * 0.81, archW = W * 0.52;
 
-    if (embers.length < 90 && Math.random() < 0.6) {
+    var maxEmbers = isCardMode ? 30 : 90;
+    var spawnProb = isCardMode ? 0.35 : 0.6;
+    if (embers.length < maxEmbers && Math.random() < spawnProb) {
       embers.push({
         x: archCx + (Math.random() - 0.5) * archW * 0.42,
         y: archBotY - 14,

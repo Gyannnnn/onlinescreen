@@ -6,6 +6,7 @@ interface MatrixScreenProps {
   tool: Tool;
   locale: Locale;
   audioFiles?: string[];
+  isCard?: boolean;
 }
 
 const KATAKANA = "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ";
@@ -32,7 +33,7 @@ const hexToRgba = (hex: string, opacity: number) => {
   return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 };
 
-export default function MatrixScreen({ tool, locale }: MatrixScreenProps) {
+export default function MatrixScreen({ tool, locale, isCard = false }: MatrixScreenProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -47,7 +48,7 @@ export default function MatrixScreen({ tool, locale }: MatrixScreenProps) {
   const [speed, setSpeed] = useState<number>(1.0);
   const [density, setDensity] = useState<number>(1.0);
   const [trailLength, setTrailLength] = useState<number>(0.06);
-  const [glowStrength, setGlowStrength] = useState<number>(15);
+  const [glowStrength, setGlowStrength] = useState<number>(isCard ? 0 : 15);
   const [colorTheme, setColorTheme] = useState<string>('green');
 
   // Sound Options: 'none' | 'drone1' | 'drone2' | 'drone3'
@@ -368,12 +369,20 @@ export default function MatrixScreen({ tool, locale }: MatrixScreenProps) {
     // Resizing calculations
     const handleResize = () => {
       if (!canvas || !canvas.parentElement) return;
-      canvas.width = canvas.parentElement.clientWidth || window.innerWidth;
-      canvas.height = canvas.parentElement.clientHeight || window.innerHeight;
+      canvas.width = canvas.parentElement.clientWidth || 320;
+      canvas.height = canvas.parentElement.clientHeight || 200;
     };
     
     handleResize();
-    window.addEventListener('resize', handleResize);
+    let resizeObserver: ResizeObserver | null = null;
+    if (isCard && typeof ResizeObserver !== 'undefined' && canvas.parentElement) {
+      resizeObserver = new ResizeObserver(() => {
+        handleResize();
+      });
+      resizeObserver.observe(canvas.parentElement);
+    } else {
+      window.addEventListener('resize', handleResize);
+    }
     document.addEventListener('fullscreenchange', handleResize);
 
     // Grid states
@@ -518,7 +527,11 @@ export default function MatrixScreen({ tool, locale }: MatrixScreenProps) {
     const requestRef = { current: requestAnimationFrame(renderLoop) };
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      } else {
+        window.removeEventListener('resize', handleResize);
+      }
       document.removeEventListener('fullscreenchange', handleResize);
       cancelAnimationFrame(requestRef.current);
     };
@@ -556,7 +569,9 @@ export default function MatrixScreen({ tool, locale }: MatrixScreenProps) {
   return (
     <div
       ref={containerRef}
-      className={`matrix-container relative w-full h-[480px] bg-black rounded-2xl overflow-hidden shadow-2xl select-none ${
+      className={`matrix-container relative w-full overflow-hidden border border-white/10 shadow-2xl transition-all duration-300 select-none ${
+        isCard ? 'w-full h-full pointer-events-none' : 'h-[480px] bg-black rounded-2xl'
+      } ${
         isFullscreen ? 'is-fullscreen h-screen! w-screen! fixed! inset-0 z-99999 rounded-none!' : ''
       } ${isIdle && isFullscreen ? 'cursor-none' : ''}`}
       style={{ backgroundColor: '#000000' }}
@@ -576,7 +591,7 @@ export default function MatrixScreen({ tool, locale }: MatrixScreenProps) {
       />
 
       {/* Interactive Trigger in non-fullscreen */}
-      {!isFullscreen && (
+      {!isFullscreen && !isCard && (
         <div 
           className="absolute inset-0 cursor-pointer z-4"
           onClick={toggleFullscreen}
@@ -585,48 +600,51 @@ export default function MatrixScreen({ tool, locale }: MatrixScreenProps) {
       )}
 
       {/* Top right floating controls */}
-      <div 
-        className={`absolute top-4 right-4 flex items-center gap-2.5 z-20 transition-opacity duration-300 ${
-          isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'
-        }`}
-      >
-        <button
-          onClick={() => setShowSettings(!showSettings)}
-          className={`flex items-center justify-center w-10 h-10 rounded-xl bg-black/50 hover:bg-black/75 border border-white/10 text-white cursor-pointer transition-transform duration-300 backdrop-blur-md ${
-            showSettings ? 'rotate-90 border-green-400/50 text-green-400' : ''
+      {!isCard && (
+        <div 
+          className={`absolute top-4 right-4 flex items-center gap-2.5 z-20 transition-opacity duration-300 ${
+            isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'
           }`}
-          aria-label="Toggle Customizer settings options"
-          title="Toggle settings panel"
         >
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="3" />
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-          </svg>
-        </button>
-        <button
-          onClick={toggleFullscreen}
-          className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/50 hover:bg-black/75 border border-white/10 text-white cursor-pointer transition-all duration-200 backdrop-blur-md hover:border-white/20"
-          aria-label="Toggle Fullscreen view"
-          title="Toggle Fullscreen"
-        >
-          {isFullscreen ? (
+          <button
+            onClick={() => setShowSettings(!showSettings)}
+            className={`flex items-center justify-center w-10 h-10 rounded-xl bg-black/50 hover:bg-black/75 border border-white/10 text-white cursor-pointer transition-transform duration-300 backdrop-blur-md ${
+              showSettings ? 'rotate-90 border-green-400/50 text-green-400' : ''
+            }`}
+            aria-label="Toggle Customizer settings options"
+            title="Toggle settings panel"
+          >
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7" />
+              <circle cx="12" cy="12" r="3" />
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
             </svg>
-          ) : (
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
-            </svg>
-          )}
-        </button>
-      </div>
+          </button>
+          <button
+            onClick={toggleFullscreen}
+            className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/50 hover:bg-black/75 border border-white/10 text-white cursor-pointer transition-all duration-200 backdrop-blur-md hover:border-white/20"
+            aria-label="Toggle Fullscreen view"
+            title="Toggle Fullscreen"
+          >
+            {isFullscreen ? (
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+              </svg>
+            )}
+          </button>
+        </div>
+      )}
 
       {/* Settings Drawer */}
-      <div 
-        className={`absolute bottom-0 inset-x-0 bg-neutral-950/90 [backdrop-filter:blur(24px)] border-t border-white/10 transition-transform duration-300 ease-out z-10 overflow-y-auto px-5 py-4 max-h-[78%] md:max-h-[60%] flex flex-col gap-4 custom-scrollbar ${
-          showSettings ? 'translate-y-0' : 'translate-y-full'
-        } ${isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-      >
+      {isCard ? null :
+        <div 
+          className={`absolute bottom-0 inset-x-0 bg-neutral-950/90 [backdrop-filter:blur(24px)] border-t border-white/10 transition-transform duration-300 ease-out z-10 overflow-y-auto px-5 py-4 max-h-[78%] md:max-h-[60%] flex flex-col gap-4 custom-scrollbar ${
+            showSettings ? 'translate-y-0' : 'translate-y-full'
+          } ${isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+        >
         {/* Header */}
         <div className="flex justify-between items-center border-b border-white/10 pb-2.5">
           <div>
@@ -917,7 +935,7 @@ export default function MatrixScreen({ tool, locale }: MatrixScreenProps) {
           <span>• <strong className="text-neutral-400">C</strong> to Cycle Matrix Modes</span>
           <span>• <strong className="text-neutral-400">R</strong> to Reset defaults</span>
         </div>
-      </div>
+      </div>}
     </div>
   );
 }

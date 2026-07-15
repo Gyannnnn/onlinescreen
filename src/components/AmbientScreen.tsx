@@ -6,6 +6,7 @@ interface AmbientScreenProps {
   tool: Tool;
   locale: Locale;
   ambientAudioFiles?: string[];
+  isCard?: boolean;
 }
 
 // Preset color palettes for the fluid blobs
@@ -108,16 +109,16 @@ const formatAudioName = (fileUrl: string) => {
   }
 };
 
-export default function AmbientScreen({ tool, locale, ambientAudioFiles = [] }: AmbientScreenProps) {
+export default function AmbientScreen({ tool, locale, ambientAudioFiles = [], isCard = false }: AmbientScreenProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const fluidCanvasRef = useRef<HTMLCanvasElement>(null);
   const starsCanvasRef = useRef<HTMLCanvasElement>(null);
 
   // Core settings
   const [selectedPreset, setSelectedPreset] = useState(PRESETS[0]);
-  const [flowSpeed, setFlowSpeed] = useState(0.6); // Velocity scale (0 to 2)
-  const [starDensity, setStarDensity] = useState(60); // Count of static/drift stars
-  const [overlayMode, setOverlayMode] = useState<'none' | 'clock' | 'breathing' | 'timer'>('clock');
+  const [flowSpeed, setFlowSpeed] = useState(isCard ? 0.4 : 0.6); // Velocity scale (0 to 2)
+  const [starDensity, setStarDensity] = useState(isCard ? 20 : 60); // Count of static/drift stars
+  const [overlayMode, setOverlayMode] = useState<'none' | 'clock' | 'breathing' | 'timer'>(isCard ? 'none' : 'clock');
   const [clockTypography, setClockTypography] = useState<'sans' | 'serif' | 'mono'>('sans');
   const [showAmPm, setShowAmPm] = useState(true);
   const [showDate, setShowDate] = useState(true);
@@ -331,15 +332,8 @@ export default function AmbientScreen({ tool, locale, ambientAudioFiles = [] }: 
     if (!ctx) return;
 
     let animId: number;
-    let width = (canvas.width = canvas.clientWidth);
-    let height = (canvas.height = canvas.clientHeight);
-
-    const resize = () => {
-      if (!canvas) return;
-      width = canvas.width = canvas.clientWidth;
-      height = canvas.height = canvas.clientHeight;
-    };
-    window.addEventListener('resize', resize);
+    let width = 800;
+    let height = 480;
 
     interface Star {
       x: number;
@@ -350,14 +344,55 @@ export default function AmbientScreen({ tool, locale, ambientAudioFiles = [] }: 
       angle: number;
     }
 
-    let stars: Star[] = Array.from({ length: starDensity }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      size: 0.5 + Math.random() * 1.5,
-      alpha: 0.1 + Math.random() * 0.7,
-      speed: 0.05 + Math.random() * 0.1,
-      angle: Math.random() * Math.PI * 2,
-    }));
+    let stars: Star[] = [];
+
+    const initStars = (w: number, h: number) => {
+      stars = Array.from({ length: starDensity }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        size: 0.5 + Math.random() * 1.5,
+        alpha: 0.1 + Math.random() * 0.7,
+        speed: 0.05 + Math.random() * 0.1,
+        angle: Math.random() * Math.PI * 2,
+      }));
+    };
+
+    const resize = () => {
+      const oldWidth = width;
+      const oldHeight = height;
+      if (isCard && canvas.parentElement) {
+        width = canvas.width = canvas.parentElement.clientWidth || 320;
+        height = canvas.height = canvas.parentElement.clientHeight || 200;
+      } else {
+        width = canvas.width = canvas.clientWidth || 800;
+        height = canvas.height = canvas.clientHeight || 480;
+      }
+
+      if (stars.length === 0) {
+        initStars(width, height);
+      } else {
+        stars.forEach((star) => {
+          if (oldWidth <= 10 || oldHeight <= 10) {
+            star.x = Math.random() * width;
+            star.y = Math.random() * height;
+          } else {
+            star.x = (star.x / oldWidth) * width;
+            star.y = (star.y / oldHeight) * height;
+          }
+        });
+      }
+    };
+    resize();
+
+    let resizeObserver: ResizeObserver | null = null;
+    if (isCard && typeof ResizeObserver !== 'undefined' && canvas.parentElement) {
+      resizeObserver = new ResizeObserver(() => {
+        resize();
+      });
+      resizeObserver.observe(canvas.parentElement);
+    } else {
+      window.addEventListener('resize', resize);
+    }
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
@@ -407,7 +442,11 @@ export default function AmbientScreen({ tool, locale, ambientAudioFiles = [] }: 
 
     return () => {
       cancelAnimationFrame(animId);
-      window.removeEventListener('resize', resize);
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      } else {
+        window.removeEventListener('resize', resize);
+      }
     };
   }, [starDensity]);
 
@@ -624,7 +663,9 @@ export default function AmbientScreen({ tool, locale, ambientAudioFiles = [] }: 
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`ambient-container relative w-full h-[480px] rounded-2xl overflow-hidden shadow-2xl flex flex-col justify-center items-center select-none ${
+      className={`ambient-container relative w-full overflow-hidden border border-white/10 shadow-2xl flex flex-col justify-center items-center select-none ${
+        isCard ? 'w-full h-full pointer-events-none' : 'h-[480px] rounded-2xl'
+      } ${
         isFullscreen ? 'is-fullscreen h-screen! w-screen! fixed! inset-0 z-99999 rounded-none!' : ''
       } ${isIdle && isFullscreen ? 'cursor-none' : ''}`}
       style={{ backgroundColor: selectedPreset.themeBg }}
@@ -632,7 +673,9 @@ export default function AmbientScreen({ tool, locale, ambientAudioFiles = [] }: 
       {/* Background Liquid Gradient Layer with high CSS blur */}
       <canvas
         ref={fluidCanvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-none filter blur-[90px] saturate-150 scale-110 opacity-70 z-0"
+        className={`absolute inset-0 w-full h-full pointer-events-none filter saturate-150 scale-110 opacity-70 z-0 ${
+          isCard ? 'blur-[22px]' : 'blur-[90px]'
+        }`}
       />
 
       {/* Floating particles/stars overlay */}
@@ -645,7 +688,7 @@ export default function AmbientScreen({ tool, locale, ambientAudioFiles = [] }: 
       <div className="absolute inset-0 bg-radial-vignette pointer-events-none z-2" />
 
       {/* Action overlay clicks for fullscreen trigger in normal mode */}
-      {!isFullscreen && (
+      {!isFullscreen && !isCard && (
         <div
           onClick={toggleFullscreen}
           className="absolute inset-0 cursor-pointer z-3"
@@ -777,48 +820,51 @@ export default function AmbientScreen({ tool, locale, ambientAudioFiles = [] }: 
       </div>
 
       {/* Top right control shortcuts (Gear + Fullscreen) */}
-      <div
-        className={`absolute top-4 right-4 flex items-center gap-2.5 z-20 transition-opacity duration-300 ${
-          isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'
-        }`}
-      >
-        <button
-          onClick={() => setShowSettings(!showSettings)}
-          className={`flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white cursor-pointer transition-transform duration-300 backdrop-blur-md ${
-            showSettings ? 'rotate-90 border-amber-400/50 text-amber-400' : ''
+      {!isCard && (
+        <div
+          className={`absolute top-4 right-4 flex items-center gap-2.5 z-20 transition-opacity duration-300 ${
+            isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'
           }`}
-          aria-label="Toggle Control Panel"
-          title="Toggle Control Panel"
         >
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="3" />
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-          </svg>
-        </button>
-        <button
-          onClick={toggleFullscreen}
-          className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white cursor-pointer transition-all duration-200 backdrop-blur-md hover:border-white/25"
-          aria-label="Toggle Fullscreen"
-          title="Toggle Fullscreen"
-        >
-          {isFullscreen ? (
+          <button
+            onClick={() => setShowSettings(!showSettings)}
+            className={`flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white cursor-pointer transition-transform duration-300 backdrop-blur-md ${
+              showSettings ? 'rotate-90 border-amber-400/50 text-amber-400' : ''
+            }`}
+            aria-label="Toggle Control Panel"
+            title="Toggle Control Panel"
+          >
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7" />
+              <circle cx="12" cy="12" r="3" />
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
             </svg>
-          ) : (
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
-            </svg>
-          )}
-        </button>
-      </div>
+          </button>
+          <button
+            onClick={toggleFullscreen}
+            className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white cursor-pointer transition-all duration-200 backdrop-blur-md hover:border-white/25"
+            aria-label="Toggle Fullscreen"
+            title="Toggle Fullscreen"
+          >
+            {isFullscreen ? (
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+              </svg>
+            )}
+          </button>
+        </div>
+      )}
 
       {/* CUSTOMIZER DRAWER PANEL */}
-      <div
-        className={`absolute bottom-0 inset-x-0 bg-neutral-950/85 backdrop-blur-xl border-t border-white/10 transition-transform duration-300 ease-out z-20 overflow-y-auto px-5 py-4 max-h-[75%] md:max-h-[60%] flex flex-col gap-4 text-white custom-scrollbar ${
-          showSettings ? 'translate-y-0' : 'translate-y-full'
-        } ${isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-      >
+      {isCard ? null :
+        <div
+          className={`absolute bottom-0 inset-x-0 bg-neutral-950/85 backdrop-blur-xl border-t border-white/10 transition-transform duration-300 ease-out z-20 overflow-y-auto px-5 py-4 max-h-[75%] md:max-h-[60%] flex flex-col gap-4 text-white custom-scrollbar ${
+            showSettings ? 'translate-y-0' : 'translate-y-full'
+          } ${isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+        >
         {/* Drawers Header */}
         <div className="flex justify-between items-center border-b border-white/10 pb-2">
           <div>
@@ -1188,7 +1234,7 @@ export default function AmbientScreen({ tool, locale, ambientAudioFiles = [] }: 
           <span>• <strong className="text-neutral-300">B</strong> Breathe</span>
           <span>• <strong className="text-neutral-400">Esc</strong> Exit</span>
         </div>
-      </div>
+      </div>}
     </div>
   );
 }

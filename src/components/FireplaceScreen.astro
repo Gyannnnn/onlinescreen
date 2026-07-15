@@ -2,11 +2,11 @@
 import type { Tool } from '../data/tools';
 import type { Locale } from '../data/locales';
 
-type Props = { tool: Tool; locale: Locale };
-const { tool, locale } = Astro.props;
+type Props = { tool: Tool; locale: Locale; isCard?: boolean };
+const { tool, locale, isCard = false } = Astro.props;
 ---
 
-<div class="fp-wrap" id="fpWrap">
+<div class="fp-wrap" id="fpWrap" data-is-card={isCard ? "true" : "false"}>
   <!-- Scene canvas: bricks, arch, mantle, logs -->
   <canvas class="fp-canvas" id="fpCanvas"></canvas>
 
@@ -127,6 +127,20 @@ const { tool, locale } = Astro.props;
     overflow: hidden;
     user-select: none;
     box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.04);
+  }
+
+  /* ── Card Mode Overrides ────────────────────────────────────────────────── */
+  .fp-wrap[data-is-card="true"] {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    pointer-events: none !important;
+  }
+  .fp-wrap[data-is-card="true"] .fp-hud,
+  .fp-wrap[data-is-card="true"] .fp-fs-gear,
+  .fp-wrap[data-is-card="true"] .fp-settings {
+    display: none !important;
   }
 
   /* ── Canvas (scene backdrop) ───────────────────────────────────────────── */

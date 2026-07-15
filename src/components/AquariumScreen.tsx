@@ -6,6 +6,7 @@ interface Props {
   tool: Tool;
   locale: Locale;
   aquariumAudioFiles: string[];
+  isCard?: boolean;
 }
 
 interface Fish {
@@ -47,13 +48,13 @@ const PRESETS = [
   { id: 'sunset', name: 'Coral Sunset', bgGrad: 'linear-gradient(to bottom, #701a75, #4a044e, #0f172a)' },
 ];
 
-export default function AquariumScreen({ tool, locale, aquariumAudioFiles }: Props) {
+export default function AquariumScreen({ tool, locale, aquariumAudioFiles, isCard = false }: Props) {
   const [showSettings, setShowSettings] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [selectedBg, setSelectedBg] = useState(PRESETS[0]);
-  const [fishCount, setFishCount] = useState(12);
+  const [fishCount, setFishCount] = useState(isCard ? 5 : 12);
   const [fishSpeed, setFishSpeed] = useState(1.0);
-  const [bubbleDensity, setBubbleDensity] = useState(25);
+  const [bubbleDensity, setBubbleDensity] = useState(isCard ? 10 : 25);
   const [breathePhase, setBreathePhase] = useState<'inhale' | 'hold1' | 'exhale' | 'hold2'>('inhale');
   const [breatheSeconds, setBreatheSeconds] = useState(4);
   const [overlayMode, setOverlayMode] = useState<'none' | 'clock' | 'breathing' | 'timer'>('clock');
@@ -394,15 +395,30 @@ export default function AquariumScreen({ tool, locale, aquariumAudioFiles }: Pro
     if (!ctx) return;
 
     let animId: number;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    let width = 800;
+    let height = 480;
 
     const handleResize = () => {
       if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      if (isCard && canvas.parentElement) {
+        width = canvas.width = canvas.parentElement.clientWidth || 320;
+        height = canvas.height = canvas.parentElement.clientHeight || 200;
+      } else {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
     };
-    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    let resizeObserver: ResizeObserver | null = null;
+    if (isCard && typeof ResizeObserver !== 'undefined' && canvas.parentElement) {
+      resizeObserver = new ResizeObserver(() => {
+        handleResize();
+      });
+      resizeObserver.observe(canvas.parentElement);
+    } else {
+      window.addEventListener('resize', handleResize);
+    }
 
     // Dynamic Lists
     const fishList: Fish[] = [];
@@ -864,7 +880,11 @@ export default function AquariumScreen({ tool, locale, aquariumAudioFiles }: Pro
 
     return () => {
       cancelAnimationFrame(animId);
-      window.removeEventListener('resize', handleResize);
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      } else {
+        window.removeEventListener('resize', handleResize);
+      }
     };
   }, [selectedBg, fishCount, fishSpeed, bubbleDensity, overlayMode, breatheSeconds, breathePhase, isBubblesSynthOn, volBubbles]);
 
@@ -907,7 +927,9 @@ export default function AquariumScreen({ tool, locale, aquariumAudioFiles }: Pro
         // spawn bubble gurgles pop on tap
         initAudioCtx();
       }}
-      className={`aquarium-container relative w-full h-[480px] bg-slate-900 rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col items-center justify-center select-none ${
+      className={`aquarium-container relative w-full overflow-hidden flex flex-col items-center justify-center select-none ${
+        isCard ? 'w-full h-full' : 'h-[480px] rounded-2xl border border-white/10 shadow-2xl'
+      } ${
         isFullscreen ? 'fixed! inset-0 h-screen! w-screen! rounded-none! z-50' : ''
       }`}
       style={{ cursor: isIdle && isFullscreen ? 'none' : 'default' }}
@@ -919,7 +941,7 @@ export default function AquariumScreen({ tool, locale, aquariumAudioFiles }: Pro
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(2,6,23,0.65)_100%)] pointer-events-none z-1" />
 
       {/* 2. Top-left Status Indicator */}
-      {!isFullscreen && (
+      {!isFullscreen && !isCard && (
         <div className="absolute top-4 left-4 z-10 flex flex-col gap-1 text-[10px] sm:text-xs text-cyan-200/80 font-mono tracking-widest pointer-events-none select-none">
           <span>AQUATIC SIMULATOR SYSTEM</span>
           <span className="text-emerald-400 opacity-90">ORGANISMS STATE: ACTIVE ({fishCount} Fish)</span>
@@ -927,7 +949,8 @@ export default function AquariumScreen({ tool, locale, aquariumAudioFiles }: Pro
       )}
 
       {/* 3. FOCUS MODES OVERLAYS */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-5">
+      {!isCard && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-5">
         
         {/* Clock Overlay */}
         {overlayMode === 'clock' && (
@@ -1003,12 +1026,14 @@ export default function AquariumScreen({ tool, locale, aquariumAudioFiles }: Pro
           </div>
         )}
 
-      </div>
+        </div>
+      )}
 
       {/* 4. Settings Toggler & Fullscreen floating buttons */}
-      <div className={`absolute bottom-4 right-4 z-10 flex items-center gap-3 transition-opacity duration-300 ${
-        isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'
-      }`}>
+      {!isCard && (
+        <div className={`absolute bottom-4 right-4 z-10 flex items-center gap-3 transition-opacity duration-300 ${
+          isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        }`}>
         <button
           onClick={(e) => { e.stopPropagation(); setShowSettings((s) => !s); }}
           className={`flex items-center justify-center w-10 h-10 rounded-xl bg-slate-950/80 hover:bg-slate-900 border cursor-pointer hover:border-cyan-400/40 transition-all active:scale-95 duration-300 ${
@@ -1037,19 +1062,23 @@ export default function AquariumScreen({ tool, locale, aquariumAudioFiles }: Pro
           )}
         </button>
       </div>
+      )}
 
       {/* User click notification helper */}
-      <div className="absolute bottom-4 left-4 z-10 text-[9px] text-cyan-200/50 font-mono tracking-wider pointer-events-none">
-        * CLICK WATER TO FEED FISH FLAKES
-      </div>
+      {!isCard && (
+        <div className="absolute bottom-4 left-4 z-10 text-[9px] text-cyan-200/50 font-mono tracking-wider pointer-events-none">
+          * CLICK WATER TO FEED FISH FLAKES
+        </div>
+      )}
 
       {/* 5. SETTINGS DRAWER MENU */}
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className={`absolute bottom-0 inset-x-0 bg-slate-950/90 backdrop-blur-xl border-t border-white/10 transition-transform duration-300 ease-out z-20 overflow-y-auto px-5 py-4 max-h-[75%] md:max-h-[60%] flex flex-col gap-4 text-white custom-scrollbar ${
-          showSettings ? 'translate-y-0' : 'translate-y-full'
-        } ${isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-      >
+      {isCard ? null :
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className={`absolute bottom-0 inset-x-0 bg-slate-950/90 backdrop-blur-xl border-t border-white/10 transition-transform duration-300 ease-out z-20 overflow-y-auto px-5 py-4 max-h-[75%] md:max-h-[60%] flex flex-col gap-4 text-white custom-scrollbar ${
+            showSettings ? 'translate-y-0' : 'translate-y-full'
+          } ${isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+        >
         {/* Header */}
         <div className="flex justify-between items-center border-b border-white/10 pb-2">
           <div>
@@ -1315,7 +1344,7 @@ export default function AquariumScreen({ tool, locale, aquariumAudioFiles }: Pro
             )}
           </div>
         </div>
-      </div>
+      </div>}
     </div>
   );
 }

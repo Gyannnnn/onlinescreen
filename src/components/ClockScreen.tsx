@@ -5,6 +5,7 @@ import type { Locale } from '../data/locales';
 interface Props {
   tool: Tool;
   locale: Locale;
+  isCard?: boolean;
 }
 
 const THEMES = [
@@ -116,12 +117,25 @@ function FlipDigit({ value, theme, isGlass }: FlipDigitProps) {
   const parentStyle = {
     borderColor: isGlass ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
     boxShadow: theme.shadow || undefined,
+    borderRadius: 'var(--card-br, 12px)',
   };
 
   const childCardStyle = {
     backgroundColor: theme.card,
     color: theme.text,
     fontFamily: 'var(--font-mono)'
+  };
+
+  const topHalfStyle = {
+    ...childCardStyle,
+    borderTopLeftRadius: 'var(--card-br, 12px)',
+    borderTopRightRadius: 'var(--card-br, 12px)',
+  };
+
+  const bottomHalfStyle = {
+    ...childCardStyle,
+    borderBottomLeftRadius: 'var(--card-br, 12px)',
+    borderBottomRightRadius: 'var(--card-br, 12px)',
   };
 
   const lineStyle = { backgroundColor: theme.notch };
@@ -133,16 +147,16 @@ function FlipDigit({ value, theme, isGlass }: FlipDigitProps) {
 
   return (
     <div 
-      className={`flip-card-unit relative select-none clock-perspective rounded-xl ${glassClasses}`}
+      className={`flip-card-unit relative select-none clock-perspective ${glassClasses}`}
       style={parentStyle}
     >
       {/* 1. Static Top (New) */}
       <div 
         key="static-top"
-        className="absolute inset-x-0 top-0 h-1/2 overflow-hidden rounded-t-xl flex items-end justify-center"
-        style={childCardStyle}
+        className="absolute inset-x-0 top-0 h-1/2 overflow-hidden flex items-end justify-center"
+        style={topHalfStyle}
       >
-        <span className="font-bold leading-none select-none translate-y-1/2">
+        <span className="inline-block font-bold leading-none select-none translate-y-1/2">
           {next}
         </span>
       </div>
@@ -150,10 +164,10 @@ function FlipDigit({ value, theme, isGlass }: FlipDigitProps) {
       {/* 2. Static Bottom (Old) */}
       <div 
         key="static-bottom"
-        className="absolute inset-x-0 bottom-0 h-1/2 overflow-hidden rounded-b-xl flex items-start justify-center"
-        style={childCardStyle}
+        className="absolute inset-x-0 bottom-0 h-1/2 overflow-hidden flex items-start justify-center"
+        style={bottomHalfStyle}
       >
-        <span className="font-bold leading-none select-none -translate-y-1/2">
+        <span className="inline-block font-bold leading-none select-none -translate-y-1/2">
           {curr}
         </span>
       </div>
@@ -161,12 +175,12 @@ function FlipDigit({ value, theme, isGlass }: FlipDigitProps) {
       {/* 3. Flipping Top (Old, rotates 0 to -180) */}
       <div
         key={`flip-top-${next}`}
-        className={`absolute inset-x-0 top-0 h-1/2 overflow-hidden rounded-t-xl flex items-end justify-center origin-bottom backface-hidden z-10 ${
+        className={`absolute inset-x-0 top-0 h-1/2 overflow-hidden flex items-end justify-center origin-bottom backface-hidden z-10 ${
           flipping ? 'animate-flip-top' : ''
         }`}
-        style={childCardStyle}
+        style={topHalfStyle}
       >
-        <span className="font-bold leading-none select-none translate-y-1/2">
+        <span className="inline-block font-bold leading-none select-none translate-y-1/2">
           {flipping ? prev : curr}
         </span>
       </div>
@@ -174,12 +188,12 @@ function FlipDigit({ value, theme, isGlass }: FlipDigitProps) {
       {/* 4. Flipping Bottom (New, rotates 180 to 0) */}
       <div
         key={`flip-bottom-${next}`}
-        className={`absolute inset-x-0 bottom-0 h-1/2 overflow-hidden rounded-b-xl flex items-start justify-center origin-top backface-hidden z-15 ${
+        className={`absolute inset-x-0 bottom-0 h-1/2 overflow-hidden flex items-start justify-center origin-top backface-hidden z-15 ${
           flipping ? 'animate-flip-bottom' : 'rotate-x-180'
         }`}
-        style={childCardStyle}
+        style={bottomHalfStyle}
       >
-        <span className="font-bold leading-none select-none -translate-y-1/2">
+        <span className="inline-block font-bold leading-none select-none -translate-y-1/2">
           {next}
         </span>
       </div>
@@ -190,13 +204,13 @@ function FlipDigit({ value, theme, isGlass }: FlipDigitProps) {
         style={{ backgroundColor: theme.divider || `${theme.text}1c` }}
       />
       {/* Side notches */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-0 w-[4px] h-[8px] rounded-r-sm z-25 pointer-events-none" style={lineStyle} />
-      <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[4px] h-[8px] rounded-l-sm z-25 pointer-events-none" style={lineStyle} />
+      <div className="absolute top-1/2 -translate-y-1/2 left-0 rounded-r-sm z-25 pointer-events-none" style={{ ...lineStyle, width: 'var(--card-notch-w, 4px)', height: 'var(--card-notch-h, 8px)' }} />
+      <div className="absolute top-1/2 -translate-y-1/2 right-0 rounded-l-sm z-25 pointer-events-none" style={{ ...lineStyle, width: 'var(--card-notch-w, 4px)', height: 'var(--card-notch-h, 8px)' }} />
     </div>
   );
 }
 
-export default function ClockScreen({ tool, locale }: Props) {
+export default function ClockScreen({ tool, locale, isCard = false }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Persistence Key
@@ -204,7 +218,7 @@ export default function ClockScreen({ tool, locale }: Props) {
 
   // Config States
   const [is24Hour, setIs24Hour] = useState(true);
-  const [showSeconds, setShowSeconds] = useState(true);
+  const [showSeconds, setShowSeconds] = useState(!isCard);
   const [soundMode, setSoundMode] = useState<'mute' | 'flip'>('flip');
   const [themeId, setThemeId] = useState('retro');
   const [customLabel, setCustomLabel] = useState('');
@@ -221,11 +235,17 @@ export default function ClockScreen({ tool, locale }: Props) {
   const [isIdle, setIsIdle] = useState(false);
   const [brightness, setBrightness] = useState(100);
 
-  // Time representation
-  const [timeDigits, setTimeDigits] = useState({ h1: '0', h2: '0', m1: '0', m2: '0', s1: '0', s2: '0', ampm: '' });
+  // Time representation - start with a beautiful mock time '10:08' for isCard mode to avoid SSR hydration match issues
+  const [timeDigits, setTimeDigits] = useState(() => {
+    if (isCard) {
+      return { h1: '1', h2: '0', m1: '0', m2: '8', s1: '0', s2: '0', ampm: '' };
+    }
+    return { h1: '0', h2: '0', m1: '0', m2: '0', s1: '0', s2: '0', ampm: '' };
+  });
 
   // Load config on mount
   useEffect(() => {
+    if (isCard) return;
     try {
       const stored = lStorage.getItem(storageKey);
       if (stored) {
@@ -255,15 +275,16 @@ export default function ClockScreen({ tool, locale }: Props) {
     };
     document.addEventListener('fullscreenchange', onFsChange);
     return () => document.removeEventListener('fullscreenchange', onFsChange);
-  }, []);
+  }, [isCard]);
 
   // Save config on changes
   useEffect(() => {
+    if (isCard) return;
     try {
       const config = { is24Hour, showSeconds, soundMode, themeId, customLabel, isTimerMode, timerPresetMin };
       lStorage.setItem(storageKey, JSON.stringify(config));
     } catch(e) {}
-  }, [is24Hour, showSeconds, soundMode, themeId, customLabel, isTimerMode, timerPresetMin]);
+  }, [is24Hour, showSeconds, soundMode, themeId, customLabel, isTimerMode, timerPresetMin, isCard]);
 
   // Safe window local storage helper
   const lStorage = {
@@ -273,7 +294,7 @@ export default function ClockScreen({ tool, locale }: Props) {
 
   // Idle timer in fullscreen
   useEffect(() => {
-    if (!isFullscreen) {
+    if (isCard || !isFullscreen) {
       setIsIdle(false);
       return;
     }
@@ -295,10 +316,11 @@ export default function ClockScreen({ tool, locale }: Props) {
       window.removeEventListener('click', resetIdle);
       clearTimeout(timeoutId);
     };
-  }, [isFullscreen]);
+  }, [isFullscreen, isCard]);
 
   // Sync / Run Clock Time and Timer ticks
   useEffect(() => {
+    if (isCard) return;
     let clockInterval: number;
 
     const updateTime = () => {
@@ -359,11 +381,42 @@ export default function ClockScreen({ tool, locale }: Props) {
     clockInterval = window.setInterval(updateTime, 100);
 
     return () => clearInterval(clockInterval);
-  }, [is24Hour, isTimerMode, timerSecondsLeft]);
+  }, [is24Hour, isTimerMode, timerSecondsLeft, isCard]);
+
+  // Simulated clock for card / preview mode (changes every 2 seconds to show flip animation)
+  useEffect(() => {
+    if (!isCard) return;
+
+    let simMinutes = 8;
+    let simHours = 10;
+
+    const interval = setInterval(() => {
+      simMinutes += 1;
+      if (simMinutes >= 60) {
+        simMinutes = 0;
+        simHours = (simHours + 1) % 24;
+      }
+
+      const hStr = String(simHours).padStart(2, '0');
+      const mStr = String(simMinutes).padStart(2, '0');
+
+      setTimeDigits({
+        h1: hStr[0],
+        h2: hStr[1],
+        m1: mStr[0],
+        m2: mStr[1],
+        s1: '0',
+        s2: '0',
+        ampm: ''
+      });
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [isCard]);
 
   // Countdown timer decrement ticks
   useEffect(() => {
-    if (!isTimerMode || !timerRunning) return;
+    if (isCard || !isTimerMode || !timerRunning) return;
 
     const timerInterval = window.setInterval(() => {
       setTimerSecondsLeft((prev) => {
@@ -383,13 +436,13 @@ export default function ClockScreen({ tool, locale }: Props) {
     }, 1000);
 
     return () => clearInterval(timerInterval);
-  }, [isTimerMode, timerRunning, soundMode]);
+  }, [isTimerMode, timerRunning, soundMode, isCard]);
 
   // Play flip sound on digits updates (only in clock mode, every second)
   const prevSecRef = useRef('');
   const prevMinRef = useRef('');
   useEffect(() => {
-    if (soundMode !== 'flip') return;
+    if (isCard || soundMode !== 'flip') return;
 
     if (isTimerMode) {
       // In Timer mode, tick triggers in seconds decrement useEffect above
@@ -408,7 +461,7 @@ export default function ClockScreen({ tool, locale }: Props) {
         prevMinRef.current = timeDigits.m2;
       }
     }
-  }, [timeDigits, showSeconds, soundMode, isTimerMode]);
+  }, [timeDigits, showSeconds, soundMode, isTimerMode, isCard]);
 
   // Keyboard Shortcuts handler
   useEffect(() => {
@@ -480,14 +533,18 @@ export default function ClockScreen({ tool, locale }: Props) {
     setBrightness(100);
   };
 
-  const currentTheme = THEMES.find((t) => t.id === themeId) || THEMES[0];
+  const currentTheme = isCard 
+    ? (THEMES.find((t) => t.id === 'retro') || THEMES[0])
+    : (THEMES.find((t) => t.id === themeId) || THEMES[0]);
   const activeTimerMinutes = Math.floor(timerSecondsLeft / 60);
   const activeTimerSeconds = timerSecondsLeft % 60;
 
   return (
     <div
       ref={containerRef}
-      className={`clock-screen-container relative w-full h-[480px] rounded-2xl overflow-hidden shadow-2xl flex flex-col justify-center items-center transition-all duration-500 ease-in-out ${
+      className={`clock-screen-container relative w-full overflow-hidden border border-white/10 shadow-2xl flex flex-col justify-center items-center transition-all duration-500 ease-in-out ${
+        isCard ? 'w-full h-full pointer-events-none is-card-mode' : 'h-[480px] rounded-2xl'
+      } ${
         isFullscreen ? 'is-fullscreen h-screen! w-screen! fixed! inset-0 rounded-none!' : ''
       } ${isIdle && isFullscreen ? 'cursor-none' : ''}`}
       style={{ 
@@ -496,6 +553,147 @@ export default function ClockScreen({ tool, locale }: Props) {
         zIndex: isFullscreen ? 99999 : undefined
       }}
     >
+      <style dangerouslySetInnerHTML={{ __html: `
+        /* 3D Perspective and backface visibility support */
+        .clock-perspective {
+          perspective: 300px;
+          -webkit-perspective: 300px;
+          transform-style: preserve-3d;
+          -webkit-transform-style: preserve-3d;
+        }
+        .backface-hidden {
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+        .origin-bottom {
+          transform-origin: bottom center;
+        }
+        .origin-top {
+          transform-origin: top center;
+        }
+        .rotate-x-180 {
+          transform: rotateX(180deg);
+        }
+        .animate-flip-top {
+          animation: flip-top 0.75s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+          transform-style: preserve-3d;
+          will-change: transform;
+        }
+        .animate-flip-bottom {
+          animation: flip-bottom 0.75s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+          transform-style: preserve-3d;
+          will-change: transform;
+        }
+        @keyframes flip-top {
+          0% { transform: rotateX(0deg); }
+          100% { transform: rotateX(-180deg); }
+        }
+        @keyframes flip-bottom {
+          0% { transform: rotateX(180deg); }
+          100% { transform: rotateX(0deg); }
+        }
+
+        /* Default sizes for Clock Screen */
+        .clock-screen-container {
+          transition: background-color 0.5s ease-in-out, filter 0.2s;
+          --card-w: 36px;
+          --card-h: 54px;
+          --card-fs: 38px;
+          --card-br: 6px;
+          --card-notch-w: 3px;
+          --card-notch-h: 6px;
+        }
+        @media (min-width: 380px) {
+          .clock-screen-container {
+            --card-w: 46px;
+            --card-h: 70px;
+            --card-fs: 48px;
+            --card-br: 8px;
+            --card-notch-w: 4px;
+            --card-notch-h: 8px;
+          }
+        }
+        @media (min-width: 480px) {
+          .clock-screen-container {
+            --card-w: 58px;
+            --card-h: 88px;
+            --card-fs: 64px;
+            --card-br: 10px;
+            --card-notch-w: 4px;
+            --card-notch-h: 8px;
+          }
+        }
+        @media (min-width: 640px) {
+          .clock-screen-container {
+            --card-w: 66px;
+            --card-h: 98px;
+            --card-fs: 70px;
+            --card-br: 11px;
+            --card-notch-w: 4px;
+            --card-notch-h: 8px;
+          }
+        }
+        @media (min-width: 768px) {
+          .clock-screen-container {
+            --card-w: 72px;
+            --card-h: 108px;
+            --card-fs: 78px;
+            --card-br: 12px;
+            --card-notch-w: 4px;
+            --card-notch-h: 8px;
+          }
+        }
+        @media (min-width: 1024px) {
+          .clock-screen-container {
+            --card-w: 78px;
+            --card-h: 114px;
+            --card-fs: 82px;
+            --card-br: 12px;
+            --card-notch-w: 4px;
+            --card-notch-h: 8px;
+          }
+        }
+
+        /* Large Screen Fullscreen Mode fluid sizing */
+        .clock-screen-container.is-fullscreen {
+          --card-w: 10vw;
+          --card-h: 15vw;
+          --card-fs: 11vw;
+          --card-br: 1.5vw;
+          --card-notch-w: 0.5vw;
+          --card-notch-h: 1vw;
+        }
+        @media (min-width: 1280px) {
+          .clock-screen-container.is-fullscreen {
+            --card-w: 8vw;
+            --card-h: 12vw;
+            --card-fs: 9vw;
+            --card-br: 1.2vw;
+            --card-notch-w: 0.4vw;
+            --card-notch-h: 0.8vw;
+          }
+        }
+
+        /* When rendering in card preview mode, cap sizes to fit perfectly as a thumbnail */
+        .clock-screen-container.is-card-mode {
+          --card-w: 32px;
+          --card-h: 48px;
+          --card-fs: 34px;
+          --card-br: 5px;
+          --card-notch-w: 2px;
+          --card-notch-h: 5px;
+        }
+
+        /* Apply sizes to card unit */
+        .flip-card-unit {
+          width: var(--card-w);
+          height: var(--card-h);
+        }
+        .flip-card-unit span {
+          font-size: var(--card-fs);
+        }
+      ` }} />
+
       {/* Global Dimmer for Brightness Slider */}
       <div 
         className="absolute inset-0 pointer-events-none transition-colors duration-200"
@@ -508,56 +706,58 @@ export default function ClockScreen({ tool, locale }: Props) {
       />
 
       {/* Floating control buttons */}
-      <div 
-        className={`absolute top-4 right-4 flex items-center gap-2.5 z-30 transition-opacity duration-300 ${
-          isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'
-        }`}
-      >
-        {isTimerMode && (
+      {!isCard && (
+        <div 
+          className={`absolute top-4 right-4 flex items-center gap-2.5 z-30 transition-opacity duration-300 ${
+            isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          }`}
+        >
+          {isTimerMode && (
+            <button
+              onClick={() => setTimerRunning(!timerRunning)}
+              className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white cursor-pointer backdrop-blur-md transition-colors"
+              title={timerRunning ? "Pause Timer" : "Start Timer"}
+              aria-label="Play or Pause countdown timer"
+            >
+              {timerRunning ? (
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              ) : (
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              )}
+            </button>
+          )}
           <button
-            onClick={() => setTimerRunning(!timerRunning)}
-            className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white cursor-pointer backdrop-blur-md transition-colors"
-            title={timerRunning ? "Pause Timer" : "Start Timer"}
-            aria-label="Play or Pause countdown timer"
+            onClick={() => setShowSettings(!showSettings)}
+            className={`flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 hover:bg-black/60 border cursor-pointer transition-all duration-300 backdrop-blur-md ${
+              showSettings ? 'rotate-90 text-white' : 'border-white/10 text-white'
+            }`}
+            style={showSettings ? { borderColor: currentTheme.accent, color: currentTheme.accent } : {}}
+            aria-label="Toggle clock controls panel"
+            title="Clock Settings"
           >
-            {timerRunning ? (
-              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="3" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
+            </svg>
+          </button>
+          <button
+            onClick={toggleFullscreen}
+            className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white cursor-pointer backdrop-blur-md hover:border-white/20 transition-colors"
+            aria-label="Toggle Fullscreen"
+            title="Toggle Fullscreen"
+          >
+            {isFullscreen ? (
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7" />
+              </svg>
             ) : (
-              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 00 2-2v-3M3 16v3a2 2 0 00 2 2h3" />
+              </svg>
             )}
           </button>
-        )}
-        <button
-          onClick={() => setShowSettings(!showSettings)}
-          className={`flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 hover:bg-black/60 border cursor-pointer transition-all duration-300 backdrop-blur-md ${
-            showSettings ? 'rotate-90 text-white' : 'border-white/10 text-white'
-          }`}
-          style={showSettings ? { borderColor: currentTheme.accent, color: currentTheme.accent } : {}}
-          aria-label="Toggle clock controls panel"
-          title="Clock Settings"
-        >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-            <circle cx="12" cy="12" r="3" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
-          </svg>
-        </button>
-        <button
-          onClick={toggleFullscreen}
-          className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white cursor-pointer backdrop-blur-md hover:border-white/20 transition-colors"
-          aria-label="Toggle Fullscreen"
-          title="Toggle Fullscreen"
-        >
-          {isFullscreen ? (
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7" />
-            </svg>
-          ) : (
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 00 2-2v-3M3 16v3a2 2 0 00 2 2h3" />
-            </svg>
-          )}
-        </button>
-      </div>
+        </div>
+      )}
 
       {/* CLOCK / TIMER GRAPHIC VIEW */}
       <div className="flex flex-col items-center justify-center gap-6 md:gap-8 z-10 scale-95 sm:scale-100">
@@ -659,11 +859,12 @@ export default function ClockScreen({ tool, locale }: Props) {
       </div>
 
       {/* SETTINGS DRAWER */}
-      <div 
-        className={`absolute bottom-0 inset-x-0 bg-neutral-950/90 [backdrop-filter:blur(24px)] border-t border-white/10 z-20 transition-transform duration-300 ease-out overflow-y-auto px-5 py-4 max-h-[85%] sm:max-h-[62%] flex flex-col gap-4 custom-scrollbar text-white ${
-          showSettings ? 'translate-y-0' : 'translate-y-full'
-        } ${isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-      >
+      {isCard ? null :
+        <div 
+          className={`absolute bottom-0 inset-x-0 bg-neutral-950/90 [backdrop-filter:blur(24px)] border-t border-white/10 z-20 transition-transform duration-300 ease-out overflow-y-auto px-5 py-4 max-h-[85%] sm:max-h-[62%] flex flex-col gap-4 custom-scrollbar text-white ${
+            showSettings ? 'translate-y-0' : 'translate-y-full'
+          } ${isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+        >
         {/* Drawers Header */}
         <div className="flex justify-between items-center border-b border-white/10 pb-3">
           <div>
@@ -877,7 +1078,7 @@ export default function ClockScreen({ tool, locale }: Props) {
             ))}
           </div>
         </div>
-      </div>
+      </div>}
     </div>
   );
 }

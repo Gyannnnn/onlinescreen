@@ -6,6 +6,7 @@ interface GalaxyScreenProps {
   tool: Tool;
   locale: Locale;
   ambientAudioFiles?: string[];
+  isCard?: boolean;
 }
 
 interface GalaxyTheme {
@@ -66,7 +67,7 @@ const GALAXY_THEMES: GalaxyTheme[] = [
   }
 ];
 
-export default function GalaxyScreen({ tool, locale, ambientAudioFiles = [] }: GalaxyScreenProps) {
+export default function GalaxyScreen({ tool, locale, ambientAudioFiles = [], isCard = false }: GalaxyScreenProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -78,7 +79,7 @@ export default function GalaxyScreen({ tool, locale, ambientAudioFiles = [] }: G
   const [hudVisible, setHudVisible] = useState(true);
 
   // Galaxy customizer configurations
-  const [starCount, setStarCount] = useState(6000);
+  const [starCount, setStarCount] = useState(isCard ? 2000 : 6000);
   const [rotationSpeed, setRotationSpeed] = useState(0.4); // multiplier
   const [tiltAngle, setTiltAngle] = useState(62); // degrees
   const [coreIntensity, setCoreIntensity] = useState(0.85); // multiplier
@@ -219,24 +220,8 @@ export default function GalaxyScreen({ tool, locale, ambientAudioFiles = [] }: G
     if (!ctx) return;
 
     let animId: number;
-    let width = (canvas.width = canvas.clientWidth || 800);
-    let height = (canvas.height = canvas.clientHeight || 480);
-
-    const resize = () => {
-      const oldWidth = width;
-      const oldHeight = height;
-      width = canvas.width = canvas.clientWidth || 800;
-      height = canvas.height = canvas.clientHeight || 480;
-      
-      // Scale star vectors if size changes
-      stars.forEach(star => {
-        if (oldWidth > 10 && oldHeight > 10) {
-          const ratio = Math.min(width / oldWidth, height / oldHeight);
-          star.r *= ratio;
-        }
-      });
-    };
-    window.addEventListener('resize', resize);
+    let width = 800;
+    let height = 480;
 
     // Realistic Star Particle class
     interface Star {
@@ -252,6 +237,37 @@ export default function GalaxyScreen({ tool, locale, ambientAudioFiles = [] }: G
     }
 
     const stars: Star[] = [];
+
+    const resize = () => {
+      const oldWidth = width;
+      const oldHeight = height;
+      if (isCard && canvas.parentElement) {
+        width = canvas.width = canvas.parentElement.clientWidth || 320;
+        height = canvas.height = canvas.parentElement.clientHeight || 200;
+      } else {
+        width = canvas.width = canvas.clientWidth || 800;
+        height = canvas.height = canvas.clientHeight || 480;
+      }
+      
+      // Scale star vectors if size changes
+      stars.forEach(star => {
+        if (oldWidth > 10 && oldHeight > 10) {
+          const ratio = Math.min(width / oldWidth, height / oldHeight);
+          star.r *= ratio;
+        }
+      });
+    };
+    resize();
+
+    let resizeObserver: ResizeObserver | null = null;
+    if (isCard && typeof ResizeObserver !== 'undefined' && canvas.parentElement) {
+      resizeObserver = new ResizeObserver(() => {
+        resize();
+      });
+      resizeObserver.observe(canvas.parentElement);
+    } else {
+      window.addEventListener('resize', resize);
+    }
 
     // Generate Galaxy structure
     const generateGalaxy = () => {
@@ -495,7 +511,11 @@ export default function GalaxyScreen({ tool, locale, ambientAudioFiles = [] }: G
 
     return () => {
       cancelAnimationFrame(animId);
-      window.removeEventListener('resize', resize);
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      } else {
+        window.removeEventListener('resize', resize);
+      }
     };
   }, [starCount, rotationSpeed, tiltAngle, coreIntensity, selectedTheme, gravityLensing]);
 
@@ -504,7 +524,9 @@ export default function GalaxyScreen({ tool, locale, ambientAudioFiles = [] }: G
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`galaxy-container relative w-full h-[480px] rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 select-none ${
+      className={`galaxy-container relative w-full overflow-hidden transition-all duration-300 select-none ${
+        isCard ? 'w-full h-full pointer-events-none' : 'h-[480px] rounded-2xl shadow-2xl'
+      } ${
         isFullscreen ? 'is-fullscreen h-screen! w-screen! fixed! inset-0 z-99999 rounded-none!' : ''
       }`}
       style={{ backgroundColor: '#020617', cursor: hudVisible ? 'default' : 'none' }}
@@ -516,68 +538,73 @@ export default function GalaxyScreen({ tool, locale, ambientAudioFiles = [] }: G
       />
 
       {/* Screen Title & HUD Header */}
-      <div 
-        className={`absolute top-4 left-4 z-40 flex items-center gap-3 transition-opacity duration-300 pointer-events-none ${
-          hudVisible ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        <div className="h-8 w-8 rounded-lg bg-indigo-500/20 backdrop-blur-md border border-indigo-400/30 flex items-center justify-center">
-          <svg className="w-[18px] h-[18px] text-indigo-400/90" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
-          </svg>
+      {!isCard && (
+        <div 
+          className={`absolute top-4 left-4 z-40 flex items-center gap-3 transition-opacity duration-300 pointer-events-none ${
+            hudVisible ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <div className="h-8 w-8 rounded-lg bg-indigo-500/20 backdrop-blur-md border border-indigo-400/30 flex items-center justify-center">
+            <svg className="w-[18px] h-[18px] text-indigo-400/90" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+            </svg>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-white tracking-wide leading-tight">Cosmogony</h3>
+            <p className="text-[10px] text-gray-400 tracking-wider">REALISTIC GALAXY SIMULATION</p>
+          </div>
         </div>
-        <div>
-          <h3 className="text-sm font-semibold text-white tracking-wide leading-tight">Cosmogony</h3>
-          <p className="text-[10px] text-gray-400 tracking-wider">REALISTIC GALAXY SIMULATION</p>
-        </div>
-      </div>
+      )}
 
       {/* Control Action Buttons (Top Right) */}
-      <div 
-        className={`absolute top-4 right-4 z-40 flex items-center gap-2 transition-opacity duration-300 ${
-          hudVisible ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        <button
-          onClick={() => setPanelOpen(prev => !prev)}
-          className={`flex items-center justify-center w-9 h-9 rounded-lg backdrop-blur-xl border transition-all duration-200 cursor-pointer ${
-            panelOpen 
-              ? 'bg-indigo-500/10 border-indigo-400/40 text-indigo-400 shadow-[0_0_12px_rgba(99,102,241,0.25)]' 
-              : 'bg-neutral-900/60 border-white/10 text-neutral-300 hover:border-white/30 hover:bg-neutral-900/80'
+      {!isCard && (
+        <div 
+          className={`absolute top-4 right-4 z-40 flex items-center gap-2 transition-opacity duration-300 ${
+            hudVisible ? 'opacity-100' : 'opacity-0'
           }`}
-          aria-label="Toggle Control Center"
-          title="Toggle Controls (Space)"
         >
-          <svg className={`w-[18px] h-[18px] transition-transform duration-300 ${panelOpen ? 'rotate-90 text-indigo-400' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="3" />
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-          </svg>
-        </button>
+          <button
+            onClick={() => setPanelOpen(prev => !prev)}
+            className={`flex items-center justify-center w-9 h-9 rounded-lg backdrop-blur-xl border transition-all duration-200 cursor-pointer ${
+              panelOpen 
+                ? 'bg-indigo-500/10 border-indigo-400/40 text-indigo-400 shadow-[0_0_12px_rgba(99,102,241,0.25)]' 
+                : 'bg-neutral-900/60 border-white/10 text-neutral-300 hover:border-white/30 hover:bg-neutral-900/80'
+            }`}
+            aria-label="Toggle Control Center"
+            title="Toggle Controls (Space)"
+          >
+            <svg className={`w-[18px] h-[18px] transition-transform duration-300 ${panelOpen ? 'rotate-90 text-indigo-400' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="3" />
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+            </svg>
+          </button>
 
-        <button
-          onClick={toggleFullscreen}
-          className="flex items-center justify-center w-9 h-9 rounded-lg bg-neutral-900/60 backdrop-blur-xl border border-white/10 text-neutral-300 hover:border-white/30 hover:bg-neutral-900/80 transition-all duration-200 cursor-pointer"
-          aria-label="Toggle Fullscreen"
-          title="Toggle Fullscreen (F)"
-        >
-          {isFullscreen ? (
-            <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 14h6v6M20 10h-6V4" />
-            </svg>
-          ) : (
-            <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
-            </svg>
-          )}
-        </button>
-      </div>
+          <button
+            onClick={toggleFullscreen}
+            className="flex items-center justify-center w-9 h-9 rounded-lg bg-neutral-900/60 backdrop-blur-xl border border-white/10 text-neutral-300 hover:border-white/30 hover:bg-neutral-900/80 transition-all duration-200 cursor-pointer"
+            aria-label="Toggle Fullscreen"
+            title="Toggle Fullscreen (F)"
+          >
+            {isFullscreen ? (
+              <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 14h6v6M20 10h-6V4" />
+              </svg>
+            ) : (
+              <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+              </svg>
+            )}
+          </button>
+        </div>
+      )}
 
       {/* Control Drawer Center */}
-      <div
-        className={`absolute inset-x-4 bottom-4 z-40 bg-neutral-950/85 backdrop-blur-xl border border-white/10 rounded-2xl p-4 transition-all duration-300 shadow-2xl flex flex-col max-h-[85%] ${
-          panelOpen && hudVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0 pointer-events-none'
-        }`}
-      >
+      {isCard ? null :
+        <div
+          className={`absolute inset-x-4 bottom-4 z-40 bg-neutral-950/85 backdrop-blur-xl border border-white/10 rounded-2xl p-4 transition-all duration-300 shadow-2xl flex flex-col max-h-[85%] ${
+            panelOpen && hudVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0 pointer-events-none'
+          }`}
+        >
         <div className="flex justify-between items-center border-b border-white/5 pb-2 shrink-0">
           <div className="flex items-center gap-2">
             <span className="text-xs text-indigo-400">🌌</span>
@@ -775,7 +802,7 @@ export default function GalaxyScreen({ tool, locale, ambientAudioFiles = [] }: G
             </div>
           </div>
         </div>
-      </div>
+      </div>}
     </div>
   );
 }

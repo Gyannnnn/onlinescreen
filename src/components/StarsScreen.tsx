@@ -5,19 +5,20 @@ import type { Locale } from '../data/locales';
 interface StarsScreenProps {
   tool: Tool;
   locale: Locale;
+  isCard?: boolean;
 }
 
-export default function StarsScreen({ tool, locale }: StarsScreenProps) {
+export default function StarsScreen({ tool, locale, isCard = false }: StarsScreenProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const starsCanvasRef = useRef<HTMLCanvasElement>(null);
 
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isIdle, setIsIdle] = useState(false);
-  const [starDensity, setStarDensity] = useState(120); // denser field for richer sky
+  const [starDensity, setStarDensity] = useState(isCard ? 50 : 120); // denser field for richer sky but lower in card mode
 
   // Fullscreen handling
   const toggleFullscreen = () => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || isCard) return;
     if (!document.fullscreenElement) {
       containerRef.current.requestFullscreen().catch(() => {});
     } else {
@@ -26,17 +27,18 @@ export default function StarsScreen({ tool, locale }: StarsScreenProps) {
   };
 
   useEffect(() => {
+    if (isCard) return;
     const onFullscreenChange = () => {
       const fs = !!document.fullscreenElement;
       setIsFullscreen(fs);
     };
     document.addEventListener('fullscreenchange', onFullscreenChange);
     return () => document.removeEventListener('fullscreenchange', onFullscreenChange);
-  }, []);
+  }, [isCard]);
 
   // Idle cursor hide when fullscreen
   useEffect(() => {
-    if (!isFullscreen) {
+    if (isCard || !isFullscreen) {
       setIsIdle(false);
       return;
     }
@@ -54,7 +56,7 @@ export default function StarsScreen({ tool, locale }: StarsScreenProps) {
       window.removeEventListener('keydown', resetIdle);
       clearTimeout(timer);
     };
-  }, [isFullscreen]);
+  }, [isFullscreen, isCard]);
 
   // Stars canvas animation (copied from AmbientScreen)
   useEffect(() => {
@@ -62,9 +64,10 @@ export default function StarsScreen({ tool, locale }: StarsScreenProps) {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    
     let animId: number;
-    let width = (canvas.width = canvas.clientWidth || 800);
-    let height = (canvas.height = canvas.clientHeight || 480);
+    let width = 800;
+    let height = 480;
     
     interface Star {
       x: number;
@@ -75,39 +78,60 @@ export default function StarsScreen({ tool, locale }: StarsScreenProps) {
       angle: number;
     }
 
-    let stars: Star[] = Array.from({ length: starDensity }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      // size varies more for depth effect
-      size: 0.8 + Math.random() * 2.2,
-      // subtle opacity for twinkling
-      alpha: 0.3 + Math.random() * 0.5,
-      speed: 0.02 + Math.random() * 0.08,
-      angle: Math.random() * Math.PI * 2,
-    }));
+    let stars: Star[] = [];
+
+    const initStars = (w: number, h: number) => {
+      stars = Array.from({ length: starDensity }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        // size varies more for depth effect
+        size: 0.8 + Math.random() * 2.2,
+        // subtle opacity for twinkling
+        alpha: 0.3 + Math.random() * 0.5,
+        speed: 0.02 + Math.random() * 0.08,
+        angle: Math.random() * Math.PI * 2,
+      }));
+    };
 
     const resize = () => {
       const oldWidth = width;
       const oldHeight = height;
-      width = canvas.width = canvas.clientWidth || 800;
-      height = canvas.height = canvas.clientHeight || 480;
+      if (isCard && canvas.parentElement) {
+        width = canvas.width = canvas.parentElement.clientWidth || 320;
+        height = canvas.height = canvas.parentElement.clientHeight || 200;
+      } else {
+        width = canvas.width = canvas.clientWidth || 800;
+        height = canvas.height = canvas.clientHeight || 480;
+      }
 
-      stars.forEach((star) => {
-        if (oldWidth <= 10 || oldHeight <= 10) {
-          star.x = Math.random() * width;
-          star.y = Math.random() * height;
-        } else {
-          star.x = (star.x / oldWidth) * width;
-          star.y = (star.y / oldHeight) * height;
-        }
-      });
+      if (stars.length === 0) {
+        initStars(width, height);
+      } else {
+        stars.forEach((star) => {
+          if (oldWidth <= 10 || oldHeight <= 10) {
+            star.x = Math.random() * width;
+            star.y = Math.random() * height;
+          } else {
+            star.x = (star.x / oldWidth) * width;
+            star.y = (star.y / oldHeight) * height;
+          }
+        });
+      }
     };
-    window.addEventListener('resize', resize);
+    resize();
+
+    let resizeObserver: ResizeObserver | null = null;
+    if (isCard && typeof ResizeObserver !== 'undefined' && canvas.parentElement) {
+      resizeObserver = new ResizeObserver(() => {
+        resize();
+      });
+      resizeObserver.observe(canvas.parentElement);
+    } else {
+      window.addEventListener('resize', resize);
+    }
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
-      const mx = -1000; // no mouse interaction for simplicity
-      const my = -1000;
       stars.forEach((star) => {
         star.x += Math.cos(star.angle) * star.speed;
         star.y += Math.sin(star.angle) * star.speed;
@@ -131,16 +155,23 @@ export default function StarsScreen({ tool, locale }: StarsScreenProps) {
       animId = requestAnimationFrame(draw);
     };
     draw();
+    
     return () => {
       cancelAnimationFrame(animId);
-      window.removeEventListener('resize', resize);
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      } else {
+        window.removeEventListener('resize', resize);
+      }
     };
-  }, [starDensity, isFullscreen]);
+  }, [starDensity, isFullscreen, isCard]);
 
   return (
     <div
       ref={containerRef}
-      className={`star-container relative w-full h-[480px] rounded-2xl overflow-hidden shadow-2xl select-none ${
+      className={`star-container relative w-full overflow-hidden select-none ${
+        isCard ? 'w-full h-full pointer-events-none' : 'h-[480px] rounded-2xl shadow-2xl'
+      } ${
         isFullscreen ? 'is-fullscreen h-screen! w-screen! fixed! inset-0 z-99999 rounded-none!' : ''
       } ${isIdle && isFullscreen ? 'cursor-none' : ''}`}
       style={{ backgroundColor: '#020617' }}
@@ -151,28 +182,30 @@ export default function StarsScreen({ tool, locale }: StarsScreenProps) {
         className="absolute inset-0 w-full h-full pointer-events-none"
       />
       {/* Fullscreen trigger */}
-      {!isFullscreen && (
+      {!isFullscreen && !isCard && (
         <div onClick={toggleFullscreen} className="absolute inset-0 cursor-pointer z-10" title="Click to go Fullscreen" />
       )}
       {/* Top right controls */}
-      <div className="absolute top-4 right-4 flex items-center gap-2.5 z-20 transition-opacity duration-300 ${isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'}">
-        <button
-          onClick={toggleFullscreen}
-          className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white cursor-pointer transition-all duration-200 backdrop-blur-md hover:border-white/25"
-          aria-label="Toggle Fullscreen"
-          title="Toggle Fullscreen"
-        >
-          {isFullscreen ? (
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 14h6v6M20 10h-6V4" />
-            </svg>
-          ) : (
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
-            </svg>
-          )}
-        </button>
-      </div>
+      {!isCard && (
+        <div className={`absolute top-4 right-4 flex items-center gap-2.5 z-20 transition-opacity duration-300 ${isIdle && isFullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+          <button
+            onClick={toggleFullscreen}
+            className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white cursor-pointer transition-all duration-200 backdrop-blur-md hover:border-white/25"
+            aria-label="Toggle Fullscreen"
+            title="Toggle Fullscreen"
+          >
+            {isFullscreen ? (
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 14h6v6M20 10h-6V4" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+              </svg>
+            )}
+          </button>
+        </div>
+      )}
     </div>
   );
 }

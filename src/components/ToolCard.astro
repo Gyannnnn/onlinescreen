@@ -5,6 +5,17 @@ import { toolName, toolSummary } from '../data/translations';
 import { categories } from '../data/tools';
 import { getThumbnail } from '../data/thumbnails';
 
+// Import Screensaver Components for Live Preview Cards
+import FireplaceScreen from './FireplaceScreen.astro';
+import AquariumScreen from './AquariumScreen';
+import MatrixScreen from './MatrixScreen';
+import RainScreen from './RainScreen';
+import SnowScreen from './SnowScreen';
+import GalaxyScreen from './GalaxyScreen';
+import StarsScreen from './StarsScreen';
+import ClockScreen from './ClockScreen';
+import AmbientScreen from './AmbientScreen';
+
 type Props = {
   tool: Tool;
   locale: Locale;
@@ -22,7 +33,21 @@ const altText = `${toolName(locale, tool)} preview`;
   href={`/${tool.slug}/`}
 >
   <div class="relative aspect-video overflow-hidden rounded-t-2xl bg-canvas-soft-2">
-    <div class="size-full" set:html={thumbnailSvg} aria-label={altText} role="img" />
+    {tool.category === 'savers' ? (
+      <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none">
+        {tool.id === 'fireplace-screen' && <FireplaceScreen tool={tool} locale={locale} isCard={true} />}
+        {tool.id === 'aquarium-screen' && <AquariumScreen client:idle tool={tool} locale={locale} aquariumAudioFiles={[]} isCard={true} />}
+        {tool.id === 'matrix-screen' && <MatrixScreen client:idle tool={tool} locale={locale} isCard={true} />}
+        {tool.id === 'rain-screen' && <RainScreen client:idle tool={tool} locale={locale} backgrounds={[]} audioFiles={[]} isCard={true} />}
+        {tool.id === 'snow-screen' && <SnowScreen client:idle tool={tool} locale={locale} isCard={true} />}
+        {tool.id === 'galaxy-screen' && <GalaxyScreen client:idle tool={tool} locale={locale} isCard={true} />}
+        {tool.id === 'stars-screen' && <StarsScreen client:idle tool={tool} locale={locale} isCard={true} />}
+        {tool.id === 'clock-screen' && <ClockScreen client:idle tool={tool} locale={locale} isCard={true} />}
+        {tool.id === 'ambient-screen' && <AmbientScreen client:idle tool={tool} locale={locale} isCard={true} />}
+      </div>
+    ) : (
+      <div class="size-full" set:html={thumbnailSvg} aria-label={altText} role="img" />
+    )}
   </div>
   <div class="flex flex-1 flex-col gap-2 p-4">
     <div class="flex items-start justify-between gap-2">
