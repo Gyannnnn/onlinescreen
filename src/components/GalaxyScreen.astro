@@ -1,0 +1,39 @@
+---
+export const ssr = false;
+export const prerender = false;
+import type { Tool } from '../data/tools';
+import type { Locale } from '../data/locales';
+import ReactGalaxyScreen from './GalaxyScreen.tsx';
+import fs from 'fs';
+import path from 'path';
+
+type Props = {
+  tool: Tool;
+  locale: Locale;
+};
+
+const { tool, locale } = Astro.props;
+
+// Dynamically read audio files from public/assets/ambient-screen/bgm for ambient space feel
+const bgmDir = path.join(process.cwd(), 'public/assets/ambient-screen/bgm');
+let ambientAudioFiles: string[] = [];
+try {
+  if (fs.existsSync(bgmDir)) {
+    ambientAudioFiles = fs.readdirSync(bgmDir)
+      .filter(file => {
+        const ext = path.extname(file).toLowerCase();
+        return ['.mp3', '.ogg', '.wav', '.m4a'].includes(ext);
+      })
+      .map(file => `/assets/ambient-screen/bgm/${file}`);
+  }
+} catch (err) {
+  console.error("Failed to read ambient bgm directory:", err);
+}
+---
+
+<ReactGalaxyScreen 
+  tool={tool} 
+  locale={locale} 
+  ambientAudioFiles={ambientAudioFiles} 
+  client:only="react" 
+/>

@@ -21,6 +21,7 @@ import RainScreen from '../components/RainScreen.astro';
 import MatrixScreen from '../components/MatrixScreen.astro';
 import ClockScreen from '../components/ClockScreen.astro';
 import StarsScreen from '../components/StarsScreen.astro';
+import GalaxyScreen from '../components/GalaxyScreen.astro';
 // import StarsScreen from '../components/StarsScreen';
 import AmbientScreen from '../components/AmbientScreen.astro';
 import AquariumScreen from '../components/AquariumScreen.astro';
@@ -129,6 +130,8 @@ const props = Astro.props as PageProps;
           <MatrixScreen tool={props.tool} locale={props.locale} />
         ) : props.tool.slug === 'stars-screen' ? (
           <StarsScreen tool={props.tool} locale={props.locale} />
+        ) : props.tool.slug === 'galaxy-screen' ? (
+          <GalaxyScreen tool={props.tool} locale={props.locale} />
         ) : props.tool.slug === 'clock-screen' ? (
           <ClockScreen tool={props.tool} locale={props.locale} />
         ) : props.tool.slug === 'ambient-screen' ? (
