@@ -2,12 +2,12 @@
 import type { Tool } from '../data/tools';
 import type { Locale } from '../data/locales';
 
-type Props = { tool: Tool; locale: Locale };
-const { tool, locale } = Astro.props;
+type Props = { tool: Tool; locale: Locale; isCard?: boolean };
+const { tool, locale, isCard = false } = Astro.props;
 ---
 
 <section class="macos-update-wrapper" data-macos-update aria-label="macOS Update Simulator">
-  <div class="mu-simulator group" data-mu-simulator id="muSimulator">
+  <div class="mu-simulator group" data-mu-simulator data-is-card={isCard ? "true" : "false"} id="muSimulator">
     <button class="mu-fs-btn" id="muFsBtn" type="button" aria-label="Fullscreen" onclick="window.__muUpdate?.fullscreen()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M8 3H5a2 2 0 0 0-2 2v3" />
@@ -510,8 +510,31 @@ const { tool, locale } = Astro.props;
     .mu-progress-area { width: 160px; }
     .mu-status { font-size: 0.8125rem; }
   }
+
+  /* Card Mode Overrides */
+  .mu-simulator[data-is-card="true"] {
+    height: 100% !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    cursor: default !important;
+  }
+  /* Make the section wrapper fill its container */
+  .macos-update-wrapper:has(.mu-simulator[data-is-card="true"]) {
+    height: 100% !important;
+  }
+  .mu-simulator[data-is-card="true"] .mu-fs-btn,
+  .mu-simulator[data-is-card="true"] .mu-gear-btn,
+  .mu-simulator[data-is-card="true"] .mu-controls-overlay {
+    display: none !important;
+  }
+  .mu-simulator[data-is-card="true"] .mu-content {
+    transform: scale(0.65);
+    transform-origin: center;
+  }
 </style>
 
+{!isCard && (
 <script is:inline>
 (function() {
   const sim = document.getElementById('muSimulator');
@@ -992,3 +1015,4 @@ const { tool, locale } = Astro.props;
   requestAnimationFrame(tick);
 })();
 </script>
+)}

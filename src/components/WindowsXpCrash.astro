@@ -3,11 +3,11 @@ import type { Tool } from "../data/tools";
 import type { Locale } from "../data/locales";
 import { t } from "../data/translations";
 
-type Props = { tool: Tool; locale: Locale };
-const { tool, locale } = Astro.props;
+type Props = { tool: Tool; locale: Locale; isCard?: boolean };
+const { tool, locale, isCard = false } = Astro.props;
 ---
 
-<div class="xp" id="xp" data-xp-crash-screen aria-label="Windows XP Crash Prank">
+<div class="xp" id="xp" data-xp-crash-screen data-is-card={isCard ? "true" : "false"} aria-label="Windows XP Crash Prank">
   <div class="xp-inner">
     <!-- Desktop Mode Viewport -->
     <div class="xp-desktop" id="xpDesktop">
@@ -653,8 +653,25 @@ const { tool, locale } = Astro.props;
   .xp .hidden {
     display: none !important;
   }
+
+  /* Card Mode Overrides */
+  .xp[data-is-card="true"] {
+    height: 100% !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    cursor: default !important;
+  }
+  .xp[data-is-card="true"] .xp-controls {
+    display: none !important;
+  }
+  .xp[data-is-card="true"] .xp-desktop {
+    transform: scale(0.9);
+    transform-origin: center;
+  }
 </style>
 
+{!isCard && (
 <script is:inline>
   (function () {
     const root = document.getElementById("xp");
@@ -1092,3 +1109,4 @@ const { tool, locale } = Astro.props;
     });
   })();
 </script>
+)}

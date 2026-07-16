@@ -3,11 +3,11 @@ import type { Tool } from "../data/tools";
 import type { Locale } from "../data/locales";
 import { t } from "../data/translations";
 
-type Props = { tool: Tool; locale: Locale };
-const { tool, locale } = Astro.props;
+type Props = { tool: Tool; locale: Locale; isCard?: boolean };
+const { tool, locale, isCard = false } = Astro.props;
 ---
 
-<div class="fv" id="fv" data-fake-virus-screen aria-label="Fake Virus Screen Prank">
+<div class="fv" id="fv" data-fake-virus-screen data-is-card={isCard ? "true" : "false"} aria-label="Fake Virus Screen Prank">
   <!-- Chrome Block Template -->
   <div class="fv-template fv-chrome" id="tplChrome">
     <div class="chrome-box">
@@ -19,7 +19,7 @@ const { tool, locale } = Astro.props;
       </div>
       <h1 class="chrome-title">Deceptive site ahead</h1>
       <p class="chrome-p">
-        Attackers on this site may trick you into doing something dangerous like installing software or revealing your personal information (for example, passwords, phone numbers, or credit cards). <a href="#" class="chrome-link" id="chromeLearnMore">Learn more</a>
+        Attackers on this site may trick you into doing something dangerous like installing software or revealing your personal information (for example, passwords, phone numbers, or credit cards). <span role="link" class="chrome-link cursor-pointer" id="chromeLearnMore">Learn more</span>
       </p>
       <div class="chrome-actions">
         <button class="chrome-btn btn-details" id="chromeDetailsBtn" type="button">Details</button>
@@ -27,7 +27,7 @@ const { tool, locale } = Astro.props;
       </div>
       <div class="chrome-collapsed hidden" id="chromeDetailsPanel">
         <p>Google Safe Browsing recently detected malware on this site. Web browsers use this warning to prevent you from visiting websites that are reported as unsafe.</p>
-        <p>If you understand the risks, you can <a href="#" class="chrome-link-unsafe" id="chromeVisitAnyway">visit this unsafe site</a>.</p>
+        <p>If you understand the risks, you can <span role="link" class="chrome-link-unsafe cursor-pointer" id="chromeVisitAnyway">visit this unsafe site</span>.</p>
       </div>
     </div>
   </div>
@@ -48,13 +48,13 @@ const { tool, locale } = Astro.props;
       </p>
       <div class="ss-actions">
         <button class="ss-btn-back" id="ssBackBtn" type="button">Go back to my start page</button>
-        <a href="#" class="ss-link-more" id="ssMoreBtn">More information</a>
+        <span role="link" class="ss-link-more cursor-pointer" id="ssMoreBtn">More information</span>
       </div>
       <div class="ss-expanded hidden" id="ssExpanded">
         <p>This website has been reported to Microsoft for containing threats to your personal data or device. Microsoft Defender SmartScreen assists you by warning you of suspicious content on websites.</p>
         <div class="ss-expanded-links">
-          <a href="#" class="ss-ex-link" id="ssReportSafe">Report that this site is safe</a>
-          <a href="#" class="ss-ex-link" id="ssProceed">Disregard and proceed (unsafe)</a>
+          <span role="link" class="ss-ex-link cursor-pointer" id="ssReportSafe">Report that this site is safe</span>
+          <span role="link" class="ss-ex-link cursor-pointer" id="ssProceed">Disregard and proceed (unsafe)</span>
         </div>
       </div>
     </div>
@@ -930,8 +930,41 @@ const { tool, locale } = Astro.props;
     margin: 0 !important;
     padding: 0 !important;
   }
+
+  /* Card Mode Overrides */
+  .fv[data-is-card="true"] {
+    height: 100% !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    cursor: default !important;
+    overflow: hidden !important;
+  }
+  .fv[data-is-card="true"] .fv-gear-btn,
+  .fv[data-is-card="true"] .fv-fs-btn,
+  .fv[data-is-card="true"] .fv-settings {
+    display: none !important;
+  }
+  /* Fix: fv-template uses position:absolute + overflow:auto which creates scrollbars in card */
+  .fv[data-is-card="true"] .fv-template {
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
+  /* Scale down the Chrome template for card preview */
+  .fv[data-is-card="true"] .fv-chrome {
+    transform: scale(0.65);
+    transform-origin: top center;
+    padding: 20px !important;
+  }
+  .fv[data-is-card="true"] .chrome-title {
+    font-size: 20px !important;
+  }
+  .fv[data-is-card="true"] .chrome-p {
+    font-size: 12px !important;
+  }
 </style>
 
+{!isCard && (
 <script is:inline>
   (function () {
     var root = document.getElementById("fv");
@@ -1453,3 +1486,4 @@ const { tool, locale } = Astro.props;
     });
   })();
 </script>
+)}

@@ -5,8 +5,8 @@ import { t } from "../data/translations";
 import fs from "fs";
 import path from "path";
 
-type Props = { tool: Tool; locale: Locale };
-const { tool, locale } = Astro.props;
+type Props = { tool: Tool; locale: Locale; isCard?: boolean };
+const { tool, locale, isCard = false } = Astro.props;
 
 const imagesDir = path.join(process.cwd(), "public", "assets", "broken-screen");
 const imageExtensions = [".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"];
@@ -24,6 +24,7 @@ try {
   class="rounded-lg border border-hairline bg-canvas shadow-soft flex flex-col overflow-hidden w-full"
   data-broken-screen
   data-images={JSON.stringify(images)}
+  data-is-card={isCard ? "true" : "false"}
   aria-label="Broken Screen Prank"
 >
   <!-- Screen Preview Area -->
@@ -104,8 +105,37 @@ try {
     border-color: #ffffff;
     box-shadow: 0 0 0 2px #000000, 0 0 0 4px #ffffff;
   }
+
+  /* Card Mode Overrides */
+  [data-is-card="true"] {
+    height: 100% !important;
+    min-height: 100% !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  [data-is-card="true"] .bs-root {
+    height: 100% !important;
+    min-height: 100% !important;
+    border-radius: 0 !important;
+    pointer-events: none !important;
+    cursor: default !important;
+  }
+  [data-is-card="true"] .bs-preview {
+    height: 100% !important;
+  }
+  [data-is-card="true"] .bs-active-img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  [data-is-card="true"] #bsFsBtn,
+  [data-is-card="true"] #bsControlsBar {
+    display: none !important;
+  }
 </style>
 
+{!isCard && (
 <script is:inline>
   (function () {
     var root = document.getElementById("bsRoot");
@@ -202,3 +232,4 @@ try {
     selectImage(0);
   })();
 </script>
+)}

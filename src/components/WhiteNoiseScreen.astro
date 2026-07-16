@@ -3,11 +3,11 @@ import type { Tool } from "../data/tools";
 import type { Locale } from "../data/locales";
 import { t } from "../data/translations";
 
-type Props = { tool: Tool; locale: Locale };
-const { tool, locale } = Astro.props;
+type Props = { tool: Tool; locale: Locale; isCard?: boolean };
+const { tool, locale, isCard = false } = Astro.props;
 ---
 
-<div class="wn" id="wn" data-white-noise-screen aria-label="White Noise Screen">
+<div class="wn" id="wn" data-white-noise-screen data-is-card={isCard ? "true" : "false"} aria-label="White Noise Screen">
   <!-- Screen Wrapper -->
   <div class="wn-viewport">
     <canvas class="wn-canvas" id="wnCanvas"></canvas>
@@ -290,11 +290,26 @@ const { tool, locale } = Astro.props;
     margin: 0 !important;
     padding: 0 !important;
   }
+
+  /* Card Mode Overrides */
+  .wn[data-is-card="true"] {
+    height: 100% !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    cursor: default !important;
+  }
+  .wn[data-is-card="true"] .wn-gear-btn,
+  .wn[data-is-card="true"] .wn-fs-btn,
+  .wn[data-is-card="true"] .wn-settings {
+    display: none !important;
+  }
 </style>
 
 <script is:inline>
   (function () {
     var root = document.getElementById("wn");
+    var isCard = root && root.getAttribute("data-is-card") === "true";
     var canvas = document.getElementById("wnCanvas");
     var ctx = canvas.getContext("2d");
 
@@ -669,6 +684,7 @@ const { tool, locale } = Astro.props;
 
     // Keyboard Shortcuts
     document.addEventListener("keydown", function (e) {
+      if (isCard) return;
       var key = e.key.toLowerCase();
       
       // Fullscreen checks
@@ -720,6 +736,7 @@ const { tool, locale } = Astro.props;
     }
 
     root.addEventListener("click", function(e) {
+      if (isCard) return;
       if (!document.fullscreenElement) {
         e.stopPropagation();
         goFS();

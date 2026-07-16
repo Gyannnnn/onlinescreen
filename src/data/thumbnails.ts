@@ -432,8 +432,60 @@ export function thumbnailAndroidUpdate(): string {
   return '<img src="/assets/thumbnails/fakescreen/android-update-screen.png" alt="" class="size-full object-cover" />';
 }
 
+export function thumbnailGradient(): string {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+  <defs>
+    <linearGradient id="gradThumb" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#007cf0"/>
+      <stop offset="25%" stop-color="#00dfd8"/>
+      <stop offset="50%" stop-color="#7928ca"/>
+      <stop offset="75%" stop-color="#ff0080"/>
+      <stop offset="100%" stop-color="#f9cb28"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" rx="12" fill="url(#gradThumb)"/>
+  <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+</svg>`;
+}
+
+export function thumbnailRgb(): string {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+  <clipPath id="roundClipRgb">
+    <rect width="320" height="200" rx="12"/>
+  </clipPath>
+  <g clip-path="url(#roundClipRgb)">
+    <rect width="106.6" height="200" fill="#ff0000"/>
+    <rect x="106.6" width="106.8" height="200" fill="#00ff00"/>
+    <rect x="213.4" width="106.6" height="200" fill="#0000ff"/>
+  </g>
+  <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+</svg>`;
+}
+
+export function thumbnailHex(): string {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+  <clipPath id="roundClipHex">
+    <rect width="320" height="200" rx="12"/>
+  </clipPath>
+  <g clip-path="url(#roundClipHex)">
+    <rect width="80" height="200" fill="#171717"/>
+    <rect x="80" width="80" height="200" fill="#7c3aed"/>
+    <rect x="160" width="80" height="200" fill="#ff0080"/>
+    <rect x="240" width="80" height="200" fill="#f9cb28"/>
+    <text x="40" y="105" text-anchor="middle" fill="#ffffff" opacity="0.8" font-family="monospace" font-size="8" font-weight="bold">#171717</text>
+    <text x="120" y="105" text-anchor="middle" fill="#ffffff" opacity="0.8" font-family="monospace" font-size="8" font-weight="bold">#7C3AED</text>
+    <text x="200" y="105" text-anchor="middle" fill="#ffffff" opacity="0.8" font-family="monospace" font-size="8" font-weight="bold">#FF0080</text>
+    <text x="280" y="105" text-anchor="middle" fill="#111111" opacity="0.8" font-family="monospace" font-size="8" font-weight="bold">#F9CB28</text>
+  </g>
+  <rect x="0.5" y="0.5" width="319" height="199" rx="12" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+</svg>`;
+}
+
 export function getThumbnail(toolId: string, color?: string): string {
   switch (toolId) {
+    case 'gradient-screen': return thumbnailGradient();
+    case 'rgb-screen': return thumbnailRgb();
+    case 'hex-screen': return thumbnailHex();
     // case 'dead-pixel-test': return thumbnailDeadPixelTest();
     // case 'stuck-pixel-fix': return thumbnailStuckPixel();
     // case 'burn-in-test': return thumbnailBurnIn();

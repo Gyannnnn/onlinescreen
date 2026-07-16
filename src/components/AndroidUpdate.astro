@@ -2,12 +2,12 @@
 import type { Tool } from '../data/tools';
 import type { Locale } from '../data/locales';
 
-type Props = { tool: Tool; locale: Locale };
-const { tool, locale } = Astro.props;
+type Props = { tool: Tool; locale: Locale; isCard?: boolean };
+const { tool, locale, isCard = false } = Astro.props;
 ---
 
 <section class="android-update-wrapper" data-android-update aria-label="Android Update Simulator">
-  <div class="au-simulator group" data-au-simulator id="auSimulator">
+  <div class="au-simulator group" data-au-simulator data-is-card={isCard ? "true" : "false"} id="auSimulator">
     <button class="au-fs-btn" id="auFsBtn" type="button" aria-label="Fullscreen" onclick="window.__auUpdate?.fullscreen()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M8 3H5a2 2 0 0 0-2 2v3" />
@@ -396,8 +396,31 @@ const { tool, locale } = Astro.props;
     width: 100vw; height: 100vh; max-height: none; border-radius: 0; cursor: none;
   }
   .au-simulator:fullscreen:hover { cursor: none; }
+
+  /* Card Mode Overrides */
+  .au-simulator[data-is-card="true"] {
+    height: 100% !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    cursor: default !important;
+  }
+  /* Make the section wrapper fill its container */
+  .android-update-wrapper:has(.au-simulator[data-is-card="true"]) {
+    height: 100% !important;
+  }
+  .au-simulator[data-is-card="true"] .au-fs-btn,
+  .au-simulator[data-is-card="true"] .au-gear-btn,
+  .au-simulator[data-is-card="true"] .au-controls-overlay {
+    display: none !important;
+  }
+  .au-simulator[data-is-card="true"] .au-content {
+    transform: scale(0.55);
+    transform-origin: center;
+  }
 </style>
 
+{!isCard && (
 <script is:inline>
 (function() {
   const sim = document.getElementById('auSimulator');
@@ -521,3 +544,4 @@ const { tool, locale } = Astro.props;
   requestAnimationFrame(tick);
 })();
 </script>
+)}

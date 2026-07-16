@@ -4,12 +4,12 @@ import type { Locale } from '../data/locales';
 import BootScreen from './BootScreen.astro';
 import { ubuntuBootScreen } from '../data/boot-screens/ubuntu';
 
-type Props = { tool: Tool; locale: Locale };
-const { tool, locale } = Astro.props;
+type Props = { tool: Tool; locale: Locale; isCard?: boolean };
+const { tool, locale, isCard = false } = Astro.props;
 ---
 
 <section class="ubuntu-update-wrapper" data-ubuntu-update aria-label="Ubuntu Update Simulator">
-  <div class="uu-simulator group" data-uu-simulator id="uuSimulator">
+  <div class="uu-simulator group" data-uu-simulator data-is-card={isCard ? "true" : "false"} id="uuSimulator">
     <button class="uu-fs-btn" id="uuFsBtn" type="button" aria-label="Fullscreen" onclick="window.__uuUpdate?.fullscreen()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M8 3H5a2 2 0 0 0-2 2v3" />
@@ -117,8 +117,30 @@ const { tool, locale } = Astro.props;
   @media (prefers-reduced-motion: reduce) {
     .uu-restart-overlay.fade-in, .uu-restart-overlay.fade-out { animation: none; opacity: 1; }
   }
+
+  /* Card Mode Overrides */
+  .uu-simulator[data-is-card="true"] {
+    height: 100% !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    cursor: default !important;
+  }
+  /* Also make the section wrapper fill its container */
+  .ubuntu-update-wrapper:has(.uu-simulator[data-is-card="true"]) {
+    height: 100% !important;
+  }
+  .uu-simulator[data-is-card="true"] .uu-fs-btn,
+  .uu-simulator[data-is-card="true"] .uu-restart-overlay {
+    display: none !important;
+  }
+  .uu-simulator[data-is-card="true"] .uu-main-bs {
+    transform: scale(0.65);
+    transform-origin: center;
+  }
 </style>
 
+{!isCard && (
 <script is:inline>
 (function() {
   const sim = document.getElementById('uuSimulator');
@@ -239,3 +261,4 @@ const { tool, locale } = Astro.props;
   requestAnimationFrame(tick);
 })();
 </script>
+)}

@@ -2,11 +2,11 @@
 import type { Tool } from "../data/tools";
 import type { Locale } from "../data/locales";
 
-type Props = { tool: Tool; locale: Locale };
-const { tool, locale } = Astro.props;
+type Props = { tool: Tool; locale: Locale; isCard?: boolean };
+const { tool, locale, isCard = false } = Astro.props;
 ---
 
-<div class="bsod" id="bsod" data-blue-screen aria-label="Blue Screen Prank">
+<div class="bsod" id="bsod" data-blue-screen data-is-card={isCard ? "true" : "false"} aria-label="Blue Screen Prank">
   <div class="bsod-inner">
     <div class="bsod-body">
       <div class="bsod-sad">:(</div>
@@ -493,8 +493,28 @@ const { tool, locale } = Astro.props;
       gap: 20px;
     }
   }
+
+  /* Card Mode Overrides */
+  .bsod[data-is-card="true"] {
+    min-height: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  .bsod[data-is-card="true"] .bsod-fs-btn,
+  .bsod[data-is-card="true"] .bsod-gear-btn,
+  .bsod[data-is-card="true"] .bsod-controls-overlay {
+    display: none !important;
+  }
+  .bsod[data-is-card="true"] .bsod-body {
+    padding: 16px 20px !important;
+    transform: scale(0.6);
+    transform-origin: top left;
+    width: 166%;
+  }
 </style>
 
+{!isCard && (
 <script is:inline>
   (function () {
     var root = document.getElementById("bsod");
@@ -670,7 +690,7 @@ const { tool, locale } = Astro.props;
           if (adjusted >= p.at && adjusted < p.at + 1) {
             if (!p.triggered) {
               p.triggered = true;
-              p.triggerTime = elapsed;
+               p.triggerTime = elapsed;
             }
             var pauseElapsed = elapsed - p.triggerTime;
             if (pauseElapsed < p.delay) {
@@ -765,3 +785,4 @@ const { tool, locale } = Astro.props;
     });
   })();
 </script>
+)}

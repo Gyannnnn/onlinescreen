@@ -3,11 +3,11 @@ import type { Tool } from '../data/tools';
 import { type Locale } from '../data/locales';
 import { t } from '../data/translations';
 
-type Props = { tool: Tool; locale: Locale };
-const { tool, locale } = Astro.props;
+type Props = { tool: Tool; locale: Locale; isCard?: boolean };
+const { tool, locale, isCard = false } = Astro.props;
 ---
 
-<div class="ht" id="ht" data-hacker-terminal aria-label="Hacker Typer Terminal">
+<div class="ht" id="ht" data-hacker-terminal data-is-card={isCard ? "true" : "false"} aria-label="Hacker Typer Terminal">
   <!-- Code Editor Window Frame -->
   <div class="ht-window">
     <!-- Window Titlebar -->
@@ -58,10 +58,21 @@ const { tool, locale } = Astro.props;
         <!-- Scrollable editor pane -->
         <div class="ht-code-view" id="htCodeView">
           <div class="ht-line-numbers" id="htLineNumbers">
-            <div>1</div>
+            {isCard ? (
+              <><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div></>
+            ) : (
+              <div>1</div>
+            )}
           </div>
           <div class="ht-editor-content">
-            <pre class="ht-pre"><code id="htCodeArea"></code><span class="ht-cursor" id="htCursor">_</span></pre>
+            <pre class="ht-pre"><code id="htCodeArea">{isCard && `#include <stdio.h>
+#define COMMIT_CREDS 0xffffffff810b42f6
+void get_root() {
+    _commit_creds commit_creds = (_commit_creds)COMMIT_CREDS;
+    commit_creds(prepare_kernel_creds(0));
+}
+int main() {
+    printf("[+] Injecting ring-0 thread...\\n");`}</code><span class="ht-cursor" id="htCursor">_</span></pre>
           </div>
         </div>
 
@@ -541,6 +552,28 @@ const { tool, locale } = Astro.props;
   .ht.theme-matrix .ht-cursor { color: #00ff41; }
   .ht.theme-matrix .ht-code-view { background: #000; }
   .ht.theme-matrix .ht-line-numbers { color: #00661a; }
+
+  /* Card Mode Overrides */
+  .ht[data-is-card="true"] {
+    height: 100% !important;
+    border-radius: 0 !important;
+    outline: none !important;
+  }
+  .ht[data-is-card="true"] .ht-window {
+    border-radius: 0 !important;
+  }
+  .ht[data-is-card="true"] .ht-controls {
+    display: none !important;
+  }
+  .ht[data-is-card="true"] .ht-body {
+    transform: scale(0.85);
+    transform-origin: top left;
+    width: 118%;
+    height: 118%;
+  }
+  .ht[data-is-card="true"] .ht-file-tree {
+    width: 110px !important;
+  }
 </style>
 
 <script is:inline>
@@ -1151,3 +1184,4 @@ func main() {
     updateLineNumbers();
   })();
 </script>
+)}

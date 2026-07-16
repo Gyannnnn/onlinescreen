@@ -3,13 +3,14 @@ import type { Tool } from "../data/tools";
 import type { Locale } from "../data/locales";
 import { t } from "../data/translations";
 
-type Props = { tool: Tool; locale: Locale };
-const { tool, locale } = Astro.props;
+type Props = { tool: Tool; locale: Locale; isCard?: boolean };
+const { tool, locale, isCard = false } = Astro.props;
 ---
 
 <section 
   class="relative rounded-lg border border-hairline bg-[#020d06] shadow-soft flex flex-col overflow-hidden w-full h-[450px]"
   data-radar-screen
+  data-is-card={isCard ? "true" : "false"}
   aria-label="Radar Simulation Screen"
 >
   <!-- Fullscreen Interactive Screen -->
@@ -361,6 +362,23 @@ const { tool, locale } = Astro.props;
     border-color: #ff3333;
     color: #ff7777;
   }
+
+  /* Card Mode Overrides */
+  /* Hide UI controls but NOT the canvas (canvas is also absolute-positioned) */
+  [data-is-card="true"] .radar-controls-overlay,
+  [data-is-card="true"] #radarFsBtn,
+  [data-is-card="true"] #radarGearBtn,
+  [data-is-card="true"] #radarAlertBanner,
+  [data-is-card="true"] .absolute:not(#radarCanvas) {
+    display: none !important;
+  }
+  [data-is-card="true"] {
+    height: 100% !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    cursor: default !important;
+  }
 </style>
 
 <script is:inline>
@@ -375,6 +393,9 @@ const { tool, locale } = Astro.props;
     var interceptedCounter = document.getElementById("radarCountIntercepted");
     var impactCounter = document.getElementById("radarCountImpact");
     var alertBanner = document.getElementById("radarAlertBanner");
+    
+    var containerSec = root.closest("[data-radar-screen]");
+    var isCard = containerSec && containerSec.getAttribute("data-is-card") === "true";
     
     // Sliders
     var volumeRange = document.getElementById("radarVolRange");
@@ -393,7 +414,7 @@ const { tool, locale } = Astro.props;
     var rpm = 12;
     var sweepAngle = 0; // degrees
     var volume = 0.3;
-    var isMuted = false;
+    var isMuted = isCard ? true : false;
     var targetLimit = 20; 
     var counters = { intercepted: 0, impact: 0 };
     var bogeys = [];
@@ -598,6 +619,10 @@ const { tool, locale } = Astro.props;
     function render(time) {
       if (!running) return;
       requestAnimationFrame(render);
+      
+      if (canvas.width === 0 || canvas.height === 0) {
+        resizeCanvas();
+      }
       
       var dt = time - lastFrameTime;
       lastFrameTime = time;
@@ -1046,6 +1071,7 @@ const { tool, locale } = Astro.props;
 
     // Fullscreen behavior handlers
     function goFS() {
+      if (isCard) return;
       initSynth();
       if (!document.fullscreenElement) {
         root.requestFullscreen().catch(function () {});
@@ -1066,6 +1092,7 @@ const { tool, locale } = Astro.props;
     }
 
     root.addEventListener("click", function (e) {
+      if (isCard) return;
       if (!document.fullscreenElement) {
         goFS();
       } else {
@@ -1091,6 +1118,7 @@ const { tool, locale } = Astro.props;
 
     // Keyboard Shortcuts support
     document.addEventListener("keydown", function (e) {
+      if (isCard) return;
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) return;
       
       var key = e.key.toLowerCase();
@@ -1140,5 +1168,6 @@ const { tool, locale } = Astro.props;
 
     // Start simulation
     requestAnimationFrame(render);
+    setTimeout(resizeCanvas, 100);
   })();
 </script>

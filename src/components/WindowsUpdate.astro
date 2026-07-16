@@ -2,12 +2,12 @@
 import type { Tool } from '../data/tools';
 import type { Locale } from '../data/locales';
 
-type Props = { tool: Tool; locale: Locale };
-const { tool, locale } = Astro.props;
+type Props = { tool: Tool; locale: Locale; isCard?: boolean };
+const { tool, locale, isCard = false } = Astro.props;
 ---
 
 <section class="windows-update-wrapper" data-win-update aria-label="Windows Update Simulator">
-  <div class="wu-simulator group" data-wu-simulator id="wuSimulator">
+  <div class="wu-simulator group" data-wu-simulator data-is-card={isCard ? "true" : "false"} id="wuSimulator">
     <button class="wu-fs-btn" id="wuFullscreenBtn" type="button" aria-label="Fullscreen" onclick="window.__wuUpdate?.fullscreen()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M8 3H5a2 2 0 0 0-2 2v3" />
@@ -624,8 +624,31 @@ const { tool, locale } = Astro.props;
     .wu-c-row { flex-direction: column; }
     .wu-c-group { min-width: 0; }
   }
+
+  /* Card Mode Overrides */
+  .wu-simulator[data-is-card="true"] {
+    height: 100% !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    cursor: default !important;
+  }
+  /* Make the section wrapper fill its container */
+  .windows-update-wrapper:has(.wu-simulator[data-is-card="true"]) {
+    height: 100% !important;
+  }
+  .wu-simulator[data-is-card="true"] .wu-fs-btn,
+  .wu-simulator[data-is-card="true"] .wu-gear-btn,
+  .wu-simulator[data-is-card="true"] .wu-controls-overlay {
+    display: none !important;
+  }
+  .wu-simulator[data-is-card="true"] .wu-content {
+    transform: scale(0.65);
+    transform-origin: center;
+  }
 </style>
 
+{!isCard && (
 <script is:inline>
 (function() {
   const C = 2 * Math.PI * 52;
@@ -1119,3 +1142,4 @@ const { tool, locale } = Astro.props;
   requestAnimationFrame(tick);
 })();
 </script>
+)}

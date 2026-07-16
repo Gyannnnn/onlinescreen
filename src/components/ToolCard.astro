@@ -16,6 +16,19 @@ import StarsScreen from './StarsScreen';
 import ClockScreen from './ClockScreen';
 import AmbientScreen from './AmbientScreen';
 
+// Import Prank and Fake Screen Components for Live Preview Cards
+import BrokenScreen from './BrokenScreen.astro';
+import HackerTyper from './HackerTyper.astro';
+import BlueScreen from './BlueScreen.astro';
+import WindowsXpCrash from './WindowsXpCrash.astro';
+import RadarScreen from './RadarScreen.astro';
+import WhiteNoiseScreen from './WhiteNoiseScreen.astro';
+import FakeVirusScreen from './FakeVirusScreen.astro';
+import WindowsUpdate from './WindowsUpdate.astro';
+import UbuntuScreen from './UbuntuScreen.astro';
+import MacOSUpdate from './MacOSUpdate.astro';
+import AndroidUpdate from './AndroidUpdate.astro';
+
 type Props = {
   tool: Tool;
   locale: Locale;
@@ -33,20 +46,49 @@ const altText = `${toolName(locale, tool)} preview`;
   href={`/${tool.slug}/`}
 >
   <div class="relative aspect-video overflow-hidden rounded-t-2xl bg-canvas-soft-2">
-    {tool.category === 'savers' ? (
-      <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none">
-        {tool.id === 'fireplace-screen' && <FireplaceScreen tool={tool} locale={locale} isCard={true} />}
-        {tool.id === 'aquarium-screen' && <AquariumScreen client:idle tool={tool} locale={locale} aquariumAudioFiles={[]} isCard={true} />}
-        {tool.id === 'matrix-screen' && <MatrixScreen client:idle tool={tool} locale={locale} isCard={true} />}
-        {tool.id === 'rain-screen' && <RainScreen client:idle tool={tool} locale={locale} backgrounds={[]} audioFiles={[]} isCard={true} />}
-        {tool.id === 'snow-screen' && <SnowScreen client:idle tool={tool} locale={locale} isCard={true} />}
-        {tool.id === 'galaxy-screen' && <GalaxyScreen client:idle tool={tool} locale={locale} isCard={true} />}
-        {tool.id === 'stars-screen' && <StarsScreen client:idle tool={tool} locale={locale} isCard={true} />}
-        {tool.id === 'clock-screen' && <ClockScreen client:idle tool={tool} locale={locale} isCard={true} />}
-        {tool.id === 'ambient-screen' && <AmbientScreen client:idle tool={tool} locale={locale} isCard={true} />}
-      </div>
-    ) : (
-      <div class="size-full" set:html={thumbnailSvg} aria-label={altText} role="img" />
+    {tool.id === 'hacker-typer' && (
+      <img src="/assets/thumbnails/hacker-typer/hackertyper.png" alt={altText} class="size-full object-cover" loading="lazy" />
+    )}
+    {tool.id === 'windows-xp-crash' && (
+      <img src="/assets/thumbnails/windowsxp-crash-screen/windowsxp-crash.png" alt={altText} class="size-full object-cover" loading="lazy" />
+    )}
+    {tool.id === 'fake-virus-screen' && (
+      <img src="/assets/thumbnails/fake-virus-screen/fake-virus-screen.png" alt={altText} class="size-full object-cover" loading="lazy" />
+    )}
+    {tool.id === 'broken-screen' && (
+      <img src="/assets/thumbnails/broken-screen/broken-screen.png" alt={altText} class="size-full object-cover" loading="lazy" />
+    )}
+    {tool.id === 'blue-screen-prank' && (
+      <img src="/assets/thumbnails/blue-screen/blue-screen.png" alt={altText} class="size-full object-cover" loading="lazy" />
+    )}
+
+    {tool.id !== 'hacker-typer' && tool.id !== 'windows-xp-crash' && tool.id !== 'fake-virus-screen' && tool.id !== 'broken-screen' && tool.id !== 'blue-screen-prank' && (
+      tool.category === 'savers' || tool.category === 'pranks' || tool.category === 'fake' ? (
+        <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none">
+          {/* Screen Savers */}
+          {tool.id === 'fireplace-screen' && <FireplaceScreen tool={tool} locale={locale} isCard={true} />}
+          {tool.id === 'aquarium-screen' && <AquariumScreen client:idle tool={tool} locale={locale} aquariumAudioFiles={[]} isCard={true} />}
+          {tool.id === 'matrix-screen' && <MatrixScreen client:idle tool={tool} locale={locale} isCard={true} />}
+          {tool.id === 'rain-screen' && <RainScreen client:idle tool={tool} locale={locale} backgrounds={[]} audioFiles={[]} isCard={true} />}
+          {tool.id === 'snow-screen' && <SnowScreen client:idle tool={tool} locale={locale} isCard={true} />}
+          {tool.id === 'galaxy-screen' && <GalaxyScreen client:idle tool={tool} locale={locale} isCard={true} />}
+          {tool.id === 'stars-screen' && <StarsScreen client:idle tool={tool} locale={locale} isCard={true} />}
+          {tool.id === 'clock-screen' && <ClockScreen client:idle tool={tool} locale={locale} isCard={true} />}
+          {tool.id === 'ambient-screen' && <AmbientScreen client:idle tool={tool} locale={locale} isCard={true} />}
+
+          {/* Prank Screens */}
+          {tool.id === 'radar-screen' && <RadarScreen tool={tool} locale={locale} isCard={true} />}
+          {tool.id === 'white-noise-screen' && <WhiteNoiseScreen tool={tool} locale={locale} isCard={true} />}
+
+          {/* Fake Screens */}
+          {tool.id === 'windows-update' && <WindowsUpdate tool={tool} locale={locale} isCard={true} />}
+          {tool.id === 'ubuntu-screen' && <UbuntuScreen tool={tool} locale={locale} isCard={true} />}
+          {tool.id === 'macos-screen' && <MacOSUpdate tool={tool} locale={locale} isCard={true} />}
+          {tool.id === 'android-update' && <AndroidUpdate tool={tool} locale={locale} isCard={true} />}
+        </div>
+      ) : (
+        <div class="size-full" set:html={thumbnailSvg} aria-label={altText} role="img" />
+      )
     )}
   </div>
   <div class="flex flex-1 flex-col gap-2 p-4">
