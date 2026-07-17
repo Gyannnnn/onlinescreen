@@ -51,6 +51,9 @@ const categoryIds = Object.keys(categories) as ToolCategoryId[];
         <div>
           <h2 class="font-mono text-xs text-muted">{t(locale, 'footer.company')}</h2>
           <ul class="mt-3 grid gap-1.5">
+            <li><a class="text-sm text-body hover:text-ink transition-colors" href="/about/">{t(locale, 'footer.about')}</a></li>
+            <li><a class="text-sm text-body hover:text-ink transition-colors" href="/privacy/">{t(locale, 'footer.privacy')}</a></li>
+            <li><a class="text-sm text-body hover:text-ink transition-colors" href="/contact/">{t(locale, 'footer.contact')}</a></li>
             <li><a class="text-sm text-body hover:text-ink transition-colors" href="https://github.com/anomalyco/freescreen" target="_blank" rel="noopener noreferrer">{t(locale, 'footer.github')}</a></li>
           </ul>
         </div>

@@ -1,5 +1,6 @@
 import { defaultLocale, localeOrder, locales, type Locale } from './locales';
 import { tools, type Tool } from './tools';
+import { toolFaqs } from './translations';
 
 export const siteName = 'Free Online Screen';
 export const siteUrl = 'https://freeonlinescreen.com';
@@ -7,7 +8,7 @@ export const defaultDescription =
   'Free Online Screen is a premium collection of fullscreen color screens, display tests, screen savers, prank screens, and fake update screens.';
 
 export function toolPath(tool: Tool, locale: Locale = defaultLocale) {
-  const slug = locale === defaultLocale ? tool.slug : tool.localizedSlugs[locale] ?? tool.slug;
+  const slug = locale === defaultLocale ? tool.slug : tool.localizedSlugs[locale as Exclude<Locale, 'en'>] ?? tool.slug;
   const prefix = locales[locale].pathPrefix;
   return `${prefix}/${slug}/`;
 }
@@ -59,7 +60,7 @@ export function landingJsonLd() {
   };
 }
 
-export function toolJsonLd(tool: Tool, path: string) {
+export function toolJsonLd(tool: Tool, path: string, locale: Locale = defaultLocale) {
   const url = absoluteUrl(path);
   return [
     {
@@ -96,7 +97,7 @@ export function toolJsonLd(tool: Tool, path: string) {
     {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: tool.faqs.map((faq) => ({
+      mainEntity: toolFaqs(locale, tool.id, tool.faqs).map((faq) => ({
         '@type': 'Question',
         name: faq.question,
         acceptedAnswer: {

@@ -139,6 +139,19 @@ const initialRgb = (() => {
                 <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                 {t(locale, 'screen.favorite')}
               </button>
+              <div class="inline-flex h-8 items-center rounded-lg border border-hairline bg-canvas p-0.5 shadow-xs focus-within:ring-2 focus-within:ring-ink focus-within:ring-offset-2 transition-shadow">
+                <select class="h-full border-0 bg-transparent py-0 pl-2 pr-1 text-xs text-body hover:text-ink focus:ring-0 focus:outline-hidden cursor-pointer font-medium" data-download-orientation aria-label="Select screen orientation for download">
+                  <option value="landscape">{t(locale, 'screen.orientation_landscape')}</option>
+                  <option value="portrait">{t(locale, 'screen.orientation_portrait')}</option>
+                  <option value="square">{t(locale, 'screen.orientation_square')}</option>
+                  <option value="device">{t(locale, 'screen.orientation_device')}</option>
+                </select>
+                <div class="h-4 w-px bg-hairline/80"></div>
+                <button class="inline-flex h-full items-center gap-1.5 rounded-md px-3 text-xs font-medium text-body hover:bg-canvas-soft hover:text-ink transition-colors cursor-pointer" type="button" data-download>
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                  {t(locale, 'screen.download')}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -379,6 +392,81 @@ const initialRgb = (() => {
 
     root.querySelector('[data-random]')?.addEventListener('click', triggerRandom);
 
+    const triggerDownload = () => {
+      const orientationSelect = root.querySelector<HTMLSelectElement>('[data-download-orientation]');
+      if (!orientationSelect) return;
+      const orientation = orientationSelect.value;
+
+      let width = 1920;
+      let height = 1080;
+
+      if (orientation === 'portrait') {
+        width = 1080;
+        height = 1920;
+      } else if (orientation === 'square') {
+        width = 1080;
+        height = 1080;
+      } else if (orientation === 'device') {
+        width = window.screen.width || window.innerWidth;
+        height = window.screen.height || window.innerHeight;
+      }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      if (mode === 'gradient') {
+        const grad = ctx.createLinearGradient(0, 0, width, height);
+        grad.addColorStop(0, colors[0]);
+        grad.addColorStop(1, colors[1]);
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, width, height);
+      } else if (mode === 'rgb') {
+        const band1 = Math.round(width * 0.3333);
+        const band2 = Math.round(width * 0.6666);
+        ctx.fillStyle = colors[0];
+        ctx.fillRect(0, 0, band1, height);
+        ctx.fillStyle = colors[1];
+        ctx.fillRect(band1, 0, band2 - band1, height);
+        ctx.fillStyle = colors[2];
+        ctx.fillRect(band2, 0, width - band2, height);
+      } else if (mode === 'hex') {
+        const band1 = Math.round(width * 0.25);
+        const band2 = Math.round(width * 0.5);
+        const band3 = Math.round(width * 0.75);
+        ctx.fillStyle = colors[0];
+        ctx.fillRect(0, 0, band1, height);
+        ctx.fillStyle = colors[1];
+        ctx.fillRect(band1, 0, band2 - band1, height);
+        ctx.fillStyle = colors[2];
+        ctx.fillRect(band2, 0, band3 - band2, height);
+        ctx.fillStyle = colors[3];
+        ctx.fillRect(band3, 0, width - band3, height);
+      } else {
+        ctx.fillStyle = colors[0];
+        ctx.fillRect(0, 0, width, height);
+      }
+
+      const toolId = root.dataset.toolId || 'color-screen';
+      const cleanCol = (c: string) => c.replace('#', '');
+      let colorPart = '';
+      if (mode === 'solid') {
+        colorPart = cleanCol(colors[0]);
+      } else {
+        colorPart = `${mode}-${colors.map(cleanCol).join('-')}`;
+      }
+      const filename = `${toolId}-${colorPart}-${width}x${height}.png`;
+
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    };
+
+    root.querySelector('[data-download]')?.addEventListener('click', triggerDownload);
+
     document.addEventListener('fullscreenchange', () => {
       const isActive = document.fullscreenElement === root;
       root.classList.toggle('is-fullscreen', isActive);
@@ -389,12 +477,19 @@ const initialRgb = (() => {
     });
 
     document.addEventListener('keydown', async (event) => {
-      if (event.target instanceof HTMLInputElement) return;
+      if (
+        event.target instanceof HTMLInputElement ||
+        event.target instanceof HTMLSelectElement ||
+        event.target instanceof HTMLTextAreaElement
+      ) return;
       if (event.key.toLowerCase() === 'f') root.requestFullscreen?.();
       if (event.key.toLowerCase() === 'r') triggerRandom();
       if (event.key.toLowerCase() === 'c') {
         await navigator.clipboard?.writeText(hexInput?.value ?? '');
         setStatus(str('strColorCopied'));
+      }
+      if (event.key.toLowerCase() === 'd') {
+        triggerDownload();
       }
     });
 

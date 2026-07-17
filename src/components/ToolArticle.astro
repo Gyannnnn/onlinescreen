@@ -1,7 +1,7 @@
 ---
 import type { Tool } from '../data/tools';
 import { type Locale } from '../data/locales';
-import { toolName } from '../data/translations';
+import { toolName, getBlogKeywordsContent } from '../data/translations';
 
 type Props = {
   tool: Tool;
@@ -12,6 +12,7 @@ const { tool, locale } = Astro.props;
 const useCases = tool.useCases.join(', ');
 const controls = tool.controls.join(', ');
 const name = toolName(locale, tool);
+const blog = (tool.id === 'white-screen' || tool.id === 'black-screen') ? getBlogKeywordsContent(locale, tool.id) : null;
 ---
 
 <article class="site-shell rich-article max-w-3xl py-16">
@@ -75,6 +76,14 @@ const name = toolName(locale, tool);
     are better when you need a repeatable inspection sequence. Ambient pages are designed for long-running, low-distraction use. Fake and prank
     pages are browser visuals only; they should be used responsibly and never to deceive someone in a harmful context.
   </p>
+  {blog && (
+    <>
+      <h2>{blog.heading}</h2>
+      {blog.paragraphs.map((p) => (
+        <p set:html={p} />
+      ))}
+    </>
+  )}
   <p>
     {name} is free, accountless, and static-first. That keeps load time low, avoids unnecessary tracking, and makes the tool feel immediate.
     The screen should be available when the user needs it, not after a heavy bundle, a modal, or a signup prompt.
