@@ -1236,6 +1236,134 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
         answer: 'ディスプレイの輝度を上げ、<strong>ブルーライトオンライン</strong>投光器や高彩度な<strong>青いカラーライト</strong>として使えます。自撮り用の<strong>セルフィー用ブルーライト</strong>や、<strong>ビデオ通話用ブルーライト</strong>として、寒色系のLED照明効果を手軽に作れます。'
       }
     ]
+  },
+  'red-screen': {
+    en: [
+      {
+        question: 'What is a red screen and why is my screen red?',
+        answer: 'A red screen is a solid color display panel running pure red (#ff0000). If you are asking why is my screen red on a laptop, TV, or phone, it could be due to active eye comfort configurations (like Night Shift), a GPU driver issue, or a hardware defect. However, launching a clean online red screen background is a controlled way to test your display or preserve night vision.'
+      },
+      {
+        question: 'How to get a red screen on iPhone? (How to make iPhone screen red)',
+        answer: 'To learn how to get red screen on iPhone, you can use our web-based tool. Select the Red Screen and click Fullscreen in Safari. If you want to know how to make iphone screen red permanently, go to iOS Settings > Accessibility > Display & Text Size > Color Filters, turn them on, and select Red Color Tint. Users also query how to get red screen on iphone for nocturnal reading and camera fill.'
+      },
+      {
+        question: 'How to make Red Dead Online full screen? (How to full screen Red Dead Online)',
+        answer: 'To learn how to make red dead online full screen or how to full screen red dead online on PC, press the Alt + Enter shortcut key on your keyboard while the game is active. You can also open the game settings, navigate to the graphics options, and change the screen mode from Windowed or Borderless Windowed to Fullscreen.'
+      },
+      {
+        question: 'Is there a DS Lite red screen error? (What is red screen door?)',
+        answer: 'A ds lite red screen of death indicates a boot failure, often caused by a loose BIOS chip or faulty cartridge slot. Some retro gamers also mention the red screen door effect, which relates to subpixel layouts on older LCD panels that make the pixel borders visible, resembling a screen door.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Qué es una pantalla roja y por qué mi pantalla está roja?',
+        answer: 'Una pantalla roja es un fondo de color rojo puro (#ff0000). Si te preguntas por qué mi pantalla está roja en una portátil, TV o móvil, podría deberse a configuraciones de luz nocturna activa (Night Shift), un error del controlador de la GPU o un fallo físico. Sin embargo, abrir un fondo de pantalla roja controlado es muy útil para comprobar el estado del monitor o cuidar la vista en la oscuridad.'
+      },
+      {
+        question: '¿Cómo poner la pantalla roja en iPhone? (Cómo hacer la pantalla del iPhone roja)',
+        answer: 'Para saber cómo poner la pantalla roja en iPhone, puedes abrir nuestra herramienta web en Safari y pulsar el botón de Pantalla Completa. Si deseas hacer la pantalla del iPhone roja de forma permanente, ve a Ajustes > Accesibilidad > Pantalla y tamaño de texto > Filtros de color, actívalos y selecciona Matiz Rojo. Muchos usuarios aplican la pantalla roja en iPhone para leer de noche o usarlo como luz de relleno.'
+      },
+      {
+        question: '¿Cómo poner Red Dead Online en pantalla completa? (Cómo hacer pantalla completa en Red Dead Online)',
+        answer: 'Para saber cómo poner Red Dead Online en pantalla completa o cómo hacer pantalla completa en Red Dead Online en PC, presiona el atajo Alt + Enter en el teclado mientras juegas. También puedes abrir el menú de ajustes del juego, ir a opciones gráficas y cambiar el Modo de Pantalla de Ventana/Sin Bordes a Pantalla Completa.'
+      },
+      {
+        question: '¿Existe un error de pantalla roja en DS Lite? (¿Qué es la puerta de pantalla roja?)',
+        answer: 'La pantalla roja en DS Lite señala un error crítico de arranque, usualmente causado por un chip de BIOS suelto o problemas en la ranura del cartucho. La frase puerta de pantalla roja (Screen Door Effect) describe la separación visible entre píxeles en pantallas LCD antiguas, asemejándose a una rejilla o mosquitero.'
+      }
+    ],
+    pt: [
+      {
+        question: 'O que é uma tela vermelha e por que minha tela está vermelha?',
+        answer: 'Uma tela vermelha é um painel exibindo cor vermelha pura (#ff0000). Se você está perguntando por que minha tela está vermelha no notebook, TV ou celular, pode ser devido a filtros de conforto ocular ativados (como Night Shift), erro no driver da GPU ou defeito físico de hardware. Mas abrir uma tela vermelha de fundo completo na web é excelente para testes e para proteger a visão no escuro.'
+      },
+      {
+        question: 'Como deixar a tela vermelha no iPhone? (Como colocar tela vermelha no iPhone)',
+        answer: 'Para aprender como colocar tela vermelha no iPhone, abra nossa ferramenta no Safari e clique em Tela Cheia. Se você quer saber como deixar a tela do iPhone vermelha de forma contínua, acesse Ajustes > Acessibilidade > Tela e Tamanho do Texto > Filtros de Cor, ative a opção e selecione Filtro Vermelho. Criadores utilizam a tela vermelha no iPhone para ler à noite e obter iluminação de estúdio.'
+      },
+      {
+        question: 'Como colocar o Red Dead Online em tela cheia? (Como deixar Red Dead Online em tela cheia)',
+        answer: 'Para saber como colocar o Red Dead Online em tela cheia ou como deixar Red Dead Online em tela cheia no PC, aperte o atalho Alt + Enter no seu teclado enquanto o jogo roda. Alternativamente, acesse as configurações do game, vá em opções gráficas, e altere o modo da tela de Modo Janela para Tela Cheia (Fullscreen).'
+      },
+      {
+        question: 'O que significa a tela vermelha no DS Lite? (O que é porta de tela vermelha?)',
+        answer: 'A tela vermelha no DS Lite de boot indica falha de hardware, geralmente um chip de BIOS solto ou problema na entrada de cartuchos. Já a expressão efeito porta de tela vermelha refere-se à visibilidade da divisão dos subpixels em telas LCD retro antigas, deixando-as com aspecto de grade.'
+      }
+    ],
+    fr: [
+      {
+        question: "Qu'est-ce qu'un écran rouge et pourquoi mon écran est-il rouge?",
+        answer: "Un écran rouge désigne l'affichage d'un fond uni rouge vif (#ff0000). Si vous vous demandez pourquoi mon écran est rouge sur un ordinateur, une TV ou un téléphone, cela peut venir d'un mode de confort des yeux (comme Night Shift), d'un pilote graphique corrompu, ou d'une panne de dalle. Cependant, lancer un arrière-plan écran rouge contrôlé permet de diagnostiquer l'écran ou de préserver sa vision nocturne."
+      },
+      {
+        question: "Comment mettre l'écran rouge sur iPhone? (Comment rendre l'écran de l'iPhone rouge)",
+        answer: "Pour savoir comment mettre l'écran rouge sur iPhone, ouvrez Safari, accédez à notre appli web et activez le mode Plein écran. Pour rendre l'écran de l'iPhone rouge de façon permanente, allez dans Réglages > Accessibilité > Affichage et taille du texte > Filtres de couleur, activez-les et choisissez Nuance rouge. L'usage d'un écran rouge sur iPhone est parfait pour lire la nuit sans fatigue."
+      },
+      {
+        question: "Comment mettre Red Dead Online en plein écran? (Comment passer Red Dead Online en plein écran)",
+        answer: "Pour savoir comment mettre Red Dead Online en plein écran ou comment passer Red Dead Online en plein écran sur PC, appuyez sur le raccourci Alt + Entrée sur votre clavier lorsque le jeu tourne. Vous pouvez également ouvrir les paramètres du jeu, aller dans l'onglet des graphismes, puis changer le mode d'affichage de Fenêtré en Plein écran."
+      },
+      {
+        question: "Qu'est-ce que l'erreur d'écran rouge sur DS Lite? (C'est quoi l'effet porte d'écran rouge?)",
+        answer: "Un écran rouge sur DS Lite indique un échec critique du démarrage d'origine matérielle (BIOS ou slot cartouche défaillant). Le terme effet porte d'écran rouge (Screen Door Effect) fait référence à la grille de séparation des pixels visible sur de vieux écrans LCD rétro."
+      }
+    ],
+    de: [
+      {
+        question: 'Was ist ein roter Bildschirm und warum ist mein Bildschirm rot?',
+        answer: 'Ein roter Bildschirm ist eine vollflächige Farbausgabe von reinem Rot (#ff0000). Wenn Sie sich fragen, warum ist mein Bildschirm rot (z. B. auf Laptop, TV oder Smartphone), liegt das oft an aktiven Augenkomfort-Funktionen (wie Night Shift), Grafikkartentreiber-Fehlern oder Hardware-Defekten. Das Öffnen eines sauberen Online-roten Bildschirmhintergrunds dient jedoch zum sicheren Paneltest oder zur Schonung der Augen.'
+      },
+      {
+        question: 'Wie bekomme ich einen roten Bildschirm auf dem iPhone? (Wie macht man den iPhone Bildschirm rot)',
+        answer: 'Um einen roten Bildschirm auf dem iPhone zu aktivieren, nutzen Sie unser Tool in Safari und wählen Sie den Vollbildmodus. Wenn Sie wissen möchten, wie man den iPhone-Bildschirm dauerhaft rot macht, gehen Sie zu Einstellungen > Bedienungshilfen > Anzeige & Textgröße > Farbfilter, aktivieren Sie diese und wählen Sie Rotstich. Viele Nutzer verwenden den roten Bildschirm auf dem iPhone für Nachtlektüre oder als Ambient-Studiolicht.'
+      },
+      {
+        question: 'Wie macht man Red Dead Online zum Vollbild? (Wie spiele ich Red Dead Online im Vollbildmodus)',
+        answer: 'Um Red Dead Online ins Vollbild zu bringen oder Red Dead Online als Vollbild zu spielen auf dem PC, drücken Sie einfach das Tastenkürzel Alt + Enter während das Spiel läuft. Alternativ können Sie in den Grafikeinstellungen des Spiels den Anzeigemodus von Fenstermodus oder Rahmenloser Fenstermodus auf Vollbild ändern.'
+      },
+      {
+        question: 'Was bedeutet der rote Bildschirm beim DS Lite? (Was ist der Rote-Screen-Door-Effekt?)',
+        answer: 'Ein roter Bildschirm beim DS Lite deutet auf einen Boot-Fehler hin, der meist durch einen losen BIOS-Chip oder einen defekten Modulschacht verursacht wird. Als Rote-Screen-Door-Effekt bezeichnet man die sichtbare Pixelgitterstruktur auf älteren LCD-Bildschirmen, bei denen die Ränder der roten Subpixel wie eine Fliegengittertür wirken.'
+      }
+    ],
+    hi: [
+      {
+        question: 'लाल स्क्रीन क्या है और मेरी स्क्रीन लाल क्यों है?',
+        answer: 'एक लाल स्क्रीन शुद्ध लाल रंग (#ff0000) प्रदर्शित करने वाला एक ठोस कलर पैनल है। यदि आप पूछ रहे हैं कि लैपटॉप, टीवी या मोबाइल पर मेरी स्क्रीन लाल क्यों है, तो यह सक्रिय आई कम्फर्ट मोड (जैसे नाइट शील्ड), जीपीयू ड्राइवर की खराबी, या हार्डवेयर दोष के कारण हो सकता है। हालांकि, वेब पर लाल स्क्रीन बैकग्राउंड चलाना स्क्रीन की जांच करने और नाइट विजन बचाने का एक सुरक्षित साधन है।'
+      },
+      {
+        question: 'आईफोन की स्क्रीन को लाल कैसे करें? (आईफोन पर लाल स्क्रीन कैसे लाएं)',
+        answer: 'सीखने के लिए कि आईफोन पर लाल स्क्रीन कैसे लाएं, आप हमारे वेब टूल को सफारी पर खोलें और फुलस्क्रीन पर क्लिक करें। यदि आप आईफोन की स्क्रीन को हमेशा के लिए लाल करना चाहते हैं, तो आईओएस सेटिंग्स > एक्सेसिबिलिटी > डिस्प्ले एंड टेक्स्ट साइज > कलर फिल्टर पर जाएं, उन्हें चालू करें और रेड कलर टिंट चुनें। रात में रीडिंग और सॉफ्ट स्टूडियो लाइट के लिए लोग आईफोन पर लाल स्क्रीन का उपयोग करते हैं।'
+      },
+      {
+        question: 'रेड डेड ऑनलाइन को फुल स्क्रीन कैसे करें? (Red Dead Online को स्क्रीन पर पूरा कैसे लाएं)',
+        answer: 'यह जानने के लिए कि Red Dead Online को फुल स्क्रीन कैसे करें, पीसी पर गेम चालू होने के दौरान अपने कीबोर्ड पर Alt + Enter दबाएं। इसके अलावा, आप गेम की सेटिंग्स में जा सकते हैं, ग्राफिक्स विकल्पों पर नेविगेट कर सकते हैं, और डिस्प्ले मोड को विंडो मोड से बदलकर फुलस्क्रीन कर सकते हैं।'
+      },
+      {
+        question: 'क्या DS Lite लाल स्क्रीन एरर कोई बड़ी समस्या है? (स्क्रीन डोर इफेक्ट क्या है?)',
+        answer: 'एक DS Lite लाल स्क्रीन एरर कंसोल के सिस्टम बूट विफलता को दर्शाता है, जो ढीली BIOS चिप या खराब कार्ट्रिज स्लॉट के कारण होता है। वहीं, कुछ पुरानी एलसीडी स्क्रीन पर दिखाई देने वाली बारीक पिक्सेल ग्रिड की रेखाओं को स्क्रीन डोर इफेक्ट कहा जाता है, जो खिड़की की जाली जैसी दिखती हैं।'
+      }
+    ],
+    ja: [
+      {
+        question: '赤い画面とは何ですか？なぜ画面が赤くなっているのですか？',
+        answer: 'デジタルにおける赤い画面は、画面全体に純粋な赤色（#ff0000）を表示した配色です。もしパソコンやテレビ、スマホの画面でなぜ画面が赤いのか疑問に持たれた場合、OSの夜間モード（Night Shift）設定、グラフィックドライバの問題、または液晶のハード故障が考えられます。当機能のように全画面に赤い画面 背景をきれいに表示することは、ドット抜けチェックや夜間の暗順応保護に活用されます。'
+      },
+      {
+        question: 'iPhoneで画面を赤くする（赤い画面を表示する）方法は？',
+        answer: 'パソコンやブラウザを使わずにiPhoneで赤い画面を取得する方法として、Safariで当サイトを開き、全画面ボタンを押してください。iOS機能でiPhoneの画面を永続的に赤く設定する方法は、設定 > アクセシビリティ > 画面表示とテキストサイズ > カラーフィルタを「オン」にして「赤の色合い」を選びます。夜間の液晶読書や撮影用ライトとして活用されます。'
+      },
+      {
+        question: 'レッド・デッド・オンラインをフルスクリーン表示にするには？',
+        answer: 'PC版でゲーム画面をRDR2（レッド・デッド・オンライン）でフルスクリーンに変更するには、ゲームがアクティブな状態でキーボードの「Alt + Enter」キーを同時に押してください。または、ゲームのグラフィック設定メニューから表示モードをウィンドウモードや境界線なしウィンドウモードからフルスクリーン（全画面）に変更してください。'
+      },
+      {
+        question: 'DS Liteの赤い画面エラーは何ですか？（レッド・スクリーンドア効果とは？）',
+        answer: '海外で知られるDS Liteの赤い画面（Red Screen of Death）はブート失敗などの液晶のフリーズ系バグを指し、BIOSチップやカセット端子の接触不良が主原因です。また往年の液晶技術において、赤色サブピクセルの隙間が見えてしまう格子状の網目をスクリーンドア効果（網目効果）と呼びます。'
+      }
+    ]
   }
 };
 
@@ -1334,6 +1462,68 @@ export function getRelatedSearches(locale: Locale): string[] {
 }
 
 export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-screen'): { heading: string; paragraphs: string[] } {
+  if (toolId === 'red-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Red Screen Online Tool & Use Cases',
+        paragraphs: [
+          'When creators and photographers need a vibrant solid backdrop, they look for a red screen online tool. Using a red fullscreen background is a wonderful way to experiment with color filters and effects in film. Our high-fidelity red screen page runs instantly in any browser without logging in or downloading bundles. It is excellent for generating a unique atmospheric vibe or serving as a dark red screen for nocturnal reading and eye comfort.',
+          'For display testing or night vision preservation, having a solid red screen background helps you inspect panel quality. Running a bright red screen makes it convenient to use a red screen to find dead pixels or perform a red subpixel check. If you have an older portable console showing a ds lite red screen boot error, or want to understand what a red screen door effect is, this web utility is perfect for testing display response and checking color replication across the red channel.',
+          'Aside from display tests, this utility functions as a brilliant red screen light effect generator. By casting a solid red light online, it serves as a soft color source. Perfect as a TikTok light cast, a night light for video calls, or a red light for selfie shots, it projects an ambient glow. You can also project the canvas as a red screen for projector setups, bringing a sleek, artistic neon light atmosphere to any room or bedroom studio. For game display queries, if you want to know how to get red screen on iPhone or how to make Red Dead Online full screen on PC, you can easily use our fullscreen mode or press Alt + Enter while playing.'
+        ]
+      },
+      es: {
+        heading: 'Optimización de Pantalla Roja y Casos de Uso',
+        paragraphs: [
+          'Cuando los creadores de contenido y fotógrafos necesitan un fondo sólido vibrante, recurren a una herramienta de pantalla roja online. Utilizar una pantalla roja de fondo completo es una excelente forma de experimentar con filtros de color y efectos de iluminación en películas. Nuestra página de pantalla roja online se ejecuta al instante desde el navegador, ideal para crear una atmósfera única o usar una pantalla roja oscura para leer de noche cuidando la vista.',
+          'Para mantenimiento, diagnóstico o preservar la visión nocturna, contar con un fondo de pantalla roja ayuda a verificar la calidad del monitor. Cargar un color rojo brillante permite usar la pantalla roja para encontrar píxeles muertos y verificar el subpíxel rojo. Si tienes una consola portátil antigua con error de pantalla roja en DS Lite o quieres saber qué es el efecto de puerta de pantalla roja, este sitio web te ayuda a evaluar la fidelidad de los colores.',
+          'Además, esta página sirve como un gran panel de efecto de luz de pantalla roja. Al proyectar una luz roja online, funciona como luz de color rojo ambiental para tus videos de TikTok o videollamadas. Si quieres saber cómo poner la pantalla roja en iPhone con los filtros de color de iOS, o cómo hacer pantalla completa en Red Dead Online en tu ordenador con la tecla Alt + Enter, nuestra guía rápida y controles interactivos te facilitan configurar la pantalla al instante.'
+        ]
+      },
+      pt: {
+        heading: 'Ferramenta de Tela Vermelha e Cenários de Uso',
+        paragraphs: [
+          'Quando criadores de conteúdo e fotógrafos precisam de um fundo sólido vibrante, eles buscam uma tela vermelha online. Utilizar uma tela vermelha de fundo completo é excelente para experimentar filtros de cores e efeitos visuais em produções de vídeo. Nossa página de tela vermelha funciona no navegador sem downloads, ideal para gerar um clima único ou usar uma tela vermelha escura para leitura noturna confortável.',
+          'Para manutenção de painéis e preservar a visão noturna nas trevas, a tela vermelha de fundo completo permite avaliar a qualidade do monitor. Uma tela vermelha brilhante ajuda a encontrar pixels mortos na tela ou fazer teste de subpíxel de cor. Se você está enfrentando o erro de tela vermelha no DS Lite ou quer aprender o que significa o efeito de porta de tela vermelha em LCDs antigos, nosso utilitário facilita a conferência de cores.',
+          'Além disso, este site funciona como um ótimo gerador de efeito de luz de tela vermelha. Emitindo uma luz vermelha online, você tem uma luz de cor vermelha para vídeos do TikTok, selfies e chamadas. Caso queira saber como deixar a tela vermelha no iPhone usando os filtros de tela do aparelho, ou como colocar o Red dead online em tela cheia no computador apertando Alt + Enter, nosso painel de controle e tela cheia oferecem a solução imediata.'
+        ]
+      },
+      fr: {
+        heading: 'Outil Écran Rouge en Ligne & Cas d\'Usage',
+        paragraphs: [
+          'Lorsque les cinéastes et photographes ont besoin d\'un fond uni de couleur vive, ils recherchent un outil d\'écran rouge en ligne. L\'utilisation d\'un arrière-plan écran rouge plein écran est idéale pour tester des filtres de couleur et des effets artistiques en photo. Notre page d\'écran rouge en ligne se charge instantanément dans tout navigateur, parfaite pour instaurer une ambiance à l\'écran ou lire dans le noir avec un écran rouge sombre confortable.',
+          'Pour le diagnostic d\'écran ou préserver sa vision nocturne, posséder un écran rouge de fond offre un excellent moyen d\'évaluer la dalle. Afficher un écran rouge vif permet de chercher des pixels morts ou faire un diagnostic de sous-pixels rouges. Si votre vieille console affiche un écran rouge sur DS Lite ou si vous désirez comprendre l\'effet porte d\'écran rouge des anciennes dalles LCD, cette page permet de tester le rendu du spectre rouge.',
+          'Cet outil fait également office de panneau de lumière rouge en ligne. Très utile comme effet d\'éclairage rouge pour vos vidéos TikTok, vos visioconférences ou vos selfies. Pour savoir comment mettre l\'écran rouge sur iPhone via les réglages d\'accessibilité iOS, ou comment passer Red Dead Online en plein écran sur PC à l\'aide du raccourci clavier Alt + Entrée pendant la partie, notre application web et nos guides vous guident instantané.'
+        ]
+      },
+      de: {
+        heading: 'Roter Bildschirm Online-Tool & Anwendungen',
+        paragraphs: [
+          'Wenn Medienschaffende und Fotografen einen kräftigen einfarbigen Hintergrund benötigen, suchen sie nach einem roter Bildschirm Online-Tool. Ein roter Bildschirmhintergrund im Vollbildmodus ist ideal, um mit Farbfiltern und Beleuchtungseffekten beim Filmen zu experimentieren. Unsere rote Bildschirmseite läuft direkt im Browser ohne Anmeldung, perfekt für atmosphärisches Ambient-Licht oder als dunkler roter Bildschirm für augenschonendes Lesen in der Nacht.',
+          'Für Display-Tests oder den Erhalt der Nachtsichtfähigkeit hilft ein roter Bildschirm zur Monitorreinigung oder Panelprüfung. Ein leuchtend roter Bildschirm erleichtert das Finden von Pixelfehlern und die Prüfung der roten Subpixel. Falls Sie bei einer älteren Spielekonsole einen DS Lite rote Bildschirm Bootfehler untersuchen möchten oder wissen wollen, was der rote Screen-Door-Effekt ist, bietet diese Anwendung eine sichere Testumgebung.',
+          'Zudem lässt sich das Tool als rotes Licht online einsetzen. Es erzeugt eine rote Beleuchtung für TikTok-Videos, Videokonferenzen oder Selfies. Wenn Sie wissen möchten, wie Sie einen roten Bildschirm auf dem iPhone in den iOS-Farbfiltern einrichten oder wie Sie Red Dead Online ins Vollbild bringen am PC mit Alt + Enter, helfen Ihnen unsere einfachen Vollbild-Funktionen und Tipps sofort weiter.'
+        ]
+      },
+      hi: {
+        heading: 'लाल स्क्रीन ऑनलाइन टूल और सामान्य उपयोग',
+        paragraphs: [
+          'जब रचनाकारों और फोटोग्राफरों को एक चमकीले ठोस बैकग्राउंड की आवश्यकता होती है, तो वे लाल स्क्रीन ऑनलाइन टूल का उपयोग करते हैं। फिल्म और फोटोग्राफी में कलर फिल्टर और प्रभाव आजमाने के लिए लाल फुलस्क्रीन बैकग्राउंड एक शानदार विकल्प है। हमारा लाल स्क्रीन पेज बिना किसी शुल्क या डाउनलोड के तुरंत काम करता है, जो रात में रीडिंग के लिए डार्क लाल स्क्रीन और आंखों के आराम के लिए काफी उपयोगी है।',
+          'डिस्प्ले परीक्षण या नाइट विजन (रात की दृष्टि) को सुरक्षित रखने के लिए लाल स्क्रीन बैकग्राउंड मददगार होता है। एक चमकीली लाल स्क्रीन चलाने से मॉनिटर की सफाई करने, डेड पिक्सल ढूंढने और लाल सबपिक्सेल की सेहत जांचने में मदद मिलती है। यदि आप डीएस लाइट लाल स्क्रीन एरर का सामना कर रहे हैं या स्क्रीन डोर इफेक्ट को समझना चाहते हैं, तो यह टूल रेड कलर चैनल की जांच करने का एक सुरक्षित विकल्प है।',
+          'इसके अलावा, यह टूल एक बेहतरीन लाल लाइट ऑनलाइन स्रोत के रूप में काम करता है। यह टिकटॉक वीडियो, सेल्फी और वीडियो कॉल के लिए एक सॉफ्ट लाल रोशनी (सॉफ्ट रेड लाइट) प्रदान करता है। वहीं, अगर आप जानना चाहते हैं कि आईफोन पर लाल स्क्रीन कैसे लाएं या पीसी पर कीबोर्ड शॉर्टकट Alt + Enter दबाकर रेड डेड ऑनलाइन को फुल स्क्रीन कैसे करें, तो हमारे पास सभी उपयोगी गाइड उपलब्ध हैं।'
+        ]
+      },
+      ja: {
+        heading: '赤い画面（Red Screen）のSEO最適化と主な用途',
+        paragraphs: [
+          '映像制作や写真撮影で鮮やかな単色背景が必要な場合、赤い画面オンラインツールが役立ちます。全画面に赤い背景を表示することで、照明やカラーフィルターの効果を手軽に検証できます。当サイトの赤い画面はブラウザから直接開くことができ、暗い赤色の画面に設定することで、夜間のデジタル読書時の目の負担軽減にも最適です。',
+          '液晶ディスプレイの検査や、暗闇での暗順応（ナイトビジョン）保護においても、赤い画面背景は大変重宝されます。明るい赤い画面を使用すれば、ドット抜けチェックや赤色サブピクセルの品質確認が容易に行えます。また、一部ゲーム機で発生するDS Liteの赤い画面エラーの検証や、スクリーンドア効果（格子状のすきま）の確認用としても活用されています。',
+          'さらに、本機能はWEB上で使える赤色LEDライトとしても機能します。TikTok撮影の照明、ビデオ通話時のバックライト、自撮りのキャスティングライトとして最適です。iPhoneでアクセシビリティのカラーフィルタ機能を使って画面を永続的に赤く設定する方法や、PC版でAlt + Enterキーを押してレッドデッドオンラインをフルスクリーン切り替えする方法なども、全画面ツールを使って簡単にテスト可能です。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
   if (toolId === 'blue-screen') {
     const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
       en: {

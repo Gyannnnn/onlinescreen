@@ -60,6 +60,10 @@ export function landingJsonLd() {
   };
 }
 
+function stripHtml(text: string): string {
+  return text.replace(/<[^>]*>/g, '');
+}
+
 export function toolJsonLd(tool: Tool, path: string, locale: Locale = defaultLocale) {
   const url = absoluteUrl(path);
   return [
@@ -99,10 +103,10 @@ export function toolJsonLd(tool: Tool, path: string, locale: Locale = defaultLoc
       '@type': 'FAQPage',
       mainEntity: toolFaqs(locale, tool.id, tool.faqs).map((faq) => ({
         '@type': 'Question',
-        name: faq.question,
+        name: stripHtml(faq.question),
         acceptedAnswer: {
           '@type': 'Answer',
-          text: faq.answer,
+          text: stripHtml(faq.answer),
         },
       })),
     },
