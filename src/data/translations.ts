@@ -1361,7 +1361,163 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       },
       {
         question: 'DS Liteの赤い画面エラーは何ですか？（レッド・スクリーンドア効果とは？）',
-        answer: '海外で知られるDS Liteの赤い画面（Red Screen of Death）はブート失敗などの液晶のフリーズ系バグを指し、BIOSチップやカセット端子の接触不良が主原因です。また往年の液晶技術において、赤色サブピクセルの隙間が見えてしまう格子状の網目をスクリーンドア効果（網目効果）と呼びます。'
+        answer: '海外で知られるDS Liteの赤い画面（Red Screen of Death）はブート失敗などの液晶의フリーズ系バグを指し、BIOSチップやカセット端子の接触不良が主原因です。また往年の液晶技術において、赤色サブピクセルの隙間が見えてしまう格子状の網目をスクリーンドア効果（網目効果）と呼びます。'
+      }
+    ]
+  },
+  'orange-screen': {
+    en: [
+      {
+        question: 'Why is my screen turning orange?',
+        answer: 'Your screen might turn orange due to active night light settings (like Windows 10 Night light or iPhone Night Shift) designed to reduce blue light. Other causes could include a faulty display cable, outdated graphics drivers, or a hardware defect (sometimes referred to as an orange screen of death on PC or orange screen iPhone freeze). Using a controlled orange screen online tool is a safe way to test if the issue is software or hardware-related.'
+      },
+      {
+        question: 'What is the orange screen?',
+        answer: 'The orange screen is a fullscreen display utility showing a pure, vibrant orange color. In display configuration and troubleshooting, it helps users test subpixel performance, check color accuracy, and identify panel issues like dead pixels, backlight bleeding, or dirty spots.'
+      },
+      {
+        question: 'How do I turn my screen orange?',
+        answer: 'You can easily turn your screen orange by opening our free online orange screen utility. Select the tool, adjust the brightness slider if needed, and click the Fullscreen button or press the "F" key on your keyboard to get a full orange screen for mobile or PC.'
+      },
+      {
+        question: 'What is the orange screen method?',
+        answer: 'The orange screen method is a creative tracing and drawing technique. By setting a tablet or display to a bright orange fullscreen background, you can place a piece of paper over it to copy an image that a classmate or artist drew, using the screen as a steady light box.'
+      },
+      {
+        question: 'What color is orange in HTML?',
+        answer: 'In HTML and CSS, standard orange is represented by the hexadecimal color code #FFA500 (or rgb(255, 165, 0)). Our orange screen online tool displays a curated, warm orange color (#FF8A00) designed for optimal display calibration and cozy ambient lighting.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Por qué mi pantalla se está poniendo naranja?',
+        answer: 'Tu pantalla puede ponerse naranja debido al modo de luz nocturna activo (como Luz nocturna en Windows 10 o Night Shift en iPhone) diseñado para reducir la luz azul. Otras causas pueden ser un cable de pantalla defectuoso, controladores de tarjeta gráfica desactualizados o un problema de hardware (pantalla naranja de la muerte). Abrir una pantalla naranja online controlada es una forma segura de verificar si es un problema de software o de hardware.'
+      },
+      {
+        question: '¿Qué es la pantalla naranja?',
+        answer: 'La pantalla naranja es una utilidad de pantalla completa que muestra un color naranja puro y brillante. Se utiliza para probar el rendimiento de los subpíxeles, verificar la precisión de los colores en el panel y detectar píxeles muertos o manchas de suciedad.'
+      },
+      {
+        question: '¿Cómo pongo mi pantalla en naranja?',
+        answer: 'Puedes poner tu pantalla naranja fácilmente abriendo nuestra utilidad web gratuita. Selecciona la herramienta, ajusta el brillo si lo deseas y presiona el botón de Pantalla Completa o la tecla "F" en tu teclado para obtener una pantalla naranja completa en PC o móvil.'
+      },
+      {
+        question: '¿Qué es el método de la pantalla naranja?',
+        answer: 'El método de la pantalla naranja es una técnica creativa para calcar o copiar imágenes. Al configurar una tableta o monitor con un fondo naranja brillante a pantalla completa, puedes colocar un papel encima para calcar un dibujo que haya hecho un compañero de clase, usando el monitor como mesa de luz.'
+      },
+      {
+        question: '¿Qué color es el naranja en HTML?',
+        answer: 'En HTML y CSS, el color naranja estándar se representa con el código hexadecimal #FFA500 (o rgb(255, 165, 0)). Nuestra herramienta de pantalla naranja online utiliza un tono naranja cálido y optimizado (#FF8A00) para pruebas de pantalla y luz ambiental.'
+      }
+    ],
+    pt: [
+      {
+        question: 'Por que minha tela está ficando laranja?',
+        answer: 'A sua tela pode ficar laranja devido à ativação do modo de conforto ocular (como a Luz Noturna no Windows 10 ou o Night Shift no iPhone) para reduzir a luz azul. Outras causas incluem um cabo de vídeo com defeito, drivers da placa de vídeo desatualizados ou uma falha de hardware (conhecida como tela laranja da morte). Usar uma tela laranja online controlada é uma maneira segura de testar se o problema é físico ou de software.'
+      },
+      {
+        question: 'O que é a tela laranja?',
+        answer: 'A tela laranja é um utilitário de tela inteira que exibe uma cor laranja pura e vibrante. É usada para testar o desempenho dos subpixels do monitor, verificar a fidelidade das cores e identificar problemas como pixels mortos e manchas de sujeira.'
+      },
+      {
+        question: 'Como faço para deixar minha tela laranja?',
+        answer: 'Você pode deixar sua tela laranja facilmente usando nossa ferramenta online gratuita. Basta selecionar a ferramenta, ajustar o brilho e clicar no botão Tela Cheia ou pressionar a tecla "F" no seu teclado para ter uma tela laranja completa no PC ou celular.'
+      },
+      {
+        question: 'O que é o método da tela laranja?',
+        answer: 'O método da tela laranja é uma técnica de desenho e decalque. Ao exibir uma tela laranja brilhante em tela cheia no monitor ou tablet, você pode colocar uma folha de papel sobre ela para contornar e copiar um desenho feito por um colega ou artista, funcionando como uma mesa de luz estável.'
+      },
+      {
+        question: 'Qual é o código da cor laranja em HTML?',
+        answer: 'Em HTML e CSS, a cor laranja padrão possui o código hexadecimal #FFA500 (ou rgb(255, 165, 0)). Nossa ferramenta de tela laranja online utiliza um tom laranja quente customizado (#FF8A00), projetado para calibração de displays e iluminação decorativa.'
+      }
+    ],
+    fr: [
+      {
+        question: 'Pourquoi mon écran devient-il orange ?',
+        answer: 'Votre écran peut devenir orange en raison de l\'activation du mode nuit (comme la fonction Éclairage nocturne sous Windows 10 ou Night Shift sur iPhone) conçu pour limiter la lumière bleue. D\'autres causes possibles sont un câble d\'affichage défectueux, des pilotes graphiques obsolètes ou une panne matérielle (parfois appelée écran orange de la mort). Utiliser notre outil d\'écran orange contrôlé en ligne est un bon moyen de tester si le problème est logiciel ou matériel.'
+      },
+      {
+        question: 'Qu\'est-ce que l\'écran orange ?',
+        answer: 'L\'écran orange est un utilitaire en plein écran affichant une couleur orange pure et vive. Il permet de tester les performances des sous-pixels, de vérifier le rendu des couleurs d\'un moniteur et de détecter des pixels défectueux ou des poussières.'
+      },
+      {
+        question: 'Comment mettre mon écran en orange ?',
+        answer: 'Vous pouvez facilement afficher un écran orange en ouvrant notre outil gratuit en ligne. Sélectionnez le widget de couleur orange, réglez la luminosité et cliquez sur le bouton Plein écran ou appuyez sur la touche "F" de votre clavier pour obtenir un écran orange complet sur PC ou mobile.'
+      },
+      {
+        question: 'Qu\'est-ce que la méthode de l\'écran orange ?',
+        answer: 'La méthode de l\'écran orange désigne une méthode de dessin et de calque. En affichant un écran orange vif en plein écran sur une tablette ou un écran, vous pouvez poser une feuille de papier par-dessus afin de calquer et copier un dessin réalisé par un camarade de classe ou un artiste, l\'écran servant de table lumineuse.'
+      },
+      {
+        question: 'Quelle est la couleur orange en HTML ?',
+        answer: 'En HTML et CSS, l\'orange standard correspond au code hexadécimal #FFA500 (ou rgb(255, 165, 0)). Notre outil d\'écran orange en ligne affiche une teinte d\'orange chaude et optimisée (#FF8A00) parfaite pour calibrer les dalles ou éclairer une pièce.'
+      }
+    ],
+    de: [
+      {
+        question: 'Warum wird mein Bildschirm orange?',
+        answer: 'Ihr Bildschirm kann sich orange färben, wenn der Nachtmodus (wie das Nachtlicht in Windows 10 oder Night Shift auf dem iPhone) aktiv ist, um blaues Licht zu reduzieren. Weitere Ursachen sind ein defektes Bildschirmkabel, veraltete Grafikkartentreiber oder ein Hardware-Defekt (manchmal als oranger Bildschirm des Todes bezeichnet). Unser kontrollierter oranger Bildschirm online hilft Ihnen, die Ursache sicher einzugrenzen.'
+      },
+      {
+        question: 'Was ist der orange Bildschirm?',
+        answer: 'Der orange Bildschirm ist ein Vollbild-Utility, das ein reines, kräftiges Orange anzeigt. Es dient zum Testen der Subpixel-Performance, zur Überprüfung der Farbtreue des Monitors sowie zum Aufspüren von Pixelfehlern oder Schmutzflecken.'
+      },
+      {
+        question: 'Wie mache ich meinen Bildschirm orange?',
+        answer: 'Sie können Ihren Bildschirm ganz einfach über unser kostenloses Online-Tool orange färben. Wählen Sie das Werkzeug aus, passen Sie die Helligkeit an und klicken Sie auf Vollbild oder drücken Sie die Taste "F" auf Ihrer Tastatur für einen kompletten orangen Bildschirm auf dem PC oder Smartphone.'
+      },
+      {
+        question: 'Was ist die Orange-Bildschirm-Methode?',
+        answer: 'Die Orange-Bildschirm-Methode ist eine kreative Technik zum Abpausen und Zeichnen. Wenn Sie ein Tablet oder einen Monitor auf Vollbild-Orange einstellen, können Sie ein Blatt Papier darüberlegen, um ein von einem Mitschüler gezeichnetes Bild abzuzeichnen, wobei das Display als Leuchttisch fungiert.'
+      },
+      {
+        question: 'Welche Farbe hat Orange in HTML?',
+        answer: 'In HTML und CSS wird das Standard-Orange durch den Hex-Farbcode #FFA500 (oder rgb(255, 165, 0)) dargestellt. Unser Online-Tool verwendet ein warmes, optimiertes Orange (#FF8A00) für eine angenehme Beleuchtung und Monitorprüfungen.'
+      }
+    ],
+    hi: [
+      {
+        question: 'मेरी स्क्रीन नारंगी (ऑरेंज) क्यों हो रही है?',
+        answer: 'आपकी स्क्रीन नारंगी होने का मुख्य कारण नाइट लाइट सेटिंग (जैसे विंडोज 10 नाइट लाइट या आईफोन नाइट शिफ्ट) का सक्रिय होना हो सकता है, जो नीली रोशनी को कम करती है। अन्य कारणों में खराब डिस्प्ले केबल, पुराने ग्राफिक्स ड्राइवर, या हार्डवेयर खराबी (ऑरेंज स्क्रीन ऑफ डेथ) शामिल हैं। किसी सुरक्षित ऑनलाइन ऑरेंज स्क्रीन टूल को लॉन्च करना यह जांचने का एक आसान तरीका है कि समस्या सॉफ्टवेयर में है या हार्डवेयर में।'
+      },
+      {
+        question: 'ऑरेंज स्क्रीन क्या है?',
+        answer: 'नारंगी स्क्रीन एक फुलस्क्रीन डिस्प्ले टूल है जो एक शुद्ध और चटक नारंगी रंग प्रदर्शित करता है। इसका उपयोग सबपिक्सेल की सेहत जांचने, डिस्प्ले की रंग सटीकता (कलर कैलिब्रेशन) का परीक्षण करने और स्क्रीन पर मौजूद डेड पिक्सल या गंदगी के धब्बों का पता लगाने के लिए किया जाता है।'
+      },
+      {
+        question: 'मैं अपनी स्क्रीन को नारंगी कैसे करूँ?',
+        answer: 'आप हमारे मुफ्त ऑनलाइन ऑरेंज स्क्रीन यूटिलिटी का उपयोग करके अपनी स्क्रीन को आसानी से नारंगी रंग में बदल सकते हैं। टूल का चयन करें, आवश्यकतानुसार ब्राइटनेस बढ़ाएं और पीसी या मोबाइल पर पूरी ऑरेंज स्क्रीन खोलने के लिए फुलस्क्रीन बटन पर क्लिक करें या कीबोर्ड पर "F" दबाएं।'
+      },
+      {
+        question: 'ऑरेंज स्क्रीन विधि (मेथड) क्या है?',
+        answer: 'ऑरेंज स्क्रीन विधि एक रचनात्मक ट्रेसिंग (चित्र छापने) की तकनीक है। अपने टैबलेट या मॉनिटर पर एक चमकीली नारंगी फुलस्क्रीन बैकग्राउंड सेट करके, आप उसके ऊपर एक कागज रखकर अपने किसी सहपाठी या कलाकार द्वारा बनाए गए चित्र को आसानी से कॉपी (ट्रेस) कर सकते हैं।'
+      },
+      {
+        question: 'HTML में नारंगी रंग का कोड क्या है?',
+        answer: 'HTML और CSS में, मानक नारंगी रंग को हेक्साडेसिमल कोड #FFA500 (या rgb(255, 165, 0)) द्वारा दर्शाया जाता है। हमारा ऑनलाइन ऑरेंज स्क्रीन टूल एक विशेष वार्म नारंगी रंग (#FF8A00) प्रदर्शित करता है जो आँखों के आराम और स्क्रीन टेस्टिंग के लिए अनुकूल है।'
+      }
+    ],
+    ja: [
+      {
+        question: '画面がオレンジ色になるのはなぜですか？',
+        answer: '画面がオレンジ色になる主な原因は、ブルーライトを軽減するための夜間モード（Windows 10の夜間モードやiPhoneのNight Shiftなど）が調整・有効化されているためです。その他、ディスプレイケーブルの接触不良、グラフィックドライバの不具合、または物理的な液晶故障（オレンジスクリーン・オブ・デスなど）の可能性もあります。当サイトのオレンジ画面表示ツールを使って不具合がOS設定によるものか、またはハードウェアの異常かを確認できます。'
+      },
+      {
+        question: 'オレンジスクリーン（オレンジの画面）とは何ですか？',
+        answer: 'オレンジスクリーンとは、画面全体に純粋で鮮やかなオレンジ色を表示する全画面表示ユーティリティです。ディスプレイのサブピクセル検査、発色のキャリブレーション、画面のドット抜けや汚れの位置の特定などに使用されます。'
+      },
+      {
+        question: '液晶画面をオレンジ色にする方法は？',
+        answer: '当サイトの無料オンライン「オレンジスクリーン」ツールを使用すれば、簡単に画面をオレンジ色にできます。ツールを選択し、必要に応じて輝度を調整し、全画面ボタンをクリックするか、キーボードの「F」キーを押して全画面表示に切り替えます。'
+      },
+      {
+        question: 'オレンジスクリーン・メソッド（方法）とは何ですか？',
+        answer: 'オレンジスクリーン・メソッドとは、イラストのトレース（すかし写し）や模写に用いられるクリエイティブな技法です。タブレットやモニターを明るいオレンジ色の全画面背景に設定し、その上に紙を置くことで、クラスメートが描いた絵などを簡単にトレースするライトボックスとして画面を活用できます。'
+      },
+      {
+        question: 'HTMLでのオレンジ色のカラーコードは何ですか？',
+        answer: 'HTMLやCSSにおいて、標準のオレンジ色は16進数カラーコード #FFA500（または rgb(255, 165, 0））で表されます。当サイトのオレンジ画面ツールは、ディスプレイ調整や温かみのある間接照明として最適な、厳選されたウォームオレンジ（#FF8A00）を出力します。'
       }
     ]
   }
@@ -1518,6 +1674,68 @@ export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-s
           '映像制作や写真撮影で鮮やかな単色背景が必要な場合、赤い画面オンラインツールが役立ちます。全画面に赤い背景を表示することで、照明やカラーフィルターの効果を手軽に検証できます。当サイトの赤い画面はブラウザから直接開くことができ、暗い赤色の画面に設定することで、夜間のデジタル読書時の目の負担軽減にも最適です。',
           '液晶ディスプレイの検査や、暗闇での暗順応（ナイトビジョン）保護においても、赤い画面背景は大変重宝されます。明るい赤い画面を使用すれば、ドット抜けチェックや赤色サブピクセルの品質確認が容易に行えます。また、一部ゲーム機で発生するDS Liteの赤い画面エラーの検証や、スクリーンドア効果（格子状のすきま）の確認用としても活用されています。',
           'さらに、本機能はWEB上で使える赤色LEDライトとしても機能します。TikTok撮影の照明、ビデオ通話時のバックライト、自撮りのキャスティングライトとして最適です。iPhoneでアクセシビリティのカラーフィルタ機能を使って画面を永続的に赤く設定する方法や、PC版でAlt + Enterキーを押してレッドデッドオンラインをフルスクリーン切り替えする方法なども、全画面ツールを使って簡単にテスト可能です。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'orange-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Orange Screen Online Tool & Use Cases',
+        paragraphs: [
+          'When creators, designers, and e-learning instructors need a warm, vibrant solid backdrop, they look for an <strong>orange screen online free</strong> tool. Setting a display to an <strong>orange screen background</strong> is an excellent way to design virtual backdrops for online meetings, webinars, or social gatherings. Running an <strong>orange screen online aesthetic</strong> page casts a cozy <strong>orange screen light</strong> that helps make videos for YouTube and projects a beautiful orange glow during online calls. Parents and educators also use this page as an interactive learning tool, projecting a <strong>total orange screen</strong> or a <strong>full orange screen</strong> to highlight key information or act as an orange screen for kids.',
+          'Beyond creative uses, a solid <strong>orange fullscreen background</strong> is a valuable technical utility. Setting a <strong>blank computer screen</strong> to orange is perfect as an <strong>orange screen for cleaning</strong> monitors, making it easy to perform monitor cleaning, find dead pixels, and spot dirty spots on the panel. For graphic designers and video editors, our tool allows you to perform device display calibration with an orange screen, verifying color rendering and fine-tuning device color settings. If you are preparing offline assets, you can configure your viewport layout to download an <strong>orange screen online png</strong> file for your design mockups.',
+          'Many people use a warm, full orange display as a calming sleep aid before bedtime. By reducing harsh blue light, a soft <strong>orange screen phone</strong> or <strong>orange screen iphone</strong> background creates a relaxing, sleep-friendly environment for night reading. If you are wondering <strong>why is my screen turning orange</strong>, it is often due to features like <strong>orange screen Windows 10</strong> night light or eye comfort settings, but you can also use our page to manually set a comfortable orange aesthetic. Whether you are using the <strong>orange screen effect</strong> on a screen for projector installations, doing a tracing project (the <strong>orange screen method</strong> to copy an image that a classmate drew), or diagnosing an <strong>orange screen of death</strong> crash on a PC, this webpage is the ultimate tool to get an <strong>orange screen for pc</strong> or an <strong>orange screen for mobile</strong> instantly.'
+        ]
+      },
+      es: {
+        heading: 'Herramienta de Pantalla Naranja Online y Casos de Uso',
+        paragraphs: [
+          'Cuando los creadores, diseñadores e instructores de educación virtual necesitan un fondo sólido cálido y vibrante, buscan una herramienta de <strong>pantalla naranja online gratis</strong>. Tener un <strong>fondo de pantalla naranja</strong> es una forma maravillosa de diseñar fondos virtuales para reuniones en línea, seminarios web o eventos sociales. Usar una <strong>pantalla naranja online aesthetic</strong> proyecta una agradable <strong>luz de pantalla naranja</strong> que mejora los videos de YouTube y añade un brillo cálido durante las llamadas en línea. También sirve como un recurso interactivo para niños, proyectando una <strong>pantalla naranja completa</strong> o una <strong>pantalla naranja total</strong> para resaltar información clave u funcionar como pantalla naranja para niños.',
+          'Más allá de los usos creativos, un <strong>fondo de pantalla naranja completo</strong> es una utilidad técnica para mantenimiento. Configurar una <strong>pantalla de ordenador en blanco</strong> (o color plano naranja) es ideal como una <strong>pantalla naranja para limpieza</strong> de monitores, facilitando la limpieza de la pantalla, encontrar píxeles muertos y localizar manchas sucias en el cristal físico. Para diseñadores gráficos y editores de video, esta utilidad permite realizar una calibración de colores con pantalla naranja, verificando la fidelidad del display. Además, puedes descargar una <strong>imagen de pantalla naranja png</strong> para tus maquetas de diseño.',
+          'Muchas personas usan esta visualización naranja como ayuda para calmar el sueño antes de dormir. Al reducir la luz azul, una <strong>pantalla naranja en el móvil</strong> (teléfono) o una <strong>pantalla naranja en iPhone</strong> crea un entorno adecuado para lectura nocturna. Si te preguntas <strong>por qué mi pantalla se está poniendo naranja</strong>, puede deberse a la luz nocturna de <strong>pantalla naranja en Windows 10</strong> o configuraciones de comodidad visual, pero también puedes usar nuestra web para configurar este tono. Ya sea que uses la pantalla para proyector, para calcar (el <strong>método de la pantalla naranja</strong> para copiar un dibujo de un compañero de clase) o para inspeccionar un error de <strong>pantalla naranja de la muerte</strong>, esta página es la mejor opción para obtener una <strong>pantalla naranja para pc</strong> o una <strong>pantalla naranja para móvil</strong> al instante o probar el efecto de pantalla naranja.'
+        ]
+      },
+      pt: {
+        heading: 'Ferramenta de Tela Laranja Online e Cenários de Uso',
+        paragraphs: [
+          'Quando criadores, designers e educadores virtuais precisam de um fundo sólido quente e vibrante, eles procuram por uma ferramenta de <strong>tela laranja online grátis</strong>. Exibir um <strong>fundo de tela laranja</strong> completo é excelente para criar planos de fundo virtuais em reuniões virtuais, webinars ou transmissões. Uma <strong>tela laranja online aesthetic</strong> emite uma <strong>luz de tela laranja</strong> relaxante, ideal para gravar vídeos no YouTube e adicionar um brilho caloroso em chamadas de vídeo. Pais e professores também usam a página como apoio interativo, projetando uma <strong>tela laranja completa</strong> ou <strong>tela laranja total</strong> como uma tela laranja para crianças.',
+          'Além dos usos decorativos, um <strong>fundo de tela laranja completo</strong> é um recurso técnico indispensável. Definir uma <strong>tela de computador em branco</strong> (ou cor plana laranja) serve como uma <strong>tela laranja para limpeza</strong> do monitor, ajudando a limpar marcas físicas, encontrar pixels mortos na tela e localizar manchas sujas de gordura. Para designers gráficos e editores de imagem, o site permite fazer a calibração de cores com tela laranja, avaliando o painel de forma profissional. Também é possível baixar um arquivo de <strong>tela laranja png</strong> para integrar em projetos gráficos.',
+          'Vários usuários aproveitam o brilho laranja como auxílio relaxante para dormir. Reduzindo o excesso de luz azul, a tela do celular (<strong>tela laranja no telefone</strong>) ou <strong>tela laranja no iPhone</strong> cria uma iluminação aconchegante para leitura antes de deitar. Se você está em dúvida sobre <strong>por que minha tela está ficando laranja</strong>, isso se deve frequentemente ao ajuste de <strong>tela laranja no Windows 10</strong>, mas você pode usar nossa ferramenta para definir essa cor manualmente. Seja para usar em telas de projetor, calcar imagens (o <strong>método da tela laranja</strong> para copiar um desenho feito de um colega) ou examinar o erro de <strong>tela laranja da morte</strong>, nosso site fornece uma <strong>tela laranja para pc</strong> ou <strong>tela laranja para celular</strong> com o melhor efeito de tela laranja.'
+        ]
+      },
+      fr: {
+        heading: 'Outil Écran Orange en Ligne & Cas d\'Usage',
+        paragraphs: [
+          'Quand les vidéastes, concepteurs et enseignants en ligne ont besoin d\'un fond uni chaud et vif, ils se tournent vers un outil d\'<strong>écran orange en ligne gratuit</strong>. L\'affichage d\'un <strong>arrière-plan écran orange</strong> plein écran est une superbe façon de concevoir des fonds virtuels pour vos réunions, webinaires ou appels en ligne. Un <strong>écran orange en ligne esthétique</strong> génère une douce <strong>lumière d\'écran orange</strong> idéale pour le tournage de vidéos YouTube ou pour donner un éclat chaleureux pendant des appels vidéo. Les parents l\'utilisent également comme support d\'apprentissage interactif en projetant un <strong>écran orange complet</strong> ou un <strong>écran orange total</strong> pour servir d\'écran orange pour enfants ou élèves.',
+          'Au-delà des usages artistiques, un <strong>arrière-plan écran orange plein écran</strong> constitue un excellent outil de maintenance. Transformer un <strong>écran d\'ordinateur vide</strong> en orange est idéal comme <strong>écran orange pour le nettoyage</strong> des écrans, facilitant le nettoyage du moniteur, permettant de trouver des pixels morts et de repérer les taches de saleté sur la dalle. Pour les graphistes, ce portail permet d\'effectuer un calibrage d\'affichage d\'écran avec l\'écran orange afin de valider et ajuster la fidélité des couleurs. De plus, vous pouvez télécharger un fichier <strong>écran orange png</strong> pour vos visuels.',
+          'Beaucoup de gens utilisent cet écran orange comme aide au sommeil pour se détendre avant de se coucher. En atténuant la lumière bleue agressive, un téléphone (<strong>écran orange sur téléphone</strong>) ou un <strong>écran orange sur iPhone</strong> crée une ambiance relaxante pour lire au lit. Si vous vous demandez <strong>pourquoi mon écran devient orange</strong>, c\'est bien souvent à cause du mode nuit d\'un <strong>écran orange sous Windows 10</strong>, mais vous pouvez aussi utiliser notre page pour le régler manuellement. Qu\'il s\'agisse de projeter la couleur sur un écran pour projecteur, de calquer des croquis (la <strong>méthode de l\'écran orange</strong> pour copier un dessin fait par un camarade de classe) ou de réparer un crash d\'<strong>écran orange de la mort</strong>, notre site est parfait pour obtenir un <strong>écran orange pour pc</strong> ou un <strong>écran orange pour mobile</strong> avec un effet d\'écran orange optimal.'
+        ]
+      },
+      de: {
+        heading: 'Oranger Bildschirm Online-Tool & Anwendungen',
+        paragraphs: [
+          'Wenn Webdesigner, Streamer und E-Learning-Lehrer einen warmen, kräftigen Hintergrund benötigen, suchen sie nach einem <strong>orangen Bildschirm online und kostenlos</strong>. Ein <strong>oranger bildschirmhintergrund</strong> eignet sich hervorragend, um einen virtuellen Hintergrund für Online-Meetings, Webinare oder Videokonferenzen zu gestalten. Die Nutzung eines <strong>orangen Bildschirms online und ästhetisch</strong> wirft ein gemütliches <strong>oranges Bildschirmlicht</strong>, das YouTube-Videos aufwertet und einen warmen Schein bei Videoanrufen erzeugt. Eltern und Lehrer nutzen diese Seite auch als Lernwerkzeug, indem sie einen <strong>vollständigen orangen Bildschirm</strong> oder einen <strong>ganzen orangen Bildschirm</strong> als orangen Bildschirm für Kinder projizieren.',
+          'Neben kreativen Zwecken ist ein <strong>vollflächiger oranger Hintergrund</strong> ein nützliches technisches Hilfsmittel zur Wartung. Einen <strong>leeren Computerbildschirm</strong> auf Orange einzustellen, eignet sich hervorragend als <strong>oranger Bildschirm zur Reinigung</strong> von Monitoren. Dies erleichtert das Reinigen des Glases, hilft dabei, Pixelfehler zu finden und Schmutzflecken auf dem Panel zu lokalisieren. Grafikdesigner und Bildbearbeiter können mit dem orangen Bildschirm eine Monitorkalibrierung durchführen. Sie können auch ein <strong>oranger bildschirm png</strong>-Bild herunterladen, um es offline in Grafik-Mockups zu verwenden.',
+          'Viele Menschen nutzen das warme orangefarbene Licht als beruhigende Schlafhilfe vor dem Zubettgehen. Durch die Reduzierung von blauem Licht schafft ein Handy (<strong>oranger Bildschirm auf Handy</strong>) oder ein <strong>oranger Bildschirm auf dem iPhone</strong> eine entspannte Umgebung zum Lesen im Bett. Wenn Sie sich fragen, <strong>warum wird mein Bildschirm orange</strong>, liegt das meist an Funktionen wie dem <strong>orangen Bildschirm unter Windows 10</strong> (Nachtlicht), aber Sie können unsere Seite auch für manuelles Ambient-Licht nutzen. Ob für Beamer-Projektionen, zum Abpausen (die <strong>Orange-Bildschirm-Methode</strong>, um ein Bild abzuzeichnen, das ein Mitschüler gezeichnet hat) oder zur Überprüfung nach einem <strong>orangen Bildschirm des Todes</strong>, diese Seite bietet Ihnen sofort einen <strong>orangen Bildschirm für PC</strong> oder ein **Handy** mit perfektem orangen Bildschirm-Effekt an.'
+        ]
+      },
+      hi: {
+        heading: 'नारंगी स्क्रीन ऑनलाइन टूल और सामान्य उपयोग',
+        paragraphs: [
+          'जब रचनाकारों, डिजाइनरों और शिक्षकों को एक गर्म और चटक ठोस पृष्ठभूमि की आवश्यकता होती है, तो वे एक <strong>ऑरेंज स्क्रीन ऑनलाइन फ्री</strong> टूल की खोज करते हैं। एक <strong>ऑरेंज स्क्रीन बैकग्राउंड</strong> का उपयोग ऑनलाइन बैठकों, वेबिनार या सोशल मीटिंग के लिए एक प्यारा वर्चुअल बैकग्राउंड डिज़ाइन करने का शानदार माध्यम है। एक <strong>ऑरेंज स्क्रीन ऑनलाइन एस्थेटिक</strong> पेज से निकलने वाली <strong>ऑरेंज स्क्रीन लाइट</strong> यूट्यूब वीडियो में बढ़िया कंट्रास्ट लाती है और ऑनलाइन कॉल के दौरान चेहरे पर सुंदर वार्म ग्लो देती है। माता-पिता और शिक्षक इसे बच्चों के लिए <strong>बच्चों के लिए ऑरेंज स्क्रीन</strong> दृश्य के रूप में या एक शिक्षाप्रद <strong>कुल ऑरेंज स्क्रीन</strong> या <strong>पूरी ऑरेंज स्क्रीन</strong> बनाकर उपयोग करते हैं।',
+          'रचनात्मक उपयोगों के साथ-साथ, एक ठोस <strong>ऑरेंज फुलस्क्रीन बैकग्राउंड</strong> रखरखाव के लिए एक मूल्यवान तकनीकी टूल है। अपने <strong>खाली कंप्यूटर स्क्रीन</strong> को ठोस नारंगी रंग पर सेट करना <strong>सफाई के लिए ऑरेंज स्क्रीन</strong> के रूप में एकदम सही है। इससे मॉनिटर की सफाई करना, डेड पिक्सल ढूंढना, और पैनल पर जमा गंदगी के धब्बे खोजना काफी आसान हो जाता है। ग्राफिक्स डिजाइनरों के लिए, यह डिस्प्ले कलर कैलिब्रेशन करने और रंग सटीकता जांचने में मदद करता है। इसके अलावा, आप डिज़ाइन प्रोजेक्ट्स के लिए <strong>ऑरेंज स्क्रीन ऑनलाइन पीएनजी</strong> डाउनलोड का उपयोग भी कर सकते हैं।',
+          'बहुत से लोग सोने से पहले एक आरामदायक नींद सहायता के रूप में वार्म ऑरेंज डिस्प्ले प्रज्वलित करना पसंद करते हैं। नीली रोशनी को कम करके, एक <strong>ऑरेंज स्क्रीन फोन</strong> या <strong>ऑरेंज स्क्रीन आईफोन</strong> बैकग्राउंड रात में पढ़ने के लिए एक आरामदायक माहौल बनाता है। यदि आप सोच रहे हैं कि <strong>मेरी स्क्रीन नारंगी क्यों हो रही है</strong>, तो यह अक्सर <strong>ऑरेंज स्क्रीन विंडोज 10</strong> नाइट लाइट सुविधा के कारण होता है, लेकिन आप हमारे पेज से इसे मैन्युअल रूप से सेट कर सकते हैं। चाहे प्रोजेक्टर स्क्रीन पर वार्म वाइब बनानी हो, कोई ड्रॉइंग कॉपी करनी हो (जैसे सहपाठी के चित्र को छापने के लिए <strong>ऑरेंज स्क्रीन मेथड</strong>), या कंप्यूटर के क्रैश होने वाले <strong>ऑरेंज स्क्रीन ऑफ डेथ</strong> एरर की जांच करनी हो, यह पेज पीसी और मोबाइल के लिए झटपट ऑरेंज लुक पाने का सर्वोत्तम साधन है जिसमें बढ़िया ऑरेंज स्क्रीन इफ़ेक्ट मिलता है।'
+        ]
+      },
+      ja: {
+        heading: 'オレンジスクリーン（Orange Screen）のSEO最適化と主な用途',
+        paragraphs: [
+          'クリエイター、デザイナー、オンライン講師が温かみのある鮮明な単色背景を必要とする際、便利な <strong>オレンジスクリーンオンライン無料</strong> ツールが検索されます。全画面に <strong>オレンジの画面背景</strong> を表示することは、リモート会議やウェビナー、またはソーシャル通話のバーチャル背景として高い効果を発揮します。 <strong>オレンジ画面オンラインエステ</strong> 設定で発光される <strong>オレンジ画面ライト</strong> は、YouTube用の動画制作やオンラインミーティング時にお肌を元気に見せるオレンジ色のグロウ照明として役立ちます。また、教育用の視覚教材や <strong>子供用オレンジ画面</strong> としても、 <strong>全画面オレンジ</strong> または <strong>総オレンジ画面</strong> を投影してキー情報を目立たせることができます。',
+          'クリエイティブな用途に加え、均一な <strong>オレンジ全画面背景</strong> はメンテナンス時の技術的なユーティリティとしても優れています。 <strong>空白のPC画面</strong> をオレンジ色に点灯させることは、ディスプレイの <strong>掃除用オレンジ画面</strong> として最適で、モニター掃除、ドット抜けチェック、液晶ガラス面に固着した汚れや埃の発見が容易に行えます。グラフィックデザイナーや動画編集者にとっては、このオレンジの画面を使ったカラーキャリブレーションでパネルの色表現をテスト・微調整するのに適しています。また、オフラインのデザインモックアップ用に <strong>オレンジ画面オンラインpng</strong> 画像をエクスポートすることも可能です。',
+          '多くのユーザーが、就寝前のリラックスしたひとときにウォームオレンジ画面を睡眠補助ライトとして活用しています。刺激の強いブルーライトを和らげることで、スマホの <strong>オレンジ画面スマホ</strong> あるいは <strong>オレンジの画面iPhone</strong> ビジュアルは、ベッドでの夜間読書に快適な睡眠環境を整えます。もし自分のパソコンやスマホの <strong>画面がオレンジ色になるのはなぜ</strong> と疑問に感じたら、それは多くの場合 <strong>オレンジの画面Windows 10</strong> の夜間モード設定によるものですが、当サイトを使用して手動で心地よいオレンジの雰囲気を設定することも可能です。プロジェクター用スクリーンで温かいムードを作ったり、イラストをすかし写しするトレース方法（クラスメートの描いたイラストをコピーする <strong>オレンジ画面トレース方法</strong>）、PCのエラーである <strong>オレンジ画面の死（オレンジスクリーンオブデス）</strong> を検証する際など、当サイトはPCやスマホで瞬時にオレンジ画面を取得するための最もシンプルなウェブユーティリティであり、魅力的なオレンジ画面効果をもたらします。'
         ]
       }
     };
