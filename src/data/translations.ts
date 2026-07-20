@@ -1944,6 +1944,162 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
         answer: 'ディスプレイ全体がうっすらとライトピンクを帯びている場合、iOSやWindowのカラーフィルタ、夜間モード（Night Shiftなど）、True Toneの調整が要因として考えられます。また、古い液晶パネルの劣化で偏色している疑いもあります。全画面表示でムラや輝度をテストして状態を確認してください。'
       }
     ]
+  },
+  'cyan-screen': {
+    en: [
+      {
+        question: 'What is a cyan screen? (What does a cyan screen mean?)',
+        answer: 'A cyan screen is a fullscreen display of a pure cyan color (#00e5ff), which is a bright, soothing blend of green and blue light. It is commonly used as a cool ambient light, a display calibration test, or a creative photo background.'
+      },
+      {
+        question: 'How to get a cyan screen? (How do I make my screen cyan?)',
+        answer: 'Simply visit our Cyan Screen tool and click the "Fullscreen" button or press the "F" key on your keyboard. This will instantly turn your computer monitor or mobile device screen into a solid, bright cyan field.'
+      },
+      {
+        question: 'Does cyan light exist?',
+        answer: 'Yes, cyan light exists both as a spectral color (a light wavelength of around 490–520 nanometers) and as a subtractive primary color. It is made by mixing equal amounts of blue and green light.'
+      },
+      {
+        question: 'What is a cyan screen used for?',
+        answer: 'It is widely used by UI designers to test color correctness, by photographers as a cyan background or cool fill light, by users seeking a calming cyan screen saver, and for cleaning displays to reveal dust.'
+      },
+      {
+        question: 'Why is my screen cyan? (Why did my monitor turn cyan/blue?)',
+        answer: 'An accidental cyan tint or "cyan screen of death" usually indicates a physical cable issue (loose VGA/HDMI connection showing cyan/blue filter) or a software color management conflict. Use our solid cyan screen tool to verify color homogeneity.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Qué es una pantalla cian? (¿Qué significa una pantalla cian?)',
+        answer: 'Una pantalla cian es un campo de color cian puro (#00e5ff), una luz fresca que mezcla verde y azul. Se utiliza como luz ambiental relajante, prueba de monitores o fondo creativo para fotos.'
+      },
+      {
+        question: '¿Cómo obtener una pantalla cian? (¿Cómo hago mi pantalla cian?)',
+        answer: 'Entra en nuestra herramienta de Pantalla Cian y presiona el botón "Pantalla Completa" o la tecla "F". Esto convertirá instantáneamente la pantalla de tu móvil o computadora en un fondo cian completo.'
+      },
+      {
+        question: '¿Existe la luz cian?',
+        answer: 'Sí, la luz cian existe como color espectral (con una longitud de onda de unos 490 a 520 nanómetros) y se produce mezclando cantidades iguales de luz azul y verde en pantallas RGB.'
+      },
+      {
+        question: '¿Para qué sirve una pantalla cian?',
+        answer: 'Sirve para revisar píxeles de color en pantallas, como luz de relleno fría para fotos y retratos, como salvapantallas cian relajante o para detectar suciedad en el cristal de tus dispositivos.'
+      },
+      {
+        question: '¿Por qué mi pantalla está cian?',
+        answer: 'Si la pantalla muestra un tinte cian permanente, puede ser por un cable HDMI o VGA mal conectado, un perfil de color erróneo o un problema gráfico en la GPU. Usa nuestro fondo cian sólido para comprobar si la pantalla responde bien.'
+      }
+    ],
+    pt: [
+      {
+        question: 'O que é uma tela ciano? (O que significa uma tela ciano?)',
+        answer: 'Uma tela ciano é uma exibição em tela cheia do azul-piscina ou ciano puro (#00e5ff), combinando luz verde e azul. É muito usada para iluminação fria de fundo, testes de cor de monitores ou fundos fotográficos.'
+      },
+      {
+        question: 'Como conseguir uma tela ciano? (Como deixar a tela ciano?)',
+        answer: 'Basta acessar a nossa ferramenta de Tela Ciano e clicar no botão "Tela Cheia" ou apertar a tecla "F". A sua tela ficará totalmente preenchida pela cor ciano sólido.'
+      },
+      {
+        question: 'A luz ciano existe?',
+        answer: 'Sim, a luz ciano existe tanto como cor espectral (com comprimento de onda entre 490 e 520 nanômetros) quanto pela combinação RGB de intensidades iguais de luz azul e verde.'
+      },
+      {
+        question: 'Para que serve a tela ciano?',
+        answer: 'É usada como protetor de tela ciano, luz de preenchimento fria para fotos e vídeos, pelos designers para verificação de contraste de interface e para limpeza de display por destacar poeira.'
+      },
+      {
+        question: 'Por que minha tela está ciano?',
+        answer: 'Um tom ciano involuntário geralmente aponta para cabos de vídeo (HDMI/VGA) frouxos, defeito de solda no conector do monitor ou desajuste no perfil de cor do sistema. Use nosso site para checar se a tela exibe canais RGB corretamente.'
+      }
+    ],
+    fr: [
+      {
+        question: "Qu'est-ce qu'un écran cyan ? (Que signifie un écran cyan ?)",
+        answer: 'Un écran cyan est un affichage plein écran de couleur cyan uni (#00e5ff), combinant lumière bleue et verte. Il sert de lumière d\'ambiance froide, de test d\'affichage ou d\'arrière-plan de studio.'
+      },
+      {
+        question: 'Comment obtenir un écran cyan ? (Comment rendre mon écran cyan ?)',
+        answer: 'Ouvrez notre outil d\'Écran Cyan et cliquez sur le bouton "Plein écran" ou appuyez sur "F". L\'affichage de votre ordinateur ou appareil mobile deviendra instantanément bleu-vert cyan.'
+      },
+      {
+        question: 'La lumière cyan existe-t-elle ?',
+        answer: 'Oui, la lumière cyan existe scientifiquement dans le spectre visible (longueur d\'onde de 490 à 520 nm) et est une couleur primaire soustractive formée par le mélange équilibré de bleu et de vert.'
+      },
+      {
+        question: 'À quoi sert un écran cyan ?',
+        answer: 'Il est utilisé comme économiseur d\'écran cyan apaisant, comme source de lumière cyan pour la photo et la vidéo, pour vérifier la colorimétrie des dalles LCD/OLED, et pour nettoyer les écrans.'
+      },
+      {
+        question: 'Pourquoi mon écran est-il cyan ?',
+        answer: 'Un affichage anormalement cyan est souvent causé par un câble vidéo mal branché (perte du canal rouge), un mauvais étalonnage logiciel ou une panne matérielle. Testez votre écran sur cette page pour isoler le problème.'
+      }
+    ],
+    de: [
+      {
+        question: 'Was ist ein cyanfarbener Bildschirm? (Was bedeutet ein Cyan Bildschirm?)',
+        answer: 'Ein Cyan Bildschirm ist eine Vollbildanzeige der reinen Farbe Cyan (#00e5ff), einer Mischung aus blauem und grünem Licht. Er wird als kühles Umgebungslicht, Designhintergrund oder zur Displaykalibrierung verwendet.'
+      },
+      {
+        question: 'Wie bekomme ich einen cyanfarbenen Bildschirm? (Wie mache ich meinen Bildschirm cyan?)',
+        answer: 'Wählen Sie einfach unser Cyan Bildschirm-Tool aus und klicken Sie auf die Schaltfläche "Vollbild" oder drücken Sie die Taste "F". Ihr Monitor oder Smartphone-Display wird sofort komplett cyanfarben.'
+      },
+      {
+        question: 'Gibt es cyanfarbenes Licht?',
+        answer: 'Ja, cyanfarbenes Licht existiert als Spektralfarbe mit einer Wellenlänge von etwa 490–520 Nanometern sowie als additive Farbmischung aus blauem und grünem Licht auf Monitoren.'
+      },
+      {
+        question: 'Wofür wird ein Cyan Bildschirm verwendet?',
+        answer: 'Häufige Verwendungszwecke sind die Fotobelichtung mit kühlem Fülllicht, die Nutzung als erholsamer Cyan Bildschirmschoner, die Überprüfung von Farbkanälen sowie das Erkennen von Schmutz beim Reinigen des Monitors.'
+      },
+      {
+        question: 'Warum is mein Bildschirm cyanfarben?',
+        answer: 'Ein ungewollter Cyan-Farbstich deutet meist auf ein lockeres Monitorkabel (z. B. HDMI/VGA) hin, bei dem der Rotkanal fehlt, oder auf veränderte Farbeinstellungen. Prüfen Sie Ihr Display mit unserer Vollbildfläche.'
+      }
+    ],
+    hi: [
+      {
+        question: 'स्यान स्क्रीन क्या है? (स्यान स्क्रीन का क्या अर्थ है?)',
+        answer: 'स्यान स्क्रीन (Cyan Screen) एक पूर्ण स्क्रीन प्रदर्शित करने वाला शुद्ध नीला-हरा रंग (#00e5ff) है। यह मुख्य रूप से कूल एम्बिएंट लाइटिंग, डिस्प्ले कैलिब्रेशन और रचनात्मक फोटोग्राफी बैकग्राउंड के रूप में उपयोग की जाती है।'
+      },
+      {
+        question: 'स्क्रीन को स्यान कैसे बनाएं? (How do I make my screen cyan?)',
+        answer: 'हमारे स्यान स्क्रीन ऑनलाइन टूल पर जाएं और "फ़ुलस्क्रीन" बटन पर क्लिक करें या कीबोर्ड पर "F" दबाएं। आपकी स्क्रीन तुरंत चमकीली स्यान रंग में बदल जाएगी।'
+      },
+      {
+        question: 'क्या स्यान प्रकाश (Cyan Light) का अस्तित्व है?',
+        answer: 'हाँ, स्यान प्रकाश दृश्य स्पेक्ट्रम में लगभग 490–520 नैनोमीटर तरंगदैर्ध्य (wavelength) के साथ प्राकृतिक रूप से मौजूद है, और स्क्रीन पर यह नीले और हरे रंग के प्रकाश के मिश्रण से बनता है।'
+      },
+      {
+        question: 'स्यान स्क्रीन का उपयोग किस लिए किया जाता है?',
+        answer: 'इसका उपयोग फ़ोटोग्राफ़र द्वारा स्यान बैकग्राउंड या चेहरे पर ठंडी लाइट डालने, डिज़ाइनरों द्वारा कलर ग्रेडिंग जांचने, और स्क्रीन साफ करते समय धूल के कणों को देखने के लिए किया जाता है।'
+      },
+      {
+        question: 'मेरी स्क्रीन स्यान रंग की क्यों हो गई है?',
+        answer: 'यदि डिस्प्ले पर अचानक अप्राकृतिक स्यान रंग दिखता है, तो यह ढीले VGA/HDMI केबल, मॉनिटर के रेड कलर चैनल में खराबी, या कलर प्रोफाइल एरर के कारण हो सकता है। हमारे पेज की मदद से इसकी जांच करें।'
+      }
+    ],
+    ja: [
+      {
+        question: 'シアン画面とは何ですか？ (シアン画面の意味)',
+        answer: 'シアン画面（Cyan Screen）とは、緑と青がバランスよく混ざった鮮やかなシアン色（#00e5ff）をディスプレイに全画面表示するツールです。冷涼な雰囲気の間接照明、モニターの発色テスト、撮影用の背景として活用されます।'
+      },
+      {
+        question: '画面をシアン色にするにはどうすればよいですか？',
+        answer: '当サイトのシアン画面ツールにアクセスし、「全画面」ボタンをクリックするか、キーボードの「F」キーを押すだけで、PCやスマートフォンの画面が瞬時にきれいなシアンに変わります。'
+      },
+      {
+        question: 'シアンの光は実際に存在しますか？',
+        answer: 'はい、シアンの光は可視光線の波長において約490〜520ナノメートルに位置する単一色として存在します。RGBディスプレイ上では、青色と緑色の光を同等の強さで発光させることで表現されます।'
+      },
+      {
+        question: 'シアン画面はどのような用途に使われますか？',
+        answer: '写真の涼しげな背景照明（撮影用シアンライト）、目に優しいシアンのスクリーンセーバー、ウェブデザイン時の配色確認、また画面を清掃する際、ホコリや傷を検知するために使われます।'
+      },
+      {
+        question: 'ディスプレイがシアンっぽく（青緑に）なるのはなぜですか？',
+        answer: '画面全体がシアン色に偏っている場合、VGAケーブルやHDMI接続ピンの緩みによる赤入力チャンネルの欠落、グラフィックカードのスリープ復帰エラー、またはOSのカラーマネジメント異常が疑われます。本ツールのベタ塗り画面で液晶自体に異常がないか切り分けてください।'
+      }
+    ]
   }
 };
 
@@ -2284,6 +2440,68 @@ export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-s
           'クリエイターや写真家、デザイナーがおしゃれな背景を必要とする際、便利な <strong>ピンク画面</strong>（pink screen）ツールが活用されます。 <strong>ピンクのスクリーンセーバー</strong>（pink screen saver）を起動したり、お使いのモニターを <strong>ピンクスクリーンライトアプリ</strong>（pink screen light app）のように使用して、お部屋の雰囲気や動画のライティングを最適化できます。 <strong>全画面ピンク画面</strong>（full pink screen）や <strong>空白のピンク画面</strong>（blank pink screen）を映すことで、撮影時の <strong>ピンク光効果</strong>（pink light effect）や <strong>撮影用ピンクライト</strong>（pink light for photo）として機能し、被写体を温かい光で優しく包み込みます。',
           'クリエイティブな使用だけでなく、単一のピンクスクリーンはモニター検査にも実用的なツールとなります。 <strong>薄いピンクの画面</strong>（light pink screen）や <strong>鮮やかなピンクの画面</strong>（bright pink screen）を表示することで、テレビやPCモニターのドット抜けテスト、および画面掃除の際の見やすさを向上させます。GPU不良による液晶フリーズの <strong>ピンクスクリーンオブデス</strong>（pink screen of death）が発生した場合や、 <strong>MacBookのピンク画面</strong>（macbook pink screen）偏色などの液晶トラブルの際、それが一時的なシステム起因かハードウェアの破損かを安全に試験できます。',
           'スマホやTVなど全デバイスにレスポンシブ動作し、ブラウザで瞬時に展開可能です。通話時に顔色を照らす <strong>スマホ用ピンクライト</strong>（pink screen light on phone）、 <strong>iPhoneのピンク画面</strong>（pink screen iphone）配色チェック、 <strong>Samsung製テレビのピンク画面</strong>（samsung tv pink screen）や一般的な <strong>テレビのピンク画面</strong>（pink screen on tv）エラー時の接続診断など、 <strong>濃いピンクの画面</strong>（dark pink screen）や <strong>ホットピンク画面</strong>（hot pink screen）を使い分けることで、最適な照明と検品が可能です。全画面モードで特定の <strong>ピンク画面カラーコード</strong>（pink screen color code）に合わせ、あらゆる用途にお役立てください。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'cyan-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Cyan Screen Online Tool & Digital Art Utilities',
+        paragraphs: [
+          'For content creators, photographers, and UI designers seeking a fresh cool-toned aesthetic, our <strong>cyan screen</strong> utility is a premium solution. Setting up a customized <strong>cyan screen saver</strong> or converting your monitor into a temporary <strong>cyan screen light app</strong> is an effective way to inject modern, relaxing vibes into your workspace or studio. By projecting a <strong>full cyan screen</strong> or a <strong>blank cyan screen</strong>, you can cast a vibrant blue-green glow that functions as a stunning <strong>cyan light effect</strong> or studio <strong>cyan light for photo</strong> shoots.',
+          'Beyond its artistic uses, a solid cyan color field serves as an essential monitor checking tool. Renders of a <strong>light cyan screen</strong> or <strong>bright cyan screen</strong> make it incredibly simple to run display panel audits, checking color uniformity and revealing stuck or dead subpixels. Rather than worrying about severe operating system failures like a <strong>cyan screen of death</strong> or physical connection issues on your monitors, you can display a safe, solid <strong>cyan background</strong> to verify display performance and examine color accuracy across different channels.',
+          'Designed responsively for mobile and desktop screens, our web app scales perfectly to any aspect ratio. Whether you are using a <strong>cyan screen light on phone</strong> as a face illumination light for video calls, styling a custom <strong>cyan screen iphone</strong> aesthetic layout, or utilizing a high-contrast <strong>dark cyan screen</strong> or vibrant <strong>hot cyan screen</strong> to evaluate display panels, our utility operates outputting the precise <strong>cyan screen color code</strong> you need. Toggle fullscreen mode to output clean, uninterrupted light on any device.'
+        ]
+      },
+      es: {
+        heading: 'Herramienta de Pantalla Cian Online y Casos de Uso',
+        paragraphs: [
+          'Para creadores de contenido, fotógrafos y diseñadores de interfaces que buscan una estética fresca y moderna, nuestra herramienta de <strong>pantalla cian</strong> (cyan screen) es el recurso ideal. Configurar un <strong>salvapantallas cian</strong> (cyan screen saver) o convertir tu monitor en una aplicación de <strong>luz de pantalla cian en el celular</strong> (cyan screen light app) es una excelente forma de dar un aire moderno a tu espacio de trabajo. Al proyectar una <strong>pantalla cian de fondo completo</strong> (full cyan screen) o <strong>pantalla cian en blanco</strong> (blank cyan screen), generas un brillo homogéneo que sirve como <strong>efecto de luz cian</strong> (cyan light effect) o <strong>luz cian para fotos</strong> (cyan light for photo).',
+          'Además de la decoración de espacios, un fondo cian sólido es una herramienta útil de diagnóstico de hardware. Mostrar una <strong>pantalla cian claro</strong> (light cyan screen) o una <strong>pantalla cian brillante</strong> (bright cyan screen) facilita revisar la fidelidad cromática de monitores y televisores, así como detectar píxeles muertos. En lugar de asustarte por un error del sistema como la <strong>pantalla cian de la muerte</strong> (cyan screen of death) o fallos de conexión gráfica, puedes usar este <strong>fondo cian</strong> (cyan background) limpio para asegurar el correcto funcionamiento de tu pantalla.',
+          'Nuestra aplicación web está optimizada para todo tipo de monitores y pantallas táctiles. Ya sea que requieras una <strong>pantalla de luz cian en el teléfono</strong> (cyan screen light on phone) para iluminar videollamadas, quieras configurar tu <strong>pantalla cian en iPhone</strong> (cyan screen iphone), o necesites tonos de <strong>pantalla cian oscuro</strong> (dark cyan screen) o <strong>pantalla cian fuerte</strong> (hot cyan screen), nuestro panel genera el <strong>código de color cian de pantalla</strong> (cyan screen color code) exacto al hacer clic en pantalla completa.'
+        ]
+      },
+      pt: {
+        heading: 'Utilidades de Tela Ciano Online e Efeitos de Iluminação',
+        paragraphs: [
+          'Para criadores de conteúdo, fotógrafos e designers de interfaces que buscam uma estética fresca e tecnológica, nossa ferramenta de <strong>tela ciano</strong> (cyan screen) é uma excelente opção. Definir um <strong>protetor de tela ciano</strong> (cyan screen saver) ou utilizar seu monitor como um aplicativo de <strong>tela de luz ciano no celular</strong> (cyan screen light app) ajuda a renovar a iluminação do estúdio. Ao exibir uma <strong>tela ciano completa</strong> (full cyan screen) ou uma <strong>tela ciano em branco</strong> (blank cyan screen), você projeta uma iluminação fria incrível que funciona como <strong>efeito de luz ciano</strong> (cyan light effect) ou <strong>luz ciano para fotos</strong> (cyan light for photo).',
+          'Além do visual moderno, o plano de fundo ciano é ótimo para testes e manutenção do monitor. A visualização de uma <strong>tela ciano claro</strong> (light cyan screen) ou <strong>tela ciano brilhante</strong> (bright cyan screen) facilita a verificação da coloração do painel LCD/OLED, identificação de pixels travados e limpeza da tela. Diante de panes que remetem à temida <strong>tela ciano da morte</strong> (cyan screen of death) ou distorções causadas por mau contato físico, você pode usar nosso <strong>fundo ciano</strong> (cyan background) seguro para avaliar se a sua tela exibe o canal RGB correto.',
+          'Totalmente responsivo e prático, nosso site se ajusta a qualquer tamanho de smartphone ou monitor. Seja para usar uma <strong>tela de luz ciano no celular</strong> (cyan screen light on phone) para iluminar chamadas de vídeo, personalizar a sua <strong>tela ciano no iPhone</strong> (cyan screen iphone) para fotos conceituais, ou testar tons de <strong>tela ciano escuro</strong> (dark cyan screen) ou <strong>tela ciano quente</strong> (hot cyan screen), a nossa utilidade gera o <strong>código de cor da tela ciano</strong> (cyan screen color code) com precisão. Entre no modo tela cheia para obter luz constante.'
+        ]
+      },
+      fr: {
+        heading: 'Outil Écran Cyan en Ligne & Effets de Lumière d\'Ambiance',
+        paragraphs: [
+          'Pour les créateurs, vidéastes et designers en quête d\'une esthétique froide et moderne, notre utilitaire d\'<strong>écran cyan</strong> (cyan screen) est la solution de référence. Mettre en place un <strong>économiseur d\'écran cyan</strong> (cyan screen saver) ou transformer votre moniteur en application de <strong>lumière d\'écran cyan sur téléphone</strong> (cyan screen light app) apporte une douce nuance futuriste à votre setup. Projeter un <strong>écran cyan plein écran</strong> (full cyan screen) ou un <strong>écran cyan vide</strong> (blank cyan screen) permet de créer un <strong>effet de lumière cyan</strong> (cyan light effect) ou de servir de <strong>lumière cyan pour photo</strong> portrait.',
+          'Au-delà de la création, cette surface colorée unie est un outil technique d\'analyse de dalle. L\'affichage d\'un <strong>écran cyan clair</strong> (light cyan screen) ou d\'un <strong>écran cyan vif</strong> (bright cyan screen) facilite l\'inspection de l\'uniformité du rétroéclairage et la recherche de sous-pixels bloqués. Plutôt que de paniquer face à un dysfonctionnement graphique tel qu\'un <strong>écran cyan de la mort</strong> (cyan screen of death) ou un câble mal branché, utilisez notre <strong>arrière-plan cyan</strong> (cyan background) sécurisé en ligne pour vérifier le bon comportement de votre équipement.',
+          'Compatible avec tous les PC, tablettes et mobiles, notre plateforme s\'adapte à n\'importe quel ratio d\'aspect. Que vous recherchiez un éclairage avec une <strong>lumière cyan sur téléphone</strong> (cyan screen light on phone), que vous personnalisiez votre <strong>écran cyan sur iPhone</strong> (cyan screen iphone), ou vouliez basculer sur un <strong>écran cyan foncé</strong> (dark cyan screen) ou un <strong>écran cyan turquoise</strong> (hot cyan screen), notre outil respecte le <strong>code couleur d\'écran cyan</strong> (cyan screen color code) idéal en plein écran d\'un simple clic.'
+        ]
+      },
+      de: {
+        heading: 'Cyan Bildschirm Online-Tool & Kreative Lichteffekte',
+        paragraphs: [
+          'Für Webdesigner, Streamer und Fotografen, die nach einer modernen, kühlen Ästhetik suchen, ist unser <strong>Cyan Bildschirm</strong>-Werkzeug (cyan screen) die ideale Lösung. Die Einrichtung eines <strong>Cyan Bildschirmschoners</strong> (cyan screen saver) oder die Verwendung des Displays als <strong>Cyan Bildschirm-Taschenlampe</strong> (cyan screen light app) verleiht Ihrem Raum eine entspannende Atmosphäre. Ein <strong>Cyan Bildschirm in Vollbild</strong> (full cyan screen) oder ein <strong>leerer Cyan Bildschirm</strong> (blank cyan screen) erzeugt ein gleichmäßiges blau-grünes Licht, das sich hervorragend als <strong>Cyan Lichteffekt</strong> (cyan light effect) oder als <strong>Cyan Licht für Fotos</strong> (cyan light for photo) für Porträts eignet.',
+          'Neben dekorativen Szenarien dient die Vollbildfläche auch zur praktischen Wartung von Monitoren. Mit der Anzeige eines <strong>hellcyanen Bildschirms</strong> (light cyan screen) oder eines <strong>hellen Cyan Bildschirms</strong> (bright cyan screen) prüfen Sie Displays auf Farbfehler, Lichthöfe und Pixelfehler. Falls Ihr Monitor plötzlich unerwartete Farbverfälschungen wie einen <strong>Cyan Bildschirm des Todes</strong> (cyan screen of death) oder HDMI-Verbindungsfehler aufweist, können Sie mit unserer Seite einen neutralen <strong>Cyan Hintergrund</strong> (cyan background) aufrufen, um die Displayfunktion einfach zu testen.',
+          'Unsere Webseite läuft ohne Installation auf jedem Smartphone und Smart-TV. Egal, ob Sie ein <strong>Cyan Bildschirmlicht auf dem Smartphone</strong> (cyan screen light on phone) für Selfies nutzen, Ihren <strong>Cyan Bildschirm auf dem iPhone</strong> (cyan screen iphone) anpassen oder die Tiefe eines <strong>dunkelcyanen Bildschirms</strong> (dark cyan screen) oder <strong>leuchtenden Cyan Bildschirms</strong> (hot cyan screen) testen möchten – wir liefern Ihnen sofort den richtigen <strong>Farbcode für den Cyan Bildschirm</strong> (cyan screen color code). Schalten Sie für beste Ergebnisse einfach in den Vollbildmodus.'
+        ]
+      },
+      hi: {
+        heading: 'स्यान स्क्रीन ऑनलाइन टूल और लाइट इफेक्ट्स',
+        paragraphs: [
+          'क्रिएटर्स, फ़ोटोग्राफ़र्स और डिज़ाइनर्स को एक कूल और मॉडर्न बैकग्राउंड देने के लिए हमारा <strong>स्यान स्क्रीन</strong> (cyan screen) टूल एक बेहतरीन विकल्प है। कंप्यूटर पर <strong>स्यान स्क्रीन सेवर</strong> (cyan screen saver) सेट करना या अपने मॉनिटर को <strong>स्यान स्क्रीन लाइट ऐप</strong> (cyan screen light app) की तरह इस्तेमाल करना कमरे में सुंदर वाइब्स जोड़ता है। स्क्रीन पर <strong>पूरी स्यान स्क्रीन</strong> (full cyan screen) या <strong>खाली स्यान स्क्रीन</strong> (blank cyan screen) दिखाने से एक कोमल नीला-हरा प्रकाश उत्पन्न होता है, जो बेहतरीन <strong>स्यान लाइट इफेक्ट</strong> (cyan light effect) या पोर्ट्रेट के लिए <strong>फोटो के लिए स्यान लाइट</strong> (cyan light for photo) का काम करता है।',
+          'कलात्मक उपयोगों के अलावा, यह स्क्रीन हार्डवेयर परीक्षण और सफ़ाई में बहुत सहायक है। <strong>हल्की स्यान स्क्रीन</strong> (light cyan screen) या <strong>चमकीली स्यान स्क्रीन</strong> (bright cyan screen) की मदद से आप डिस्प्ले के कलर चैनल्स की जांच कर सकते हैं और डेड पिक्सेल का पता लगा सकते हैं। यदि आपके मॉनिटर पर खराबी के कारण अचानक <strong>स्यान स्क्रीन ऑफ़ डेथ</strong> (cyan screen of death) जैसा कलर फिल्टर आ जाता है, तो हमारे सुरक्षित <strong>स्यान बैकग्राउंड</strong> (cyan background) का उपयोग करके आप मॉनिटर की स्क्रीन हेल्थ का सही निदान कर सकते हैं।',
+          'स्मार्टफोन और टीवी स्क्रीन के लिए पूरी तरह उत्तरदायी (responsive), यह टूल हर डिवाइस पर काम करता है। चाहे आपको वीडियो कॉल के लिए **फोन पर स्यान रोशनी** (cyan screen light on phone) चाहिए, अपने **आईफोन स्यान स्क्रीन** (cyan screen iphone) का स्टाइल बदलना हो, या फिर **डार्क स्यान स्क्रीन** (dark cyan screen) और **हॉट स्यान स्क्रीन** (hot cyan screen) रंगों का परीक्षण करना हो, यह टूल आपको सही **स्यान स्क्रीन कलर कोड** (cyan screen color code) प्रदान करता है। पूर्णप्रकाश अनुभव के लिए फुलस्क्रीन बटन दबाएं।'
+        ]
+      },
+      ja: {
+        heading: 'シアン画面（Cyan Screen）オンラインツールと主な用途',
+        paragraphs: [
+          'クリエイター、写真家、デザイナー向けに涼しげでテクノロジー感のあるデザインを提供する <strong>シアン画面</strong>（cyan screen）ツールです。 <strong>シアンのスクリーンセーバー</strong>（cyan screen saver）を起動したり、お使いのディスプレイを <strong>シアンスクリーンライトアプリ</strong>（cyan screen light app）のように使用してお部屋の雰囲気を演出できます。 <strong>全画面シアン画面</strong>（full cyan screen）や <strong>空白のシアン画面</strong>（blank cyan screen）を映すことで、美しい <strong>シアン光効果</strong>（cyan light effect）や撮影時の被写体を照らす <strong>撮影用シアンライト</strong>（cyan light for photo）として機能します。',
+          'アート用途に加え、液晶モニターの検査やメンテナンスにも単色シアンは欠かせません。 <strong>薄いシアンの画面</strong>（light cyan screen）や <strong>鮮やかなシアン의画面</strong>（bright cyan screen）を表示することで、液晶パネル의カラーバランスを診査し、ドット抜けチェックや画面掃除を快適に行えます。PCのOSクラッシュを疑う <strong>シアンスクリーンオブデス</strong>（cyan screen of death）や液晶ケーブルの接続不良が発生した際、当サイトの安全な <strong>シアンの背景</strong>（cyan background）を表示させて正常に発色するか検証できます。',
+          'レスポンシブWebデザインに対応し、どんなスマホやブラウザでもワンタップで全画面表示されます。ビデオ通話のライティングとして <strong>スマホ用シアンライト</strong>（cyan screen light on phone）を使用したり、 <strong>iPhoneのシアン画面</strong>（cyan screen iphone）チェックを行ったり、またコントラストの効いた <strong>濃いシアンの画面</strong>（dark cyan screen）やビビッドな <strong>ホットシアン画面</strong>（hot cyan screen）に切り替えるなど、お好みの <strong>シアン画面カラーコード</strong>（cyan screen color code）を活用してください。'
         ]
       }
     };
