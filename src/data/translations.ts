@@ -1517,7 +1517,219 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       },
       {
         question: 'HTMLでのオレンジ色のカラーコードは何ですか？',
-        answer: 'HTMLやCSSにおいて、標準のオレンジ色は16進数カラーコード #FFA500（または rgb(255, 165, 0））で表されます。当サイトのオレンジ画面ツールは、ディスプレイ調整や温かみのある間接照明として最適な、厳選されたウォームオレンジ（#FF8A00）を出力します。'
+        answer: 'HTMLやCSSにおいて、標準のオレンジ色は16進数カラーコード #FFA500（または rgb(255, 165, 0））で表されます。当サイトのオレンジ画面ツールは、ディスプレイ調整や温かみのある間接照明として最適な、厳選されたウォームオレンジ（#FF8A00）を出力します।'
+      }
+    ]
+  },
+  'purple-screen': {
+    en: [
+      {
+        question: 'What is a purple screen?',
+        answer: 'A purple screen is a solid, full-screen color panel showing a pure purple background online. It functions as a blank computer screen utility used for screen cleaning, display testing, generating ambient light, and wellness app visuals.'
+      },
+      {
+        question: 'What is the purple screen color?',
+        answer: 'The default color of our purple screen online tool is a vibrant, balanced purple hex code #7C3AED (or rgb(124, 58, 237)). Using our browser controls, you can adjust settings to display a light purple screen or a dark purple screen to match your exact aesthetic.'
+      },
+      {
+        question: 'What is a purple screen of death?',
+        answer: 'A purple screen of death (PSoD) is an diagnostic crash screen indicating a kernel panic or hardware failure, most famously associated with VMware ESXi servers. On consoles like the Nintendo Switch or laptops, it points to GPU or display hardware failures.'
+      },
+      {
+        question: 'What is the purple screen error?',
+        answer: 'A purple screen error is usually associated with display interface issues, outdated graphics drivers, or startup freezes. For example, an ubuntu purple screen lock on boot is often resolved by updating boot parameters, while a purple screen on TV sets usually indicates a faulty HDMI connection.'
+      },
+      {
+        question: 'What does dark purple mean?',
+        answer: 'In color theory, dark purple represents tranquility, royalty, creativity, and spiritual depth. Displaying a dark purple screen or utilizing it as a purple screen saver (or screen savers) helps calm the mind, which is why wellness apps use it for meditation and relaxation exercises.'
+      },
+      {
+        question: 'How is dark purple called?',
+        answer: 'Dark purple is known by various names such as violet, plum, eggplant (aubergine), grape, or royal purple. You can enter any of these hex color codes into our custom picker to render a full purple screen background.'
+      },
+      {
+        question: 'Why is my home screen purple?',
+        answer: 'If you suddenly experience an iphone purple screen glitch or your TV home screen has turned purple, check for activated color filters in accessibility settings or a loose display cable. Launching our clean purple screen phone diagnostic panel is a great way to inspect your screen for dead pixels and verify color accuracy.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Qué es una pantalla morada?',
+        answer: 'Una pantalla morada (purple screen) es un panel de color sólido a pantalla completa que muestra un fondo morado puro en línea. Funciona como una utilidad de pantalla de ordenador en blanco para limpieza de monitores, pruebas de visualización, creación de luz de fondo y uso en aplicaciones de relajación.'
+      },
+      {
+        question: '¿Cuál es el color de la pantalla morada?',
+        answer: 'El color predeterminado de nuestra herramienta es un tono morado vibrante (#7C3AED). Con los controles del navegador, puedes alternar entre una pantalla morada clara (light purple screen) y una pantalla morada oscura (dark purple screen) de acuerdo con tus preferencias estéticas.'
+      },
+      {
+        question: '¿Qué es una pantalla morada de la muerte?',
+        answer: 'La pantalla morada de la muerte (PSoD) es un error crítico de diagnóstico provocado por fallos de hardware o pánicos de kernel en servidores VMware ESXi. En consolas de videojuegos como Nintendo Switch o portátiles, señala un problema físico en la tarjeta gráfica.'
+      },
+      {
+        question: '¿Qué es el error de pantalla morada?',
+        answer: 'Un error de pantalla morada suele deberse a problemas de conexión de video o controladores de GPU desactualizados. Por ejemplo, un bloqueo de pantalla morada en Ubuntu (ubuntu purple screen) al arrancar suele solucionarse editando los parámetros de inicio, mientras que una pantalla morada en TV suele indicar un cable HDMI dañado.'
+      },
+      {
+        question: '¿Qué significa el morado oscuro?',
+        answer: 'En psicología del color, el morado oscuro representa la realeza, el misterio, la creatividad y la calma. Usar una pantalla morada oscura o configurarla como un salvapantallas morado ayuda a relajar la mente, razón por la cual las aplicaciones de bienestar lo emplean para la meditación.'
+      },
+      {
+        question: '¿Cómo se le llama al morado oscuro?',
+        answer: 'El morado oscuro recibe varios nombres según el tono exacto, como violeta, ciruela, berenjena o púrpura real. Puedes ingresar cualquiera de estos códigos hexadecimales en nuestra herramienta para mostrar un fondo morado completo.'
+      },
+      {
+        question: '¿Por qué mi pantalla de inicio está morada?',
+        answer: 'Si de repente tu teléfono experimenta un glitch de pantalla morada en iPhone o la pantalla de inicio de tu TV se volvió morada, verifica si hay filtros de color activos o un cable suelto. Abrir nuestra pantalla morada en el móvil es ideal para comprobar la uniformidad del panel y ver si es un fallo de hardware.'
+      }
+    ],
+    pt: [
+      {
+        question: 'O que é uma tela roxa?',
+        answer: 'Uma tela roxa (purple screen) é um painel de cor sólida em tela cheia que exibe um fundo roxo puro online. Funciona como um utilitário de tela de computador em branco usado para limpeza de monitores, testes de display, iluminação ambiente e uso em aplicativos de bem-estar.'
+      },
+      {
+        question: 'Qual é a cor da tela roxa?',
+        answer: 'A cor padrão da nossa ferramenta de tela roxa online é um código hexadecimal vibrante (#7C3AED). Utilizando nossos controles de cor, você pode ajustar facilmente a exibição entre uma tela roxa clara (light purple screen) e uma tela roxa escura (dark purple screen).'
+      },
+      {
+        question: 'O que é a tela roxa da morte?',
+        answer: 'A tela roxa da morte (PSoD) é uma tela de erro crítico gerada por pânico de kernel no VMware ESXi ou falha grave de hardware. Em dispositivos domésticos, uma tela roxa repentina na TV ou celular pode apontar para problemas físicos no display ou processador gráfico.'
+      },
+      {
+        question: 'O que é o erro da tela roxa?',
+        answer: 'O erro da tela roxa geralmente representa uma interrupção na conexão de vídeo ou inicialização do sistema. Por exemplo, uma inicialização travada com tela roxa no Ubuntu (ubuntu purple screen) é comum por incompatibilidade de driver gráfico, enquanto uma tela roxa na TV costuma ser culpa de um cabo HDMI frouxo.'
+      },
+      {
+        question: 'O que significa roxo escuro?',
+        answer: 'Na teoria das cores, o roxo escuro simboliza nobreza, mistério, criatividade e meditação profunda. Exibir uma tela roxa escura ou usá-la como protetor de tela roxo (purple screen saver/savers) atua reduzindo o estresse mental em rotinas de relaxamento.'
+      },
+      {
+        question: 'Como o roxo escuro é chamado?',
+        answer: 'O roxo escuro é conhecido por vários nomes como violeta, ameixa, berinjela ou púrpura real. Você pode digitar qualquer uma destas cores hexadecimais em nosso seletor personalizado para gerar um fundo de tela roxo completo.'
+      },
+      {
+        question: 'Por que a minha tela de início está roxa?',
+        answer: 'Se você notar um problema de tela roxa no iPhone ou se a tela de início da TV ficou roxa de repente, confira os filtros de acessibilidade ativos nas configurações ou cabos HDMI. Usar a nossa tela roxa no celular ajuda a descartar defeitos de hardware e encontrar pixels mortos.'
+      }
+    ],
+    fr: [
+      {
+        question: "Qu'est-ce qu'un écran violet ?",
+        answer: "Un écran violet (purple screen) est un arrière-plan uni affichant une couleur violette pure en plein écran. Cet écran d'ordinateur vide sert au nettoyage de moniteur, aux tests de dalles, à l'éclairage de studio et aux séances de méditation."
+      },
+      {
+        question: "Quelle est la couleur de l'écran violet ?",
+        answer: "La couleur par défaut est le violet vif #7C3AED. Grâce à notre palette interactive, vous pouvez obtenir un écran violet clair (light purple screen) ou un écran violet foncé (dark purple screen) selon l'ambiance recherchée ou les besoins de calibrage de votre affichage."
+      },
+      {
+        question: "Qu'est-ce que l'écran violet de la mort ?",
+        answer: "L'écran violet de la mort (PSoD) est un crash de diagnostic système sur VMware ESXi provoqué par un problème matériel ou un kernel panic. Sur des consoles de jeu portables comme la Nintendo Switch, cela révèle une surchauffe ou une panne de carte mère."
+      },
+      {
+        question: "Qu'est-ce que l'erreur d'écran violet ?",
+        answer: "Une erreur d'écran violet est typiquement le signe d'une faille de transmission vidéo ou de pilote. Par exemple, un blocage d'écran violet sur Ubuntu (ubuntu purple screen) au démarrage provient souvent de pilotes Nvidia, tandis qu'un écran violet sur TV provient d'un câble HDMI défectueux."
+      },
+      {
+        question: "Que signifie le violet foncé ?",
+        answer: "Le violet foncé symbolise la sérénité, le luxe, la créativité et le bien-être. Projeter un écran violet foncé ou avoir un économiseur d'écran violet (purple screen saver/savers) chez soi favorise le sommeil et la relaxation, d'où son adoption dans les applications bien-être."
+      },
+      {
+        question: "Comment appelle-t-on le violet foncé ?",
+        answer: "Le violet foncé abrite de multiples dénominations selon les nuances : prune, aubergine, violet indigo ou pourpre. Saisissez n'importe lequel de ces codes hexadécimaux dans notre sélecteur personnalisé pour afficher le fond violet de votre choix."
+      },
+      {
+        question: "Pourquoi mon écran d'accueil est-il violet ?",
+        answer: "Si vous observez un affichage écran violet sur iPhone (iphone purple screen) suspect ou si le menu de votre TV vire au violet, vérifiez les filtres de couleur dans vos réglages d'accessibilité. Ouvrez notre écran violet sur téléphone pour dépister facilement les pixels défectueux."
+      }
+    ],
+    de: [
+      {
+        question: 'Was ist ein lila Bildschirm?',
+        answer: 'Ein lila Bildschirm (violett/purple screen) ist eine vollflächige Farbanzeige von reinem Lila. Das Tool dient als leerer Computerbildschirm zum Reinigen von Displays, für Farbtests, als Fotolicht und zur Entspannung in Wellness-Apps.'
+      },
+      {
+        question: 'Welche Farbe hat der lila Bildschirm?',
+        answer: 'Die Standardfarbe ist ein sattes Violett (#7C3AED). Über unsere Farbregler können Sie einfach zwischen einem helllila Bildschirm (light purple screen) und einem dunkellila Bildschirm (dark purple screen) wechseln, um die Helligkeit optimal anzupassen.'
+      },
+      {
+        question: 'Was ist ein lila Bildschirm des Todes?',
+        answer: 'Der lila Bildschirm des Todes (PSoD) ist ein kritischer Diagnosebildschirm bei VMware ESXi-Servern, der auf Kernel-Panik oder Hardware-Fehler hinweist. Bei PCs oder der Nintendo Switch deutet ein plötzlicher violetter Bildschirm auf GPU-Probleme hin.'
+      },
+      {
+        question: 'Was ist der lila Bildschirmfehler?',
+        answer: 'Dieser Fehler deutet in der Regel auf Treiber- oder Anschlussfehler bei Monitoren hin. So ist ein eingefrorener lila Bildschirm unter Ubuntu (ubuntu purple screen) beim Booten auf Grafiktreiber-Konflikte zurückzuführen, während lila Bildschirme auf Fernsehern oft HDMI-Kabelprobleme sind.'
+      },
+      {
+        question: 'Was bedeutet dunkles Lila?',
+        answer: 'Dunkellila steht für Kreativität, Eleganz, beruhigende Harmonie und Meditation. Die Verwendung eines dunkellila Bildschirms oder eines lila Bildschirmschoners (purple screen saver/savers) hilft, den Geist zu entspannen, weshalb Wellness-Apps das sanfte Licht sehr schätzen.'
+      },
+      {
+        question: 'Wie wird dunkles Lila genannt?',
+        answer: 'Dunkellila wird je nach Nuance auch als Pflaume, Aubergine, Indigo oder Violett bezeichnet. Jede dieser Hex-Farben können Sie in unserer Palette manuell eingeben und im Vollbildmodus anzeigen lassen.'
+      },
+      {
+        question: 'Warum ist mein Startbildschirm lila?',
+        answer: 'Wenn Ihre Anzeige plötzlich ein lila Bildschirm auf dem iPhone wird oder Ihr Fernseher einen lila Farbstich hat, sollten Sie die Barrierefreiheit-Farbfilter prüfen oder das Kabel checken. Nutzen Sie unseren lila Bildschirm auf dem Handy für einen sicheren Pixel- und Farbtreue-Test.'
+      }
+    ],
+    hi: [
+      {
+        question: 'बैंगनी स्क्रीन क्या है?',
+        answer: 'एक बैंगनी स्क्रीन (purple screen) ऑनलाइन उपलब्ध एक ठोस, फुल-स्क्रीन बैंगनी रंग का बैकग्राउंड है। यह एक खाली कंप्यूटर स्क्रीन यूटिलिटी के रूप में काम करता है जिसका उपयोग मॉनिटर की सफाई, पिक्सेल टेस्टिंग और कमरे में रंगीन प्रकाश के लिए किया जाता है।'
+      },
+      {
+        question: 'बैंगनी स्क्रीन का रंग कोड क्या है?',
+        answer: 'हमारे टूल का डिफ़ॉल्ट कोड #7C3AED है। आप हमारे आसान कंट्रोल्स का उपयोग करके हल्की बैंगनी स्क्रीन (light purple screen) या डार्क बैंगनी स्क्रीन (dark purple screen) के बीच चुनाव कर सकते हैं।'
+      },
+      {
+        question: 'पर्पल स्क्रीन ऑफ डेथ क्या है?',
+        answer: 'पर्पल स्क्रीन ऑफ डेथ (PSoD) एक एरर स्क्रीन है जो वीएमवेयर ईएसएक्सआई (VMware ESXi) सर्वर पर कर्नल पैनिक या सिस्टम विफलता के कारण दिखाई देती है। लैपटॉप या गेम कंसोल पर यह हार्डवेयर/ग्राफिक्स कार्ड की खराबी को दर्शाता है।'
+      },
+      {
+        question: 'बैंगनी स्क्रीन त्रुटि (एरर) क्या है?',
+        answer: 'यह त्रुटि आमतौर पर डिस्प्ले केबल या ड्राइवर्स की समस्या को दर्शाती है। उदाहरण के लिए, बूट के दौरान उत्पन्न होने वाली उबंटू बैंगनी स्क्रीन (ubuntu purple screen) की समस्या आटोमेटिक ड्राइवर इनकम्पैटिबिलिटी के कारण होती है, जबकि टीवी पर बैंगनी स्क्रीन एचडीएमआई (HDMI) केबल ढीली होने की वजह से होती है।'
+      },
+      {
+        question: 'डार्क बैंगनी का क्या अर्थ है?',
+        answer: 'रंग मनोविज्ञान में डार्क पर्पल रचनात्मकता, शांति, और विलासिता का प्रतीक माना जाता है। डार्क बैंगनी स्क्रीन का बैकग्राउंड या बैंगनी स्क्रीन सेवर (purple screen saver/savers) मन को शांत करने में मदद करता है, इसलिए ध्यान के लिए बनाए गए वेलनेस ऐप्स में इसका व्यापक उपयोग होता है।'
+      },
+      {
+        question: 'गहरे बैंगनी को क्या पुकारा जाता है?',
+        answer: 'गहरे बैंगनी रंग को इसके अलग-अलग शेड्स के अनुसार प्लम (आलू बुखारा), वायलट, जामुनी, बैंगन (औबरजीन) या रॉयल पर्पल कहा जाता है। आप इनमें से किसी भी कोड को हमारे कस्टम पिकर में डालकर फुल पर्पल स्क्रीन देख सकते हैं।'
+      },
+      {
+        question: 'मेरी होम स्क्रीन बैंगनी क्यों है?',
+        answer: 'यदि आपकी आईफोन बैंगनी स्क्रीन बूट लूप में फंस गई है या टीवी स्क्रीन बैंगनी हो गई है, तो सेटिंग्स में जाकर कलर फिल्टर एक्सेसिबिलिटी विकल्प या ढीली केबल्स की जांच करें। अपने फोन की स्क्रीन की जांच करने और डेड पिक्सल्स ढूंढने के लिए आप हमारे टूल का उपयोग कर सकते हैं।'
+      }
+    ],
+    ja: [
+      {
+        question: '紫の画面とは何ですか？',
+        answer: '紫の画面（purple screen）は、ブラウザいっぱいに表示される均一な紫色の背景ツールです。画面の掃除、液晶ドット抜けチェック、部屋の間接照明、カラーセラピー、そして瞑想やリラックスを提供するウェルネスアプリの背景として使用されます。'
+      },
+      {
+        question: '紫の画面の具体的な色は何ですか？',
+        answer: 'デフォルトの色は、鮮やかで均整の取れたパープルカラー（#7C3AED）です。ツール内の設定を使って、好みの 薄い紫の画面（light purple screen）や 濃い紫の画面（dark purple screen）へ簡単に変更できます。'
+      },
+      {
+        question: 'パープルスクリーン・オブ・デスとは何ですか？',
+        answer: 'パープルスクリーン・オブ・デス（PSoD）は、VMware ESXi環境などでカーネルパニックや致命的なハードウェア障害が発生した際に表示されるエラー画面です。任天堂スイッチやパソコンの画面でこれが生じた場合、内部GPUの故障を意味することが多いです。'
+      },
+      {
+        question: 'パープルスクリーンの接続エラーとは？',
+        answer: 'ディスプレイケーブルの接触不良や、起動時グラフィックドライバの問題で発生します। たとえば、Linux起動時の Ubuntuの紫の画面（ubuntu purple screen）でのハングアップはドライバ設定の衝突によるもので、テレビ画面の紫化はHDMI端子の接触不良が主な原因です।'
+      },
+      {
+        question: '濃い紫（ダークパープル）にはどんな効果がありますか？',
+        answer: '色彩心理学において、濃い紫は高貴さ、神秘性、創造性、精神の安定を象徴します। 濃い紫の画面 を表示したり、紫のスクリーンセーバー（purple screen saver/savers）をデスクトップPCに設定することは、瞑想アプリのように脳をリラックスさせる効果があります।'
+      },
+      {
+        question: '濃い紫はどのように呼ばれますか？',
+        answer: 'バリエーションによりバイオレット、プラム（梅色）、茄子黒、葡萄色、ロイヤルパープルなど様々な名称で呼ばれます। カラーコードを使って、お好みの濃い紫の画面を全画面出力できます।'
+      },
+      {
+        question: 'スマホのホーム画面が紫になっているのはなぜですか？',
+        answer: 'iPhoneの紫の画面（iphone purple screen）バグやテレビの起動メニューの紫化は、液晶ケーブルの浮き・水没、またはカラーフィルタ等のアクセシビリティ設定によるものです। 当サイトのスマホ用紫の画面で動作させてテストしてハードの問題か確かめられます।'
       }
     ]
   }
@@ -1736,6 +1948,68 @@ export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-s
           'クリエイター、デザイナー、オンライン講師が温かみのある鮮明な単色背景を必要とする際、便利な <strong>オレンジスクリーンオンライン無料</strong> ツールが検索されます。全画面に <strong>オレンジの画面背景</strong> を表示することは、リモート会議やウェビナー、またはソーシャル通話のバーチャル背景として高い効果を発揮します。 <strong>オレンジ画面オンラインエステ</strong> 設定で発光される <strong>オレンジ画面ライト</strong> は、YouTube用の動画制作やオンラインミーティング時にお肌を元気に見せるオレンジ色のグロウ照明として役立ちます。また、教育用の視覚教材や <strong>子供用オレンジ画面</strong> としても、 <strong>全画面オレンジ</strong> または <strong>総オレンジ画面</strong> を投影してキー情報を目立たせることができます。',
           'クリエイティブな用途に加え、均一な <strong>オレンジ全画面背景</strong> はメンテナンス時の技術的なユーティリティとしても優れています。 <strong>空白のPC画面</strong> をオレンジ色に点灯させることは、ディスプレイの <strong>掃除用オレンジ画面</strong> として最適で、モニター掃除、ドット抜けチェック、液晶ガラス面に固着した汚れや埃の発見が容易に行えます。グラフィックデザイナーや動画編集者にとっては、このオレンジの画面を使ったカラーキャリブレーションでパネルの色表現をテスト・微調整するのに適しています。また、オフラインのデザインモックアップ用に <strong>オレンジ画面オンラインpng</strong> 画像をエクスポートすることも可能です。',
           '多くのユーザーが、就寝前のリラックスしたひとときにウォームオレンジ画面を睡眠補助ライトとして活用しています。刺激の強いブルーライトを和らげることで、スマホの <strong>オレンジ画面スマホ</strong> あるいは <strong>オレンジの画面iPhone</strong> ビジュアルは、ベッドでの夜間読書に快適な睡眠環境を整えます。もし自分のパソコンやスマホの <strong>画面がオレンジ色になるのはなぜ</strong> と疑問に感じたら、それは多くの場合 <strong>オレンジの画面Windows 10</strong> の夜間モード設定によるものですが、当サイトを使用して手動で心地よいオレンジの雰囲気を設定することも可能です。プロジェクター用スクリーンで温かいムードを作ったり、イラストをすかし写しするトレース方法（クラスメートの描いたイラストをコピーする <strong>オレンジ画面トレース方法</strong>）、PCのエラーである <strong>オレンジ画面の死（オレンジスクリーンオブデス）</strong> を検証する際など、当サイトはPCやスマホで瞬時にオレンジ画面を取得するための最もシンプルなウェブユーティリティであり、魅力的なオレンジ画面効果をもたらします。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'purple-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Purple Screen Online Tool & Creative Use Cases',
+        paragraphs: [
+          'When content creators, photographers, and wellness instructors need a premium aesthetic display, they use a <strong>purple screen online</strong> tool. Projecting a <strong>blank purple screen</strong> or using a <strong>purple screen saver</strong> (or <strong>purple screen savers</strong>) is a popular way to craft virtual backdrops for Zoom, Teams, or streaming environments. Displaying a <strong>purple screen to make a vibe</strong> helps set a relaxing mood, which is why developers integrate a <strong>full purple screen</strong> within yoga or meditation applications. You can easily adjust key parameters on this webpage to transition between a <strong>light purple screen</strong> and a <strong>dark purple screen</strong> for custom room lighting, music sessions, or virtual meetings.',
+          'Aside from decor, a solid purple fullscreen background acts as a practical device utility. Launching a <strong>blank computer screen</strong> on a laptop or desktop monitor is ideal as a purple screen/light for display testing, allowing you to easily locate stuck subpixels on LCD panels and verify color accuracy. Many artists use a <strong>purple screen to copy image</strong> outlines, turning their tablet displays into an interactive light box to trace sketches. If you need portable high-resolution assets, you can use our built-in controls to customize the canvas and download a <strong>purple screen wallpaper</strong> in 4K or save a <strong>purple screen bright</strong> graphic for Photoshop projects or visual design mockups.',
+          'For mobile diagnostics and classroom activities, our responsive design is optimized for various platforms. Whether you are troubleshooting system freezes like an <strong>ubuntu purple screen</strong> startup lock, checking graphics rendering on a <strong>purple screen on tv</strong> setup, or testing an <strong>iphone purple screen</strong> tint, this safe utility helps identify hardware anomalies without risking system crashes. It also serves as a playful purple screen for kids to stimulate learning or as a <strong>purple screen for photo</strong> backdrops. With no account signup or heavy downloads required, you can get a <strong>purple screen phone</strong> light source or run beautiful purple screen savers instantly on any computer panel.'
+        ]
+      },
+      es: {
+        heading: 'Herramienta de Pantalla Morada Online y Casos de Uso',
+        paragraphs: [
+          'Cuando los fotógrafos, diseñadores e instructores buscan un fondo estético, recurren a una herramienta de <strong>pantalla morada online</strong> (purple screen online). Proyectar una <strong>pantalla morada en blanco</strong> (blank purple screen) o usar un <strong>salvapantallas morado</strong> (purple screen saver) es excelente para crear fondos decorativos en llamadas virtuales. Utilizar una <strong>pantalla morada para crear ambiente</strong> (purple screen to make a vibe) ayuda a tranquilizar la mente, lo que lo convierte en un recurso ideal para aplicaciones de yoga o meditación. Además, puedes regular los tonos para pasar de una <strong>pantalla morada clara</strong> (light purple screen) a una <strong>pantalla morada oscura</strong> (dark purple screen) según tus necesidades de iluminación.',
+          'Además del diseño, una pantalla morada de fondo completo es un recurso técnico de gran valor. Configurar una <strong>pantalla de ordenador en blanco</strong> (blank computer screen) es ideal como una pantalla morada para limpieza de monitores, facilitando encontrar píxeles muertos o manchas sucias. Muchos estudiantes de arte usan la <strong>pantalla morada para calcar dibujos</strong> (purple screen to copy image) y copiar bocetos usándola como caja de luz. Desde la barra de herramientas, puedes ajustar el brillo y descargar un <strong>fondo de pantalla morado</strong> (purple screen wallpaper) en alta resolución o guardar una imagen de <strong>pantalla morada brillante</strong> (purple screen bright) para tus ideas creativas.',
+          'Para diagnósticos en móviles y actividades educativas, nuestro diseño web se adapta a cualquier monitor. Ya sea que estés comprobando un error de inicio de <strong>pantalla morada en Ubuntu</strong> (ubuntu purple screen), evaluando problemas visuales en una <strong>pantalla morada en la TV</strong> (purple screen on tv) o analizando un glitch de <strong>pantalla morada en iPhone</strong> (iphone purple screen), esta página web permite hacer pruebas seguras. Funciona perfectamente como una <strong>pantalla morada para fotos</strong> (purple screen for photo) de retrato o como <strong>pantalla morada móvil</strong> (purple screen phone). Consigue un panel limpio o activa los salvapantallas morados (purple screen savers) al instante sin suscripciones.'
+        ]
+      },
+      pt: {
+        heading: 'Ferramenta de Tela Roxa Online e Cenários de Uso',
+        paragraphs: [
+          'Quando produtores de conteúdo, instrutores de bem-estar e artistas precisam de um fundo elegante, eles usam uma <strong>tela roxa online</strong> (purple screen online). Exibir uma <strong>tela roxa em branco</strong> (blank purple screen) ou um <strong>protetor de tela roxo</strong> (purple screen saver) é muito requisitado para configurar planos de fundo virtuais no Teams ou Zoom. O uso de uma <strong>tela roxa para criar uma vibe</strong> (purple screen to make a vibe) ajuda na meditação e mindfulness, sendo muito comum em aplicativos de relaxamento. Ajustando a cor, você escolhe entre uma <strong>tela roxa clara</strong> (light purple screen) ou uma <strong>tela roxa escura</strong> (dark purple screen) para iluminação de reuniões ou estúdio de gravação.',
+          'Além de ambientação, o fundo de tela roxo completo atua como uma ferramenta técnica. Transformar um <strong>monitor em branco</strong> (blank computer screen) é excelente como uma tela roxa para limpeza do monitor, identificando poeira e auxiliando no teste de tela para encontrar pixels mortos. Diversos desenhistas usam a <strong>tela roxa para copiar imagens</strong> (purple screen to copy image) colocada sobre o tablet como mesa de luz. No painel lateral, você customiza o brilho e pode baixar um <strong>papel de parede de tela roxa</strong> (purple screen wallpaper) em 4K ou salvar uma imagem de <strong>tela roxa brilhante</strong> (purple screen bright) para edição de fotos.',
+          'Para testes visuais em dispositivos móveis e TVs, nossa interface responde rápido em qualquer aparelho. Seja para identificar problemas de boot na <strong>tela roxa do Ubuntu</strong> (ubuntu purple screen), analisar a reprodução cromática na <strong>tela roxa na TV</strong> (purple screen on tv), ou diagnosticar um glitch de <strong>tela roxa no iPhone</strong> (iphone purple screen), este site é 100% seguro. Ele também serve como uma <strong>tela roxa para fotos</strong> (purple screen for photo) de estúdio ou luz de cor da <strong>tela roxa no celular</strong> (purple screen phone). Aproveite nosso simulador para criar belos protetores de tela roxos (purple screen savers) de forma ágil e sem cadastro.'
+        ]
+      },
+      fr: {
+        heading: 'Outil Écran Violet en Ligne & Cas d\'Usage',
+        paragraphs: [
+          'Lorsque les créateurs, photographes et enseignants recherchent un fond élégant, ils utilisent un <strong>écran violet en ligne</strong> (purple screen online). Projeter un <strong>écran violet vide</strong> (blank purple screen) ou un <strong>économiseur d\'écran violet</strong> (purple screen saver) permet d\'établir d\'excellents arrière-plans pour vos appels Zoom ou diffusions. Utiliser un <strong>écran violet pour instaurer une ambiance</strong> (purple screen to make a vibe) favorise la concentration, raison pour laquelle il est présent dans les applications de relaxation. Notre site permet de varier les nuances entre un <strong>écran violet clair</strong> (light purple screen) et un <strong>écran violet foncé</strong> (dark purple screen) selon la luminosité voulue.',
+          'Outre l\'éclairage de studio, un arrière-plan écran violet plein écran sert pour l\'entretien technique. Allumer un <strong>écran d\'ordinateur vide</strong> (blank computer screen) est idéal comme écran violet pour le nettoyage de moniteur, permettant de vite localiser un pixel défectueux ou de la poussière. Les amateurs de arts appliquent la technique d\'<strong>écran violet pour décalquer une image</strong> (purple screen to copy image), transformant la dalle en table lumineuse. Réglez la colorimétrie pour procéder au <strong>téléchargement d\'un fond d\'écran violet</strong> (purple screen wallpaper) 4K ou générer un rendu d\'<strong>écran violet brillant</strong> (purple screen bright) pour vos montages.',
+          'Pour la maintenance et l\'apprentissage, notre page s\'affiche sans accroc sur tous les moniteurs. Qu\'il s\'agisse de résoudre un démarrage bloqué d\'<strong>écran violet sur Ubuntu</strong> (ubuntu purple screen), d\'inspecter les contrastes avec un <strong>écran violet sur TV</strong> (purple screen on tv) ou de diagnostiquer une teinte d\'<strong>écran violet sur iPhone</strong> (iphone purple screen), ce portail offre un support de calibration parfait. Le site fait également office d\'<strong>écran violet pour photo</strong> (purple screen for photo) de portrait ou d\'<strong>écran violet sur téléphone</strong> (purple screen phone) pour vos selfies, ou encore d\'économiseurs d\'écran violets (purple screen savers).'
+        ]
+      },
+      de: {
+        heading: 'Violetter Bildschirm Online-Tool & Anwendungen',
+        paragraphs: [
+          'Wenn Videoproduzenten, Streamer und Yogalehrer einen ästhetischen Hintergrund benötigen, nutzen sie einen <strong>lila Bildschirm online</strong> (purple screen online). Die Projektion eines <strong>leeren lila Bildschirms</strong> (blank purple screen) oder das Einschalten eines <strong>lila Bildschirmschoners</strong> (purple screen saver) eignet sich hervorragend, um Stimmung in Webinaren zu erzeugen. Ein <strong>lila Bildschirm für eine gemütliche Vibe</strong> (purple screen to make a vibe) hilft bei Meditation und Entspannung, weshalb Wellness-Apps diesen ruhigen Farbton in ihre Benutzeroberfläche einbinden. Passen Sie die Werte einfach an, um zwischen einem <strong>helllila Bildschirm</strong> (light purple screen) und einem <strong>dunkellila Bildschirm</strong> (dark purple screen) zu wählen.',
+          'Neben Lichteffekten dient ein vollflächiger lila Hintergrund als praktisches Tool für Ihren Monitor. Das Anzeigen eines <strong>leeren Computerbildschirms</strong> (blank computer screen) ist ideal als lila Bildschirm zur Reinigung Ihrer Displays, um Fehler in den RGB-Farben zu finden und Staub zu entdecken. Viele Grafik-Einsteiger nutzen den <strong>lila Bildschirm zum Zeichnen und Abpausen von Bildern</strong> (purple screen to copy image) auf einem Tablet. Sie können das Licht anpassen, um ein passendes <strong>lila Bildschirmhintergrundbild</strong> (purple screen wallpaper) in hoher Qualität zu erstellen oder das Licht als <strong>leuchtend lila Bildschirm</strong> (purple screen bright) für Produktfotos zu gebrauchen.',
+          'Für Smart-TVs und Mobilgeräte ist unser Design für alle Auflösungen ausgelegt. Ob bei Diagnosen zum <strong>lila Bildschirm unter Ubuntu</strong> (ubuntu purple screen), bei Farbprüfungen an einem <strong>lila Bildschirm auf dem Fernseher</strong> (purple screen on tv) oder beim Erkennen eines Farbstichs als <strong>lila Bildschirm auf dem iPhone</strong> (iphone purple screen) – diese Web-App ist absolut sicher ausführbar. Sie dient wunderbar als <strong>lila Bildschirm für Fotos</strong> (purple screen for photo) oder als <strong>lila Bildschirm auf dem Handy</strong> (purple screen phone) sowie zum Abspielen schicker lila Bildschirmschoner (purple screen savers) ohne Registrierung.'
+        ]
+      },
+      hi: {
+        heading: 'बैंगनी स्क्रीन ऑनलाइन टूल और रचनात्मक उपयोग',
+        paragraphs: [
+          'जब कंटेंट क्रिएटर, फोटोग्राफर और वेलनेस प्रशिक्षक स्टूडियो बैकग्राउंड बनाना चाहते हैं, तो वे <strong>बैंगनी स्क्रीन ऑनलाइन</strong> (purple screen online) टूल का उपयोग करते हैं। एक <strong>खाली बैंगनी स्क्रीन</strong> (blank purple screen) या <strong>बैंगनी स्क्रीन सेवर</strong> (purple screen saver) का उपयोग करके वीडियो कॉन्फ्रेंस के लिए सुंदर वातावरण तैयार किया जा सकता है। कमरे में <strong>बैंगनी स्क्रीन से वाइब बनाने</strong> (purple screen to make a vibe) से ध्यान और मानसिक विश्राम में सहायता मिलती है। हमारे विकल्पों की मदद से आप <strong>हल्की बैंगनी स्क्रीन</strong> (light purple screen) और <strong>डार्क बैंगनी स्क्रीन</strong> (dark purple screen) के बीच चमक को आसानी से नियंत्रित कर सकते हैं।',
+          'सजावट के अलावा, ठोस बैंगनी फुलस्क्रीन बैकग्राउंड का उपयोग मॉनिटर रखरखाव में अधिक होता है। डिस्प्ले पर <strong>खाली कंप्यूटर स्क्रीन</strong> (blank computer screen) चलाना सफाई के लिए बैंगनी स्क्रीन के रूप में एक उपयोगी डायग्नोस्टिक टूल है, जो फंसे हुए पिक्सेल और गंदगी के धब्बे ढूंढने में मदद करता है। बहुत से छात्र <strong>चित्र कॉपी करने के लिए बैंगनी स्क्रीन</strong> (purple screen to copy image) का उपयोग करते हैं, जिससे उनके टैबलेट की स्क्रीन ट्रेसिंग हेतु लाइट बॉक्स बन जाती है। आप यहाँ से सुंदर <strong>बैंगनी स्क्रीन वॉलपेपर</strong> (purple screen wallpaper) डाउनलोड कर सकते हैं या <strong>चमकीली बैंगनी स्क्रीन</strong> (purple screen bright) को फोटो एडिटिंग में लगा सकते हैं।',
+          'विभिन्न प्लेटफार्मों के लिए अनुकूलित यह टूल अत्यंत प्रतिक्रियाशील है। चाहे उबंटू को बूट करते समय <strong>उबंटू बैंगनी स्क्रीन</strong> (ubuntu purple screen) की विफलता की जांच करनी हो, टीवी पर <strong>टीवी पर बैंगनी स्क्रीन</strong> (purple screen on tv) चलाकर कलर चैनल टेस्ट करने हों, या फिर <strong>आईफोन बैंगनी स्क्रीन</strong> (iphone purple screen) की चमक का आकलन करना हो, यह सुरक्षित यूटिलिटी काफी कारगर है। इसका उपयोग फोटोशूट के लिए <strong>फोटो के लिए बैंगनी स्क्रीन</strong> (purple screen for photo) या पोर्टेबल <strong>बैंगनी स्क्रीन फोन</strong> (purple screen phone) लाइट के रूप में किया जा सकता है, जिससे आप बिना किसी झंझट के सुंदर बैंगनी स्क्रीन सेवर (purple screen savers) चला सकते हैं।'
+        ]
+      },
+      ja: {
+        heading: '紫の画面（Purple Screen）オンラインツールとクリエイティブな用途',
+        paragraphs: [
+          '映像クリエーターや写真家、瞑想のインストラクターが上品な背景を必要とする際、重宝されるのが <strong>紫の画面 オンライン</strong>（purple screen online）ツールです。画面全体に <strong>空白の紫の画面</strong>（blank purple screen）を表示したり、 <strong>紫のスクリーンセーバー</strong>（purple screen saver）を作動させることで、Zoom通話や動画配信のバーチャル背景をご自身で設計できます。さらに、 <strong>紫の画面で雰囲気作り</strong>（purple screen to make a vibe）をすることは、マインドフルネスのアプリ同様に脳をリラックスさせるため、健康アプリでも活用されています。輝度を調整して、 <strong>薄い紫の画面</strong>（light purple screen）から <strong>濃い紫の画面</strong>（dark purple screen）まで柔軟に出力が可能です。',
+          'デザイン目的だけでなく、均一な紫の全画面背景は品質チェック等に役立つ実用的な機能です。ノートPCやモニターに <strong>空白 of PC画面</strong>（blank computer screen）を出すことは、液晶の掃除用紫の画面として最適で、パネル上のドット抜けや汚れの位置がはっきりと確認できます。また、トレースや模写を行うために <strong>画像コピー用紫の画面</strong>（purple screen to copy image）としてタブレットをライトボックス化し、学校の絵をすかし写しするのにも応用されます。サイドメニューを利用すれば、高解像度の <strong>紫の画面の壁紙</strong>（purple screen wallpaper）のダウンロードや、撮影用の <strong>鮮やかな紫の画面</strong>（purple screen bright）を簡単に書き出すことができます。',
+          '本ツールはレスポンシブ対応となっており、様々なハードウェアで起動可能です。PC起動時の <strong>Ubuntuの紫の画面</strong>（ubuntu purple screen）バグの切り分け、モニター設定時の <strong>テレビ用紫の画面</strong>（purple screen on tv）カラーテスト、水没等による <strong>iPhoneの紫の画面</strong>（iphone purple screen）液晶不良など、システムをクラッシュさせる危険なく安心してディスプレイ能力を測定できます。人物撮影用の <strong>撮影用紫の画面</strong>（purple screen for photo）としても、持ち歩き可能な <strong>スマホ用紫の画面</strong>（purple screen phone）光源としても、また安らぎを与える紫のスクリーンセーバー（purple screen savers）としても、すぐにその場でお使いいただけます。'
         ]
       }
     };
