@@ -2100,6 +2100,162 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
         answer: '画面全体がシアン色に偏っている場合、VGAケーブルやHDMI接続ピンの緩みによる赤入力チャンネルの欠落、グラフィックカードのスリープ復帰エラー、またはOSのカラーマネジメント異常が疑われます。本ツールのベタ塗り画面で液晶自体に異常がないか切り分けてください।'
       }
     ]
+  },
+  'brown-screen': {
+    en: [
+      {
+        question: 'What is a brown screen used for?',
+        answer: 'A brown screen is used for reducing eye strain during night screen time, easing visual fatigue with low-contrast warmth, and promoting grounding and steady focus. It is also used as cozy room lighting, warm photography backdrops, or for testing color calibration on displays.'
+      },
+      {
+        question: 'Is brown good for sleep?',
+        answer: 'Yes. Because brown has zero blue light output, it prevents melatonin suppression, making it one of the most soothing colors for late-night device use and preparing your body for restful sleep.'
+      },
+      {
+        question: 'Can brown help with anxiety?',
+        answer: 'Yes, brown is psychologically associated with the earth, stability, and security. Viewing a solid brown screen can foster a sense of being rooted and safe, which helps counter restlessness and reduce anxiety.'
+      },
+      {
+        question: 'Why does brown feel calming?',
+        answer: 'Throughout evolutionary history, humans lived surrounded by natural brown tones like soil, wood, and stone. Our brains are hardwired to recognize brown as familiar, safe, and stable, creating an subconscious feeling of calm.'
+      },
+      {
+        question: 'What chakra is brown associated with?',
+        answer: 'Brown is closely associated with the Root Chakra (Mula-dhara), which governs stability, basic survival needs, grounding, and our connection to the physical earth.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Para qué sirve una pantalla marrón?',
+        answer: 'Se utiliza para reducir la fatiga visual en la noche, facilitar un enfoque constante y lograr conexión a la tierra (grounding). También sirve como luz de ambiente acogedora, iluminación cálida para retratos o como fondo de fotografía.'
+      },
+      {
+        question: '¿Es el marrón bueno para dormir?',
+        answer: 'Sí, debido a que emite una luz muy cálida sin luz azul, ayuda a evitar la supresión de la melatonina, preparando tu mente y cuerpo para un sueño reparador en la noche.'
+      },
+      {
+        question: '¿Puede el marrón aliviar la ansiedad?',
+        answer: 'Sí, el marrón se vincula psicológicamente con la estabilidad del suelo, la seguridad y el refugio. Ver una pantalla marrón sólido puede calmar una mente inquieta, promoviendo una sensación de serenidad.'
+      },
+      {
+        question: '¿Por qué el marrón produce calma?',
+        answer: 'Los humanos evolucionamos rodeados de tonos tierra, corteza de árboles y rocas. Nuestro cerebro interpreta instintivamente estos colores tierra como entornos seguros y familiares, reduciendo la agitación mental.'
+      },
+      {
+        question: '¿Con qué chakra se asocia el color marrón?',
+        answer: 'El marrón se asocia con el Chakra Raíz (Muladhara), que rige el sentido de supervivencia, la estabilidad, la conexión física y el enraizamiento con la tierra.'
+      }
+    ],
+    pt: [
+      {
+        question: 'Para que serve uma tela marrom?',
+        answer: 'É usada para reduzir o cansaço ocular à noite, promover foco contínuo e fazer grounding (enraizamento). Também serve para criar uma iluminação aconchegante de quarto, preenchimento de fotos com tom quente ou testes de dalles.'
+      },
+      {
+        question: 'O marrom é bom para o sono?',
+        answer: 'Sim. A cor marrom possui uma emissão mínima de luz azul. Ela não atrapalha a produção de melatonina, sendo ideal para relaxamento antes de deitar e para uma ótima qualidade de sono.'
+      },
+      {
+        question: 'O marrom pode ajudar com a ansiedade?',
+        answer: 'Sim, a psicologia das cores conecta o marrom à terra, estabilidade e proteção física. Olhar para uma tela marrom sólida em momentos tensos ajuda a desacelerar a mente e reduzir o sentimento de incerteza.'
+      },
+      {
+        question: 'Por que o marrom traz sensação de calma?',
+        answer: 'Nós evoluímos cercados por marrons naturais (terra firme, troncos, rochas). O cérebro humano decodifica tons terrosos como sinônimos de abrigo e estabilidade evolutiva, acalmando o sistema nervoso central.'
+      },
+      {
+        question: 'Qual chakra está associado ao marrom?',
+        answer: 'O marrom está ligado ao Chakra Básico ou Raiz (Muladhara), que representa a nossa conexão com a terra física, ancoragem, segurança essencial e estabilidade.'
+      }
+    ],
+    fr: [
+      {
+        question: 'À quoi sert un écran marron ?',
+        answer: 'Il sert à limiter la fatigue oculaire la nuit, à stimuler une concentration calme et à favoriser l\'enracinement (grounding). On l\'utilise aussi comme éclairage chaleureux de cabine, arrière-plan sépia ou test colorimétrique.'
+      },
+      {
+        question: 'Le marron est-il bon pour le sommeil ?',
+        answer: 'Oui. N\'émettant aucune lumière bleue nocive, la couleur marron ne perturbe pas la synthèse de la mélatonine, ce qui prépare idéalement votre cerveau à s\'endormir.'
+      },
+      {
+        question: 'Le marron aide-t-il contre l\'anxiété ?',
+        answer: 'Oui, le marron est lié à la terre et à la stabilité d\'un foyer sûr. Fixer une image entièrement marron procure un ancrage solide qui apaise le stress et tempère l\'agitation mentale.'
+      },
+      {
+        question: 'Pourquoi le marron est-il si relaxant ?',
+        answer: 'Au fil de l\'évolution, l\'homme a vécu entouré de brun (sol, bois, écorce). Notre inconscient associe ces teintes à la sécurité des éléments naturels, installant ainsi un climat de sérénité.'
+      },
+      {
+        question: 'À quel chakra la couleur marron est-elle associée ?',
+        answer: 'Le marron est associé au Chakra Racine (Muladhara), symbole de stabilité, d\'assise matérielle, d\'enracinement à la terre et de survie.'
+      }
+    ],
+    de: [
+      {
+        question: 'Wofür wird ein brauner Bildschirm verwendet?',
+        answer: 'Er dient zur Reduzierung der Augenbelastung im Dunkeln, zur Förderung von Fokus und mentaler Erdung (Grounding), als gemütliches Studiolicht oder warmer Sepia-Hintergrund für die Kameraästhetik.'
+      },
+      {
+        question: 'Ist Braun gut für den Schlaf?',
+        answer: 'Ja. Ein braunes Display emittiert quasi kein Blaulicht, wodurch die Ausschüttung von Melatonin nicht blockiert wird. Das macht es ideal für die Bildschirmnutzung vor dem Schlafengehen.'
+      },
+      {
+        question: 'Hilft Braun bei Angstzuständen?',
+        answer: 'Ja, Braun vermittelt ein Gefühl von Solidität, Verlässlichkeit und Schutz. Die ruhige, erdfarbene Fläche wirkt ausgleichend und hilft, eine überreizte Psyche bei Stress oder Panik zu zentrieren.'
+      },
+      {
+        question: 'Warum wirkt Braun beruhigend?',
+        answer: 'Aus evolutionärer Sicht waren Menschen stets von Erdtönen, Holz und Felsen umgeben. Unser Gehirn stuft braune Nuancen intuitiv als naturnah und vertraut ein, was zu einer unbewussten Beruhigung führt.'
+      },
+      {
+        question: 'Welchem Chakra wird die Farbe Braun zugeordnet?',
+        answer: 'Braun wird dem Wurzelchakra (Muladhara) zugeordnet, welches für Urvertrauen, Stabilität, Selbsterhaltung und die Erdung steht.'
+      }
+    ],
+    hi: [
+      {
+        question: 'भूरी स्क्रीन (Brown Screen) का उपयोग किस लिए किया जाता है?',
+        answer: 'इसका उपयोग रात में आंखों के तनाव को कम करने, स्थिरता (grounding) बढ़ाने, कमरे को कोजी लुक देने, फोटोग्राफी में गर्म सेपिया लाइटिंग करने और डिस्प्ले कलर टोन जांचने के लिए किया जाता है।'
+      },
+      {
+        question: 'क्या भूरा रंग नींद के लिए अच्छा है?',
+        answer: 'हाँ, भूरे रंग में ब्लू लाइट नगण्य होती है, जो हार्मोन मेलाटोनिन के स्तर को कम नहीं होने देती। इसलिए रात में सोने से पहले इस स्क्रीन को चालू रखने से नींद में खलल नहीं पड़ता।'
+      },
+      {
+        question: 'क्या भूरा रंग चिंता (Anxiety) को दूर करने में मदद कर सकता है?',
+        answer: 'हाँ, मनोवैज्ञानिक रूप से भूरा रंग धरती, स्थिरता और सुरक्षा की भावना से जुड़ा है। ठोस भूरी स्क्रीन को देखने से दिमाग शांत होता है और मानसिक तनाव या घबराहट कम होती है।'
+      },
+      {
+        question: 'भूरा रंग शांत और आरामदायक क्यों महसूस कराता है?',
+        answer: 'मानव विकास की शुरुआत मिट्टी, लकड़ी, पेड़ों की छाल और चट्टानों के साए में हुई है। हमारा अवचेतन मन इन प्राकृतिक रंगों को सुरक्षित और विश्वसनीय मानता है, जिससे शांति का अहसास होता है।'
+      },
+      {
+        question: 'भूरा रंग किस चक्र से संबंधित है?',
+        answer: 'भूरा रंग \'मूलाधार चक्र\' (Root Chakra) से संबंधित है, जो स्थिरता, जीवन की बुनियादी सुरक्षा, और भौतिक पृथ्वी से हमारे संबंध का संचालन करता है।'
+      }
+    ],
+    ja: [
+      {
+        question: '茶色画面はどのような用途に使われますか？',
+        answer: '夜間のブルーライト低減によるドライアイ軽減、集中力維持、グラウンディング（地に足を付ける瞑想）に使用されます。また、木目調のコジーなインテリアの間接照明、セピア写真の背景光源、液晶検査にも適しています।'
+      },
+      {
+        question: '茶色は睡眠に良い影響を与えますか？',
+        answer: 'はい。茶色は脳を覚醒させるブルーライトをほぼ含まないため、睡眠を促進するホルモンであるメラトニンの分泌を妨げず、就寝前のディスプレイテストとして非常に優秀です。'
+      },
+      {
+        question: '茶色は不安（アンザエティ）の和らげに効果的ですか？',
+        answer: 'はい、色彩心理学において茶色は大地、安定、安全性の象徴です。無地の茶色の光を見つめることで心が落ち着き、現実へのつながりを感じることでストレスや不安感情を和らげます。'
+      },
+      {
+        question: 'なぜ茶色は心を落ち着かせるのですか？',
+        answer: '人類は進化の過程で、土や樹木、岩など自然界の茶色に囲まれて暮らしきました。私たちの脳は本能的に茶色を「なじみ深く、安定した安全な場所」と認識するため、心が深く落ち着きます。'
+      },
+      {
+        question: '茶色はどのチャクラに関連していますか？',
+        answer: '茶色は「第1チャクラ（ルートチャクラ／尾骨のチャクラ）」に深く関連しており、グラウンディング、生命力、精神の安定、地球へのつながりを司ります。'
+      }
+    ]
   }
 };
 
@@ -2502,6 +2658,68 @@ export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-s
           'クリエイター、写真家、デザイナー向けに涼しげでテクノロジー感のあるデザインを提供する <strong>シアン画面</strong>（cyan screen）ツールです。 <strong>シアンのスクリーンセーバー</strong>（cyan screen saver）を起動したり、お使いのディスプレイを <strong>シアンスクリーンライトアプリ</strong>（cyan screen light app）のように使用してお部屋の雰囲気を演出できます。 <strong>全画面シアン画面</strong>（full cyan screen）や <strong>空白のシアン画面</strong>（blank cyan screen）を映すことで、美しい <strong>シアン光効果</strong>（cyan light effect）や撮影時の被写体を照らす <strong>撮影用シアンライト</strong>（cyan light for photo）として機能します。',
           'アート用途に加え、液晶モニターの検査やメンテナンスにも単色シアンは欠かせません。 <strong>薄いシアンの画面</strong>（light cyan screen）や <strong>鮮やかなシアン의画面</strong>（bright cyan screen）を表示することで、液晶パネル의カラーバランスを診査し、ドット抜けチェックや画面掃除を快適に行えます。PCのOSクラッシュを疑う <strong>シアンスクリーンオブデス</strong>（cyan screen of death）や液晶ケーブルの接続不良が発生した際、当サイトの安全な <strong>シアンの背景</strong>（cyan background）を表示させて正常に発色するか検証できます。',
           'レスポンシブWebデザインに対応し、どんなスマホやブラウザでもワンタップで全画面表示されます。ビデオ通話のライティングとして <strong>スマホ用シアンライト</strong>（cyan screen light on phone）を使用したり、 <strong>iPhoneのシアン画面</strong>（cyan screen iphone）チェックを行ったり、またコントラストの効いた <strong>濃いシアンの画面</strong>（dark cyan screen）やビビッドな <strong>ホットシアン画面</strong>（hot cyan screen）に切り替えるなど、お好みの <strong>シアン画面カラーコード</strong>（cyan screen color code）を活用してください。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'brown-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Brown Screen Online Tool & Cozy Ambient Aesthetics',
+        paragraphs: [
+          'A solid <strong>brown screen</strong> (brown screen) is one of the most effective tools for reducing blue light exposure and calming a scattered mind. Setting up a warm <strong>brown screen saver</strong> (brown screen saver) or downloading a relaxing <strong>brown screen wallpaper</strong> (brown screen wallpaper) helps turn your device into a cozy, earthy light source. When you need to take a break from the harshness of a standard <strong>white screen</strong> (white screen) or the total absence of light from a <strong>black screen</strong> (black screen), our full brown canvas delivers the perfect <strong>brown screen aesthetic</strong> (brown screen aesthetic) for your home office or bedroom.',
+          'For screen testing and creative photography, this solid earth tone provides optimal warm lighting. From displaying a subtle <strong>light brown screen</strong> (light brown screen) to checking contrast on a <strong>dark brown screen</strong> (dark brown screen), our utility helps you analyze display color consistency and warm up your environment. Graphic designers and artists also use our system to simulate color backdrops analogous to <strong>brown screen printing equipment</strong> (brown screen printing equipment) or to check how details render against natural shades. It\'s an essential resource for photographers looking for sepia fill light or vintage photography lighting.',
+          'Running natively in your web browser, our app supports all operating systems. If you encounter monitor coloring conflicts like a weird <strong>brown screen windows</strong> (brown screen windows) tint, or fear a hardware defect like an undocumented <strong>brown screen of death</strong> (brown screen of death), you can load our clean, full-screen color field to verify that your panel is functioning correctly. Switch between different brightness levels or copy precise HEX and RGB color values in one click to customize your screen experience.'
+        ]
+      },
+      es: {
+        heading: 'Herramienta de Pantalla Marrón y Efecto de Iluminación de Ambiente',
+        paragraphs: [
+          'Esta herramienta de <strong>pantalla marrón</strong> (brown screen) es ideal para quienes buscan descansar la vista del brillo agresivo de una <strong>pantalla blanca</strong> (white screen) o prefieren algo menos oscuro que una <strong>pantalla negra</strong> (black screen). Puedes usarla como un <strong>salvapantallas marrón</strong> (brown screen saver) personalizado o poner un <strong>fondo de pantalla marrón</strong> (brown screen wallpaper) para crear una <strong>estética de pantalla marrón</strong> (brown screen aesthetic) acogedora. Este color terroso natural evoca tranquilidad y ayuda a relajarte.',
+          'En el ámbito técnico y del diseño gráfico, la pantalla unicolor te permite simular tonalidades tipo <strong>equipamiento de serigrafía marrón</strong> (brown screen printing equipment) o probar contrastes. El panel te permite seleccionar entre una <strong>pantalla marrón claro</strong> (light brown screen) y una <strong>pantalla marrón oscuro</strong> (dark brown screen) para realizar test de color en monitores o configurar luces cálidas de relleno sepia para fotografía creativa y retratos de estilo retro.',
+          'Funciona sin problemas como una utilidad de <strong>pantalla marrón en Windows</strong> (brown screen windows) u otros sistemas operativos. Si crees que tu monitor tiene problemas de hardware debido a una inexplicable <strong>pantalla marrón de la muerte</strong> (brown screen of death), puedes invocar nuestro fondo a pantalla completa para diagnosticar el panel. Ajusta el brillo al instante para una comodidad óptima.'
+        ]
+      },
+      pt: {
+        heading: 'Tela Marrom Online: Iluminação Terrosa e Calma Visual',
+        paragraphs: [
+          'A nossa utilidade de <strong>tela marrom</strong> (brown screen) oferece o ambiente perfeito para acalmar a visão em comparação com a luz excessiva de uma <strong>tela branca</strong> (white screen) ou a escuridão total de uma <strong>tela preta</strong> (black screen). Ativar um <strong>protetor de tela marrom</strong> (brown screen saver) ou exibir um <strong>papel de parede de tela marrom</strong> (brown screen wallpaper) traz uma <strong>estética de tela marrom</strong> (brown screen aesthetic) quente e confortável aos seus aparelhos antes de adormecer.',
+          'Para fotógrafos e profissionais criativos, essa cor sólida auxilia como iluminação quente em estúdio e na calibração de displays. Ajustar o monitor para uma <strong>tela marrom claro</strong> (light brown screen) ou verificar a retenção com uma <strong>tela marrom escuro</strong> (dark brown screen) torna a inspeção muito mais rápida. O painel também serve como referência visual simulando <strong>equipamentos de serigrafia marrom</strong> (brown screen printing equipment) ou paletas no design moderno.',
+          'Quer você use a <strong>tela marrom no Windows</strong> (brown screen windows) ou no celular, o aplicativo se adapta perfeitamente sem instalar nada. Em situações em que ocorrem distorções cromáticas ou o monitor exibe um sinal de falha física semelhante a uma <strong>tela marrom da morte</strong> (brown screen of death), a nossa página unicolor serve para testar as cores e garantir a sanidade da tela de forma segura.'
+        ]
+      },
+      fr: {
+        heading: 'Écran Marron en Ligne & Outils d\'Ambiance Chaleureuse',
+        paragraphs: [
+          'Cette application d\'<strong>écran marron</strong> (brown screen) propose un environnement visuel doux et terreux. Que vous souhaitiez vous reposer de la lumière vive d\'un <strong>écran blanc</strong> (white screen) ou de l\'obscurité complète d\'un <strong>écran noir</strong> (black screen), lancer un <strong>économiseur d\'écran marron</strong> (brown screen saver) ou afficher un <strong>fond d\'écran marron</strong> (brown screen wallpaper) permet de configurer une <strong>esthétique d\'écran marron</strong> (brown screen aesthetic) apaisante dans votre pièce ou votre espace de travail.',
+          'Cet outil performatif est également convoité pour le calibrage et la prise de vue. Vous pouvez basculer d\'un <strong>écran marron clair</strong> (light brown screen) à un <strong>écran marron foncé</strong> (dark brown screen) pour tester vos dalles ou générer une lumière chaude sépia. Les designers peuvent s\'en inspirer pour des projets simulant des <strong>équipements de sérigraphie marron</strong> (brown screen printing equipment) ou vérifier l\'harmonie des teintes naturelles neutres.',
+          'Totalement responsive, notre page s\'exécute parfaitement comme <strong>écran marron sur Windows</strong> (brown screen windows) ou macOS. Si votre système présente des anomalies graphiques évoquant un <strong>écran marron de la mort</strong> (brown screen of death), lancez notre outil plein écran pour diagnostiquer le bon état de marche du matériel et ajustez la luminosité d\'un simple glissement.'
+        ]
+      },
+      de: {
+        heading: 'Brauner Bildschirm Online-Tool & Erdige Lichtakzente',
+        paragraphs: [
+          'Unser <strong>brauner Bildschirm</strong> (brown screen) bietet eine hervorragende Möglichkeit, die Augen vor der Helligkeit eines <strong>weißen Bildschirms</strong> (white screen) oder der Dunkelheit eines <strong>schwarzen Bildschirms</strong> (black screen) zu schonen. Mit der Aktivierung eines <strong>braunen Bildschirmschoners</strong> (brown screen saver) oder der Verwendung eines <strong>braunen Bildschirm-Hintergrundbilds</strong> (brown screen wallpaper) schaffen Sie eine gemütliche <strong>braune Bildschirm-Ästhetik</strong> (brown screen aesthetic) für Ihr Smartphone oder Arbeitszimmer.',
+          'Im professionellen Bereich hilft das einfarbige Werkzeug beim Testen von Displays und bei der Lichtgestaltung. Durch das Umschalten zwischen einem <strong>hellbraunen Bildschirm</strong> (light brown screen) und einem <strong>dunkelbraunen Bildschirm</strong> (dark brown screen) können Sie Farbstiche prüfen. Zudem nutzen Designer die Farbfläche zur Simulation von <strong>braunen Siebdruckgeräten</strong> (brown screen printing equipment) oder für warme Sepia-Fotobeleuchtung im Fotostudio.',
+          'Unabhängig davon, ob Sie den <strong>braunen Bildschirm unter Windows</strong> (brown screen windows) oder auf einem Smart-TV aufrufen: Sollte Ihr Monitor Anzeichen von Grafikfehlern wie einen <strong>braunen Bildschirm des Todes</strong> (brown screen of death) aufweisen, hilft Ihnen unser Online-Tool durch die Anzeige einer reinen Vollbildfarbe bei der schnellen Fehlersuche.'
+        ]
+      },
+      hi: {
+        heading: 'भूरी स्क्रीन (Brown Screen) ऑनलाइन टूल और आरामदायक वातावरण',
+        paragraphs: [
+          'यह <strong>भूरी स्क्रीन</strong> (brown screen) टूल आंखों को <strong>सफेद स्क्रीन</strong> (white screen) की तेज चमक या <strong>काली स्क्रीन</strong> (black screen) के घने अंधेरे से राहत देने का बेहतरीन जरिया है। अपने लैपटॉप पर <strong>ब्राउन स्क्रीन सेवर</strong> (brown screen saver) सेट करने या शांत <strong>ब्राउन स्क्रीन वॉलपेपर</strong> (brown screen wallpaper) लगाने से आपका डिवाइस एक सुंदर और कोजी <strong>ब्राउन स्क्रीन एस्थेटिक</strong> (brown screen aesthetic) में बदल जाता है, जो शाम के समय बहुत आरामदायक होता है।',
+          'फोटोग्राफी और स्क्रीन टेस्टिंग के लिए यह एक शानदार उपयोगिता है। <strong>हल्की भूरी स्क्रीन</strong> (light brown screen) और <strong>डार्क ब्राउन स्क्रीन</strong> (dark brown screen) के बीच टॉगल करके आप डिस्प्ले के कलर कंट्रास्ट और ब्राइटनेस की जांच कर सकते हैं। इसके अलावा, डिजाइनर इसका उपयोग <strong>भूरी स्क्रीन प्रिंटिंग उपकरण</strong> (brown screen printing equipment) की रंगत देखने या अपने सेपिया टोन वाले फोटो बैकग्राउंड को बेहतर बनाने में करते हैं।',
+          'यह टूल बिना किसी डाउनलोड के सीधे आपके ब्राउज़र में चलता है। यदि आपको अपने सिस्टम पर <strong>विंडोज ब्राउन स्क्रीन</strong> (brown screen windows) का अनुभव होता है या कोई गंभीर **ब्राउन स्क्रीन ऑफ डेथ** (brown screen of death) एरर का अंदेशा है, तो आप हमारी फुलस्क्रीन रंगीन सतह का उपयोग करके मॉनिटर के पिक्सल और हार्डवेयर का सही परीक्षण कर सकते हैं।'
+        ]
+      },
+      ja: {
+        heading: '茶色画面（Brown Screen）オンラインツールと癒しの光',
+        paragraphs: [
+          '当サイトの <strong>茶色画面</strong>（brown screen）ツールは、眩しい <strong>白色画面</strong>（white screen）や完全な暗闇である <strong>黒色画面</strong>（black screen）とは異なり、コントラストの低い優しい暖色光を提供します。便利な <strong>茶色のスクリーンセーバー</strong>（brown screen saver）として実行したり、心休まる <strong>茶色画面の壁紙</strong>（brown screen wallpaper）を表示して、スマホやPCにレトロで温かみのある <strong>茶色画面のアエステティック</strong>（brown screen aesthetic）を演出するのに最適です。',
+          '写真撮影やディスプレイチェックにおいても、このベタ塗り画面は活躍します。 <strong>薄い茶色の画面</strong>（light brown screen）から <strong>濃い茶色の画面</strong>（dark brown screen）まで調整して、輝度テストや演色性のチェックが可能です。また、 <strong>茶色のシルクスクリーン印刷機器</strong>（brown screen printing equipment）の色合いシミュレーションや、ノスタルジックなセピア調の間接照明としても利用されています。',
+          'このブラウザツールは、 <strong>Windowsの茶色画面</strong>（brown screen windows）をはじめ、各種OSやタブレットに対応しています。一時的なハードトラブルで <strong>茶色画面の死</strong>（brown screen of death）と呼ばれるような異常発色が生じた場合でも、本ツールの無地スクリーンを表示することで、ディスプレイ本体の故障かOS側の問題かを簡単に見極めることができます。'
         ]
       }
     };
