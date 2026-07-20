@@ -1732,6 +1732,218 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
         answer: 'iPhoneの紫の画面（iphone purple screen）バグやテレビの起動メニューの紫化は、液晶ケーブルの浮き・水没、またはカラーフィルタ等のアクセシビリティ設定によるものです। 当サイトのスマホ用紫の画面で動作させてテストしてハードの問題か確かめられます।'
       }
     ]
+  },
+  'pink-screen': {
+    en: [
+      {
+        question: 'Why is my screen pink?',
+        answer: 'A pink screen can indicate a hardware or software issue. On computer monitors and TVs (like a Samsung TV pink screen), it is often caused by a loose HDMI cable, faulty connection pins, or outdated graphics drivers. On an iPhone or MacBook, a sudden pink screen may be a temporary software glitch or a sign of physical screen damage.'
+      },
+      {
+        question: 'What does pink screen mean?',
+        answer: 'A pink screen usually means there is a problem with the display signal or hardware. In critical cases, it is referred to as a "pink screen of death" (GPU crash). In design and everyday use, a blank pink screen simply means a full-color canvas used for photo lighting, screen testing, or workspace vibe customization.'
+      },
+      {
+        question: 'How to get pink home screen for iphone?',
+        answer: 'To get a pink home screen for iPhone, you can configure iOS color filters. Go to Settings > Accessibility > Display & Text Size > Color Filters, toggle them on, select "Color Tint", and choose a pink shade. You can also use our online tool as a pink screen light on phone or save a pink screen color code wallpaper.'
+      },
+      {
+        question: 'How do I make my screen pink?',
+        answer: 'You can easily make your screen pink by visiting our free online pink screen utility. Simply open the tool on your PC, mobile, or TV, and click the Fullscreen button or press the "F" key on your keyboard to get a total pink screen backdrop.'
+      },
+      {
+        question: 'Does pink light exist?',
+        answer: 'Scientifically, pink light does not exist as a single spectral wavelength. Instead, your brain perceives a pink light effect when red and blue light waves are combined. You can use our tool to generate a hot pink screen or light pink screen for creative photography and visual inspiration.'
+      },
+      {
+        question: 'What is the pink screen thing?',
+        answer: 'The "pink screen thing" refers to the trend of using a full pink screen as a soft lighting source for video calls, a design canvas, or a backdrop for creating social media videos. It is also used as a diagnostic tool for checking display uniformity and screen cleaning.'
+      },
+      {
+        question: 'Why is my screen light pink?',
+        answer: 'A light pink screen tint on your device can be caused by active color filters, night shift settings, or software adjustments like True Tone. It can also suggest an aging liquid crystal panel or a slight calibration bias. Open our tool to compare different shades and test your panel accuracy.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Por qué mi pantalla está rosa?',
+        answer: 'Una pantalla rosa puede indicar un problema de hardware o software. En monitores de computadora y televisores (como una pantalla rosa en TV Samsung), suele deberse a un cable HDMI flojo, pines de conexión dañados o controladores gráficos desactualizados. En un iPhone o MacBook, una pantalla rosa repentina puede ser un error de software temporal o un signo de daño físico en la pantalla.'
+      },
+      {
+        question: '¿Qué significa la pantalla rosa?',
+        answer: 'Una pantalla rosa suele significar un problema con la señal de video o el hardware de visualización. En casos críticos, se conoce como "pantalla rosa de la muerte" (fallo de GPU). En el uso diario, una pantalla rosa en blanco simplemente representa un fondo de color sólido para iluminación fotográfica, pruebas de pantalla o decoración estética.'
+      },
+      {
+        question: '¿Cómo tener la pantalla de inicio rosa en iPhone?',
+        answer: 'Para obtener una pantalla de inicio rosa en iPhone, ve a los Ajustes de iOS > Accesibilidad > Pantalla y tamaño de texto > Filtros de color, actívalos, selecciona "Tinte de color" y elige una tonalidad rosa. También puedes usar nuestro sitio web en Safari como luz de pantalla rosa en el teléfono o guardar un fondo rosa de pantalla.'
+      },
+      {
+        question: '¿Cómo hago para que mi pantalla sea rosa?',
+        answer: 'Puedes poner tu pantalla rosa fácilmente ingresando a nuestra herramienta online de pantalla de color rosa. Elige el color rosa, haz clic en el botón de Pantalla Completa o presiona la tecla "F" en tu teclado para rellenar todo el monitor.'
+      },
+      {
+        question: '¿Existe la luz rosa?',
+        answer: 'Científicamente, el rosa no existe como una sola longitud de onda en el espectro. Tu cerebro percibe el efecto de luz rosa cuando las ondas de luz roja y azul se superponen y mezclan a la vez. Puedes simularlo usando nuestra pantalla rosa brillante o rosa claro para tus fotos y decoración.'
+      },
+      {
+        question: '¿Qué es eso de la pantalla rosa?',
+        answer: 'La tendencia de la "pantalla rosa" se refiere a usar una pantalla de color rosa completa como iluminación suave para videollamadas, un lienzo de diseño para inspiración visual o un fondo para grabar videos de redes sociales. También sirve como probador de píxeles y limpieza de monitores.'
+      },
+      {
+        question: '¿Por qué mi pantalla es de color rosa claro?',
+        answer: 'Una pantalla de tono rosa claro puede deberse a opciones de filtros activos, configuraciones de luz nocturna (Night Shift) o ajustes cromáticos del sistema. También puede deberse a un desgaste en las lámparas de retroiluminación. Usa nuestro test de color para comparar niveles y uniformidad.'
+      }
+    ],
+    pt: [
+      {
+        question: 'Por que minha tela está rosa?',
+        answer: 'Uma tela rosa pode indicar um problema de hardware ou de software. Em monitores de computador e TVs (como uma tela rosa na TV Samsung), costuma ser causada por um cabo HDMI frouxo, pinos de conexão danificados ou drivers gráficos desatualizados. Em um iPhone ou MacBook, uma tela rosa repentina pode ser um bug temporário de software ou um sinal de dano físico na tela.'
+      },
+      {
+        question: 'O que significa tela rosa?',
+        answer: 'Uma tela rosa geralmente significa que há um erro na transmissão de sinal de vídeo ou no hardware da tela. Em falhas críticas, isso é chamado de "tela rosa da morte" (pane da GPU). Em tarefas cotidianas e design, uma tela rosa em branco simplesmente representa um fundo uniforme usado para iluminação ou calibração.'
+      },
+      {
+        question: 'Como ter a tela inicial rosa no iPhone?',
+        answer: 'Para deixar a tela inicial do iPhone rosa, acesse os Ajustes do iOS > Acessibilidade > Tela e Tamanho do Texto > Filtros de Cor, ative-os, escolha "Tom de Cor" e defina a cor rosa. Você também pode acessar nosso site no Safari para usar o celular como painel de luz rosa ou salvar um papel de parede rosa.'
+      },
+      {
+        question: 'Como faço para deixar minha tela rosa?',
+        answer: 'Você pode deixar sua tela rosa acessando a nossa ferramenta de tela rosa online gratuita. Abra o utilitário em seu computador ou celular e clique no botão de Tela Cheia ou pressione a tecla "F" no teclado para ver uma tela rosa completa.'
+      },
+      {
+        question: 'A luz rosa existe?',
+        answer: 'Cientificamente, a luz rosa não possui um comprimento de onda espectral único no espectro eletromagnético. O cérebro cria o efeito de luz rosa ao misturar ondas de luz vermelha e azul estimuladas juntas. Você pode usar nossa tela rosa brilhante ou rosa claro para simular essa luz em fotos.'
+      },
+      {
+        question: 'O que é a mania da tela rosa?',
+        answer: 'O termo "tela rosa" refere-se à prática de usar uma tela rosa em tela cheia como fonte de luz suave para chamadas de vídeo, plano de fundo estético para gravar vídeos, ou painel de referência para designers. É útil também para limpeza de monitores e testes de pixels.'
+      },
+      {
+        question: 'Por que minha tela está rosa claro?',
+        answer: 'Uma leve tonalidade rosa claro no ecrã pode surgir devido a filtros de tela ativados, modo de visualização noturna (Night Shift) ou True Tone. Também pode resultar de um painel LCD envelhecido. Acesse nosso painel para testar as cores e verificar a exatidão das subpixels do dispositivo.'
+      }
+    ],
+    fr: [
+      {
+        question: 'Pourquoi mon écran est-il rose?',
+        answer: 'Un écran rose peut indiquer un problème matériel ou logiciel. Sur les moniteurs d\'ordinateurs et les téléviseurs (comme un écran rose sur TV Samsung), cela est souvent causé par un câble HDMI desserré, des broches de connexion endommagées ou des pilotes graphiques obsolètes. Sur un iPhone ou un MacBook, un écran rose soudain peut être un problème logiciel temporaire ou un signe de dommage physique de l\'écran.'
+      },
+      {
+        question: 'Que signifie un écran rose?',
+        answer: 'Un écran rose indique généralement un défaut du signal d\'affichage ou du contrôleur vidéo. Dans les cas graves, on l\'appelle l\'« écran rose de la mort » (plantage graphique). Pour un usage général, un écran rose vide fait office d\'arrière-plan de couleur unie facilitant l\'éclairage de portraits ou la détection de pixels défectueux.'
+      },
+      {
+        question: 'Comment avoir un écran d\'accueil rose sur iPhone?',
+        answer: 'Pour obtenir un écran d\'accueil rose sur iPhone, rendez-vous dans Réglages > Accessibilité > Affichage et taille du texte > Filtres de couleur, activez-les, choisissez "Nuance de couleur" et réglez sur le rose. Vous pouvez aussi ouvrir notre site pour utiliser votre téléphone comme lumière d\'écran rose.'
+      },
+      {
+        question: 'Comment rendre mon écran rose?',
+        answer: 'Pour afficher un écran rose, visitez notre outil d\'écran rose en ligne gratuit. Cliquez sur le bouton Plein Écran ou appuyez sur le raccourci clavier "F" pour remplir tout l\'affichage avec une lumière rose.'
+      },
+      {
+        question: 'La lumière rose existe-t-elle?',
+        answer: 'Scientiquement, la lumière rose n\'a pas de longueur d\'onde propre dans le spectre lumineux. Le cerveau perçoit un effet de lumière rose lorsqu\'il combine simultanément des signaux lumineux rouges et bleus. Notre écran rose vif ou rose clair permet d\'obtenir ce rendu en photo.'
+      },
+      {
+        question: 'C\'est quoi le truc de l\'écran rose?',
+        answer: 'L\'utilisation d\'un « écran rose » fait référence à la méthode consistant à afficher un écran rose uniforme comme source d\'éclairage d\'ambiance pour les réunions, comme fond de création de vidéos ou pour calibrer des moniteurs professionnels. Ce service est aussi un atout pour le nettoyage de dalle.'
+      },
+      {
+        question: 'Pourquoi mon écran est-il rose clair?',
+        answer: 'Un filtre rose clair ou un filtre de couleur appliqué par les options d\'accessibilité d\'iOS/Windows, ou des technologies comme le mode nuit, peuvent teinter l\'écran. Cela peut aussi être dû à une usure d\'un écran LCD rétroéclairé. Lancez notre test de couleur totale afin de vérifier la régularité du rendu.'
+      }
+    ],
+    de: [
+      {
+        question: 'Warum ist mein Bildschirm rosa?',
+        answer: 'Ein rosa Bildschirm kann auf ein Hardware- oder Softwareproblem hinweisen. Bei Computermonitoren und Fernsehern (wie einem rosa Bildschirm beim Samsung TV) wird dies oft durch ein loses HDMI-Kabel, beschädigte Anschlusskontakte oder veraltete Grafiktreiber verursacht. Auf einem iPhone oder MacBook kann ein plötzlicher rosa Bildschirm ein temporärer Softwarefehler oder ein Displayschaden sein.'
+      },
+      {
+        question: 'Was bedeutet ein rosa Bildschirm?',
+        answer: 'Das Erscheinen eines rosa Bildschirms deutet meist auf Übertragungsfehler von der GPU oder Signalfehler hin. Bei schweren Hardwarefehlern spricht man vom "rosa Bildschirm des Todes". Im Alltag stellt eine leere rosa Bildschirmseite einfach eine einfarbige Fläche für weiches Fotolicht oder Monitortests dar.'
+      },
+      {
+        question: 'Wie bekomme ich einen rosa Startbildschirm auf dem iPhone?',
+        answer: 'Gehen Sie am iPhone zu Einstellungen > Bedienungshilfen > Anzeige & Textgröße > Farbfilter. Aktivieren Sie die Filter, wählen Sie "Farbstich" und stellen Sie einen Rosaton ein. Alternativ können Sie dieses Tool als rosa Bildschirm-Taschenlampe auf dem Telefon im Vollbild verwenden.'
+      },
+      {
+        question: 'Wie mache ich meinen Bildschirm rosa?',
+        answer: 'Sie können Ihren Bildschirm ganz einfach rosa machen, indem Sie unser kostenloses Online-Farbwerkzeug aufrufen, den Rosa-Ton auswählen und den Vollbild-Button anklicken (oder einfach die Taste "F" auf Ihrer Tastatur drücken).'
+      },
+      {
+        question: 'Existiert rosa Licht?',
+        answer: 'Physikalisch gesehen existiert Rosa nicht als einzelne Wellenlänge im elektromagnetischen Spektrum. Stattdessen nimmt das menschliche Auge einen rosa Lichteffekt wahr, wenn gleichzeitig rote und blaue Lichtwellen gemischt werden. Mit einem hellrosa Bildschirm oder knallrosa Bildschirm lässt sich dieser effekt simulieren.'
+      },
+      {
+        question: 'Was hat es mit dem rosa Bildschirm auf sich?',
+        answer: 'Die Nutzung eines rosa Bildschirms dient in erster Linie als kreatives Hilfsmittel: zum Beleuchten von Selfies oder Videocalls, als weicher Hintergrund für TikTok-Videos, zum Abzeichnen von Bildern oder als Diagnosewerkzeug beim Monitorreinigen, um Staub und defekte Pixel aufzuspüren.'
+      },
+      {
+        question: 'Warum ist mein Bildschirm hellrosa?',
+        answer: 'Ein hellrosa Bildschirm-Farbstich deines Geräts liegt meist an aktivierten Farbfiltern, dem Nachtmodus oder True-Tone-Regulierung. Bei älteren LCD-Panels kann es auch ein Zeichen für Abnutzung der Kathoden-Beleuchtung sein. Nutzen Sie unser Diagnosetool, um die Farbreinheit Ihres Monitors zu beurteilen.'
+      }
+    ],
+    hi: [
+      {
+        question: 'मेरी स्क्रीन गुलाबी क्यों है?',
+        answer: 'गुलाबी स्क्रीन हार्डवेयर या सॉफ्टवेयर की समस्या का संकेत हो सकती है। कंप्यूटर मॉनिटर और टीवी (जैसे सैमसंग टीवी गुलाबी स्क्रीन) पर, यह अक्सर ढीले एचडीएमआई केबल, खराब कनेक्शन पिन या पुराने ग्राफिक्स ड्राइवर के कारण होता है। आईफोन या मैकबुक पर, अचानक गुलाबी स्क्रीन आना एक अस्थायी सॉफ्टवेयर गड़बड़ी या स्क्रीन को हुए भौतिक नुकसान का संकेत हो सकता है।'
+      },
+      {
+        question: 'मेरी स्क्रीन का गुलाबी होना क्या दर्शाता है?',
+        answer: 'एक गुलाबी स्क्रीन आमतौर पर इंगित करती है कि डिस्प्ले सिग्नल या हार्डवेयर में कोई समस्या है। अधिक गंभीर मामलों में, इसे "पिंक स्क्रीन ऑफ डेथ" (जीपीयू क्रैश) कहा जाता है। आम उपयोग और डिजायन कला में, एक खाली गुलाबी स्क्रीन सिर्फ एक ठोस रंग का कैनवास है जिसका उपयोग फोटो लाइटिंग या स्क्रीन परीक्षण के लिए किया जाता है।'
+      },
+      {
+        question: 'आईफोन के लिए गुलाबी होम स्क्रीन कैसे प्राप्त करें?',
+        answer: 'आईफोन के लिए गुलाबी होम स्क्रीन प्राप्त करने के लिए, आप आईओएस कलर फिल्टर सेटिंग्स को कॉन्फ़िगर कर सकते हैं। इसके लिए सेटिंग्स > एक्सेसिबिलिटी > डिस्प्ले एंड टेक्स्ट साइज > कलर फिल्टर पर जाएं, उन्हें चालू करें, "कलर टिंट" चुनें, और एक गुलाबी रंग का चयन करें। आप फ़ोटो के लिए हमारे ऑनलाइन टूल का भी उपयोग कर सकते हैं।'
+      },
+      {
+        question: 'मैं अपनी स्क्रीन को गुलाबी कैसे करूँ?',
+        answer: 'आप हमारे मुफ्त ऑनलाइन पिंक स्क्रीन टूल पर जाकर अपनी स्क्रीन को आसानी से गुलाबी बना सकते हैं। बस अपने पीसी, मोबाइल या टीवी पर यह टूल खोलें और पूरी स्क्रीन को गुलाबी करने के लिए फुलस्क्रीन बटन पर क्लिक करें या कीबोर्ड पर "F" दबाएं।'
+      },
+      {
+        question: 'क्या गुलाबी रोशनी का कोई अस्तित्व है?',
+        answer: 'वैज्ञानिक रूप से, गुलाबी रंग इलेक्ट्रोमैग्नेटिक स्पेक्ट्रम पर एक स्वतंत्र तरंग दैर्ध्य (वेवलेंथ) के रूप में मौजूद नहीं है। इसके बजाय, जब लाल और नीले प्रकाश तरंगों को एक साथ मिलाया जाता है, तो आपका मस्तिष्क गुलाबी प्रकाश प्रभाव को महसूस करता है। फोटोग्राफी के लिए एक चमकीली या हल्की गुलाबी स्क्रीन का उपयोग करें।'
+      },
+      {
+        question: 'यह पिंक स्क्रीन क्या चीज है?',
+        answer: '"पिंक स्क्रीन" वास्तव में वह माध्यम है जिसके तहत लोग वीडियो कॉल में चेहरे पर हल्की रोशनी डालने, यूट्यूब वीडियो के लिए एक सुंदर बैकग्राउंड सेट करने, या मॉनिटर की सफाई के दौरान डेड पिक्सेल का निरीक्षण करने के लिए फुल पिंक स्क्रीन का उपयोग करते हैं।'
+      },
+      {
+        question: 'मेरी स्क्रीन हल्की गुलाबी क्यों है?',
+        answer: 'आपकी स्क्रीन का रंग हल्का गुलाबी होने का कारण एक्टिव कलर फिल्टर, नाइट मोड (नाईट शिफ्ट) की सक्रियता या आपके डिस्प्ले पैनल का पुराना होना हो सकता है। हमारे टूल का उपयोग करके आप विभिन्न रंगों के स्तरों की तुलना कर सकते हैं और डिस्प्ले की कलर यूनिफॉर्मिटी जांच सकते हैं।'
+      }
+    ],
+    ja: [
+      {
+        question: '画面がピンク色になるのはなぜですか？',
+        answer: '画面が突然ピンク色になるのは、ハードウェアまたはソフトウェアの問題を示しています。パソコン用モニターやテレビ（Samsungのテレビなど）では、HDMIケーブルの緩み、コネクタピンの曲がり、またはグラフィックドライバー of 破損が主な原因です。iPhoneやMacBookの場合、一時的なシステムエラーや、液晶パネル自体の故障・破損が考えられます。'
+      },
+      {
+        question: 'ピンクの画面は何を意味しますか？',
+        answer: '画面がピンク一色になる場合、一般的にはディスプレイ信号の伝送エラーかハードウェアのトラブルを意味します。致命的なクラッシュの場合は「ピンクスクリーンオブデス」と呼ばれます。一方、日常的な使用例では、撮影時の照明用背景や液晶パネルの点検用として一時的に映す無地のピンク表示を意味します。'
+      },
+      {
+        question: 'iPhoneのホーム画面をピンクにする方法は？',
+        answer: 'iPhoneのホーム画面をピンク色に調整するには、iOSの設定アプリから「アクセシビリティ」＞「画面表示とテキストサイズ」＞「カラーフィルタ」をオンにし、「色合い」でピンク（赤系統）を選択します。また、当サイトをSafariで起動しフルスクリーンで使用することで手軽なピンクライトとしても使えます。'
+      },
+      {
+        question: '画面をピンク色にするにはどうすればよいですか？',
+        answer: '当サイトの無料オンライン「ピンク画面」ツールを使い、ブラウザで起動するのが最も簡単です。PCやスマートフォンでツールを開き、全画面ボタンをクリックするか、キーボードの「F」キーを押すだけで、画面一面をピンク色の単一カラーに切り替えられます。'
+      },
+      {
+        question: 'ピンク色の光は科学的に存在しますか？',
+        answer: '科学的には、ピンクは単一の物理的な波長を持つ光（スペクトル色）ではなく、赤色と青色の光（または紫の波長）が混合したものです。目の赤と青の受容体が同時に刺激を感知すると、脳はそれを「ピンク」の光効果として認識します。撮影用の照明やムードライトとして本ツールを活用できます。'
+      },
+      {
+        question: 'ピンク画面の用途には何がありますか？',
+        answer: '「ピンク画面」は、動画配信の明るいバックグラウンド、ビデオ通話時の顔色を優しく照らす間接照明、デザイン用のカラーインスピレーションなどに活用されます。また、液晶ディスプレイを清掃する際、画面の汚れやデッドピクセル（ドット抜け）を見つけやすくする掃除用としても使用されます。'
+      },
+      {
+        question: '画面が薄いピンク色なのはなぜですか？',
+        answer: 'ディスプレイ全体がうっすらとライトピンクを帯びている場合、iOSやWindowのカラーフィルタ、夜間モード（Night Shiftなど）、True Toneの調整が要因として考えられます。また、古い液晶パネルの劣化で偏色している疑いもあります。全画面表示でムラや輝度をテストして状態を確認してください。'
+      }
+    ]
   }
 };
 
@@ -2010,6 +2222,68 @@ export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-s
           '映像クリエーターや写真家、瞑想のインストラクターが上品な背景を必要とする際、重宝されるのが <strong>紫の画面 オンライン</strong>（purple screen online）ツールです。画面全体に <strong>空白の紫の画面</strong>（blank purple screen）を表示したり、 <strong>紫のスクリーンセーバー</strong>（purple screen saver）を作動させることで、Zoom通話や動画配信のバーチャル背景をご自身で設計できます。さらに、 <strong>紫の画面で雰囲気作り</strong>（purple screen to make a vibe）をすることは、マインドフルネスのアプリ同様に脳をリラックスさせるため、健康アプリでも活用されています。輝度を調整して、 <strong>薄い紫の画面</strong>（light purple screen）から <strong>濃い紫の画面</strong>（dark purple screen）まで柔軟に出力が可能です。',
           'デザイン目的だけでなく、均一な紫の全画面背景は品質チェック等に役立つ実用的な機能です。ノートPCやモニターに <strong>空白 of PC画面</strong>（blank computer screen）を出すことは、液晶の掃除用紫の画面として最適で、パネル上のドット抜けや汚れの位置がはっきりと確認できます。また、トレースや模写を行うために <strong>画像コピー用紫の画面</strong>（purple screen to copy image）としてタブレットをライトボックス化し、学校の絵をすかし写しするのにも応用されます。サイドメニューを利用すれば、高解像度の <strong>紫の画面の壁紙</strong>（purple screen wallpaper）のダウンロードや、撮影用の <strong>鮮やかな紫の画面</strong>（purple screen bright）を簡単に書き出すことができます。',
           '本ツールはレスポンシブ対応となっており、様々なハードウェアで起動可能です。PC起動時の <strong>Ubuntuの紫の画面</strong>（ubuntu purple screen）バグの切り分け、モニター設定時の <strong>テレビ用紫の画面</strong>（purple screen on tv）カラーテスト、水没等による <strong>iPhoneの紫の画面</strong>（iphone purple screen）液晶不良など、システムをクラッシュさせる危険なく安心してディスプレイ能力を測定できます。人物撮影用の <strong>撮影用紫の画面</strong>（purple screen for photo）としても、持ち歩き可能な <strong>スマホ用紫の画面</strong>（purple screen phone）光源としても、また安らぎを与える紫のスクリーンセーバー（purple screen savers）としても、すぐにその場でお使いいただけます。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'pink-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Pink Screen Online Tool & Creative Use Cases',
+        paragraphs: [
+          'When content creators, photographers, and UI designers need a premium aesthetic display, they search for a <strong>pink screen</strong> utility. Building a custom <strong>pink screen saver</strong> or turning your monitor into a <strong>pink screen light app</strong> is a wonderful way to improve room vibes, design aesthetics, or video lighting. By displaying a <strong>full pink screen</strong> or <strong>blank pink screen</strong>, you can cast a soothing glow that serves as a <strong>pink light effect</strong> or <strong>pink light for photo</strong> shoots, casting a soft aura in the room.',
+          'Beyond its creative purposes, a solid pink backdrop works as an effective hardware diagnostic tool. Propping up a <strong>light pink screen</strong> or <strong>bright pink screen</strong> makes it easy to run display quality checks on computer monitors or TV panels to identify dead pixels, check panel uniformity, or clean up smudges. Rather than getting alarmed over a critical GPU crash like a <strong>pink screen of death</strong> (which is often compared to a <strong>purple screen</strong> failure) or suspecting physical screen failure after witnessing a sudden <strong>macbook pink screen</strong> or <strong>macbook pro pink screen</strong> tint, you can use our safe online page to verify if it is a transient software error.',
+          'For mobile setups and console checking, our tool is fully optimized for touchscreens and monitors. Whether you need a <strong>pink screen light on phone</strong> to illuminate your desk, want to customize a <strong>pink screen iphone</strong> layout, or are investigating a display issues like a <strong>samsung tv pink screen</strong> or general <strong>pink screen on tv</strong> connectivity drop, our clean web page lets you output a <strong>dark pink screen</strong> or <strong>hot pink screen</strong> instantly. This gives you a continuous <strong>pink screen light video</strong> glow or portrait fill light source without playback ads. Toggle fullscreen mode to match specific <strong>pink screen color code</strong> graphics for all your design and lighting needs.'
+        ]
+      },
+      es: {
+        heading: 'Optimización de Pantalla Rosa y Casos de Uso',
+        paragraphs: [
+          'Cuando los creadores de contenido, fotógrafos y diseñadores de interfaz buscan un fondo con estética premium, recurren a una herramienta de <strong>pantalla rosa</strong> (pink screen). Configurar un <strong>salvapantallas rosa</strong> (pink screen saver) o convertir tu monitor en una aplicación de <strong>luz de pantalla rosa en el teléfono</strong> (pink screen light app) es ideal para mejorar el ambiente de tu espacio o iluminar transmisiones en vivo. Al proyectar una <strong>pantalla rosa de fondo completo</strong> (full pink screen) o <strong>pantalla rosa en blanco</strong> (blank pink screen), generas un relax uniforme mediante un <strong>efecto de luz rosa</strong> (pink light effect) o una fuente de <strong>luz rosa para fotos</strong> (pink light for photo).',
+          'Además del diseño, una pantalla rosa de fondo completo es un práctico recurso técnico. Utilizar una <strong>pantalla rosa claro</strong> (light pink screen) o una <strong>pantalla rosa brillante</strong> (bright pink screen) facilita probar la calidad del monitor o televisor para detectar píxeles muertos y limpiar la pantalla. En lugar de asustarte por un fallo de la GPU como la <strong>pantalla rosa de la muerte</strong> (pink screen of death) o preocuparte al ver una perturbadora <strong>pantalla rosa en MacBook</strong> (macbook pink screen), puedes utilizar nuestra página web para diagnosticar y descartar fallos de hardware.',
+          'Para dispositivos móviles y televisores, nuestra interfaz se adapta perfectamente a cualquier tamaño de pantalla. Ya sea que uses una <strong>pantalla de luz rosa en el móvil</strong> (pink screen light on phone) para iluminar videollamadas, quieras cambiar el estilo de tu <strong>pantalla rosa en iPhone</strong> (pink screen iphone), o necesites diagnosticar problemas de visualización como una <strong>pantalla rosa en TV Samsung</strong> (samsung tv pink screen) o <strong>pantalla rosa en TV</strong> (pink screen on tv) por HDMI, nuestra web te ofrece tonos de <strong>pantalla rosa oscuro</strong> (dark pink screen) o <strong>pantalla rosa fuerte</strong> (hot pink screen) al instante usando el <strong>código de color rosa de pantalla</strong> (pink screen color code) ideal.'
+        ]
+      },
+      pt: {
+        heading: 'Ferramenta de Tela Rosa Online e Casos de Uso',
+        paragraphs: [
+          'Quando criadores de conteúdo, fotógrafos e designers de interfaces necessitam de uma estética premium para suas exibições, eles procuram uma utilidade de <strong>tela rosa</strong> (pink screen). Configurar um <strong>protetor de tela rosa</strong> (pink screen saver) ou transformar o seu monitor num aplicativo de <strong>tela de luz rosa no celular</strong> (pink screen light app) é uma ótima maneira de melhorar a iluminação facial e a decoração. Ao exibir uma <strong>tela rosa completa</strong> (full pink screen) ou uma <strong>tela rosa em branco</strong> (blank pink screen), você projeta um brilho uniforme que atua como <strong>efeito de luz rosa</strong> (pink light effect) ou <strong>luz rosa para fotos</strong> (pink light for photo) em estúdios.',
+          'Além da criatividade, uma tela de fundo rosa sólido funciona como um ótimo teste de monitor. Exibir uma <strong>tela rosa claro</strong> (light pink screen) ou <strong>tela rosa brilhante</strong> (bright pink screen) ajuda no diagnóstico de subpixels de TVs ou monitores de PC e na limpeza da tela. Em vez de se desesperar com falhas graves de sistema como a <strong>tela rosa da morte</strong> (pink screen of death) ou notar um tom estranho de <strong>tela rosa no MacBook</strong> (macbook pink screen) que possa sugerir pane na tela, você pode usar nosso painel online para rodar um teste cromático seguro.',
+          'Para smartphones e TVs, nosso site responde instantaneamente a qualquer proporção de tela. Se você quer uma <strong>tela de luz rosa no celular</strong> (pink screen light on phone), ecrãs para <strong>tela rosa no iPhone</strong> (pink screen iphone), ou está avaliando problemas de sinal de vídeo como uma <strong>tela rosa na TV Samsung</strong> (samsung tv pink screen) ou <strong>tela rosa na TV</strong> (pink screen on tv), nosso utilitário fornece tons de <strong>tela rosa escura</strong> (dark pink screen) ou <strong>tela rosa quente</strong> (hot pink screen) sob demanda. Combine nosso painel em tela cheia com o seu <strong>código de cor de tela rosa</strong> (pink screen color code) predileto.'
+        ]
+      },
+      fr: {
+        heading: 'Outil Écran Rose en Ligne & Applications Créatives',
+        paragraphs: [
+          'Lorsque les photographes, vidéastes et graphistes recherchent un affichage haut de gamme, ils utilisent notre outil d\'<strong>écran rose</strong> (pink screen). Rendre l\'affichage uni avec un <strong>économiseur d\'écran rose</strong> (pink screen saver) ou configurer une <strong>lumière d\'écran rose sur le téléphone</strong> (pink screen light app) est parfait pour ajouter une douce lueur d\'ambiance. Afficher un <strong>écran rose plein écran</strong> (full pink screen) ou un <strong>écran rose vide</strong> (blank pink screen) permet d\'émettre une lumière de portrait idéale comme <strong>effet de lumière rose</strong> (pink light effect) ou <strong>lumière rose pour photo</strong>.',
+          'Outre la décoration, une dalle entièrement colorée en rose facilite la maintenance et la détection d\'anomalies physiques. Projeter un <strong>écran rose clair</strong> (light pink screen) ou un <strong>écran rose vif</strong> (bright pink screen) permet d\'inspecter l\'uniformité de la dalle et de nettoyer l\'écran en repérant mieux les poussières. Plutôt que de paniquer face à un crash de carte graphique comme l\'<strong>écran rose de la mort</strong> (pink screen of death) ou face à un bug d\'<strong>écran rose sur MacBook</strong> (macbook pink screen), lancez notre outil de test pour isoler s\'il s\'agit d\'un défaut physique ou d\'un bug temporaire.',
+          'Pensé pour les mobiles, tablettes et téléviseurs, l\'utilitaire est compatible avec toutes les résolutions. Que ce soit pour projeter un flash de <strong>lumière rose sur téléphone</strong> (pink screen light on phone), personnaliser votre <strong>écran rose sur iPhone</strong> (pink screen iphone) pour les selfies, ou enquêter sur un signal HDMI corrompu sur une <strong>télévision Samsung à écran rose</strong> (samsung tv pink screen) ou une <strong>télévision avec écran rose</strong> (pink screen on tv), notre site fournit des palettes allant de l\'<strong>écran rose foncé</strong> (dark pink screen) à l\'<strong>écran rose fluo</strong> (hot pink screen) correspondant au <strong>code couleur d\'écran rose</strong> (pink screen color code) ajusté.'
+        ]
+      },
+      de: {
+        heading: 'Rosa Bildschirm Online-Tool & Anwendungen',
+        paragraphs: [
+          'Wenn Influencer, Fotografen und Designer eine ansprechende solide Kulisse benötigen, suchen sie nach einer <strong>rosa Bildschirm</strong>-Alternative (pink screen). Das Aktivieren eines <strong>rosa Bildschirmschoners</strong> (pink screen saver) oder die Nutzung des Displays als <strong>rosa Bildschirm-Taschenlampe</strong> (pink screen light app) eignet sich hervorragend, um die Raumbeleuchtung zu verbessern. Ein <strong>rosa Bildschirm in Vollbild</strong> (full pink screen) oder ein <strong>leerer rosa Bildschirm</strong> (blank pink screen) wirft ein sanftes Licht, das sich hervorragend als <strong>rosa Lichteffekt</strong> (pink light effect) oder als <strong>rosa Licht für Fotos</strong> (pink light for photo) für Porträtaufnahmen nutzen lässt.',
+          'Zusätzlich zu kreativen Ambienten hilft ein rosa Hintergrund bei der schnellen Überprüfung von Displays. Ein <strong>hellrosa Bildschirm</strong> (light pink screen) oder ein <strong>knallrosa Bildschirm</strong> (bright pink screen) macht Staub und fehlerhafte Pixel auf PC-Monitoren oder Fernsehern sofort sichtbar. Anstatt bei einem Systemabsturz wie dem <strong>rosa Bildschirm des Todes</strong> (pink screen of death) oder einer plötzlichen Verfärbung wie dem <strong>MacBook rosa Bildschirm</strong> (macbook pink screen) sofort an einen Hardware-Defekt zu denken, können Sie mit unserer Seite manuell testen, ob der Monitor die Farbe korrekt darstellt.',
+          'Dank des responsiven Designs läuft unser Tool hervorragend auf Handys und Smart-TVs. Egal, ob Sie ein <strong>rosa Bildschirmlicht auf dem Smartphone</strong> (pink screen light on phone) wünschen, einen <strong>rosa Bildschirm auf dem iPhone</strong> (pink screen iphone) testen oder Signalfehler wie einen <strong>rosa Bildschirm beim Samsung TV</strong> (samsung tv pink screen) oder <strong>rosa Bildschirm auf dem Fernseher</strong> (pink screen on tv) untersuchen – unser Tool liefert sofort einen <strong>dunkelrosa Bildschirm</strong> (dark pink screen) oder <strong>hot-pink Bildschirm</strong> (hot pink screen). Passen Sie den <strong>Farbcode für den rosa Bildschirm</strong> (pink screen color code) nach Belieben an.'
+        ]
+      },
+      hi: {
+        heading: 'गुलाबी स्क्रीन ऑनलाइन टूल और रचनात्मक उपयोग',
+        paragraphs: [
+          'जब रचनाकारों, फोटोग्राफरों और डिजाइनरों को एक सुंदर ठोस पृष्ठभूमि की आवश्यकता होती है, तो वे एक विश्वसनीय <strong>गुलाबी स्क्रीन</strong> (pink screen) टूल खोजते हैं। डेस्कटॉप पर <strong>पिंक स्क्रीन सेवर</strong> (pink screen saver) सेट करना या अपने मॉनिटर को <strong>पिंक स्क्रीन लाइट ऐप</strong> (pink screen light app) में बदलना कमरे का माहौल और वीडियो लाइटिंग सुधारने का बेहतरीन तरीका है। पूरी स्क्रीन को <strong>पूरी गुलाबी स्क्रीन</strong> (full pink screen) या <strong>खाली गुलाबी स्क्रीन</strong> (blank pink screen) में बदलकर, आप एक शांत और कोमल <strong>गुलाबी प्रकाश प्रभाव</strong> (pink light effect) या <strong>फोटो के लिए गुलाबी रोशनी</strong> (pink light for photo) प्राप्त कर सकते हैं।',
+          'सजावट के अलावा, ठोस गुलाबी फुलस्क्रीन बैकग्राउंड डिस्प्ले की सेहत जांचने का एक व्यावहारिक साधन है। एक <strong>हल्की गुलाबी स्क्रीन</strong> (light pink screen) या <strong>चमकीली गुलाबी स्क्रीन</strong> (bright pink screen) का उपयोग करके आप टीवी पैनल या पीसी मॉनिटर पर डेड पिक्सेल का परीक्षण कर सकते हैं और स्क्रीन साफ कर सकते हैं। अचानक सिस्टम क्रैश होने वाले <strong>पिंक स्क्रीन ऑफ डेथ</strong> (pink screen of death) या लैपटॉप पर होने वाली <strong>मैकबुक गुलाबी स्क्रीन</strong> (macbook pink screen) की समस्या की जांच करने के लिए हमारा सुरक्षित ऑनलाइन पेज काम आता है।',
+          'सभी मोबाइल और टैबलेट के लिए अनुकूलित, यह वेब पेज बहुत आसानी से काम करता है। चाहे आपको चेहरे पर ग्लो लाने के लिए <strong>फोन पर गुलाबी रोशनी</strong> (pink screen light on phone) चाहिए, अपने <strong>आईफोन गुलाबी स्क्रीन</strong> (pink screen iphone) को कस्टमाइज़ करना हो, या फिर टीवी में आ रहे एरर जैसे <strong>सैमसंग टीवी गुलाबी स्क्रीन</strong> (samsung tv pink screen) या <strong>टीवी पर गुलाबी स्क्रीन</strong> (pink screen on tv) की एचडीएमआई कनेक्टिविटी समस्या को हल करना हो, यह टूल आपको <strong>डार्क पिंक स्क्रीन</strong> (dark pink screen) और <strong>हॉट पिंक स्क्रीन</strong> (hot pink screen) की सुविधा तुरंत प्रदान करता है। Fullscreen टॉगल करके आप पसंदीदा <strong>पिंक स्क्रीन कलर कोड</strong> (pink screen color code) का चयन कर सकते हैं।'
+        ]
+      },
+      ja: {
+        heading: 'ピンク画面（Pink Screen）オンラインツールと主な用途',
+        paragraphs: [
+          'クリエイターや写真家、デザイナーがおしゃれな背景を必要とする際、便利な <strong>ピンク画面</strong>（pink screen）ツールが活用されます。 <strong>ピンクのスクリーンセーバー</strong>（pink screen saver）を起動したり、お使いのモニターを <strong>ピンクスクリーンライトアプリ</strong>（pink screen light app）のように使用して、お部屋の雰囲気や動画のライティングを最適化できます。 <strong>全画面ピンク画面</strong>（full pink screen）や <strong>空白のピンク画面</strong>（blank pink screen）を映すことで、撮影時の <strong>ピンク光効果</strong>（pink light effect）や <strong>撮影用ピンクライト</strong>（pink light for photo）として機能し、被写体を温かい光で優しく包み込みます。',
+          'クリエイティブな使用だけでなく、単一のピンクスクリーンはモニター検査にも実用的なツールとなります。 <strong>薄いピンクの画面</strong>（light pink screen）や <strong>鮮やかなピンクの画面</strong>（bright pink screen）を表示することで、テレビやPCモニターのドット抜けテスト、および画面掃除の際の見やすさを向上させます。GPU不良による液晶フリーズの <strong>ピンクスクリーンオブデス</strong>（pink screen of death）が発生した場合や、 <strong>MacBookのピンク画面</strong>（macbook pink screen）偏色などの液晶トラブルの際、それが一時的なシステム起因かハードウェアの破損かを安全に試験できます。',
+          'スマホやTVなど全デバイスにレスポンシブ動作し、ブラウザで瞬時に展開可能です。通話時に顔色を照らす <strong>スマホ用ピンクライト</strong>（pink screen light on phone）、 <strong>iPhoneのピンク画面</strong>（pink screen iphone）配色チェック、 <strong>Samsung製テレビのピンク画面</strong>（samsung tv pink screen）や一般的な <strong>テレビのピンク画面</strong>（pink screen on tv）エラー時の接続診断など、 <strong>濃いピンクの画面</strong>（dark pink screen）や <strong>ホットピンク画面</strong>（hot pink screen）を使い分けることで、最適な照明と検品が可能です。全画面モードで特定の <strong>ピンク画面カラーコード</strong>（pink screen color code）に合わせ、あらゆる用途にお役立てください。'
         ]
       }
     };
