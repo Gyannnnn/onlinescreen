@@ -521,6 +521,7 @@ const toolNames: Record<string, Partial<Record<Locale, string>>> = {
   'snow-screen': { es: 'Pantalla de Nieve', pt: 'Tela de Neve', fr: 'Écran de Neige', de: 'Schneefall-Bildschirm', hi: 'स्नो स्क्रीन', ja: '雪の画面' },
   'matrix-screen': { es: 'Pantalla Matrix', pt: 'Tela Matrix', fr: 'Écran Matrix', de: 'Matrix-Bildschirm', hi: 'मैट्रिक्स स्क्रीन', ja: 'マトリックス画面' },
   'clock-screen': { es: 'Reloj Flip', pt: 'Relógio Flip', fr: 'Horloge à Volets', de: 'Klipp-Klapp-Uhr', hi: 'फ्लिप घड़ी', ja: 'フリップ時計' },
+  'rgb-screen': { es: 'Pantalla RGB', pt: 'Tela RGB', fr: 'Écran RGB', de: 'RGB-Bildschirm', hi: 'आरजीबी स्क्रीन', ja: 'RGB画面' },
 };
 
 const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
@@ -539,6 +540,14 @@ const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
     de: 'Ein Vollbild-Farbverlauf-Bildschirm für Banding-Tests, kreative Hintergründe und Ambient-Lighting mit nahtlosen Farbübergängen.',
     hi: 'कलर बैंडिंग परीक्षण, रचनात्मक पृष्ठभूमि और चिकनी रंग संक्रमणों के साथ परिवेश प्रकाश प्रभाव के लिए एक फुलस्क्रीन ग्रेडिएंट स्क्रीन टूल।',
     ja: '液晶のカラーバンディング試験や動画用背景、なめらかな変色グラフィックによる間接照明に最適な全画面グラデーション表示ツール。',
+  },
+  'rgb-screen': {
+    es: 'Un probador de pantalla RGB en pantalla completa para calibrar canales de color, encontrar píxeles muertos y verificar la uniformidad del display.',
+    pt: 'Um testador de tela RGB em tela cheia para calibrar canais de cores primárias, encontrar pixels mortos e checar a uniformidade do display.',
+    fr: 'Un outil écran RGB plein écran pour calibrer vos sous-pixels, détecter les pixels morts et vérifier l\'uniformité de votre dalle.',
+    de: 'Ein Vollbild-RGB-Bildschirmtest zur Farbkanal-Kalibrierung, Pixelfehlersuche und Gleichmäßigkeitsprüfung Ihres Displays.',
+    hi: 'रंग चैनलों को कैलिब्रेट करने, खराब पिक्सल खोजने और डिस्प्ले की यूनिफॉर्मिटी जांचने के लिए एक फुलस्क्रीन आरजीबी स्क्रीन टूल।',
+    ja: 'カラーチャネルのキャリブレーション、ドット抜けチェック、液晶ディスプレイの均一性診断に役立つ全画面RGB画面テストツール。',
   },
   'white-screen': { hi: 'सफाई जांच, नरम रोशनी, डिस्प्ले निरीक्षण और फोटोग्राफी फिल के लिए एक शुद्ध सफेद फुलस्क्रीन टूल।' },
   'black-screen': { hi: 'OLED जांच, डेड पिक्सल खोज, चकाचौंध कम करने और अंधेरे कमरे में उपयोग के लिए एक वास्तविक काली फुलस्क्रीन सतह।' },
@@ -3022,6 +3031,162 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
         answer: 'はい。モニターの輝度自動調整（ダイナミックコントラスト）やスマート省エネ機能は、バックライトの加減を急激に行うため階調表現を損なってしまい、本来滑らかな表示をさらにバンディングが目立つ状態にします。'
       }
     ]
+  },
+  'rgb-screen': {
+    en: [
+      {
+        question: 'What is an RGB screen test used for?',
+        answer: 'An RGB screen test is used to check the health of red, green, and blue subpixels on a display. By displaying solid primary colors, users can isolate display channel issues, find stuck or dead pixels, and calibrate color rendering.'
+      },
+      {
+        question: 'How does the RGB screen light help analyze subpixels?',
+        answer: 'A display consists of tiny red, green, and blue subpixels. Projected in full screen, each primary RGB color feeds only specific subpixels of the panel. This makes it easy to check if any specific color channel fails or shows uneven illumination.'
+      },
+      {
+        question: 'Can an RGB test detect dead and stuck pixels?',
+        answer: 'Yes. Stuck pixels are subpixels that stay permanently on, often appearing as a bright green, red, or blue dot on contrasting screens. Dead pixels remain dark. Running an RGB screen test helps you identify exactly which channel is affected.'
+      },
+      {
+        question: 'How do I calibrate my monitor using RGB values?',
+        answer: 'Open our RGB tool in full screen mode, type or copy specific RGB values, and match them against reference devices. You can adjust the hardware color channels (Red, Green, Blue) in your monitor\'s OSD menu until the screen output matches your desired color profile.'
+      },
+      {
+        question: 'Should I perform the RGB test at max brightness?',
+        answer: 'Yes, testing at maximum brightness is recommended for finding stuck subpixels and backlight bleed. However, you should also lower the brightness to inspect panel uniformity and check color balance under average viewing conditions.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Para qué se utiliza una prueba de pantalla RGB?',
+        answer: 'Una prueba de pantalla RGB se utiliza para comprobar la salud de los subpíxeles rojos, verdes y azules de un panel. Al alternar entre los colores primarios sólidos, se pueden diagnosticar fallos en los canales de color, encontrar píxeles muertos y calibrar el monitor.'
+      },
+      {
+        question: '¿Cómo ayuda la luz de pantalla RGB a analizar los subpíxeles?',
+        answer: 'Los paneles digitales se componen de miles de minúsculos subpíxeles RGB (rojo, verde, azul). Al proyectar cada uno de estos colores en pantalla completa, se encienden solo los subpíxeles correspondientes, aislando cualquier defecto de iluminación o mezcla en dicho canal.'
+      },
+      {
+        question: '¿Puede un test de pantalla RGB detectar píxeles muertos y atascados?',
+        answer: 'Sí. Los píxeles atascados permanecen iluminados en un solo color (como rojo, verde o azul) incluso sobre un fondo diferente. Los píxeles muertos permanecen apagados (negros). Al ciclar entre pantallas de color RGB completas, se hace evidente qué canal falla.'
+      },
+      {
+        question: '¿Cómo calibro mi monitor usando valores RGB?',
+        answer: 'Abre nuestra herramienta RGB a pantalla completa, introduce los valores RGB exactos y compáralos con pantallas de referencia. Puedes ajustar las ganancias de color (rojo, verde y azul) en el menú interno (OSD) del monitor hasta equilibrar el color.'
+      },
+      {
+        question: '¿Debo hacer la prueba de color RGB al brillo máximo?',
+        answer: 'Sí, es recomendable llevar la pantalla al brillo máximo para detectar fugas de retroiluminación y subpíxeles atascados en tonos claros. Tras esto, disminuye el brillo para evaluar la uniformidad del color en condiciones normales de uso.'
+      }
+    ],
+    pt: [
+      {
+        question: 'Para que serve um teste de tela RGB?',
+        answer: 'Um teste de tela RGB é usado para verificar a saúde dos subpixels vermelho, verde e azul de um display. Projetar cores primárias puras em tela cheia ajuda a isolar problemas de canais de cor cromáticos, localizar pixels travados e calibrar o monitor.'
+      },
+      {
+        question: 'Como a luz de tela RGB ajuda a analisar subpixels?',
+        answer: 'As telas modernas utilizam pequenos conjuntos de subpixels RGB. Ao exibir cada cor primária separadamente em tela cheia, o monitor ativa unicamente os subpixels daquela cor específica, permitindo identificar áreas apagadas ou com iluminação irregular.'
+      },
+      {
+        question: 'O teste RGB consegue detectar pixels mortos e travados?',
+        answer: 'Sim. Pixels travados (stuck) ficam acesos direto, aparecendo como um ponto vermelho, verde ou azul persistente. Pixels mortos (dead) não acendem e ficam pretos. Rodar o teste de cor RGB facilita o diagnóstico de qual canal está defeituoso.'
+      },
+      {
+        question: 'Como calibrar o monitor usando canais RGB?',
+        answer: 'Abra a ferramenta RGB em tela cheia, insira valores RGB específicos e compare o resultado com um monitor de referência. Você pode ajustar as propriedades de cor (R, G, B) no menu OSD do monitor físico até obter a reprodução fiel desejada.'
+      },
+      {
+        question: 'Devo realizar o teste RGB com o brilho máximo?',
+        answer: 'Sim, testar com o brilho no máximo ajuda a flagrar vazamentos de retroiluminação e subpixels presos em áreas claras. Em seguida, diminua o brilho para inspecionar a uniformidade cromática geral do painel.'
+      }
+    ],
+    fr: [
+      {
+        question: 'À quoi sert un test d\'écran RGB ?',
+        answer: 'Un test d\'écran RGB sert à analyser la santé des sous-pixels rouges, verts et bleus d\'un moniteur. En affichant des couleurs primaires pures, l\'utilisateur peut repérer les anomalies de canaux de couleur, détecter les pixels morts et calibrer le blanc.'
+      },
+      {
+        question: 'Comment l\'éclairage d\'écran RGB aide-t-il à inspecter la dalle ?',
+        answer: 'Chaque pixel d\'une dalle numérique est divisé en sous-pixels RGB. En affichant un écran rouge, vert ou bleu complet, seuls les sous-pixels de la couleur choisie s\'illuminent, ce qui isole instantanément les anomalies d\'éclairage ou de canal.'
+      },
+      {
+        question: 'Le test RGB peut-il localiser les pixels morts et bloqués ?',
+        answer: 'Oui. Les pixels bloqués restent continuellement allumés (souvent sous forme de point rouge, vert ou bleu), tandis que les pixels morts restent sombres. Le balayage RGB permet d\'identifier précisément quel canal ou sous-pixel est endommagé.'
+      },
+      {
+        question: 'Comment étalonner mon écran avec les composants RGB ?',
+        answer: 'Affichez notre utilitaire RGB en plein écran, entrez vos valeurs de référence et observez le rendu. Vous pouvez ajuster les réglages des canaux rouge, vert et bleu via les menus système ou le menu physique (OSD) du moniteur pour corriger la dérive.'
+      },
+      {
+        question: 'Faut-il tester l\'écran RGB avec la luminosité au maximum ?',
+        answer: 'Oui. La luminosité maximale facilite la détection des sous-pixels bloqués et des fuites de lumière. Il est ensuite conseillé de réduire la luminosité pour inspecter l\'homogénéité du rétroéclairage à un niveau d\'usage classique.'
+      }
+    ],
+    de: [
+      {
+        question: 'Wozu dient ein RGB-Bildschirmtest?',
+        answer: 'Ein RGB-Bildschirmtest wird verwendet, um die Funktion der roten, grünen und blauen Subpixel eines Panels zu prüfen. Durch Anzeige reinster Grundfarben lassen sich defekte Farbkanäle isolieren, Pixelfehler finden und Farbabweichungen korrigieren.'
+      },
+      {
+        question: 'Wie hilft die RGB-Bildschirmbeleuchtung beim Testen?',
+        answer: 'Digitale Bildschirme bestehen aus winzigen roten, grünen und blauen Subpixeln. Durch die vollflächige RGB-Darstellung wird jeweils nur eine Subpixel-Gattung adressiert, wodurch Fehler oder ungleichmäßige Ausleuchtungen im Nu auffallen.'
+      },
+      {
+        question: 'Kann ein RGB-Test tote und hängende Pixel finden?',
+        answer: 'Ja. Ein hängender Pixel (stuck) leuchtet dauerhaft in einer Farbe (z. B. rot, grün oder blau) auf kontrastierendem Grund. Ein toter Pixel (dead) bleibt schwarz. Der RGB-Farbwechsel zeigt sofort, welcher Farbkanal defekt ist.'
+      },
+      {
+        question: 'Wie kalibriere ich meinen Monitor mit RGB-Werten?',
+        answer: 'Öffnen Sie das RGB-Tool im Vollbildmodus, geben Sie die gewünschten RGB-Farbwerte ein und vergleichen Sie das Ergebnis mit Referenzen. Nutzen Sie das OSD-Menü Ihres Monitors, um die Farbkanäle (Rot, Grün, Blau) anzupassen, bis der Abgleich passt.'
+      },
+      {
+        question: 'Sollte ich den RGB-Test bei maximaler Helligkeit machen?',
+        answer: 'Ja, für das Entdecken hängender Subpixel und Backlight-Bleeding ist maximale Helligkeit ideal. Reduzieren Sie die Helligkeit anschließend, um die allgemeine Farbuniformität bei durchschnittlichen Lichtverhältnissen zu prüfen.'
+      }
+    ],
+    hi: [
+      {
+        question: 'आरजीबी स्क्रीन टेस्ट का उपयोग किस लिए किया जाता है?',
+        answer: 'आरजीबी स्क्रीन टेस्ट का उपयोग डिस्प्ले के लाल, हरे और नीले सब-पिक्सल्स के स्वास्थ्य की जांच करने के लिए किया जाता है। मुख्य रंगों को चलाकर, उपयोगकर्ता आसानी से डिस्प्ले चैनल की समस्याओं, खराब पिक्सल्स को ढूंढ सकते हैं और रंगों को कैलिब्रेट कर सकते हैं।'
+      },
+      {
+        question: 'पिक्सल्स की जांच में आरजीबी स्क्रीन लाइट कैसे मदद करती है?',
+        answer: 'एक डिजिटल स्क्रीन हजारों छोटे लाल (R), हरे (G) और नीले (B) सब-पिक्सल्स से बनी होती है। स्क्रीन को फुल स्क्रीन करने पर, प्रत्येक मुख्य आरजीबी रंग केवल विशेष सब-पिक्सल्स को उजागर करता है, जिससे चैनल की खामियां पकड़ में आ जाती हैं।'
+      },
+      {
+        question: 'क्या एक आरजीबी टेस्ट डेड और अटके हुए पिक्सल का पता लगा सकता है?',
+        answer: 'हां। अटका हुआ पिक्सेल (stuck pixel) हमेशा चमकदार हरा, लाल या नीला दिखाई देता है, जबकि बंद या खराब पिक्सेल (dead pixel) हमेशा काला रहता है। आरजीबी टेस्ट में स्क्रीन का रंग बदलने पर यह तुरंत सामने आ जाता है।'
+      },
+      {
+        question: 'मैं आरजीबी (RGB) मानों का उपयोग करके अपने मॉनिटर को कैसे कैलिब्रेट कर सकता हूं?',
+        answer: 'हमारे ऑनलाइन टूल में आरजीबी पेज को फुल स्क्रीन करें, सटीक मान भरें, और फिर अपने मॉनिटर के भौतिक मेनू (OSD) पर जाकर लाल, हरे और नीले रंग के स्तर को तब तक ट्यून करें जब तक कि स्क्रीन का रंग वांछित कलर प्रोफाइल से बिल्कुल मेल न खाए।'
+      },
+      {
+        question: 'क्या मुझे अधिकतम ब्राइटनेस पर आरजीबी टेस्ट करना चाहिए?',
+        answer: 'हां, अटके हुए सब-पिक्सल्स और बैकलाइट लीकेज का पता लगाने के लिए अधिकतम ब्राइटनेस सबसे उपयुक्त है। इसके बाद, सामान्य उपयोग के माहौल में स्क्रीन का संतुलन देखने के लिए ब्राइटनेस को कम करके भी जांच करनी चाहिए।'
+      }
+    ],
+    ja: [
+      {
+        question: 'RGB画面テストは何のために使用されますか？',
+        answer: '赤・緑・青の各サブピクセルのドット抜けやカラーチャンネルの健全性を検査するために使用されます。液晶パネルに物理的な原色単色を表示することで、特定の出力チャンネルの故障を切り分け、正しい色再現性をチェックできます।'
+      },
+      {
+        question: 'RGBフルカラースクリーンライトはどのように液晶のチェックに役立ちますか？',
+        answer: '液晶画面は非常に小さなRGB（赤・緑・青）のサブピクセルから構成されています。ディスプレイに純彩色の各カラーを全画面投射することで、特定のサブピクセルだけを発光させることができ、光り方のばらつきや素子の破損を視覚的に検知できます।'
+      },
+      {
+        question: 'RGBカラーテストでドット抜けや常時点灯ピクセルを特定できますか？',
+        answer: '可能です。常に特定の原色（赤、緑、青など）で光り続ける常時点灯（スタックピクセル）や、消灯したままのドット抜け（デッドピクセル）は、画面全体のRGBカラーを交互に入力することで、異常があるサブピクセルを瞬時に発見できます।'
+      },
+      {
+        question: 'RGBカラーコードを指定してモニターを調整するには？',
+        answer: '当ツールのRGBコード入力欄に任意の数値を入力して全画面表示し、カラーチャートと比較します。色表現にズレがある場合、液晶モニター側のOSD設定メニュー等から赤・緑・青（R/G/B）のゲイン数値を手動で変更し調整します।'
+      },
+      {
+        question: 'RGBテスト時のモニターの輝度は最大値にした方が良いですか？',
+        answer: 'はい、常時点灯ピクセルや液晶端部のバックライト漏れを検出するには最大輝度でのテストが効果的です。ただし、日常的な色再現性の確認には、一般的な輝度レベルに下げた状態でも発色のバランスを確認することが重要です।'
+      }
+    ]
   }
 };
 
@@ -3548,6 +3713,68 @@ export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-s
           '新しいディスプレイの検証 biographical 液晶の表示チェックでも、オンラインで **灰色の画面** (grey screen) を使用することは非常にシンプルで効果的です。**空白の灰色の画面** (blank grey screen) や **灰色の画面 全画面** (full grey screen) は目に優しい中間色のアートであり、パネルの視野角や色分布を評価するのに優れています。中間色を細かくチェックするために **50% 灰色の画面** (50% gray screen) をロードしたり、プロジェクションのコントラスト調律用として **灰色の画面 プロジェクター** (grey screen for projector) を投影することも可能です。このツールは **灰色の画面 pc** (grey screen pc)、**灰色の画面 ノートパソコン** (grey screen laptop)、または **灰色の画面 テレビ** (grey screen TV) で動作します。',
           'より専門的な検品においては、**灰色の画面 テスト** (grey screen test) がハードウェア異常の識別に効果的です。ディスプレイのムラや影を確かめられる **灰色均一性テスト** (grey uniformity test) は液晶の品質管理に最も利用されています。**濃い灰色の画面** (dark grey screen) を表示することで、**灰色の画面 テスト OLED** (grey screen test OLED) や **OLED焼き付きテスト** (OLED burn-in test) を行い、バックライト漏れをより正確に検査できます。**灰色の画面 焼き付きテスト iphone** (grey screen for burn in test iphone) の動作確認や、一時的なバグである **灰色の画面 iphone** (grey screen iphone) や **iphone 灰色の画面** (iphone 灰色の画面) の画面障害の切り分けにも役立ちます。',
           'カラーテスト目的以外では、ビデオ編集やVFX制作での適応検査ツールとしても利用されています。映像の明暗差の検証には **グレースケールテスト** (gray scale test) や **灰色の画面 vfx** (grey screen vfx) の合成用カラーレイアウトが用いられます。また、OS起動時フリーズの **灰色の画面 windows 11** (grey screen windows 11)、**灰色の画面 windows 10** (grey screen windows 10)、あるいは **灰色の画面 mac** (grey screen mac) などの液晶異常時において、ハード自体の表示能力を本ツールで正確に測定することができます。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'rgb-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'RGB Screen Test Online: Free Subpixel & Color Calibration',
+        paragraphs: [
+          'If you need to analyze the color replication or inspect subpixels on your monitor, mobile device, or TV, launching our <strong>rgb screen test</strong> is a highly effective diagnostic route. Displays utilize combined red, green, and blue light components to produce the millions of colors you see daily. Running a dedicated <strong>rgb screen</strong> full-screen layout allows you to isolate each color channel singly to identify defects. Designers, hardware testers, and casual users utilize this utility as a quick <strong>rgb color screen</strong> preview to inspect subpixel health, detect stuck subpixels, and evaluate color uniformity without distraction.',
+          'A clean <strong>full screen rgb</strong> setup is invaluable when verifying that a new display does not feature manufacturing faults. You can run an <strong>rgb dead pixel test</strong> or a thorough <strong>rgb backlight check</strong> along the margins of your panel to find any uneven luminance. By using our utility as a client-side <strong>rgb display test</strong>, developers and photographers can match precise primary shades, calibrate white points, or project an adjustable <strong>rgb screen light</strong> to brighten spaces. With instant keyboard controls, you can toggle between solid red, green, blue, or custom color screens in seconds.',
+          'Our web-based <strong>screen rgb test online</strong> requires no plugin installations, ensuring immediate load times and maximum performance. When carrying out <strong>rgb screen calibration</strong>, toggle your web browser to fullscreen mode so that navigation tabs and bookmarks do not distort your measurements. Creative professionals can also use our <strong>rgb screen wallpaper</strong> generator to download high-resolution default color palettes or solid primary channel assets. Add this simple, robust <strong>monitor rgb test</strong> to your digital diagnostic toolkit today.'
+        ]
+      },
+      es: {
+        heading: 'Prueba de Pantalla RGB Online: Calibración y Test de Subpíxeles',
+        paragraphs: [
+          'Si deseas evaluar la calidad de la pantalla de tu monitor, televisor o smartphone, utilizar una <strong>prueba de pantalla rgb</strong> (rgb screen test) online es un método de diagnóstico ideal. Las pantallas combinan los tres canales primarios para generar imágenes. Al ejecutar una <strong>pantalla rgb</strong> (rgb screen) sólida en pantalla completa, puedes aislar cada canal de color para comprobar la uniformidad del panel. Editores de video, diseñadores y técnicos utilizan esta herramienta como una rápida <strong>pantalla de color rgb</strong> (rgb color screen) para detectar fallos en la fidelidad.',
+          'Tener una utilidad de <strong>rgb en pantalla completa</strong> (full screen rgb) es indispensable al comprar un nuevo monitor para verificar que no tenga defectos físicos de fábrica. Puedes realizar una <strong>prueba de píxeles muertos rgb</strong> (rgb dead pixel test) o una <strong>comprobación de retroiluminación rgb</strong> (rgb backlight check) para detectar fugas de luz. Con nuestro <strong>test de display rgb</strong> (rgb display test), puedes calibrar los puntos blancos o proyectar una <strong>luz de pantalla rgb</strong> (rgb screen light) para iluminar videollamadas con tonos puros. Alterna entre canales primarios y limpia tu pantalla fácilmente.',
+          'Nuestra <strong>prueba de rgb en pantalla online</strong> (screen rgb test online) se ejecuta por completo en el navegador del cliente. Al realizar una <strong>calibración de pantalla rgb</strong> (rgb screen calibration), activa el modo de pantalla completa para evitar que los menús del navegador afecten tus pruebas. Los creadores también pueden usar nuestro generador para descargar diseños de <strong>fondo de pantalla rgb</strong> (rgb screen wallpaper) en alta definición o usar la herramienta como una completa <strong>prueba rgb de monitor</strong> (monitor rgb test) gratuita.'
+        ]
+      },
+      pt: {
+        heading: 'Teste de Tela RGB Online: Calibração de Subpixels e Canais',
+        paragraphs: [
+          'Para inspecionar a reprodução de cores cromáticas e testar subpixels em sua TV, monitor ou smartphone, rodar nosso <strong>teste de tela rgb</strong> (rgb screen test) é o método mais ágil. Os displays digitais utilizam luzes vermelhas, verdes e azuis integradas para desenhar qualquer imagem. Exibir uma <strong>tela rgb</strong> (rgb screen) em tela cheia permite isolar cada canal separadamente para buscar imperfeições. Designers teatrais, técnicos de hardware e entusiastas usam esta <strong>tela de cor rgb</strong> (rgb color screen) para aferir a qualidade geral de contraste e brilho do display.',
+          'A experiência de <strong>rgb em tela cheia</strong> (full screen rgb) ajuda a rastrear anomalias estruturais no painel. Você faz um <strong>teste de pixel morto rgb</strong> (rgb dead pixel test) ou uma <strong>verificação de backlight rgb</strong> (rgb backlight check) nas bordas físicas da tela para identificar vazamentos de luz. Usando nosso utilitário como um prático <strong>teste de display rgb</strong> (rgb display test), fica simples projetar uma <strong>luz de tela rgb</strong> (rgb screen light) estável em seu estúdio ou reajustar saturações físicas utilizando comandos de teclado rápidos e amigáveis.',
+          'Nosso <strong>teste rgb de tela online</strong> (screen rgb test online) roda 100% no cliente sem downloads redundantes. Ao fazer a <strong>calibragem de tela rgb</strong> (rgb screen calibration), utilize o modo de tela cheia para desativar barras de guias do navegador. Usuários também podem salvar as paletas de cores padrão como um <strong>papel de parede de tela rgb</strong> (rgb screen wallpaper) sólido em alta definição ou utilizar a ferramenta como um <strong>teste rgb de monitor</strong> (monitor rgb test) limpo e livre de interrupções comerciais.'
+        ]
+      },
+      fr: {
+        heading: 'Test Écran RGB en Ligne : Étalonnage des Sous-Pixels et Canaux',
+        paragraphs: [
+          'Si vous souhaitez vérifier le rendu des couleurs ou inspecter les sous-pixels de votre téléviseur, moniteur PC ou smartphone, notre <strong>test écran rgb</strong> (rgb screen test) est l\'outil de diagnostic idéal. Les écrans utilisent la combinaison de canaux rouge, vert et bleu pour reproduire chaque teinte. Afficher un <strong>écran rgb</strong> (rgb screen) unitaire permet d\'isoler chaque couleur pour déceler des aberrations d\'éclairage. Les professionnels et utilisateurs réguliers apprécient cet <strong>écran couleur rgb</strong> (rgb color screen) épuré pour valider l\'intégrité de leur matériel visuel.',
+          'Bénéficier d\'une interface <strong>rgb plein écran</strong> (full screen rgb) est indispensable pour examiner un nouveau panneau LCD ou OLED. Effectuer un <strong>test de pixel mort rgb</strong> (rgb dead pixel test) ou un <strong>contrôle de rétroéclairage rgb</strong> (rgb backlight check) sur les bordures permet de repérer les fuites de lumière. En exploitant cet utilitaire comme <strong>test d\'affichage rgb</strong> (rgb display test), vous pouvez projeter une <strong>lumière d\'écran rgb</strong> (rgb screen light) d\'appoint ou ajuster les canaux primaires grâce à nos commandes fluides et intuitives.',
+          'Gratuit et disponible sans téléchargement, notre <strong>test rgb d\'écran en ligne</strong> (screen rgb test online) convient à tous les navigateurs. Lors de votre session d\'<strong>étalonnage d\'écran rgb</strong> (rgb screen calibration), activez le plein écran pour libérer l\'espace des barres de navigation perturbatrices. Créez et téléchargez un plan de couleur pure comme <strong>fond d\'écran rgb</strong> (rgb screen wallpaper) ou utilisez-le comme <strong>test rgb de moniteur</strong> (monitor rgb test) de référence pour ajuster vos profils d\'affichage.'
+        ]
+      },
+      de: {
+        heading: 'RGB-Bildschirmtest Online: Subpixel & Farbkanal-Kalibrierung',
+        paragraphs: [
+          'Wenn Sie den Farbraum oder die Subpixel auf Ihrem Monitor, Fernseher oder Smartphone analysieren möchten, ist unser <strong>RGB-Bildschirmtest</strong> (rgb screen test) das perfekte Diagnosewerkzeug. Displays nutzen die Grundfarben Rot, Grün und Blau, um das gesamte Farbspektrum darzustellen. Durch einen dedizierten, einfarbigen <strong>RGB-Bildschirm</strong> (rgb screen) können Sie jeden Kanal einzeln bewerten. Grafiker, Techniker und Anwender nutzen diesen <strong>RGB-Farbbildschirm</strong> (rgb color screen) zur unkomplizierten Überprüfung der Ausleuchtung und zur schnellen Erkennung von Farbfehlern.',
+          'Die Ausführung von <strong>RGB im Vollbildmodus</strong> (full screen rgb) ist besonders wertvoll bei der Inspektion von Neugeräten auf Fertigungsfehler. Sie können einen <strong>RGB-Pixelfehler-Test</strong> (rgb dead pixel test) durchführen oder einen <strong>RGB-Backlight-Check</strong> (rgb backlight check) machen, um Schwachstellen am Panel-Rand zu lokalisieren. Als webbasierter <strong>RGB-Displaytest</strong> (rgb display test) hilft Ihnen unser Tool, eine neutrale <strong>RGB-Bildschirmbeleuchtung</strong> (rgb screen light) als ambienter Lichtspender in Räumen zu nutzen oder Farbtemperaturen über praktische Tastatur-Shortcuts zu kalibrieren.',
+          'Unser <strong>RGB-Bildschirmtest online</strong> (screen rgb test online) lädt sofort im Browser ohne Zusatzsoftware. Starten Sie die <strong>RGB-Bildschirmkalibrierung</strong> (rgb screen calibration) am besten im Vollbildmodus, damit Browserelemente die Lichtmessung nicht verfälschen. Designer können die reinen Farbflächen auch als <strong>RGB-Bildschirm-Wallpaper</strong> (rgb screen wallpaper) herunterladen oder unser Tool als standardisierten <strong>Monitor-RGB-Test</strong> (monitor rgb test) für Studio-Setups verwenden.'
+        ]
+      },
+      hi: {
+        heading: 'आरजीबी स्क्रीन टेस्ट ऑनलाइन: फ्री सब-पिक्सेल और कलर कैलिब्रेशन',
+        paragraphs: [
+          'यदि आप अपने मॉनिटर, स्मार्ट टीवी या मोबाइल की कलर रिप्रोडक्शन क्षमता को मापना चाहते हैं, तो हमारा ऑनलाइन <strong>आरजीबी स्क्रीन टेस्ट</strong> (rgb screen test) एक बेहतरीन जरिया है। सभी डिजिटल स्क्रीन लाल, हरे और नीले रंग के मिश्रण से चित्र बनाती हैं। फुलस्क्रीन <strong>आरजीबी स्क्रीन</strong> (rgb screen) चलाने से आप हर प्राइमरी कलर चैनल को व्यक्तिगत रूप से चलाकर जांच सकते हैं। फोटोग्राफर, गेमर और डेवलपर्स इस <strong>आरजीबी कलर स्क्रीन</strong> (rgb color screen) का उपयोग स्क्रीन की कलर कंसिस्टेंसी और सब-पिक्सल्स के स्वास्थ्य की जांच के लिए करते हैं।',
+          'एक स्वच्छ <strong>फुल स्क्रीन आरजीबी</strong> (full screen rgb) डिस्प्ले पर भौतिक खराबी का पता लगाने में बहुत मददगार होता है। कंट्रास्ट की कमी को खोजने के लिए आप <strong>आरजीबी डेड पिक्सेल टेस्ट</strong> (rgb dead pixel test) या व्यापक <strong>आरजीबी बैकलाइट चेक</strong> (rgb backlight check) चला सकते हैं। इस <strong>आरजीबी डिस्प्ले टेस्ट</strong> (rgb display test) के माध्यम से, आप सॉफ्ट <strong>आरजीबी स्क्रीन लाइट</strong> (rgb screen light) भी प्रोजेक्ट कर सकते हैं जो वीडियो शूट या कमरे में रंगीन रोशनी के लिए काम आ सकती है। कीबोर्ड शॉर्टकट की मदद से आसानी से रंगों को बदलें।',
+          'हमारी वेब-बेस्ड <strong>ऑनलाइन स्क्रीन आरजीबी टेस्ट</strong> (screen rgb test online) उपयोगिता सीधे क्लाइंट-साइड चलती है, जिससे यह बहुत तेज है। <strong>आरजीबी स्क्रीन कैलिब्रेशन</strong> (rgb screen calibration) करते समय, ब्राउज़र को फुलस्क्रीन कस्टमाइज़ेशन मोड में रखें ताकि कोई अन्य विंडो या बार आपकी आंखों को विचलित न करे। उपयोगकर्ता अपने पसंदीदा शुद्ध रंग को <strong>आरजीबी स्क्रीन वॉलपेपर</strong> (rgb screen wallpaper) के रूप में भी डाउनलोड कर सकते हैं या इसे एक भरोसेमंद <strong>आरजीबी मॉनिटर टेस्ट</strong> (monitor rgb test) टूल की तरह इस्तेमाल कर सकते हैं।'
+        ]
+      },
+      ja: {
+        heading: 'RGB画面テストオンライン：サブピクセル健全性＆カラーキャリブレーション',
+        paragraphs: [
+          'モニター、テレビ、またはスマートフォン端末の発色診断やサブピクセル検査を行いたい場合、当サイトの <strong>RGB画面テスト</strong>（rgb screen test）を実行するのが極めて実用的です。ディスプレイは、赤・緑・青の光の三原色を組み合わせて様々な色彩を描き出します。単色の <strong>RGB画面</strong>（rgb screen）を全画面表示することで、各色チャンネルを個別に分離して液晶のムラや特定色の欠陥を検査できます。デザイナーや技術者は、この簡潔な <strong>RGBカラー画面</strong>（rgb color screen）を利用しドット抜けの特定や発色均一性チェックを迅速に行うことができます。',
+          '無駄のない <strong>全画面RGB</strong>（full screen rgb）ツールは、新しく購入したディスプレイの初期不良などを診断する際に非常に価値があります。液晶の端に沿って <strong>RGBドット抜けテスト</strong>（rgb dead pixel test）や <strong>RGBバックライト漏れチェック</strong>（rgb backlight check）を実行し、輝度のバラつきや光漏れが無いか診断できます。また、ブラウザで動作する <strong>RGB表示テスト</strong>（rgb display test）として機能し、撮影用などの簡易な <strong>RGBスクリーンライト</strong>（rgb screen light）としてスタジオで使用したり、キーボードのショートカットキーを使って赤・緑・青を瞬時に切り替えることが可能です。',
+          '当サイトの <strong>モニターRGBテストオンライン</strong>（screen rgb test online）はソフトウェアのダウンロードを一切必要とせず、即座に起動します。 <strong>RGB画面調整</strong>（rgb screen calibration）を行う際は、ブラウザのツールバーやタブによる余計な発色干渉を防ぐため、全画面表示モードに切り替えて実行することをおすすめします。クリエイターは画面の色を <strong>RGB画面壁紙</strong>（rgb screen wallpaper）として好みの解像度でダウンロードすることもでき、プロフェッショナルな <strong>モニターRGBテスト</strong>（monitor rgb test）として愛用されています。'
         ]
       }
     };
