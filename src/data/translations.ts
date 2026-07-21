@@ -514,6 +514,7 @@ const toolNames: Record<string, Partial<Record<Locale, string>>> = {
   'brown-screen': { es: 'Pantalla Marrón', pt: 'Tela Marrom', fr: 'Écran Marron', de: 'Brauner Bildschirm', hi: 'भूरी स्क्रीन', ja: '茶色の画面' },
   'grey-screen': { es: 'Pantalla Gris', pt: 'Tela Cinza', fr: 'Écran Gris', de: 'Grauer Bildschirm', hi: 'स्लेटी स्क्रीन', ja: '灰色の画面' },
   'custom-color-screen': { es: 'Pantalla de Color Personalizado', pt: 'Tela de Cor Personalizada', fr: 'Écran Couleur Personnalisé', de: 'Benutzerdefinierter Farbbildschirm', hi: 'कस्टम कलर स्क्रीन', ja: 'カスタムカラー画面' },
+  'gradient-screen': { es: 'Pantalla de Degradado', pt: 'Tela de Degradê', fr: 'Écran Dégradé', de: 'Farbverlauf-Bildschirm', hi: 'ग्रेडिएंट स्क्रीन', ja: 'グラデーション画面' },
   'macos-screen': { es: 'Actualización de macOS', pt: 'Atualização do macOS', fr: 'Mise à jour macOS', de: 'macOS-Aktualisierung', hi: 'macOS अपडेट', ja: 'macOSアップデート' },
   'radar-screen': { es: 'Pantalla de Radar', pt: 'Tela de Radar', fr: 'Écran Radar', de: 'Radar-Bildschirm', hi: 'रडार स्क्रीन', ja: 'レーダー画面' },
   'fireplace-screen': { es: 'Pantalla de Chimenea', pt: 'Tela de Lareira', fr: 'Écran de Cheminée', de: 'Kaminfeuer-Bildschirm', hi: 'फायरप्लेस स्क्रीन', ja: '暖炉の画面' },
@@ -530,6 +531,14 @@ const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
     de: 'Ein vielseitiges Bildschirm-Farbtest-Tool zur Generierung jeder Vollbildfarbe für Gleichmäßigkeitsprüfungen, Pixelfehler- und Backlight-Bleed-Tests.',
     hi: 'डिस्प्ले यूनिफॉर्मिटी, डेड पिक्सल और बैकलाइट ब्लीड की जांच के लिए स्क्रीन को किसी भी रंग में बदलने वाला एक बहुमुखी स्क्रीन कलर टेस्टिंग टूल।',
     ja: 'ディスプレイ表示の均一性診断、ドット抜けチェック、バックライト漏れの検出用に、任意の単色全画面を表示できる画面色テストツール。',
+  },
+  'gradient-screen': {
+    es: 'Una pantalla de degradado a pantalla completa para pruebas de banding, fondos creativos y decoración ambiental con transiciones suaves de color.',
+    pt: 'Uma tela de degradê em tela cheia para testes de banding, fundos criativos e uso de iluminação ambiente com transições de cor suaves.',
+    fr: 'Un écran dégradé plein écran pour tester le banding (bandes de couleur), créer des arrière-plans créatifs et de l\'éclairage d\'ambiance.',
+    de: 'Ein Vollbild-Farbverlauf-Bildschirm für Banding-Tests, kreative Hintergründe und Ambient-Lighting mit nahtlosen Farbübergängen.',
+    hi: 'कलर बैंडिंग परीक्षण, रचनात्मक पृष्ठभूमि और चिकनी रंग संक्रमणों के साथ परिवेश प्रकाश प्रभाव के लिए एक फुलस्क्रीन ग्रेडिएंट स्क्रीन टूल।',
+    ja: '液晶のカラーバンディング試験や動画用背景、なめらかな変色グラフィックによる間接照明に最適な全画面グラデーション表示ツール。',
   },
   'white-screen': { hi: 'सफाई जांच, नरम रोशनी, डिस्प्ले निरीक्षण और फोटोग्राफी फिल के लिए एक शुद्ध सफेद फुलस्क्रीन टूल।' },
   'black-screen': { hi: 'OLED जांच, डेड पिक्सल खोज, चकाचौंध कम करने और अंधेरे कमरे में उपयोग के लिए एक वास्तविक काली फुलस्क्रीन सतह।' },
@@ -2857,6 +2866,162 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
         answer: 'はい。軽快なウェブアプリとして構築されているため、デスクトップ、ノートPCの他、iPhone、Android端末、各種スマートTVブラウザに対応します。'
       }
     ]
+  },
+  'gradient-screen': {
+    en: [
+      {
+        question: 'What is a gradient screen used for?',
+        answer: 'A gradient screen is mainly used to check for display color banding, test panel bit-depth, and evaluate how smoothly a display renders color transitions. It is also used as a colorful, aesthetic background or soft lighting source for video calls.'
+      },
+      {
+        question: 'How can I test my monitor for color banding?',
+        answer: 'Set the gradient screen to fullscreen. Inspect the color transitions closely: if you see smooth, seamless blending, your monitor is fine. If you see distinct, blocky stripes, lines, or stair steps, your display is showing color banding.'
+      },
+      {
+        question: 'What causes display banding issues?',
+        answer: 'Color banding is usually caused by low panel bit depth (e.g. 10-bit vs 8-bit), compressed video sources, incorrect color range settings in your GPU driver (like Limited instead of Full dynamic range), or aging cables.'
+      },
+      {
+        question: 'Can I customize the gradient colors?',
+        answer: 'By default, you can cycle through beautifully curated gradients. If you want custom single-color sweeps, you can use our Custom Color Screen tool or choose specific modes to evaluate how transitions behave across red, green, blue, and yellow channels.'
+      },
+      {
+        question: 'Does dynamic contrast affect gradients?',
+        answer: 'Yes. Adaptive brightness or dynamic contrast settings on televisions and monitors tend to amplify banding because they artificially adjust backlight zones, creating visible steps of luminance in smooth transitions.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Para qué se utiliza una pantalla de degradado?',
+        answer: 'Una pantalla de degradado se utiliza principalmente para comprobar la presencia de bandas de color (color banding), evaluar la profundidad de bits de la pantalla y comprobar cómo el panel dibuja las transiciones. También funciona como fondo estético de color o iluminación suave.'
+      },
+      {
+        question: '¿Cómo pruebo mi monitor para detectar bandas de color?',
+        answer: 'Pon la pantalla de degradado en pantalla completa e inspecciona la transición de cerca: si el degradado es suave y continuo, el monitor funciona bien; si notas rayas, líneas o escalones bien definidos, tu monitor de vídeo tiene banding de color.'
+      },
+      {
+        question: '¿Qué causa los problemas de bandas de color?',
+        answer: 'La principal causa es una profundidad de bits baja en el panel (como 8 bits frente a 10 bits), archivos comprimidos, un rango dinámico limitado en los ajustes de tu tarjeta gráfica o cables defectuosos.'
+      },
+      {
+        question: '¿Puedo personalizar la paleta del degradado?',
+        answer: 'Por defecto, puedes alternar entre varios degradados seleccionados. Si deseas tonalidades personalizadas con un solo color de fondo, puedes utilizar nuestra herramienta de Pantalla de Color Personalizado.'
+      },
+      {
+        question: '¿El contraste dinámico afecta a los degradados?',
+        answer: 'Sí. El contraste dinámico de los televisores y monitores tiende a acentuar el banding de color porque altera las zonas de retroiluminación, lo que produce tramos de iluminación toscos que rompen la transición.'
+      }
+    ],
+    pt: [
+      {
+        question: 'Para que é usada uma tela de degradê?',
+        answer: 'Uma tela de degradê serve para detectar color banding (faixas de cores), medir o suporte a profundidade de bits do display e testar transições. Também é usada de forma decorativa como fundo estético ou painel de iluminação.'
+      },
+      {
+        question: 'Como testar o monitor para detectar color banding?',
+        answer: 'Coloque a tela de degradê no modo tela cheia e examine o espectro visual. Transições limpas e sem emendas indicam que a tela está saudável de calibragem. Se houver degraus ou faixas horizontais/verticais bem definidas, indica a presença de banding.'
+      },
+      {
+        question: 'O que causa os problemas de faixas de cores no display?',
+        answer: 'Costuma estar relacionado a profundidades de bits limitadas no painel físico (ex: 8-bits em vez de 10-bits), transmissões de sinal com compressão excessiva de imagem, faixas de cores reduzidas pelo driver GPU ou conectores ruins.'
+      },
+      {
+        question: 'Posso modificar as cores do degradê?',
+        answer: 'O painel conta com variados esquemas de cores pré-definidos. Caso seu teste precise de uma cor específica pura, experimente nossa ferramenta de Tela de Cor Personalizada.'
+      },
+      {
+        question: 'O contraste dinâmico do monitor influencia transições?',
+        answer: 'Sim. Processamentos ativos de brilho dinâmico ou contraste otimizado aumentam o banding de cores, pois o hardware tenta dividir a imagem por blocos de luz, criando quebras perceptíveis.'
+      }
+    ],
+    fr: [
+      {
+        question: 'À quoi sert un écran dégradé ?',
+        answer: 'Un écran dégradé est idéal pour détecter le banding de couleur, évaluer la profondeur de bits d\'une dalle LCD/OLED et inspecter les transitions. Il sert également d\'arrière-plan esthétique ou de panneau de lumière.'
+      },
+      {
+        question: 'Comment tester mon écran pour repérer le banding ?',
+        answer: 'Passez l\'écran dégradé en mode plein écran et étudiez la transition de teintes. Si le dégradé est continu et harmonieux, la dalle est excellente. Si des bandes, lignes ou marches d\'escalier distinctes apparaissent, votre écran souffre de banding.'
+      },
+      {
+        question: 'Qu\'est-ce qui provoque l\'apparition de banding à l\'affichage ?',
+        answer: 'Cela provient généralement d\'une profondeur de couleur insuffisante (8 bits au lieu de 10 bits), de formats d\'image fortement compressés, de réglages GPU limités ou d\'un câble d\'affichage manquant de bande passante.'
+      },
+      {
+        question: 'Puis-je régler les couleurs du dégradé personnalisé ?',
+        answer: 'Vous disposez de plusieurs combinaisons esthétiques prêtes à l\'emploi. Si vous devez diagnostiquer des teintes précises sur fond uni, nous vous invitons à essayer notre outil Écran Couleur Personnalisé.'
+      },
+      {
+        question: 'Le contraste dynamique influe-t-il sur les dégradés ?',
+        answer: 'Oui. Les options de luminosité adaptative ou de contraste automatique des téléviseurs et écrans accentuent le banding en modifiant le rétroéclairage par zones, brisant la transition naturelle.'
+      }
+    ],
+    de: [
+      {
+        question: 'Wofür wird ein Verlauf-Bildschirm verwendet?',
+        answer: 'Ein Verlauf-Bildschirm dient primär der Erkennung von Color Banding (Farbstreifen), um die Farbtiefe des Panels zu bewerten und sanfte Farbrampen zu beurteilen. Er wird auch als dekorativer, bunter Hintergrund oder indirekte Lichtquelle genutzt.'
+      },
+      {
+        question: 'Wie teste ich meinen Monitor auf Color Banding?',
+        answer: 'Schalten Sie die Farbverlaufs-Anzeige in den Vollbildmodus. Betrachten Sie die Farbdarstellung: Wenn die Farbstufen flüssig ineinander übergehen, ist Ihr Panel fehlerfrei. Erkennen Sie dagegen dicke, blockige Teilstufen oder Streifen, liegt Banding vor.'
+      },
+      {
+        question: 'Was verursacht störende Farbstreifen (Banding)?',
+        answer: 'Häufige Ursachen sind eine geringe Panel-Farbtiefe (z.B. 8-Bit statt 10-Bit), stark komprimiertes Videomaterial, ein falsch eingestellter Dynamikbereich in den Grafikkarteneinstellungen oder unzureichende Kabelbandbreite.'
+      },
+      {
+        question: 'Kann ich die Farbverläufe verändern?',
+        answer: 'Die App bietet eine Reihe von professionellen Farbkombinationen, die Sie durchwechseln können. Für unifarbene Kontrollen empfiehlt sich unser Tool Benutzerdefinierter Farbbildschirm.'
+      },
+      {
+        question: 'Hat dynamischer Kontrast Einfluss auf Verlauf-Tests?',
+        answer: 'Ja. Adaptive Kontrasterhöhungen auf Fernsehgeräten oder Monitoren verstärken Banding meist deutlich, da sie die Beleuchtungszonen abrupt regeln und Farbübergänge stückeln.'
+      }
+    ],
+    hi: [
+      {
+        question: 'ग्रेडिएंट स्क्रीन का उपयोग किस लिए किया जाता है?',
+        answer: 'ग्रेडिएंट स्क्रीन का इस्तेमाल मुख्य रूप से डिस्प्ले कलर बैंडिंग (कलर स्ट्रिप्स) की जांच करने, स्क्रीन की बीट-डेप्थ को मापने और आसान कलर ट्रांज़िशन देखने के लिए किया जाता है। इसे अक्सर फोटो बैकग्राउंड या सॉफ्ट लाइटिंग के लिए भी इस्तेमाल करते।'
+      },
+      {
+        question: 'मैं अपने मॉनिटर में कलर बैंडिंग की जांच कैसे करूं?',
+        answer: 'ग्रेडिएंट स्क्रीन को फुलस्क्रीन मोड में ओपन करें। इसके रंग के बहाव को ध्यान से देखें: यदि रंग का बहाव बिना किसी रुकावट के सामान्य रूप से मिल रहा है, तो स्क्रीन ठीक है। यदि रंग में अलग धारियां, पट्टियां या सीढ़ी जैसे कदम दिख रहे हैं, तो मॉनिटर में बैंडिंग है।'
+      },
+      {
+        question: 'स्क्रीन में बैंडिंग के क्या कारण हो सकते हैं?',
+        answer: 'कलर बैंडिंग का मुख्य कारण कम बिट डेप्थ (जैसे 8-बिट बनाम 10-बिट), बहुत ज्यादा कंप्रेस किए गए वीडियो, आपके जीपीयू सेटिंग में सीमित कलर रेंज, या खराब केबल होते हैं।'
+      },
+      {
+        question: 'क्या मैं स्क्रीन के मुख्य रंगों को बदल सकता हूं?',
+        answer: 'आप टूलबार से विविध सुंदर रंगीन ग्रेडिएंट्स का चयन कर सकते हैं। यदि आप एक ही रंग की सतह पर जांच करना चाहते हैं, तो कृपया हमारे कस्टम कलर स्क्रीन टूल का उपयोग करें।'
+      },
+      {
+        question: 'क्या मॉनिटर का डायनेमिक कंट्रास्ट ट्यूनिंग ग्रेडिएंट्स को प्रभावित करता है?',
+        answer: 'हां। मॉनिटर या टीवी का डायनेमिक कंट्रास्ट फीचर स्क्रीन पर बैंडिंग को बढ़ा देता है, क्योंकि यह बैकलाइट ज़ोन को काफी आक्रामक रूप से ट्यून करता है, जिससे सामान्य ट्रांज़िशन में भी असंतुलन आ जाता है।'
+      }
+    ],
+    ja: [
+      {
+        question: 'グラデーション画面はどのような目的で使われますか？',
+        answer: '主にディスプレイのカラーバンディング（階調の縞模様）の検知、ビット深度の確認、表示色推移が均一であるかの診断に用いられます。また、ビデオ通話時のカラーライトや背景照明としても利用可能です。'
+      },
+      {
+        question: 'モニターのカラーバンディングをテストするには？',
+        answer: 'グラデーション画面を全画面でロードし、色の変化を観察します。滑らかなグラデーションであれば製品に問題はありません。はっきりとした縞やブロック状の境界線（階調のステップ）が見える場合、ディスプレイはバンディングを引き起こしています。'
+      },
+      {
+        question: 'バンディングが発生する原因は何ですか？',
+        answer: '主な要因は、モニターの対応ビット深度不足（8-bit vs 10-bit）、高度に編集・圧縮された映像ソース、グラフィックスドライバの設定による出力制限、または伝送帯域不足の古いディスプレイケーブルです。'
+      },
+      {
+        question: 'グラデーションの色合いを調整できますか？',
+        answer: '当サイトでは、複数のカラープリセットを順番にロードして検査できます。単一色による確実なドット抜け・バックライト検査は、当サイトのカスタムカラー画面を使用することをおすすめします。'
+      },
+      {
+        question: 'ダイナミックコントラスト機能はテストに悪影響を与えますか？',
+        answer: 'はい。モニターの輝度自動調整（ダイナミックコントラスト）やスマート省エネ機能は、バックライトの加減を急激に行うため階調表現を損なってしまい、本来滑らかな表示をさらにバンディングが目立つ状態にします。'
+      }
+    ]
   }
 };
 
@@ -3383,6 +3548,68 @@ export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-s
           '新しいディスプレイの検証 biographical 液晶の表示チェックでも、オンラインで **灰色の画面** (grey screen) を使用することは非常にシンプルで効果的です。**空白の灰色の画面** (blank grey screen) や **灰色の画面 全画面** (full grey screen) は目に優しい中間色のアートであり、パネルの視野角や色分布を評価するのに優れています。中間色を細かくチェックするために **50% 灰色の画面** (50% gray screen) をロードしたり、プロジェクションのコントラスト調律用として **灰色の画面 プロジェクター** (grey screen for projector) を投影することも可能です。このツールは **灰色の画面 pc** (grey screen pc)、**灰色の画面 ノートパソコン** (grey screen laptop)、または **灰色の画面 テレビ** (grey screen TV) で動作します。',
           'より専門的な検品においては、**灰色の画面 テスト** (grey screen test) がハードウェア異常の識別に効果的です。ディスプレイのムラや影を確かめられる **灰色均一性テスト** (grey uniformity test) は液晶の品質管理に最も利用されています。**濃い灰色の画面** (dark grey screen) を表示することで、**灰色の画面 テスト OLED** (grey screen test OLED) や **OLED焼き付きテスト** (OLED burn-in test) を行い、バックライト漏れをより正確に検査できます。**灰色の画面 焼き付きテスト iphone** (grey screen for burn in test iphone) の動作確認や、一時的なバグである **灰色の画面 iphone** (grey screen iphone) や **iphone 灰色の画面** (iphone 灰色の画面) の画面障害の切り分けにも役立ちます。',
           'カラーテスト目的以外では、ビデオ編集やVFX制作での適応検査ツールとしても利用されています。映像の明暗差の検証には **グレースケールテスト** (gray scale test) や **灰色の画面 vfx** (grey screen vfx) の合成用カラーレイアウトが用いられます。また、OS起動時フリーズの **灰色の画面 windows 11** (grey screen windows 11)、**灰色の画面 windows 10** (grey screen windows 10)、あるいは **灰色の画面 mac** (grey screen mac) などの液晶異常時において、ハード自体の表示能力を本ツールで正確に測定することができます。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'gradient-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Gradient Screen Online: Free Color Banding & Calibration Tests',
+        paragraphs: [
+          'If you want to evaluate the quality of your monitor, TV, or smartphone display, using a <strong>gradient screen</strong> online is a highly effective method. A smooth transitions layout is a valuable tool for display calibration and testing. By displaying a seamless transition of tones, you can run a <strong>color banding test</strong> to check if your display can render intermediate color steps correctly. Whether you are running a <strong>color banding test screen</strong>, a dedicated <strong>monitor banding test</strong>, or a mobile <strong>display banding test</strong>, our tool provides a <strong>smooth gradient screen</strong> that helps you easily identify compression artifacting and panel limitations.',
+          'A solid <strong>gradient background full screen</strong> experience allows developers, designers, and creators to inspect displays under realistic conditions. You can choose a <strong>white to black gradient screen</strong> or a <strong>black to white gradient screen</strong> to map luminance, or use an <strong>rgby gradient test</strong> to inspect secondary and primary channels (Red, Green, Blue, Yellow). In addition to running a <strong>gradient screen test</strong>, our utility serves as a creative asset, allowing you to preview gradient sweeps or download custom <strong>4k gradient wallpaper</strong> and <strong>full hd gradient wallpaper</strong> layouts to style your desktop.',
+          'Our web-based <strong>gradient screen generator</strong> requires no external plugins or software downloads, running completely client-side. Toggle fullscreen mode to ensure your browser panels do not interfere with your <strong>gradient screen testing</strong>. Designers can project a <strong>colorful gradient screen</strong> as an ambient light panel, a video backdrop, or reference source for camera calibration. Level up your display toolkit and test for accurate color rendering on any screen in seconds.'
+        ]
+      },
+      es: {
+        heading: 'Pantalla de Degradado Online: Prueba de Banding de Color y Calibración',
+        paragraphs: [
+          'Si deseas evaluar la calidad de la pantalla de tu monitor, televisor o smartphone, utilizar una <strong>pantalla de degradado</strong> (gradient screen) online es un método sumamente eficaz. Este formato con transiciones de color es una herramienta valiosa para la calibración y el diagnóstico de paneles. Al reproducir una gama de tonos continuos, puedes realizar una <strong>prueba de banding de color</strong> (color banding test) para verificar si tu pantalla puede renderizar pasos de color intermedios. Ya sea que uses una <strong>pantalla de prueba de banding de color</strong> (color banding test screen), una <strong>prueba de banding de monitor</strong> (monitor banding test) o una <strong>prueba de banding de display</strong> (display banding test), nuestra web ofrece una <strong>pantalla de degradado suave</strong> (smooth gradient screen) para detectar artefactos de compresión.',
+          'Disponer de un <strong>fondo de pantalla de degradado completo</strong> (gradient background full screen) permite a diseñadores y creadores inspeccionar pantallas en condiciones reales. Puedes elegir una <strong>pantalla de degradado de blanco a negro</strong> (white to black gradient screen) o una <strong>pantalla de degradado de negro a blanco</strong> (black to white gradient screen) para mapear la luminancia, o utilizar una <strong>prueba de degradado RGBY</strong> (rgby gradient test) para inspeccionar las transiciones de canales primarios. Además de servir para una <strong>prueba de pantalla de degradado</strong> (gradient screen test), nuestra utilidad te permite previsualizar degradados y descargar diseños de <strong>fondo de pantalla de degradado 4k</strong> (4k gradient wallpaper) o <strong>fondo de pantalla de degradado full hd</strong> (full hd gradient wallpaper).',
+          'Nuestro <strong>generador de pantalla de degradado</strong> (gradient screen generator) web no requiere complementos externos y se ejecuta completamente en el cliente. Activa el modo de pantalla completa para evitar interferencias de la barra de navegación durante tu <strong>prueba de pantalla de degradado</strong> (gradient screen testing). Los creadores pueden proyectar una <strong>pantalla de degradado colorido</strong> (colorful gradient screen) como panel de luz ambiental o fondo de video. Mejora tu flujo de calibración hoy mismo de forma gratuita.'
+        ]
+      },
+      pt: {
+        heading: 'Tela de Degradê Online: Teste de Color Banding e Calibragem',
+        paragraphs: [
+          'Para verificar a qualidade cromática de um monitor, TV ou smartphone, acessar uma <strong>tela de degradê</strong> (gradient screen) online é um método excelente. Exibir transições de cores ajuda na calibragem. Ao projetar uma gama suave, você faz um <strong>teste de color banding</strong> (color banding test) para avaliar se o display renderiza tons médios perfeitamente. Seja rodando uma <strong>tela de teste de color banding</strong> (color banding test screen), um <strong>teste de banding de monitor</strong> (monitor banding test) ou um <strong>teste de banding de display</strong> (display banding test), nosso utilitário entrega uma <strong>tela de degradê suave</strong> (smooth gradient screen) para diagnosticar compressões no painel.',
+          'Uma experiência de <strong>fundo de tela de degradê em tela cheia</strong> (gradient background full screen) ajuda profissionais do vídeo e do design. Você pode alternar entre uma <strong>tela de degradê de branco para preto</strong> (white to black gradient screen) e uma <strong>tela de degradê de preto para branco</strong> (black to white gradient screen) para mapear os níveis de cinza, ou utilizar um <strong>teste de degradê RGBY</strong> (rgby gradient test). Além de executar um <strong>teste de tela de degradê</strong> (gradient screen test), a ferramenta permite baixar arquivos como <strong>papel de parede degradê 4k</strong> (4k gradient wallpaper) e <strong>papel de parede degradê full hd</strong> (full hd gradient wallpaper) sob medida.',
+          'Nosso <strong>gerador de tela de degradê</strong> (gradient screen generator) é leve e dispensa downloads, com controles de brilho integrados. Use a tela cheia para evitar interferências de janelas no seu teste de tela de degradê (gradient screen testing). Designers utilizam a <strong>tela de degradê colorido</strong> (colorful gradient screen) como fonte de iluminação suave para videochamadas ou cenografia. Potencialize seu arsenal de calibração virtual agora mesmo.'
+        ]
+      },
+      fr: {
+        heading: 'Écran Dégradé en Ligne : Élimination du Banding & Calibration',
+        paragraphs: [
+          'Pour évaluer la réactivité et la fidélité de votre moniteur, téléviseur ou smartphone, l\'utilisation d\'un <strong>écran dégradé</strong> (gradient screen) en ligne est incontournable. L\'affichage d\'une transition continue de couleurs est fort utile pour l\'étalonnage. En projetant un dégradé de blanc à noir, vous lancez un <strong>test de banding de couleur</strong> (color banding test) afin de vérifier si votre dalle reproduit les nuances intermédiaires sans artefacts. Que vous recherchiez un <strong>écran de test de banding de couleur</strong> (color banding test screen), un <strong>test de banding de moniteur</strong> (monitor banding test) ou un <strong>test de banding d\'affichage</strong> (display banding test), notre suite offre un <strong>écran dégradé fluide</strong> (smooth gradient screen) d\'une grande précision.',
+          'Avoir un <strong>arrière-plan écran dégradé plein écran</strong> (gradient background full screen) donne aux vidéastes et graphistes un outil d\'inspection rigoureux. Vous pouvez afficher un <strong>écran dégradé de blanc à noir</strong> (white to black gradient screen) ou un <strong>écran dégradé de noir à blanc</strong> (black to white gradient screen) pour analyser le gamma, ou lancer un <strong>test de dégradé RGBY</strong> (rgby gradient test). En plus d\'un <strong>test d\'écran dégradé</strong> (gradient screen test), cet utilitaire vous permet d\'exporter des créations comme un <strong>fond d\'écran dégradé 4k</strong> (4k gradient wallpaper) ou un <strong>fond d\'écran dégradé full hd</strong> (full hd gradient wallpaper).',
+          'Notre <strong>générateur d\'écran dégradé</strong> (gradient screen generator) web fonctionne côté client sans installation requise. Basculez en plein écran pour que vos navigateurs n\'altèrent pas vos sessions de <strong>test d\'écran dégradé</strong> (gradient screen testing). Cet <strong>écran dégradé coloré</strong> (colorful gradient screen) est fort utile comme panneau de lumière douce ou fond de studio. Calibrez chaque pixel de vos écrans en toute simplicité.'
+        ]
+      },
+      de: {
+        heading: 'Farbverlauf-Bildschirm Online: Color Banding Tests & Kalibrierung',
+        paragraphs: [
+          'Um die Gleichmäßigkeit und Qualität von Monitoren, TVs oder Smartphones zu testen, ist ein <strong>Farbverlauf-Bildschirm</strong> (gradient screen) ein ideales Hilfsmittel. Ein gleichmäßiger Farbübergang eignet sich perfekt für Farbkalibrierungen. Durch die Anzeige stufenloser Verläufe können Sie einen <strong>Color Banding Test</strong> (color banding test) durchführen, um zu prüfen, ob Ihr Display Zwischenfarbstufen flüssig darstellt. Egal, ob Sie einen <strong>Color Banding Test Bildschirm</strong> (color banding test screen), einen <strong>Monitor Banding Test</strong> (monitor banding test) oder einen mobilen <strong>Display Banding Test</strong> (display banding test) machen: Unser Tool liefert einen <strong>nahtlosen Farbverlauf-Bildschirm</strong> (smooth gradient screen) zur schnellen Fehlererkennung.',
+          'Der <strong>Farbverlauf-Hintergrund im Vollbildmodus</strong> (gradient background full screen) gibt Grafikern und Film-Editoren ein präzises Diagnosewerkzeug an die Hand. Nutzen Sie einen <strong>Weiß-zu-Schwarz Farbverlauf-Bildschirm</strong> (white to black gradient screen) oder einen <strong>Schwarz-zu-Weiß Farbverlauf-Bildschirm</strong> (black to white gradient screen) für Helligkeitsskalen oder führen Sie einen <strong>RGBY-Verlaufstest</strong> (rgby gradient test) durch. Neben dem reinen <strong>Farbverlauf-Bildschirm Test</strong> (gradient screen test) können Sie die Farbmuster auch anpassen und als <strong>4k Farbverlauf-Wallpaper</strong> (4k gradient wallpaper) sowie <strong>Full HD Farbverlauf-Wallpaper</strong> (full hd gradient wallpaper) herunterladen.',
+          'Unser <strong>Farbverlauf-Bildschirm Generator</strong> (gradient screen generator) ist browserbasiert und erfordert keine Installation. Aktivieren Sie die Vollbild-Anzeige für ein ungestörtes <strong>Farbverlauf-Bildschirm Testen</strong> (gradient screen testing). Verwenden Sie den <strong>bunten Farbverlauf-Bildschirm</strong> (colorful gradient screen) als Hintergrundlicht bei Webkonferenzen oder kreatives Studio-Hilfslicht. Kalibrieren Sie Ihr Ausgabegerät jetzt sekundenschnell im Browser.'
+        ]
+      },
+      hi: {
+        heading: 'ग्रेडिएंट स्क्रीन ऑनलाइन: कलर बैंडिंग टेस्ट और मॉनिटर कैलिब्रेशन',
+        paragraphs: [
+          'यदि आप अपने मॉनिटर, स्मार्ट टीवी या स्मार्टफोन डिस्प्ले की गुणवत्ता और प्रदर्शन को मापना चाहते हैं, तो ऑनलाइन <strong>ग्रेडिएंट स्क्रीन</strong> (gradient screen) का उपयोग सबसे तेज तरीका है। स्मूथ रंगीन बदलावों का यह लेआउट कैलिब्रेशन और निरीक्षण के लिए एक अनमोल साधन है। स्क्रीन पर रंगों के क्रमिक बहाव को चलाकर, आप <strong>कलर बैंडिंग टेस्ट</strong> (color banding test) कर सकते हैं और देख सकते हैं कि क्या आपका डिस्प्ले मध्यवर्ती रंगों के शेड्स को बिना किसी ब्लॉक के दिखाता है। चाहे आप <strong>कलर बैंडिंग टेस्ट स्क्रीन</strong> (color banding test screen) पर हों, <strong>मॉनिटर बैंडिंग टेस्ट</strong> (monitor banding test) चला रहे हों, या <strong>डिस्प्ले बैंडिंग टेस्ट</strong> (display banding test) कर रहे हों, हमारा टूल एक बिल्कुल <strong>स्मूथ ग्रेडिएंट स्क्रीन</strong> (smooth gradient screen) प्रदान करता है।',
+          'एक बेदाग <strong>फुल स्क्रीन ग्रेडिएंट बैकग्राउंड</strong> (gradient background full screen) रचनाकारों, फोटोग्राफरों और डिजाइनरों को सटीक लाइटिंग और डार्कनेस का परीक्षण करने की अनुमति देता है। आप कंट्रास्ट की जांच के लिए सफेद से काली ग्रेडिएंट स्क्रीन (white to black gradient screen) या काली से सफेद ग्रेडिएंट स्क्रीन (black to white gradient screen) का उपयोग कर सकते हैं, अथवा primary रंगों में रंगत देखने के लिए RGBY ग्रेडिएंट टेस्ट (rgby gradient test) कर सकते हैं। इसके अलावा, एक व्यवस्थित <strong>ग्रेडिएंट स्क्रीन टेस्ट</strong> (gradient screen test) चलाने के साथ-साथ आप इसे सुंदर वॉलपेपर के रूप में इस्तेमाल कर सकते हैं और यहां से मुफ्त 4k ग्रेडिएंट वॉलपेपर (4k gradient wallpaper) या फुल एचडी ग्रेडिएंट वॉलपेपर (full hd gradient wallpaper) डाउनलोड कर सकते हैं।',
+          'हमारा ऑनलाइन <strong>ग्रेडिएंट स्क्रीन जनरेटर</strong> (gradient screen generator) बिना किसी डाउनलोड के सीधे ब्राउज़र में चलता है। यह सुनिश्चित करने के लिए कि कोई ब्राउज़र बार या मेनू आपके <strong>ग्रेडिएंट स्क्रीन टेस्टिंग</strong> (gradient screen testing) में बाधा न बने, फुलस्क्रीन विकल्प चालू करें। कलाकार इस <strong>रंगीन ग्रेडिएंट स्क्रीन</strong> (colorful gradient screen) का उपयोग स्टूडियो में सॉफ्ट लाइट के रूप में या वीडियो के लिए कलात्मक बैकड्रॉप के रूप में कर सकते हैं। आज ही अपने डिस्प्ले को कैलिब्रेट और परफेक्ट बनाएं।'
+        ]
+      },
+      ja: {
+        heading: 'グラデーション画面オンライン：カラーバンディング検知＆表示色キャリブレーション',
+        paragraphs: [
+          '液晶モニター、テレビ、またはスマートフォン型デバイスの表示階調と画質を精緻に検証したい場合、オンラインの <strong>グラデーション画面</strong> (gradient screen) を使用するのが最適解です。滑らかな色の移り変わりを表示することは、モニターのキャリブレーションや品質診断に極めて実用的です。サイト上で一貫した色階調を描き出すことで、<strong>カラーバンディングテスト</strong> (color banding test) を行い、モニターが中間色の違いを忠実に描画できているか診断できます。<strong>カラーバンディングテスト画面</strong> (color banding test screen)、<strong>モニターバンディングテスト</strong> (monitor banding test)、あるいは <strong>ディスプレイバンディングテスト</strong> (display banding test) を行う際において、当サイトは最高精度の <strong>滑らかなグラデーション画面</strong> (smooth gradient screen) を表示できます。',
+          '無地の <strong>全画面グラデーション背景</strong> (gradient background full screen) は、映像編集者、フォトグラファー、Webデザイナーの検査作業に広く活用されています。明暗差と輝度の推移のみを検証する <strong>白黒グラデーション画面</strong> (white to black gradient screen) もしくは <strong>黒白グラデーション画面</strong> (black to white gradient screen) のほか、各基本軸 of 混色を確認する <strong>RGBYグラデーションテスト</strong> (rgby gradient test) も利用可能です。単なる <strong>グラデーション画面テスト</strong> (gradient screen test) だけでなく、美しく変化するカラーチャートを <strong>4kグラデーション壁紙</strong> (4k gradient wallpaper) や <strong>フルHDグラデーション壁紙</strong> (full hd gradient wallpaper) 画像としてエクスポートすることも可能です。',
+          'こちらの <strong>グラデーション画面ジェネレーター</strong> (gradient screen generator) は、ブラウザのみで稼働し特別なダウンロードを必要としません。液晶モニターの <strong>グラデーション画面テスト</strong> (gradient screen testing) を行う際は、不要なブラウザタブやアドレス欄を非表示にできる全画面機能をロードして行うと便利です。クリエイターは、検査だけでなくこの <strong>カラフルなグラデーション画面</strong> (colorful gradient screen) を動画撮影用の間接照明や演出背景としても採用しています。お使いのディスプレイの色表現力を数秒でアップグレードしてみましょう。'
         ]
       }
     };
