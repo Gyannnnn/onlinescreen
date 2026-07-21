@@ -2253,7 +2253,303 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       },
       {
         question: '茶色はどのチャクラに関連していますか？',
-        answer: '茶色は「第1チャクラ（ルートチャクラ／尾骨のチャクラ）」に深く関連しており、グラウンディング、生命力、精神の安定、地球へのつながりを司ります。'
+        answer: '茶色は「第1チャクラ（ルートチャクラ／尾骨のチャクラ）」に深く関連しており、グラウンディング、生命力、精神 of 安定、地球へのつながりを司ります。'
+      }
+    ]
+  },
+  'grey-screen': {
+    en: [
+      {
+        question: 'What is Gray Screen used for?',
+        answer: 'A Gray Screen is commonly used for monitor uniformity checks, color balance tests, and checking display defects. It also provides a neutral, glare-free background for product photography, design previews, and VFX editing.'
+      },
+      {
+        question: 'Does a gray screen help find backlight bleed?',
+        answer: 'Yes. While black screens show total bleed, a neutral gray screen is excellent for identifying subtle clouding, uneven backlight distribution, and dirty screen effect (DSE) across the panel.'
+      },
+      {
+        question: 'How do I enter or exit fullscreen?',
+        answer: 'Simply click anywhere on the gray canvas or use the fullscreen control button. On desktop browsers, you can also press F11 or the "F" shortcut key. To exit, press "Esc".'
+      },
+      {
+        question: 'Can I download a gray image?',
+        answer: 'Yes, you can generate and download custom gray layouts. Using the toolbar control, you can export a solid gray canvas in 1080p, 4K, or custom resolutions as a PNG image.'
+      },
+      {
+        question: 'Can I choose a specific gray shade?',
+        answer: 'Yes. You can pick preset tones or use our custom color picker with exact HEX or RGB inputs to get exactly a 50% gray screen, dark gray screen, or light gray screen.'
+      },
+      {
+        question: 'What is a gray screen test?',
+        answer: 'A gray screen test displays a solid gray color across the entire panel to evaluate how evenly a monitor, tablet, TV, or laptop renders mid-tones without being blinded by pure bright white.'
+      },
+      {
+        question: 'Is grey screen test the same as gray screen test?',
+        answer: 'Yes, "grey screen test" and "gray screen test" describe the same diagnostic method. "Gray" is the spelling standard in American English, whereas "grey" is favored in British English.'
+      },
+      {
+        question: 'Which gray color is used by default?',
+        answer: 'The default gray color is #808080 (RGB 128, 128, 128), which is the standard 50% gray tone.'
+      },
+      {
+        question: 'Can gray screen test monitor uniformity?',
+        answer: 'Yes, a gray uniformity test is the most popular way to check monitor uniformity since variations in illumination and panel tint stand out clearly on neutral mid-tones.'
+      },
+      {
+        question: 'When should I use a dark gray screen test?',
+        answer: 'Use a dark gray screen test (like 5% or 10% gray) to check OLED displays for burn-in, inspect LCD screens for low-luminance bleeding, or test cameras under dim but balanced lighting conditions.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Para qué se utiliza la Pantalla Gris?',
+        answer: 'La pantalla gris se usa comúnmente para comprobar la uniformidad del monitor, verificar el balance de color y buscar defectos. También sirve de fondo neutro para fotografía de productos y edición VFX.'
+      },
+      {
+        question: '¿Ayuda una pantalla gris a detectar fugas de retroiluminación?',
+        answer: 'Sí. Una pantalla gris neutra es muy efectiva para identificar sutiles manchas nubladas, distribución desigual de la luz y el efecto de pantalla sucia (DSE) en el panel.'
+      },
+      {
+        question: '¿Cómo entro o salgo de la pantalla completa?',
+        answer: 'Simplemente haz clic en el lienzo gris o usa el botón de pantalla completa. En ordenadores, puedes presionar la tecla F11 o la tecla rápida "F". Pulsa "Esc" para salir.'
+      },
+      {
+        question: '¿Puedo descargar una imagen gris?',
+        answer: 'Sí. Utiliza los controles de descarga integrados para guardar un fondo gris sólido en 1080p, 4K o resoluciones personalizadas como una imagen PNG de alta calidad.'
+      },
+      {
+        question: '¿Puedo elegir un tono de gris específico?',
+        answer: 'Sí. Puedes usar los controles de color o el selector personalizado para ajustar el tono exacto (como gris oscuro o gris al 50%) mediante valores HEX o RGB.'
+      },
+      {
+        question: '¿Qué es una prueba de pantalla gris?',
+        answer: 'Es un test que muestra un color gris sólido en todo el panel para evaluar cómo renderiza el dispositivo los tonos medios sin el brillo cegador del blanco puro.'
+      },
+      {
+        question: '¿Es "grey screen test" lo mismo que "gray screen test"?',
+        answer: 'Sí, se refieren al mismo procedimiento. La diferencia es regional, "gray" se prefiere en inglés americano y "grey" en inglés británico.'
+      },
+      {
+        question: '¿Qué color gris se utiliza por defecto?',
+        answer: 'El color gris predeterminado es #808080 (RGB 128, 128, 128), que representa el estándar de gris al 50%.'
+      },
+      {
+        question: '¿Puede comprobar la uniformidad del monitor la prueba de pantalla gris?',
+        answer: 'Sí, la prueba de uniformidad gris es muy recomendada porque las variaciones de retroiluminación y sombras destacan claramente en un tono medio neutro.'
+      },
+      {
+        question: '¿Cuándo debo usar una prueba de pantalla gris oscuro?',
+        answer: 'Usa una prueba de gris oscuro (como 5% o 10% de gris) para revisar quemados en pantallas OLED, comprobar fugas de luz en entornos de bajo brillo, o para VFX.'
+      }
+    ],
+    pt: [
+      {
+        question: 'Para que é usada a Tela Cinza?',
+        answer: 'A tela cinza é usada para testes de uniformidade do monitor, calibração de contraste e identificação de defeitos de cores. Funciona também como fundo neutro para fotografias de produtos e composições VFX.'
+      },
+      {
+        question: 'Uma tela cinza ajuda a encontrar vazamento de luz?',
+        answer: 'Sim. A tela cinza neutra é excelente para identificar manchas nubladas sutis, má distribuição de brilho e o efeito de tela suja (DSE) em novos painéis LCD ou LED.'
+      },
+      {
+        question: 'Como eu entro ou saio do modo tela cheia?',
+        answer: 'Dê um clique em qualquer área cinza ou use o botão de controle de tela cheia. Em navegadores de computador, aperte F11 ou a atalho "F". Para sair, pressione "Esc".'
+      },
+      {
+        question: 'Posso baixar uma imagem cinza?',
+        answer: 'Sim. Por meio do painel de download, você pode salvar a tela cheia cinza nas dimensões de 1080p, 4K ou resoluções personalizadas em formato PNG sem compressão.'
+      },
+      {
+        question: 'Posso escolher um tom de cinza específico?',
+        answer: 'Sim. Customize o matiz em nossa caixa de controle usando códigos de cores HEX ou RGB para obter cinza 50%, cinza escuro ou tons de cinza claro.'
+      },
+      {
+        question: 'O que é um teste de tela cinza?',
+        answer: 'Consiste em exibir uma cor cinza neutra lisa em toda a área visível do aparelho para analisar a reprodução de meio-tom sem sofrer com o brilho excessivo do branco.'
+      },
+      {
+        question: 'O teste "grey screen" é o mesmo que o teste "gray screen"?',
+        answer: 'Sim, ambos descrevem o mesmo procedimento de aferição de uniformidade. A grafia varia apenas conforme a região ("gray" nos EUA, "grey" no Reino Unido).'
+      },
+      {
+        question: 'Qual cor cinza é usada por padrão?',
+        answer: 'O cinza padrão é a tonalidade de código hexadecimal #808080 (RGB 128, 128, 128), equivalente ao cinza médio ou cinza 50%.'
+      },
+      {
+        question: 'O teste de tela cinza pode medir a uniformidade do monitor?',
+        answer: 'Sim, o teste cinza é ideal para avaliar a conformidade de displays, já que variações de matizes e vazamento do backlight saltam aos olhos nesse tom neutro.'
+      },
+      {
+        question: 'Quando devo usar um teste de tela cinza escuro?',
+        answer: 'Recomenda-se o teste cinza escuro (cinza entre 5% e 15%) para verificar retenção de brilho em displays OLED, vazamentos de luz sob pouca luz e calibragem de câmeras.'
+      }
+    ],
+    fr: [
+      {
+        question: 'À quoi sert un Écran Gris ?',
+        answer: 'Il est utilisé pour tester la conformité du rétroéclairage d\'un moniteur, l\'équilibre des couleurs et révéler les taches DSE. Il sert aussi de fond neutre pour les photos de produits ou la production VFX.'
+      },
+      {
+        question: 'Un écran gris aide-t-il à repérer les fuites de lumière ?',
+        answer: 'Oui, un écran gris neutre est très efficace pour identifier le backlight bleeding, les taches nuageuses et l\'effet d\'écran sale sur les dalles LCD/LED.'
+      },
+      {
+        question: 'Comment puis-je passer en plein écran ou en sortir ?',
+        answer: 'Cliquez simplement sur la partie grise centrale ou utilisez le bouton de contrôle plein écran. Sur ordinateur, appuyez sur F11 ou le raccourci "F". Pressez "Échap" pour quitter.'
+      },
+      {
+        question: 'Puis-je télécharger une image grise ?',
+        answer: 'Oui, vous pouvez enregistrer le fond gris en 1080p, 4K ou dans une taille personnalisée sous forme de fichier image PNG grâce à l\'interface de téléchargement.'
+      },
+      {
+        question: 'Puis-je choisir une nuance de gris précise ?',
+        answer: 'Oui. Le sélecteur de couleurs personnalisé vous permet d\'ajuster les coordonnées HEX ou RGB pour afficher exactement un écran gris 50% ou gris foncé.'
+      },
+      {
+        question: 'Qu\'est-ce qu\'un test d\'écran gris ?',
+        answer: 'Ce diagnostic consiste à projeter une couleur grise neutre sur tout l\'affichage pour évaluer le comportement des tons moyens sur l\'appareil sans effet d\'éblouissement.'
+      },
+      {
+        question: 'Le test "grey screen" est-il identique au test "gray screen" ?',
+        answer: 'Oui. Les deux désignent exactement la même méthode. "Gray" est employé en anglais américain et "grey" est préféré en anglais britannique.'
+      },
+      {
+        question: 'Quel gris est affiché par défaut ?',
+        answer: 'Le gris configuré d\'office est la nuance #808080 (RGB 128, 128, 128), qui correspond à la valeur exacte d\'un gris à 50%.'
+      },
+      {
+        question: 'Le test d\'écran gris permet-il d\'évaluer l\'uniformité du moniteur ?',
+        answer: 'Oui, le test d\'uniformité de gris est l\'un des meilleurs outils car les écarts de luminosité ressortent mieux sur un fond uni de ton neutre moyen.'
+      },
+      {
+        question: 'Quand faut-il privilégier un test d\'écran gris foncé ?',
+        answer: 'Utilisez un gris sombre (5% à 15%) pour contrôler la rémanence ou le burn in sur dalle OLED, mesurer les fuites de lumière dans le noir ou ajuster des plans de caméra.'
+      }
+    ],
+    de: [
+      {
+        question: 'Wofür wird ein Grauer Bildschirm verwendet?',
+        answer: 'Ein grauer Bildschirm wird für Monitorgleichmäßigkeitstests, Kontrasteinstellungen und zur Erkennung von Displayfehlern verwendet. Er dient zudem als neutraler VFX- und Fotohintergrund.'
+      },
+      {
+        question: 'Hilft ein grauer Bildschirm dabei, Backlight Bleed zu finden?',
+        answer: 'Ja. Ein absolut farbneutraler Grauton ist hervorragend geeignet, um Lichthöfe (Backlight Bleeding) und den bewährten Dirty-Screen-Effekt (DSE) auf dem Panel zu lokalisieren.'
+      },
+      {
+        question: 'Wie kann ich den Vollbildmodus aktivieren oder beenden?',
+        answer: 'Klicken Sie einfach auf das graue Feld oder auf die Vollbild-Schaltfläche. Am PC können Sie auch F11 oder die Schnellwahltaste "F" drücken. Beenden Sie mit der "Esc"-Taste.'
+      },
+      {
+        question: 'Kann ich ein graues Bild herunterladen?',
+        answer: 'Ja. Verwenden Sie den Download-Bereich, um die graue Grafik in 1080p, 4K oder benutzerdefinierten Größen als hochqualitative PNG-Datei herunterzuladen und lokal zu sichern.'
+      },
+      {
+        question: 'Kann ich einen bestimmten Grauton auswählen?',
+        answer: 'Ja. Sie können die Steuerung nutzen, um die exakten HEX- oder RGB-Werte zu manipulieren und so genau einen 50% grauen Bildschirm oder einen dunklen Grauton zu erzeugen.'
+      },
+      {
+        question: 'Was ist ein grauer Bildschirm Test?',
+        answer: 'Ein grauer Bildschirm Test projiziert eine flache, neutrale Graufarbe auf das Display, um die Homogenität der mittleren Tonwerte ohne störende Blendeffekte zu untersuchen.'
+      },
+      {
+        question: 'Ist ein "grey screen test" dasselbe wie ein "gray screen test"?',
+        answer: 'Ja. Beide Ausdrücke beschreiben das identische Prüfverfahren. "Gray" ist die bevorzugte Schreibweise im amerikanischen Englisch, "grey" im britischen Englisch.'
+      },
+      {
+        question: 'Welches Grau wird standardmäßig verwendet?',
+        answer: 'Standardmäßig wird die neutrale Farbe #808080 verwendet (RGB 128, 128, 128), was dem etablierten Farbwert von 50%igem Grau entspricht.'
+      },
+      {
+        question: 'Kommen bei grauen Bildschirmtests Helligkeitsunterschiede zum Vorschein?',
+        answer: 'Ja, Helligkeits- und Farbabweichungen werden auf einer neutralen Midtone-Fläche für das menschliche Auge sehr gut sichtbar, weshalb Tests sehr beliebt sind.'
+      },
+      {
+        question: 'Wann sollte ich einen dunklen grauen Bildschirm Test machen?',
+        answer: 'Wählen Sie dunkles Grau (etwa 5% bis 15% Helligkeit) zur OLED-Panelprüfung auf Einbrenneffekte, zum Aufspüren feiner Edge-Bleeding-Fehler oder für VFX-Projekte.'
+      }
+    ],
+    hi: [
+      {
+        question: 'ग्रे स्क्रीन का उपयोग किस लिए किया जाता है?',
+        answer: 'ग्रे स्क्रीन का उपयोग आमतौर पर मॉनिटर यूनिफ़ॉर्मिटी जांच, कंट्रास्ट कैलिब्रेशन और डिस्प्ले दोषों की जांच के लिए किया जाता है। यह व्लॉगिंग और फोटोग्राफी के लिए एक न्यूट्रल बैकग्राउंड भी है।'
+      },
+      {
+        question: 'क्या ग्रे स्क्रीन बैकलाइट लीकेज (ब्लीडिंग) को खोजने में मदद करती है?',
+        answer: 'हाँ। ग्रे स्क्रीन अत्यधिक प्रभावी है क्योंकि यह चमक के अंतर, असमान बैकलाइट वितरण, और डर्टी स्क्रीन इफेक्ट (DSE) को काले या सफेद रंग की तुलना में अधिक स्पष्ट रूप से दिखाती है।'
+      },
+      {
+        question: 'मैं फुलस्क्रीन मोड चालू या बंद कैसे करूं?',
+        answer: 'अपनी स्क्रीन पर कहीं भी क्लिक करें या फुलस्क्रीन बटन पर टैप करें। डेस्कटॉप पर आप कीबोर्ड से F11 या "F" बटन दबा सकते हैं। बाहर आने के लिए "Esc" बटन दबाएं।'
+      },
+      {
+        question: 'क्या मैं ग्रे इमेज डाउनलोड कर सकता हूं?',
+        answer: 'हाँ। आप डाउनलोड नियंत्रण का उपयोग करके 1080p, 4K या कस्टम रिज़ॉल्यूशन में ग्रे पीएनजी इमेज आसानी से डाउनलोड कर सकते।'
+      },
+      {
+        question: 'क्या मैं एक विशिष्ट ग्रे शेड चुन सकता हूं?',
+        answer: 'हाँ। आप हमारे रंग पिकर (कलर पिकर) में HEX या RGB मान दर्ज करके 50% ग्रे स्क्रीन, डार्क ग्रे स्क्रीन या लाइट ग्रे स्क्रीन का चयन कर सकते हैं।'
+      },
+      {
+        question: 'ग्रे स्क्रीन टेस्ट क्या है?',
+        answer: 'ग्रे स्क्रीन टेस्ट में स्क्रीन पर केवल ग्रे रंग प्रदर्शित किया जाता है ताकि यह आंका जा सके कि कोई डिस्प्ले चमक और कंट्रास्ट के स्तर पर मिड-टोन्स को कितना सही और समान दिखा रहा है।'
+      },
+      {
+        question: 'क्या "grey screen test" and "gray screen test" एक ही हैं?',
+        answer: 'हाँ। दोनों शब्द एक ही स्क्रीन जांच विधि को दर्शाते हैं। अमेरिकन अंग्रेजी में "gray" और ब्रिटिश अंग्रेजी में "grey" वर्तनी का उपयोग किया जाता है।'
+      },
+      {
+        question: 'डिफ़ॉल्ट रूप से किस ग्रे रंग का उपयोग किया जाता है?',
+        answer: 'नेचुरल रूप से #808080 (RGB 128, 128, 128) रंग का उपयोग किया जाता है, जो मानक 50% ग्रे रंग माना जाता है।'
+      },
+      {
+        question: 'क्या ग्रे स्क्रीन टेस्ट मॉनिटर के संतुलन को माप सकता है?',
+        answer: 'हाँ। ग्रे यूनिफॉर्मिटी टेस्ट पैनल की चमक और रंग की असमानता को जांचने का सर्वोत्तम तरीका है क्योंकि इस पर हर त्रुटि स्पष्ट रूप से दिखाई देती है।'
+      },
+      {
+        question: 'मुझे डार्क ग्रे स्क्रीन टेस्ट का उपयोग कब करना चाहिए?',
+        answer: 'डार्क ग्रे स्क्रीन (लगभग 5% से 15% ग्रे) का उपयोग ओएलईडी स्क्रीन पर बर्न-इन इमेज चेक करने, कम रोशनी में बैकलाइट लीकेज जांचने और वीएफएक्स संपादन संदर्भ के लिए किया जाना चाहिए।'
+      }
+    ],
+    ja: [
+      {
+        question: '灰色の画面（グレー画面）はどのような用途に使われますか？',
+        answer: 'モニターの輝度均一性テスト、カラーバランスの確認、表示欠陥の検査に使用されます。また、商品撮影 of 物撮り背景やVFXなどの映像編集時の基準色として使われます。'
+      },
+      {
+        question: '灰色の画面はバックライト漏れ（光漏れ）の検知に役立ちますか？',
+        answer: 'はい、非常に効果的です。真っ白や真っ黒よりも、中間色である灰色の方が液晶パネルのわずかな輝度ムラや汚れの陰影、「ダートスクリーン現象 (DSE)」を明瞭に表示できます。'
+      },
+      {
+        question: '全画面（フルスクリーン）モードにする方法と解除方法は？',
+        answer: '灰色部分の任意の場所をクリックするか、全画面ボタンを押します。PCではF11またはキーボードの「F」キーでも可能です。元の画面に戻るには「Esc」キーを押します。'
+      },
+      {
+        question: '灰色の画像をダウンロードすることは可能ですか？',
+        answer: 'はい、ダウンロード機能を使って、1080p、4K、およびカスタムサイズに合わせた無地のグレー画像を高品質なPNGデータとして生成・保存することが可能です。'
+      },
+      {
+        question: '特定のグレーの明度・色調を選ぶことはできますか？',
+        answer: 'はい。RGB入力スライダーや内蔵 of カラーピッカーを利用し、HEXコードなどで 50%グレーやダークグレー、ライトグレーなどをお好みで調合して全画面化できます。'
+      },
+      {
+        question: '灰色の画面 テストとは何ですか？',
+        answer: 'ディスプレイ全体にグレートーンを出力することで、画面の光量ムラやドット欠け、色再現の偏りを眩しすぎないソフトな視野の下で診断・評価する簡易検査のことです。'
+      },
+      {
+        question: '"grey screen test" と "gray screen test" は同じものですか？',
+        answer: 'はい、全く同一のテストです。綴りの違いによるもので、「gray」は米国で、「grey」は英国や豪州などで主に利用される標準的な英語表記です。'
+      },
+      {
+        question: 'デフォルトで使用されている灰色のカラーは何ですか？',
+        answer: '起動時の初期灰色は「#808080」(RGB 128, 128, 128) です。これはウェブおよび印刷等で広く採用されている標準的な50%グレーです。'
+      },
+      {
+        question: '灰色の画面 テストはモニターの均一性を診るのに適していますか？',
+        answer: 'はい、灰色均一性テストはモニターの品質測定において最も一般的です。中間の明度であるため、バックライトの偏りやにじみが強調されて見えやすくなります。'
+      },
+      {
+        question: '濃い灰色の画面（ダークグレー）テストはいつ使いますか？',
+        answer: '有機EL (OLED) パネルの焼き付き進行レベルをチェックする場合や、暗いスタジオ等でバックライトのにじみを抑えた低輝度状態でのグラディエーション検査、VFX撮影に使います。'
       }
     ]
   }
@@ -2720,6 +3016,68 @@ export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-s
           '当サイトの <strong>茶色画面</strong>（brown screen）ツールは、眩しい <strong>白色画面</strong>（white screen）や完全な暗闇である <strong>黒色画面</strong>（black screen）とは異なり、コントラストの低い優しい暖色光を提供します。便利な <strong>茶色のスクリーンセーバー</strong>（brown screen saver）として実行したり、心休まる <strong>茶色画面の壁紙</strong>（brown screen wallpaper）を表示して、スマホやPCにレトロで温かみのある <strong>茶色画面のアエステティック</strong>（brown screen aesthetic）を演出するのに最適です。',
           '写真撮影やディスプレイチェックにおいても、このベタ塗り画面は活躍します。 <strong>薄い茶色の画面</strong>（light brown screen）から <strong>濃い茶色の画面</strong>（dark brown screen）まで調整して、輝度テストや演色性のチェックが可能です。また、 <strong>茶色のシルクスクリーン印刷機器</strong>（brown screen printing equipment）の色合いシミュレーションや、ノスタルジックなセピア調の間接照明としても利用されています。',
           'このブラウザツールは、 <strong>Windowsの茶色画面</strong>（brown screen windows）をはじめ、各種OSやタブレットに対応しています。一時的なハードトラブルで <strong>茶色画面の死</strong>（brown screen of death）と呼ばれるような異常発色が生じた場合でも、本ツールの無地スクリーンを表示することで、ディスプレイ本体の故障かOS側の問題かを簡単に見極めることができます。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'grey-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Grey Screen Online Tool & Digital Uniformity Tests',
+        paragraphs: [
+          'Whether you are examining a new monitor or troubleshooting a display glitch, using a <strong>grey screen</strong> online tool is a simple and effective diagnostic practice. A solid <strong>blank grey screen</strong> or <strong>full grey screen</strong> is a neutral canvas that doesn\'t distract the eyes, making it ideal for checking panel color accuracy, display uniformity, and visual temperature. If you want to run a quick test, you can set your output to a <strong>50% gray screen</strong> (HEX #808080) to inspect mid-tone values, or project a neutral <strong>grey screen for projector</strong> calibration, which improves contrast accuracy in home theatres. Our free web utility runs instantly in any browser on a <strong>grey screen pc</strong>, <strong>grey screen laptop</strong>, or <strong>grey screen TV</strong> without needing to download large video files.',
+          'For specialized diagnostics, conducting a <strong>grey screen test</strong> helps search for hardware anomalies. A <strong>grey uniformity test</strong> is the industry standard for evaluating the dreaded dirty screen effect (DSE) on TVs and monitors. You can easily switch to a <strong>dark grey screen</strong> when performing a <strong>grey screen test OLED</strong> or a general <strong>OLED burn-in test</strong> to see if static elements have permanently affected the organic light-emitting details. If you have an Apple smartphone and want to run a <strong>grey screen for burn in test iphone</strong>, or if you are dealing with a sudden <strong>grey screen iphone</strong> lock or <strong>iphone grey screen</strong> glitch, setting our tool to fullscreen can help you determine if it is a physical display error or a simple software calibration issue.',
+          'Aside from testing, this tool is highly useful for multimedia creation and system testing. Film editors and digital artists frequently run a <strong>gray scale test</strong> or use a <strong>grey screen vfx</strong> layer as a compositing element to balance light values. If you are running into startup crashes, such as a <strong>grey screen windows 11</strong>, a <strong>grey screen windows 10</strong> freeze, or a <strong>grey screen mac</strong> startup issue, loading our web tool in fullscreen allows you to compare normal color outputs and trace connections. Toggle the fullscreen mode, adjust the brightness slider, and select the exact tone to match your needs.'
+        ]
+      },
+      es: {
+        heading: 'Herramienta de Pantalla Gris Online y Pruebas de Uniformidad',
+        paragraphs: [
+          'Ya sea que estés inspeccionando un monitor nuevo o diagnosticando un fallo de visualización, utilizar una <strong>pantalla gris</strong> (grey screen) online es una forma práctica y económica. Una <strong>pantalla gris en blanco</strong> (blank grey screen) o <strong>pantalla gris completa</strong> (full grey screen) proporciona una visualización neutra y uniforme, lo que la hace ideal para evaluar la precisión del color y el brillo. Puedes elegir una <strong>pantalla gris al 50%</strong> (50% gray screen) con el HEX #808080 para comprobar tonos grises medios, o configurar una <strong>pantalla gris para proyector</strong> (grey screen for projector) para equilibrar el contraste en salas oscuras. Nuestra herramienta se ejecuta al instante en cualquier navegador de tu <strong>pantalla gris en pc</strong> (grey screen pc), <strong>pantalla gris en portátil</strong> (grey screen laptop) o <strong>pantalla gris en TV</strong> (grey screen TV) sin descargas.',
+          'Para evaluaciones más avanzadas, realizar una <strong>prueba de pantalla gris</strong> (grey screen test) te ayuda a encontrar defectos de luz. Una <strong>prueba de uniformidad gris</strong> (grey uniformity test) es el método estándar para probar el efecto de pantalla sucia en pantallas LCD y LED. También puedes seleccionar una <strong>pantalla gris oscuro</strong> (dark grey screen) para realizar una <strong>prueba de pantalla gris OLED</strong> (grey screen test OLED) o un <strong>prueba de quemado OLED</strong> (OLED burn-in test) para verificar si hay imágenes retenidas. Si buscas una <strong>pantalla gris para prueba de quemado en iphone</strong> (grey screen for burn in test iphone) o tu teléfono presenta un fallo de <strong>pantalla gris iphone</strong> (grey screen iphone) o <strong>iphone pantalla gris</strong> (iphone grey screen), nuestra web te permite rellenar la pantalla para comprobar si es un problema físico o de software.',
+          'Además de los diagnósticos, esta página es de gran utilidad para creadores audiovisuales y efectos visuales. Los editores usan una <strong>prueba de escala de grises</strong> (gray scale test) o un fondo de <strong>pantalla gris vfx</strong> (grey screen vfx) para pruebas de rango dinámico. Si estás intentando solucionar fallos del sistema como una <strong>pantalla gris en windows 11</strong> (grey screen windows 11), una <strong>pantalla gris en windows 10</strong> (grey screen windows 10) o una pantalla bloqueada con <strong>pantalla gris en mac</strong> (grey screen mac), nuestra web te permite verificar la integridad visual con controles de brillo ajustables en pantalla completa.'
+        ]
+      },
+      pt: {
+        heading: 'Ferramenta de Tela Cinza Online e Testes de Uniformidade',
+        paragraphs: [
+          'Seja para avaliar um monitor novo ou diagnosticar algum problema físico, usar uma <strong>tela cinza</strong> (grey screen) online é um teste prático. Uma <strong>tela cinza em branco</strong> (blank grey screen) ou <strong>tela cinza completa</strong> (full grey screen) serve como um campo de cor neutro, perfeito para verificar a calibragem do brilho. Você pode selecionar a <strong>tela cinza 50%</strong> (50% gray screen) com código HEX #808080 para conferir tons intermediários, ou usar a <strong>tela cinza para projetor</strong> (grey screen for projector) para melhorar a precisão em projeções de vídeo. Nosso site roda direto no navegador, funcionando instantaneamente em seu navegador de <strong>tela cinza no pc</strong> (grey screen pc), <strong>tela cinza no notebook</strong> (grey screen laptop) ou <strong>tela cinza na TV</strong> (grey screen TV).',
+          'Para diagnósticos detalhados, rodar um <strong>teste de tela cinza</strong> (grey screen test) é muito útil. O <strong>teste de referência de uniformidade cinza</strong> (grey uniformity test) serve para avaliar problemas de efeito de tela suja (DSE) em novos displays. Você também pode escurecer a cor para obter uma <strong>tela cinza escuro</strong> (dark grey screen) e fazer o <strong>teste de tela cinza OLED</strong> (grey screen test OLED) ou um <strong>teste de burn-in OLED</strong> (OLED burn-in test) contra retenção de imagem. Se precisar de uma <strong>tela cinza para teste de burn-in no iphone</strong> (grey screen for burn in test iphone) ou estiver investigando um erro de <strong>tela cinza no iphone</strong> (grey screen iphone) ou <strong>iphone tela cinza</strong> (iphone grey screen) travado, nossa plataforma ajuda a identificar defeitos.',
+          'Além de diagnósticos de pixels, esta página serve de apoio para produtores de mídia e compositores de vídeo. Editores utilizam o <strong>teste de escala de cinza</strong> (gray scale test) e camadas de <strong>tela cinza vfx</strong> (grey screen vfx) para ajustar a iluminação de cenas. Se você está enfrentando problemas de inicialização no computador como **tela cinza no windows 11** (grey screen windows 11), **tela cinza no windows 10** (grey screen windows 10) ou uma inconveniente **tela cinza no mac** (grey screen mac), esse utilitário de tela cheia ajuda a isolar a integridade cromatico dos cabos de forma ágil.'
+        ]
+      },
+      fr: {
+        heading: 'Outil Écran Gris en Ligne & Tests d\'Uniformité de Dalle',
+        paragraphs: [
+          'Que vous inspectiez un nouveau moniteur ou résolviez une anomalie d\'affichage, utiliser un <strong>écran gris</strong> (grey screen) en ligne est une méthode de diagnostic efficace. Un <strong>écran gris vide</strong> (blank grey screen) ou <strong>écran gris plein écran</strong> (full grey screen) offre une surface neutre idéale pour vérifier la luminance et l\'équilibre des teintes. Vous pouvez choisir un <strong>écran gris 50%</strong> (50% gray screen) avec le code HEX #808080 pour évaluer les tons moyens, ou projeter un <strong>écran gris pour projecteur</strong> (grey screen for projector) afin d\'ajuster le taux de contraste de votre home cinéma. Notre site fonctionne sur n\'importe quel ordinateur avec <strong>écran gris pc</strong> (grey screen pc), <strong>écran gris portable</strong> (grey screen laptop) ou <strong>écran gris TV</strong> (grey screen TV).',
+          'Pour des tests plus poussés, le lancement d\'un <strong>test écran gris</strong> (grey screen test) permet d\'identifier les variations de rétroéclairage. Effectuer un <strong>test d\'uniformité gris</strong> (grey uniformity test) est la meilleure façon de repérer l\'effet d\'écran sale sur les dalles LCD/LED. Vous pouvez également basculer sur un <strong>écran gris foncé</strong> (dark grey screen) afin d\'exécuter un <strong>test écran gris OLED</strong> (grey screen test OLED) ou un <strong>test de burn-in OLED</strong> (OLED burn-in test). Pour un <strong>écran gris pour test burn in iphone</strong> (grey screen for burn in test iphone) ou pour diagnostiquer un dysfonctionnement d\'un <strong>écran gris iphone</strong> (grey screen iphone) ou d\'un <strong>iphone écran gris</strong> (iphone écran gris), notre outil plein écran vous permet d\'inspecter chaque zone.',
+          'Outre les tests matériels, cet outil est précieux pour les spécialistes des effets spéciaux et du montage. Les graphistes effectuent un <strong>test d\'échelle de gris</strong> (gray scale test) ou intègrent un <strong>écran gris vfx</strong> (grey screen vfx) pour harmoniser les ombres de leurs créations. Si vous êtes confronté à des bugs de démarrage du système d\'exploitation comme un <strong>écran gris windows 11</strong> (grey screen windows 11), un <strong>écran gris windows 10</strong> (grey screen windows 10) ou un <strong>écran gris mac</strong> (grey screen mac), notre application en ligne vous permet d\'analyser le signal de la dalle en plein écran.'
+        ]
+      },
+      de: {
+        heading: 'Grauer Bildschirm Online-Tool & Display-Gleichmäßigkeitstests',
+        paragraphs: [
+          'Egal, ob Sie einen neuen Monitor testen oder Bildfehler untersuchen möchten, die Nutzung von einem <strong>grauen Bildschirm</strong> (grey screen) online ist eine ideale Praxis. Ein <strong>leerer grauer Bildschirm</strong> (blank grey screen) oder <strong>grauer bildschirm vollbild</strong> (full grey screen) fungiert als farbneutraler Hintergrund, mit dem Sie Unregelmäßigkeiten des Panels analysieren können. Sie können einen <strong>50% grauen Bildschirm</strong> (50% gray screen) mit dem HEX-Wert #808080 wählen, um mittlere Graustufen zu überprüfen, oder einen <strong>grauen bildschirm für beamer</strong> (grey screen for projector) projizieren, um Kontrastwerte optimal einzustellen. Unser Tool erfordert keine Software-Downloads und funktioniert auf jedem <strong>grauen bildschirm pc</strong> (grey screen pc), <strong>grauen bildschirm laptop</strong> (grey screen laptop) und <strong>grauen bildschirm TV</strong> (grey screen TV).',
+          'Für detaillierte Hardwareprüfungen hilft Ihnen ein gezielter <strong>grauer bildschirm test</strong> (grey screen test). Eine <strong>graue gleichmäßigkeitsprüfung</strong> (grey uniformity test) ist die gängigste Methode zur Ermittlung des Dirty-Screen-Effekts auf Fernsehern und Bildschirmen. Sie können auch zu einem <strong>dunklen grauen Bildschirm</strong> (dark grey screen) wechseln, um einen <strong>grauen bildschirm test OLED</strong> (grey screen test OLED) oder einen <strong>OLED einbrenntest</strong> (OLED burn-in test) durchzuführen, um zu prüfen, ob Pixel Schaden erlitten haben. Falls Sie einen <strong>grauen bildschirm für einbrenntest iphone</strong> (grey screen for burn in test iphone) benötigen oder Ihr Smartphone einen Fehler wie einen <strong>grauen bildschirm iphone</strong> (grey screen iphone) oder <strong>iphone grauen bildschirm</strong> (iphone grauen bildschirm) anzeigt, bietet diese Webseite eine bequeme Diagnose.',
+          'Abseits von Paneltests ist unser Tool eine wichtige Hilfe bei VFX-Arbeiten und Kalibrierungen. Videoeditoren nutzen einen <strong>graustufentest</strong> (gray scale test) oder einen <strong>grauen bildschirm vfx</strong> (grey screen vfx) als neutralen Luminanzbezug bei der Farbkorrektur. Falls Sie Probleme beim Laden Ihres Betriebssystems untersuchen möchten, wie einen <strong>grauen bildschirm windows 11</strong> (grey screen windows 11), einen Systemfehler mit einem <strong>grauen bildschirm windows 10</strong> (grey screen windows 10) oder einen gesperrten <strong>grauen bildschirm mac</strong> (grey screen mac), können Sie mit unserer Plattform die Fehlerquellen eingrenzen.'
+        ]
+      },
+      hi: {
+        heading: 'ग्रे स्क्रीन ऑनलाइन टूल और डिस्प्ले यूनिफॉर्मिटी टेस्ट',
+        paragraphs: [
+          'चाहे आप एक नया डिस्प्ले टेस्ट कर रहे हों या किसी स्क्रीन दोष की जांच कर रहे हों, एक ऑनलाइन **ग्रे स्क्रीन** (grey screen) का उपयोग करना एक सामान्य और प्रभावी तरीका है। एक **खाली ग्रे स्क्रीन** (blank grey screen) या **फुल ग्रे स्क्रीन** (full grey screen) एक तटस्थ माध्यम है जिस पर आंखें थकती नहीं हैं, जो डिस्प्ले यूनिफॉर्मिटी और ब्राइटनेस की जांच के लिए आदर्श है। आप मध्यम ग्रे स्तर की जांच के लिए **50% ग्रे स्क्रीन** (50% gray screen) या होम थिएटर सेटअप में कंट्रास्ट सुधारने के लिए **प्रोजेक्टर के लिए ग्रे स्क्रीन** (grey screen for projector) सेट कर सकते हैं। यह टूल सीधे ब्राउज़र में चलता है और हर **ग्रे स्क्रीन पीसी** (grey screen pc), **ग्रे स्क्रीन लैपटॉप** (grey screen laptop), या **ग्रे स्क्रीन टीवी** (grey screen TV) पर काम करता है।',
+          'विशेष हार्डवेयर जांच के लिए, एक व्यवस्थित **ग्रे स्क्रीन टेस्ट** (grey screen test) चलाना काफी मददगार होता है। टीवी और मॉनिटर पर डर्ट स्क्रीन इफेक्ट (DSE) की पुष्टि करने के लिए **ग्रे यूनिफॉर्मिटी टेस्ट** (grey uniformity test) एक बुनियादी परीक्षण है। आप कंट्रास्ट देखने के लिए एक **डार्क ग्रे स्क्रीन** (dark grey screen) का चयन कर सकते हैं और **ओएलईडी ग्रे स्क्रीन टेस्ट** (grey screen test OLED) या **ओएलईडी बर्न-इन टेस्ट** (OLED burn-in test) चला सकते हैं। यदि आप **आईफोन के लिए ग्रे स्क्रीन बर्न इन टेस्ट** (grey screen for burn in test iphone) करना चाहते हैं, या फोन में आने वाली **ग्रे स्क्रीन आईफोन** (grey screen iphone) या **आईफोन ग्रे स्क्रीन** (iphone grey screen) की खराबी की जांच करना चाहते हैं, तो हमारा टूल काफी उपयोगी है।',
+          'डिस्प्ले टेस्ट के अलावा, यह टूल वीडियो संपादन और फिल्म प्रेमियों के लिए एक महत्वपूर्ण सहायक है। एडिटिंग विशेषज्ञ रोशनी और छाया को संतुलित करने के लिए **ग्रे स्केल टेस्ट** (gray scale test) या **ग्रे स्क्रीन वीएफएक्स** (grey screen vfx) प्रभाव का उपयोग करते हैं। यदि आप अपने कंप्यूटर के बूट सिस्टम जैसे **ग्रे स्क्रीन विंडोज 11** (grey screen windows 11), **ग्रे स्क्रीन विंडोज 10** (grey screen windows 10) एरर, या एप्पल के **ग्रे स्क्रीन मैक** (grey screen mac) लॉक की जांच कर रहे हैं, तो फुलस्क्रीन विकल्प की मदद से इसे आसानी से जांचा जा सकता है।'
+        ]
+      },
+      ja: {
+        heading: '灰色の画面 オンラインツールとディスプレイ均一性テスト',
+        paragraphs: [
+          '新しいディスプレイの検証 biographical 液晶の表示チェックでも、オンラインで **灰色の画面** (grey screen) を使用することは非常にシンプルで効果的です。**空白の灰色の画面** (blank grey screen) や **灰色の画面 全画面** (full grey screen) は目に優しい中間色のアートであり、パネルの視野角や色分布を評価するのに優れています。中間色を細かくチェックするために **50% 灰色の画面** (50% gray screen) をロードしたり、プロジェクションのコントラスト調律用として **灰色の画面 プロジェクター** (grey screen for projector) を投影することも可能です。このツールは **灰色の画面 pc** (grey screen pc)、**灰色の画面 ノートパソコン** (grey screen laptop)、または **灰色の画面 テレビ** (grey screen TV) で動作します。',
+          'より専門的な検品においては、**灰色の画面 テスト** (grey screen test) がハードウェア異常の識別に効果的です。ディスプレイのムラや影を確かめられる **灰色均一性テスト** (grey uniformity test) は液晶の品質管理に最も利用されています。**濃い灰色の画面** (dark grey screen) を表示することで、**灰色の画面 テスト OLED** (grey screen test OLED) や **OLED焼き付きテスト** (OLED burn-in test) を行い、バックライト漏れをより正確に検査できます。**灰色の画面 焼き付きテスト iphone** (grey screen for burn in test iphone) の動作確認や、一時的なバグである **灰色の画面 iphone** (grey screen iphone) や **iphone 灰色の画面** (iphone 灰色の画面) の画面障害の切り分けにも役立ちます。',
+          'カラーテスト目的以外では、ビデオ編集やVFX制作での適応検査ツールとしても利用されています。映像の明暗差の検証には **グレースケールテスト** (gray scale test) や **灰色の画面 vfx** (grey screen vfx) の合成用カラーレイアウトが用いられます。また、OS起動時フリーズの **灰色の画面 windows 11** (grey screen windows 11)、**灰色の画面 windows 10** (grey screen windows 10)、あるいは **灰色の画面 mac** (grey screen mac) などの液晶異常時において、ハード自体の表示能力を本ツールで正確に測定することができます。'
         ]
       }
     };
