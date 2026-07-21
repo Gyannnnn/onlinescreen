@@ -513,6 +513,7 @@ const toolNames: Record<string, Partial<Record<Locale, string>>> = {
   'cyan-screen': { es: 'Pantalla Cian', pt: 'Tela Ciano', fr: 'Écran Cyan', de: 'Cyan Bildschirm', hi: 'स्यान स्क्रीन', ja: 'シアンの画面' },
   'brown-screen': { es: 'Pantalla Marrón', pt: 'Tela Marrom', fr: 'Écran Marron', de: 'Brauner Bildschirm', hi: 'भूरी स्क्रीन', ja: '茶色の画面' },
   'grey-screen': { es: 'Pantalla Gris', pt: 'Tela Cinza', fr: 'Écran Gris', de: 'Grauer Bildschirm', hi: 'स्लेटी स्क्रीन', ja: '灰色の画面' },
+  'custom-color-screen': { es: 'Pantalla de Color Personalizado', pt: 'Tela de Cor Personalizada', fr: 'Écran Couleur Personnalisé', de: 'Benutzerdefinierter Farbbildschirm', hi: 'कस्टम कलर स्क्रीन', ja: 'カスタムカラー画面' },
   'macos-screen': { es: 'Actualización de macOS', pt: 'Atualização do macOS', fr: 'Mise à jour macOS', de: 'macOS-Aktualisierung', hi: 'macOS अपडेट', ja: 'macOSアップデート' },
   'radar-screen': { es: 'Pantalla de Radar', pt: 'Tela de Radar', fr: 'Écran Radar', de: 'Radar-Bildschirm', hi: 'रडार स्क्रीन', ja: 'レーダー画面' },
   'fireplace-screen': { es: 'Pantalla de Chimenea', pt: 'Tela de Lareira', fr: 'Écran de Cheminée', de: 'Kaminfeuer-Bildschirm', hi: 'फायरप्लेस स्क्रीन', ja: '暖炉の画面' },
@@ -522,6 +523,14 @@ const toolNames: Record<string, Partial<Record<Locale, string>>> = {
 };
 
 const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
+  'custom-color-screen': {
+    es: 'Una herramienta versátil de prueba de color de pantalla para generar cualquier pantalla completa de color sólido para comprobar la uniformidad del monitor, fugas de luz e identificar píxeles muertos.',
+    pt: 'Uma ferramenta versátil de teste de cor de tela para gerar qualquer cor de preenchimento em tela cheia para verificar uniformidade do monitor, pixels mortos e vazamento de luz.',
+    fr: 'Un outil de test de couleur d\'écran polyvalent pour générer des couleurs unies plein écran afin de diagnostiquer les pixels morts, les fuites de lumière et l\'uniformité de la dalle.',
+    de: 'Ein vielseitiges Bildschirm-Farbtest-Tool zur Generierung jeder Vollbildfarbe für Gleichmäßigkeitsprüfungen, Pixelfehler- und Backlight-Bleed-Tests.',
+    hi: 'डिस्प्ले यूनिफॉर्मिटी, डेड पिक्सल और बैकलाइट ब्लीड की जांच के लिए स्क्रीन को किसी भी रंग में बदलने वाला एक बहुमुखी स्क्रीन कलर टेस्टिंग टूल।',
+    ja: 'ディスプレイ表示の均一性診断、ドット抜けチェック、バックライト漏れの検出用に、任意の単色全画面を表示できる画面色テストツール。',
+  },
   'white-screen': { hi: 'सफाई जांच, नरम रोशनी, डिस्प्ले निरीक्षण और फोटोग्राफी फिल के लिए एक शुद्ध सफेद फुलस्क्रीन टूल।' },
   'black-screen': { hi: 'OLED जांच, डेड पिक्सल खोज, चकाचौंध कम करने और अंधेरे कमरे में उपयोग के लिए एक वास्तविक काली फुलस्क्रीन सतह।' },
   'green-screen': { hi: 'क्रोमा की प्रीव्यू, पैनल जांच और रंग संदर्भ के लिए एक जीवंत हरा फुलस्क्रीन पेज।' },
@@ -2552,6 +2561,302 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
         answer: '有機EL (OLED) パネルの焼き付き進行レベルをチェックする場合や、暗いスタジオ等でバックライトのにじみを抑えた低輝度状態でのグラディエーション検査、VFX撮影に使います。'
       }
     ]
+  },
+  'custom-color-screen': {
+    en: [
+      {
+        question: 'What is a screen color testing tool used for?',
+        answer: 'A screen color testing tool displays solid color fields to inspect display uniformity, calibrate color balance, test white levels, check for backlight bleeding, and identify panel defects like stuck or dead pixels.'
+      },
+      {
+        question: 'How can I test my screen for dead pixels?',
+        answer: 'Enter fullscreen mode on our tool and cycle through solid colors—especially red, green, blue, black, and white. Look closely for any tiny dots that remain off-color or don\'t match the background.'
+      },
+      {
+        question: 'Does this tool support color calibration?',
+        answer: 'Yes, you can generate specific color swatches using HEX, RGB, or HSL inputs. It helps you visually match display profiles or calibrate projector outputs against reference cards.'
+      },
+      {
+        question: 'What is backlight bleeding and how do I spot it?',
+        answer: 'Backlight bleeding is light leaking around display edges. Test this by using a dark color screen (like dark gray, black, or blue) in a dim room and inspecting panel borders for bright halos.'
+      },
+      {
+        question: 'Can I choose any custom color for testing?',
+        answer: 'Yes, you can insert exact Hex values (e.g. #FF0000), RGB numbers (e.g., 255, 0, 0), HSL parameters, or open the interactive OS color picker to generate any custom screen color.'
+      },
+      {
+        question: 'Is it safe to run a screen color test on OLED panels?',
+        answer: 'Absolutely. Static color screens are completely safe to view for testing purposes. Just avoid leaving highly bright static screens on for hours to prevent organic panel wear.'
+      },
+      {
+        question: 'Can I save my custom screen color palettes?',
+        answer: 'Yes! The tool stores your recently generated screen colors so you can quickly switch back, and allows you to add specific colors to your favorites list.'
+      },
+      {
+        question: 'What is the RGB screen test mode?',
+        answer: 'It is a diagnostic routine where you cycle through Red, Green, and Blue subpixels to identify exactly which channel is lagging or defective.'
+      },
+      {
+        question: 'Can I download solid color wallpapers?',
+        answer: 'Yes, you can choose horizontal, vertical, or device-specific square ratios, input your custom color index, and download high-resolution PNG screen images.'
+      },
+      {
+        question: 'Does a screen color test work on mobile phones and TVs?',
+        answer: 'Yes, because our web utility runs client-side inside standard browsers, it works seamlessly on smartphones (iPhones/Androids), tablets, laptops, PCs, and smart TVs.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Para qué se utiliza una herramienta de prueba de color de pantalla?',
+        answer: 'Se utiliza para comprobar la uniformidad del display, calibrar la temperatura, revisar niveles de brillo y buscar defectos como píxeles atascados o fugas de luz.'
+      },
+      {
+        question: '¿Cómo puedo probar mi pantalla para detectar píxeles muertos?',
+        answer: 'Activa la pantalla completa y alterna entre colores sólidos como rojo, verde, azul, blanco y negro. Busca pequeños puntos que no coincidan con el color mostrado.'
+      },
+      {
+        question: '¿Esta herramienta ayuda en la calibración de color?',
+        answer: 'Sí, permite generar muestras de color precisas usando códigos HEX, RGB o HSL para emparejar perfiles visuales o ajustar proyectores frente a cartas de color.'
+      },
+      {
+        question: '¿Qué es la fuga de retroiluminación y cómo la detecto?',
+        answer: 'Es la filtración de luz en los bordes del monitor. Pruébalo usando colores oscuros en una habitación con poca luz y observando bordes brillantes anormales.'
+      },
+      {
+        question: '¿Puedo elegir cualquier color personalizado para la prueba?',
+        answer: 'Sí, puedes ingresar valores Hexadecimales libres, rangos de RGB o HSL, o bien utilizar el selector interactivo para conseguir el color de prueba óptimo.'
+      },
+      {
+        question: '¿Es seguro hacer pruebas con pantallas de colores en paneles OLED?',
+        answer: 'Sí, es completamente inofensivo abrir pantallas de color sólido para diagnósticos. Se aconseja evitar dejar pantallas brillantes durante muchas horas para prevenir desgaste.'
+      },
+      {
+        question: '¿Puedo guardar mis paletas de colores personalizadas?',
+        answer: '¡Sí! La herramienta ofrece un historial automático de tus colores recientes y te permite marcar tus tonos favoritos para acceder a ellos rápidamente.'
+      },
+      {
+        question: '¿Qué es el modo de prueba de pantalla RGB?',
+        answer: 'Es un método de escaneo en el que se alternan de forma pura los canales Rojo, Verde y Azul para determinar qué subpíxel específico de la cuadrícula falla.'
+      },
+      {
+        question: '¿Puedo descargar fondos de pantalla de colores sólidos?',
+        answer: 'Sí, puedes definir proporciones (horizontal, vertical o cuadrada), ajustar el tono deseado y descargar un archivo PNG de alta resolución.'
+      },
+      {
+        question: '¿Funciona la herramienta en teléfonos móviles y televisores?',
+        answer: 'Sí, al ser un utilitario web ligero, es totalmente compatible con smartphones, tabletas, portátiles, PC de escritorio y Smart TVs.'
+      }
+    ],
+    pt: [
+      {
+        question: 'Para que serve uma ferramenta de teste de cor de tela?',
+        answer: 'Serve para verificar uniformidade de luz, calibrar balanço térmico de cores, analisar tons de brilho e identificar falhas de componentes como subpixels inoperantes.'
+      },
+      {
+        question: 'Como posso testar minha tela contra pixels mortos?',
+        answer: 'Acesse a tela cheia no testador e mude sequencialmente entre cores sólidas. Fique atento a pontos pretos ou desalinhados cromáticos que permaneçam fixos.'
+      },
+      {
+        question: 'Esse utilitário suporta calibração de cor de monitor?',
+        answer: 'Sim, você pode gerar valores correspondentes aos perfis RGB, HEX ou HSL do seu projeto para equiparar monitores visuais ou saídas de vídeo de projetor.'
+      },
+      {
+        question: 'O que é vazamento de luz e como posso testá-lo?',
+        answer: 'Ocorre quando luz do backlight vaza pelas bordas do monitor LCD ou IPS. Faça o teste abrindo cores escuras em salas com pouca luz e cheque as bordas.'
+      },
+      {
+        question: 'Posso definir qualquer cor sólida personalizada para testes?',
+        answer: 'Sim, use controle numérico HEX, entradas RGB, ajustes HSL ou escolha cores diretamente da paleta do sistema operacional no picker.'
+      },
+      {
+        question: 'É seguro rodar testes de cor de tela em painéis OLED?',
+        answer: 'Sim, é perfeitamente seguro para checagens intermitentes. Apenas evite displays estáticos brilhantes por longas horas contínuas para prevenir retração de imagem.'
+      },
+      {
+        question: 'É possível salvar minhas cores favoritas geradas?',
+        answer: 'Sim! Nosso sistema guarda o histórico de suas cores recentes modificadas e disponibiliza uma lista de favoritos de fácil navegação permanente.'
+      },
+      {
+        question: 'O que representa o teste de tela modo RGB?',
+        answer: 'É uma rotina onde você isola os canais vermelho, verde e azul de forma pura para inspecionar falhas individuais de acendimento de cada subpixel físico.'
+      },
+      {
+        question: 'Consigo baixar papéis de parede de cores lisas?',
+        answer: 'Sim. Escolha a orientação (horizontal, vertical ou quadrada) e baixe a imagem unicolor gerada como arquivo PNG de alta qualidade.'
+      },
+      {
+        question: 'O teste de tela funciona em celulares e Smart TVs?',
+        answer: 'Sim, nossa ferramenta funciona diretamente nos navegadores nativos de Smart TVs, tablets, notebooks, desktops e smartphones.'
+      }
+    ],
+    fr: [
+      {
+        question: 'À quoi sert un outil de test de couleur d\'écran ?',
+        answer: 'Il sert à analyser la distribution de la lumière, calibrer le profil thermique d\'un moniteur, tester la balance des blancs et localiser des anomalies de sous-pixels.'
+      },
+      {
+        question: 'Comment puis-je tester mon écran pour repérer des pixels morts ?',
+        answer: 'Activez le plein écran et balayez les couleurs de base (rouge, vert, bleu, blanc, noir). Repérez les minuscules points qui ne changent pas de couleur.'
+      },
+      {
+        question: 'Cet outil aide-t-il dans l\'étalonnage de couleurs ?',
+        answer: 'Oui, en saisissant des codes HEX ou RGB précis, vous affichez des mires unies pour régler vos écrans ou ajuster l\'affichage de vos vidéoprojecteurs.'
+      },
+      {
+        question: 'Qu\'est-ce qu\'une fuite de lumière et comment la diagnostiquer ?',
+        answer: 'C\'est le flux lumineux du rétroéclairage qui déborde sur les coins de l\'écran. Testez cela avec un ton sombre en pièce obscure en inspectant les rebords.'
+      },
+      {
+        question: 'Puis-je utiliser n\'importe quel code couleur pour le test ?',
+        answer: 'Oui, vous êtes libre d\'utiliser les codes HEX, HSL, RGB ou d\'ouvrir le sélecteur graphique système pour générer exactement la couleur requise.'
+      },
+      {
+        question: 'Y a-t-il un risque à tester une dalle OLED avec des couleurs unies ?',
+        answer: 'Non, l\'utilisation intermittente de fonds unis n\'endommage pas les dalles OLED. Évitez simplement de laisser des images fixes très lumineuses pendant des heures.'
+      },
+      {
+        question: 'Puis-je mémoriser mes propres couleurs de test ?',
+        answer: 'Oui ! L\'outil enregistre les teintes récemment générées et vous permet d\'ajouter vos favorites à un volet d\'accès rapide.'
+      },
+      {
+        question: 'À quoi sert le test de balayage d\'écran RGB ?',
+        answer: 'C\'est une vérification alternant le Rouge, le Vert et le Bleu pour valider la justesse de chaque canal couleur physique de votre panneau.'
+      },
+      {
+        question: 'Puis-je télécharger les fonds de couleurs solides créés ?',
+        answer: 'Oui, le bouton d\'exportation génère une image PNG unie en haute résolution, adaptée aux dimensions horizontales, verticales ou carrées.'
+      },
+      {
+        question: 'L\'outil de test est-il compatible avec les mobiles et TV connectées ?',
+        answer: 'Oui, comme il s\'agit d\'une page Web réactive s\'exécutant sur le navigateur, elle est compatible avec les iPhone, Android, téléviseurs et ordinateurs.'
+      }
+    ],
+    de: [
+      {
+        question: 'Wofür wird ein Bildschirm-Farbtest-Tool verwendet?',
+        answer: 'Es wird verwendet, um die Homogenität der Beleuchtung zu messen, Kontrasteinstellungen zu kalibrieren und Panelfehler wie festhängende oder tote Pixel aufzuspüren.'
+      },
+      {
+        question: 'Wie kann ich mein Display auf Pixelfehler prüfen?',
+        answer: 'Schalten Sie auf Vollbild und wechseln Sie zwischen Grundfarben wie Rot, Grün, Blau, Schwarz und Weiß. Suchen Sie nach Punkten, die farblich abweichen.'
+      },
+      {
+        question: 'Unterstützt dieses Tool die Farbkalibrierung von Monitoren?',
+        answer: 'Ja. Durch die Generierung exakter HEX- oder RGB-Volltonflächen können Sie Helligkeitswerte anpassen oder Projektoren mit Referenzkarten abgleichen.'
+      },
+      {
+        question: 'Was ist Backlight Bleeding und wie teste ich es?',
+        answer: 'Das ist ungewollter Lichtaustritt an den Gehäuserändern von LCDs. Testen Sie dies mit dunklen Testfarben in einem abgedunkelten Raum an den Rändern.'
+      },
+      {
+        question: 'Kann ich jede beliebige Testfarbe selbst bestimmen?',
+        answer: 'Ja. Sie können frei HEX-Codes, RGB-Kombinationen oder HSL-Werte eintippen oder die Farbauswahl nutzen, um jeden Farbton anzuzeigen.'
+      },
+      {
+        question: 'Sind einfarbige Farbtests sicher für OLED-Bildschirme?',
+        answer: 'Ja, die kurze Nutzung einfarbiger Flächen zur Fehlerprüfung ist absolut sicher. Vermeiden Sie es jedoch, extrem helle Farben stundenlang statisch anzuzeigen.'
+      },
+      {
+        question: 'Kann ich meine erstellten Testfarben speichern?',
+        answer: 'Ja! Das Tool speichert automatisch Ihren Farblauf in der Historie und erlaubt das Hinzufügen von Lieblingsfarben zu Ihren Favoriten.'
+      },
+      {
+        question: 'Was bringt der RGB-Bildschirmtestmodus?',
+        answer: 'Er ermöglicht das gezielte Ansteuern der roten, grünen und blauen Subpixel, um festzustellen, bei welchem Kanal Fehler oder Defekte vorliegen.'
+      },
+      {
+        question: 'Kann ich einfarbige Hintergründe lokal speichern?',
+        answer: 'Ja, Sie können das Bildformat wählen (Querformat, Hochformat oder quadratisch) und die einfarbige Fläche direkt als PNG-Bilddatei herunterladen.'
+      },
+      {
+        question: 'Funktionen die Bildschirm-Farbtests auch auf Handys und Smart-TVs?',
+        answer: 'Ja. Da unser Tool online im Webbrowser läuft, ist es auf allen Smartphones, Tablets, Computern und Smart-TVs sofort einsetzbar.'
+      }
+    ],
+    hi: [
+      {
+        question: 'स्क्रीन कलर टेस्टिंग टूल का उपयोग किस लिए किया जाता है?',
+        answer: 'यह टूल स्क्रीन की चौड़ाई में रंगों की समानता जांचने, व्हाइट बैलेंस दुरुस्त करने, बैकलाइट लीकेज देखने और पिक्सल्स के दोषों को खोजने के लिए किया जाता है।'
+      },
+      {
+        question: 'मैं अपनी स्क्रीन पर खराब पिक्सल (डेड पिक्सल) की जांच कैसे कर सकता हूं?',
+        answer: 'फुलस्क्रीन मोड चालू करें और लाल, हरा, नीला, सफेद और काला जैसे ठोस रंगों को बदलें। ध्यान दें कि कोई छोटा बिंदु स्क्रीन के अन्य रंग से मेल खा रहा है या नहीं।'
+      },
+      {
+        question: 'क्या यह टूल मॉनिटर के कलर एडजस्टमेंट में मदद करता है?',
+        answer: 'हाँ, आप विशिष्ट रूप से HEX या RGB दर्ज करके सटीक रंग की सतह देख सकते हैं, जो मॉनिटर या प्रोजेक्टर की बीम सेटिंग्स को परफेक्ट एडजस्ट करने में सहायक है।'
+      },
+      {
+        question: 'बैकलाइट ब्लीडिंग क्या है और मैं इसकी जांच कैसे करूं?',
+        answer: 'यह स्क्रीन के किनारों से रोशनी का बेवजह लीक होना है। अंधेरे कमरे में स्क्रीन पर डार्क शेड्स (जैसे ब्लैक या नेवी ब्लू) लगाकर इसे आसानी से देखा जा सकता है।'
+      },
+      {
+        question: 'क्या मैं टेस्टिंग के लिए किसी भी पसंदीदा रंग का चुनाव कर सकता हूं?',
+        answer: 'हाँ, आप मुक्त रूप से HEX वैल्यू, RGB कोड, HSL मान दर्ज कर सकते हैं या रंग समूह विंडो से सटीक रंग चुनकर पूरी स्क्रीन को उस पर बदल सकते हैं।'
+      },
+      {
+        question: 'क्या ओएलईडी स्क्रीन पर रंगीन डिस्प्ले टेस्ट चलाना ठीक है?',
+        answer: 'हाँ, परीक्षण अवधि के लिए रंगीन स्क्रीन चलाना पूर्णतः सुरक्षित है। हालाँकि, ओएलईडी सुरक्षा के लिए स्क्रीन को अत्यधिक तेज चमक में लंबे समय तक चालू न छोड़ें।'
+      },
+      {
+        question: 'क्या मैं हाल ही में तैयार की गई पेंट्स को सहेज सकता हूं?',
+        answer: 'हाँ! यह टूल हालिया रंगों का संग्रह रखता है ताकि आप उन्हें दोबारा जल्दी पा सकें, और आप किसी रंग को अपनी पसंदीदा पसंद के रूप में बुकमार्क भी कर सकते हैं।'
+      },
+      {
+        question: 'आरजीबी स्क्रीन टेस्ट क्या है?',
+        answer: 'इस परीक्षण के तहत लाल (Red), हरा (Green), और नीला (Blue) रंगों का शुद्ध चक्र चलाया जाता है ताकि यह पता लगाया जा सके कि कौन से रंग चैनल कमजोर या टूटे हुए हैं।'
+      },
+      {
+        question: 'क्या मैं सॉलिड कलर इमेज डाउनलोड कर सकता हूं?',
+        answer: 'हाँ, आप वांछित रंग का चुनाव करके विभिन्न रेशियो (वर्टिकल, हॉरिजॉन्टल) में अनुकूल उच्च गुणवत्ता वाली पीएनजी फाइल डाउनलोड कर सकते हैं।'
+      },
+      {
+        question: 'क्या यह स्क्रीन टेस्ट मोबाइल और टीवी पर भी चलता है?',
+        answer: 'हाँ, चूंकि यह वेब-आधारित उपयोगिता है, यह आईफोन, एंड्रॉइड, टैबलेट, डेस्कटॉप, टीवी और हर वेब ब्राउज़र इनेबल्ड डिवाइस पर कार्य करता है।'
+      }
+    ],
+    ja: [
+      {
+        question: '画面色テストツールは具体的に何に使われますか？',
+        answer: 'ディスプレイ照度の均一性診断、ホワイトバランス調整、カラーチャネル検証、明るさ測定、そしてドット抜けやバックライト漏れの有無検査に使用されます。'
+      },
+      {
+        question: '画面のドット抜けをテスト調べるには？',
+        answer: 'ディスプレイを全画面表示にし、赤・青・緑・白・黒の各単色パターンを循環させます。背景色と異なる反応をしないドットがないかを目視でチェックします。'
+      },
+      {
+        question: 'このツールでモニターの色調整（キャリブレーション）は行えますか？',
+        answer: 'はい。HEXコード、RGB値、HSL値を入力して基準カラーを再現し、お使いの液晶端末やプロジェクターのカラープロファイル調整に活用いただけます。'
+      },
+      {
+        question: 'バックライト漏れとは何ですか？どのように見つけますか？',
+        answer: '液晶の隅部から内部照明の光が滲み出てしまう現象です。部屋の明かりを暗くし、画面を暗色（黒やグレー）にしてフチの漏光を目視検査することが最適です。'
+      },
+      {
+        question: 'テスト用のカラーは自由に作ることができますか？',
+        answer: 'はい。16進数HEX値やRGBパラメーターの設定に加え、デバイス組み込みのカラーチューナーを使ってお望みのテストトーンを無制限で作成可能です。'
+      },
+      {
+        question: 'OLED（有機EL）画面で単色カラーテストを行うのは安全ですか？',
+        answer: 'はい、表示検証目的での短時間の再生であれば安全です。焼き付きを極力防ぐため、全画面チェック時の超高輝度のまま長時間放置することは避けてください。'
+      },
+      {
+        question: '自分で生成した単色カラーパターンを保存できますか？',
+        answer: 'はい。本システムは直近に生成した色のヒストリー記録を保持するほか、特に検証頻度の高い任意の色パレットをお気に入りパネルに永続保存できます。'
+      },
+      {
+        question: 'RGB画面テストモードとは何ですか？',
+        answer: '液晶ディスプレイの3原色（Red、Green、Blue）の赤・緑・青チャネルをそれぞれ単独で発光させ、どの色が異常かを確認する基本診断パターンです。'
+      },
+      {
+        question: '単色のカラー壁紙画像をダウンロードすることは可能ですか？',
+        answer: 'はい。縦長、横長、正方形の中から希望のアスペクト比を指定し、指定色を最高画質のPNGデータとして手軽にパソコンやスマホに保存できます。'
+      },
+      {
+        question: 'スマホやスマートTVのブラウザからでも使えますか？',
+        answer: 'はい。軽快なウェブアプリとして構築されているため、デスクトップ、ノートPCの他、iPhone、Android端末、各種スマートTVブラウザに対応します。'
+      }
+    ]
   }
 };
 
@@ -3078,6 +3383,68 @@ export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-s
           '新しいディスプレイの検証 biographical 液晶の表示チェックでも、オンラインで **灰色の画面** (grey screen) を使用することは非常にシンプルで効果的です。**空白の灰色の画面** (blank grey screen) や **灰色の画面 全画面** (full grey screen) は目に優しい中間色のアートであり、パネルの視野角や色分布を評価するのに優れています。中間色を細かくチェックするために **50% 灰色の画面** (50% gray screen) をロードしたり、プロジェクションのコントラスト調律用として **灰色の画面 プロジェクター** (grey screen for projector) を投影することも可能です。このツールは **灰色の画面 pc** (grey screen pc)、**灰色の画面 ノートパソコン** (grey screen laptop)、または **灰色の画面 テレビ** (grey screen TV) で動作します。',
           'より専門的な検品においては、**灰色の画面 テスト** (grey screen test) がハードウェア異常の識別に効果的です。ディスプレイのムラや影を確かめられる **灰色均一性テスト** (grey uniformity test) は液晶の品質管理に最も利用されています。**濃い灰色の画面** (dark grey screen) を表示することで、**灰色の画面 テスト OLED** (grey screen test OLED) や **OLED焼き付きテスト** (OLED burn-in test) を行い、バックライト漏れをより正確に検査できます。**灰色の画面 焼き付きテスト iphone** (grey screen for burn in test iphone) の動作確認や、一時的なバグである **灰色の画面 iphone** (grey screen iphone) や **iphone 灰色の画面** (iphone 灰色の画面) の画面障害の切り分けにも役立ちます。',
           'カラーテスト目的以外では、ビデオ編集やVFX制作での適応検査ツールとしても利用されています。映像の明暗差の検証には **グレースケールテスト** (gray scale test) や **灰色の画面 vfx** (grey screen vfx) の合成用カラーレイアウトが用いられます。また、OS起動時フリーズの **灰色の画面 windows 11** (grey screen windows 11)、**灰色の画面 windows 10** (grey screen windows 10)、あるいは **灰色の画面 mac** (grey screen mac) などの液晶異常時において、ハード自体の表示能力を本ツールで正確に測定することができます。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'custom-color-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Screen Color Testing Tool & Custom Color Diagnostics',
+        paragraphs: [
+          'When you need to evaluate the visual fidelity of a monitor, smartphone, tablet, or television, accessing a local <strong>screen color testing tool</strong> online is the fastest method. Our <strong>custom color screen</strong> utility acts as a highly flexible diagnostic display, allowing you to generate any solid shade using HEX codes, HSL adjustments, RGB sliders, or an interactive color picker. Conducting a comprehensive <strong>screen color test</strong> helps users verify panel calibration, check color accuracy, and view solid screens without the interference of browser bars or desktop elements. Whether you are using this as a <strong>monitor color test</strong> or a mobile <strong>display color test</strong>, you can test screen colors online in fullscreen with a single click.',
+          'Using a dedicated <strong>color screen test</strong> has significant advantages when inspecting a new or aged panel for physical defects. For instance, putting your monitor through a <strong>dead pixel color test</strong> is essential to find lazy or dead subpixels by cycling through primary and secondary shades. Similarly, a <strong>back light bleed color test</strong> is ideal for identifying luminance leaks along display borders. With our <strong>screen color testing tool</strong>, you can store recent colors, set up favorite palettes, and use the <strong>rgb screen test</strong> mode to evaluate how uniformly your device renders light and shadows. By matching precise industrial color profiles, you get a clean <strong>test screen colors online</strong> helper to find any discrepancy.',
+          'Beyond diagnosis, this <strong>color test screen</strong> serves as an indispensable tool for content creators, photographers, and professional technicians. Designers use it to compare color outputs against physical swatches, while filmmakers utilize the solid layouts as controlled ambient lighting sources. If you are calibrating a home projector, projecting a variety of solid <strong>screen colors for testing</strong> helps balance the color wheel and white levels. Our <strong>full screen color test</strong> utility runs completely client-side, eliminating external network dependencies, ensuring rapid load times, and providing high-resolution image downloads. Level up your display calibration workflow on any OS with the ultimate customizable test monitor colors assistant.'
+        ]
+      },
+      es: {
+        heading: 'Herramienta de Prueba de Color de Pantalla y Diagnósticos Cromáticos',
+        paragraphs: [
+          'Cuando necesitas evaluar la fidelidad visual de un monitor, teléfono inteligente, tableta o televisor, utilizar una <strong>herramienta de prueba de color de pantalla</strong> (screen color testing tool) online es el método más rápido. Nuestra utilidad de <strong>pantalla de color personalizado</strong> (custom color screen) actúa como un display de diagnóstico versátil, permitiéndote generar cualquier tono sólido mediante códigos HEX, valores HSL, reguladores RGB o un selector de color interactivo. Realizar una <strong>prueba de color de pantalla</strong> (screen color test) ayuda a verificar la calibración del panel, comprobar la precisión cromática y ver colores continuos sin la distracción de barras de navegación o ventanas. Ya sea que lo uses como una <strong>prueba de color de monitor</strong> (monitor color test) o una <strong>prueba de color de display</strong> (display color test) móvil, puedes probar colores de pantalla online en pantalla completa con facilidad.',
+          'Diagnosticar anomalías físicas en un panel es mucho más sencillo con un <strong>test de color de pantalla</strong> (color screen test) específico. Por ejemplo, someter a tu dispositivo a una <strong>prueba de color para píxeles muertos</strong> (dead pixel color test) es la forma ideal de localizar subpíxeles inactivos al alternar entre tonos primarios y secundarios. De igual manera, una <strong>prueba de color para fugas de luz</strong> (back light bleed color test) te ayuda a ubicar fugas de brillo (backlight bleeding) en los bordes del chasis. Con este probador cromático, puedes almacenar tus tonos recientes, guardar paletas favoritas y usar el modo de <strong>prueba de pantalla RGB</strong> (rgb screen test) para analizar cómo se proyectan las luces y sombras sobre la pantalla.',
+          'Además de los diagnósticos técnicos, esta herramienta de colores es de gran utilidad para fotógrafos, diseñadores y editores de video. Los creadores usan la pantalla de color sólido para equilibrar intensidades lumínicas y calibrar proyectores usando <strong>colores de pantalla para prueba</strong> (screen colors for testing) que ayudan a equilibrar el balance de blancos. Nuestra <strong>prueba de color de pantalla completa</strong> (full screen color test) se ejecuta directamente en el navegador, garantizando cargas rápidas, sin descargas y exportando imágenes en alta resolución. Optimiza tu proceso de calibración y aprende a <strong>probar colores de monitor</strong> (test monitor colors) de manera profesional.'
+        ]
+      },
+      pt: {
+        heading: 'Ferramenta de Teste de Cor de Tela e Calibração Personalizada',
+        paragraphs: [
+          'Para avaliar a fidelidade de cor de um monitor, smartphone, tablet ou TV, recorrer a uma <strong>ferramenta de teste de cor de tela</strong> (screen color testing tool) online é o caminho mais prático. O utilitário de <strong>tela de cor personalizada</strong> (custom color screen) funciona como um visor de diagnóstico, permitindo gerar cores sólidas através de HEX, formatos HSL, barras RGB ou seletor interativo. Realizar um <strong>teste de cor de tela</strong> (screen color test) ajuda a avaliar a calibragem, a fidelidade tonal e a uniformidade de brilho sem distração de barras ou abas do navegador. Seja como um <strong>teste de referência de cor de monitor</strong> (monitor color test) ou <strong>teste de cor de display</strong> (display color test), nosso site otimiza a inspeção visual.',
+          'Identificar defeitos estruturais e falhas físicas nos painéis é o maior benefício de rodar um <strong>testador de cores de tela</strong> (color screen test). Por exemplo, submeter a tela a um <strong>teste de cor para pixels mortos</strong> (dead pixel color test) ajuda a encontrar subpixels inativos ao alternar de maneira uniforme entre fundos básicos. Também o <strong>teste de cor para vazamento de luz</strong> (back light bleed color test) localiza rapidamente vazamentos de iluminação nas bordas de telas LCD ou LED. Guarde os tons gerados recentemente, estruture seus favoritos e faça o <strong>teste de tela RGB</strong> (rgb screen test) para balanceamento.',
+          'Além do controle técnico de displays, esse utilitário é uma peça-chave para fotógrafos corporativos e designers. A calibração de projetores é assistida projetando-se múltiplas <strong>cores de tela para teste</strong> (screen colors for testing) para calibrar contraste e luz ambiente. O <strong>teste de referência de cor em tela cheia</strong> (full screen color test) roda direto nos aparelhos sem instalar nada, resultando em desempenho imediato e downloads de imagens. Comece agora mesmo a <strong>testar cores do monitor</strong> (test monitor colors) de forma muito descomplicada.'
+        ]
+      },
+      fr: {
+        heading: 'Outil de Test de Couleur d\'Écran et Calibration Modulaire',
+        paragraphs: [
+          'Lorsque vous devez évaluer la fidélité visuelle d\'un moniteur, d\'un smartphone ou d\'un téléviseur, utiliser un <strong>outil de test de couleur d\'écran</strong> (screen color testing tool) en ligne est la solution la plus rapide. Notre utilitaire d\'<strong>écran couleur personnalisé</strong> (custom color screen) sert de mire de diagnostic polyvalente, vous permettant de générer n\'importe quelle nuance de couleur avec des codes HEX, HSL, RGB ou une pipette interactive. Effectuer un <strong>test de couleur d\'écran</strong> (screen color test) permet de vérifier la calibration globale et la justesse chromatique sans fenêtres superposées. Que vous fassiez un <strong>test de couleur de moniteur</strong> (monitor color test) ou un <strong>test de couleur d\'affichage</strong> (display color test) sur mobile, notre site simplifie les vérifications.',
+          'Le diagnostic d\'un panneau d\'affichage est grandement facilité par un <strong>test d\'écran couleur</strong> (color screen test) ciblé. Soumettre votre matériel à un <strong>test de couleur pour pixel mort</strong> (dead pixel color test) est la méthode standard pour déceler des sous-pixels éteints en affichant des teintes unies. De même, lancer un <strong>test de couleur pour fuite de lumière</strong> (back light bleed color test) est idéal pour détecter les fuites de luminosité latérale. Notre interface permet de sauvegarder vos couleurs favorites et de lancer un <strong>test d\'écran RGB</strong> (rgb screen test) pour confirmer l\'uniformité visuelle.',
+          'Outre l\'analyse matérielle, ce générateur sert aussi pour le travail d\'étalonnage des créateurs et l\'éclairage de studio. Le réglage d\'un vidéoprojecteur demande de projeter diverses <strong>couleurs d\'écran pour test</strong> (screen colors for testing) pour équilibrer la température et le contraste. Notre <strong>test de couleur plein écran</strong> (full screen color test) fonctionne sans téléchargement logiciel, garantissant une réactivité optimale et des téléchargements d\'images HD pour <strong>tester les couleurs du moniteur</strong> (test monitor colors) de manière professionnelle.'
+        ]
+      },
+      de: {
+        heading: 'Bildschirm-Farbtest-Tool & Kalibrierungs-Optionen',
+        paragraphs: [
+          'Wenn Sie die visuelle Qualität eines Monitors, Laptops, Tablets oder Fernsehers beurteilen möchten, ist die Nutzung von einem <strong>Bildschirm-Farbtest-Tool</strong> (screen color testing tool) online der schnellste Weg. Unser <strong>benutzerdefinierter Farbbildschirm</strong> (custom color screen) fungiert als anpassbare Testoberfläche, auf der Sie jede gewünschte Vollbildfarbe über HEX-Werte, HSL-Farbräume, RGB-Schieberegler oder eine Farbpipette erzeugen können. Ein sorgfältig durchgeführter <strong>Bildschirm-Farbtest</strong> (screen color test) hilft dabei, die Farbtemperatur zu justieren und die Darstellung ohne störende Browser-Menüleisten zu bewerten. Egal, ob Sie einen <strong>Monitor-Farbtest</strong> (monitor color test) oder einen mobilen <strong>Display-Farbtest</strong> (display-farbtest) machen, mit unserem Tool können Sie Bildschirmfarben online testen.',
+          'Die Erkennung von Displayfehlern an Panels wird durch einen gezielten <strong>Farbbildschirmtest</strong> (color screen test) erheblich erleichtert. Ein <strong>Pixelfehler-Farbtest</strong> (dead pixel color test) hilft Ihnen dabei, träge oder tote Subpixel aufzuspüren, indem Sie Volltonfarben durchwechseln. Um Helligkeitsunterschiede an den Rändern zu finden, ist ein <strong>Backlight-Bleed-Farbtest</strong> (back light bleed color test) die empfohlene Methode. Sie können kürzlich genutzte Werte speichern, Favoriten anlegen und den <strong>RGB-Bildschirmtest</strong> (rgb screen test) verwenden, um die Homogenität der Farbdarstellung komfortabel zu überprüfen.',
+          'Zusätzlich zur Fehlersuche dient diese Plattform Kreativen und Mediengestaltern als Referenzwerkzeug und Lichtquelle für Selfies oder Videokonferenzen. Beim Kalibrieren von Beamern und Projektoren projizieren Experten verschiedene <strong>Bildschirmfarben zum Testen</strong> (screen colors for testing), um Helligkeitswerte anzugleichen. Unser <strong>Vollbild-Farbtest</strong> (full screen color test) basiert auf reinem Client-Side-Code, was maximale Ladegeschwindigkeit garantiert. Erleichtert das <strong>Monitorfarben testen</strong> (test monitor colors) ohne mühsame Setups.'
+        ]
+      },
+      hi: {
+        heading: 'स्क्रीन कलर टेस्टिंग टूल और डिस्प्ले कस्टमाइजेशन',
+        paragraphs: [
+          'जब आपको किसी मॉनिटर, स्मार्टफोन, टैबलेट या टीवी की स्क्रीन गुणवत्ता को परखना हो, तो ऑनलाइन <strong>स्क्रीन कलर टेस्टिंग टूल</strong> (screen color testing tool) का उपयोग करना सबसे आसान तरीका है। हमारा <strong>कस्टम कलर स्क्रीन</strong> (custom color screen) टूल एक बहुमुखी डायग्नोस्टिक डिस्प्ले के रूप में काम करता है, जो आपको HEX कोड, HSL वैल्यू, RGB स्लाइडर्स या इंटरेक्टivo कलर पिकर की मदद से कोई भी सॉलिड कलर जेनरेट करने की सुविधा देता है। एक व्यवस्थित <strong>स्क्रीन कलर टेस्ट</strong> (screen color test) चलाने से आप डिस्प्ले के सटीक रंग असंतुलन की जांच कर सकते हैं। चाहे आप इसे एक <strong>मॉनिटर कलर टेस्ट</strong> (monitor color test) के रूप में इस्तेमाल कर रहे हों या मोबाइल <strong>डिस्प्ले कलर टेस्ट</strong> (display color test) के लिए, आप आसानी से अपने रंगों की जांच कर सकते हैं।',
+          'नया या पुराना डिस्प्ले पैनल खरीदते समय उसकी जांच के लिए एक <strong>कलर स्क्रीन टेस्ट</strong> (color screen test) महत्वपूर्ण होता है। उदाहरण के लिए, खराब या बंद पिक्सल की पहचान के लिए <strong>डेड पिक्सेल कलर टेस्ट</strong> (dead pixel color test) करना आवश्यक है ताकि प्राथमिक और द्वितीयक रंगों का चक्र चलाकर दोषों की जांच की जा सके। इसी तरह, स्क्रीन के किनारों से रोशनी के लीकेज को पता करने के लिए <strong>बैकलाइट ब्लीड कलर टेस्ट</strong> (back light bleed color test) सबसे सटीक तरीका है। हमारे जांच माध्यम की मदद से आप हाल के रंगों को सहेज सकते हैं, पसंदीदा रंग जोड़ सकते हैं और <strong>आरजीबी स्क्रीन टेस्ट</strong> (rgb screen test) मोड का उपयोग करके डिस्प्ले के प्रकाश तथा संतुलन को आंक सकते हैं।',
+          'डिस्प्ले के सुधार के अलावा, यह उपयोगिता डिजिटल निर्माताओं और फोटोग्राफरों के लिए सहायक भूमिका निभाती है। होम प्रोजेक्टर को सेट करने के दौरान, <strong>टेस्टिंग के लिए स्क्रीन रंग</strong> (screen colors for testing) प्रोजेक्ट करके आप कंट्रास्ट और व्हाइट लेवल्स को समायोजित कर सकते हैं। हमारा <strong>फुल स्क्रीन कलर टेस्ट</strong> (full screen color test) टूल पूरी तरह से क्लाइंट-साइड चलता है, जो बिना किसी बफरिंग के तेज़ गति से इमेज डाउनलोड विकल्प के साथ प्रस्तुत होता है। तो आज ही सेपिया, आरजीबी और अपने मनपसंद रंगों से <strong>ऑनलाइन स्क्रीन रंग टेस्ट</strong> (test screen colors online) करें और <strong>मॉनिटर रंग टेस्ट</strong> (test monitor colors) प्रक्रिया को आसान बनाएं।'
+        ]
+      },
+      ja: {
+        heading: '画面色テストツールとカスタムカラー画面による高度な診断',
+        paragraphs: [
+          '液晶モニター、スマートフォン、タブレット、あるいはテレビなどの画面表示能力や発色精度を評価する場合、オンラインの <strong>画面色テストツール</strong> (screen color testing tool) を利用するのが手軽です。当サイトの <strong>カスタムカラー画面</strong> (custom color screen) ツールは診断用テストパターン表示機として機能し、HEXコード、HSL調律、RGBカラーレンジ、独自カラーピッカーなどから任意の単色カラーを生成できます。全画面表示による <strong>画面色テスト</strong> (screen color test) は、ブラウザバーやデスクトップの邪魔な要素を完全に隠し、ディスプレイの視野角や色の再現力、発色偏差を見分けるのに重宝します。スマートフォン用の <strong>ディスプレイ色テスト</strong> (display color test) やPCでの <strong>モニター色テスト</strong> (monitor color test) に最適です。',
+          '画面パネルに物理的な不良が潜んでいないかを特定するには、専用の <strong>カラー画面テスト</strong> (color screen test) を行うのが効果的です。例えば、液晶パネルのサブピクセル異常を検証する <strong>ドット抜けカラーテスト</strong> (dead pixel color test) は、複数の基本色を均一に切り替える検査として重要です。同様に、画面端部などからの光量漏れを確認する <strong>バックライト漏れカラーテスト</strong> (back light bleed color test) にも単色表示機能が欠かせません。この作成プログラムは、履歴の保存、お気に入りのグループ化、<strong>RGB画面テスト</strong> (rgb screen test) モードに対応しており、表示均一性を短時間で診断できます。',
+          '品質判定チェックだけでなく、本ページは映像編集者や撮影スタジオにおける色調決定や照明としても役立てられています。プロジェクター投写環境의 セットアップ時において、様々な <strong>テスト用画面色</strong> (screen colors for testing) をスクリーンに投影することでホワイトバランスのズレを完璧に調整可能です。当サイトの <strong>全画面色テスト</strong> (full screen color test) の仕組みはローカル実行され、インターネット環境に左右されず即時表示・画像保存が行えます。ユーザーの用途に応じて <strong>画面色をオンラインでテスト</strong> (test screen colors online) し、簡単に <strong>モニター色をテスト</strong> (test monitor colors) してみてください。'
         ]
       }
     };
