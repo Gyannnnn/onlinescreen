@@ -190,6 +190,26 @@ const initialRgb = (() => {
             </button>
           </div>
         )}
+        {mode === 'hex' && (
+          <div class="flex flex-wrap items-center gap-1.5 border-t border-hairline/60 px-4 py-2.5 md:px-5 bg-canvas-soft/40">
+            <span class="text-xs font-mono font-medium text-muted mr-1">{t(locale, 'screen.hex_presets')}</span>
+            <button class="inline-flex h-7 items-center gap-1.5 rounded-md border border-hairline bg-canvas px-2.5 text-xs font-medium text-body hover:bg-canvas-soft transition-colors cursor-pointer" type="button" data-hex-preset="#000000" title="OLED Black (#000000)">
+              <span class="size-2.5 rounded-full bg-black border border-gray-600"></span> {t(locale, 'screen.oled_black')}
+            </button>
+            <button class="inline-flex h-7 items-center gap-1.5 rounded-md border border-hairline bg-canvas px-2.5 text-xs font-medium text-body hover:bg-canvas-soft transition-colors cursor-pointer" type="button" data-hex-preset="#121212" title="Dark Mode Grey (#121212)">
+              <span class="size-2.5 rounded-full bg-[#121212] border border-gray-600"></span> {t(locale, 'screen.dark_mode')}
+            </button>
+            <button class="inline-flex h-7 items-center gap-1.5 rounded-md border border-hairline bg-canvas px-2.5 text-xs font-medium text-body hover:border-blue-500/50 hover:text-blue-500 transition-colors cursor-pointer" type="button" data-hex-preset="#0070f3" title="Brand Blue (#0070F3)">
+              <span class="size-2.5 rounded-full bg-[#0070f3]"></span> #0070F3
+            </button>
+            <button class="inline-flex h-7 items-center gap-1.5 rounded-md border border-hairline bg-canvas px-2.5 text-xs font-medium text-body hover:bg-canvas-soft transition-colors cursor-pointer" type="button" data-hex-preset="#ffffff" title="Pure White (#FFFFFF)">
+              <span class="size-2.5 rounded-full bg-white border border-gray-400"></span> {t(locale, 'screen.white')}
+            </button>
+            <button class="inline-flex h-7 items-center gap-1.5 rounded-md border border-hairline bg-canvas px-2.5 text-xs font-medium text-body hover:bg-canvas-soft transition-colors cursor-pointer ml-auto" type="button" data-hex-palette-reset title="Reset to 4-Color Palette Split">
+              <span class="flex size-3 overflow-hidden rounded-full border border-hairline"><span class="w-1/4 bg-[#171717]"></span><span class="w-1/4 bg-[#7c3aed]"></span><span class="w-1/4 bg-[#ff0080]"></span><span class="w-1/4 bg-[#f9cb28]"></span></span> {t(locale, 'screen.palette_reset')}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   </div>
@@ -502,6 +522,20 @@ const initialRgb = (() => {
 
     root.querySelector('[data-rgb-split]')?.addEventListener('click', () => {
       setColors(['#ff0000', '#00ff00', '#0000ff']);
+    });
+
+    // HEX Preset Button Listeners
+    for (const btn of root.querySelectorAll<HTMLElement>('[data-hex-preset]')) {
+      btn.addEventListener('click', () => {
+        const targetColor = btn.dataset.hexPreset;
+        if (targetColor) {
+          setColors([targetColor, targetColor, targetColor, targetColor]);
+        }
+      });
+    }
+
+    root.querySelector('[data-hex-palette-reset]')?.addEventListener('click', () => {
+      setColors(['#171717', '#7c3aed', '#ff0080', '#f9cb28']);
     });
 
     document.addEventListener('fullscreenchange', () => {

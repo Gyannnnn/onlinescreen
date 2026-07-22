@@ -285,6 +285,15 @@ const props = Astro.props as PageProps;
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Space</kbd> Toggle RGB Auto Cycle</p>
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
             </>
+          ) : props.tool.slug === 'hex-screen' ? (
+            <>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> Fullscreen Mode</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">1 - 4</kbd> Select Color Swatch</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">R</kbd> Random HEX Palette</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">C</kbd> Copy Current HEX Code</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">D</kbd> Download 4K Wallpaper</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
+            </>
           ) : (
             <>
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> {t(props.locale, 'tool.shortcut_fullscreen')}</p>

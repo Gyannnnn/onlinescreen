@@ -78,6 +78,10 @@ const site: Record<Locale, Record<string, string>> = {
     'screen.white': 'White',
     'screen.black': 'Black',
     'screen.rgb_split': 'RGB Split',
+    'screen.hex_presets': 'HEX Presets:',
+    'screen.oled_black': 'OLED Black (#000000)',
+    'screen.dark_mode': 'Dark Mode (#121212)',
+    'screen.palette_reset': '4-Color Palette Split',
   },
   es: {
     'site.title': 'Free Online Screen',
@@ -156,6 +160,10 @@ const site: Record<Locale, Record<string, string>> = {
     'screen.white': 'Blanco',
     'screen.black': 'Negro',
     'screen.rgb_split': 'División RGB',
+    'screen.hex_presets': 'Ajustes HEX:',
+    'screen.oled_black': 'Negro OLED (#000000)',
+    'screen.dark_mode': 'Modo Oscuro (#121212)',
+    'screen.palette_reset': 'Paleta de 4 Colores',
   },
   pt: {
     'site.title': 'Free Online Screen',
@@ -234,6 +242,10 @@ const site: Record<Locale, Record<string, string>> = {
     'screen.white': 'Branco',
     'screen.black': 'Preto',
     'screen.rgb_split': 'Divisão RGB',
+    'screen.hex_presets': 'Predefinições HEX:',
+    'screen.oled_black': 'Preto OLED (#000000)',
+    'screen.dark_mode': 'Modo Escuro (#121212)',
+    'screen.palette_reset': 'Paleta de 4 Cores',
   },
   fr: {
     'site.title': 'Free Online Screen',
@@ -312,6 +324,10 @@ const site: Record<Locale, Record<string, string>> = {
     'screen.white': 'Blanc',
     'screen.black': 'Noir',
     'screen.rgb_split': 'Division RGB',
+    'screen.hex_presets': 'Préréglages HEX:',
+    'screen.oled_black': 'Noir OLED (#000000)',
+    'screen.dark_mode': 'Mode Sombre (#121212)',
+    'screen.palette_reset': 'Palette de 4 Couleurs',
   },
   de: {
     'site.title': 'Free Online Screen',
@@ -390,6 +406,10 @@ const site: Record<Locale, Record<string, string>> = {
     'screen.white': 'Weiß',
     'screen.black': 'Schwarz',
     'screen.rgb_split': 'RGB-Aufteilung',
+    'screen.hex_presets': 'HEX-Voreinstellungen:',
+    'screen.oled_black': 'OLED-Schwarz (#000000)',
+    'screen.dark_mode': 'Dunkelmodus (#121212)',
+    'screen.palette_reset': '4-Farben-Palette',
   },
   hi: {
     'site.title': 'फ्री ऑनलाइन स्क्रीन',
@@ -468,6 +488,10 @@ const site: Record<Locale, Record<string, string>> = {
     'screen.white': 'सफेद',
     'screen.black': 'काला',
     'screen.rgb_split': 'आरजीबी विभाजन',
+    'screen.hex_presets': 'हेक्स प्रीसेट्स:',
+    'screen.oled_black': 'OLED काला (#000000)',
+    'screen.dark_mode': 'डार्क मोड (#121212)',
+    'screen.palette_reset': '4-कलर पैलेट',
   },
   ja: {
     'site.title': 'Free Online Screen',
@@ -546,6 +570,10 @@ const site: Record<Locale, Record<string, string>> = {
     'screen.white': '白',
     'screen.black': '黒',
     'screen.rgb_split': 'RGB分割',
+    'screen.hex_presets': 'HEXプリセット:',
+    'screen.oled_black': 'OLEDブラック (#000000)',
+    'screen.dark_mode': 'ダークモード (#121212)',
+    'screen.palette_reset': '4色パレット分割',
   },
 };
 
@@ -571,6 +599,7 @@ const toolNames: Record<string, Partial<Record<Locale, string>>> = {
   'matrix-screen': { es: 'Pantalla Matrix', pt: 'Tela Matrix', fr: 'Écran Matrix', de: 'Matrix-Bildschirm', hi: 'मैट्रिक्स स्क्रीन', ja: 'マトリックス画面' },
   'clock-screen': { es: 'Reloj Flip', pt: 'Relógio Flip', fr: 'Horloge à Volets', de: 'Klipp-Klapp-Uhr', hi: 'फ्लिप घड़ी', ja: 'フリップ時計' },
   'rgb-screen': { es: 'Pantalla RGB', pt: 'Tela RGB', fr: 'Écran RGB', de: 'RGB-Bildschirm', hi: 'आरजीबी स्क्रीन', ja: 'RGB画面' },
+  'hex-screen': { es: 'Pantalla HEX', pt: 'Tela HEX', fr: 'Écran HEX', de: 'HEX-Bildschirm', hi: 'हेक्स स्क्रीन', ja: 'HEX画面' },
 };
 
 const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
@@ -597,6 +626,14 @@ const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
     de: 'Ein Vollbild-RGB-Bildschirmtest zur Farbkanal-Kalibrierung, Pixelfehlersuche und Gleichmäßigkeitsprüfung Ihres Displays.',
     hi: 'रंग चैनलों को कैलिब्रेट करने, खराब पिक्सल खोजने और डिस्प्ले की यूनिफॉर्मिटी जांचने के लिए एक फुलस्क्रीन आरजीबी स्क्रीन टूल।',
     ja: 'カラーチャネルのキャリブレーション、ドット抜けチェック、液晶ディスプレイの均一性診断に役立つ全画面RGB画面テストツール。',
+  },
+  'hex-screen': {
+    es: 'Una herramienta de prueba de color HEX a pantalla completa para diseñadores y desarrolladores para previsualizar códigos CSS, probar paletas de color y evaluar tonos oscuros.',
+    pt: 'Uma ferramenta de teste de cor HEX em tela cheia para designers e desenvolvedores pré-visualizarem códigos CSS, testarem paletas de cor e inspecionarem tons escuros.',
+    fr: 'Un outil de couleur HEX plein écran pour les designers et développeurs afin de prévisualiser des codes couleur CSS, tester des palettes et évaluer les teintes sombres.',
+    de: 'Ein Vollbild-HEX-Farbtest-Tool für Designer und Entwickler zur Vorschau von CSS-Farbcodes, zum Testen von Farbpaletten und Prüfen von Dunkelmodus-Tönen.',
+    hi: 'डिजाइनरों और डेवलपर्स के लिए सटीक CSS हेक्स कोड का प्रीव्यू करने, कलर पैलेट का परीक्षण करने और डार्क मोड टोन की जांच करने के लिए एक फुलस्क्रीन हेक्स स्क्रीन टूल।',
+    ja: 'デザイナーやWeb開発者がCSSカラーコードを全画面で即座に検証し、カラーパレット比較やダークモード表示をテストできる全画面HEX画面ツール。',
   },
   'white-screen': { hi: 'सफाई जांच, नरम रोशनी, डिस्प्ले निरीक्षण और फोटोग्राफी फिल के लिए एक शुद्ध सफेद फुलस्क्रीन टूल।' },
   'black-screen': { hi: 'OLED जांच, डेड पिक्सल खोज, चकाचौंध कम करने और अंधेरे कमरे में उपयोग के लिए एक वास्तविक काली फुलस्क्रीन सतह।' },
@@ -3236,6 +3273,162 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
         answer: 'はい、常時点灯ピクセルや液晶端部のバックライト漏れを検出するには最大輝度でのテストが効果的です。ただし、日常的な色再現性の確認には、一般的な輝度レベルに下げた状態でも発色のバランスを確認することが重要です।'
       }
     ]
+  },
+  'hex-screen': {
+    en: [
+      {
+        question: 'What is a HEX color screen tool used for?',
+        answer: 'A HEX color screen tool allows designers, developers, and testers to preview 6-digit or 3-digit CSS hex codes (#RRGGBB) in full screen. It is used for verifying brand guidelines, reviewing color palette contrast, testing dark mode shades, and generating solid wallpapers.'
+      },
+      {
+        question: 'How do I test dark mode HEX shades like #121212 on OLED displays?',
+        answer: 'Enter dark mode hexadecimal values such as #000000, #121212, or #1E1E1E into our HEX color tool and switch to fullscreen mode. This lets you inspect OLED black crush, panel backlighting, and dark theme UI contrast in real viewing conditions.'
+      },
+      {
+        question: 'Can I compare multiple HEX colors side by side?',
+        answer: 'Yes! Our tool supports 4 interactive color swatches. You can enter separate HEX codes for each swatch to view split-screen color palettes or test complementary branding shades across your panel.'
+      },
+      {
+        question: 'How do HEX color codes differ from RGB and HSL?',
+        answer: 'HEX is a hexadecimal base-16 representation of Red, Green, and Blue light (00 to FF). RGB uses 0-255 decimal values, and HSL uses Hue, Saturation, and Lightness. Our tool automatically converts and displays all three formats instantly.'
+      },
+      {
+        question: 'Can I download a 4K wallpaper with my custom HEX code?',
+        answer: 'Yes. Select your orientation (landscape, portrait, square, or device native size) and click Download to generate a high-resolution PNG file containing your exact HEX color code.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Para qué sirve una herramienta de pantalla de color HEX?',
+        answer: 'Una herramienta de pantalla de color HEX permite a diseñadores y desarrolladores previsualizar códigos CSS hexadecimales (#RRGGBB) a pantalla completa. Se usa para verificar guías de marca, evaluar el contraste de paletas, probar tonos oscuros y descargar fondos.'
+      },
+      {
+        question: '¿Cómo pruebo tonos de modo oscuro como #121212 en pantallas OLED?',
+        answer: 'Introduce valores hexadecimales oscuros como #000000, #121212 o #1E1E1E en nuestro probador HEX y activa la pantalla completa. Esto te permite evaluar el aplastamiento de negros en paneles OLED y el contraste real de la interfaz.'
+      },
+      {
+        question: '¿Puedo comparar varios colores HEX uno al lado del otro?',
+        answer: '¡Sí! Nuestra herramienta incluye 4 paletas interactivas. Puedes ingresar códigos HEX distintos en cada una para comparar combinaciones de colores en pantalla dividida.'
+      },
+      {
+        question: '¿En qué se diferencian los códigos HEX de RGB y HSL?',
+        answer: 'HEX es una representación hexadecimal en base 16 de rojo, verde y azul (00 a FF). RGB utiliza valores decimales (0-255) y HSL mide tono, saturación y luminosidad. Nuestro software convierte y muestra los tres formatos al instante.'
+      },
+      {
+        question: '¿Puedo descargar un fondo de pantalla 4K con mi código HEX personalizado?',
+        answer: 'Sí. Elige la orientación deseada (horizontal, vertical, cuadrada o el tamaño exacto de tu dispositivo) y haz clic en Descargar para obtener una imagen PNG en alta definición.'
+      }
+    ],
+    pt: [
+      {
+        question: 'Para que serve uma ferramenta de tela de cor HEX?',
+        answer: 'Uma ferramenta de tela de cor HEX permite que designers e desenvolvedores pré-visualizem códigos CSS hexadecimais (#RRGGBB) em tela cheia. É usada para validar manuais de marca, testar contraste de paletas, inspecionar temas escuros e gerar papéis de parede.'
+      },
+      {
+        question: 'Como testar tons de modo escuro como #121212 em telas OLED?',
+        answer: 'Insira códigos hexadecimais como #000000, #121212 ou #1E1E1E em nosso utilitário HEX e abra em tela cheia. Isso ajuda a identificar vazamentos de backlight e testar a fidelidade de tons escuros em painéis OLED.'
+      },
+      {
+        question: 'Posso comparar várias cores HEX lado a lado?',
+        answer: 'Sim! Nosso utilitário conta com 4 amostras interativas. Você pode definir códigos HEX diferentes em cada amostra para comparar uma paleta dividida em 4 colunas na tela.'
+      },
+      {
+        question: 'Qual a diferença entre códigos HEX, RGB e HSL?',
+        answer: 'O formato HEX é a representação hexadecimal dos canais Vermelho, Verde e Azul (00 a FF). O RGB usa valores numéricos decimais de 0 a 255, enquanto o HSL mede Matiz, Saturação e Luminosidade. Nossa ferramenta converte todos automaticamente.'
+      },
+      {
+        question: 'Posso baixar um papel de parede 4K com o meu código HEX?',
+        answer: 'Sim. Escolha a orientação desejada (paisagem, retrato, quadrado ou o tamanho exato da sua tela) e clique em Baixar para gerar o arquivo PNG em alta resolução.'
+      }
+    ],
+    fr: [
+      {
+        question: 'À quoi sert un outil d\'écran de couleur HEX ?',
+        answer: 'Un outil d\'écran de couleur HEX permet aux designers et développeurs de prévisualiser des codes couleur CSS hexadécimaux (#RRGGBB) en plein écran. Il sert à valider des chartes graphiques, vérifier les contrastes de palettes et tester les modes sombres.'
+      },
+      {
+        question: 'Comment tester les teintes sombres comme #121212 sur un écran OLED ?',
+        answer: 'Saisissez vos codes hexadécimaux sombres comme #000000, #121212 ou #1E1E1E et basculez en plein écran. Cela vous permet d\'analyser les noirs profonds sur dalles OLED et l\'uniformité du rétroéclairage.'
+      },
+      {
+        question: 'Puis-je comparer plusieurs couleurs HEX côte à côte ?',
+        answer: 'Oui ! Notre outil propose 4 vignettes de couleur interactives. Vous pouvez attribuer un code HEX distinct à chaque vignette pour afficher une palette séparée en 4 bandes verticales.'
+      },
+      {
+        question: 'Quelle est la différence entre les codes HEX, RGB et HSL ?',
+        answer: 'HEX est une représentation hexadécimale (base 16) des canaux rouge, vert et bleu (de 00 à FF). RGB utilise des valeurs de 0 à 255, tandis que HSL utilise la teinte, la saturation et la luminosité. Notre page convertit les trois en temps réel.'
+      },
+      {
+        question: 'Puis-je télécharger un fond d\'écran 4K avec mon code HEX ?',
+        answer: 'Oui. Sélectionnez l\'orientation souhaitée (paysage, portrait, carré ou résolution de votre appareil) et cliquez sur Télécharger pour générer un fichier PNG haute définition.'
+      }
+    ],
+    de: [
+      {
+        question: 'Wozu dient ein HEX-Farbbildschirm-Tool?',
+        answer: 'Ein HEX-Farbbildschirm-Tool ermöglicht Designern und Entwicklern die Vollbild-Vorschau von CSS-Hex-Farbcodes (#RRGGBB). Es wird zur Überprüfung von Markenrichtlinien, zum Testen von Palettenkontrasten und zur Bewertung von Dunkelmodus-Farbtönen verwendet.'
+      },
+      {
+        question: 'Wie teste ich Dunkelmodus-HEX-Töne wie #121212 auf OLED-Displays?',
+        answer: 'Geben Sie dunkle Hex-Werte wie #000000, #121212 oder #1E1E1E in unser HEX-Tool ein und wechseln Sie in den Vollbildmodus. Dadurch können Sie OLED-Schwarzwertdarstellung und Display-Hintergrundbeleuchtung unter echten Bedingungen prüfen.'
+      },
+      {
+        question: 'Kann ich mehrere HEX-Farben nebeneinander vergleichen?',
+        answer: 'Ja! Unser Tool unterstützt 4 interaktive Farbfelder. Sie können für jedes Feld eigene HEX-Codes eingeben, um eine Farbpalette im 4-Spalten-Splitvergleich darzustellen.'
+      },
+      {
+        question: 'Wie unterscheiden sich HEX-Farbcodes von RGB und HSL?',
+        answer: 'HEX ist die hexadezimale Schreibweise der Rot-, Grün- und Blaukanäle (00 bis FF). RGB nutzt Dezimalwerte von 0 bis 255, während HSL Farbton, Sättigung und Helligkeit beschreibt. Unser Tool konvertiert alle Formate automatisch.'
+      },
+      {
+        question: 'Kann ich ein 4K-Wallpaper mit meinem HEX-Farbcode herunterladen?',
+        answer: 'Ja. Wählen Sie Ihr gewünschtes Format (Querformat, Hochformat, Quadratisch oder eigene Bildschirmgröße) und klicken Sie auf Herunterladen, um ein hochauflösendes PNG zu generieren.'
+      }
+    ],
+    hi: [
+      {
+        question: 'हेक्स (HEX) कलर स्क्रीन टूल का उपयोग किस लिए किया जाता है?',
+        answer: 'एक हेक्स कलर स्क्रीन टूल डिजाइनरों और डेवलपर्स को फुलस्क्रीन में सटीक CSS हेक्स कोड (#RRGGBB) का प्रीव्यू करने की अनुमति देता है। इसका उपयोग ब्रांड रंगों की जांच, कलर पैलेट कंट्रास्ट का परीक्षण और वॉलपेपर बनाने के लिए किया जाता है।'
+      },
+      {
+        question: 'मैं OLED स्क्रीन पर #121212 जैसे डार्क मोड हेक्स रंगों का परीक्षण कैसे करूं?',
+        answer: 'हमारे हेक्स टूल में #000000, #121212 या #1E1E1E जैसे मान भरें और फुलस्क्रीन करें। इससे आप OLED डिस्प्ले पर वास्तविक डार्क मोड थीम और बैकलाइट के संतुलन की जांच कर सकते हैं।'
+      },
+      {
+        question: 'क्या मैं एक साथ कई हेक्स (HEX) रंगों की तुलना कर सकता हूं?',
+        answer: 'हां! हमारा टूल 4 इंटरैक्टिव स्वाचेज का समर्थन करता है। आप प्रत्येक स्वाच में अलग-अलग हेक्स कोड दर्ज करके स्क्रीन पर 4-कलर पैलेट की तुलना कर सकते हैं।'
+      },
+      {
+        question: 'हेक्स (HEX) कलर कोड RGB और HSL से कैसे भिन्न हैं?',
+        answer: 'HEX लाल, हरे और नीले रंग का हेक्साडेसिमल (base-16) रूप है (00 से FF)। RGB 0-255 संख्यात्मक मानों का उपयोग करता है, जबकि HSL ह्यू, सैचुरेशन और लाइटनेस मापता है। हमारा टूल तीनों को तुरंत बदलता है।'
+      },
+      {
+        question: 'क्या मैं अपने कस्टम हेक्स कोड के साथ 4K वॉलपेपर डाउनलोड कर सकता हूं?',
+        answer: 'हां। अपना पसंदीदा ओरिएंटेशन (लैंडस्केप, पोर्ट्रेट, वर्गाकार या डिवाइस आकार) चुनें और सटीक रंगों में हाई-डेफिनिशन PNG छवि प्राप्त करने के लिए डाउनलोड बटन पर क्लिक करें।'
+      }
+    ],
+    ja: [
+      {
+        question: 'HEXカラー画面ツールは何のために使用されますか？',
+        answer: 'HEXカラー画面ツールは、デザイナーやWeb開発者がCSSの16進数カラーコード（#RRGGBB）を全画面表示で即座に検証するために使用されます。ブランドガイドラインの確認、カラーパレットのコントラスト評価、ダークモード発色テスト、壁紙生成に活用されます Japan'
+      },
+      {
+        question: 'OLEDディスプレイで #121212 などのダークモードHEXコードをテストするには？',
+        answer: '当ツールに #000000、#121212、#1E1E1E などのダークモードコードを入力し、全画面表示にします。これにより、OLEDディスプレイの黒の再現性やバックライトの光漏れ、実際のUI表示バランスを完璧に診断できます Japan'
+      },
+      {
+        question: '複数のHEXカラーコードを並べて比較できますか？',
+        answer: '可能です！当ツールは4つのインタラクティブなカラーパレットをサポートしています。各スロットに異なるHEXコードを入力することで、4分割されたカラーパレットの組み合わせを画面全体で比較できます Japan'
+      },
+      {
+        question: 'HEXカラーコードはRGBやHSLとどのように違いますか？',
+        answer: 'HEXは赤・緑・青の光の強度を16進数（00〜FF）で表記したコードです。RGBは0〜255の10進数で表記し、HSLは色相・ saturation・輝度を表します。当ツールはこれら3つの形式を自動的に相互変換して表示します Japan'
+      },
+      {
+        question: '指定したHEXカラーコードで4K壁紙をダウンロードできますか？',
+        answer: 'はい。ダウンロード方向（横長、縦長、正方形、お使いの端末サイズ）を選択し「ダウンロード」をクリックすると、指定したHEXコードの高品質なPNG壁紙画像を保存できます Japan'
+      }
+    ]
   }
 };
 
@@ -3828,6 +4021,68 @@ export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-s
           'モニター、テレビ、またはスマートフォン端末の発色診断やサブピクセル検査を行いたい場合、当サイトの <strong>RGB画面テスト</strong>（rgb screen test）を実行するのが極めて実用的です。ディスプレイは、赤・緑・青の光の三原色を組み合わせて様々な色彩を描き出します。単色の <strong>RGB画面</strong>（rgb screen）を全画面表示することで、各色チャンネルを個別に分離して液晶のムラや特定色の欠陥を検査できます。デザイナーや技術者は、この簡潔な <strong>RGBカラー画面</strong>（rgb color screen）を利用しドット抜けの特定や発色均一性チェックを迅速に行うことができます。',
           '無駄のない <strong>全画面RGB</strong>（full screen rgb）ツールは、新しく購入したディスプレイの初期不良などを診断する際に非常に価値があります。液晶の端に沿って <strong>RGBドット抜けテスト</strong>（rgb dead pixel test）や <strong>RGBバックライト漏れチェック</strong>（rgb backlight check）を実行し、輝度のバラつきや光漏れが無いか診断できます。また、ブラウザで動作する <strong>RGB表示テスト</strong>（rgb display test）として機能し、撮影用などの簡易な <strong>RGBスクリーンライト</strong>（rgb screen light）としてスタジオで使用したり、キーボードのショートカットキーを使って赤・緑・青を瞬時に切り替えることが可能です。',
           '当サイトの <strong>モニターRGBテストオンライン</strong>（screen rgb test online）はソフトウェアのダウンロードを一切必要とせず、即座に起動します。 <strong>RGB画面調整</strong>（rgb screen calibration）を行う際は、ブラウザのツールバーやタブによる余計な発色干渉を防ぐため、全画面表示モードに切り替えて実行することをおすすめします。クリエイターは画面の色を <strong>RGB画面壁紙</strong>（rgb screen wallpaper）として好みの解像度でダウンロードすることもでき、プロフェッショナルな <strong>モニターRGBテスト</strong>（monitor rgb test）として愛用されています。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'hex-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'HEX Screen Test Online: Free Fullscreen Color Code & Palette Preview',
+        paragraphs: [
+          'If you need to test CSS hex codes or evaluate color palettes on a physical display, launching our <strong>hex screen test online</strong> is a fast, accurate method. Digital designers and software developers work daily with 6-digit hexadecimal codes such as <code>#0070F3</code>, <code>#7C3AED</code>, or <code>#121212</code>. Displaying a dedicated <strong>full screen hex color</strong> page allows you to inspect exact color rendering, white points, and saturation without surrounding browser chrome, tabs, or headers interfering with your vision.',
+          'A clean <strong>hex code screen test</strong> is essential when verifying how UI design tokens appear across different display technologies, including OLED, IPS, and VA panels. Designers can enter up to four distinct <strong>hex color codes</strong> into our interactive swatches to create side-by-side color splits or full-panel color fills. You can evaluate dark mode hex values like <code>#0A0A0A</code> or <code>#1E1E1E</code> for OLED black crush, run a quick <strong>hex display test</strong>, or copy converted RGB and HSL values with a single click. Adjust the brightness slider to test color accuracy under bright daylight or dark studio viewing environments.',
+          'Our web-based <strong>hex screen online</strong> utility requires no software downloads, loading in milliseconds for immediate QA workflows. When carrying out <strong>hex color calibration</strong>, toggle your browser to fullscreen mode to give the entire display panel to your selected color. Creative professionals can also use our <strong>hex wallpaper generator</strong> to export crisp PNG background assets in 4K, 1080p portrait, or device-native resolutions. Add this powerful <strong>monitor hex test</strong> tool to your digital diagnostic and design toolkit today.'
+        ]
+      },
+      es: {
+        heading: 'Pantalla HEX Online: Vista Previa de Códigos de Color y Paletas',
+        paragraphs: [
+          'Si necesitas verificar códigos hexadecimales CSS o evaluar paletas de color en un monitor real, nuestra <strong>prueba de pantalla hex online</strong> (hex screen test) es la solución perfecta. Diseñadores web y desarrolladores utilizan diariamente códigos de 6 dígitos como <code>#0070F3</code> o <code>#121212</code>. Proyectar una <strong>pantalla de color hex en pantalla completa</strong> (full screen hex color) te permite inspeccionar la fidelidad del color sin que la interfaz del navegador afecte tu percepción.',
+          'Realizar un <strong>test de código hex en pantalla</strong> (hex code screen test) es fundamental para comprobar cómo lucen los componentes UI en pantallas OLED, IPS o VA. Puedes ingresar hasta cuatro <strong>códigos de color hex</strong> independientes en nuestras paletas interactivas para evaluar combinaciones lado a lado. Prueba tonos oscuros de modo noche como <code>#0A0A0A</code> o <code>#1E1E1E</code>, realiza un <strong>test de display hex</strong> (hex display test) y copia valores RGB/HSL en un clic.',
+          'Nuestra herramienta de <strong>pantalla hex online</strong> (hex screen online) funciona de forma instantánea sin descargas. Al realizar una <strong>calibración de color hex</strong> (hex color calibration), activa el modo de pantalla completa para evitar distracciones. Los creadores también pueden usar nuestro generador para descargar imágenes de <strong>fondo de pantalla hex</strong> (hex wallpaper) en resolución 4K o adaptar la herramienta como una completa <strong>prueba hex para monitores</strong> (monitor hex test).'
+        ]
+      },
+      pt: {
+        heading: 'Tela HEX Online: Pré-visualização de Códigos de Cor e Paletas',
+        paragraphs: [
+          'Para testar códigos hexadecimais CSS e comparar paletas de cores em um display físico, nosso <strong>teste de tela hex online</strong> (hex screen test) oferece máxima precisão. Designers e desenvolvedores trabalham constantemente com códigos de 6 dígitos como <code>#0070F3</code> e <code>#121212</code>. Exibir uma <strong>cor hex em tela cheia</strong> (full screen hex color) permite checar a saturação e o contraste exatos sem a interferência de barras de navegação.',
+          'Um bom <strong>teste de código hex na tela</strong> (hex code screen test) ajuda a avaliar a fidelidade cromática em painéis OLED, IPS e VA. Insira até quatro <strong>códigos de cor hex</strong> nas nossas amostras interativas para comparar uma paleta dividida na tela. Inspecione tons escuros de modo noturno como <code>#0A0A0A</code> e <code>#1E1E1E</code> com nosso <strong>teste de display hex</strong> (hex display test) e copie valores convertidos em RGB/HSL instantaneamente.',
+          'Nosso utilitário de <strong>tela hex online</strong> (hex screen online) roda 100% no navegador sem instalações. Ao realizar uma <strong>calibração de cor hex</strong> (hex color calibration), utilize o modo de tela cheia para cobrir todo o painel. Salve suas combinações como um <strong>papel de parede hex</strong> (hex wallpaper) em 4K e adicione esta ferramenta de <strong>teste hex de monitor</strong> (monitor hex test) à sua rotina de desenvolvimento.'
+        ]
+      },
+      fr: {
+        heading: 'Écran HEX en Ligne : Aperçu des Codes Couleur & Palette Plein Écran',
+        paragraphs: [
+          'Si vous souhaitez tester des codes hexadécimaux CSS ou analyser des palettes de couleurs sur un écran physique, notre <strong>test écran hex en ligne</strong> (hex screen test) est l\'outil idéal. Les webdesigners et développeurs manipulent au quotidien des codes à 6 caractères tels que <code>#0070F3</code> ou <code>#121212</code>. Afficher un <strong>couleur hex plein écran</strong> (full screen hex color) vous garantit une restitution fidèle sans distorsion visuelle causée par l\'interface du navigateur.',
+          'Un <strong>test de code hex d\'écran</strong> (hex code screen test) rigoureux est indispensable pour vérifier le rendu des composants UI sur dalles OLED, IPS ou VA. Saisissez jusqu\'à quatre <strong>codes couleur hex</strong> dans nos vignettes interactives pour évaluer des combinaisons côte à côte. Inspectez les teintes sombres de mode nuit comme <code>#0A0A0A</code> ou <code>#1E1E1E</code> avec notre <strong>test d\'affichage hex</strong> (hex display test) et copiez les équivalents RGB/HSL en un clic.',
+          'Notre utilitaire <strong>écran hex en ligne</strong> (hex screen online) s\'exécute instantanément sans logiciel. Lors d\'une session d\'<strong>étalonnage de couleur hex</strong> (hex color calibration), passez en plein écran pour éliminer toute distraction. Téléchargez vos créations sous forme de <strong>fond d\'écran hex</strong> (hex wallpaper) 4K ou utilisez cette page comme <strong>test hex de moniteur</strong> (monitor hex test) professionnel.'
+        ]
+      },
+      de: {
+        heading: 'HEX-Bildschirm Online: Farbcode-Vorschau & Paletten-Tool',
+        paragraphs: [
+          'Wenn Sie CSS-Hex-Farbcodes auf einem echten Monitor testen oder Farbpaletten vergleichen möchten, ist unser <strong>online HEX-Bildschirmtest</strong> (hex screen test) die perfekte Lösung. Designer und Entwickler nutzen täglich 6-stellige Hexadezimal-Codes wie <code>#0070F3</code> oder <code>#121212</code>. Eine reine <strong>HEX-Farbe im Vollbildmodus</strong> (full screen hex color) ermöglicht die exakte Farbbewertung ohne störende Browserelemente.',
+          'Ein präziser <strong>HEX-Code Bildschirmtest</strong> (hex code screen test) zeigt Ihnen, wie UI-Farben auf OLED-, IPS- und VA-Panels wirken. Geben Sie bis zu vier verschiedene <strong>HEX-Farbcodes</strong> in unsere Farbfelder ein, um Paletten im Split-Screen zu vergleichen. Prüfen Sie Dunkelmodus-Werte wie <code>#0A0A0A</code> oder <code>#1E1E1E</code> mit unserem <strong>HEX-Displaytest</strong> (hex display test) und kopieren Sie konvertierte RGB- und HSL-Werte mit einem Klick.',
+          'Unser <strong>HEX-Bildschirm online</strong> (hex screen online) lädt sofort im Browser ohne Zusatzsoftware. Starten Sie die <strong>HEX-Farbkalibrierung</strong> (hex color calibration) im Vollbildmodus für beste Ergebnisse. Erstellen und laden Sie hochauflösende <strong>HEX-Bildschirm-Wallpaper</strong> (hex wallpaper) in 4K herunter und nutzen Sie unser Tool als standardisierten <strong>Monitor-HEX-Test</strong> (monitor hex test).'
+        ]
+      },
+      hi: {
+        heading: 'हेक्स स्क्रीन ऑनलाइन: फुलस्क्रीन कलर कोड प्रीव्यू और पैलेट टूल',
+        paragraphs: [
+          'यदि आप अपने मॉनिटर पर CSS हेक्स कोड का परीक्षण करना चाहते हैं, तो हमारा ऑनलाइन <strong>हेक्स स्क्रीन टेस्ट</strong> (hex screen test) सबसे सटीक साधन है। वेब डिजाइनर और डेवलपर्स <code>#0070F3</code> या <code>#121212</code> जैसे 6-अंकीय हेक्साडेसिमल कोड का उपयोग करते हैं। फुलस्क्रीन <strong>हेक्स कलर स्क्रीन</strong> (full screen hex color) चलाकर आप बिना किसी ब्राउज़र विकर्षण के शुद्ध रंगों का निरीक्षण कर सकते हैं।',
+          'एक स्वच्छ <strong>हेक्स कोड स्क्रीन टेस्ट</strong> (hex code screen test) से आप जान सकते हैं कि आपकी वेबसाइट के रंग OLED, IPS या VA पैनल पर कैसे दिखते हैं। आप हमारी 4-कलर स्वाच में अलग-अलग <strong>हेक्स कलर कोड</strong> दर्ज कर सकते हैं, <code>#0A0A0A</code> जैसे डार्क मोड रंगों का परीक्षण (hex display test) कर सकते हैं और एक क्लिक में RGB या HSL मान कॉपी कर सकते हैं।',
+          'हमारा वेब-आधारित <strong>ऑनलाइन हेक्स स्क्रीन टूल</strong> (hex screen online) सीधे ब्राउज़र में तुरंत खुलता है। <strong>हेक्स कलर कैलिब्रेशन</strong> (hex color calibration) करते समय फुलस्क्रीन मोड ऑन रखें। आप अपने पसंदीदा रंगों को <strong>हेक्स स्क्रीन वॉलपेपर</strong> (hex wallpaper) के रूप में 4K रिज़ॉल्यूशन में डाउनलोड भी कर सकते हैं या इसे एक भरोसेमंद <strong>मॉनिटर हेक्स टेस्ट</strong> (monitor hex test) के रूप में उपयोग कर सकते हैं।'
+        ]
+      },
+      ja: {
+        heading: 'HEX画面オンライン：全画面カラーコードプレビュー＆パレットツール',
+        paragraphs: [
+          'CSSの16進数カラーコードを実際のディスプレイで検証・比較したい場合、当サイトの <strong>HEX画面テスト</strong>（hex screen test）を実行するのが最適です。デザイナーやWebエンジニアは <code>#0070F3</code> や <code>#121212</code> といった6桁のHEXコードを日常的に使用します。単色の <strong>全画面HEXカラー</strong>（full screen hex color）を表示することで、ブラウザの枠に邪魔されずに正しい発色やコントラストを確認できます。',
+          '精度の高い <strong>HEXコード画面テスト</strong>（hex code screen test）は、OLED、IPS、VA液晶パネルでのUIデザイン表示を検証する際に欠かせません。最大4つの <strong>HEXカラーコード</strong> を入力してカラーパレットを分割比較したり、<code>#0A0A0A</code> や <code>#1E1E1E</code> などのダークモードカラーの黒表現を <strong>HEX表示テスト</strong>（hex display test）で診断できます。ワンクリックでRGBやHSLの相互変換コードもコピー可能です。',
+          '当サイトの <strong>HEX画面オンライン</strong>（hex screen online）はソフトウェアのダウンロード不要で即座に動作します。 <strong>HEXカラー調整</strong>（hex color calibration）を行う際は全画面モードで表示してください。作成したカラーは <strong>HEX画面壁紙</strong>（hex wallpaper）として4K高画質保存でき, プロフェッショナルな <strong>モニターHEXテスト</strong>（monitor hex test）ツールとしてご活用いただけます。'
         ]
       }
     };

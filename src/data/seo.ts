@@ -48,6 +48,15 @@ const customTitles: Partial<Record<string, Partial<Record<Locale, string>>>> = {
     hi: 'आरजीबी स्क्रीन टेस्ट ऑनलाइन - फुलस्क्रीन सब-पिक्सेल और कलर कैलिब्रेशन',
     ja: 'RGB画面テスト オンライン - 全画面サブピクセル＆カラーキャリブレーション',
   },
+  'hex-screen': {
+    en: 'HEX Screen Test Online - Fullscreen Color Code Preview & Palette Tool',
+    es: 'Pantalla HEX Online - Vista Previa de Códigos de Color y Paletas',
+    pt: 'Tela HEX Online - Pré-visualização de Códigos de Cor e Paletas',
+    fr: 'Écran HEX en Ligne - Aperçu des Codes Couleur & Palette Plein Écran',
+    de: 'HEX-Bildschirm Online - Farbcode-Vorschau & Paletten-Tool',
+    hi: 'हेक्स स्क्रीन ऑनलाइन - फुलस्क्रीन कलर कोड प्रीव्यू और पैलेट टूल',
+    ja: 'HEX画面 オンライン - 全画面カラーコードプレビュー＆パレットツール',
+  },
 };
 
 const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>>> = {
@@ -68,6 +77,15 @@ const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>
     de: 'Führen Sie einen RGB-Bildschirmtest online im Vollbildmodus durch. Überprüfen Sie Rot-, Grün- und Blau-Subpixel, finden Sie Pixelfehler und kalibrieren Sie Monitore.',
     hi: 'ऑनलाइन फुलस्क्रीन आरजीबी स्क्रीन टेस्ट चलाएं। लाल, हरे और नीले सब-पिक्सेल की जांच करें, खराब पिक्सल खोजें और मॉनिटर रंग चैनलों को कैलिब्रेट करें।',
     ja: 'オンラインで全画面RGB画面テストを実行。赤・緑・青のサブピクセル診断、ドット抜け検出、液晶ディスプレイのカラーキャリブレーションに最適。',
+  },
+  'hex-screen': {
+    en: 'Preview exact CSS HEX color codes in full screen. Test brand colors, compare 4-color palettes, inspect dark mode shades (#121212, #000000), and download 4K wallpapers.',
+    es: 'Visualiza códigos de color HEX exactos en pantalla completa. Prueba colores de marca, compara paletas de 4 colores, evalúa tonos de modo oscuro y descarga fondos 4K.',
+    pt: 'Visualize códigos de cor HEX exatos em tela cheia. Teste cores de marca, compare paletas de 4 cores, inspecione tons de modo escuro e baixe papéis de parede 4K.',
+    fr: 'Affichez des codes couleur HEX exacts en plein écran. Testez vos couleurs de marque, comparez des palettes de 4 couleurs, évaluez les teintes sombres et téléchargez des fonds 4K.',
+    de: 'Vorschau exakter CSS-HEX-Farbcodes im Vollbildmodus. Testen Sie Markenfarben, vergleichen Sie 4-Farben-Paletten, prüfen Sie Dunkelmodus-Töne und laden Sie 4K-Wallpaper herunter.',
+    hi: 'फुलस्क्रीन में सटीक CSS हेक्स कोड का प्रीव्यू करें। ब्रांड रंग टेस्ट करें, 4-कलर पैलेट की तुलना करें, डार्क मोड रंगों (#121212) की जांच करें और 4K वॉलपेपर डाउनलोड करें।',
+    ja: 'CSSのHEXカラーコードを全画面で即座にプレビュー。ブランドカラーの検証、4色パレット比較、ダークモードシェード診断、4K壁紙ダウンロードに対応。',
   },
 };
 
@@ -189,6 +207,37 @@ export function toolJsonLd(tool: Tool, path: string, locale: Locale = defaultLoc
           '@type': 'HowToStep',
           name: 'Calibrate Monitor Color Gain',
           text: 'Adjust your monitor Hardware OSD menu for Red, Green, and Blue gains until screen luminance and white points match your desired reference.'
+        }
+      ]
+    });
+  }
+
+  if (tool.id === 'hex-screen') {
+    baseSchemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'How to Preview and Test HEX Color Codes Fullscreen',
+      description: 'A step-by-step guide to testing CSS HEX color codes, dark mode shades, and color palettes on real monitor displays.',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Enter Your HEX Color Code',
+          text: 'Type or paste any 6-digit or 3-digit HEX code (e.g. #0070F3, #121212) into the color input box.'
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Launch Fullscreen View',
+          text: 'Click Fullscreen or press "F" to project your exact HEX color across the entire display without browser UI interference.'
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Compare Palettes and Contrast',
+          text: 'Select up to 4 HEX color swatches to compare side-by-side split screens or evaluate dark mode contrast.'
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Download HD/4K Wallpapers',
+          text: 'Choose your desired screen orientation and download crisp PNG wallpapers rendered directly from your HEX color codes.'
         }
       ]
     });
