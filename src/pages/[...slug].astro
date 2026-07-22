@@ -275,6 +275,16 @@ const props = Astro.props as PageProps;
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">B</kbd> Toggle Guided Breathing</p>
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
             </>
+          ) : props.tool.slug === 'rgb-screen' ? (
+            <>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> Fullscreen Mode</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">R</kbd> Pure Red Subpixel Test</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">G</kbd> Pure Green Subpixel Test</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">B</kbd> Pure Blue Subpixel Test</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">W / K</kbd> White / Black Fills</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Space</kbd> Toggle RGB Auto Cycle</p>
+              <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">Esc</kbd> Exit Fullscreen</p>
+            </>
           ) : (
             <>
               <p><kbd class="rounded border border-hairline px-2 py-1 font-mono">F</kbd> {t(props.locale, 'tool.shortcut_fullscreen')}</p>

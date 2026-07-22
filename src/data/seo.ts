@@ -39,6 +39,15 @@ const customTitles: Partial<Record<string, Partial<Record<Locale, string>>>> = {
     hi: 'ग्रेडिएंट स्क्रीन ऑनलाइन - कलर बैंडिंग टेस्ट और मॉनिटर जांच',
     ja: 'グラデーション画面 オンライン - カラーバンディングテスト＆表示色診断',
   },
+  'rgb-screen': {
+    en: 'RGB Screen Test Online - Fullscreen Subpixel & Color Calibration',
+    es: 'Prueba de Pantalla RGB Online - Test de Subpíxeles y Calibración',
+    pt: 'Teste de Tela RGB Online - Teste de Subpixels e Calibragem',
+    fr: 'Test Écran RGB en Ligne - Étalonnage Sous-Pixels & Couleurs',
+    de: 'RGB-Bildschirmtest Online - Subpixel & Farb-Kalibrierung',
+    hi: 'आरजीबी स्क्रीन टेस्ट ऑनलाइन - फुलस्क्रीन सब-पिक्सेल और कलर कैलिब्रेशन',
+    ja: 'RGB画面テスト オンライン - 全画面サブピクセル＆カラーキャリブレーション',
+  },
 };
 
 const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>>> = {
@@ -50,6 +59,15 @@ const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>
     de: 'Ein Vollbild-Farbverlauf-Bildschirm für Color Banding Tests, Monitor-Kalibrierung und kreative Hintergründe. Im Vollbildmodus öffnen.',
     hi: 'कलर बैंडिंग परीक्षण, मॉनिटर कैलिब्रेशन और एम्बिएंट बैकग्राउंड के लिए एक फुलस्क्रीन ग्रेडिएंट स्क्रीन टूल। फुलस्क्रीन में खोलें।',
     ja: '液晶のカラーバンディング試験、表示色キャリブレーション、動画用背景に最適な全画面グラデーション表示ツール。全画面で開く。',
+  },
+  'rgb-screen': {
+    en: 'Perform an RGB screen test online in full screen. Inspect red, green, and blue subpixels, test for stuck or dead pixels, check monitor color channels, and calibrate displays.',
+    es: 'Realiza un test de pantalla RGB online a pantalla completa. Analiza subpíxeles rojos, verdes y azules, detecta píxeles muertos y calibra los colores de tu monitor.',
+    pt: 'Faça um teste de tela RGB online em tela cheia. Inspecione subpixels vermelhos, verdes e azuis, encontre pixels mortos e calibre as cores do seu monitor.',
+    fr: 'Testez votre écran RGB en ligne en plein écran. Inspectez les sous-pixels rouge, vert et bleu, détectez les pixels morts et étalonnez la couleur de votre moniteur.',
+    de: 'Führen Sie einen RGB-Bildschirmtest online im Vollbildmodus durch. Überprüfen Sie Rot-, Grün- und Blau-Subpixel, finden Sie Pixelfehler und kalibrieren Sie Monitore.',
+    hi: 'ऑनलाइन फुलस्क्रीन आरजीबी स्क्रीन टेस्ट चलाएं। लाल, हरे और नीले सब-पिक्सेल की जांच करें, खराब पिक्सल खोजें और मॉनिटर रंग चैनलों को कैलिब्रेट करें।',
+    ja: 'オンラインで全画面RGB画面テストを実行。赤・緑・青のサブピクセル診断、ドット抜け検出、液晶ディスプレイのカラーキャリブレーションに最適。',
   },
 };
 
@@ -99,7 +117,7 @@ function stripHtml(text: string): string {
 export function toolJsonLd(tool: Tool, path: string, locale: Locale = defaultLocale) {
   const url = absoluteUrl(path);
   const tName = toolName(locale, tool);
-  return [
+  const baseSchemas: Record<string, unknown>[] = [
     {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
@@ -144,4 +162,37 @@ export function toolJsonLd(tool: Tool, path: string, locale: Locale = defaultLoc
       })),
     },
   ];
+
+  if (tool.id === 'rgb-screen') {
+    baseSchemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'How to Perform an RGB Subpixel & Display Test',
+      description: 'A step-by-step guide to testing monitor subpixels, detecting stuck or dead pixels, and calibrating RGB color channels.',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Open Fullscreen RGB Tool',
+          text: 'Click the Fullscreen button or press "F" to launch full screen mode without browser UI distortion.'
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Inspect Primary RGB Channels',
+          text: 'Cycle through Pure Red (#FF0000), Pure Green (#00FF00), and Pure Blue (#0000FF) screens to isolate and test each subpixel channel.'
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Spot Stuck vs. Dead Subpixels',
+          text: 'Look closely for permanently illuminated bright dots (stuck subpixels) or dark unlit spots (dead pixels) across the panel.'
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Calibrate Monitor Color Gain',
+          text: 'Adjust your monitor Hardware OSD menu for Red, Green, and Blue gains until screen luminance and white points match your desired reference.'
+        }
+      ]
+    });
+  }
+
+  return baseSchemas;
 }

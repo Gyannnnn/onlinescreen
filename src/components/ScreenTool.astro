@@ -167,6 +167,29 @@ const initialRgb = (() => {
           <span aria-live="polite" data-status class="ml-auto text-xs text-muted"></span>
           <div class="flex flex-wrap gap-1.5" data-favorites aria-label={t(locale, 'screen.favorites')}></div>
         </div>
+        {mode === 'rgb' && (
+          <div class="flex flex-wrap items-center gap-1.5 border-t border-hairline/60 px-4 py-2.5 md:px-5 bg-canvas-soft/40">
+            <span class="text-xs font-mono font-medium text-muted mr-1">{t(locale, 'screen.subpixel_tests')}</span>
+            <button class="inline-flex h-7 items-center gap-1.5 rounded-md border border-hairline bg-canvas px-2.5 text-xs font-medium text-body hover:border-red-500/50 hover:text-red-500 transition-colors cursor-pointer" type="button" data-rgb-preset="#ff0000" title="Pure Red Subpixel Test (Press R)">
+              <span class="size-2.5 rounded-full bg-[#ff0000]"></span> {t(locale, 'screen.pure_red')}
+            </button>
+            <button class="inline-flex h-7 items-center gap-1.5 rounded-md border border-hairline bg-canvas px-2.5 text-xs font-medium text-body hover:border-green-500/50 hover:text-green-500 transition-colors cursor-pointer" type="button" data-rgb-preset="#00ff00" title="Pure Green Subpixel Test (Press G)">
+              <span class="size-2.5 rounded-full bg-[#00ff00]"></span> {t(locale, 'screen.pure_green')}
+            </button>
+            <button class="inline-flex h-7 items-center gap-1.5 rounded-md border border-hairline bg-canvas px-2.5 text-xs font-medium text-body hover:border-blue-500/50 hover:text-blue-500 transition-colors cursor-pointer" type="button" data-rgb-preset="#0000ff" title="Pure Blue Subpixel Test (Press B)">
+              <span class="size-2.5 rounded-full bg-[#0000ff]"></span> {t(locale, 'screen.pure_blue')}
+            </button>
+            <button class="inline-flex h-7 items-center gap-1.5 rounded-md border border-hairline bg-canvas px-2.5 text-xs font-medium text-body hover:bg-canvas-soft transition-colors cursor-pointer" type="button" data-rgb-preset="#ffffff" title="White Subpixel Test (Press W)">
+              <span class="size-2.5 rounded-full bg-white border border-gray-400"></span> {t(locale, 'screen.white')}
+            </button>
+            <button class="inline-flex h-7 items-center gap-1.5 rounded-md border border-hairline bg-canvas px-2.5 text-xs font-medium text-body hover:bg-canvas-soft transition-colors cursor-pointer" type="button" data-rgb-preset="#000000" title="Black Subpixel Test (Press K)">
+              <span class="size-2.5 rounded-full bg-black border border-gray-600"></span> {t(locale, 'screen.black')}
+            </button>
+            <button class="inline-flex h-7 items-center gap-1.5 rounded-md border border-hairline bg-canvas px-2.5 text-xs font-medium text-body hover:bg-canvas-soft transition-colors cursor-pointer ml-auto" type="button" data-rgb-split title="Reset to 3-Channel Split View">
+              <span class="flex size-3 overflow-hidden rounded-full border border-hairline"><span class="w-1/3 bg-red-500"></span><span class="w-1/3 bg-green-500"></span><span class="w-1/3 bg-blue-500"></span></span> {t(locale, 'screen.rgb_split')}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   </div>
@@ -467,6 +490,20 @@ const initialRgb = (() => {
 
     root.querySelector('[data-download]')?.addEventListener('click', triggerDownload);
 
+    // RGB Preset Button Listeners
+    for (const btn of root.querySelectorAll<HTMLElement>('[data-rgb-preset]')) {
+      btn.addEventListener('click', () => {
+        const targetColor = btn.dataset.rgbPreset;
+        if (targetColor) {
+          setColors([targetColor, targetColor, targetColor]);
+        }
+      });
+    }
+
+    root.querySelector('[data-rgb-split]')?.addEventListener('click', () => {
+      setColors(['#ff0000', '#00ff00', '#0000ff']);
+    });
+
     document.addEventListener('fullscreenchange', () => {
       const isActive = document.fullscreenElement === root;
       root.classList.toggle('is-fullscreen', isActive);
@@ -482,13 +519,23 @@ const initialRgb = (() => {
         event.target instanceof HTMLSelectElement ||
         event.target instanceof HTMLTextAreaElement
       ) return;
-      if (event.key.toLowerCase() === 'f') root.requestFullscreen?.();
-      if (event.key.toLowerCase() === 'r') triggerRandom();
-      if (event.key.toLowerCase() === 'c') {
+      const key = event.key.toLowerCase();
+      if (key === 'f') root.requestFullscreen?.();
+      if (mode === 'rgb') {
+        if (key === 'r') setColors(['#ff0000', '#ff0000', '#ff0000']);
+        else if (key === 'g') setColors(['#00ff00', '#00ff00', '#00ff00']);
+        else if (key === 'b') setColors(['#0000ff', '#0000ff', '#0000ff']);
+        else if (key === 'w') setColors(['#ffffff', '#ffffff', '#ffffff']);
+        else if (key === 'k') setColors(['#000000', '#000000', '#000000']);
+        else if (key === 's') setColors(['#ff0000', '#00ff00', '#0000ff']);
+      } else if (key === 'r') {
+        triggerRandom();
+      }
+      if (key === 'c') {
         await navigator.clipboard?.writeText(hexInput?.value ?? '');
         setStatus(str('strColorCopied'));
       }
-      if (event.key.toLowerCase() === 'd') {
+      if (key === 'd') {
         triggerDownload();
       }
     });
