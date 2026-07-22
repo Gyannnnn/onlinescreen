@@ -48,15 +48,19 @@ const categoryIds = Object.keys(categories) as ToolCategoryId[];
   </div>
 </section>
 
-{categoryIds.map((categoryId) => (
-  <section id={categoryId} class="site-shell scroll-mt-24 py-16">
-    <div class="max-w-2xl">
-      <p class="font-mono text-xs text-muted">{categories[categoryId].name.toUpperCase()}</p>
-      <h2 class="mt-3 text-3xl font-semibold text-balance text-ink">{categories[categoryId].name}</h2>
-      <p class="mt-3 text-base leading-7 text-body">{categories[categoryId].description}</p>
-    </div>
-    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {tools.filter((tool) => tool.category === categoryId).map((tool) => <ToolCard tool={tool} locale={locale} />)}
-    </div>
-  </section>
-))}
+{categoryIds.map((categoryId) => {
+  const categoryTools = tools.filter((tool) => tool.category === categoryId);
+  if (categoryTools.length === 0) return null;
+  return (
+    <section id={categoryId} class="site-shell scroll-mt-24 py-16">
+      <div class="max-w-2xl">
+        <p class="font-mono text-xs text-muted">{categories[categoryId].name.toUpperCase()}</p>
+        <h2 class="mt-3 text-3xl font-semibold text-balance text-ink">{categories[categoryId].name}</h2>
+        <p class="mt-3 text-base leading-7 text-body">{categories[categoryId].description}</p>
+      </div>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {categoryTools.map((tool) => <ToolCard tool={tool} locale={locale} />)}
+      </div>
+    </section>
+  );
+})}
