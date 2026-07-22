@@ -3191,7 +3191,11 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
 };
 
 export function toolFaqs(locale: Locale, toolId: string, defaultFaqs: { question: string; answer: string }[]): { question: string; answer: string }[] {
-  return localizedFaqs[toolId]?.[locale] ?? defaultFaqs;
+  const faqs = localizedFaqs[toolId]?.[locale] ?? defaultFaqs;
+  return faqs.map((faq) => ({
+    question: faq.question.replace(/<[^>]*>/g, '').replace(/\*\*/g, '').trim(),
+    answer: faq.answer.replace(/<[^>]*>/g, '').replace(/\*\*/g, '').trim(),
+  }));
 }
 
 export function getRelatedSearches(locale: Locale): string[] {

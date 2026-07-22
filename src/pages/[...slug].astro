@@ -73,8 +73,8 @@ const props = Astro.props as PageProps;
   </BaseLayout>
 ) : (
   <BaseLayout
-    title={titleForTool(props.tool)}
-    description={descriptionForTool(props.tool)}
+    title={titleForTool(props.tool, props.locale)}
+    description={descriptionForTool(props.tool, props.locale)}
     canonicalPath={toolPath(props.tool, props.locale)}
     alternates={alternatesForTool(props.tool)}
     jsonLd={toolJsonLd(props.tool, props.path, props.locale)}
