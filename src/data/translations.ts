@@ -4256,6 +4256,170 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       }
     ]
   },
+  'snow-screen': {
+    en: [
+      {
+        question: 'What is a Snow Screen?',
+        answer: 'A Snow Screen is a browser-based animated display that creates realistic falling snow on your screen. It features customizable snowflake count, speed, wind drift, flake size, 20 color presets, photorealistic snowflake images, and optional winter ambience audio. Use it on your desktop, laptop, monitor, or TV for seasonal decoration, relaxation, or as a screensaver alternative — no download required.'
+      },
+      {
+        question: 'How do I use this Snow Screen on my desktop or laptop?',
+        answer: 'Open the page in your browser, click the Fullscreen button or press the "F" key on your keyboard. The snowfall animation fills your entire screen. Press Space to open the settings panel where you can customize snowflake count, falling speed, wind drift, flake size, color, and audio. The interface auto-hides in fullscreen mode to keep the winter ambience clean and distraction-free.'
+      },
+      {
+        question: 'Can I customize the snowfall appearance?',
+        answer: 'Yes. Adjust snowflake count from 20 to 800 particles, falling speed with a dual-range slider (0.1 to 8.0), wind drift direction and intensity (-5.0 to 5.0), and flake size from 0.5 to 15.0 pixels. You can also toggle photorealistic snowflake images mode for detailed SVG snowflake shapes with adjustable size, opacity, and rotation speed.'
+      },
+      {
+        question: 'Can I change the snowflake colors?',
+        answer: 'Yes. Choose from 20 aesthetic color presets: Pure Snow, Glacier Blue, Aurora Green, Pale Lavender, Ice Rose, Soft Mint, Golden Amber, Neon Coral, Seafoam Teal, Arctic Slub, Mellow Peach, Lemon Chiffon, Electric Cyan, Orchid Glow, Ethereal Violet, Deep Indigo, Emerald Glow, Sunset Orange, Rose Quartz, and Warm Charcoal.'
+      },
+      {
+        question: 'Can I use photorealistic snowflake images?',
+        answer: 'Yes. Toggle the "Photorealistic Snowflake Images" mode to display detailed SVG snowflake shapes instead of colored circles. In this mode, you can control image snowflake size (5.0 to 50.0 pixels), opacity (10% to 100%), and rotation speed (0x to 4x) for a more realistic winter effect.'
+      },
+      {
+        question: 'Can I change the background scene?',
+        answer: 'Yes. The Snow Screen supports multiple winter background scenes that load automatically from the asset directory. You can switch between different winter landscapes, including snowy forests, mountain views, and festive seasonal scenes from the Background Scene selector in the settings panel.'
+      },
+      {
+        question: 'Does the Snow Screen have sound effects?',
+        answer: 'The page supports ambient winter audio soundtracks that load automatically when available. You can select different audio tracks from the dropdown, adjust volume, and toggle sound on/off with the "M" key for a complete winter ambience experience.'
+      },
+      {
+        question: 'Can I use the Snow Screen for Christmas and holiday decoration?',
+        answer: 'Absolutely. The Snow Screen is perfect for Christmas decorations, holiday parties, and winter seasonal displays. Use it on your Smart TV, desktop monitor, or laptop as a festive screensaver alternative. Combine winter background scenes, photorealistic snowflakes, and ambient audio for a complete cozy holiday atmosphere.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Qué es una pantalla de nieve?',
+        answer: 'Una pantalla de nieve es un display animado basado en navegador que crea nieve cayendo en tu pantalla. Incluye copos personalizables, velocidad, viento, 20 colores, imágenes fotorrealistas y audio de ambiente invernal. Úsala en escritorio, portátil, monitor o TV para decoración navideña, relajación o como salvapantallas.'
+      },
+      {
+        question: '¿Cómo uso esta pantalla de nieve en mi ordenador?',
+        answer: 'Abre la página en tu navegador, haz clic en Pantalla Completa o presiona "F". Presiona Espacio para abrir el panel de ajustes y personalizar la cantidad de copos, velocidad, viento, tamaño y color.'
+      },
+      {
+        question: '¿Puedo personalizar la apariencia de la nieve?',
+        answer: 'Sí. Ajusta la cantidad de copos (20 a 800), velocidad (0.1 a 8.0), viento (-5.0 a 5.0) y tamaño de copo (0.5 a 15.0). Activa el modo de imágenes fotorrealistas para copos SVG detallados con opacidad y velocidad de rotación ajustables.'
+      },
+      {
+        question: '¿Puedo cambiar los colores de los copos?',
+        answer: 'Sí. Elige entre 20 colores: Nieve Pura, Azul Glaciar, Verde Aurora, Lavanda Pálida, Rosa Hielo, Menta Suave, Ámbar Dorado, Coral Neón, Verde Espuma, Pizarra Ártica, Durazno Suave, Limón Chiffon, Cian Eléctrico, Orquídea, Violeta Etéreo, Índigo Profundo, Verde Esmeralda, Naranja Atardecer, Cuarzo Rosa y Carbón Cálido.'
+      },
+      {
+        question: '¿Puedo usar la pantalla de nieve para decoración navideña?',
+        answer: 'Absolutamente. Es perfecta para decoración navideña, fiestas y ambientes invernales. Úsala en tu Smart TV, monitor o portátil como salvapantallas festivo con fondos invernales y audio ambiente.'
+      }
+    ],
+    pt: [
+      {
+        question: 'O que é uma tela de neve?',
+        answer: 'Uma tela de neve é um display animado baseado em navegador que cria neve caindo na sua tela. Inclui flocos personalizáveis, velocidade, vento, 20 cores, imagens fotorrealistas e áudio de inverno. Use no desktop, notebook, monitor ou TV para decoração natalina, relaxamento ou como protetor de tela.'
+      },
+      {
+        question: 'Como uso esta tela de neve no meu computador?',
+        answer: 'Abra a página no navegador, clique em Tela Cheia ou pressione "F". Pressione Espaço para abrir o painel de configurações para personalizar flocos, velocidade, vento, tamanho e cor.'
+      },
+      {
+        question: 'Posso personalizar a aparência da neve?',
+        answer: 'Sim. Ajuste a quantidade de flocos (20 a 800), velocidade (0.1 a 8.0), vento (-5.0 a 5.0) e tamanho (0.5 a 15.0). Ative o modo de imagens fotorrealistas para flocos SVG detalhados.'
+      },
+      {
+        question: 'Posso mudar as cores dos flocos de neve?',
+        answer: 'Sim. Escolha entre 20 cores: Neve Pura, Azul Glacial, Verde Aurora, Lavanda Pálida, Rosa Gelo, Menta Suave, Âmbar Dourado, Coral Neon, Verde Espuma, Ardósia Ártica, Pêssego Suave, Limão Chiffon, Ciano Elétrico, Orquídea, Violeta Etéreo, Índigo Profundo, Verde Esmeralda, Laranja Pôr do Sol, Quartzo Rosa e Carvão Quente.'
+      },
+      {
+        question: 'Posso usar a tela de neve para decoração de Natal?',
+        answer: 'Com certeza. Perfeita para decoração natalina, festas e ambientes de inverno. Use na Smart TV, monitor ou notebook como protetor de tela festivo.'
+      }
+    ],
+    fr: [
+      {
+        question: 'Qu\'est-ce qu\'un écran de neige ?',
+        answer: 'Un écran de neige est un affichage animé dans votre navigateur qui crée de la neige tombant sur votre écran. Avec flocons personnalisables, vitesse, vent, 20 couleurs, images photoréalistes et audio d\'ambiance hivernale. Pour PC, portable, moniteur ou TV — décoration de Noël, relaxation ou économiseur d\'écran.'
+      },
+      {
+        question: 'Comment utiliser cet écran de neige sur mon ordinateur ?',
+        answer: 'Ouvrez la page dans votre navigateur, cliquez sur Plein écran ou appuyez sur "F". Appuyez sur Espace pour ouvrir le panneau des réglages pour personnaliser les flocons, la vitesse, le vent, la taille et la couleur.'
+      },
+      {
+        question: 'Puis-je personnaliser l\'apparence de la neige ?',
+        answer: 'Oui. Ajustez le nombre de flocons (20 à 800), la vitesse (0.1 à 8.0), le vent (-5.0 à 5.0) et la taille (0.5 à 15.0). Activez le mode photoréaliste pour des flocons SVG détaillés.'
+      },
+      {
+        question: 'Puis-je changer la couleur des flocons ?',
+        answer: 'Oui. Choisissez parmi 20 couleurs : Neige Pure, Bleu Glaciaire, Vert Aurore, Lavande Pâle, Rose Glace, Menthe Douce, Ambre Doré, Corail Néon, Écume de Mer, Ardoise Arctique, Pêche Douce, Citron Chiffon, Cyan Électrique, Orchidée, Violet Éthéré, Indigo Profond, Vert Émeraude, Orange Coucher, Quartz Rose et Charbon Chaud.'
+      },
+      {
+        question: 'Puis-je utiliser l\'écran de neige pour la décoration de Noël ?',
+        answer: 'Absolument. Parfait pour la décoration de Noël, les fêtes et les ambiances hivernales. Utilisez-le sur votre Smart TV, moniteur ou portable comme économiseur d\'écran festif.'
+      }
+    ],
+    de: [
+      {
+        question: 'Was ist ein Schnee-Bildschirm?',
+        answer: 'Ein Schnee-Bildschirm ist eine browserbasierte animierte Anzeige, die fallenden Schnee auf Ihrem Bildschirm erzeugt. Mit anpassbaren Flocken, Geschwindigkeit, Wind, 20 Farben, fotorealistischen Bildern und Winter-Ambient-Audio. Für Desktop, Laptop, Monitor oder TV — Weihnachtsdekoration, Entspannung oder als Bildschirmschoner.'
+      },
+      {
+        question: 'Wie benutze ich diesen Schnee-Bildschirm auf meinem Computer?',
+        answer: 'Öffnen Sie die Seite im Browser, klicken Sie auf Vollbild oder drücken Sie "F". Drücken Sie die Leertaste für das Einstellungspanel zur Anpassung von Flockenanzahl, Geschwindigkeit, Wind, Größe und Farbe.'
+      },
+      {
+        question: 'Kann ich das Aussehen des Schnees anpassen?',
+        answer: 'Ja. Passen Sie die Flockenanzahl (20 bis 800), Geschwindigkeit (0.1 bis 8.0), Wind (-5.0 bis 5.0) und Flockengröße (0.5 bis 15.0) an. Schalten Sie den fotorealistischen Modus für detaillierte SVG-Schneeflocken ein.'
+      },
+      {
+        question: 'Kann ich die Schneeflockenfarben ändern?',
+        answer: 'Ja. Wählen Sie aus 20 Farben: Reiner Schnee, Gletscherblau, Aurora-Grün, Blasses Lavendel, Eisrose, Weiche Minze, Goldener Bernstein, Neon-Koralle, Meerschaum, Arktisches Schiefergrau, Sanfter Pfirsich, Zitronen-Chiffon, Elektrisches Cyan, Orchidee, Ätherisches Violett, Tiefes Indigo, Smaragdgrün, Sonnenuntergang-Orange, Rosenquarz und Warmer Holzkohle.'
+      },
+      {
+        question: 'Kann ich den Schnee-Bildschirm für Weihnachtsdekoration nutzen?',
+        answer: 'Absolut. Perfekt für Weihnachtsdekoration, Festlichkeiten und Winterambiente. Verwenden Sie ihn auf Ihrem Smart TV, Monitor oder Laptop als festlichen Bildschirmschoner.'
+      }
+    ],
+    hi: [
+      {
+        question: 'स्नो स्क्रीन क्या है?',
+        answer: 'स्नो स्क्रीन एक ब्राउज़र-आधारित एनिमेटेड डिस्प्ले है जो आपकी स्क्रीन पर गिरती बर्फ बनाता है। इसमें अनुकूलन योग्य बर्फ के टुकड़े, गति, हवा, 20 रंग, फोटोरियलिस्टिक इमेज और विंटर ऑडियो शामिल हैं। डेस्कटॉप, लैपटॉप, मॉनिटर या टीवी पर क्रिसमस सजावट या स्क्रीनसेवर के लिए उपयोग करें।'
+      },
+      {
+        question: 'मैं अपने कंप्यूटर पर इस स्नो स्क्रीन का उपयोग कैसे करूं?',
+        answer: 'पेज को ब्राउज़र में खोलें, फुलस्क्रीन बटन पर क्लिक करें या "F" दबाएं। सेटिंग्स के लिए स्पेस बार दबाएं और बर्फ के टुकड़ों की संख्या, गति, हवा, आकार और रंग को कस्टमाइज़ करें।'
+      },
+      {
+        question: 'क्या मैं बर्फ के रंग बदल सकता हूं?',
+        answer: 'हां। 20 रंगों में से चुनें: प्योर स्नो, ग्लेशियर ब्लू, ऑरोरा ग्रीन, पेल लैवेंडर, आइस रोज़, सॉफ्ट मिंट, गोल्डन एम्बर, नियॉन कोरल, सीफोम टील, आर्कटिक स्लेट, मेलो पीच, लेमन शिफॉन, इलेक्ट्रिक सियान, ऑर्किड ग्लो, एथेरियल वायलेट, डीप इंडिगो, एमराल्ड ग्लो, सनसेट ऑरेंज, रोज़ क्वार्ट्ज और वार्म चारकोल।'
+      },
+      {
+        question: 'क्या मैं फोटोरियलिस्टिक स्नोफ्लेक इमेज का उपयोग कर सकता हूं?',
+        answer: 'हां। "फोटोरियलिस्टिक स्नोफ्लेक इमेज" मोड चालू करें। इस मोड में आप बर्फ के टुकड़ों का आकार (5.0 से 50.0), अपारदर्शिता (10% से 100%) और घूर्णन गति (0x से 4x) नियंत्रित कर सकते हैं।'
+      },
+      {
+        question: 'क्या मैं स्नो स्क्रीन को क्रिसमस सजावट के लिए उपयोग कर सकता हूं?',
+        answer: 'बिल्कुल। यह क्रिसमस सजावट, छुट्टियों और सर्दियों के माहौल के लिए एकदम सही है। इसे अपने स्मार्ट टीवी, मॉनिटर या लैपटॉप पर त्योहारी स्क्रीनसेवर के रूप में उपयोग करें।'
+      }
+    ],
+    ja: [
+      {
+        question: '雪の画面（スノースクリーン）とは何ですか？',
+        answer: '雪の画面は、ブラウザベースのアニメーション表示で、画面にリアルな降雪を再現します。カスタマイズ可能な雪片の数、速度、風、20色のカラープリセット、フォトリアルな雪の画像、冬の環境音を備えています。デスクトップ、ノートPC、モニター、TVでクリスマス飾りやリラクゼーション、スクリーンセーバーとしてご利用いただけます。'
+      },
+      {
+        question: 'パソコンでこの雪の画面を使うには？',
+        answer: 'ブラウザでページを開き、全画面ボタンをクリックするか「F」キーを押します。スペースキーで設定パネルを開き、雪片の数、速度、風、サイズ、色をカスタマイズできます。'
+      },
+      {
+        question: '雪の色を変更できますか？',
+        answer: 'はい。20色のプリセット（ピュアスノー、グレイシャーブルー、オーロラグリーン、ペールラベンダー、アイスローズ、ソフトミント、ゴールデンアンバー、ネオンコーラル、シーフォームティール、アークティックスレート、メローピーチ、レモンシフォン、エレクトリックシアン、オーキッドグロー、エセリアルバイオレット、ディープインディゴ、エメラルドグロー、サンセットオレンジ、ローズクォーツ、ウォームチャコール）から選択できます。'
+      },
+      {
+        question: '雪の画面をクリスマス飾りに使えますか？',
+        answer: 'もちろん。クリスマスの飾り付け、ホリデーパーティー、冬の季節演出に最適です。スマートTV、モニター、ノートPCでお楽しみいただけます。'
+      }
+    ]
+  },
   'placeholder-screen': {
     en: []
   }
@@ -4602,6 +4766,68 @@ export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-s
           'パソコン、ノートPC、モニター、Smart TVの画面を、リアルな<strong>雨のアニメーション</strong>で魅惑的な<strong>雨の画面</strong>に変身させましょう。無料のオンライン<strong>雨の雰囲気</strong>ツールは、ブラウザで直接、調整可能な<strong>雨の強さ</strong>、落下速度、風向き、床の跳ね返りを備えた没入感あふれる雨を再現します。<strong>雨の背景</strong>として集中作業に、<strong>雨の壁紙</strong>としてデスクトップに、<strong>雨のスクリーンセーバー</strong>としてTVに最適です。',
           '<strong>雨のエフェクト</strong>のあらゆる側面をカスタマイズ。斜めの雨には「アクティブな雨粒」、窓効果には「窓ガラスの雨粒」を選択。密度（10〜600粒子）、速度、風（-6.0〜6.0）を調整。跳ね返りと<strong>環境雷</strong>（5〜60秒間隔）を有効化。',
           '8つの美しいカラープリセットと複数の背景シーンで完璧な雰囲気に。環境雨のオーディオを追加。「F」キーで全画面、「M」キーでミュート。自動非表示インターフェースで<strong>リラックスできる雨</strong>の体験をクリーンに保ちます。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'snow-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Snow Screen Online — Falling Snow & Winter Ambience for Desktop, Laptop & TV',
+        paragraphs: [
+          'Transform any computer display, laptop monitor, PC, or Smart TV into a mesmerizing <strong>snow screen</strong> with realistic <strong>falling snow</strong> animation. Our free online <strong>snow background</strong> tool recreates the peaceful experience of <strong>snowfall</strong> directly in your browser — rendered with the react-snowfall library for smooth, performant <strong>snow animation</strong> across all devices. Whether you need a festive <strong>Christmas screen</strong> for holiday decoration, a <strong>winter wallpaper</strong> for your desktop, a <strong>snow screensaver</strong> for your TV, or a cozy <strong>winter background</strong> for your study space, this tool delivers a fully customizable <strong>snow display</strong> — no downloads, no installation, no ads.',
+          'Personalize every aspect of the <strong>snowfall effect</strong> with comprehensive controls. Adjust <strong>snowflake count</strong> from a light dusting (20 flakes) to a heavy blizzard (800 flakes) using the snow density slider. Fine-tune <strong>falling speed</strong> with a dual-range slider (0.1 to 8.0) for natural variation, control <strong>wind drift</strong> from -5.0 to 5.0 for sweeping sideways movement, and adjust <strong>flake size</strong> from 0.5 to 15.0 pixels. Toggle <strong>photorealistic snowflake images</strong> mode to display detailed SVG snowflake shapes instead of colored circles — with independent size (5.0 to 50.0 pixels), opacity (10% to 100%), and rotation speed (0x to 4x) controls for the most realistic <strong>virtual snowfall</strong> experience.',
+          'Complete the winter atmosphere with 20 aesthetic color presets — from Pure Snow and Glacier Blue to Aurora Green, Electric Cyan, and Sunset Orange — each casting a unique seasonal mood across your display. Select from multiple winter background scenes including snowy forests and mountain landscapes. Add ambient winter audio soundtracks with volume control, toggle mute with the "M" key, and press "F" for fullscreen immersion across your monitor, laptop, or TV. The auto-hide interface keeps your <strong>winter ambience</strong> experience clean and distraction-free, making this the perfect <strong>digital snowfall</strong> companion for Christmas decoration, holiday parties, cozy reading sessions, meditation, or creating a serene winter atmosphere in any room.'
+        ]
+      },
+      es: {
+        heading: 'Pantalla de Nieve Online — Nieve Cayendo y Ambiente Invernal para Escritorio, Portátil y TV',
+        paragraphs: [
+          'Transforma cualquier pantalla en una <strong>pantalla de nieve</strong> hipnotizante con <strong>nieve cayendo</strong> realista. Nuestra herramienta gratuita de <strong>fondo de nieve</strong> online recrea la experiencia tranquila de una <strong>nevada</strong> directamente en tu navegador. Perfecta como <strong>pantalla navideña</strong> para decoración, <strong>fondo de invierno</strong> para tu escritorio o <strong>salvapantallas de nieve</strong> para tu TV.',
+          'Personaliza cada aspecto del <strong>efecto de nevada</strong>. Ajusta la cantidad de copos (20 a 800), velocidad (0.1 a 8.0), viento (-5.0 a 5.0) y tamaño de copo (0.5 a 15.0). Activa el modo de <strong>imágenes fotorrealistas</strong> para copos SVG detallados con tamaño, opacidad y rotación ajustables.',
+          'Completa con 20 colores estéticos y múltiples fondos invernales. Añade pistas de audio de invierno. Presiona "F" para pantalla completa y "M" para silenciar. La interfaz auto-ocultable mantiene tu <strong>ambiente invernal</strong> limpio y sin distracciones.'
+        ]
+      },
+      pt: {
+        heading: 'Tela de Neve Online — Neve Caindo e Ambiente de Inverno para Desktop, Notebook e TV',
+        paragraphs: [
+          'Transforme qualquer tela em uma <strong>tela de neve</strong> hipnotizante com <strong>neve caindo</strong> realista. Nossa ferramenta gratuita de <strong>fundo de neve</strong> online recria a experiência tranquila de uma <strong>nevasca</strong> diretamente no seu navegador. Perfeita como <strong>tela de Natal</strong> para decoração, <strong>fundo de inverno</strong> para desktop ou <strong>protetor de tela de neve</strong> para TV.',
+          'Personalize cada aspecto do <strong>efeito de neve</strong>. Ajuste a quantidade de flocos (20 a 800), velocidade (0.1 a 8.0), vento (-5.0 a 5.0) e tamanho (0.5 a 15.0). Ative o modo de <strong>imagens fotorrealistas</strong> para flocos SVG detalhados.',
+          'Complete com 20 cores estéticas e múltiplos fundos de inverno. Adicione trilhas de áudio de inverno. Pressione "F" para tela cheia e "M" para silenciar.'
+        ]
+      },
+      fr: {
+        heading: 'Écran de Neige en Ligne — Chute de Neige et Ambiance Hivernale pour PC, Portable et TV',
+        paragraphs: [
+          'Transformez n\'importe quel écran en un <strong>écran de neige</strong> fascinant avec <strong>chute de neige</strong> réaliste. Notre outil gratuit d\'<strong>arrière-plan neigeux</strong> en ligne recrée l\'expérience paisible d\'une <strong>chute de neige</strong> directement dans votre navigateur. Parfait comme <strong>écran de Noël</strong> pour la décoration, <strong>fond d\'hiver</strong> pour votre bureau ou <strong>économiseur d\'écran de neige</strong> pour votre TV.',
+          'Personnalisez chaque aspect de l\'<strong>effet de neige</strong>. Ajustez le nombre de flocons (20 à 800), la vitesse (0.1 à 8.0), le vent (-5.0 à 5.0) et la taille (0.5 à 15.0). Activez le mode <strong>photoréaliste</strong> pour des flocons SVG détaillés.',
+          'Complétez avec 20 couleurs esthétiques et plusieurs arrière-plans hivernaux. Ajoutez des pistes audio d\'hiver. Appuyez sur "F" pour le plein écran et "M" pour couper le son.'
+        ]
+      },
+      de: {
+        heading: 'Schnee-Bildschirm Online — Fallender Schnee & Winter-Atmosphäre für Desktop, Laptop & TV',
+        paragraphs: [
+          'Verwandeln Sie jeden Computerbildschirm in einen faszinierenden <strong>Schnee-Bildschirm</strong> mit realistisch <strong>fallendem Schnee</strong>. Unser kostenloses Online-<strong>Schnee-Hintergrund</strong>-Tool erschafft das friedliche Erlebnis eines <strong>Schneefalls</strong> direkt in Ihrem Browser. Ideal als <strong>Weihnachtsbildschirm</strong> für Dekoration, <strong>Winter-Hintergrund</strong> für den Desktop oder <strong>Schnee-Bildschirmschoner</strong> für den TV.',
+          'Passen Sie jeden Aspekt des <strong>Schneeeffekts</strong> an. Stellen Sie Flockenanzahl (20 bis 800), Geschwindigkeit (0.1 bis 8.0), Wind (-5.0 bis 5.0) und Größe (0.5 bis 15.0) ein. Schalten Sie den <strong>fotorealistischen Modus</strong> für detaillierte SVG-Schneeflocken ein.',
+          'Vervollständigen Sie mit 20 ästhetischen Farben und mehreren Winterhintergrundszenen. Fügen Sie Winter-Ambient-Audio hinzu. Drücken Sie "F" für Vollbild und "M" zum Stummschalten.'
+        ]
+      },
+      hi: {
+        heading: 'स्नो स्क्रीन ऑनलाइन — डेस्कटॉप, लैपटॉप और टीवी के लिए गिरती बर्फ और सर्दियों का माहौल',
+        paragraphs: [
+          'किसी भी कंप्यूटर डिस्प्ले, लैपटॉप मॉनिटर, पीसी या स्मार्ट टीवी को यथार्थवादी <strong>गिरती बर्फ</strong> के साथ एक मनमोहक <strong>स्नो स्क्रीन</strong> में बदलें। हमारा मुफ्त ऑनलाइन <strong>बर्फ पृष्ठभूमि</strong> टूल सीधे आपके ब्राउज़र में <strong>बर्फबारी</strong> के शांतिपूर्ण अनुभव को फिर से बनाता है। त्योहारी सजावट के लिए <strong>क्रिसमस स्क्रीन</strong>, डेस्कटॉप के लिए <strong>विंटर वॉलपेपर</strong> या टीवी के लिए <strong>स्नो स्क्रीनसेवर</strong> के रूप में एकदम सही।',
+          '<strong>बर्फबारी प्रभाव</strong> के हर पहलू को कस्टमाइज़ करें। बर्फ के टुकड़ों की संख्या (20 से 800), गति (0.1 से 8.0), हवा (-5.0 से 5.0) और आकार (0.5 से 15.0) समायोजित करें। विस्तृत SVG बर्फ के टुकड़ों के लिए <strong>फोटोरियलिस्टिक मोड</strong> चालू करें।',
+          '20 सौंदर्य रंग प्रीसेट और कई सर्दियों के पृष्ठभूमि दृश्यों के साथ माहौल को पूरा करें। विंटर ऑडियो जोड़ें। "F" दबाकर फुलस्क्रीन और "M" दबाकर म्यूट करें।'
+        ]
+      },
+      ja: {
+        heading: '雪の画面（スノースクリーン）オンライン — デスクトップ・ノートPC・TV向け冬の雰囲気',
+        paragraphs: [
+          'パソコン、ノートPC、モニター、Smart TVの画面を、リアルな<strong>降雪</strong>で魅惑的な<strong>雪の画面</strong>に変身させましょう。無料のオンライン<strong>雪の背景</strong>ツールは、ブラウザで直接、<strong>降雪</strong>の穏やかな体験を再現します。クリスマスの飾り付けに<strong>クリスマス画面</strong>、デスクトップに<strong>冬の壁紙</strong>、TVに<strong>雪のスクリーンセーバー</strong>として最適です。',
+          '<strong>降雪エフェクト</strong>のあらゆる側面をカスタマイズ。雪の数（20〜800）、速度（0.1〜8.0）、風（-5.0〜5.0）、サイズ（0.5〜15.0）を調整。詳細なSVG雪片には<strong>フォトリアルモード</strong>を有効化。',
+          '20の美しいカラープリセットと複数の冬の背景シーンで完璧な雰囲気に。冬のオーディオを追加。「F」キーで全画面、「M」キーでミュート。'
         ]
       }
     };

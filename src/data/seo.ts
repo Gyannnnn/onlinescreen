@@ -84,6 +84,15 @@ const customTitles: Partial<Record<string, Partial<Record<Locale, string>>>> = {
     hi: 'मैट्रिक्स स्क्रीन ऑनलाइन - डिजिटल रेन और कस्टमाइज़ेबल मैट्रिक्स इफ़ेक्ट',
     ja: 'マトリックス画面 オンライン - デジタルレイン＆カスタマイズ可能なマトリックスエフェクト',
   },
+  'snow-screen': {
+    en: 'Snow Screen – Free Online Falling Snow & Winter Ambience for Desktop & Laptop',
+    es: 'Pantalla de Nieve Online - Nieve Cayendo y Ambiente Invernal para Escritorio y Portátil',
+    pt: 'Tela de Neve Online - Neve Caindo e Ambiente de Inverno para Desktop e Notebook',
+    fr: 'Écran de Neige en Ligne - Chute de Neige et Ambiance Hivernale pour PC et Portable',
+    de: 'Schnee-Bildschirm Online - Fallender Schnee & Winter-Atmosphäre für Desktop & Laptop',
+    hi: 'स्नो स्क्रीन ऑनलाइन - डेस्कटॉप और लैपटॉप के लिए गिरती बर्फ और सर्दियों का माहौल',
+    ja: '雪の画面（スノースクリーン）オンライン - デスクトップ・ノートPC向け冬の雰囲気',
+  },
   'rain-screen': {
     en: 'Rain Screen – Free Online Rain Ambience & Rainy Window Effect for Desktop',
     es: 'Pantalla de Lluvia Online - Ambiente de Lluvia Realista para Escritorio y TV',
@@ -149,6 +158,15 @@ const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>
     de: 'Passen Sie einen Online-Matrix-Bildschirm mit digitalem Regen, Neon-Glow-Farben, Cyberpunk-Audio-Drones und benutzerdefiniertem Text an. Vollbild-Matrix-Effekt für Desktop, Laptop, Monitor und TV.',
     hi: 'डिजिटल रेन, नियॉन ग्लो रंग, साइबरपंक ऑडियो ड्रोन और कस्टम टेक्स्ट के साथ ऑनलाइन मैट्रिक्स स्क्रीन को कस्टमाइज़ करें। डेस्कटॉप, लैपटॉप, मॉनिटर और टीवी के लिए फुलस्क्रीन मैट्रिक्स इफ़ेक्ट।',
     ja: 'デジタルレイン、ネオンカラー、サイバーパンクオーディオ、カスタムテキストでオンラインマトリックス画面をカスタマイズ。デスクトップ、ノートPC、モニター、TV向けの全画面マトリックスエフェクト。インストール不要。',
+  },
+  'snow-screen': {
+    en: 'Turn any screen into a free online snow screen with customizable snowfall, photorealistic snowflakes, wind drift, 20 color presets, and ambient audio. Fullscreen winter ambience for desktop, laptop, monitor, and TV — no download needed.',
+    es: 'Convierte cualquier pantalla en una pantalla de nieve online gratis con nevadas personalizables, copos fotorrealistas, viento, 20 colores y audio ambiente. Ambiente invernal a pantalla completa para escritorio, portátil, monitor y TV.',
+    pt: 'Transforme qualquer tela em uma tela de neve online grátis com nevascas personalizáveis, flocos fotorrealistas, vento, 20 cores e áudio ambiente. Ambiente de inverno em tela cheia para desktop, notebook, monitor e TV.',
+    fr: 'Transformez n\'importe quel écran en un écran de neige en ligne gratuit avec chutes de neige personnalisables, flocons photoréalistes, vent, 20 couleurs et audio d\'ambiance. Ambiance hivernale plein écran pour PC, portable, moniteur et TV.',
+    de: 'Verwandeln Sie jeden Bildschirm in einen kostenlosen Online-Schneebildschirm mit anpassbarem Schneefall, fotorealistischen Flocken, Wind, 20 Farben und Ambient-Audio. Vollbild-Winteratmosphäre für Desktop, Laptop, Monitor und TV.',
+    hi: 'किसी भी स्क्रीन को अनुकूलन योग्य बर्फबारी, फोटोरियलिस्टिक स्नोफ्लेक्स, हवा, 20 रंग प्रीसेट और एम्बिएंट ऑडियो के साथ मुफ्त ऑनलाइन स्नो स्क्रीन में बदलें। डेस्कटॉप, लैपटॉप, मॉनिटर और टीवी के लिए फुलस्क्रीन विंटर एम्बिएंस।',
+    ja: 'カスタマイズ可能な降雪、フォトリアルな雪片、風、20色のカラープリセット、環境音を備えた無料のオンライン雪の画面にどんな画面でも変身。デスクトップ、ノートPC、モニター、TV向けの全画面冬の雰囲気。ダウンロード不要。',
   },
   'rain-screen': {
     en: 'Turn any screen into a free online rain screen with realistic rain streaks, raindrops on glass, adjustable wind, ambient lightning, and 8 color presets. Fullscreen rain ambience for desktop, laptop, monitor, and TV — no download needed.',
