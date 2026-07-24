@@ -602,6 +602,7 @@ const toolNames: Record<string, Partial<Record<Locale, string>>> = {
   'rgb-screen': { es: 'Pantalla RGB', pt: 'Tela RGB', fr: 'Écran RGB', de: 'RGB-Bildschirm', hi: 'आरजीबी स्क्रीन', ja: 'RGB画面' },
   'hex-screen': { es: 'Pantalla HEX', pt: 'Tela HEX', fr: 'Écran HEX', de: 'HEX-Bildschirm', hi: 'हेक्स स्क्रीन', ja: 'HEX画面' },
   'aquarium-screen': { es: 'Pantalla de Acuario', pt: 'Tela de Aquário', fr: 'Écran d\'Aquarium', de: 'Aquarium-Bildschirm', hi: 'एक्वेरियम स्क्रीन', ja: 'アクアリウム画面' },
+  'ambient-screen': { es: 'Pantalla Ambiental', pt: 'Tela Ambiente', fr: 'Écran Ambiant', de: 'Ambiente-Bildschirm', hi: 'एम्बिएंट स्क्रीन', ja: 'アンビエント画面' },
 };
 
 const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
@@ -696,6 +697,14 @@ const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
     de: 'Ein ästhetischer und minimalistischer Klipp-Klapp-Uhr-Bildschirmschoner mit Unterstützung für das 12/24-Stunden-Format, Premium-Designs (OLED, Glas) und integriertem Pomodoro-Timer.',
     hi: '12/24 घंटे के प्रारूप, प्रीमियम थीम (OLED, ग्लास) और एक एकीकृत पोमोडोरो टाइमर के समर्थन के साथ एक सौंदर्यपूर्ण और न्यूनतम फ्लिप घड़ी स्क्रीनसेवर।',
     ja: '12/24時間表示、プレミアムテーマ（OLED、ガラス）、および統合されたポモドーロタイマーをサポートした、美しくミニマルなフリップ時計スクリーンセーバー。',
+  },
+  'ambient-screen': {
+    es: 'Una pantalla ambiental interactiva con gradientes animados, partículas cósmicas, mezclador de sonido de 4 canales, reloj, temporizador Pomodoro y respiración guiada — para escritorio, portátil, monitor, TV y móvil.',
+    pt: 'Uma tela ambiente interativa com gradientes animados, partículas cósmicas, mixer de som de 4 canais, relógio, timer Pomodoro e respiração guiada — para desktop, notebook, monitor, TV e celular.',
+    fr: 'Un écran ambiant interactif avec des dégradés animés, des particules cosmiques, un mixeur sonore 4 canaux, une horloge, un minuteur Pomodoro et une respiration guidée — pour PC, portable, moniteur, TV et mobile.',
+    de: 'Ein interaktiver Ambiente-Bildschirm mit animierten Farbverläufen, kosmischen Partikeln, 4-Kanal-Soundmixer, Uhr, Pomodoro-Timer und geführter Atmung — für Desktop, Laptop, Monitor, TV und Handy.',
+    hi: 'एनिमेटेड ग्रेडिएंट, कॉस्मिक पार्टिकल्स, 4-चैनल साउंडस्केप मिक्सर, घड़ी, पोमोडोरो टाइमर और गाइडेड ब्रीदिंग के साथ एक इंटरैक्टिव एम्बिएंट स्क्रीन — डेस्कटॉप, लैपटॉप, मॉनिटर, टीवी और मोबाइल के लिए।',
+    ja: 'アニメーショングラデーション、宇宙のパーティクル、4チャンネルサウンドスケープミキサー、時計、ポモドーロタイマー、ガイド付き呼吸法を備えたインタラクティブなアンビエント画面。デスクトップ、ノートPC、モニター、TV、モバイル対応。',
   },
 };
 
@@ -4420,6 +4429,174 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       }
     ]
   },
+  'ambient-screen': {
+    en: [
+      {
+        question: 'What is an Ambient Screen?',
+        answer: 'An Ambient Screen is a browser-based interactive display that transforms any screen into a calming visual environment. It features animated fluid gradients with 6 color presets, floating cosmic star particles, a 4-channel soundscape mixer (lofi synth, gentle rainfall, crackling hearth, and custom tracks), and overlay modes including a live clock, guided breathing exercise, and Pomodoro timer. Use it on your desktop, laptop, monitor, TV, tablet, or mobile for focus, relaxation, meditation, or productivity — no download required.'
+      },
+      {
+        question: 'How do I use the Ambient Screen on my desktop or laptop?',
+        answer: 'Open the page in your browser, click the Fullscreen button or press the "F" key. The animated gradient and star particles fill your entire screen. Press Space to open the settings panel where you can customize gradient presets, morphing flow speed, cosmic star density, soundscape mixer channels, and overlay modes. The interface auto-hides in fullscreen mode to keep the ambient experience clean and distraction-free.'
+      },
+      {
+        question: 'Can I change the gradient colors and animation?',
+        answer: 'Yes. Choose from 6 gradient presets: Cyber Neon (dark cyan/pink/purple), Aurora Dreams (blue/teal), Sunset Solitude (pink/red/orange), Deep Forest (green/yellow), Cherry Blossom (soft pink/lavender), and Cosmic Myst (purple/violet/blue). Adjust the Morphing Flow Speed slider from 0.0 (frozen) to 2.0 (fast) to control how quickly the fluid blobs move and morph across your display.'
+      },
+      {
+        question: 'What are the cosmic star particles?',
+        answer: 'The Ambient Screen features floating star particles that drift slowly across the display with a gentle twinkling effect. You can adjust star density from 10 to 150 particles using the Cosmic Star Density slider. The stars also respond to mouse movement — they gently push away from your cursor for an interactive, immersive experience.'
+      },
+      {
+        question: 'Can I mix ambient sounds?',
+        answer: 'Yes. The Ambient Screen includes a 4-channel Atmospheric Soundscape Mixer with independent volume controls for each channel: Calming Lofi Synth, Gentle Rainfall, Crackling Hearth, and any Custom Ambient Tracks loaded from the asset directory. Toggle each channel on/off and adjust individual volume levels to create your perfect ambient soundscape.'
+      },
+      {
+        question: 'What overlay modes are available?',
+        answer: 'Four overlay modes are available: None (clean ambient background), Clock (live digital clock with sans/serif/mono font styles, AM/PM toggle, and date display), Breathing (guided box breathing exercise with an expanding/contracting circle — 4-second cycles of inhale, hold, exhale, rest), and Timer (Pomodoro timer with preset durations of 5, 15, 25, and 45 minutes, start/pause controls, and a circular SVG progress ring).'
+      },
+      {
+        question: 'Can I use the Ambient Screen for meditation and breathing exercises?',
+        answer: 'Yes. The guided breathing overlay mode leads you through box breathing cycles: inhale for 4 seconds as the circle expands, hold for 4 seconds, exhale for 4 seconds as the circle contracts, and rest for 4 seconds. The visual bubble animation and timer make it easy to follow along. Combined with the ambient soundscapes and animated gradients, it creates a complete meditation and mindfulness environment.'
+      },
+      {
+        question: 'Is the Ambient Screen free? Does it work on mobile and TV?',
+        answer: 'Yes, it is completely free with no downloads, extensions, or account sign-ups required. It runs instantly in any modern web browser on Windows, macOS, Linux, ChromeOS, iOS, Android, and Smart TVs. The responsive design adapts to desktop monitors, laptop screens, tablets, mobile phones, and large TV displays for a beautiful ambient experience everywhere.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Qué es una pantalla ambiental?',
+        answer: 'Una pantalla ambiental es un display interactivo basado en navegador que transforma cualquier pantalla en un entorno visual relajante. Incluye gradientes animados con 6 presets, partículas estelares, mezclador de sonidos de 4 canales y modos de superposición como reloj, respiración guiada y temporizador Pomodoro.'
+      },
+      {
+        question: '¿Cómo uso la pantalla ambiental en mi ordenador?',
+        answer: 'Abre la página en tu navegador, presiona "F" para pantalla completa. Presiona Espacio para abrir el panel de ajustes y personalizar gradientes, velocidad, estrellas, sonidos y modos de superposición.'
+      },
+      {
+        question: '¿Puedo cambiar los colores del gradiente?',
+        answer: 'Sí. Elige entre 6 presets: Cyber Neon, Aurora Dreams, Sunset Solitude, Deep Forest, Cherry Blossom y Cosmic Myst. Ajusta la velocidad de 0.0 (congelado) a 2.0 (rápido).'
+      },
+      {
+        question: '¿Puedo mezclar sonidos ambientales?',
+        answer: 'Sí. El mezclador de 4 canales incluye Lofi Synth, Lluvia Suave, Chimenea y pistas personalizadas. Cada canal tiene control independiente de volumen y activación.'
+      },
+      {
+        question: '¿Qué modos de superposición están disponibles?',
+        answer: 'Cuatro modos: Ninguno, Reloj (con estilos de fuente), Respiración (ejercicio de respiración guiada) y Temporizador Pomodoro (5, 15, 25 y 45 minutos).'
+      }
+    ],
+    pt: [
+      {
+        question: 'O que é uma tela ambiente?',
+        answer: 'Uma tela ambiente é um display interativo baseado em navegador que transforma qualquer tela em um ambiente visual relaxante. Inclui gradientes animados com 6 presets, partículas estelares, mixer de som de 4 canais e modos de sobreposição como relógio, respiração guiada e timer Pomodoro.'
+      },
+      {
+        question: 'Como uso a tela ambiente no meu computador?',
+        answer: 'Abra a página no navegador, pressione "F" para tela cheia. Pressione Espaço para abrir o painel de configurações.'
+      },
+      {
+        question: 'Posso mudar as cores do gradiente?',
+        answer: 'Sim. Escolha entre 6 presets: Cyber Neon, Aurora Dreams, Sunset Solitude, Deep Forest, Cherry Blossom e Cosmic Myst. Ajuste a velocidade de 0.0 a 2.0.'
+      },
+      {
+        question: 'Posso misturar sons ambientes?',
+        answer: 'Sim. O mixer de 4 canais inclui Lofi Synth, Chuva Suave, Lareira e faixas personalizadas com controle de volume independente.'
+      },
+      {
+        question: 'Quais modos de sobreposição estão disponíveis?',
+        answer: 'Quatro modos: Nenhum, Relógio, Respiração (exercício guiado) e Timer Pomodoro (5, 15, 25 e 45 minutos).'
+      }
+    ],
+    fr: [
+      {
+        question: 'Qu\'est-ce qu\'un écran ambiant ?',
+        answer: 'Un écran ambiant est un affichage interactif dans votre navigateur qui transforme n\'importe quel écran en un environnement visuel apaisant. Avec des dégradés animés (6 thèmes), des particules d\'étoiles cosmiques, un mixeur sonore 4 canaux et des modes superposition : horloge, respiration guidée et minuteur Pomodoro.'
+      },
+      {
+        question: 'Comment utiliser l\'écran ambiant sur mon ordinateur ?',
+        answer: 'Ouvrez la page dans votre navigateur, appuyez sur "F" pour le plein écran. Appuyez sur Espace pour ouvrir les paramètres.'
+      },
+      {
+        question: 'Puis-je changer les couleurs du dégradé ?',
+        answer: 'Oui. Choisissez parmi 6 thèmes : Cyber Neon, Aurora Dreams, Sunset Solitude, Deep Forest, Cherry Blossom et Cosmic Myst. Réglez la vitesse de 0.0 à 2.0.'
+      },
+      {
+        question: 'Puis-je mixer des sons d\'ambiance ?',
+        answer: 'Oui. Le mixeur 4 canaux comprend Lofi Synth, Pluie Douce, Cheminée Crépitante et pistes personnalisées avec volume indépendant.'
+      },
+      {
+        question: 'Quels modes de superposition sont disponibles ?',
+        answer: 'Quatre modes : Aucun, Horloge, Respiration (exercice guidé) et Minuteur Pomodoro (5, 15, 25 et 45 minutes).'
+      }
+    ],
+    de: [
+      {
+        question: 'Was ist ein Ambiente-Bildschirm?',
+        answer: 'Ein Ambiente-Bildschirm ist eine interaktive browserbasierte Anzeige, die jeden Bildschirm in eine beruhigende visuelle Umgebung verwandelt. Mit animierten Farbverläufen (6 Presets), kosmischen Sternpartikeln, 4-Kanal-Soundmixer und Overlay-Modi wie Uhr, geführter Atmung und Pomodoro-Timer.'
+      },
+      {
+        question: 'Wie benutze ich den Ambiente-Bildschirm auf meinem Computer?',
+        answer: 'Öffnen Sie die Seite im Browser, drücken Sie "F" für Vollbild. Drücken Sie die Leertaste für die Einstellungen.'
+      },
+      {
+        question: 'Kann ich die Farbverläufe ändern?',
+        answer: 'Ja. Wählen Sie aus 6 Presets: Cyber Neon, Aurora Dreams, Sunset Solitude, Deep Forest, Cherry Blossom und Cosmic Myst. Passen Sie die Geschwindigkeit von 0.0 bis 2.0 an.'
+      },
+      {
+        question: 'Kann ich Ambient-Sounds mischen?',
+        answer: 'Ja. Der 4-Kanal-Soundmixer bietet Lofi Synth, Sanften Regen, Kaminfeuer und benutzerdefinierte Titel mit unabhängiger Lautstärkeregelung.'
+      },
+      {
+        question: 'Welche Overlay-Modi sind verfügbar?',
+        answer: 'Vier Modi: Keiner, Uhr (mit Schriftarten), Atmung (geführte Atemübung) und Pomodoro-Timer (5, 15, 25 und 45 Minuten).'
+      }
+    ],
+    hi: [
+      {
+        question: 'एम्बिएंट स्क्रीन क्या है?',
+        answer: 'एम्बिएंट स्क्रीन एक ब्राउज़र-आधारित इंटरैक्टिव डिस्प्ले है जो किसी भी स्क्रीन को शांत दृश्य वातावरण में बदल देता है। इसमें 6 ग्रेडिएंट प्रीसेट, तारे, 4-चैनल साउंडस्केप मिक्सर और ओवरले मोड शामिल हैं।'
+      },
+      {
+        question: 'मैं अपने कंप्यूटर पर एम्बिएंट स्क्रीन का उपयोग कैसे करूं?',
+        answer: 'पेज को ब्राउज़र में खोलें, "F" दबाकर फुलस्क्रीन करें। सेटिंग्स के लिए स्पेस बार दबाएं।'
+      },
+      {
+        question: 'क्या मैं ग्रेडिएंट रंग बदल सकता हूं?',
+        answer: 'हां। 6 प्रीसेट में से चुनें: साइबर नियॉन, ऑरोरा ड्रीम्स, सनसेट सॉलिट्यूड, डीप फ़ॉरेस्ट, चेरी ब्लॉसम और कॉस्मिक मिस्ट। गति 0.0 से 2.0 तक समायोजित करें।'
+      },
+      {
+        question: 'क्या मैं एम्बिएंट ध्वनियाँ मिक्स कर सकता हूं?',
+        answer: 'हां। 4-चैनल मिक्सर में लोफाई सिंथ, हल्की बारिश, जलती आग और कस्टम ट्रैक शामिल हैं। प्रत्येक चैनल का अलग वॉल्यूम नियंत्रण है।'
+      },
+      {
+        question: 'कौन से ओवरले मोड उपलब्ध हैं?',
+        answer: 'चार मोड: कोई नहीं, घड़ी, श्वास (निर्देशित श्वास व्यायाम) और पोमोडोरो टाइमर (5, 15, 25 और 45 मिनट)।'
+      }
+    ],
+    ja: [
+      {
+        question: 'アンビエント画面とは何ですか？',
+        answer: 'アンビエント画面は、ブラウザベースのインタラクティブディスプレイで、画面を落ち着くビジュアル環境に変えます。6つのグラデーションプリセット、星のパーティクル、4チャンネルサウンドスケープミキサー、時計、ガイド付き呼吸法、ポモドーロタイマーを搭載。'
+      },
+      {
+        question: 'パソコンでアンビエント画面を使うには？',
+        answer: 'ブラウザでページを開き、「F」キーで全画面表示。スペースキーで設定パネルを開きます。'
+      },
+      {
+        question: 'グラデーションの色を変更できますか？',
+        answer: 'はい。6つのプリセット（Cyber Neon、Aurora Dreams、Sunset Solitude、Deep Forest、Cherry Blossom、Cosmic Myst）から選択。速度は0.0〜2.0で調整。'
+      },
+      {
+        question: '環境音をミックスできますか？',
+        answer: 'はい。4チャンネルミキサー（Lofi Synth、穏やかな雨、暖炉、カスタムトラック）で各チャンネルの音量を個別に制御。'
+      },
+      {
+        question: 'どのオーバーレイモードがありますか？',
+        answer: '4つのモード：なし、時計、呼吸法（ガイド付き）、ポモドーロタイマー（5、15、25、45分）。'
+      }
+    ]
+  },
   'placeholder-screen': {
     en: []
   }
@@ -4828,6 +5005,68 @@ export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-s
           'パソコン、ノートPC、モニター、Smart TVの画面を、リアルな<strong>降雪</strong>で魅惑的な<strong>雪の画面</strong>に変身させましょう。無料のオンライン<strong>雪の背景</strong>ツールは、ブラウザで直接、<strong>降雪</strong>の穏やかな体験を再現します。クリスマスの飾り付けに<strong>クリスマス画面</strong>、デスクトップに<strong>冬の壁紙</strong>、TVに<strong>雪のスクリーンセーバー</strong>として最適です。',
           '<strong>降雪エフェクト</strong>のあらゆる側面をカスタマイズ。雪の数（20〜800）、速度（0.1〜8.0）、風（-5.0〜5.0）、サイズ（0.5〜15.0）を調整。詳細なSVG雪片には<strong>フォトリアルモード</strong>を有効化。',
           '20の美しいカラープリセットと複数の冬の背景シーンで完璧な雰囲気に。冬のオーディオを追加。「F」キーで全画面、「M」キーでミュート。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'ambient-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Ambient Screen Online — Animated Fluid Gradients & Interactive Soundscapes for Desktop, Laptop & TV',
+        paragraphs: [
+          'Transform any computer display, laptop monitor, PC, or Smart TV into an immersive <strong>ambient screen</strong> with animated fluid gradients, cosmic stars, and interactive soundscapes. Our free online <strong>ambient display</strong> tool creates a mesmerizing visual atmosphere directly in your browser — rendered in real-time HTML5 Canvas with <strong>fluid gradient animation</strong> that morphs and flows across your screen, 6 color presets, and mouse-interactive particle effects. Whether you need a <strong>calming background</strong> for deep work sessions, a <strong>meditation screen</strong> for mindfulness practice, a <strong>focus display</strong> for your office monitor, or an <strong>ambient wallpaper</strong> for your Smart TV, this tool delivers a fully customizable <strong>ambient experience</strong> — no downloads, no installation, no ads.',
+          'Personalize every aspect of the <strong>ambient animation</strong> with comprehensive controls. Choose from 6 gradient presets: Cyber Neon (dark cyan with pink and purple morphing), Aurora Dreams (blue, teal, and green flowing gradients), Sunset Solitude (warm pink, red, and orange tones), Deep Forest (green and yellow earthy blends), Cherry Blossom (soft pink, lavender, and peach pastels), and Cosmic Myst (deep purple, violet, and blue cosmic blends). Adjust the Morphing Flow Speed from 0.0 (Frozen) to 2.0 (Fast) to control how quickly the fluid blobs move, blend, and transform. The animated blobs respond to mouse movement with a gentle attraction effect — move your cursor to guide the fluid flow for an interactive, immersive experience.',
+          'Set the perfect cosmic atmosphere with the star particle system. Adjust Cosmic Star Density from 10 to 150 particles — watch as tiny twinkling stars drift lazily across your display, gently repelling away from your cursor as you move it. Complete the ambiance with the 4-channel Atmospheric Soundscape Mixer featuring independent volume controls for each channel: Calming Lofi Synth (warm analog-style synth pads), Gentle Rainfall (soft natural precipitation sounds), Crackling Hearth (cozy realistic fire crackling), and Custom Ambient Tracks (dynamically loaded from the assets directory). Toggle each channel on or off and blend them to create your perfect soundscape. Extend your experience with overlay modes: Clock (live digital clock with sans/serif/mono font styles, AM/PM toggle, and date display), Breathing (guided box breathing exercise with a 4-second expanding/contracting circle — inhale, hold, exhale, rest), and Timer (Pomodoro timer with presets for 5, 15, 25, and 45 minutes, start/pause controls, and a circular SVG progress ring). Press "F" for fullscreen immersion, Space for settings, "C" and "B" for quick overlay toggles, and Esc to return. The auto-hide interface keeps your <strong>ambient background</strong> clean and distraction-free, making this the perfect companion for focus work, relaxation, meditation, yoga, study sessions, or creating a serene atmosphere on any screen in your home.'
+        ]
+      },
+      es: {
+        heading: 'Pantalla Ambiental Online — Gradientes Animados y Paisajes Sonoros Interactivos para Escritorio, Portátil y TV',
+        paragraphs: [
+          'Transforma cualquier pantalla en una <strong>pantalla ambiental</strong> inmersiva con gradientes animados, estrellas cósmicas y paisajes sonoros interactivos. Nuestra herramienta gratuita de <strong>display ambiental</strong> online crea una atmósfera visual hipnotizante en tu navegador con <strong>gradientes fluidos animados</strong>, 6 presets de color y partículas interactivas con el ratón.',
+          'Personaliza cada aspecto de la <strong>animación ambiental</strong>. Elige entre 6 presets de gradiente: Cyber Neon, Aurora Dreams, Sunset Solitude, Deep Forest, Cherry Blossom y Cosmic Myst. Ajusta la velocidad de 0.0 a 2.0. Las burbujas fluidas responden al movimiento del ratón. Ajusta la densidad de estrellas de 10 a 150 partículas.',
+          'Completa con el mezclador de sonidos de 4 canales: Synth Lofi, Lluvia Suave, Chimenea y pistas personalizadas. Añade superposiciones de Reloj, Respiración Guiada o Temporizador Pomodoro (5, 15, 25, 45 min). Presiona "F" para pantalla completa, Espacio para ajustes, "C" para reloj, "B" para respiración. La interfaz auto-ocultable para una experiencia limpia.'
+        ]
+      },
+      pt: {
+        heading: 'Tela Ambiente Online — Gradientes Animados e Paisagens Sonoras Interativas para Desktop, Notebook e TV',
+        paragraphs: [
+          'Transforme qualquer tela em uma <strong>tela ambiente</strong> imersiva com gradientes animados, estrelas cósmicas e paisagens sonoras interativas. Nossa ferramenta gratuita de <strong>display ambiente</strong> online cria uma atmosfera visual hipnotizante no seu navegador com <strong>gradientes fluidos animados</strong>, 6 presets de cor e partículas interativas.',
+          'Personalize cada aspecto da <strong>animação ambiente</strong>. Escolha entre 6 presets: Cyber Neon, Aurora Dreams, Sunset Solitude, Deep Forest, Cherry Blossom e Cosmic Myst. Ajuste a velocidade de 0.0 a 2.0. As bolhas fluidas respondem ao mouse. Ajuste a densidade de estrelas de 10 a 150 partículas.',
+          'Complete com o mixer de som de 4 canais: Lofi Synth, Chuva Suave, Lareira e faixas personalizadas. Adicione sobreposições de Relógio, Respiração Guiada ou Timer Pomodoro (5, 15, 25, 45 min). Pressione "F" para tela cheia, Espaço para configurações, "C" para relógio, "B" para respiração.'
+        ]
+      },
+      fr: {
+        heading: 'Écran Ambiant en Ligne — Dégradés Animés et Paysages Sonores Interactifs pour PC, Portable et TV',
+        paragraphs: [
+          'Transformez n\'importe quel écran en un <strong>écran ambiant</strong> immersif avec des dégradés animés, des étoiles cosmiques et des paysages sonores interactifs. Notre outil gratuit d\'<strong>affichage ambiant</strong> en ligne crée une atmosphère visuelle fascinante dans votre navigateur avec des <strong>dégradés fluides animés</strong>, 6 thèmes de couleurs et des particules interactives.',
+          'Personnalisez chaque aspect de l\'<strong>animation ambiante</strong>. Choisissez parmi 6 thèmes : Cyber Neon, Aurora Dreams, Sunset Solitude, Deep Forest, Cherry Blossom et Cosmic Myst. Réglez la vitesse de 0.0 à 2.0. Les bulles fluides réagissent à la souris. Ajustez la densité d\'étoiles de 10 à 150 particules.',
+          'Complétez avec le mixeur 4 canaux : Lofi Synth, Pluie Douce, Cheminée et pistes personnalisées. Ajoutez les superpositions Horloge, Respiration Guidée ou Minuteur Pomodoro (5, 15, 25, 45 min). Appuyez sur "F" pour le plein écran, Espace pour les réglages, "C" pour l\'horloge, "B" pour la respiration.'
+        ]
+      },
+      de: {
+        heading: 'Ambiente-Bildschirm Online — Animierte Farbverläufe & Interaktive Klangwelten für Desktop, Laptop & TV',
+        paragraphs: [
+          'Verwandeln Sie jeden Computerbildschirm in einen immersiven <strong>Ambiente-Bildschirm</strong> mit animierten Farbverläufen, kosmischen Sternen und interaktiven Klanglandschaften. Unser kostenloses Online-<strong>Ambient-Display</strong> erschafft eine faszinierende visuelle Atmosphäre direkt in Ihrem Browser mit <strong>fließenden Gradienten-Animationen</strong>, 6 Farb-Presets und interaktiven Partikeln.',
+          'Passen Sie jeden Aspekt der <strong>Ambient-Animation</strong> an. Wählen Sie aus 6 Presets: Cyber Neon, Aurora Dreams, Sunset Solitude, Deep Forest, Cherry Blossom und Cosmic Myst. Stellen Sie die Geschwindigkeit von 0.0 bis 2.0 ein. Die fließenden Blasen reagieren auf Mausbewegungen. Passen Sie die Sterndichte von 10 bis 150 Partikeln an.',
+          'Vervollständigen Sie mit dem 4-Kanal-Soundmixer: Lofi Synth, Sanfter Regen, Kaminfeuer und benutzerdefinierte Titel. Fügen Sie Überlagerungen für Uhr, Geführte Atmung oder Pomodoro-Timer (5, 15, 25, 45 Min.) hinzu. Drücken Sie "F" für Vollbild, Leertaste für Einstellungen, "C" für Uhr, "B" für Atmung.'
+        ]
+      },
+      hi: {
+        heading: 'एम्बिएंट स्क्रीन ऑनलाइन — डेस्कटॉप, लैपटॉप और टीवी के लिए एनिमेटेड ग्रेडिएंट और इंटरैक्टिव साउंडस्केप',
+        paragraphs: [
+          'किसी भी कंप्यूटर डिस्प्ले, लैपटॉप मॉनिटर, पीसी या स्मार्ट टीवी को एनिमेटेड फ्लूइड ग्रेडिएंट, कॉस्मिक स्टार्स और इंटरैक्टिव साउंडस्केप के साथ एक इमर्सिव <strong>एम्बिएंट स्क्रीन</strong> में बदलें। हमारा मुफ्त ऑनलाइन <strong>एम्बिएंट डिस्प्ले</strong> टूल 6 कलर प्रीसेट और माउस-इंटरैक्टिव पार्टिकल्स के साथ एक मंत्रमुग्ध करने वाला दृश्य वातावरण बनाता है।',
+          '<strong>एम्बिएंट एनिमेशन</strong> के हर पहलू को कस्टमाइज़ करें। 6 प्रीसेट में से चुनें: Cyber Neon, Aurora Dreams, Sunset Solitude, Deep Forest, Cherry Blossom और Cosmic Myst। गति 0.0 से 2.0 तक समायोजित करें। तारा घनत्व 10 से 150 कणों तक समायोजित करें।',
+          '4-चैनल साउंडस्केप मिक्सर: लोफाई सिंथ, हल्की बारिश, जलती आग और कस्टम ट्रैक। ओवरले मोड: घड़ी, निर्देशित श्वास, पोमोडोरो टाइमर (5, 15, 25, 45 मिनट)। फुलस्क्रीन के लिए "F", सेटिंग्स के लिए स्पेस, घड़ी के लिए "C", श्वास के लिए "B" दबाएं।'
+        ]
+      },
+      ja: {
+        heading: 'アンビエント画面 オンライン — デスクトップ・ノートPC・TV向けアニメーショングラデーションとインタラクティブサウンドスケープ',
+        paragraphs: [
+          'パソコン、ノートPC、モニター、Smart TVの画面を、アニメーショングラデーション、宇宙の星、インタラクティブなサウンドスケープで没入感あふれる<strong>アンビエント画面</strong>に変身させましょう。6つのカラープリセットとマウス操作可能なパーティクルを備えた無料のオンライン<strong>アンビエントディスプレイ</strong>ツールです。',
+          '<strong>アンビエントアニメーション</strong>のあらゆる側面をカスタマイズ。6つのプリセット（Cyber Neon、Aurora Dreams、Sunset Solitude、Deep Forest、Cherry Blossom、Cosmic Myst）から選択。速度は0.0〜2.0で調整。星の密度は10〜150粒子まで調整可能。',
+          '4チャンネルサウンドスケープミキサー：Lofi Synth、穏やかな雨、暖炉、カスタムトラック。オーバーレイモード：時計、ガイド付き呼吸法、ポモドーロタイマー（5、15、25、45分）。全画面は「F」キー、設定はスペースキー、時計は「C」キー、呼吸法は「B」キー。'
         ]
       }
     };
