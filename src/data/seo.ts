@@ -84,6 +84,15 @@ const customTitles: Partial<Record<string, Partial<Record<Locale, string>>>> = {
     hi: 'मैट्रिक्स स्क्रीन ऑनलाइन - डिजिटल रेन और कस्टमाइज़ेबल मैट्रिक्स इफ़ेक्ट',
     ja: 'マトリックス画面 オンライン - デジタルレイン＆カスタマイズ可能なマトリックスエフェクト',
   },
+  'ambient-screen': {
+    en: 'Ambient Screen – Free Interactive Ambient Display with Animated Gradients & Soundscapes',
+    es: 'Pantalla Ambiental Online - Fondo Ambiental Interactivo con Gradientes y Sonidos',
+    pt: 'Tela Ambiente Online - Fundo Ambiente Interativo com Gradientes e Sons',
+    fr: 'Écran Ambiant en Ligne - Fond d\'Écran Interactif avec Dégradés et Paysages Sonores',
+    de: 'Ambiente-Bildschirm Online - Interaktiver Ambient-Hintergrund mit Farbverläufen & Klängen',
+    hi: 'एम्बिएंट स्क्रीन ऑनलाइन - एनिमेटेड ग्रेडिएंट और साउंडस्केप के साथ इंटरैक्टिव एम्बिएंट डिस्प्ले',
+    ja: 'アンビエント画面 オンライン - アニメーショングラデーションとサウンドスケープを備えたインタラクティブなアンビエントディスプレイ',
+  },
   'snow-screen': {
     en: 'Snow Screen – Free Online Falling Snow & Winter Ambience for Desktop & Laptop',
     es: 'Pantalla de Nieve Online - Nieve Cayendo y Ambiente Invernal para Escritorio y Portátil',
@@ -158,6 +167,15 @@ const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>
     de: 'Passen Sie einen Online-Matrix-Bildschirm mit digitalem Regen, Neon-Glow-Farben, Cyberpunk-Audio-Drones und benutzerdefiniertem Text an. Vollbild-Matrix-Effekt für Desktop, Laptop, Monitor und TV.',
     hi: 'डिजिटल रेन, नियॉन ग्लो रंग, साइबरपंक ऑडियो ड्रोन और कस्टम टेक्स्ट के साथ ऑनलाइन मैट्रिक्स स्क्रीन को कस्टमाइज़ करें। डेस्कटॉप, लैपटॉप, मॉनिटर और टीवी के लिए फुलस्क्रीन मैट्रिक्स इफ़ेक्ट।',
     ja: 'デジタルレイン、ネオンカラー、サイバーパンクオーディオ、カスタムテキストでオンラインマトリックス画面をカスタマイズ。デスクトップ、ノートPC、モニター、TV向けの全画面マトリックスエフェクト。インストール不要。',
+  },
+  'ambient-screen': {
+    en: 'Turn any screen into a free interactive ambient display with animated fluid gradients, cosmic stars, a 4-channel soundscape mixer, guided breathing, Pomodoro timer, and live clock overlay. Fullscreen ambient background for desktop, laptop, monitor, TV, and mobile — no install needed.',
+    es: 'Convierte cualquier pantalla en un display ambiental interactivo gratis con gradientes fluidos animados, estrellas cósmicas, mezclador de sonidos de 4 canales, respiración guiada, temporizador Pomodoro y reloj. Fondo ambiental a pantalla completa para escritorio, portátil, monitor, TV y móvil.',
+    pt: 'Transforme qualquer tela em um display ambiente interativo grátis com gradientes fluidos animados, estrelas cósmicas, mixer de som de 4 canais, respiração guiada, timer Pomodoro e relógio. Fundo ambiente em tela cheia para desktop, notebook, monitor, TV e celular.',
+    fr: 'Transformez n\'importe quel écran en un affichage ambiant interactif gratuit avec des dégradés fluides animés, des étoiles cosmiques, un mixeur sonore 4 canaux, une respiration guidée, un minuteur Pomodoro et une horloge. Fond ambiant plein écran pour PC, portable, moniteur, TV et mobile.',
+    de: 'Verwandeln Sie jeden Bildschirm in ein interaktives Ambient-Display mit animierten fließenden Farbverläufen, kosmischen Sternen, einem 4-Kanal-Soundmixer, geführter Atmung, Pomodoro-Timer und Live-Uhr. Vollbild-Ambient-Hintergrund für Desktop, Laptop, Monitor, TV und Handy.',
+    hi: 'किसी भी स्क्रीन को एनिमेटेड फ्लूइड ग्रेडिएंट, कॉस्मिक स्टार्स, 4-चैनल साउंडस्केप मिक्सर, गाइडेड ब्रीदिंग, पोमोडोरो टाइमर और लाइव क्लॉक के साथ मुफ्त इंटरैक्टिव एम्बिएंट डिस्प्ले में बदलें। डेस्कटॉप, लैपटॉप, मॉनिटर, टीवी और मोबाइल के लिए फुलस्क्रीन एम्बिएंट बैकग्राउंड।',
+    ja: 'アニメーションフルイドグラデーション、宇宙の星、4チャンネルサウンドスケープミキサー、ガイド付き呼吸法、ポモドーロタイマー、ライブ時計を備えた無料のインタラクティブなアンビエントディスプレイにどんな画面でも変身。デスクトップ、ノートPC、モニター、TV、モバイル向けの全画面アンビエント背景。インストール不要。',
   },
   'snow-screen': {
     en: 'Turn any screen into a free online snow screen with customizable snowfall, photorealistic snowflakes, wind drift, 20 color presets, and ambient audio. Fullscreen winter ambience for desktop, laptop, monitor, and TV — no download needed.',
