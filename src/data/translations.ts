@@ -597,6 +597,7 @@ const toolNames: Record<string, Partial<Record<Locale, string>>> = {
   'fireplace-screen': { es: 'Pantalla de Chimenea', pt: 'Tela de Lareira', fr: 'Écran de Cheminée', de: 'Kaminfeuer-Bildschirm', hi: 'फायरप्लेस स्क्रीन', ja: '暖炉の画面' },
   'snow-screen': { es: 'Pantalla de Nieve', pt: 'Tela de Neve', fr: 'Écran de Neige', de: 'Schneefall-Bildschirm', hi: 'स्नो स्क्रीन', ja: '雪の画面' },
   'matrix-screen': { es: 'Pantalla Matrix', pt: 'Tela Matrix', fr: 'Écran Matrix', de: 'Matrix-Bildschirm', hi: 'मैट्रिक्स स्क्रीन', ja: 'マトリックス画面' },
+  'rain-screen': { es: 'Pantalla de Lluvia', pt: 'Tela de Chuva', fr: 'Écran de Pluie', de: 'Regen-Bildschirm', hi: 'रेन स्क्रीन', ja: '雨の画面' },
   'clock-screen': { es: 'Reloj Flip', pt: 'Relógio Flip', fr: 'Horloge à Volets', de: 'Klipp-Klapp-Uhr', hi: 'फ्लिप घड़ी', ja: 'フリップ時計' },
   'rgb-screen': { es: 'Pantalla RGB', pt: 'Tela RGB', fr: 'Écran RGB', de: 'RGB-Bildschirm', hi: 'आरजीबी स्क्रीन', ja: 'RGB画面' },
   'hex-screen': { es: 'Pantalla HEX', pt: 'Tela HEX', fr: 'Écran HEX', de: 'HEX-Bildschirm', hi: 'हेक्स स्क्रीन', ja: 'HEX画面' },
@@ -679,6 +680,14 @@ const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
     de: 'Ein virtuelles Aquarium online im Vollbildmodus mit animierten tropischen Fischen, Blasen und entspannender Unterwasser-Atmosphäre für Desktop, Laptop, Monitor und TV.',
     hi: 'एनिमेटेड उष्णकटिबंधीय मछली, बुलबुले और आरामदेह पानी के नीचे के माहौल के साथ डेस्कटॉप, लैपटॉप, मॉनिटर और टीवी के लिए एक फुलस्क्रीन ऑनलाइन वर्चुअल एक्वेरियम।',
     ja: 'デスクトップ、ノートPC、モニター、TV向けの、アニメーションの熱帯魚、泡、リラックスできる水中の雰囲気を備えた全画面オンラインバーチャルアクアリウム。',
+  },
+  'rain-screen': {
+    es: 'Una pantalla de lluvia online con gotas realistas, lluvia sobre vidrio, truenos ambientales, fondos personalizables y 8 colores para escritorio, portátil, monitor y TV — sin descarga.',
+    pt: 'Uma tela de chuva online com gotas realistas, chuva no vidro, trovões ambiente, fundos personalizáveis e 8 cores para desktop, notebook, monitor e TV — sem download.',
+    fr: 'Un écran de pluie en ligne avec des gouttes réalistes, pluie sur verre, tonnerre d\'ambiance, arrière-plans personnalisables et 8 couleurs pour PC, portable, moniteur et TV — sans téléchargement.',
+    de: 'Ein Online-Regenbildschirm mit realistischen Tropfen, Regen auf Glas, Umgebungsdonner, anpassbaren Hintergründen und 8 Farben für Desktop, Laptop, Monitor und TV — kein Download nötig.',
+    hi: 'यथार्थवादी बूंदों, कांच पर बारिश, एम्बिएंट गरज, अनुकूलन योग्य पृष्ठभूमि और 8 रंगों के साथ डेस्कटॉप, लैपटॉप, मॉनिटर और टीवी के लिए ऑनलाइन रेन स्क्रीन — बिना डाउनलोड के।',
+    ja: 'リアルな雨粒、窓ガラスの雨、環境雷、カスタマイズ可能な背景、8色のカラープリセットを備えたデスクトップ、ノートPC、モニター、TV向けのオンライン雨画面。ダウンロード不要。',
   },
   'clock-screen': {
     es: 'Un salvapantallas de reloj flip estético y minimalista con soporte para formato de 12/24 horas, temas premium (OLED, cristal) y un temporizador Pomodoro integrado.',
@@ -3814,6 +3823,605 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
         answer: 'はい。オプションの海洋アンビエントドローン音や泡のシンセ音、さらにカスタムBGMのアップロードに対応しています。音量は設定パネルから調整可能です。'
       }
     ]
+  },
+  'matrix-screen': {
+    en: [
+      {
+        question: 'What is a Matrix screen?',
+        answer: 'A Matrix screen is a browser-based animated display that recreates the iconic falling green code rain from The Matrix films. It runs in full screen on your desktop, laptop, monitor, or TV, featuring cascading katakana characters, binary digits, and alphanumeric symbols with customizable colors, speed, and glow effects — no downloads or installation required.'
+      },
+      {
+        question: 'How do I use this Matrix screen on my desktop or laptop?',
+        answer: 'Open the page in your browser, click the Fullscreen button or press the "F" key on your keyboard. The Matrix digital rain will fill your entire screen. Press Space to open the settings drawer where you can customize character sets, colors, speed, font size, glow intensity, and more.'
+      },
+      {
+        question: 'Can I add my own custom text to the Matrix rain?',
+        answer: 'Yes. Type any word or message (up to 45 characters) in the "Custom Name / Text Rain" input field. Your text can appear as a repeating sequence spelling down each column or as random characters sampled from your input. The character set automatically switches when you type.'
+      },
+      {
+        question: 'Can I change the colors of the Matrix rain?',
+        answer: 'Yes. Choose from 6 color themes: Classic Green, Cyberpunk Cyan, Crimson Red, Amber Gold, Neon Purple, and Rainbow. Each theme has a matching glow color and dark background. You can also adjust the glow intensity from 0 to 25 pixels.'
+      },
+      {
+        question: 'Is this Matrix screen free? Do I need to download anything?',
+        answer: 'Yes, it is completely free. No downloads, extensions, or account sign-ups are required. It runs instantly in any modern web browser on Windows, macOS, Linux, ChromeOS, iOS, Android, and Smart TVs.'
+      },
+      {
+        question: 'Can I use this as a screensaver alternative?',
+        answer: 'Absolutely. The Matrix screen works perfectly as an always-on ambient display or screensaver alternative. Leave it running on a secondary monitor, idle desktop, or TV for a cyberpunk-themed visual atmosphere.'
+      },
+      {
+        question: 'Does the Matrix screen have sound effects?',
+        answer: 'Yes. It features 3 ambient audio drones inspired by cyberpunk atmospheres: Deep Grid Hum, Mainframe Resonance, and Data Pulse Drone. You can toggle sound on/off with the "M" key and adjust volume from the settings panel.'
+      },
+      {
+        question: 'Can I adjust the speed and density of the falling code?',
+        answer: 'Yes. Use the Rain Speed slider (0.2x to 3.0x) to control how fast characters fall, and the Stream Density slider to adjust how many columns of code appear on screen. You can also control trail length and font size for the perfect visual effect.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Qué es una pantalla Matrix?',
+        answer: 'Una pantalla Matrix es una pantalla animada basada en navegador que recrea la icónica lluvia de código verde de las películas Matrix. Se ejecuta a pantalla completa en tu escritorio, portátil, monitor o TV, con caracteres katakana, dígitos binarios y símbolos alfanuméricos personalizables — sin descargas ni instalación.'
+      },
+      {
+        question: '¿Cómo uso esta pantalla Matrix en mi ordenador o portátil?',
+        answer: 'Abre la página en tu navegador, haz clic en Pantalla Completa o presiona "F". La lluvia digital Matrix llenará tu pantalla. Presiona Espacio para abrir el panel de ajustes y personalizar caracteres, colores, velocidad, tamaño de fuente y más.'
+      },
+      {
+        question: '¿Puedo añadir mi propio texto a la lluvia Matrix?',
+        answer: 'Sí. Escribe cualquier mensaje (máx. 45 caracteres) en el campo de texto personalizado. Puede aparecer como secuencia que cae por las columnas o como caracteres aleatorios de tu texto.'
+      },
+      {
+        question: '¿Puedo cambiar los colores de la lluvia Matrix?',
+        answer: 'Sí. Elige entre 6 temas: Verde Clásico, Cian Cyberpunk, Rojo Carmesí, Ámbar Dorado, Púrpura Neón y Arcoíris. Cada tema tiene su propio color de brillo y fondo oscuro.'
+      },
+      {
+        question: '¿Es gratis? ¿Necesito descargar algo?',
+        answer: 'Sí, es completamente gratis. No requiere descargas, extensiones ni registro. Funciona al instante en Windows, macOS, Linux, iOS, Android y Smart TV.'
+      },
+      {
+        question: '¿Puedo usarlo como salvapantallas?',
+        answer: 'Por supuesto. Funciona perfectamente como pantalla ambiental o salvapantallas. Déjalo corriendo en un monitor secundario, escritorio inactivo o TV para una atmósfera cyberpunk.'
+      },
+      {
+        question: '¿Tiene efectos de sonido?',
+        answer: 'Sí. Incluye 3 drones ambientales cyberpunk: Zumbido de Red, Resonancia Mainframe y Pulso de Datos. Puedes activar/desactivar el sonido con la tecla "M".'
+      }
+    ],
+    pt: [
+      {
+        question: 'O que é uma tela Matrix?',
+        answer: 'Uma tela Matrix é uma tela animada baseada em navegador que recria a icônica chuva de código verde dos filmes Matrix. Funciona em tela cheia no seu desktop, notebook, monitor ou TV, com caracteres katakana, dígitos binários e símbolos alfanuméricos — sem downloads ou instalação.'
+      },
+      {
+        question: 'Como usar esta tela Matrix no meu computador ou notebook?',
+        answer: 'Abra a página no navegador, clique em Tela Cheia ou pressione "F". A chuva digital Matrix preencherá sua tela. Pressione Espaço para abrir o painel de configurações.'
+      },
+      {
+        question: 'Posso adicionar meu próprio texto à chuva Matrix?',
+        answer: 'Sim. Digite qualquer mensagem (máx. 45 caracteres) no campo de texto personalizado. Pode aparecer como sequência descendo pelas colunas ou como caracteres aleatórios do seu texto.'
+      },
+      {
+        question: 'Posso mudar as cores da chuva Matrix?',
+        answer: 'Sim. Escolha entre 6 temas: Verde Clássico, Ciano Cyberpunk, Vermelho Carmesim, Âmbar Dourado, Roxo Neon e Arco-Íris. Cada tema tem cor de brilho e fundo escuro próprios.'
+      },
+      {
+        question: 'É grátis? Preciso baixar algo?',
+        answer: 'Sim, é completamente grátis. Não requer downloads, extensões ou cadastro. Funciona instantaneamente em Windows, macOS, Linux, iOS, Android e Smart TVs.'
+      },
+      {
+        question: 'Posso usar como protetor de tela?',
+        answer: 'Com certeza. Funciona perfeitamente como display ambiental ou protetor de tela para uma atmosfera cyberpunk.'
+      },
+      {
+        question: 'Tem efeitos sonoros?',
+        answer: 'Sim. Inclui 3 drones ambientais cyberpunk: Zumbido da Rede, Ressonância Mainframe e Pulso de Dados. Ative/desative com a tecla "M".'
+      }
+    ],
+    fr: [
+      {
+        question: 'Qu\'est-ce qu\'un écran Matrix ?',
+        answer: 'Un écran Matrix est un affichage animé dans votre navigateur qui recrée la célèbre pluie de code vert des films Matrix. Il fonctionne en plein écran sur votre PC, portable, moniteur ou TV avec des caractères katakana, des chiffres binaires et des symboles personnalisables — sans téléchargement ni installation.'
+      },
+      {
+        question: 'Comment utiliser cet écran Matrix sur mon ordinateur ou portable ?',
+        answer: 'Ouvrez la page dans votre navigateur, cliquez sur Plein écran ou appuyez sur "F". La pluie numérique Matrix remplira votre écran. Appuyez sur Espace pour ouvrir les réglages.'
+      },
+      {
+        question: 'Puis-je ajouter mon propre texte à la pluie Matrix ?',
+        answer: 'Oui. Saisissez un message (45 caractères max) dans le champ de texte personnalisé. Il peut apparaître en séquence descendant le long des colonnes ou en caractères aléatoires.'
+      },
+      {
+        question: 'Puis-je changer les couleurs de la pluie Matrix ?',
+        answer: 'Oui. Choisissez parmi 6 thèmes : Vert Classique, Cyan Cyberpunk, Rouge Carmin, Ambre Doré, Violet Néon et Arc-en-Ciel. Chaque thème a sa propre lueur et son fond sombre.'
+      },
+      {
+        question: 'Est-ce gratuit ? Dois-je télécharger quelque chose ?',
+        answer: 'Oui, c\'est entièrement gratuit. Aucun téléchargement, extension ou inscription requis. Fonctionne sur Windows, macOS, Linux, iOS, Android et Smart TV.'
+      },
+      {
+        question: 'Puis-je l\'utiliser comme économiseur d\'écran ?',
+        answer: 'Absolument. Il fonctionne parfaitement comme affichage d\'ambiance ou économiseur d\'écran pour une atmosphère cyberpunk.'
+      },
+      {
+        question: 'Y a-t-il des effets sonores ?',
+        answer: 'Oui. Il propose 3 drones ambiant cyberpunk : Bourdonnement de Grille, Résonance Mainframe et Pulsation de Données. Activez/désactivez le son avec la touche "M".'
+      }
+    ],
+    de: [
+      {
+        question: 'Was ist ein Matrix-Bildschirm?',
+        answer: 'Ein Matrix-Bildschirm ist eine browserbasierte animierte Anzeige, die den ikonischen grünen Code-Regen aus den Matrix-Filmen nachbildet. Er läuft im Vollbildmodus auf Ihrem Desktop, Laptop, Monitor oder TV mit anpassbaren Katakana-Zeichen, Binärziffern und alphanumerischen Symbolen — ohne Downloads oder Installation.'
+      },
+      {
+        question: 'Wie benutze ich diesen Matrix-Bildschirm auf meinem Computer oder Laptop?',
+        answer: 'Öffnen Sie die Seite im Browser, klicken Sie auf Vollbild oder drücken Sie "F". Der Matrix-Regen füllt Ihren gesamten Bildschirm. Drücken Sie die Leertaste für die Einstellungen.'
+      },
+      {
+        question: 'Kann ich meinen eigenen Text zum Matrix-Regen hinzufügen?',
+        answer: 'Ja. Geben Sie eine Nachricht (max. 45 Zeichen) in das Textfeld ein. Sie kann als Sequenz die Spalten hinunterlaufen oder als zufällige Zeichen aus Ihrem Text erscheinen.'
+      },
+      {
+        question: 'Kann ich die Farben des Matrix-Regens ändern?',
+        answer: 'Ja. Wählen Sie aus 6 Farbschemata: Klassisches Grün, Cyberpunk-Cyan, Purpurrot, Goldgelb, Neon-Lila und Regenbogen. Jedes Schema hat eigene Leuchtfarbe und dunklen Hintergrund.'
+      },
+      {
+        question: 'Ist es kostenlos? Muss ich etwas herunterladen?',
+        answer: 'Ja, es ist völlig kostenlos. Keine Downloads, Erweiterungen oder Anmeldungen erforderlich. Läuft auf Windows, macOS, Linux, iOS, Android und Smart TV.'
+      },
+      {
+        question: 'Kann ich es als Bildschirmschoner nutzen?',
+        answer: 'Absolut. Es eignet sich perfekt als Daueranzeige oder Bildschirmschoner für eine Cyberpunk-Atmosphäre.'
+      },
+      {
+        question: 'Hat es Soundeffekte?',
+        answer: 'Ja. Es bietet 3 Ambient-Drones: Netzbrummen, Mainframe-Resonanz und Datenpuls-Drone. Ton mit der "M"-Taste ein-/ausschalten.'
+      }
+    ],
+    hi: [
+      {
+        question: 'मैट्रिक्स स्क्रीन क्या है?',
+        answer: 'मैट्रिक्स स्क्रीन एक ब्राउज़र-आधारित एनिमेटेड डिस्प्ले है जो मैट्रिक्स फिल्मों के प्रसिद्ध हरे कोड रेन को दोहराता है। यह आपके डेस्कटॉप, लैपटॉप, मॉनिटर या टीवी पर फुलस्क्रीन चलता है — बिना डाउनलोड या इंस्टॉलेशन के।'
+      },
+      {
+        question: 'मैं इस मैट्रिक्स स्क्रीन को अपने कंप्यूटर या लैपटॉप पर कैसे उपयोग करूं?',
+        answer: 'पेज को ब्राउज़र में खोलें, फुलस्क्रीन बटन पर क्लिक करें या "F" दबाएं। मैट्रिक्स डिजिटल रेन आपकी पूरी स्क्रीन भर देगा। सेटिंग्स के लिए स्पेस बार दबाएं।'
+      },
+      {
+        question: 'क्या मैं मैट्रिक्स रेन में अपना खुद का टेक्स्ट जोड़ सकता हूं?',
+        answer: 'हां। कस्टम टेक्स्ट फील्ड में कोई भी संदेश (अधिकतम 45 अक्षर) टाइप करें। यह कॉलम में अनुक्रम के रूप में या आपके टेक्स्ट से यादृच्छिक वर्णों के रूप में दिखाई दे सकता है।'
+      },
+      {
+        question: 'क्या मैं मैट्रिक्स रेन के रंग बदल सकता हूं?',
+        answer: 'हां। 6 रंग थीम में से चुनें: क्लासिक ग्रीन, साइबरपंक सियान, क्रिमसन रेड, एम्बर गोल्ड, नियॉन पर्पल और रेनबो। प्रत्येक थीम का अपना ग्लो रंग और डार्क बैकग्राउंड है।'
+      },
+      {
+        question: 'क्या यह मुफ्त है? क्या मुझे कुछ डाउनलोड करने की आवश्यकता है?',
+        answer: 'हां, यह पूरी तरह से मुफ्त है। किसी डाउनलोड, एक्सटेंशन या अकाउंट की आवश्यकता नहीं है।'
+      },
+      {
+        question: 'क्या मैं इसे स्क्रीनसेवर के रूप में उपयोग कर सकता हूं?',
+        answer: 'बिल्कुल। यह साइबरपंक-थीम वाले माहौल के लिए एकदम सही स्क्रीनसेवर विकल्प है।'
+      },
+      {
+        question: 'क्या इसमें ध्वनि प्रभाव हैं?',
+        answer: 'हां। इसमें 3 एम्बिएंट ऑडियो ड्रोन हैं: डीप ग्रिड हम, मेंफ्रेम रेज़ोनेंस और डेटा पल्स ड्रोन। ध्वनि को "M" कुंजी से चालू/बंद करें।'
+      }
+    ],
+    ja: [
+      {
+        question: 'マトリックス画面とは何ですか？',
+        answer: 'マトリックス画面は、映画『マトリックス』の象徴的な緑色のコードの雨を再現するブラウザベースのアニメーション表示です。デスクトップ、ノートPC、モニター、TVで全画面表示でき、カタカナ文字、2進数、英数字をカスタマイズ可能。ダウンロードやインストールは不要です。'
+      },
+      {
+        question: 'パソコンやノートPCでこのマトリックス画面を使うには？',
+        answer: 'ブラウザでページを開き、全画面ボタンをクリックするか「F」キーを押すだけです。マトリックスのデジタルレインが画面全体に広がります。スペースキーで設定パネルを開けます。'
+      },
+      {
+        question: 'マトリックスの雨に自分のテキストを追加できますか？',
+        answer: 'はい。「カスタムテキスト」入力フィールドに任意のメッセージ（最大45文字）を入力してください。列を流れるシーケンスとして、またはテキストからランダムに抽出された文字として表示できます。'
+      },
+      {
+        question: 'マトリックスの雨の色を変更できますか？',
+        answer: 'はい。6つのカラーテーマ（クラシックグリーン、サイバーパンクシアン、クリムゾンレッド、アンバーゴールド、ネオンパープル、レインボー）から選択できます。各テーマに発光色とダーク背景が設定されています。'
+      },
+      {
+        question: '無料ですか？ダウンロードは必要ですか？',
+        answer: 'はい、完全に無料です。ダウンロード、拡張機能、アカウント登録は一切不要です。Windows、macOS、Linux、iOS、Android、Smart TVで即座に動作します。'
+      },
+      {
+        question: 'スクリーンセーバーの代わりに使えますか？',
+        answer: 'もちろん。サイバーパンクなビジュアル atmosphere の常時表示ディスプレイやスクリーンセーバーとして最適です。'
+      },
+      {
+        question: 'サウンドエフェクトはありますか？',
+        answer: 'はい。3つのサイバーパンク風アンビエントドローン（Deep Grid Hum、Mainframe Resonance、Data Pulse Drone）を搭載。「M」キーでサウンドのオン/オフを切り替えられます。'
+      }
+    ]
+  },
+  'rain-screen': {
+    en: [
+      {
+        question: 'What is a Rain Screen?',
+        answer: 'A Rain Screen is a browser-based animated display that creates realistic rainfall effects on your screen. It features falling rain streaks, sliding raindrops on glass, floor splashes, ambient lightning, and optional rain sounds — all customizable in real time. Use it on your desktop, laptop, monitor, or TV for ambience, relaxation, study focus, or as a screensaver alternative — no install required.'
+      },
+      {
+        question: 'How do I use this Rain Screen on my desktop or laptop?',
+        answer: 'Open the page in your browser, click the Fullscreen button or press the "F" key on your keyboard. The rain animation fills your entire screen. Press Space to open the settings panel where you can customize rain density, speed, wind angle, color, and audio. The interface auto-hides in fullscreen mode to keep the rain ambience clean and distraction-free.'
+      },
+      {
+        question: 'Can I switch between rain modes?',
+        answer: 'Yes. Choose between two rain modes: "Active Rain Streaks" for falling diagonal rain or "Raindrops on Glass" for a rainy window effect with sliding droplets that zigzag down your screen. Each mode creates a distinctly different ambient feel.'
+      },
+      {
+        question: 'Can I adjust rain intensity and speed?',
+        answer: 'Yes. Use the Rain Drops Intensity slider (10 to 600 particles) to control how much rain appears on screen. The Falling Velocity dual-range slider lets you set both minimum and maximum speed (5.0 to 35.0), creating natural variation in how fast drops fall.'
+      },
+      {
+        question: 'Can I change the wind direction and rain angle?',
+        answer: 'Yes. The Wind Slope control adjusts the rain angle from -6.0 to 6.0, simulating wind blowing the rain sideways. Combined with falling velocity, this creates realistic storm-like movement in the active rain streaks mode.'
+      },
+      {
+        question: 'Can I enable lightning and thunder effects?',
+        answer: 'Yes. Toggle the Ambient Lightning checkbox to enable realistic lightning flashes with a double-pulse effect. The Lightning Flash Interval slider lets you set how often lightning strikes (every 5 to 60 seconds). Lightning appears at random horizontal positions for natural variety.'
+      },
+      {
+        question: 'Can I change the rain color and background scene?',
+        answer: 'Yes. Choose from 8 aesthetic rain color presets: Pure Water, Glacier Teal, Emerald Forest, Electric Violet, Sunset Amber, Muted Slate, Crimson Storm, and Cyber Neon Green. You can also select from multiple background scenes to match your mood — from misty forests to urban cityscapes.'
+      },
+      {
+        question: 'Does the Rain Screen have sound effects? Can I add my own audio?',
+        answer: 'The page supports ambient rain audio soundtracks that load automatically when available. You can select different audio tracks, adjust volume, and toggle sound on/off with the "M" key. The page reads audio files and background images from the asset directory for easy customization.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Qué es una pantalla de lluvia?',
+        answer: 'Una pantalla de lluvia es un display animado basado en navegador que crea efectos de lluvia realistas en tu pantalla. Incluye gotas cayendo, lluvia sobre vidrio, salpicaduras, relámpagos y sonido de lluvia opcional. Úsala en escritorio, portátil, monitor o TV para ambiente, relajación o como salvapantallas.'
+      },
+      {
+        question: '¿Cómo uso esta pantalla de lluvia en mi ordenador?',
+        answer: 'Abre la página en tu navegador, haz clic en Pantalla Completa o presiona "F". Presiona Espacio para abrir el panel de ajustes donde puedes personalizar intensidad, velocidad, viento y sonido.'
+      },
+      {
+        question: '¿Puedo cambiar entre modos de lluvia?',
+        answer: 'Sí. Elige entre "Gotas de Lluvia Activas" para lluvia diagonal cayendo o "Gotas sobre Vidrio" para un efecto de ventana lluviosa con gotas que se deslizan en zigzag.'
+      },
+      {
+        question: '¿Puedo ajustar la intensidad y velocidad de la lluvia?',
+        answer: 'Sí. Usa el control de Intensidad (10 a 600 partículas) y el control de Velocidad de Caída (5.0 a 35.0) para crear variación natural.'
+      },
+      {
+        question: '¿Puedo cambiar la dirección del viento y el ángulo de la lluvia?',
+        answer: 'Sí. El control de Viento ajusta el ángulo de -6.0 a 6.0, simulando el viento moviendo la lluvia lateralmente.'
+      },
+      {
+        question: '¿Puedo activar relámpagos y truenos?',
+        answer: 'Sí. Activa la opción de Relámpagos y ajusta el intervalo (5 a 60 segundos). Los relámpagos aparecen en posiciones aleatorias con un efecto de doble pulso.'
+      },
+      {
+        question: '¿Puedo cambiar el color de la lluvia y el fondo?',
+        answer: 'Sí. Elige entre 8 colores: Agua Pura, Teal Glaciar, Bosque Esmeralda, Violeta Eléctrico, Ámbar Atardecer, Pizarra Suave, Tormenta Carmesí y Verde Neón Cyber. También puedes seleccionar entre múltiples fondos de escena.'
+      }
+    ],
+    pt: [
+      {
+        question: 'O que é uma tela de chuva?',
+        answer: 'Uma tela de chuva é um display animado baseado em navegador que cria efeitos de chuva realistas na sua tela. Inclui gotas caindo, chuva no vidro, respingos, relâmpagos e som de chuva opcional. Use no desktop, notebook, monitor ou TV para ambiente, relaxamento ou como protetor de tela.'
+      },
+      {
+        question: 'Como uso esta tela de chuva no meu computador?',
+        answer: 'Abra a página no navegador, clique em Tela Cheia ou pressione "F". Pressione Espaço para abrir o painel de configurações para personalizar intensidade, velocidade, vento e som.'
+      },
+      {
+        question: 'Posso alternar entre modos de chuva?',
+        answer: 'Sim. Escolha entre "Gotas de Chuva Ativas" para chuva diagonal ou "Gotas no Vidro" para efeito de janela chuvosa com gotas deslizando em ziguezague.'
+      },
+      {
+        question: 'Posso ajustar a intensidade e velocidade da chuva?',
+        answer: 'Sim. Use o controle de Intensidade (10 a 600 partículas) e o controle de Velocidade (5.0 a 35.0) para criar variação natural.'
+      },
+      {
+        question: 'Posso mudar a direção do vento e o ângulo da chuva?',
+        answer: 'Sim. O controle de Vento ajusta o ângulo de -6.0 a 6.0, simulando o vento movendo a chuva lateralmente.'
+      },
+      {
+        question: 'Posso ativar relâmpagos e trovões?',
+        answer: 'Sim. Ative a opção de Relâmpagos e ajuste o intervalo (5 a 60 segundos). Os relâmpagos aparecem em posições aleatórias com efeito de duplo pulso.'
+      },
+      {
+        question: 'Posso mudar a cor da chuva e o fundo?',
+        answer: 'Sim. Escolha entre 8 cores: Água Pura, Teal Glacial, Floresta Esmeralda, Violeta Elétrico, Âmbar Pôr do Sol, Ardósia Suave, Tempestade Carmesim e Verde Neon Cyber. Selecione entre vários fundos de cena.'
+      }
+    ],
+    fr: [
+      {
+        question: 'Qu\'est-ce qu\'un écran de pluie ?',
+        answer: 'Un écran de pluie est un affichage animé dans votre navigateur qui crée des effets de pluie réalistes sur votre écran. Il comprend des gouttes tombantes, de la pluie sur verre, des éclaboussures, des éclairs et un son de pluie optionnel. Utilisez-le sur PC, portable, moniteur ou TV pour l\'ambiance, la relaxation ou comme économiseur d\'écran.'
+      },
+      {
+        question: 'Comment utiliser cet écran de pluie sur mon ordinateur ?',
+        answer: 'Ouvrez la page dans votre navigateur, cliquez sur Plein écran ou appuyez sur "F". Appuyez sur Espace pour ouvrir le panneau des réglages pour personnaliser l\'intensité, la vitesse, le vent et le son.'
+      },
+      {
+        question: 'Puis-je basculer entre les modes de pluie ?',
+        answer: 'Oui. Choisissez entre "Gouttes de Pluie Actives" pour une pluie diagonale ou "Gouttes sur Verre" pour un effet de fenêtre pluvieuse avec des gouttes glissant en zigzag.'
+      },
+      {
+        question: 'Puis-je régler l\'intensité et la vitesse de la pluie ?',
+        answer: 'Oui. Utilisez le curseur d\'Intensité (10 à 600 particules) et le curseur de Vitesse (5.0 à 35.0) pour créer une variation naturelle.'
+      },
+      {
+        question: 'Puis-je changer la direction du vent et l\'angle de la pluie ?',
+        answer: 'Oui. Le contrôle du Vent ajuste l\'angle de -6.0 à 6.0, simulant le vent poussant la pluie latéralement.'
+      },
+      {
+        question: 'Puis-je activer les éclairs et le tonnerre ?',
+        answer: 'Oui. Activez l\'option Éclairs et ajustez l\'intervalle (5 à 60 secondes). Les éclairs apparaissent à des positions aléatoires avec un effet de double pulse.'
+      },
+      {
+        question: 'Puis-je changer la couleur de la pluie et l\'arrière-plan ?',
+        answer: 'Oui. Choisissez parmi 8 couleurs : Eau Pure, Teal Glaciaire, Forêt Émeraude, Violet Électrique, Ambre Coucher, Ardoise Douce, Tempête Cramoisie et Vert Cyber Neon. Sélectionnez parmi plusieurs arrière-plans de scène.'
+      }
+    ],
+    de: [
+      {
+        question: 'Was ist ein Regen-Bildschirm?',
+        answer: 'Ein Regen-Bildschirm ist eine browserbasierte animierte Anzeige, die realistische Regenfälle auf Ihrem Bildschirm erzeugt. Mit fallenden Regenstreifen, Regentropfen auf Glas, Spritzern, Blitzen und optionalen Regengeräuschen. Für Desktop, Laptop, Monitor oder TV als Bildschirmschoner oder für Ambience.'
+      },
+      {
+        question: 'Wie benutze ich diesen Regen-Bildschirm auf meinem Computer?',
+        answer: 'Öffnen Sie die Seite im Browser, klicken Sie auf Vollbild oder drücken Sie "F". Drücken Sie die Leertaste für das Einstellungspanel zur Anpassung von Intensität, Geschwindigkeit, Wind und Sound.'
+      },
+      {
+        question: 'Kann ich zwischen Regenmodi wechseln?',
+        answer: 'Ja. Wählen Sie zwischen "Aktive Regenstreifen" für diagonal fallenden Regen oder "Regentropfen auf Glas" für einen Regenscheiben-Effekt mit Tropfen, die im Zickzack gleiten.'
+      },
+      {
+        question: 'Kann ich die Regenintensität und -geschwindigkeit einstellen?',
+        answer: 'Ja. Mit dem Intensitätsregler (10 bis 600 Partikel) und dem Geschwindigkeitsregler (5.0 bis 35.0) erzeugen Sie natürliche Variation.'
+      },
+      {
+        question: 'Kann ich die Windrichtung und den Regenwinkel ändern?',
+        answer: 'Ja. Der Windregler stellt den Winkel von -6.0 bis 6.0 ein und simuliert so Wind, der den Regen seitlich weht.'
+      },
+      {
+        question: 'Kann ich Blitze und Donner aktivieren?',
+        answer: 'Ja. Aktivieren Sie die Blitz-Option und stellen Sie das Intervall ein (5 bis 60 Sekunden). Die Blitze erscheinen an zufälligen Positionen mit einem Doppelpuls-Effekt.'
+      },
+      {
+        question: 'Kann ich die Regenfarbe und den Hintergrund ändern?',
+        answer: 'Ja. Wählen Sie aus 8 Farben: Reines Wasser, Gletscher-Teal, Smaragdwald, Elektrisches Violett, Sonnenuntergang-Amber, Sanftes Schiefergrau, Purpursturm und Cyber-Neon-Grün. Wählen Sie aus mehreren Hintergrundszenen.'
+      }
+    ],
+    hi: [
+      {
+        question: 'रेन स्क्रीन क्या है?',
+        answer: 'रेन स्क्रीन एक ब्राउज़र-आधारित एनिमेटेड डिस्प्ले है जो आपकी स्क्रीन पर यथार्थवादी बारिश प्रभाव बनाता है। इसमें गिरती बारिश की बूंदें, कांच पर फिसलती बूंदें, फर्श पर छींटे, बिजली की चमक और वैकल्पिक बारिश की आवाज़ शामिल है।'
+      },
+      {
+        question: 'मैं अपने कंप्यूटर पर इस रेन स्क्रीन का उपयोग कैसे करूं?',
+        answer: 'पेज को ब्राउज़र में खोलें, फुलस्क्रीन बटन पर क्लिक करें या "F" दबाएं। सेटिंग्स के लिए स्पेस बार दबाएं जहां आप तीव्रता, गति, हवा और ध्वनि को कस्टमाइज़ कर सकते हैं।'
+      },
+      {
+        question: 'क्या मैं बारिश मोड के बीच स्विच कर सकता हूं?',
+        answer: 'हां। "एक्टिव रेन स्ट्रीक्स" विकर्ण गिरती बारिश के लिए या "रेनड्रॉप्स ऑन ग्लास" खिड़की पर बारिश प्रभाव के लिए चुनें।'
+      },
+      {
+        question: 'क्या मैं बारिश की तीव्रता और गति को समायोजित कर सकता हूं?',
+        answer: 'हां। तीव्रता स्लाइडर (10 से 600 कण) और गति स्लाइडर (5.0 से 35.0) का उपयोग करें।'
+      },
+      {
+        question: 'क्या मैं बारिश का रंग और पृष्ठभूमि बदल सकता हूं?',
+        answer: 'हां। 8 रंगों में से चुनें: शुद्ध पानी, ग्लेशियर टील, एमराल्ड फ़ॉरेस्ट, इलेक्ट्रिक वायलेट, सनसेट एम्बर, म्यूटेड स्लेट, क्रिमसन स्टॉर्म और साइबर नियॉन ग्रीन। कई पृष्ठभूमि दृश्यों में से चुनें।'
+      },
+      {
+        question: 'क्या मैं बिजली और गरज चालू कर सकता हूं?',
+        answer: 'हां। एम्बिएंट लाइटनिंग विकल्प चालू करें और अंतराल (5 से 60 सेकंड) सेट करें। बिजली यादृच्छिक स्थितियों पर दिखाई देती है।'
+      },
+      {
+        question: 'क्या रेन स्क्रीन में ध्वनि प्रभाव हैं?',
+        answer: 'हां। पेज एम्बिएंट रेन ऑडियो साउंडट्रैक को सपोर्ट करता है। आप विभिन्न ट्रैक चुन सकते हैं, वॉल्यूम एडजस्ट कर सकते हैं और "M" कुंजी से ध्वनि चालू/बंद कर सकते हैं।'
+      }
+    ],
+    ja: [
+      {
+        question: '雨の画面（レインスクリーン）とは何ですか？',
+        answer: '雨の画面は、ブラウザベースのアニメーション表示で、画面にリアルな雨のエフェクトを再現します。雨粒の落下、窓ガラスの雨、床の跳ね返り、雷光、オプションの雨音を備えています。デスクトップ、ノートPC、モニター、TVで雰囲気作りやリラクゼーション、スクリーンセーバーとしてご利用いただけます。'
+      },
+      {
+        question: 'パソコンでこの雨の画面を使うには？',
+        answer: 'ブラウザでページを開き、全画面ボタンをクリックするか「F」キーを押します。スペースキーで設定パネルを開き、雨の強さ、速度、風、サウンドをカスタマイズできます。'
+      },
+      {
+        question: '雨のモードを切り替えられますか？',
+        answer: 'はい。「アクティブな雨粒」モードでは斜めに降る雨を、「窓ガラスの雨粒」モードでは水滴が画面上をジグザグに滑り落ちる窓効果をお楽しみいただけます。'
+      },
+      {
+        question: '雨の強さと速度を調整できますか？',
+        answer: 'はい。強度スライダー（10〜600粒子）と落下速度スライダー（5.0〜35.0）を使用して自然な変化を作り出せます。'
+      },
+      {
+        question: '雨の色と背景を変更できますか？',
+        answer: 'はい。8色のプリセット（ピュアウォーター、グレイシャーティール、エメラルドフォレスト、エレクトリックバイオレット、サンセットアンバー、ミューテッドスレート、クリムゾンストーム、サイバーネオングリーン）と複数の背景シーンから選択できます。'
+      },
+      {
+        question: '雷や稲妻を有効にできますか？',
+        answer: 'はい。環境雷オプションをオンにし、間隔（5〜60秒）を設定します。雷はランダムな位置にダブルパルス効果で表示されます。'
+      },
+      {
+        question: '雨の画面にサウンドエフェクトはありますか？',
+        answer: 'はい。環境雨のオーディオサウンドトラックをサポートしています。「M」キーでサウンドのオン/オフを切り替え、音量も調整できます。'
+      }
+    ]
+  },
+  'snow-screen': {
+    en: [
+      {
+        question: 'What is a Snow Screen?',
+        answer: 'A Snow Screen is a browser-based animated display that creates realistic falling snow on your screen. It features customizable snowflake count, speed, wind drift, flake size, 20 color presets, photorealistic snowflake images, and optional winter ambience audio. Use it on your desktop, laptop, monitor, or TV for seasonal decoration, relaxation, or as a screensaver alternative — no download required.'
+      },
+      {
+        question: 'How do I use this Snow Screen on my desktop or laptop?',
+        answer: 'Open the page in your browser, click the Fullscreen button or press the "F" key on your keyboard. The snowfall animation fills your entire screen. Press Space to open the settings panel where you can customize snowflake count, falling speed, wind drift, flake size, color, and audio. The interface auto-hides in fullscreen mode to keep the winter ambience clean and distraction-free.'
+      },
+      {
+        question: 'Can I customize the snowfall appearance?',
+        answer: 'Yes. Adjust snowflake count from 20 to 800 particles, falling speed with a dual-range slider (0.1 to 8.0), wind drift direction and intensity (-5.0 to 5.0), and flake size from 0.5 to 15.0 pixels. You can also toggle photorealistic snowflake images mode for detailed SVG snowflake shapes with adjustable size, opacity, and rotation speed.'
+      },
+      {
+        question: 'Can I change the snowflake colors?',
+        answer: 'Yes. Choose from 20 aesthetic color presets: Pure Snow, Glacier Blue, Aurora Green, Pale Lavender, Ice Rose, Soft Mint, Golden Amber, Neon Coral, Seafoam Teal, Arctic Slub, Mellow Peach, Lemon Chiffon, Electric Cyan, Orchid Glow, Ethereal Violet, Deep Indigo, Emerald Glow, Sunset Orange, Rose Quartz, and Warm Charcoal.'
+      },
+      {
+        question: 'Can I use photorealistic snowflake images?',
+        answer: 'Yes. Toggle the "Photorealistic Snowflake Images" mode to display detailed SVG snowflake shapes instead of colored circles. In this mode, you can control image snowflake size (5.0 to 50.0 pixels), opacity (10% to 100%), and rotation speed (0x to 4x) for a more realistic winter effect.'
+      },
+      {
+        question: 'Can I change the background scene?',
+        answer: 'Yes. The Snow Screen supports multiple winter background scenes that load automatically from the asset directory. You can switch between different winter landscapes, including snowy forests, mountain views, and festive seasonal scenes from the Background Scene selector in the settings panel.'
+      },
+      {
+        question: 'Does the Snow Screen have sound effects?',
+        answer: 'The page supports ambient winter audio soundtracks that load automatically when available. You can select different audio tracks from the dropdown, adjust volume, and toggle sound on/off with the "M" key for a complete winter ambience experience.'
+      },
+      {
+        question: 'Can I use the Snow Screen for Christmas and holiday decoration?',
+        answer: 'Absolutely. The Snow Screen is perfect for Christmas decorations, holiday parties, and winter seasonal displays. Use it on your Smart TV, desktop monitor, or laptop as a festive screensaver alternative. Combine winter background scenes, photorealistic snowflakes, and ambient audio for a complete cozy holiday atmosphere.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Qué es una pantalla de nieve?',
+        answer: 'Una pantalla de nieve es un display animado basado en navegador que crea nieve cayendo en tu pantalla. Incluye copos personalizables, velocidad, viento, 20 colores, imágenes fotorrealistas y audio de ambiente invernal. Úsala en escritorio, portátil, monitor o TV para decoración navideña, relajación o como salvapantallas.'
+      },
+      {
+        question: '¿Cómo uso esta pantalla de nieve en mi ordenador?',
+        answer: 'Abre la página en tu navegador, haz clic en Pantalla Completa o presiona "F". Presiona Espacio para abrir el panel de ajustes y personalizar la cantidad de copos, velocidad, viento, tamaño y color.'
+      },
+      {
+        question: '¿Puedo personalizar la apariencia de la nieve?',
+        answer: 'Sí. Ajusta la cantidad de copos (20 a 800), velocidad (0.1 a 8.0), viento (-5.0 a 5.0) y tamaño de copo (0.5 a 15.0). Activa el modo de imágenes fotorrealistas para copos SVG detallados con opacidad y velocidad de rotación ajustables.'
+      },
+      {
+        question: '¿Puedo cambiar los colores de los copos?',
+        answer: 'Sí. Elige entre 20 colores: Nieve Pura, Azul Glaciar, Verde Aurora, Lavanda Pálida, Rosa Hielo, Menta Suave, Ámbar Dorado, Coral Neón, Verde Espuma, Pizarra Ártica, Durazno Suave, Limón Chiffon, Cian Eléctrico, Orquídea, Violeta Etéreo, Índigo Profundo, Verde Esmeralda, Naranja Atardecer, Cuarzo Rosa y Carbón Cálido.'
+      },
+      {
+        question: '¿Puedo usar la pantalla de nieve para decoración navideña?',
+        answer: 'Absolutamente. Es perfecta para decoración navideña, fiestas y ambientes invernales. Úsala en tu Smart TV, monitor o portátil como salvapantallas festivo con fondos invernales y audio ambiente.'
+      }
+    ],
+    pt: [
+      {
+        question: 'O que é uma tela de neve?',
+        answer: 'Uma tela de neve é um display animado baseado em navegador que cria neve caindo na sua tela. Inclui flocos personalizáveis, velocidade, vento, 20 cores, imagens fotorrealistas e áudio de inverno. Use no desktop, notebook, monitor ou TV para decoração natalina, relaxamento ou como protetor de tela.'
+      },
+      {
+        question: 'Como uso esta tela de neve no meu computador?',
+        answer: 'Abra a página no navegador, clique em Tela Cheia ou pressione "F". Pressione Espaço para abrir o painel de configurações para personalizar flocos, velocidade, vento, tamanho e cor.'
+      },
+      {
+        question: 'Posso personalizar a aparência da neve?',
+        answer: 'Sim. Ajuste a quantidade de flocos (20 a 800), velocidade (0.1 a 8.0), vento (-5.0 a 5.0) e tamanho (0.5 a 15.0). Ative o modo de imagens fotorrealistas para flocos SVG detalhados.'
+      },
+      {
+        question: 'Posso mudar as cores dos flocos de neve?',
+        answer: 'Sim. Escolha entre 20 cores: Neve Pura, Azul Glacial, Verde Aurora, Lavanda Pálida, Rosa Gelo, Menta Suave, Âmbar Dourado, Coral Neon, Verde Espuma, Ardósia Ártica, Pêssego Suave, Limão Chiffon, Ciano Elétrico, Orquídea, Violeta Etéreo, Índigo Profundo, Verde Esmeralda, Laranja Pôr do Sol, Quartzo Rosa e Carvão Quente.'
+      },
+      {
+        question: 'Posso usar a tela de neve para decoração de Natal?',
+        answer: 'Com certeza. Perfeita para decoração natalina, festas e ambientes de inverno. Use na Smart TV, monitor ou notebook como protetor de tela festivo.'
+      }
+    ],
+    fr: [
+      {
+        question: 'Qu\'est-ce qu\'un écran de neige ?',
+        answer: 'Un écran de neige est un affichage animé dans votre navigateur qui crée de la neige tombant sur votre écran. Avec flocons personnalisables, vitesse, vent, 20 couleurs, images photoréalistes et audio d\'ambiance hivernale. Pour PC, portable, moniteur ou TV — décoration de Noël, relaxation ou économiseur d\'écran.'
+      },
+      {
+        question: 'Comment utiliser cet écran de neige sur mon ordinateur ?',
+        answer: 'Ouvrez la page dans votre navigateur, cliquez sur Plein écran ou appuyez sur "F". Appuyez sur Espace pour ouvrir le panneau des réglages pour personnaliser les flocons, la vitesse, le vent, la taille et la couleur.'
+      },
+      {
+        question: 'Puis-je personnaliser l\'apparence de la neige ?',
+        answer: 'Oui. Ajustez le nombre de flocons (20 à 800), la vitesse (0.1 à 8.0), le vent (-5.0 à 5.0) et la taille (0.5 à 15.0). Activez le mode photoréaliste pour des flocons SVG détaillés.'
+      },
+      {
+        question: 'Puis-je changer la couleur des flocons ?',
+        answer: 'Oui. Choisissez parmi 20 couleurs : Neige Pure, Bleu Glaciaire, Vert Aurore, Lavande Pâle, Rose Glace, Menthe Douce, Ambre Doré, Corail Néon, Écume de Mer, Ardoise Arctique, Pêche Douce, Citron Chiffon, Cyan Électrique, Orchidée, Violet Éthéré, Indigo Profond, Vert Émeraude, Orange Coucher, Quartz Rose et Charbon Chaud.'
+      },
+      {
+        question: 'Puis-je utiliser l\'écran de neige pour la décoration de Noël ?',
+        answer: 'Absolument. Parfait pour la décoration de Noël, les fêtes et les ambiances hivernales. Utilisez-le sur votre Smart TV, moniteur ou portable comme économiseur d\'écran festif.'
+      }
+    ],
+    de: [
+      {
+        question: 'Was ist ein Schnee-Bildschirm?',
+        answer: 'Ein Schnee-Bildschirm ist eine browserbasierte animierte Anzeige, die fallenden Schnee auf Ihrem Bildschirm erzeugt. Mit anpassbaren Flocken, Geschwindigkeit, Wind, 20 Farben, fotorealistischen Bildern und Winter-Ambient-Audio. Für Desktop, Laptop, Monitor oder TV — Weihnachtsdekoration, Entspannung oder als Bildschirmschoner.'
+      },
+      {
+        question: 'Wie benutze ich diesen Schnee-Bildschirm auf meinem Computer?',
+        answer: 'Öffnen Sie die Seite im Browser, klicken Sie auf Vollbild oder drücken Sie "F". Drücken Sie die Leertaste für das Einstellungspanel zur Anpassung von Flockenanzahl, Geschwindigkeit, Wind, Größe und Farbe.'
+      },
+      {
+        question: 'Kann ich das Aussehen des Schnees anpassen?',
+        answer: 'Ja. Passen Sie die Flockenanzahl (20 bis 800), Geschwindigkeit (0.1 bis 8.0), Wind (-5.0 bis 5.0) und Flockengröße (0.5 bis 15.0) an. Schalten Sie den fotorealistischen Modus für detaillierte SVG-Schneeflocken ein.'
+      },
+      {
+        question: 'Kann ich die Schneeflockenfarben ändern?',
+        answer: 'Ja. Wählen Sie aus 20 Farben: Reiner Schnee, Gletscherblau, Aurora-Grün, Blasses Lavendel, Eisrose, Weiche Minze, Goldener Bernstein, Neon-Koralle, Meerschaum, Arktisches Schiefergrau, Sanfter Pfirsich, Zitronen-Chiffon, Elektrisches Cyan, Orchidee, Ätherisches Violett, Tiefes Indigo, Smaragdgrün, Sonnenuntergang-Orange, Rosenquarz und Warmer Holzkohle.'
+      },
+      {
+        question: 'Kann ich den Schnee-Bildschirm für Weihnachtsdekoration nutzen?',
+        answer: 'Absolut. Perfekt für Weihnachtsdekoration, Festlichkeiten und Winterambiente. Verwenden Sie ihn auf Ihrem Smart TV, Monitor oder Laptop als festlichen Bildschirmschoner.'
+      }
+    ],
+    hi: [
+      {
+        question: 'स्नो स्क्रीन क्या है?',
+        answer: 'स्नो स्क्रीन एक ब्राउज़र-आधारित एनिमेटेड डिस्प्ले है जो आपकी स्क्रीन पर गिरती बर्फ बनाता है। इसमें अनुकूलन योग्य बर्फ के टुकड़े, गति, हवा, 20 रंग, फोटोरियलिस्टिक इमेज और विंटर ऑडियो शामिल हैं। डेस्कटॉप, लैपटॉप, मॉनिटर या टीवी पर क्रिसमस सजावट या स्क्रीनसेवर के लिए उपयोग करें।'
+      },
+      {
+        question: 'मैं अपने कंप्यूटर पर इस स्नो स्क्रीन का उपयोग कैसे करूं?',
+        answer: 'पेज को ब्राउज़र में खोलें, फुलस्क्रीन बटन पर क्लिक करें या "F" दबाएं। सेटिंग्स के लिए स्पेस बार दबाएं और बर्फ के टुकड़ों की संख्या, गति, हवा, आकार और रंग को कस्टमाइज़ करें।'
+      },
+      {
+        question: 'क्या मैं बर्फ के रंग बदल सकता हूं?',
+        answer: 'हां। 20 रंगों में से चुनें: प्योर स्नो, ग्लेशियर ब्लू, ऑरोरा ग्रीन, पेल लैवेंडर, आइस रोज़, सॉफ्ट मिंट, गोल्डन एम्बर, नियॉन कोरल, सीफोम टील, आर्कटिक स्लेट, मेलो पीच, लेमन शिफॉन, इलेक्ट्रिक सियान, ऑर्किड ग्लो, एथेरियल वायलेट, डीप इंडिगो, एमराल्ड ग्लो, सनसेट ऑरेंज, रोज़ क्वार्ट्ज और वार्म चारकोल।'
+      },
+      {
+        question: 'क्या मैं फोटोरियलिस्टिक स्नोफ्लेक इमेज का उपयोग कर सकता हूं?',
+        answer: 'हां। "फोटोरियलिस्टिक स्नोफ्लेक इमेज" मोड चालू करें। इस मोड में आप बर्फ के टुकड़ों का आकार (5.0 से 50.0), अपारदर्शिता (10% से 100%) और घूर्णन गति (0x से 4x) नियंत्रित कर सकते हैं।'
+      },
+      {
+        question: 'क्या मैं स्नो स्क्रीन को क्रिसमस सजावट के लिए उपयोग कर सकता हूं?',
+        answer: 'बिल्कुल। यह क्रिसमस सजावट, छुट्टियों और सर्दियों के माहौल के लिए एकदम सही है। इसे अपने स्मार्ट टीवी, मॉनिटर या लैपटॉप पर त्योहारी स्क्रीनसेवर के रूप में उपयोग करें।'
+      }
+    ],
+    ja: [
+      {
+        question: '雪の画面（スノースクリーン）とは何ですか？',
+        answer: '雪の画面は、ブラウザベースのアニメーション表示で、画面にリアルな降雪を再現します。カスタマイズ可能な雪片の数、速度、風、20色のカラープリセット、フォトリアルな雪の画像、冬の環境音を備えています。デスクトップ、ノートPC、モニター、TVでクリスマス飾りやリラクゼーション、スクリーンセーバーとしてご利用いただけます。'
+      },
+      {
+        question: 'パソコンでこの雪の画面を使うには？',
+        answer: 'ブラウザでページを開き、全画面ボタンをクリックするか「F」キーを押します。スペースキーで設定パネルを開き、雪片の数、速度、風、サイズ、色をカスタマイズできます。'
+      },
+      {
+        question: '雪の色を変更できますか？',
+        answer: 'はい。20色のプリセット（ピュアスノー、グレイシャーブルー、オーロラグリーン、ペールラベンダー、アイスローズ、ソフトミント、ゴールデンアンバー、ネオンコーラル、シーフォームティール、アークティックスレート、メローピーチ、レモンシフォン、エレクトリックシアン、オーキッドグロー、エセリアルバイオレット、ディープインディゴ、エメラルドグロー、サンセットオレンジ、ローズクォーツ、ウォームチャコール）から選択できます。'
+      },
+      {
+        question: '雪の画面をクリスマス飾りに使えますか？',
+        answer: 'もちろん。クリスマスの飾り付け、ホリデーパーティー、冬の季節演出に最適です。スマートTV、モニター、ノートPCでお楽しみいただけます。'
+      }
+    ]
+  },
+  'placeholder-screen': {
+    en: []
   }
 };
 
@@ -4034,6 +4642,192 @@ export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-s
           'パソコン、ノートPC、モニター、Smart TVの画面を、美しい<strong>オンラインアクアリウム画面</strong>に変身させましょう。アニメーションの熱帯魚、泡、海藻、魅惑的な水中照明効果で、水の世界の静けさをあなたの画面にお届けします。デスク用のリラックスできる<strong>アクアリウム背景</strong>、リビングのTV用の<strong>魚の画面</strong>、ノートPC用の<strong>アクアリウムスクリーンセーバー</strong>として最適です。',
           '魚の鑑賞がストレスを軽減し気分を向上させることは研究で実証されています。この<strong>デジタルアクアリウム</strong>は、本物の水槽のコストや手入れなしで治療効果を提供します。瞑想休憩用の<strong>リラックスアクアリウム</strong>、ビデオ通話用の<strong>アンビエントアクアリウム</strong>、待合室やカフェでの<strong>全画面アクアリウム</strong>表示としてご活用ください。',
           'ラグーンティール、深海礁、アビサルゾーン、コーラルサンセットの4つの水中カラーテーマから選択可能。魚の数（3〜26匹）、泳ぐ速度、海中サウンドを調整し、お好みのBGMをアップロードすることもできます。「F」キーを押せばモニターやTVで<strong>全画面アクアリウム</strong>をお楽しみいただけます。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'matrix-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Matrix Screen Online — Customizable Digital Rain for Desktop & Laptop',
+        paragraphs: [
+          'Transform any computer display, laptop monitor, PC, or Smart TV into an immersive <strong>Matrix screen</strong> with cascading <strong>digital rain</strong>. Our free online <strong>Matrix effect</strong> recreates the iconic green code waterfall from the films, rendered in real-time HTML5 Canvas with customizable katakana, binary, and alphanumeric characters. Whether you want a <strong>Matrix wallpaper</strong> for your developer desk, a <strong>hacker screen</strong> backdrop for streaming, or a <strong>cyberpunk screen</strong> for your gaming room, this tool delivers a fully customizable <strong>Matrix display</strong> — no downloads, no installation, no ads.',
+          'Personalize every aspect of the <strong>Matrix animation</strong> with 6 visual controls and 6 color themes. Adjust rain speed (0.2x to 3.0x), stream density, trail length, font size (10px to 36px), and glow intensity (0 to 25px). Switch between Classic Green, Cyberpunk Cyan, Crimson Red, Amber Gold, Neon Purple, or Rainbow color schemes. Type any custom name or message to appear as <strong>code rain</strong> text, cycling through character sets with the "C" key. The <strong>Matrix screensaver</strong> experience is fully under your control.',
+          'Complete the atmosphere with 3 cyberpunk ambient audio drones — Deep Grid Hum, Mainframe Resonance, and Data Pulse Drone — each synthesized in real-time using the Web Audio API. Press "F" for fullscreen immersion across your monitor, laptop, or TV, with an auto-hide interface that keeps the <strong>Matrix background</strong> clean and distraction-free. Use the "R" key to instantly reset all settings to defaults, or press Space to open the settings drawer and fine-tune every parameter of your <strong>Matrix desktop background</strong>.'
+        ]
+      },
+      es: {
+        heading: 'Pantalla Matrix Online — Lluvia Digital Personalizable para Escritorio y Portátil',
+        paragraphs: [
+          'Transforma cualquier pantalla en una <strong>pantalla Matrix</strong> inmersiva con <strong>lluvia digital</strong> en cascada. Nuestro <strong>efecto Matrix</strong> online gratuito recrea la icónica cascada de código verde de las películas, renderizada en Canvas HTML5 con caracteres katakana, binarios y alfanuméricos personalizables. Perfecta como <strong>fondo Matrix</strong> para tu escritorio de desarrollador, <strong>pantalla hacker</strong> para streaming o <strong>pantalla cyberpunk</strong> para tu sala de juegos.',
+          'Personaliza cada aspecto de la <strong>animación Matrix</strong> con 6 controles visuales y 6 temas de color. Ajusta velocidad, densidad, longitud de estela, tamaño de fuente e intensidad de brillo. Elige entre Verde Clásico, Cian Cyberpunk, Rojo Carmesí, Ámbar Dorado, Púrpura Neón o Arcoíris. Escribe cualquier nombre o mensaje personalizado para que aparezca como <strong>lluvia de código</strong>.',
+          'Completa la atmósfera con 3 drones de audio cyberpunk ambientales. Presiona "F" para inmersión a pantalla completa y "R" para restablecer todos los ajustes. La interfaz se oculta automáticamente para mantener el <strong>fondo Matrix</strong> limpio y sin distracciones.'
+        ]
+      },
+      pt: {
+        heading: 'Tela Matrix Online — Chuva Digital Personalizável para Desktop e Notebook',
+        paragraphs: [
+          'Transforme qualquer tela em uma <strong>tela Matrix</strong> imersiva com <strong>chuva digital</strong> em cascata. Nosso <strong>efeito Matrix</strong> online gratuito recria a icônica cascata de código verde dos filmes, renderizada em Canvas HTML5 com caracteres katakana, binários e alfanuméricos personalizáveis. Perfeito como <strong>fundo Matrix</strong> para seu setup de desenvolvedor, <strong>tela hacker</strong> para streaming ou <strong>tela cyberpunk</strong> para sala de jogos.',
+          'Personalize cada aspecto da <strong>animação Matrix</strong> com 6 controles visuais e 6 temas de cor. Ajuste velocidade, densidade, rastro, tamanho da fonte e brilho. Escolha entre Verde Clássico, Ciano Cyberpunk, Vermelho Carmesim, Âmbar Dourado, Roxo Neon ou Arco-Íris. Digite qualquer nome ou mensagem na <strong>chuva de código</strong>.',
+          'Complete com 3 drones de áudio cyberpunk ambiente. Pressione "F" para imersão em tela cheia e "R" para restaurar padrões. Interface com ocultação automática para um <strong>fundo Matrix</strong> limpo.'
+        ]
+      },
+      fr: {
+        heading: 'Écran Matrix en Ligne — Pluie Numérique Personnalisable pour PC et Portable',
+        paragraphs: [
+          'Transformez n\'importe quel écran en un <strong>écran Matrix</strong> immersif avec <strong>pluie numérique</strong> en cascade. Notre <strong>effet Matrix</strong> gratuit en ligne recrée la cascade de code vert emblématique des films, rendue en Canvas HTML5 avec caractères katakana, binaires et alphanumériques personnalisables. Parfait comme <strong>fond Matrix</strong> pour votre bureau de développeur, <strong>écran hacker</strong> pour le streaming ou <strong>écran cyberpunk</strong> pour votre salle de jeu.',
+          'Personnalisez chaque aspect de l\'<strong>animation Matrix</strong> avec 6 contrôles visuels et 6 thèmes de couleurs. Ajustez la vitesse, la densité, la traînée, la taille de police et l\'intensité lumineuse. Choisissez parmi Vert Classique, Cyan Cyberpunk, Rouge Carmin, Ambre Doré, Violet Néon ou Arc-en-Ciel.',
+          'Ajoutez 3 drones audio cyberpunk d\'ambiance. Appuyez sur "F" pour l\'immersion plein écran et sur "R" pour réinitialiser. Interface à masquage automatique pour un <strong>fond Matrix</strong> épuré.'
+        ]
+      },
+      de: {
+        heading: 'Matrix-Bildschirm Online — Anpassbarer Digitaler Regen für Desktop & Laptop',
+        paragraphs: [
+          'Verwandeln Sie jeden Computerbildschirm in einen immersiven <strong>Matrix-Bildschirm</strong> mit kaskadierendem <strong>digitalem Regen</strong>. Unser kostenloser <strong>Matrix-Effekt</strong> online reproduziert den ikonischen grünen Code-Wasserfall aus den Filmen in Echtzeit auf HTML5 Canvas mit anpassbaren Katakana-, Binär- und alphanumerischen Zeichen. Ideal als <strong>Matrix-Hintergrund</strong> für den Entwickler-Schreibtisch, <strong>Hacker-Bildschirm</strong> für Streaming oder <strong>Cyberpunk-Bildschirm</strong> fürs Gaming-Zimmer.',
+          'Passen Sie jeden Aspekt der <strong>Matrix-Animation</strong> mit 6 visuellen Reglern und 6 Farbschemata an. Wählen Sie zwischen Klassisches Grün, Cyberpunk-Cyan, Purpurrot, Goldgelb, Neon-Lila oder Regenbogen. Geben Sie benutzerdefinierten Text für den <strong>Code-Regen</strong> ein.',
+          'Vervollständigen Sie die Atmosphäre mit 3 Cyberpunk-Ambient-Drones. Drücken Sie "F" für Vollbild-Immersion und "R" für Reset. Auto-Ausblend-Schnittstelle für einen sauberen <strong>Matrix-Hintergrund</strong>.'
+        ]
+      },
+      hi: {
+        heading: 'मैट्रिक्स स्क्रीन ऑनलाइन — डेस्कटॉप और लैपटॉप के लिए कस्टमाइज़ेबल डिजिटल रेन',
+        paragraphs: [
+          'किसी भी कंप्यूटर डिस्प्ले, लैपटॉप मॉनिटर, पीसी या स्मार्ट टीवी को एक इमर्सिव <strong>मैट्रिक्स स्क्रीन</strong> में बदलें। हमारा मुफ्त ऑनलाइन <strong>मैट्रिक्स इफ़ेक्ट</strong> फिल्मों के प्रतिष्ठित हरे कोड वॉटरफॉल को HTML5 Canvas पर रीयल-टाइम में रेंडर करता है। डेवलपर डेस्क <strong>मैट्रिक्स वॉलपेपर</strong>, स्ट्रीमिंग के लिए <strong>हैकर स्क्रीन</strong>, या गेमिंग रूम के लिए <strong>साइबरपंक स्क्रीन</strong> के रूप में एकदम सही।',
+          '6 विज़ुअल कंट्रोल और 6 कलर थीम के साथ <strong>मैट्रिक्स एनिमेशन</strong> के हर पहलू को कस्टमाइज़ करें। क्लासिक ग्रीन, साइबरपंक सियान, क्रिमसन रेड, एम्बर गोल्ड, नियॉन पर्पल या रेनबो में से चुनें। <strong>कोड रेन</strong> टेक्स्ट के रूप में कोई भी नाम या संदेश टाइप करें।',
+          '3 साइबरपंक एम्बिएंट ऑडियो ड्रोन के साथ माहौल को पूरा करें। "F" दबाकर फुलस्क्रीन में डूब जाएं। ऑटो-हाइड इंटरफ़ेस <strong>मैट्रिक्स बैकग्राउंड</strong> को साफ और विचलित करने वाली चीज़ों से मुक्त रखता है।'
+        ]
+      },
+      ja: {
+        heading: 'マトリックス画面 オンライン — デスクトップ・ノートPC用カスタマイズ可能なデジタルレイン',
+        paragraphs: [
+          'パソコン、ノートPC、モニター、Smart TVの画面を、降り注ぐ<strong>デジタルレイン</strong>を備えた没入感あふれる<strong>マトリックス画面</strong>に変身させましょう。映画の象徴的な緑のコードの滝をHTML5 Canvasでリアルタイムレンダリング。カタカナ、2進数、英数字をカスタマイズ可能。開発者デスク用の<strong>マトリックス壁紙</strong>、配信用の<strong>ハッカー画面</strong>、ゲーミングルーム用の<strong>サイバーパンク画面</strong>に最適です。',
+          '6つのビジュアルコントロールと6つのカラーテーマで<strong>マトリックスアニメーション</strong>のあらゆる側面をカスタマイズ。クラシックグリーン、サイバーパンクシアン、クリムゾンレッド、アンバーゴールド、ネオンパープル、レインボーから選択。カスタムテキストを<strong>コードレイン</strong>として表示できます。',
+          '3つのサイバーパンクアンビエントオーディオドローンで雰囲気を完璧に。「F」キーで全画面没入、「R」キーでリセット。自動非表示インターフェースで<strong>マトリックス背景</strong>をクリーンに保ちます。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'rain-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Rain Screen Online — Realistic Rain Ambience for Desktop, Laptop & TV',
+        paragraphs: [
+          'Transform any computer display, laptop monitor, PC, or Smart TV into a mesmerizing <strong>rain screen</strong> with realistic <strong>rain animation</strong>. Our free online <strong>rain ambience</strong> tool recreates the soothing experience of rainfall directly in your browser — rendered in real-time HTML5 Canvas with adjustable <strong>rain intensity</strong>, falling velocity, wind angle, and floor splashes. Whether you need a <strong>rain background</strong> for deep work focus, a <strong>rain wallpaper</strong> for your desktop, a <strong>rain screensaver</strong> for your TV, or a cozy <strong>rainy window</strong> effect for your bedroom monitor, this tool delivers a fully customizable <strong>rain display</strong> — no downloads, no installation, no ads.',
+          'Personalize every aspect of the <strong>rain effect</strong> with comprehensive controls. Choose between two rain modes: <strong>Active Rain Streaks</strong> for falling diagonal rain with realistic wind physics, or <strong>Raindrops on Glass</strong> for a serene windowpane effect where droplets zigzag down your screen. Fine-tune rain density from a light sprinkle (10 particles) to a heavy downpour (600 particles), adjust falling velocity with a dual-range slider, and control wind slope from -6.0 to 6.0 for sweeping storm-like movement. Toggle floor splashes for added realism and enable <strong>ambient lightning</strong> with adjustable flash intervals from 5 to 60 seconds — the double-pulse lightning effect adds dramatic visual depth to any rainy scene.',
+          'Complete the atmosphere with 8 aesthetic color presets — Pure Water, Glacier Teal, Emerald Forest, Electric Violet, Sunset Amber, Muted Slate, Crimson Storm, and Cyber Neon Green — each projecting a unique mood across your display. Select from multiple background scenes including misty forests and urban cityscapes to match your ideal rainy-day setting. Add ambient rain audio soundtracks with volume control, toggle mute with the "M" key, and press "F" for fullscreen immersion across your monitor, laptop, or TV. The auto-hide interface keeps your <strong>relaxing rain</strong> experience clean and distraction-free, making this the perfect companion for studying, coding, sleeping, meditation, or creating a cozy room atmosphere.'
+        ]
+      },
+      es: {
+        heading: 'Pantalla de Lluvia Online — Ambiente de Lluvia Realista para Escritorio, Portátil y TV',
+        paragraphs: [
+          'Transforma cualquier pantalla en una <strong>pantalla de lluvia</strong> hipnotizante con <strong>animación de lluvia</strong> realista. Nuestra herramienta gratuita de <strong>ambiente de lluvia</strong> online recrea la experiencia relajante de la lluvia directamente en tu navegador — renderizada en Canvas HTML5 con <strong>intensidad de lluvia</strong> ajustable, velocidad de caída, ángulo de viento y salpicaduras. Perfecta como <strong>fondo de lluvia</strong> para concentración, <strong>fondo de pantalla lluvioso</strong> para tu escritorio, <strong>salvapantallas de lluvia</strong> para tu TV o un acogedor efecto de <strong>ventana lluviosa</strong>.',
+          'Personaliza cada aspecto del <strong>efecto de lluvia</strong>. Elige entre "Gotas de Lluvia Activas" para lluvia diagonal con física de viento realista o "Gotas sobre Vidrio" para un sereno efecto de ventana. Ajusta la densidad (10 a 600 partículas), velocidad y viento (-6.0 a 6.0). Activa salpicaduras y <strong>relámpagos ambientales</strong> con intervalos de 5 a 60 segundos.',
+          'Completa con 8 colores estéticos y múltiples fondos de escena. Añade pistas de audio de lluvia ambiente con control de volumen. Presiona "F" para inmersión a pantalla completa y "M" para silenciar. La interfase auto-ocultable mantiene tu <strong>lluvia relajante</strong> limpia y sin distracciones.'
+        ]
+      },
+      pt: {
+        heading: 'Tela de Chuva Online — Ambiente de Chuva Realista para Desktop, Notebook e TV',
+        paragraphs: [
+          'Transforme qualquer tela em uma <strong>tela de chuva</strong> hipnotizante com <strong>animação de chuva</strong> realista. Nossa ferramenta gratuita de <strong>ambiente de chuva</strong> online recria a experiência relaxante da chuva diretamente no seu navegador — renderizada em Canvas HTML5 com <strong>intensidade de chuva</strong> ajustável, velocidade de queda, ângulo do vento e respingos. Perfeita como <strong>fundo de chuva</strong> para foco, <strong>papel de parede de chuva</strong> para desktop ou <strong>protetor de tela de chuva</strong> para TV.',
+          'Personalize cada aspecto do <strong>efeito de chuva</strong>. Escolha entre "Gotas de Chuva Ativas" para chuva diagonal ou "Gotas no Vidro" para efeito de janela. Ajuste densidade (10 a 600 partículas), velocidade e vento (-6.0 a 6.0). Ative respingos e <strong>relâmpagos ambiente</strong> com intervalos de 5 a 60 segundos.',
+          'Complete com 8 cores estéticas e múltiplos fundos de cena. Adicione trilhas de áudio de chuva ambiente. Pressione "F" para tela cheia e "M" para silenciar. Interface com ocultação automática para uma <strong>chuva relaxante</strong> sem distrações.'
+        ]
+      },
+      fr: {
+        heading: 'Écran de Pluie en Ligne — Ambiance Pluvieuse Réaliste pour PC, Portable et TV',
+        paragraphs: [
+          'Transformez n\'importe quel écran en un <strong>écran de pluie</strong> fascinant avec <strong>animation de pluie</strong> réaliste. Notre outil gratuit d\'<strong>ambiance pluvieuse</strong> en ligne recrée l\'expérience apaisante de la pluie directement dans votre navigateur — rendu en Canvas HTML5 avec <strong>intensité de pluie</strong> réglable, vitesse de chute, angle du vent et éclaboussures. Parfait comme <strong>fond de pluie</strong> pour la concentration, <strong>fond d\'écran pluvieux</strong> pour votre bureau ou <strong>économiseur d\'écran de pluie</strong> pour votre TV.',
+          'Personnalisez chaque aspect de l\'<strong>effet de pluie</strong>. Choisissez entre "Gouttes de Pluie Actives" pour une pluie diagonale ou "Gouttes sur Verre" pour un effet de fenêtre. Ajustez la densité (10 à 600 particules), la vitesse et le vent (-6.0 à 6.0). Activez les éclaboussures et les <strong>éclairs d\'ambiance</strong> avec des intervalles de 5 à 60 secondes.',
+          'Complétez avec 8 couleurs esthétiques et plusieurs arrière-plans. Ajoutez des pistes audio de pluie ambiante. Appuyez sur "F" pour le plein écran et "M" pour couper le son. Interface à masquage automatique pour une <strong>pluie relaxante</strong> sans distraction.'
+        ]
+      },
+      de: {
+        heading: 'Regen-Bildschirm Online — Realistische Regen-Atmosphäre für Desktop, Laptop & TV',
+        paragraphs: [
+          'Verwandeln Sie jeden Computerbildschirm in einen faszinierenden <strong>Regen-Bildschirm</strong> mit realistischer <strong>Regen-Animation</strong>. Unser kostenloses Online-<strong>Regen-Ambiente</strong> erschafft das beruhigende Regengefühl direkt in Ihrem Browser — gerendert in Echtzeit auf HTML5 Canvas mit einstellbarer <strong>Regenintensität</strong>, Fallgeschwindigkeit, Windwinkel und Bodenspritzern. Ideal als <strong>Regen-Hintergrund</strong> für Konzentration, <strong>Regen-Wallpaper</strong> für den Desktop oder <strong>Regen-Bildschirmschoner</strong> für den TV.',
+          'Passen Sie jeden Aspekt des <strong>Regeneffekts</strong> an. Wählen Sie zwischen "Aktive Regenstreifen" für diagonalen Regen oder "Regentropfen auf Glas" für einen Fenstereffekt. Stellen Sie Dichte (10 bis 600 Partikel), Geschwindigkeit und Wind (-6.0 bis 6.0) ein. Aktivieren Sie Spritzer und <strong>Umgebungsblitze</strong> mit Intervallen von 5 bis 60 Sekunden.',
+          'Vervollständigen Sie mit 8 ästhetischen Farben und mehreren Hintergrundszenen. Fügen Sie Umgebungs-Regen-Audio hinzu. Drücken Sie "F" für Vollbild und "M" zum Stummschalten. Auto-Ausblend-Schnittstelle für einen <strong>entspannenden Regen</strong> ohne Ablenkungen.'
+        ]
+      },
+      hi: {
+        heading: 'रेन स्क्रीन ऑनलाइन — डेस्कटॉप, लैपटॉप और टीवी के लिए यथार्थवादी बारिश का माहौल',
+        paragraphs: [
+          'किसी भी कंप्यूटर डिस्प्ले, लैपटॉप मॉनिटर, पीसी या स्मार्ट टीवी को यथार्थवादी <strong>बारिश एनिमेशन</strong> के साथ एक मनमोहक <strong>रेन स्क्रीन</strong> में बदलें। हमारा मुफ्त ऑनलाइन <strong>बारिश एम्बिएंस</strong> टूल सीधे आपके ब्राउज़र में बारिश के सुखद अनुभव को फिर से बनाता है — समायोज्य <strong>बारिश तीव्रता</strong>, गिरने की गति, हवा कोण और फर्श के छींटों के साथ।',
+          '<strong>बारिश प्रभाव</strong> के हर पहलू को कस्टमाइज़ करें। विकर्ण बारिश के लिए "एक्टिव रेन स्ट्रीक्स" या खिड़की प्रभाव के लिए "रेनड्रॉप्स ऑन ग्लास" चुनें। घनत्व (10 से 600 कण), गति और हवा (-6.0 से 6.0) समायोजित करें। छींटे और <strong>एम्बिएंट लाइटनिंग</strong> (5 से 60 सेकंड अंतराल) चालू करें।',
+          '8 सौंदर्य रंग प्रीसेट और कई पृष्ठभूमि दृश्यों के साथ माहौल को पूरा करें। एम्बिएंट रेन ऑडियो जोड़ें। "F" दबाकर फुलस्क्रीन और "M" दबाकर म्यूट करें। ऑटो-हाइड इंटरफ़ेस आपके <strong>आरामदायक बारिश</strong> अनुभव को साफ और विचलन मुक्त रखता है।'
+        ]
+      },
+      ja: {
+        heading: '雨の画面（レインスクリーン）オンライン — デスクトップ・ノートPC・TV向けリアルな雨の雰囲気',
+        paragraphs: [
+          'パソコン、ノートPC、モニター、Smart TVの画面を、リアルな<strong>雨のアニメーション</strong>で魅惑的な<strong>雨の画面</strong>に変身させましょう。無料のオンライン<strong>雨の雰囲気</strong>ツールは、ブラウザで直接、調整可能な<strong>雨の強さ</strong>、落下速度、風向き、床の跳ね返りを備えた没入感あふれる雨を再現します。<strong>雨の背景</strong>として集中作業に、<strong>雨の壁紙</strong>としてデスクトップに、<strong>雨のスクリーンセーバー</strong>としてTVに最適です。',
+          '<strong>雨のエフェクト</strong>のあらゆる側面をカスタマイズ。斜めの雨には「アクティブな雨粒」、窓効果には「窓ガラスの雨粒」を選択。密度（10〜600粒子）、速度、風（-6.0〜6.0）を調整。跳ね返りと<strong>環境雷</strong>（5〜60秒間隔）を有効化。',
+          '8つの美しいカラープリセットと複数の背景シーンで完璧な雰囲気に。環境雨のオーディオを追加。「F」キーで全画面、「M」キーでミュート。自動非表示インターフェースで<strong>リラックスできる雨</strong>の体験をクリーンに保ちます。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'snow-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Snow Screen Online — Falling Snow & Winter Ambience for Desktop, Laptop & TV',
+        paragraphs: [
+          'Transform any computer display, laptop monitor, PC, or Smart TV into a mesmerizing <strong>snow screen</strong> with realistic <strong>falling snow</strong> animation. Our free online <strong>snow background</strong> tool recreates the peaceful experience of <strong>snowfall</strong> directly in your browser — rendered with the react-snowfall library for smooth, performant <strong>snow animation</strong> across all devices. Whether you need a festive <strong>Christmas screen</strong> for holiday decoration, a <strong>winter wallpaper</strong> for your desktop, a <strong>snow screensaver</strong> for your TV, or a cozy <strong>winter background</strong> for your study space, this tool delivers a fully customizable <strong>snow display</strong> — no downloads, no installation, no ads.',
+          'Personalize every aspect of the <strong>snowfall effect</strong> with comprehensive controls. Adjust <strong>snowflake count</strong> from a light dusting (20 flakes) to a heavy blizzard (800 flakes) using the snow density slider. Fine-tune <strong>falling speed</strong> with a dual-range slider (0.1 to 8.0) for natural variation, control <strong>wind drift</strong> from -5.0 to 5.0 for sweeping sideways movement, and adjust <strong>flake size</strong> from 0.5 to 15.0 pixels. Toggle <strong>photorealistic snowflake images</strong> mode to display detailed SVG snowflake shapes instead of colored circles — with independent size (5.0 to 50.0 pixels), opacity (10% to 100%), and rotation speed (0x to 4x) controls for the most realistic <strong>virtual snowfall</strong> experience.',
+          'Complete the winter atmosphere with 20 aesthetic color presets — from Pure Snow and Glacier Blue to Aurora Green, Electric Cyan, and Sunset Orange — each casting a unique seasonal mood across your display. Select from multiple winter background scenes including snowy forests and mountain landscapes. Add ambient winter audio soundtracks with volume control, toggle mute with the "M" key, and press "F" for fullscreen immersion across your monitor, laptop, or TV. The auto-hide interface keeps your <strong>winter ambience</strong> experience clean and distraction-free, making this the perfect <strong>digital snowfall</strong> companion for Christmas decoration, holiday parties, cozy reading sessions, meditation, or creating a serene winter atmosphere in any room.'
+        ]
+      },
+      es: {
+        heading: 'Pantalla de Nieve Online — Nieve Cayendo y Ambiente Invernal para Escritorio, Portátil y TV',
+        paragraphs: [
+          'Transforma cualquier pantalla en una <strong>pantalla de nieve</strong> hipnotizante con <strong>nieve cayendo</strong> realista. Nuestra herramienta gratuita de <strong>fondo de nieve</strong> online recrea la experiencia tranquila de una <strong>nevada</strong> directamente en tu navegador. Perfecta como <strong>pantalla navideña</strong> para decoración, <strong>fondo de invierno</strong> para tu escritorio o <strong>salvapantallas de nieve</strong> para tu TV.',
+          'Personaliza cada aspecto del <strong>efecto de nevada</strong>. Ajusta la cantidad de copos (20 a 800), velocidad (0.1 a 8.0), viento (-5.0 a 5.0) y tamaño de copo (0.5 a 15.0). Activa el modo de <strong>imágenes fotorrealistas</strong> para copos SVG detallados con tamaño, opacidad y rotación ajustables.',
+          'Completa con 20 colores estéticos y múltiples fondos invernales. Añade pistas de audio de invierno. Presiona "F" para pantalla completa y "M" para silenciar. La interfaz auto-ocultable mantiene tu <strong>ambiente invernal</strong> limpio y sin distracciones.'
+        ]
+      },
+      pt: {
+        heading: 'Tela de Neve Online — Neve Caindo e Ambiente de Inverno para Desktop, Notebook e TV',
+        paragraphs: [
+          'Transforme qualquer tela em uma <strong>tela de neve</strong> hipnotizante com <strong>neve caindo</strong> realista. Nossa ferramenta gratuita de <strong>fundo de neve</strong> online recria a experiência tranquila de uma <strong>nevasca</strong> diretamente no seu navegador. Perfeita como <strong>tela de Natal</strong> para decoração, <strong>fundo de inverno</strong> para desktop ou <strong>protetor de tela de neve</strong> para TV.',
+          'Personalize cada aspecto do <strong>efeito de neve</strong>. Ajuste a quantidade de flocos (20 a 800), velocidade (0.1 a 8.0), vento (-5.0 a 5.0) e tamanho (0.5 a 15.0). Ative o modo de <strong>imagens fotorrealistas</strong> para flocos SVG detalhados.',
+          'Complete com 20 cores estéticas e múltiplos fundos de inverno. Adicione trilhas de áudio de inverno. Pressione "F" para tela cheia e "M" para silenciar.'
+        ]
+      },
+      fr: {
+        heading: 'Écran de Neige en Ligne — Chute de Neige et Ambiance Hivernale pour PC, Portable et TV',
+        paragraphs: [
+          'Transformez n\'importe quel écran en un <strong>écran de neige</strong> fascinant avec <strong>chute de neige</strong> réaliste. Notre outil gratuit d\'<strong>arrière-plan neigeux</strong> en ligne recrée l\'expérience paisible d\'une <strong>chute de neige</strong> directement dans votre navigateur. Parfait comme <strong>écran de Noël</strong> pour la décoration, <strong>fond d\'hiver</strong> pour votre bureau ou <strong>économiseur d\'écran de neige</strong> pour votre TV.',
+          'Personnalisez chaque aspect de l\'<strong>effet de neige</strong>. Ajustez le nombre de flocons (20 à 800), la vitesse (0.1 à 8.0), le vent (-5.0 à 5.0) et la taille (0.5 à 15.0). Activez le mode <strong>photoréaliste</strong> pour des flocons SVG détaillés.',
+          'Complétez avec 20 couleurs esthétiques et plusieurs arrière-plans hivernaux. Ajoutez des pistes audio d\'hiver. Appuyez sur "F" pour le plein écran et "M" pour couper le son.'
+        ]
+      },
+      de: {
+        heading: 'Schnee-Bildschirm Online — Fallender Schnee & Winter-Atmosphäre für Desktop, Laptop & TV',
+        paragraphs: [
+          'Verwandeln Sie jeden Computerbildschirm in einen faszinierenden <strong>Schnee-Bildschirm</strong> mit realistisch <strong>fallendem Schnee</strong>. Unser kostenloses Online-<strong>Schnee-Hintergrund</strong>-Tool erschafft das friedliche Erlebnis eines <strong>Schneefalls</strong> direkt in Ihrem Browser. Ideal als <strong>Weihnachtsbildschirm</strong> für Dekoration, <strong>Winter-Hintergrund</strong> für den Desktop oder <strong>Schnee-Bildschirmschoner</strong> für den TV.',
+          'Passen Sie jeden Aspekt des <strong>Schneeeffekts</strong> an. Stellen Sie Flockenanzahl (20 bis 800), Geschwindigkeit (0.1 bis 8.0), Wind (-5.0 bis 5.0) und Größe (0.5 bis 15.0) ein. Schalten Sie den <strong>fotorealistischen Modus</strong> für detaillierte SVG-Schneeflocken ein.',
+          'Vervollständigen Sie mit 20 ästhetischen Farben und mehreren Winterhintergrundszenen. Fügen Sie Winter-Ambient-Audio hinzu. Drücken Sie "F" für Vollbild und "M" zum Stummschalten.'
+        ]
+      },
+      hi: {
+        heading: 'स्नो स्क्रीन ऑनलाइन — डेस्कटॉप, लैपटॉप और टीवी के लिए गिरती बर्फ और सर्दियों का माहौल',
+        paragraphs: [
+          'किसी भी कंप्यूटर डिस्प्ले, लैपटॉप मॉनिटर, पीसी या स्मार्ट टीवी को यथार्थवादी <strong>गिरती बर्फ</strong> के साथ एक मनमोहक <strong>स्नो स्क्रीन</strong> में बदलें। हमारा मुफ्त ऑनलाइन <strong>बर्फ पृष्ठभूमि</strong> टूल सीधे आपके ब्राउज़र में <strong>बर्फबारी</strong> के शांतिपूर्ण अनुभव को फिर से बनाता है। त्योहारी सजावट के लिए <strong>क्रिसमस स्क्रीन</strong>, डेस्कटॉप के लिए <strong>विंटर वॉलपेपर</strong> या टीवी के लिए <strong>स्नो स्क्रीनसेवर</strong> के रूप में एकदम सही।',
+          '<strong>बर्फबारी प्रभाव</strong> के हर पहलू को कस्टमाइज़ करें। बर्फ के टुकड़ों की संख्या (20 से 800), गति (0.1 से 8.0), हवा (-5.0 से 5.0) और आकार (0.5 से 15.0) समायोजित करें। विस्तृत SVG बर्फ के टुकड़ों के लिए <strong>फोटोरियलिस्टिक मोड</strong> चालू करें।',
+          '20 सौंदर्य रंग प्रीसेट और कई सर्दियों के पृष्ठभूमि दृश्यों के साथ माहौल को पूरा करें। विंटर ऑडियो जोड़ें। "F" दबाकर फुलस्क्रीन और "M" दबाकर म्यूट करें।'
+        ]
+      },
+      ja: {
+        heading: '雪の画面（スノースクリーン）オンライン — デスクトップ・ノートPC・TV向け冬の雰囲気',
+        paragraphs: [
+          'パソコン、ノートPC、モニター、Smart TVの画面を、リアルな<strong>降雪</strong>で魅惑的な<strong>雪の画面</strong>に変身させましょう。無料のオンライン<strong>雪の背景</strong>ツールは、ブラウザで直接、<strong>降雪</strong>の穏やかな体験を再現します。クリスマスの飾り付けに<strong>クリスマス画面</strong>、デスクトップに<strong>冬の壁紙</strong>、TVに<strong>雪のスクリーンセーバー</strong>として最適です。',
+          '<strong>降雪エフェクト</strong>のあらゆる側面をカスタマイズ。雪の数（20〜800）、速度（0.1〜8.0）、風（-5.0〜5.0）、サイズ（0.5〜15.0）を調整。詳細なSVG雪片には<strong>フォトリアルモード</strong>を有効化。',
+          '20の美しいカラープリセットと複数の冬の背景シーンで完璧な雰囲気に。冬のオーディオを追加。「F」キーで全画面、「M」キーでミュート。'
         ]
       }
     };

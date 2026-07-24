@@ -75,6 +75,33 @@ const customTitles: Partial<Record<string, Partial<Record<Locale, string>>>> = {
     hi: 'एक्वेरियम स्क्रीन ऑनलाइन - डेस्कटॉप और लैपटॉप के लिए मुफ्त वर्चुअल एक्वेरियम',
     ja: 'アクアリウム画面 オンライン - デスクトップ＆ノートPC用無料バーチャルアクアリウム',
   },
+  'matrix-screen': {
+    en: 'Matrix Screen – Online Digital Rain & Customizable Matrix Effect',
+    es: 'Pantalla Matrix Online - Lluvia Digital y Efecto Matrix Personalizable',
+    pt: 'Tela Matrix Online - Chuva Digital e Efeito Matrix Personalizável',
+    fr: 'Écran Matrix en Ligne - Pluie Numérique et Effet Matrix Personnalisable',
+    de: 'Matrix-Bildschirm Online - Digitaler Regen & Anpassbarer Matrix-Effekt',
+    hi: 'मैट्रिक्स स्क्रीन ऑनलाइन - डिजिटल रेन और कस्टमाइज़ेबल मैट्रिक्स इफ़ेक्ट',
+    ja: 'マトリックス画面 オンライン - デジタルレイン＆カスタマイズ可能なマトリックスエフェクト',
+  },
+  'snow-screen': {
+    en: 'Snow Screen – Free Online Falling Snow & Winter Ambience for Desktop & Laptop',
+    es: 'Pantalla de Nieve Online - Nieve Cayendo y Ambiente Invernal para Escritorio y Portátil',
+    pt: 'Tela de Neve Online - Neve Caindo e Ambiente de Inverno para Desktop e Notebook',
+    fr: 'Écran de Neige en Ligne - Chute de Neige et Ambiance Hivernale pour PC et Portable',
+    de: 'Schnee-Bildschirm Online - Fallender Schnee & Winter-Atmosphäre für Desktop & Laptop',
+    hi: 'स्नो स्क्रीन ऑनलाइन - डेस्कटॉप और लैपटॉप के लिए गिरती बर्फ और सर्दियों का माहौल',
+    ja: '雪の画面（スノースクリーン）オンライン - デスクトップ・ノートPC向け冬の雰囲気',
+  },
+  'rain-screen': {
+    en: 'Rain Screen – Free Online Rain Ambience & Rainy Window Effect for Desktop',
+    es: 'Pantalla de Lluvia Online - Ambiente de Lluvia Realista para Escritorio y TV',
+    pt: 'Tela de Chuva Online - Ambiente de Chuva Realista para Desktop e TV',
+    fr: 'Écran de Pluie en Ligne - Ambiance Pluvieuse Réaliste pour PC et TV',
+    de: 'Regen-Bildschirm Online - Realistische Regen-Atmosphäre für Desktop & TV',
+    hi: 'रेन स्क्रीन ऑनलाइन - डेस्कटॉप और टीवी के लिए यथार्थवादी बारिश का माहौल',
+    ja: '雨の画面（レインスクリーン）オンライン - デスクトップ・TV向けリアルな雨の雰囲気',
+  },
 };
 
 const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>>> = {
@@ -122,6 +149,33 @@ const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>
     de: 'Verwandeln Sie jeden Bildschirm in ein kostenloses virtuelles Aquarium mit animierten tropischen Fischen, Blasen und Unterwasser-Atmosphäre. Vollbild-Aquarium-Hintergrund für Desktop, Laptop, Monitor und TV.',
     hi: 'किसी भी स्क्रीन को एनिमेटेड उष्णकटिबंधीय मछली, बुलबुले और पानी के नीचे के माहौल के साथ मुफ्त ऑनलाइन वर्चुअल एक्वेरियम में बदलें। डेस्कटॉप, लैपटॉप, मॉनिटर और टीवी के लिए फुलस्क्रीन एक्वेरियम बैकग्राउंड।',
     ja: 'アニメーションの熱帯魚、泡、水中の雰囲気を備えた無料のオンラインバーチャルアクアリウムにどんな画面でも変身。デスクトップ、ノートPC、モニター、TV向けの全画面アクアリウム背景。ダウンロード不要。',
+  },
+  'matrix-screen': {
+    en: 'Customize an online Matrix screen with falling digital rain, neon glow colors, cyberpunk audio drones, and custom name text. Fullscreen Matrix effect for desktop, laptop, monitor, and TV — no install required.',
+    es: 'Personaliza una pantalla Matrix online con lluvia digital, colores neón, drones de audio cyberpunk y texto personalizado. Efecto Matrix a pantalla completa para escritorio, portátil, monitor y TV.',
+    pt: 'Personalize uma tela Matrix online com chuva digital caindo, cores neon, drones de áudio cyberpunk e texto personalizado. Efeito Matrix em tela cheia para desktop, notebook, monitor e TV.',
+    fr: 'Personnalisez un écran Matrix en ligne avec pluie numérique, lueurs néon, drones audio cyberpunk et texte personnalisé. Effet Matrix plein écran pour PC, portable, moniteur et TV.',
+    de: 'Passen Sie einen Online-Matrix-Bildschirm mit digitalem Regen, Neon-Glow-Farben, Cyberpunk-Audio-Drones und benutzerdefiniertem Text an. Vollbild-Matrix-Effekt für Desktop, Laptop, Monitor und TV.',
+    hi: 'डिजिटल रेन, नियॉन ग्लो रंग, साइबरपंक ऑडियो ड्रोन और कस्टम टेक्स्ट के साथ ऑनलाइन मैट्रिक्स स्क्रीन को कस्टमाइज़ करें। डेस्कटॉप, लैपटॉप, मॉनिटर और टीवी के लिए फुलस्क्रीन मैट्रिक्स इफ़ेक्ट।',
+    ja: 'デジタルレイン、ネオンカラー、サイバーパンクオーディオ、カスタムテキストでオンラインマトリックス画面をカスタマイズ。デスクトップ、ノートPC、モニター、TV向けの全画面マトリックスエフェクト。インストール不要。',
+  },
+  'snow-screen': {
+    en: 'Turn any screen into a free online snow screen with customizable snowfall, photorealistic snowflakes, wind drift, 20 color presets, and ambient audio. Fullscreen winter ambience for desktop, laptop, monitor, and TV — no download needed.',
+    es: 'Convierte cualquier pantalla en una pantalla de nieve online gratis con nevadas personalizables, copos fotorrealistas, viento, 20 colores y audio ambiente. Ambiente invernal a pantalla completa para escritorio, portátil, monitor y TV.',
+    pt: 'Transforme qualquer tela em uma tela de neve online grátis com nevascas personalizáveis, flocos fotorrealistas, vento, 20 cores e áudio ambiente. Ambiente de inverno em tela cheia para desktop, notebook, monitor e TV.',
+    fr: 'Transformez n\'importe quel écran en un écran de neige en ligne gratuit avec chutes de neige personnalisables, flocons photoréalistes, vent, 20 couleurs et audio d\'ambiance. Ambiance hivernale plein écran pour PC, portable, moniteur et TV.',
+    de: 'Verwandeln Sie jeden Bildschirm in einen kostenlosen Online-Schneebildschirm mit anpassbarem Schneefall, fotorealistischen Flocken, Wind, 20 Farben und Ambient-Audio. Vollbild-Winteratmosphäre für Desktop, Laptop, Monitor und TV.',
+    hi: 'किसी भी स्क्रीन को अनुकूलन योग्य बर्फबारी, फोटोरियलिस्टिक स्नोफ्लेक्स, हवा, 20 रंग प्रीसेट और एम्बिएंट ऑडियो के साथ मुफ्त ऑनलाइन स्नो स्क्रीन में बदलें। डेस्कटॉप, लैपटॉप, मॉनिटर और टीवी के लिए फुलस्क्रीन विंटर एम्बिएंस।',
+    ja: 'カスタマイズ可能な降雪、フォトリアルな雪片、風、20色のカラープリセット、環境音を備えた無料のオンライン雪の画面にどんな画面でも変身。デスクトップ、ノートPC、モニター、TV向けの全画面冬の雰囲気。ダウンロード不要。',
+  },
+  'rain-screen': {
+    en: 'Turn any screen into a free online rain screen with realistic rain streaks, raindrops on glass, adjustable wind, ambient lightning, and 8 color presets. Fullscreen rain ambience for desktop, laptop, monitor, and TV — no download needed.',
+    es: 'Convierte cualquier pantalla en una pantalla de lluvia online gratis con gotas realistas, lluvia sobre vidrio, viento ajustable, relámpagos ambientales y 8 colores. Ambiente de lluvia a pantalla completa para escritorio, portátil, monitor y TV.',
+    pt: 'Transforme qualquer tela em uma tela de chuva online grátis com gotas realistas, chuva no vidro, vento ajustável, relâmpagos ambiente e 8 cores. Ambiente de chuva em tela cheia para desktop, notebook, monitor e TV.',
+    fr: 'Transformez n\'importe quel écran en un écran de pluie en ligne gratuit avec des gouttes réalistes, de la pluie sur verre, du vent réglable, des éclairs d\'ambiance et 8 couleurs. Ambiance pluvieuse plein écran pour PC, portable, moniteur et TV.',
+    de: 'Verwandeln Sie jeden Bildschirm in einen kostenlosen Online-Regenbildschirm mit realistischen Regentropfen, Regen auf Glas, einstellbarem Wind, Umgebungsblitzen und 8 Farben. Vollbild-Regenatmosphäre für Desktop, Laptop, Monitor und TV.',
+    hi: 'किसी भी स्क्रीन को यथार्थवादी बारिश की बूंदों, कांच पर बारिश, समायोज्य हवा, एम्बिएंट लाइटनिंग और 8 रंगों के साथ मुफ्त ऑनलाइन रेन स्क्रीन में बदलें। डेस्कटॉप, लैपटॉप, मॉनिटर और टीवी के लिए फुलस्क्रीन रेन एम्बिएंस।',
+    ja: 'リアルな雨粒、窓ガラスの雨、調整可能な風、環境雷、8色のカラープリセットを備えた無料のオンライン雨画面にどんな画面でも変身。デスクトップ、ノートPC、モニター、TV向けの全画面雨の雰囲気。ダウンロード不要。',
   },
 };
 
