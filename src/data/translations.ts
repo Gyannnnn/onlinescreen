@@ -600,6 +600,7 @@ const toolNames: Record<string, Partial<Record<Locale, string>>> = {
   'clock-screen': { es: 'Reloj Flip', pt: 'Relógio Flip', fr: 'Horloge à Volets', de: 'Klipp-Klapp-Uhr', hi: 'फ्लिप घड़ी', ja: 'フリップ時計' },
   'rgb-screen': { es: 'Pantalla RGB', pt: 'Tela RGB', fr: 'Écran RGB', de: 'RGB-Bildschirm', hi: 'आरजीबी स्क्रीन', ja: 'RGB画面' },
   'hex-screen': { es: 'Pantalla HEX', pt: 'Tela HEX', fr: 'Écran HEX', de: 'HEX-Bildschirm', hi: 'हेक्स स्क्रीन', ja: 'HEX画面' },
+  'aquarium-screen': { es: 'Pantalla de Acuario', pt: 'Tela de Aquário', fr: 'Écran d\'Aquarium', de: 'Aquarium-Bildschirm', hi: 'एक्वेरियम स्क्रीन', ja: 'アクアリウム画面' },
 };
 
 const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
@@ -670,6 +671,14 @@ const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
     de: 'Ein interaktiver Matrix-Coderegen-Bildschirmschoner mit anpassbarer Geschwindigkeit, leuchtenden Cyberpunk-Farben und eigenem Text oder Namen.',
     hi: 'एक इंटरैक्टिव मैट्रिक्स कोड रेन स्क्रीन सेवर जिसमें अनुकूलन योग्य गति, नियॉन ग्लो रंग और कस्टम टेक्स्ट या नाम का समर्थन है।',
     ja: '速度、サイバーパンクのグローカラー、カスタムテキストや名前をカスタマイズできる、インタラクティブなマトリックス・コードレイン・スクリーンセーバー。',
+  },
+  'aquarium-screen': {
+    es: 'Un acuario virtual online en pantalla completa con peces tropicales animados, burbujas y ambiente submarino relajante para escritorio, portátil, monitor y TV.',
+    pt: 'Um aquário virtual online em tela cheia com peixes tropicais animados, bolhas e ambiente subaquático relaxante para desktop, notebook, monitor e TV.',
+    fr: 'Un aquarium virtuel en ligne plein écran avec des poissons tropicaux animés, des bulles et une ambiance sous-marine relaxante pour PC, portable, moniteur et TV.',
+    de: 'Ein virtuelles Aquarium online im Vollbildmodus mit animierten tropischen Fischen, Blasen und entspannender Unterwasser-Atmosphäre für Desktop, Laptop, Monitor und TV.',
+    hi: 'एनिमेटेड उष्णकटिबंधीय मछली, बुलबुले और आरामदेह पानी के नीचे के माहौल के साथ डेस्कटॉप, लैपटॉप, मॉनिटर और टीवी के लिए एक फुलस्क्रीन ऑनलाइन वर्चुअल एक्वेरियम।',
+    ja: 'デスクトップ、ノートPC、モニター、TV向けの、アニメーションの熱帯魚、泡、リラックスできる水中の雰囲気を備えた全画面オンラインバーチャルアクアリウム。',
   },
   'clock-screen': {
     es: 'Un salvapantallas de reloj flip estético y minimalista con soporte para formato de 12/24 horas, temas premium (OLED, cristal) y un temporizador Pomodoro integrado.',
@@ -3617,6 +3626,194 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
         answer: 'はい！常時表示のアンビエントスクリーンセーバーとして最適です。また、15分・30分・60分・90分のスリープタイマー機能も備わっています。'
       }
     ]
+  },
+  'aquarium-screen': {
+    en: [
+      {
+        question: 'What is an online aquarium screen?',
+        answer: 'An online aquarium screen is a browser-based virtual aquarium that runs in full screen on your desktop, laptop, monitor, or TV. It displays animated tropical fish, rising bubbles, swaying seaweed, and underwater light effects to create a relaxing aquatic ambience — no downloads, software, or fish tank maintenance required.'
+      },
+      {
+        question: 'How do I use this virtual aquarium on my desktop or laptop?',
+        answer: 'Simply open the page in your browser, click the Fullscreen button or press the "F" key on your keyboard. The aquarium will fill your entire screen with swimming fish and underwater motion. Use the settings panel (press Space) to adjust fish count, swim speed, background color, and sound.'
+      },
+      {
+        question: 'Can I display this aquarium on my TV?',
+        answer: 'Yes. Open the aquarium screen page in your Smart TV browser, laptop connected to your TV via HDMI, or any streaming device with a web browser. Press "F" for full screen and enjoy a living aquarium backdrop on your television without any special hardware.'
+      },
+      {
+        question: 'Is the aquarium screen free? Do I need to download anything?',
+        answer: 'Yes, it is completely free. No downloads, extensions, or account sign-ups are required. It runs instantly in any modern web browser on Windows, macOS, Linux, ChromeOS, iOS, Android, and Smart TVs.'
+      },
+      {
+        question: 'Can I use this as a screensaver alternative?',
+        answer: 'Absolutely. The aquarium screen works perfectly as an always-on ambient display or screensaver alternative. Leave it running on a secondary monitor, idle desktop, or TV to create a calming underwater environment.'
+      },
+      {
+        question: 'Does the aquarium have sound effects?',
+        answer: 'Yes. It features an optional ocean ambient drone and bubble pop synth sounds, plus support for custom uploaded background music tracks. You can adjust volume or mute all audio from the settings panel.'
+      },
+      {
+        question: 'Can I customize the aquarium appearance?',
+        answer: 'Yes. The settings panel lets you choose from 4 water color themes (Lagoon Turquoise, Deep Sea Reef, Abyssal Zone, Coral Sunset), adjust fish count from 3 to 26, change swim speed, and add overlay modes like a clock, breathing guide, or Pomodoro timer.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Qué es una pantalla de acuario online?',
+        answer: 'Una pantalla de acuario online es un acuario virtual basado en navegador que se ejecuta a pantalla completa en tu escritorio, portátil, monitor o TV. Muestra peces tropicales animados, burbujas, algas marinas y efectos de luz submarina para crear un ambiente acuático relajante, sin descargas ni mantenimiento.'
+      },
+      {
+        question: '¿Cómo uso este acuario virtual en mi ordenador o portátil?',
+        answer: 'Abre la página en tu navegador, haz clic en el botón de Pantalla Completa o presiona la tecla "F". El acuario llenará toda tu pantalla con peces nadando. Usa el panel de ajustes (tecla Espacio) para cambiar el número de peces, velocidad, color de fondo y sonido.'
+      },
+      {
+        question: '¿Puedo mostrar este acuario en mi televisor?',
+        answer: 'Sí. Abre la página en el navegador de tu Smart TV, o conecta tu portátil al TV por HDMI y ponlo a pantalla completa con la tecla "F" para disfrutar de un fondo de acuario en tu televisor.'
+      },
+      {
+        question: '¿Es gratis? ¿Necesito descargar algo?',
+        answer: 'Sí, es completamente gratis. No requiere descargas, extensiones ni registro. Funciona al instante en cualquier navegador moderno en Windows, macOS, Linux, iOS, Android y Smart TV.'
+      },
+      {
+        question: '¿Puedo usarlo como alternativa a un salvapantallas?',
+        answer: 'Por supuesto. Funciona perfectamente como pantalla ambiental o salvapantallas. Déjalo corriendo en un monitor secundario, escritorio inactivo o TV para crear un entorno submarino relajante.'
+      },
+      {
+        question: '¿Tiene efectos de sonido?',
+        answer: 'Sí. Incluye un drone oceánico ambiental opcional y burbujas sintéticas, además de soporte para canciones de fondo personalizadas. Puedes ajustar el volumen desde el panel de configuración.'
+      }
+    ],
+    pt: [
+      {
+        question: 'O que é uma tela de aquário online?',
+        answer: 'Uma tela de aquário online é um aquário virtual baseado em navegador que funciona em tela cheia no seu desktop, notebook, monitor ou TV. Exibe peixes tropicais animados, bolhas, algas marinhas e efeitos de luz subaquática para criar um ambiente aquático relaxante — sem downloads ou manutenção.'
+      },
+      {
+        question: 'Como usar este aquário virtual no meu computador ou notebook?',
+        answer: 'Abra a página no navegador, clique no botão Tela Cheia ou pressione a tecla "F". O aquário preencherá toda a tela com peixes nadando. Use o painel de configurações (tecla Espaço) para ajustar número de peixes, velocidade, cor de fundo e som.'
+      },
+      {
+        question: 'Posso exibir este aquário na minha TV?',
+        answer: 'Sim. Abra a página no navegador da sua Smart TV ou conecte o notebook na TV via HDMI e ative o modo tela cheia com a tecla "F" para um fundo de aquário na televisão.'
+      },
+      {
+        question: 'É grátis? Preciso baixar algo?',
+        answer: 'Sim, é completamente grátis. Não requer downloads, extensões ou cadastro. Funciona instantaneamente em qualquer navegador moderno no Windows, macOS, Linux, iOS, Android e Smart TVs.'
+      },
+      {
+        question: 'Posso usar como alternativa a um protetor de tela?',
+        answer: 'Com certeza. Funciona perfeitamente como display ambiental ou protetor de tela. Deixe rodando em um monitor secundário, desktop inativo ou TV para criar um ambiente subaquático relaxante.'
+      },
+      {
+        question: 'Tem efeitos sonoros?',
+        answer: 'Sim. Inclui um drone oceânico ambiente opcional e sons de bolhas, além de suporte para músicas de fundo personalizadas. Você pode ajustar o volume no painel de configurações.'
+      }
+    ],
+    fr: [
+      {
+        question: 'Qu\'est-ce qu\'un écran d\'aquarium en ligne ?',
+        answer: 'Un écran d\'aquarium en ligne est un aquarium virtuel dans votre navigateur qui fonctionne en plein écran sur votre PC, portable, moniteur ou TV. Il affiche des poissons tropicaux animés, des bulles, des algues et des effets de lumière sous-marine pour créer une ambiance aquatique relaxante — sans téléchargement ni entretien.'
+      },
+      {
+        question: 'Comment utiliser cet aquarium virtuel sur mon ordinateur ou portable ?',
+        answer: 'Ouvrez la page dans votre navigateur, cliquez sur le bouton Plein écran ou appuyez sur la touche "F". L\'aquarium remplira tout votre écran de poissons. Utilisez le panneau de réglages (touche Espace) pour modifier le nombre de poissons, la vitesse, la couleur de fond et le son.'
+      },
+      {
+        question: 'Puis-je afficher cet aquarium sur ma TV ?',
+        answer: 'Oui. Ouvrez la page dans le navigateur de votre Smart TV ou connectez votre PC à la TV par HDMI, puis appuyez sur "F" pour profiter d\'un fond d\'aquarium sur votre téléviseur.'
+      },
+      {
+        question: 'Est-ce gratuit ? Dois-je télécharger quelque chose ?',
+        answer: 'Oui, c\'est entièrement gratuit. Aucun téléchargement, extension ou inscription requis. Ça fonctionne instantanément dans tout navigateur moderne sur Windows, macOS, Linux, iOS, Android et Smart TV.'
+      },
+      {
+        question: 'Puis-je l\'utiliser comme économiseur d\'écran ?',
+        answer: 'Absolument. L\'écran d\'aquarium fonctionne parfaitement comme affichage d\'ambiance ou économiseur d\'écran. Laissez-le tourner sur un moniteur secondaire, un bureau inactif ou une TV pour créer un environnement sous-marin apaisant.'
+      },
+      {
+        question: 'Y a-t-il des effets sonores ?',
+        answer: 'Oui. Il propose un drone océanique d\'ambiance optionnel et des sons de bulles, ainsi que la prise en charge de musiques de fond personnalisées. Vous pouvez régler le volume depuis le panneau de configuration.'
+      }
+    ],
+    de: [
+      {
+        question: 'Was ist ein Online-Aquarium-Bildschirm?',
+        answer: 'Ein Online-Aquarium-Bildschirm ist ein browserbasiertes virtuelles Aquarium, das im Vollbildmodus auf Ihrem Desktop, Laptop, Monitor oder TV läuft. Es zeigt animierte tropische Fische, aufsteigende Blasen, Seetang und Unterwasserlichteffekte — ohne Downloads oder Aquarienpflege.'
+      },
+      {
+        question: 'Wie benutze ich dieses virtuelle Aquarium auf meinem Computer oder Laptop?',
+        answer: 'Öffnen Sie die Seite im Browser, klicken Sie auf den Vollbild-Button oder drücken Sie die Taste "F". Das Aquarium füllt den gesamten Bildschirm mit schwimmenden Fischen. Nutzen Sie das Einstellungs-Panel (Leertaste) für Fischanzahl, Geschwindigkeit, Hintergrundfarbe und Sound.'
+      },
+      {
+        question: 'Kann ich dieses Aquarium auf meinem Fernseher anzeigen?',
+        answer: 'Ja. Öffnen Sie die Seite im Browser Ihres Smart TVs oder verbinden Sie Ihren Laptop per HDMI mit dem TV und drücken Sie "F" für das Vollbild-Aquarium.'
+      },
+      {
+        question: 'Ist es kostenlos? Muss ich etwas herunterladen?',
+        answer: 'Ja, es ist völlig kostenlos. Keine Downloads, Erweiterungen oder Anmeldungen erforderlich. Es läuft sofort in jedem modernen Browser unter Windows, macOS, Linux, iOS, Android und Smart TV.'
+      },
+      {
+        question: 'Kann ich es als Bildschirmschoner-Alternative nutzen?',
+        answer: 'Absolut. Der Aquarium-Bildschirm eignet sich perfekt als Daueranzeige oder Bildschirmschoner. Lassen Sie ihn auf einem Zweitmonitor, inaktiven Desktop oder TV laufen für eine beruhigende Unterwasser-Atmosphäre.'
+      },
+      {
+        question: 'Hat es Soundeffekte?',
+        answer: 'Ja. Es bietet einen optionalen Ozean-Ambient-Drone und Blasen-Synth-Sounds sowie Unterstützung für benutzerdefinierte Hintergrundmusik. Die Lautstärke lässt sich im Einstellungs-Panel regeln.'
+      }
+    ],
+    hi: [
+      {
+        question: 'ऑनलाइन एक्वेरियम स्क्रीन क्या है?',
+        answer: 'एक ऑनलाइन एक्वेरियम स्क्रीन एक ब्राउज़र-आधारित वर्चुअल एक्वेरियम है जो आपके डेस्कटॉप, लैपटॉप, मॉनिटर या टीवी पर फुलस्क्रीन चलता है। यह एनिमेटेड उष्णकटिबंधीय मछली, बुलबुले, समुद्री शैवाल और पानी के नीचे प्रकाश प्रभाव प्रदर्शित करता है — बिना डाउनलोड या मेंटेनेंस के।'
+      },
+      {
+        question: 'मैं इस वर्चुअल एक्वेरियम को अपने कंप्यूटर या लैपटॉप पर कैसे उपयोग करूं?',
+        answer: 'पेज को अपने ब्राउज़र में खोलें, फुलस्क्रीन बटन पर क्लिक करें या कीबोर्ड पर "F" दबाएं। एक्वेरियम आपकी पूरी स्क्रीन को तैरती मछलियों से भर देगा। सेटिंग्स पैनल (स्पेस बार) का उपयोग करके मछलियों की संख्या, गति, पृष्ठभूमि रंग और ध्वनि बदलें।'
+      },
+      {
+        question: 'क्या मैं यह एक्वेरियम अपने टीवी पर दिखा सकता हूं?',
+        answer: 'हां। अपने स्मार्ट टीवी ब्राउज़र में पेज खोलें या लैपटॉप को HDMI के माध्यम से टीवी से कनेक्ट करें और फुलस्क्रीन के लिए "F" दबाएं।'
+      },
+      {
+        question: 'क्या यह मुफ्त है? क्या मुझे कुछ डाउनलोड करने की आवश्यकता है?',
+        answer: 'हां, यह पूरी तरह से मुफ्त है। किसी डाउनलोड, एक्सटेंशन या अकाउंट की आवश्यकता नहीं है। यह Windows, macOS, Linux, iOS, Android और स्मार्ट टीवी पर तुरंत चलता है।'
+      },
+      {
+        question: 'क्या मैं इसे स्क्रीनसेवर के रूप में उपयोग कर सकता हूं?',
+        answer: 'बिल्कुल। एक्वेरियम स्क्रीन एक ऑलवेज-ऑन एम्बिएंट डिस्प्ले या स्क्रीनसेवर के रूप में एकदम सही काम करती है। इसे सेकेंडरी मॉनिटर, निष्क्रिय डेस्कटॉप या टीवी पर चलाएं।'
+      },
+      {
+        question: 'क्या इसमें ध्वनि प्रभाव हैं?',
+        answer: 'हां। इसमें वैकल्पिक समुद्री एम्बिएंट ड्रोन और बुलबुले की आवाज़ें हैं, साथ ही कस्टम बैकग्राउंड संगीत का समर्थन भी है। आप सेटिंग्स पैनल से वॉल्यूम समायोजित कर सकते हैं।'
+      }
+    ],
+    ja: [
+      {
+        question: 'オンラインアクアリウム画面とは何ですか？',
+        answer: 'オンラインアクアリウム画面は、デスクトップ、ノートPC、モニター、TVで全画面表示できるブラウザベースのバーチャルアクアリウムです。アニメーションの熱帯魚、泡、海藻、水中の光の効果を表示し、リラックスできる水辺の雰囲気を演出します。ダウンロードや水槽のメンテナンスは不要です。'
+      },
+      {
+        question: 'パソコンやノートPCでこのバーチャルアクアリウムを使うには？',
+        answer: 'ブラウザでページを開き、全画面ボタンをクリックするかキーボードの「F」キーを押すだけです。アクアリウムが画面全体に広がり、魚が泳ぎます。設定パネル（スペースキー）で魚の数、泳ぐ速度、背景色、サウンドを調整できます。'
+      },
+      {
+        question: 'このアクアリウムをテレビに表示できますか？',
+        answer: 'はい。Smart TVのブラウザでページを開くか、ノートPCをHDMIでテレビに接続し、「F」キーで全画面表示にすると、テレビでアクアリウム背景をお楽しみいただけます。'
+      },
+      {
+        question: '無料ですか？ダウンロードは必要ですか？',
+        answer: 'はい、完全に無料です。ダウンロード、拡張機能、アカウント登録は一切不要です。Windows、macOS、Linux、iOS、Android、Smart TVの最新ブラウザですぐに動作します。'
+      },
+      {
+        question: 'スクリーンセーバーの代わりに使えますか？',
+        answer: 'もちろん。アクアリウム画面は常時表示のアンビエントディスプレイやスクリーンセーバーとして最適です。セカンドモニターや待機中のデスクトップ、テレビで実行して、落ち着く水中環境を演出してください。'
+      },
+      {
+        question: 'サウンドエフェクトはありますか？',
+        answer: 'はい。オプションの海洋アンビエントドローン音や泡のシンセ音、さらにカスタムBGMのアップロードに対応しています。音量は設定パネルから調整可能です。'
+      }
+    ]
   }
 };
 
@@ -3775,6 +3972,68 @@ export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-s
           'パソコンのモニター、ノートPC、Smart TVの画面を、温かみのある<strong>オンラインバーチャル暖炉画面</strong>に変身させましょう。リアルな炎のアニメーションと心地よい空間演出を、広告や重いダウンロードなしで全画面表示できます。',
           '調節可能な<strong>薪のパチパチ音</strong>（クラックル音）で、読書、勉強、仕事、睡眠に最適なリラックス空間を演出します。通常の<strong>暖炉スクリーンセーバー</strong>の代わりとして、冬やクリスマスのインテリア、カフェやオフィスの環境映像、YouTubeの焚き火動画の代替として人気です。',
           'キーボードの「F」キーで即座にフルスクリーンに切り替え可能。クラシックオレンジ、ブルー、エメラルド、バイオレットの4つの炎のカラーテーマ切り替えや、15分〜90分のスリープタイマーにも対応しています。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
+  if (toolId === 'aquarium-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Online Aquarium Screen — Free Virtual Aquarium for Desktop & Laptop',
+        paragraphs: [
+          'Transform any computer display, laptop monitor, PC, or Smart TV into a stunning <strong>online aquarium screen</strong>. Our free <strong>virtual aquarium</strong> brings the tranquility of an underwater world to your screen with animated tropical fish, rising bubbles, swaying seaweed, and mesmerizing light effects. Whether you need a relaxing <strong>aquarium background</strong> for your desktop while working, a captivating <strong>fish screen</strong> for your living room TV, or a calming <strong>aquarium screensaver</strong> alternative for your laptop, this tool provides an instant, browser-based solution — no downloads or fish tank maintenance required.',
+          'Studies have shown that watching fish in an aquarium reduces stress and improves mood. Our <strong>digital aquarium</strong> delivers these therapeutic benefits without the cost, cleaning, or care of a real tank. Use it as a <strong>relaxing aquarium</strong> for meditation breaks, a soothing <strong>ambient aquarium</strong> backdrop for video calls, or a <strong>fullscreen aquarium</strong> display for waiting rooms, cafés, and office lobbies. The gentle motion of swimming fish creates a calming atmosphere that enhances focus, reduces anxiety, and beautifies any room.',
+          'Designed for seamless performance across all devices, this <strong>animated aquarium</strong> lets you customize your underwater experience. Choose from 4 water color themes — Lagoon Turquoise, Deep Sea Reef, Abyssal Zone, and Coral Sunset. Adjust fish count from 3 to 26, control swim speed, toggle ambient ocean sounds and bubble effects, or upload your own background music. Press Fullscreen or the "F" key to project a full-screen <strong>aquarium display</strong> across your monitor, laptop, or TV for an immersive, calming underwater experience anytime.'
+        ]
+      },
+      es: {
+        heading: 'Pantalla de Acuario Online — Acuario Virtual Gratis para Escritorio y Portátil',
+        paragraphs: [
+          'Transforma cualquier pantalla de ordenador, portátil, monitor o Smart TV en una impresionante <strong>pantalla de acuario online</strong>. Nuestro <strong>acuario virtual</strong> gratuito lleva la tranquilidad del mundo submarino a tu pantalla con peces tropicales animados, burbujas, algas marinas y fascinantes efectos de luz. Ya sea que necesites un <strong>fondo de acuario</strong> relajante para tu escritorio, una cautivadora <strong>pantalla de peces</strong> para tu TV o un <strong>salvapantallas de acuario</strong> para tu portátil, esta herramienta ofrece una solución instantánea en el navegador.',
+          'Los estudios demuestran que ver peces en un acuario reduce el estrés y mejora el estado de ánimo. Nuestro <strong>acuario digital</strong> ofrece estos beneficios terapéuticos sin el costo ni mantenimiento de un tanque real. Úsalo como <strong>acuario relajante</strong> para descansos de meditación, como fondo de <strong>acuario ambiental</strong> para videollamadas, o como <strong>acuario a pantalla completa</strong> en salas de espera, cafés y oficinas.',
+          'Personaliza tu experiencia submarina con 4 temas de color (Turquesa Laguna, Arrecife Profundo, Zona Abisal y Atardecer de Coral). Ajusta el número de peces, la velocidad de nado, activa sonidos oceánicos ambientales o sube tu propia música de fondo. Presiona "F" para proyectar un <strong>acuario en pantalla completa</strong> en tu monitor, portátil o televisor.'
+        ]
+      },
+      pt: {
+        heading: 'Tela de Aquário Online — Aquário Virtual Grátis para Desktop e Notebook',
+        paragraphs: [
+          'Transforme qualquer tela de computador, notebook, monitor ou Smart TV em um impressionante <strong>aquário online</strong>. Nosso <strong>aquário virtual</strong> gratuito leva a tranquilidade do mundo subaquático para sua tela com peixes tropicais animados, bolhas, algas marinhas e efeitos de luz. Seja para um <strong>fundo de aquário</strong> relaxante no escritório, uma <strong>tela de peixes</strong> para sua TV ou um <strong>protetor de tela de aquário</strong> para seu notebook, esta ferramenta oferece uma solução instantânea no navegador.',
+          'Pesquisas comprovam que observar peixes em um aquário reduz o estresse. Nosso <strong>aquário digital</strong> oferece esses benefícios terapêuticos sem custo ou manutenção. Use como <strong>aquário relaxante</strong> para pausas de meditação, <strong>aquário ambiente</strong> para videochamadas, ou <strong>aquário em tela cheia</strong> em salas de espera e cafés.',
+          'Personalize com 4 temas de cor (Turquesa da Lagoa, Recife Profundo, Zona Abissal e Pôr do Sol Coral). Ajuste a quantidade de peixes, velocidade, sons oceânicos ou adicione sua própria música. Pressione "F" para um <strong>aquário em tela cheia</strong> no seu monitor, notebook ou TV.'
+        ]
+      },
+      fr: {
+        heading: 'Écran d\'Aquarium en Ligne — Aquarium Virtuel Gratuit pour PC et Portable',
+        paragraphs: [
+          'Transformez n\'importe quel écran d\'ordinateur, portable, moniteur ou Smart TV en un superbe <strong>écran d\'aquarium en ligne</strong>. Notre <strong>aquarium virtuel</strong> gratuit apporte la tranquillité du monde sous-marin à votre écran avec des poissons tropicaux animés, des bulles, des algues et des effets de lumière captivants. Fond d\'<strong>aquarium relaxant</strong> pour le bureau, <strong>écran à poissons</strong> pour votre TV ou <strong>économiseur d\'écran aquarium</strong> pour votre portable, cet outil fonctionne instantanément dans votre navigateur.',
+          'Notre <strong>aquarium numérique</strong> offre des bienfaits thérapeutiques sans entretien. Utilisez-le comme <strong>aquarium apaisant</strong> pour la méditation, <strong>aquarium d\'ambiance</strong> pour vos visioconférences, ou <strong>aquarium plein écran</strong> dans les salles d\'attente et cafés.',
+          'Personnalisez avec 4 thèmes de couleur (Lagon Turquoise, Récif Profond, Zone Abyssale, Coucher de Corail). Ajustez le nombre de poissons, la vitesse, activez les sons océaniques ou ajoutez votre propre musique. Appuyez sur "F" pour un <strong>aquarium plein écran</strong> sur votre moniteur, portable ou TV.'
+        ]
+      },
+      de: {
+        heading: 'Aquarium-Bildschirm Online — Kostenloses Virtuelles Aquarium für Desktop & Laptop',
+        paragraphs: [
+          'Verwandeln Sie jeden Computerbildschirm, Laptop, Monitor oder Smart TV in einen atemberaubenden <strong>Aquarium-Bildschirm online</strong>. Unser kostenloses <strong>virtuelles Aquarium</strong> bringt die Ruhe der Unterwasserwelt auf Ihren Bildschirm mit animierten tropischen Fischen, Blasen, Seetang und faszinierenden Lichteffekten. Ob als entspannender <strong>Aquarium-Hintergrund</strong> für den Schreibtisch, fesselnder <strong>Fischbildschirm</strong> für den TV oder <strong>Aquarium-Bildschirmschoner</strong> für den Laptop.',
+          'Unser <strong>digitales Aquarium</strong> bietet therapeutische Vorteile ohne Kosten oder Pflege. Nutzen Sie es als <strong>entspannendes Aquarium</strong> für Meditationspausen, <strong>Ambient-Aquarium</strong> für Videokonferenzen oder <strong>Vollbild-Aquarium</strong> in Wartezimmern und Cafés.',
+          'Wählen Sie aus 4 Farbthemen (Lagunen-Türkis, Tiefsee-Riff, Abyssal-Zone, Korallen-Sonnenuntergang). Passen Sie Fischzahl, Schwimmgeschwindigkeit und Sound an. Drücken Sie "F" für ein <strong>Vollbild-Aquarium</strong> auf Monitor, Laptop oder TV.'
+        ]
+      },
+      hi: {
+        heading: 'ऑनलाइन एक्वेरियम स्क्रीन — डेस्कटॉप और लैपटॉप के लिए मुफ्त वर्चुअल एक्वेरियम',
+        paragraphs: [
+          'किसी भी कंप्यूटर डिस्प्ले, लैपटॉप मॉनिटर, पीसी या स्मार्ट टीवी को एक शानदार <strong>ऑनलाइन एक्वेरियम स्क्रीन</strong> में बदलें। हमारा मुफ्त <strong>वर्चुअल एक्वेरियम</strong> एनिमेटेड उष्णकटिबंधीय मछली, बुलबुले और मंत्रमुग्ध करने वाले प्रकाश प्रभावों के साथ पानी के नीचे की दुनिया की शांति को आपकी स्क्रीन पर लाता है।',
+          'हमारा <strong>डिजिटल एक्वेरियम</strong> बिना किसी लागत या रखरखाव के चिकित्सीय लाभ प्रदान करता है। इसका उपयोग ध्यान के लिए <strong>आरामदेह एक्वेरियम</strong>, वीडियो कॉल के लिए <strong>एम्बिएंट एक्वेरियम</strong>, या प्रतीक्षालय और कैफे में <strong>फुलस्क्रीन एक्वेरियम</strong> के रूप में करें।',
+          '4 रंग थीम (लैगून फ़िरोज़ा, डीप सी रीफ, एबिसल ज़ोन, कोरल सनसेट) में से चुनें। मछलियों की संख्या, तैरने की गति और ध्वनि को समायोजित करें। फुलस्क्रीन के लिए "F" दबाएं।'
+        ]
+      },
+      ja: {
+        heading: 'オンラインアクアリウム画面 — デスクトップ・ノートPC向け無料バーチャルアクアリウム',
+        paragraphs: [
+          'パソコン、ノートPC、モニター、Smart TVの画面を、美しい<strong>オンラインアクアリウム画面</strong>に変身させましょう。アニメーションの熱帯魚、泡、海藻、魅惑的な水中照明効果で、水の世界の静けさをあなたの画面にお届けします。デスク用のリラックスできる<strong>アクアリウム背景</strong>、リビングのTV用の<strong>魚の画面</strong>、ノートPC用の<strong>アクアリウムスクリーンセーバー</strong>として最適です。',
+          '魚の鑑賞がストレスを軽減し気分を向上させることは研究で実証されています。この<strong>デジタルアクアリウム</strong>は、本物の水槽のコストや手入れなしで治療効果を提供します。瞑想休憩用の<strong>リラックスアクアリウム</strong>、ビデオ通話用の<strong>アンビエントアクアリウム</strong>、待合室やカフェでの<strong>全画面アクアリウム</strong>表示としてご活用ください。',
+          'ラグーンティール、深海礁、アビサルゾーン、コーラルサンセットの4つの水中カラーテーマから選択可能。魚の数（3〜26匹）、泳ぐ速度、海中サウンドを調整し、お好みのBGMをアップロードすることもできます。「F」キーを押せばモニターやTVで<strong>全画面アクアリウム</strong>をお楽しみいただけます。'
         ]
       }
     };

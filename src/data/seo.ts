@@ -66,6 +66,15 @@ const customTitles: Partial<Record<string, Partial<Record<Locale, string>>>> = {
     hi: 'फायरप्लेस स्क्रीन ऑनलाइन - डेस्कटॉप और टीवी के लिए वर्चुअल फायरप्लेस',
     ja: '暖炉の画面 オンライン - デスクトップ＆TV用バーチャル暖炉全画面',
   },
+  'aquarium-screen': {
+    en: 'Aquarium Screen – Free Online Virtual Aquarium for Desktop & Laptop',
+    es: 'Pantalla de Acuario Online - Acuario Virtual Gratis para Escritorio y Portátil',
+    pt: 'Tela de Aquário Online - Aquário Virtual Grátis para Desktop e Notebook',
+    fr: 'Écran d\'Aquarium en Ligne - Aquarium Virtuel Gratuit pour PC et Portable',
+    de: 'Aquarium-Bildschirm Online - Kostenloses Virtuelles Aquarium für Desktop & Laptop',
+    hi: 'एक्वेरियम स्क्रीन ऑनलाइन - डेस्कटॉप और लैपटॉप के लिए मुफ्त वर्चुअल एक्वेरियम',
+    ja: 'アクアリウム画面 オンライン - デスクトップ＆ノートPC用無料バーチャルアクアリウム',
+  },
 };
 
 const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>>> = {
@@ -104,6 +113,15 @@ const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>
     de: 'Verwandeln Sie jeden Bildschirm in ein gemütliches virtuelles Kaminfeuer. Vollbild-Kaminfeuer mit Knistergeräuschen, Timer und Flammenfarben für Laptop, Monitor und TV.',
     hi: 'किसी भी स्क्रीन को आरामदायक ऑनलाइन वर्चुअल फायरप्लेस में बदलें। डेस्कटॉप, लैपटॉप और टीवी के लिए जलती आग की आवाज़ और टाइमर के साथ फुलस्क्रीन फायरप्लेस बैकग्राउंड।',
     ja: 'あらゆる画面を心地よいオンラインバーチャル暖炉に変身。デスクトップ、ノートPC、TV向けの全画面暖炉背景、焚き火サウンド、スリープタイマー搭載。',
+  },
+  'aquarium-screen': {
+    en: 'Turn any screen into a free online virtual aquarium with animated tropical fish, bubbles, and underwater ambience. Fullscreen aquarium background for desktop, laptop, monitor, and TV — no download needed.',
+    es: 'Convierte cualquier pantalla en un acuario virtual online gratis con peces tropicales animados, burbujas y ambiente submarino. Fondo de acuario a pantalla completa para escritorio, portátil, monitor y TV.',
+    pt: 'Transforme qualquer tela em um aquário virtual online grátis com peixes tropicais animados, bolhas e ambiente subaquático. Fundo de aquário em tela cheia para desktop, notebook, monitor e TV.',
+    fr: 'Transformez n\'importe quel écran en un aquarium virtuel en ligne gratuit avec des poissons tropicaux animés, des bulles et une ambiance sous-marine. Fond d\'aquarium plein écran pour PC, portable, moniteur et TV.',
+    de: 'Verwandeln Sie jeden Bildschirm in ein kostenloses virtuelles Aquarium mit animierten tropischen Fischen, Blasen und Unterwasser-Atmosphäre. Vollbild-Aquarium-Hintergrund für Desktop, Laptop, Monitor und TV.',
+    hi: 'किसी भी स्क्रीन को एनिमेटेड उष्णकटिबंधीय मछली, बुलबुले और पानी के नीचे के माहौल के साथ मुफ्त ऑनलाइन वर्चुअल एक्वेरियम में बदलें। डेस्कटॉप, लैपटॉप, मॉनिटर और टीवी के लिए फुलस्क्रीन एक्वेरियम बैकग्राउंड।',
+    ja: 'アニメーションの熱帯魚、泡、水中の雰囲気を備えた無料のオンラインバーチャルアクアリウムにどんな画面でも変身。デスクトップ、ノートPC、モニター、TV向けの全画面アクアリウム背景。ダウンロード不要。',
   },
 };
 
