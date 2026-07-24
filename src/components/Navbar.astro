@@ -195,10 +195,10 @@ const searchData = tools.map(tool => ({
     const target = select.value;
     const slugMap = select.dataset.slugMap ? JSON.parse(select.dataset.slugMap) : {};
     const currentSlug = select.dataset.currentSlug ?? '';
-    if (currentSlug && target !== 'en' && slugMap[target]) {
-      location.href = localePrefixes[target] + '/' + slugMap[target] + '/';
-    } else if (currentSlug && target === 'en') {
-      location.href = '/' + currentSlug + '/';
+    if (currentSlug) {
+      const slug = (target !== 'en' && slugMap[target]) ? slugMap[target] : currentSlug;
+      const prefix = localePrefixes[target] ?? '';
+      location.href = prefix + '/' + slug + '/';
     } else {
       location.href = localePrefixes[target] || '/';
     }

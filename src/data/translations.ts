@@ -3429,6 +3429,194 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
         answer: 'はい。ダウンロード方向（横長、縦長、正方形、お使いの端末サイズ）を選択し「ダウンロード」をクリックすると、指定したHEXコードの高品質なPNG壁紙画像を保存できます Japan'
       }
     ]
+  },
+  'fireplace-screen': {
+    en: [
+      {
+        question: 'What is an online fireplace screen?',
+        answer: 'An online fireplace screen is a web-based ambient tool that renders a realistic virtual fireplace on your monitor, desktop, laptop, PC, or Smart TV. Unlike physical metal or glass fireplace screen guards, it turns your digital display into a glowing hearth complete with smooth flame visuals, warm ambient lighting, and crackling fire audio.'
+      },
+      {
+        question: 'Why use a virtual fireplace screen on desktop, laptop, or TV?',
+        answer: 'A virtual fireplace creates an instant cozy room atmosphere without real smoke, fire hazards, or maintenance. It is ideal for relaxing after work, background ambience while studying or reading, sleeping, holiday decor (Christmas, Thanksgiving, winter), or creating an inviting ambiance in offices, cafés, and waiting rooms.'
+      },
+      {
+        question: 'How do I open this fireplace screen in full screen mode?',
+        answer: 'Click the "Fullscreen" button in the control toolbar or press the "F" shortcut key on your keyboard. This removes browser tabs, bookmark bars, and interface elements to deliver a full-screen ambient fireplace background.'
+      },
+      {
+        question: 'Does this online fireplace screen include real crackling audio?',
+        answer: 'Yes. It features customizable crackling fire sound effects with an adjustable volume slider. You can turn the sound on or off, adjust crackle intensity, or even layer rain sound effects for the ultimate cozy ambient backdrop.'
+      },
+      {
+        question: 'Do I need to download an app or sign up to use this digital fireplace?',
+        answer: 'No downloads, browser extensions, or account sign-ups are required. Free Online Screen is a lightweight, static-first web utility that runs instantly in any web browser on Windows, macOS, Linux, ChromeOS, iOS, Android, and Smart TV browsers.'
+      },
+      {
+        question: 'Can I use this fireplace screen as a screensaver alternative?',
+        answer: 'Yes! It functions as an ideal always-on ambient screen saver alternative for idle desktop monitors, laptop screens, or room televisions. You can also configure the built-in sleep timer (15, 30, 60, or 90 minutes) to automatically stop audio when falling asleep.'
+      },
+      {
+        question: 'Can I change the flame colors and intensity?',
+        answer: 'Yes. The settings drawer allows you to select from multiple flame visual styles—including Classic Orange, Blue Mystic, Emerald Wood, and Violet Phantom—as well as adjust flame size and crackle level to match your room lighting and mood.'
+      }
+    ],
+    es: [
+      {
+        question: '¿Qué es una pantalla de chimenea virtual en línea?',
+        answer: 'Una pantalla de chimenea en línea es una aplicación web ambiental que muestra una chimenea virtual realista en tu monitor, escritorio, portátil, PC o Smart TV. A diferencia de las pantallas físicas de metal o cristal para chimeneas de obra, convierte tu pantalla digital en un hogar cálido con animación de llamas y sonido de fuego crepitante.'
+      },
+      {
+        question: '¿Por qué usar una chimenea virtual en el ordenador o televisor?',
+        answer: 'Una chimenea virtual crea al instante una atmósfera acogedora sin humo, calor peligroso ni mantenimiento. Es perfecta para relajarse tras el trabajo, como fondo de concentración para estudiar o leer, para dormir, como decoración en invierno/Navidad o para ambientar oficinas, cafeterías y salas de espera.'
+      },
+      {
+        question: '¿Cómo abro la chimenea a pantalla completa?',
+        answer: 'Haz clic en el botón "Pantalla completa" de la barra de control o presiona la tecla de acceso rápido "F" en tu teclado. Esto oculta las pestañas del navegador para ofrecer un fondo de chimenea envolvente a pantalla completa.'
+      },
+      {
+        question: '¿Incluye sonido real de fuego crepitante?',
+        answer: 'Sí. Dispone de un efecto de sonido de chisporroteo de leña personalizable con control de volumen. Puedes activar o desactivar el sonido, ajustar la intensidad del fuego e incluso añadir lluvia suave de fondo.'
+      },
+      {
+        question: '¿Necesito descargar alguna aplicación o registrarme?',
+        answer: 'No requiere descargas, extensiones ni registro de usuario. Funciona de manera instantánea en cualquier navegador web en Windows, Mac, Linux, Smart TV, iOS y Android.'
+      },
+      {
+        question: '¿Se puede usar como alternativa a un salvapantallas?',
+        answer: '¡Sí! Funciona como un excelente protector de pantalla ambiental para monitores y televisores. Además, incluye un temporizador de apagado (15, 30, 60 o 90 minutos) ideal para ir a dormir.'
+      }
+    ],
+    pt: [
+      {
+        question: 'O que é uma tela de lareira virtual online?',
+        answer: 'Uma tela de lareira online é uma aplicação web de ambiente que exibe uma lareira virtual realista no seu monitor, desktop, notebook, PC ou Smart TV. Diferente de telas físicas de metal para lareiras de alvenaria, ela transforma qualquer display em uma fogueira aconchegante com som de estalados de madeira e chamas quentes.'
+      },
+      {
+        question: 'Por que usar uma lareira virtual no computador ou TV?',
+        answer: 'Uma lareira virtual cria uma atmosfera acolhedora instantânea sem fumaça ou riscos de incêndio. É perfeita para relaxar no fim do dia, fundo ambientado para estudo e leitura, momentos de descanso, decoração de inverno e Natal, ou para salas de espera e escritórios.'
+      },
+      {
+        question: 'Como colocar a lareira em tela cheia?',
+        answer: 'Clique no botão "Tela Cheia" ou pressione a tecla atalho "F" no teclado. Isso remove barras do navegador e exibe a lareira em toda a tela.'
+      },
+      {
+        question: 'Inclui som real de fogueira estalando?',
+        answer: 'Sim, possui áudio de madeira estalando ajustável com controle de volume. Você pode ligar/desligar o som, alterar a intensidade do fogo e ajustar o volume conforme seu ambiente.'
+      },
+      {
+        question: 'Preciso baixar aplicativo ou fazer cadastro?',
+        answer: 'Não é necessário nenhum download ou cadastro. Funciona instantaneamente em qualquer navegador moderno de computador, celular ou Smart TV.'
+      },
+      {
+        question: 'Posso usar como protetor de tela (screensaver)?',
+        answer: 'Sim! É uma alternativa perfeita a protetores de tela convencionais para monitores ociosos e conta com um timer de desligamento (15, 30, 60 ou 90 minutos).'
+      }
+    ],
+    fr: [
+      {
+        question: 'Qu\'est-ce qu\'un écran de cheminée virtuelle en ligne ?',
+        answer: 'Un écran de cheminée en ligne est une application web d\'ambiance qui affiche une cheminée virtuelle réaliste sur votre moniteur, ordinateur, portable ou Smart TV. Contrairement aux pare-feu physiques en métal ou verre, il transforme votre écran en un foyer chaleureux avec animation de flammes et son de bois qui crépite.'
+      },
+      {
+        question: 'Pourquoi utiliser une cheminée virtuelle sur PC ou TV ?',
+        answer: 'Une cheminée virtuelle crée une atmosphère chaleureuse sans fumée ni entretien. Elle est idéale pour se détendre après le travail, comme fond sonore et visuel pour étudier ou lire, pour s\'endormir, pour les décorations d\'hiver et de Noël, ou pour habiller un bureau ou une salle d\'attente.'
+      },
+      {
+        question: 'Comment passer la cheminée en plein écran ?',
+        answer: 'Cliquez sur le bouton "Plein écran" ou appuyez sur la touche "F" du clavier pour masquer les barres du navigateur et profiter d\'un fond de cheminée immersif.'
+      },
+      {
+        question: 'Y a-t-il un véritable son de feu de bois qui crépite ?',
+        answer: 'Oui, l\'outil intègre un effet sonore de crépitement de feu avec curseur de volume réglable. Vous pouvez activer/désactiver le son et ajuster la couleur des flammes (Orange classique, Bleu mystique, Émeraude, Violet).'
+      },
+      {
+        question: 'Faut-il télécharger un logiciel ou créer un compte ?',
+        answer: 'Aucun téléchargement ni inscription n\'est nécessaire. L\'application s\'exécute instantanément dans votre navigateur web sur Windows, Mac, Linux, iOS, Android et Smart TV.'
+      },
+      {
+        question: 'Peut-on l\'utiliser comme économiseur d\'écran ?',
+        answer: 'Oui ! C\'est une excellente alternative d\'économiseur d\'écran d\'ambiance avec minuteur de sommeil réglable (15, 30, 60 ou 90 minutes).'
+      }
+    ],
+    de: [
+      {
+        question: 'Was ist ein virtueller Kaminfeuer-Bildschirm online?',
+        answer: 'Ein online Kaminfeuer-Bildschirm ist eine Web-Anwendung, die ein realistisches virtuelles Kaminfeuer auf Ihrem Monitor, Desktop, Laptop oder Smart TV anzeigt. Anders als physische Funkenschutzgitter aus Metall oder Glas verwandelt dieser digitale Kamin Ihren Bildschirm in eine gemütliche Feuerstelle mit Flammenanimationen und Knistergeräuschen.'
+      },
+      {
+        question: 'Warum sollte man ein virtuelles Kaminfeuer auf PC oder TV nutzen?',
+        answer: 'Ein virtuelles Kaminfeuer schafft eine gemütliche Raumatmosphäre ohne Rauch oder Brandgefahr. Ideal zum Entspannen nach der Arbeit, als Hintergrund zum Lernen oder Lesen, als Schlafhilfe, für die Weihnachts- und Winterzeit oder zur Raumgestaltung in Büros und Cafés.'
+      },
+      {
+        question: 'Wie öffne ich das Kaminfeuer im Vollbildmodus?',
+        answer: 'Klicken Sie auf die Schaltfläche "Vollbild" oder drücken Sie die Taste "F" auf Ihrer Tastatur, um Browserleisten auszublenden und das Kaminfeuer im Vollbild zu genießen.'
+      },
+      {
+        question: 'Gibt es echte Kaminfeuer-Knistergeräusche?',
+        answer: 'Ja, die Seite enthält anpassbare Knistergeräusche mit Lautstärkeregler. Sie können den Ton ein- oder ausschalten, Flammenfarben anpassen und sogar sanften Regen hinzufügen.'
+      },
+      {
+        question: 'Muss ich eine App herunterladen oder mich registrieren?',
+        answer: 'Keine Downloads oder Registrierungen erforderlich. Die Web-App läuft sofort in allen gängigen Webbrowsern auf Windows, Mac, Linux, iOS, Android und Smart TV.'
+      },
+      {
+        question: 'Kann ich diesen Kamin-Bildschirm als Bildschirmschoner nutzen?',
+        answer: 'Ja! Er eignet sich hervorragend als Bildschirmschoner-Alternative und verfügt über einen integrierten Sleep-Timer (15, 30, 60 oder 90 Minuten).'
+      }
+    ],
+    hi: [
+      {
+        question: 'ऑनलाइन वर्चुअल फायरप्लेस स्क्रीन क्या है?',
+        answer: 'एक ऑनलाइन फायरप्लेस स्क्रीन एक वेब-आधारित ऐप है जो आपके मॉनिटर, डेस्कटॉप, लैपटॉप या स्मार्ट टीवी पर एक यथार्थवादी वर्चुअल फायरप्लेस प्रदर्शित करता है। यह भौतिक लोहे या कांच के फायरप्लेस गार्ड से अलग है और आपकी स्क्रीन को जलती आग और लकड़ी की आवाज वाले आरामदायक वातावरण में बदल देता है।'
+      },
+      {
+        question: 'डेस्कटॉप या टीवी पर वर्चुअल फायरप्लेस का उपयोग क्यों करें?',
+        answer: 'एक वर्चुअल फायरप्लेस बिना किसी धुएं या आग के खतरे के कमरे में आरामदायक माहौल बनाता है। यह काम के बाद आराम करने, पढ़ाई के दौरान बैकग्राउंड म्यूजिक/एम्बिएंस, सोने, सर्दियों और दिवाली/क्रिसमस की सजावट, या कार्यालयों और कैफे के लिए एकदम सही है।'
+      },
+      {
+        question: 'मैं इसे फुलस्क्रीन मोड में कैसे खोलूं?',
+        answer: 'कंट्रोल बार पर "फुलस्क्रीन" बटन पर क्लिक करें या अपने कीबोर्ड पर "F" बटन दबाएं। यह ब्राउज़र बार को हटा देता है और एक सहज फुलस्क्रीन फायरप्लेस अनुभव प्रदान करता है।'
+      },
+      {
+        question: 'क्या इसमें आग जलने और चटकने की असली आवाज़ शामिल है?',
+        answer: 'हां, इसमें वॉल्यूम नियंत्रण के साथ लकड़ी चटकने की वास्तविक ध्वनि शामिल है। आप ध्वनि चालू या बंद कर सकते हैं और आग की लपटों के रंग चुन सकते हैं।'
+      },
+      {
+        question: 'क्या मुझे कोई ऐप डाउनलोड या साइन अप करने की आवश्यकता है?',
+        answer: 'कोई डाउनलोड या अकाउंट की आवश्यकता नहीं है। फ्री ऑनलाइन स्क्रीन किसी भी वेब ब्राउज़र (विंडोज, मैक, लिनक्स, आईओएस, एंड्रॉइड, टीवी) पर तुरंत चलती है।'
+      },
+      {
+        question: 'क्या मैं इसे स्क्रीनसेवर के रूप में उपयोग कर सकता हूं?',
+        answer: 'हां! यह एक बेहतरीन स्क्रीनसेवर विकल्प के रूप में काम करता है और इसमें 15, 30, 60 या 90 मिनट का स्लीप टाइमर भी है।'
+      }
+    ],
+    ja: [
+      {
+        question: 'オンラインバーチャル暖炉画面とは何ですか？',
+        answer: 'オンライン暖炉画面は、PC、ノートPC、モニター、Smart TVにリアルなバーチャル暖炉を表示するWebアプリです。物理的な暖炉用スクリーン（金網やガラスカバー）とは異なり、デジタル画面を薪の焚き火の音と炎のアニメーションで温かみのある空間に変身させます。'
+      },
+      {
+        question: 'デスクトップやTVでバーチャル暖炉を使う理由は？',
+        answer: '煙や火災の心配なく、瞬時に心地よい空間演出が可能です。仕事後のリラックスタイム、勉強や読書の背景BGM・映像、睡眠前の癒やし、冬やクリスマスシーズンのインテリア、カフェやオフィスの環境映像に最適です。'
+      },
+      {
+        question: '全画面表示（フルスクリーン）にするには？',
+        answer: 'コントロールバーの「全画面」ボタンをクリックするか、キーボードの「F」キーを押すと、ブラウザのヘッダーが隠れ、画面全体が焚き火の暖炉になります。'
+      },
+      {
+        question: '本物の薪がはぜるサウンド（音）は含まれていますか？',
+        answer: 'はい。音量調整が可能な薪のパチパチ音（クラックル音）を搭載しています。音のON/OFF切り替えや、炎のカラーテーマ（クラシックオレンジ、ブルー、エメラルド、バイオレット）の変更も自由自在です。'
+      },
+      {
+        question: 'アプリのダウンロードや会員登録は必要ですか？',
+        answer: 'ダウンロードも会員登録も一切不要です。Windows、Mac、Linux、iOS、Android、Smart TVなどの主要ブラウザで即座に動作します。'
+      },
+      {
+        question: 'スクリーンセーバーの代わりに使えますか？',
+        answer: 'はい！常時表示のアンビエントスクリーンセーバーとして最適です。また、15分・30分・60分・90分のスリープタイマー機能も備わっています。'
+      }
+    ]
   }
 };
 
@@ -3531,6 +3719,68 @@ export function getRelatedSearches(locale: Locale): string[] {
 }
 
 export function getBlogKeywordsContent(locale: Locale, toolId: string = 'white-screen'): { heading: string; paragraphs: string[] } {
+  if (toolId === 'fireplace-screen') {
+    const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
+      en: {
+        heading: 'Online Virtual Fireplace Screen for Desktop, Laptop & TV Ambience',
+        paragraphs: [
+          'Transform any computer display, laptop monitor, PC, or Smart TV into an immersive online <strong>fireplace screen</strong>. Our <strong>virtual fireplace</strong> provides realistic flame animations, soft ambient illumination, and cozy <strong>fireplace video</strong> warmth without ads, heavy streaming buffering, or unwanted visual distractions. Whether you want a relaxing <strong>fireplace screensaver</strong> alternative while working at your desk, a glowing <strong>digital fireplace</strong> backdrop for your living room TV, or a <strong>cozy fireplace screen</strong> for winter evenings, this tool offers an instant web-based solution.',
+          'Enjoy authentic ambient sound with our customizable <strong>crackling fireplace</strong> audio controller. Fine-tune the crackle intensity and volume to create a peaceful focus environment for studying, reading, coding, or sleeping. The <strong>fireplace ambience</strong> is also a popular choice for holiday decor (Christmas, winter gatherings), offices, cafés, waiting rooms, and video creators seeking a clean YouTube ambient replacement without video interruptions or battery-draining app downloads.',
+          'Designed for seamless performance on all devices, this interactive <strong>fireplace on screen</strong> lets you switch between 4 unique flame color styles—Classic Orange, Blue Mystic, Emerald Wood, and Violet Phantom. Adjust screen brightness, toggle soft rain overlays, or set a 15-to-90-minute sleep timer. Press Fullscreen or the "F" shortcut key to project a full-screen <strong>ambient fireplace</strong> across your monitor for an instant, comfortable hearth experience anytime.'
+        ]
+      },
+      es: {
+        heading: 'Pantalla de Chimenea Virtual Online para Escritorio, Portátil y TV',
+        paragraphs: [
+          'Transforma cualquier pantalla de ordenador, portátil, monitor o Smart TV en una acogedora <strong>pantalla de chimenea</strong> en línea. Nuestra <strong>chimenea virtual</strong> ofrece una animación de llamas realista, iluminación cálida de fondo y ambiente de <strong>chimenea en pantalla completa</strong> sin anuncios, descargas pesadas ni interrupciones de reproducción.',
+          'Disfruta de un ambiente de relax absoluto con nuestro sonido de <strong>chimenea crepitante</strong> personalizable. Ajusta el volumen del chisporroteo de la leña para crear el entorno perfecto para estudiar, trabajar, leer o dormir. Es una alternativa ideal al clásico <strong>salvapantallas de chimenea</strong> para ordenadores, decoración en Navidad e invierno, o para ambientar cafeterías, oficinas y salones.',
+          'Diseñada para ofrecer el máximo rendimiento en todos los dispositivos, esta <strong>chimenea digital</strong> te permite personalizar el color del fuego (naranja clásico, azul místico, esmeralda y violeta), regular el brillo de la pantalla y activar un temporizador de apagado automático de 15 a 90 minutos presionando la tecla "F".'
+        ]
+      },
+      pt: {
+        heading: 'Tela de Lareira Virtual Online para Desktop, Notebook e Smart TV',
+        paragraphs: [
+          'Transforme qualquer tela de computador, notebook, monitor ou Smart TV em uma acolhedora <strong>tela de lareira</strong> online. Nossa <strong>lareira virtual</strong> oferece animação realista de chamas, iluminação ambiente quente e um fundo de lareira aconchegante sem anúncios ou downloads pesados.',
+          'Aproveite o som de <strong>fogueira estalando</strong> com controle de volume ajustável. Crie o ambiente perfeito para focar nos estudos, trabalhar, ler ou dormir. Esta <strong>lareira digital</strong> é a escolha perfeita para substituição de protetor de tela, decoração de inverno e Natal, ou para criar um clima relaxante em escritórios, cafés e salas de estar.',
+          'Com suporte completo a tela cheia, personalize os tons do fogo (Laranja Clássico, Azul Místico, Verde Esmeralda e Violeta), ajuste o brilho do monitor e configure o timer de desligamento automático de 15 a 90 minutos com o atalho de teclado "F".'
+        ]
+      },
+      fr: {
+        heading: 'Écran de Cheminée Virtuelle en Ligne pour PC, Portable et TV',
+        paragraphs: [
+          'Transformez n\'importe quel écran d\'ordinateur, portable, moniteur ou Smart TV en un <strong>écran de cheminée</strong> virtuelle en ligne. Notre outil offre des animations de flammes réalistes, un éclairage d\'ambiance chaleureux et un fond de cheminée apaisant sans publicités ni téléchargements.',
+          'Profitez d\'un son de <strong>crépitement de feu</strong> de bois authentique avec réglage du volume. Créez un environnement calme pour étudier, travailler, lire ou vous endormir. Cet <strong>économiseur d\'écran cheminée</strong> est parfait pour les soirées d\'hiver, la décoration de Noël, ou pour installer une ambiance cosy dans un bureau, un café ou un salon.',
+          'Passez en plein écran d\'une simple pression sur la touche "F", choisissez parmi 4 styles de couleurs de flammes (Orange classique, Bleu mystique, Émeraude, Violet) et utilisez le minuteur de sommeil (15 à 90 minutes).'
+        ]
+      },
+      de: {
+        heading: 'Virtueller Kaminfeuer-Bildschirm Online für Desktop, Laptop & TV',
+        paragraphs: [
+          'Verwandeln Sie jeden Computerbildschirm, Laptop, Monitor oder Smart TV in einen gemütlichen <strong>Kaminfeuer-Bildschirm</strong> online. Unser <strong>virtuelles Kaminfeuer</strong> bietet ein realistisches Flammenbild, warme Hintergrundbeleuchtung und ein entspannendes Kaminfeuer auf dem Bildschirm ohne Werbung oder Downloads.',
+          'Genießen Sie authentische <strong>Kaminfeuer-Knistergeräusche</strong> mit anpassbarem Lautstärkeregler. Schaffen Sie die ideale Atmosphäre zum Lernen, Arbeiten, Lesen oder Einschlafen. Eine perfekte Alternative zum klassischen <strong>Kamin-Bildschirmschoner</strong>, für die Winter- und Weihnachtszeit oder zur stimmungsvollen Beleuchtung in Wohnzimmern und Büros.',
+          'Schalten Sie mit der Taste "F" in den Vollbildmodus, wählen Sie aus 4 Flammenfarben (Klassisch Orange, Mystisches Blau, Smaragdgrün, Violett) und nutzen Sie den integrierten Sleep-Timer (15 bis 90 Minuten).'
+        ]
+      },
+      hi: {
+        heading: 'डेस्कटॉप, लैपटॉप और टीवी के लिए ऑनलाइन वर्चुअल फायरप्लेस स्क्रीन',
+        paragraphs: [
+          'अपने कंप्यूटर, लैपटॉप, मॉनिटर या स्मार्ट टीवी को एक सुंदर <strong>ऑनलाइन फायरप्लेस स्क्रीन</strong> में बदलें। हमारा <strong>वर्चुअल फायरप्लेस</strong> वास्तविक आग की लपटों का दृश्य, हल्की गर्म रोशनी और बिना किसी विज्ञापन या भारी डाउनलोड के आरामदायक <strong>फायरप्लेस बैकग्राउंड</strong> प्रदान करता है।',
+          'आग जलने और <strong>लकड़ी चटकने की असली आवाज़</strong> के साथ शांतिपूर्ण माहौल का आनंद लें। पढ़ाई करने, काम करने, पढ़ने या सोने के लिए आदर्श वातावरण बनाएं। यह <strong>स्क्रीनसेवर</strong> का एक बेहतरीन विकल्प है, जो सर्दियों, क्रिसमस, कार्यालयों, कैफे और रहने वाले कमरे के लिए एकदम सही है।',
+          'कीबोर्ड शॉर्टकट "F" दबाकर फुलस्क्रीन मोड चालू करें, आग के 4 रंगों (क्लासिक ऑरेंज, ब्लू, ग्रीन, वायलेट) में से चुनें और 15 से 90 मिनट का स्लीप टाइमर सेट करें।'
+        ]
+      },
+      ja: {
+        heading: 'デスクトップ・ノートPC・TV用オンラインバーチャル暖炉画面',
+        paragraphs: [
+          'パソコンのモニター、ノートPC、Smart TVの画面を、温かみのある<strong>オンラインバーチャル暖炉画面</strong>に変身させましょう。リアルな炎のアニメーションと心地よい空間演出を、広告や重いダウンロードなしで全画面表示できます。',
+          '調節可能な<strong>薪のパチパチ音</strong>（クラックル音）で、読書、勉強、仕事、睡眠に最適なリラックス空間を演出します。通常の<strong>暖炉スクリーンセーバー</strong>の代わりとして、冬やクリスマスのインテリア、カフェやオフィスの環境映像、YouTubeの焚き火動画の代替として人気です。',
+          'キーボードの「F」キーで即座にフルスクリーンに切り替え可能。クラシックオレンジ、ブルー、エメラルド、バイオレットの4つの炎のカラーテーマ切り替えや、15分〜90分のスリープタイマーにも対応しています。'
+        ]
+      }
+    };
+    return content[locale] ?? content.en;
+  }
+
   if (toolId === 'red-screen') {
     const content: Record<Locale, { heading: string; paragraphs: string[] }> = {
       en: {
