@@ -12,7 +12,7 @@ const { tool, locale } = Astro.props;
 const useCases = tool.useCases.join(', ');
 const controls = tool.controls.join(', ');
 const name = toolName(locale, tool);
-const blog = (tool.id === 'white-screen' || tool.id === 'black-screen' || tool.id === 'green-screen' || tool.id === 'blue-screen' || tool.id === 'red-screen' || tool.id === 'orange-screen' || tool.id === 'yellow-screen' || tool.id === 'purple-screen' || tool.id === 'pink-screen' || tool.id === 'cyan-screen' || tool.id === 'brown-screen' || tool.id === 'grey-screen' || tool.id === 'custom-color-screen' || tool.id === 'gradient-screen' || tool.id === 'rgb-screen' || tool.id === 'hex-screen') ? getBlogKeywordsContent(locale, tool.id) : null;
+const blog = (tool.id === 'white-screen' || tool.id === 'black-screen' || tool.id === 'green-screen' || tool.id === 'blue-screen' || tool.id === 'red-screen' || tool.id === 'orange-screen' || tool.id === 'yellow-screen' || tool.id === 'purple-screen' || tool.id === 'pink-screen' || tool.id === 'cyan-screen' || tool.id === 'brown-screen' || tool.id === 'grey-screen' || tool.id === 'custom-color-screen' || tool.id === 'gradient-screen' || tool.id === 'rgb-screen' || tool.id === 'hex-screen' || tool.id === 'fireplace-screen') ? getBlogKeywordsContent(locale, tool.id) : null;
 ---
 
 <article class="site-shell rich-article max-w-3xl py-16">
@@ -52,18 +52,32 @@ const blog = (tool.id === 'white-screen' || tool.id === 'black-screen' || tool.i
     motion preferences for motion-heavy effects, because a screen saver or prank page should not become uncomfortable for users who prefer a
     calmer interface.
   </p>
-  <h2>Display testing notes.</h2>
-  <p>
-    If you are using {name.toLowerCase()} to inspect a device, clean the glass first and check in stable lighting. Dust, fingerprints,
-    reflections, and screen protectors can look like panel defects. View the screen straight on, then from shallow angles. Some issues only show
-    in one position. For pixel checks, compare multiple solid colors. A pixel that disappears on black but appears on red may be a stuck subpixel
-    rather than a completely dead pixel.
-  </p>
-  <p>
-    Browser tools are useful for discovery and documentation, but they are not lab instruments. A color value shown by the page is exact in the
-    code, while the emitted light depends on the display, brightness curve, panel technology, operating-system color management, browser behavior,
-    and ambient light. For professional color-critical work, pair this utility with calibrated hardware and a color-managed workflow.
-  </p>
+  {tool.kind === 'saver' ? (
+    <>
+      <h2>Ambient setup and room atmosphere.</h2>
+      <p>
+        When using {name.toLowerCase()} for room decoration, focus sessions, evening relaxation, or holiday warmth, position your display at eye level or mount your Smart TV on a wall to emulate a natural hearth fireplace. Lowering room overhead lights enhances the ambient orange and red glow projected by the display onto surrounding surfaces.
+      </p>
+      <p>
+        Fine-tune the crackling fire audio volume to complement your environment. Pair it with soft background lo-fi music, cozy lighting, a warm beverage, or quiet reading to build the ultimate soothing atmosphere in any home, apartment, office, coffee shop, studio, or waiting room.
+      </p>
+    </>
+  ) : (
+    <>
+      <h2>Display testing notes.</h2>
+      <p>
+        If you are using {name.toLowerCase()} to inspect a device, clean the glass first and check in stable lighting. Dust, fingerprints,
+        reflections, and screen protectors can look like panel defects. View the screen straight on, then from shallow angles. Some issues only show
+        in one position. For pixel checks, compare multiple solid colors. A pixel that disappears on black but appears on red may be a stuck subpixel
+        rather than a completely dead pixel.
+      </p>
+      <p>
+        Browser tools are useful for discovery and documentation, but they are not lab instruments. A color value shown by the page is exact in the
+        code, while the emitted light depends on the display, brightness curve, panel technology, operating-system color management, browser behavior,
+        and ambient light. For professional color-critical work, pair this utility with calibrated hardware and a color-managed workflow.
+      </p>
+    </>
+  )}
   <h2>Why this page is built differently.</h2>
   <p>
     Many screen utility sites treat every page as a keyword container. Free Online Screen is structured as a product: consistent navigation,

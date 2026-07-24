@@ -57,6 +57,15 @@ const customTitles: Partial<Record<string, Partial<Record<Locale, string>>>> = {
     hi: 'हेक्स स्क्रीन ऑनलाइन - फुलस्क्रीन कलर कोड प्रीव्यू और पैलेट टूल',
     ja: 'HEX画面 オンライン - 全画面カラーコードプレビュー＆パレットツール',
   },
+  'fireplace-screen': {
+    en: 'Fireplace Screen – Online Virtual Fireplace for Desktop, TV & Laptop',
+    es: 'Pantalla de Chimenea Online - Chimenea Virtual en Pantalla Completa',
+    pt: 'Tela de Lareira Online - Lareira Virtual em Tela Cheia para Desktop e TV',
+    fr: 'Écran de Cheminée en Ligne - Cheminée Virtuelle Plein Écran',
+    de: 'Kaminfeuer-Bildschirm Online - Virtuelles Kaminfeuer für Desktop & TV',
+    hi: 'फायरप्लेस स्क्रीन ऑनलाइन - डेस्कटॉप और टीवी के लिए वर्चुअल फायरप्लेस',
+    ja: '暖炉の画面 オンライン - デスクトップ＆TV用バーチャル暖炉全画面',
+  },
 };
 
 const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>>> = {
@@ -86,6 +95,15 @@ const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>
     de: 'Vorschau exakter CSS-HEX-Farbcodes im Vollbildmodus. Testen Sie Markenfarben, vergleichen Sie 4-Farben-Paletten, prüfen Sie Dunkelmodus-Töne und laden Sie 4K-Wallpaper herunter.',
     hi: 'फुलस्क्रीन में सटीक CSS हेक्स कोड का प्रीव्यू करें। ब्रांड रंग टेस्ट करें, 4-कलर पैलेट की तुलना करें, डार्क मोड रंगों (#121212) की जांच करें और 4K वॉलपेपर डाउनलोड करें।',
     ja: 'CSSのHEXカラーコードを全画面で即座にプレビュー。ブランドカラーの検証、4色パレット比較、ダークモードシェード診断、4K壁紙ダウンロードに対応。',
+  },
+  'fireplace-screen': {
+    en: 'Turn any screen into a cozy online virtual fireplace. Fullscreen fireplace background with crackling audio, customizable flame colors, and sleep timer for desktop, laptop, monitor, and TV.',
+    es: 'Transforma cualquier pantalla en una chimenea virtual en línea. Fondo de chimenea a pantalla completa con sonido de fuego, temporizador y colores para escritorio y TV.',
+    pt: 'Transforme qualquer tela em uma lareira virtual online. Fundo de lareira em tela cheia com áudio de fogueira, timer e cores personalizadas para desktop, notebook e TV.',
+    fr: 'Transformez n\'importe quel écran en cheminée virtuelle chaleureuse. Fond de cheminée plein écran avec son de crépitement, minuteur et couleurs pour PC et TV.',
+    de: 'Verwandeln Sie jeden Bildschirm in ein gemütliches virtuelles Kaminfeuer. Vollbild-Kaminfeuer mit Knistergeräuschen, Timer und Flammenfarben für Laptop, Monitor und TV.',
+    hi: 'किसी भी स्क्रीन को आरामदायक ऑनलाइन वर्चुअल फायरप्लेस में बदलें। डेस्कटॉप, लैपटॉप और टीवी के लिए जलती आग की आवाज़ और टाइमर के साथ फुलस्क्रीन फायरप्लेस बैकग्राउंड।',
+    ja: 'あらゆる画面を心地よいオンラインバーチャル暖炉に変身。デスクトップ、ノートPC、TV向けの全画面暖炉背景、焚き火サウンド、スリープタイマー搭載。',
   },
 };
 
@@ -150,7 +168,7 @@ export function toolJsonLd(tool: Tool, path: string, locale: Locale = defaultLoc
       mainEntity: {
         '@type': 'SoftwareApplication',
         name: tName,
-        applicationCategory: 'UtilitiesApplication',
+        applicationCategory: 'MultimediaApplication',
         operatingSystem: 'Any',
         offers: {
           '@type': 'Offer',
@@ -238,6 +256,37 @@ export function toolJsonLd(tool: Tool, path: string, locale: Locale = defaultLoc
           '@type': 'HowToStep',
           name: 'Download HD/4K Wallpapers',
           text: 'Choose your desired screen orientation and download crisp PNG wallpapers rendered directly from your HEX color codes.'
+        }
+      ]
+    });
+  }
+
+  if (tool.id === 'fireplace-screen') {
+    baseSchemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'How to Turn Any Display into an Online Virtual Fireplace Screen',
+      description: 'A quick guide to creating a cozy ambient fireplace background on desktop, laptop, monitor, or TV with sound effects.',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Open the Fireplace Screen Tool',
+          text: 'Load the page on your laptop, PC, desktop monitor, tablet, or Smart TV web browser.'
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Adjust Sound & Flame Colors',
+          text: 'Toggle crackling fire sound, set volume levels, and select your flame color style (Classic Orange, Blue Mystic, Emerald Wood, Violet Phantom).'
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Enter Fullscreen View',
+          text: 'Click the Fullscreen button or press "F" to remove browser bars and display a seamless cozy fireplace background.'
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Set Optional Sleep Timer',
+          text: 'Enable the automatic sleep timer (15, 30, 60, or 90 minutes) for nighttime relaxation, study sessions, or sleeping.'
         }
       ]
     });
