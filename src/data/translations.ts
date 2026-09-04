@@ -651,6 +651,15 @@ const toolSummaries: Record<string, Partial<Record<Locale, string>>> = {
   'black-screen': { hi: 'OLED जांच, डेड पिक्सल खोज, चकाचौंध कम करने और अंधेरे कमरे में उपयोग के लिए एक वास्तविक काली फुलस्क्रीन सतह।' },
   'green-screen': { hi: 'क्रोमा की प्रीव्यू, पैनल जांच और रंग संदर्भ के लिए एक जीवंत हरा फुलस्क्रीन पेज।' },
   'blue-screen': { hi: 'डिस्प्ले रंग जांच, एम्बिएंट टोन और वीडियो सेटअप के लिए एक संतृप्त नीला फुलस्क्रीन क्षेत्र।' },
+  'red-screen': {
+    en: 'A free red screen online tool to turn your display into a solid red fullscreen light, perform red subpixel dead pixel checks, preserve night vision, and create ambient red lighting.',
+    es: 'Una herramienta de pantalla roja online gratis para convertir tu pantalla en una luz roja a pantalla completa, probar subpíxeles rojos, detectar píxeles muertos y proteger la visión nocturna.',
+    pt: 'Uma ferramenta de tela vermelha online grátis para transformar seu display em uma luz vermelha em tela cheia, testar subpixels vermelhos, encontrar pixels mortos e proteger a visão noturna.',
+    fr: 'Un outil d\'écran rouge en ligne gratuit pour transformer votre affichage en une lumière rouge plein écran, tester les sous-pixels rouges, repérer les pixels morts et préserver la vision nocturne.',
+    de: 'Ein kostenloses Online-Tool für einen roten Bildschirm im Vollbildmodus zum Testen roter Subpixel, Erfassen von Pixelfehlern, Erhalten der Nachtsicht und Erzeugen von rotem Umgebungslicht.',
+    hi: 'अपने डिस्प्ले को फुलस्क्रीन रेड लाइट में बदलने, लाल सब-पिक्सेल और डेड पिक्सल की जांच करने, नाइट विज़न सुरक्षित रखने और एम्बिएंट लाल रोशनी बनाने के लिए एक मुफ्त लाल स्क्रीन ऑनलाइन टूल।',
+    ja: 'ディスプレイを全画面の赤色ライトに切り替え、赤色サブピクセルやドット抜けの点検、夜間の暗順応保護、動画用の赤色間接照明を作成できる無料の赤い画面オンラインツール。',
+  },
   'radar-screen': {
     es: 'Un simulador de radar online gratis con animación de barrido en tiempo real, sonido de ping de sónar, seguimiento de objetivos y pantalla táctica personalizable. Efecto radar a pantalla completa para escritorio, portátil, monitor y TV — sin descarga.',
     pt: 'Um simulador de radar online grátis com animação de varredura em tempo real, som de ping de sonar, rastreamento de alvos e display tático personalizável. Efeito radar em tela cheia para desktop, notebook, monitor e TV — sem download.',

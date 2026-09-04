@@ -30,6 +30,15 @@ export function alternatesForTool(tool: Tool) {
 }
 
 const customTitles: Partial<Record<string, Partial<Record<Locale, string>>>> = {
+  'red-screen': {
+    en: 'Red Screen Online - Free Fullscreen Red Light & Display Test Tool',
+    es: 'Pantalla Roja Online - Luz Roja en Pantalla Completa y Test de Monitor',
+    pt: 'Tela Vermelha Online - Luz Vermelha em Tela Cheia e Teste de Display',
+    fr: 'Écran Rouge en Ligne - Lumière Rouge Plein Écran & Test d\'Écran',
+    de: 'Roter Bildschirm Online - Vollbild Rotes Licht & Display-Test Tool',
+    hi: 'लाल स्क्रीन ऑनलाइन - फुलस्क्रीन रेड लाइट और डिस्प्ले टेस्ट टूल',
+    ja: '赤い画面 オンライン - 全画面赤色ライト＆ディスプレイ点検ツール',
+  },
   'gradient-screen': {
     en: 'Gradient Screen Online - Fullscreen Color Banding & Calibration Test',
     es: 'Pantalla de Degradado Online - Test de Banding de Color y Calibración',
@@ -222,6 +231,15 @@ const customTitles: Partial<Record<string, Partial<Record<Locale, string>>>> = {
 };
 
 const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>>> = {
+  'red-screen': {
+    en: 'Open a pure red screen online in full screen. Test red subpixels, find dead pixels, preserve night vision, create TikTok red ambient lighting, and inspect your display.',
+    es: 'Abre una pantalla roja online a pantalla completa. Prueba subpíxeles rojos, detecta píxeles muertos, preserva la visión nocturna y crea iluminación ambiental de luz roja.',
+    pt: 'Abra uma tela vermelha online em tela cheia. Teste subpixels vermelhos, encontre pixels mortos, preserve a visão noturna e crie iluminação ambiente de luz vermelha.',
+    fr: 'Ouvrez un écran rouge en ligne en plein écran. Testez les sous-pixels rouges, détectez les pixels morts, préservez la vision nocturne et créez un éclairage d\'ambiance rouge.',
+    de: 'Öffnen Sie einen roten Bildschirm online im Vollbildmodus. Testen Sie rote Subpixel, finden Sie Pixelfehler, schonen Sie Ihre Augen bei Nacht und erzeugen Sie rotes Ambient-Licht.',
+    hi: 'ऑनलाइन फुलस्क्रीन में एक शुद्ध लाल स्क्रीन खोलें। लाल सब-पिक्सेल का परीक्षण करें, खराब पिक्सल खोजें, नाइट विज़न सुरक्षित रखें और टिकटॉक के लिए रेड एम्बिएंट लाइट बनाएं।',
+    ja: 'オンラインで全画面の赤い画面を表示。赤色サブピクセルテスト、ドット抜け検出、暗順応の保護、TikTok用の赤色アンビエントライト作成、ディスプレイ検査に最適。',
+  },
   'gradient-screen': {
     en: 'Smooth multi-stop color transitions across the display for color banding tests, display calibration, and ambient backdrops. Open in fullscreen.',
     es: 'Una pantalla de degradado a pantalla completa para pruebas de banding de color, calibración de monitores y fondos creativos. Abrir en pantalla completa.',
