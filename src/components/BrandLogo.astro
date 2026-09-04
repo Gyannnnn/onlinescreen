@@ -1,0 +1,49 @@
+---
+type Props = {
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+};
+
+const { size = 'md', class: className = '' } = Astro.props;
+
+const iconSizes = {
+  sm: 'size-7',
+  md: 'size-8',
+  lg: 'size-10',
+};
+
+const svgSizes = {
+  sm: 'size-3.5',
+  md: 'size-4',
+  lg: 'size-5',
+};
+
+const textSizes = {
+  sm: 'text-base',
+  md: 'text-[1.125rem]',
+  lg: 'text-2xl',
+};
+---
+
+<div class={`group inline-flex items-center gap-2.5 select-none ${className}`}>
+  <!-- Premium Screen Icon Badge -->
+  <div class={`relative flex shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 text-white shadow-sm shadow-purple-500/20 transition-all duration-300 group-hover:scale-105 group-hover:shadow-md group-hover:shadow-purple-500/35 ${iconSizes[size]}`}>
+    <svg class={`${svgSizes[size]} transition-transform duration-300 group-hover:scale-110`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="2" y="3" width="20" height="14" rx="3"></rect>
+      <line x1="8" y1="21" x2="16" y2="21"></line>
+      <line x1="12" y1="17" x2="12" y2="21"></line>
+      <circle cx="16" cy="8" r="1" class="fill-cyan-300 stroke-cyan-300"></circle>
+    </svg>
+  </div>
+
+  <!-- Sleek Typography -->
+  <div class={`flex items-baseline font-bold tracking-tight text-ink ${textSizes[size]}`}>
+    <span class="font-extrabold text-ink transition-colors duration-200">
+      Pixora
+    </span>
+    <span class="ml-0.5 font-medium text-muted transition-colors duration-200 group-hover:text-ink">
+      Screen
+    </span>
+    <span class="ml-1 inline-block size-1.5 rounded-full bg-cyan-400 transition-all duration-300 group-hover:scale-125 group-hover:bg-pink-500" aria-hidden="true"></span>
+  </div>
+</div>

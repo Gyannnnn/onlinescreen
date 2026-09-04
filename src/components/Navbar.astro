@@ -2,6 +2,7 @@
 import { categories, tools, type ToolCategoryId } from '../data/tools';
 import { localeOrder, locales, type Locale } from '../data/locales';
 import { t } from '../data/translations';
+import BrandLogo from './BrandLogo.astro';
 
 type Props = {
   locale?: Locale;
@@ -22,9 +23,8 @@ const searchData = tools.map(tool => ({
 <header class="sticky top-0 z-40 border-b border-hairline bg-canvas/90 backdrop-blur">
   <div class="site-shell flex h-16 items-center justify-between gap-2 lg:gap-4">
     <div class="flex items-center gap-4 lg:gap-6">
-      <a href="/" class="flex shrink-0 items-center gap-2.5 text-sm font-semibold text-ink whitespace-nowrap" aria-label={`${t(locale, 'site.title')} home`}>
-        <!-- <span class="nav-logo-icon" aria-hidden="true">P</span> -->
-        <span class="nav-logo-text"><em>Pixora</em>Screen</span>
+      <a href="/" class="flex shrink-0 items-center whitespace-nowrap" aria-label={`${t(locale, 'site.title')} home`}>
+        <BrandLogo size="md" />
       </a>
 
       <nav class="hidden items-center lg:flex" aria-label="Primary navigation">
