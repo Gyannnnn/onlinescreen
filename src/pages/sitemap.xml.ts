@@ -12,9 +12,9 @@ export const GET: APIRoute = () => {
         priority: '0.8',
         changefreq: 'weekly',
       })),
-    ...allToolPaths().map(({ path }) => ({
+    ...allToolPaths().map(({ path, tool }) => ({
       path,
-      priority: '0.8',
+      priority: tool.id === 'black-screen' || tool.id === 'white-screen' ? '0.9' : '0.8',
       changefreq: 'weekly',
     })),
     { path: '/about/', priority: '0.4', changefreq: 'monthly' },

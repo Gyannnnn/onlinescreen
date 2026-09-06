@@ -521,6 +521,20 @@ export function toolJsonLd(tool: Tool, path: string, locale: Locale = defaultLoc
         },
       })),
     },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      name: tName,
+      url,
+      description: descriptionForTool(tool, locale),
+      applicationCategory: 'UtilitiesApplication',
+      operatingSystem: 'Any',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+    },
   ];
 
   if (tool.id === 'rgb-screen') {

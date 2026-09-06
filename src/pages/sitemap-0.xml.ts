@@ -24,7 +24,8 @@ export const GET: APIRoute = () => {
 
   // Tool pages
   for (const item of allToolPaths()) {
-    urls.push({ loc: `${baseUrl}${item.path}`, changefreq: 'weekly', priority: '0.8' });
+    const priority = item.tool.id === 'black-screen' || item.tool.id === 'white-screen' ? '0.9' : '0.8';
+    urls.push({ loc: `${baseUrl}${item.path}`, changefreq: 'weekly', priority });
   }
 
   const urlElements = urls

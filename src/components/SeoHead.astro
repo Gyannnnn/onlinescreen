@@ -48,7 +48,9 @@ const pageTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:image" content={absoluteUrl('/og.svg')} />
+<meta property="og:image:alt" content={description} />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={pageTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={absoluteUrl('/og.svg')} />
+<meta name="twitter:image:alt" content={description} />
