@@ -456,18 +456,34 @@ export function alternatesForHome() {
 }
 
 export function landingJsonLd() {
-  return {
+  const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: siteName,
     url: siteUrl,
     description: defaultDescription,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${siteUrl}/?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
   };
+
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: siteName,
+    url: siteUrl,
+  };
+
+  const collectionPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: `${siteName} Tools`,
+    url: siteUrl,
+    hasPart: tools.map((tool) => ({
+      '@type': 'WebApplication',
+      name: tool.name,
+      url: absoluteUrl(toolPath(tool)),
+    })),
+  };
+
+  return [websiteSchema, organizationSchema, collectionPageSchema];
 }
 
 function stripHtml(text: string): string {

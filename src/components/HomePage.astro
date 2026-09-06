@@ -25,6 +25,7 @@ const categoryIds = Object.keys(categories) as ToolCategoryId[];
       <a class="rounded-full bg-ink px-5 py-3 text-sm font-medium text-canvas hover:bg-body" href="#colors">{t(locale, 'hero.browse')}</a>
       <!-- <a class="rounded-full border border-hairline bg-canvas px-5 py-3 text-sm font-medium text-ink hover:bg-canvas-soft" href="/dead-pixel-test/">{t(locale, 'hero.run_test')}</a> -->
     </div>
+    <p class="mt-5 font-mono text-xs text-muted">{t(locale, 'hero.tool_count', { count: String(tools.length) })}</p>
   </div>
   <h2 class="sr-only">{t(locale, 'hero.browse')}</h2>
   <div class="mt-14 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
@@ -44,6 +45,20 @@ const categoryIds = Object.keys(categories) as ToolCategoryId[];
       </p>
       <p>
         {t(locale, 'analysis.p2')}
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="site-shell py-16 md:py-20">
+  <div class="grid gap-8 md:grid-cols-3">
+    <div>
+      <p class="font-mono text-xs text-muted">{t(locale, 'why.eyebrow')}</p>
+      <h2 class="mt-3 text-3xl font-semibold text-balance text-ink">{t(locale, 'why.heading')}</h2>
+    </div>
+    <div class="md:col-span-2">
+      <p class="text-sm leading-6 text-body">
+        {t(locale, 'why.body')}
       </p>
     </div>
   </div>
