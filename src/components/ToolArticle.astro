@@ -299,7 +299,7 @@ const blog = (tool.id === 'white-screen' || tool.id === 'black-screen' || tool.i
       </p>
       <h3>Dead pixel test</h3>
       <p>
-        Dead and stuck pixels — dark or discolored dots that stay the same regardless of what's on screen — show up clearly against solid
+        Dead and stuck pixels, dark or discolored dots that stay the same regardless of what's on screen, show up clearly against solid
         white, especially at full brightness.
       </p>
       <h3>Backlight uniformity</h3>
@@ -384,6 +384,29 @@ const blog = (tool.id === 'white-screen' || tool.id === 'black-screen' || tool.i
         quick on-set backdrop test before committing to a full chroma key setup with fabric or paper.
       </p>
     </>
+  ) : tool.id === 'red-screen' ? (
+    <>
+      <h2>What a Red Screen Test Can Detect</h2>
+      <p>
+        A pure red screen isolates the red sub-pixel specifically, something a <a href="/black-screen/">black screen</a> or <a href="/white-screen/">white screen</a> can't do on its own.
+        Each pixel on your display is made of red, green, and blue sub-pixels; filling the screen with red makes it easy to spot a red sub-pixel
+        that's dead, stuck, or dim, even if the pixel looks fine under normal white content.
+      </p>
+      <h3>Dead and Stuck Red Sub-Pixels</h3>
+      <p>
+        A dark or off-color dot against solid red usually means a dead or stuck red sub-pixel at that location.
+      </p>
+      <h3>OLED Burn-in Check</h3>
+      <p>
+        Running a red screen briefly can also reveal early burn-in patterns on OLED displays, since burn-in often shows up as faint ghosting
+        against a solid color background.
+      </p>
+      <h3>Color Uniformity</h3>
+      <p>
+        Uneven red tone across the screen can indicate backlight or panel uniformity issues, similar to what a white or black screen test reveals
+        for other display problems.
+      </p>
+    </>
   ) : (
     <>
       <h2>Display testing notes.</h2>
@@ -410,12 +433,12 @@ const blog = (tool.id === 'white-screen' || tool.id === 'black-screen' || tool.i
             LCD/IPS panels and <strong>stuck subpixels</strong> that glow faintly against true black. Hold the screen for 30&ndash;60 seconds in a dark
             room and scan corners and edges first, since bleed concentrates there. On desktop monitors, back away a few feet to separate uniform glow
             from a genuine defect; on phones and tablets, tilt the panel at an angle, where OLED black looks perfectly uniform while LCD shows faint
-            grey haze. Because black draws almost no power on OLED, it will not create burn-in — pair it with the <a href="/white-screen/">white screen</a> tool, which lights every subpixel and is the better check for dead or stuck pixels and early burn-in ghosting.
+            grey haze. Because black draws almost no power on OLED, it will not create burn-in. Pair it with the <a href="/white-screen/">white screen</a> tool, which lights every subpixel and is the better check for dead or stuck pixels and early burn-in ghosting, or the <a href="/red-screen/">red screen</a> tool, which isolates the red sub-pixel specifically.
           </p>
           <h3>Why Black Screen Is Good for OLED Displays</h3>
           <p>
             Black screen is genuinely good for OLED displays, not just a testing tool. On OLED panels, black pixels are switched off
-            entirely rather than dimmed, so displaying black uses less power and adds no wear — unlike LCD, where the backlight stays lit
+            entirely rather than dimmed, so displaying black uses less power and adds no wear, unlike LCD, where the backlight stays lit
             regardless of what color is on screen.
           </p>
         </>
@@ -423,11 +446,11 @@ const blog = (tool.id === 'white-screen' || tool.id === 'black-screen' || tool.i
         <p>
           A pure white fill (#ffffff) drives every subpixel to full brightness, making it the fastest way to reveal <strong>dead pixels</strong>
           (permanently dark dots) and early <strong>OLED burn-in</strong> (faint shadows of static UI elements like a status bar or navigation
-          bar). Run it for a minute at a time rather than continuously — sustained full-white brightness is what accelerates OLED wear, so
+          bar). Run it for a minute at a time rather than continuously. Sustained full-white brightness is what accelerates OLED wear, so
           desktop monitors and TVs tolerate longer sessions than phones, where manufacturers cap brightness specifically to limit this. Check
           the panel from a straight angle and from the side, since burn-in shadows are often only visible off-axis. For a full picture, cross-check
           with the <a href="/black-screen/">black screen</a> tool: black exposes backlight bleed and stuck subpixels without the wear risk white
-          carries on OLED.
+          carries on OLED. The <a href="/red-screen/">red screen</a> tool adds a third check, isolating the red sub-pixel channel on its own.
         </p>
       )}
     </>

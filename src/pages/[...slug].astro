@@ -91,7 +91,7 @@ const props = Astro.props as PageProps;
         <span class="mx-2">/</span>
         <span>{toolName(props.locale, props.tool)}</span>
       </nav>
-      <div class="mt-8 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center min-w-0">
+      <div class={`mt-8 grid gap-8 lg:items-center min-w-0 ${props.tool.kind === 'color' ? 'lg:grid-cols-[1.05fr_0.95fr]' : 'lg:grid-cols-[0.8fr_1.2fr]'}`}>
         <div class="min-w-0">
           <p class="font-mono text-xs text-muted">{props.tool.category.toUpperCase()}</p>
           <h1 class="mt-4 text-5xl font-semibold leading-[0.95] text-balance text-ink md:text-6xl">{h1ForTool(props.tool, props.locale)}</h1>

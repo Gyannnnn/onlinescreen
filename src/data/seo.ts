@@ -46,7 +46,7 @@ const customTitles: Partial<Record<string, Partial<Record<Locale, string>>>> = {
     ja: 'グリーンスクリーン オンライン - 無料クロマキー＆全画面ツール',
   },
   'red-screen': {
-    en: 'Red Screen Online - Free Fullscreen Red Light & Display Test Tool',
+    en: 'Red Screen Test - Free Fullscreen Tool for Dead Pixel Check | PixoraScreen',
     es: 'Pantalla Roja Online - Luz Roja en Pantalla Completa y Test de Monitor',
     pt: 'Tela Vermelha Online - Luz Vermelha em Tela Cheia e Teste de Display',
     fr: 'Écran Rouge en Ligne - Lumière Rouge Plein Écran & Test d\'Écran',
@@ -262,7 +262,7 @@ const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>
     ja: 'クロマキー動画、配信用背景、ディスプレイテストに使える無料のオンライングリーンスクリーン。全画面表示、明るさ調整、あらゆるデバイスで動作。',
   },
   'red-screen': {
-    en: 'Open a pure red screen online in full screen. Test red subpixels, find dead pixels, preserve night vision, create TikTok red ambient lighting, and inspect your display.',
+    en: 'Free red screen test for dead pixel and red sub-pixel detection. Also useful as a red light screen for night vision and eye comfort. Fullscreen, adjustable brightness.',
     es: 'Abre una pantalla roja online a pantalla completa. Prueba subpíxeles rojos, detecta píxeles muertos, preserva la visión nocturna y crea iluminación ambiental de luz roja.',
     pt: 'Abra uma tela vermelha online em tela cheia. Teste subpixels vermelhos, encontre pixels mortos, preserve a visão noturna e crie iluminação ambiente de luz vermelha.',
     fr: 'Ouvrez un écran rouge en ligne en plein écran. Testez les sous-pixels rouges, détectez les pixels morts, préservez la vision nocturne et créez un éclairage d\'ambiance rouge.',
@@ -479,13 +479,16 @@ export function descriptionForTool(tool: Tool, locale: Locale = defaultLocale) {
 
 const customH1: Partial<Record<string, Partial<Record<Locale, string>>>> = {
   'white-screen': {
-    en: 'White Screen Test — Free Fullscreen Display & Dead Pixel Checker',
+    en: 'White Screen Test: Free Fullscreen Display & Dead Pixel Checker',
   },
   'black-screen': {
-    en: 'Black Screen Test — Free Fullscreen Display & Dead Pixel Checker',
+    en: 'Black Screen Test: Free Fullscreen Display & Dead Pixel Checker',
   },
   'green-screen': {
-    en: 'Green Screen — Free Fullscreen Chroma Key & Video Background Tool',
+    en: 'Green Screen: Free Fullscreen Chroma Key & Video Background Tool',
+  },
+  'red-screen': {
+    en: 'Red Screen Test: Dead Pixel Checker & Red Light Screen',
   },
 };
 
@@ -570,8 +573,8 @@ export function toolJsonLd(tool: Tool, path: string, locale: Locale = defaultLoc
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, item: { '@id': siteUrl, name: 'Home' } },
-        { '@type': 'ListItem', position: 2, item: { '@id': url, name: tName } },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: tName, item: url },
       ],
     },
     {

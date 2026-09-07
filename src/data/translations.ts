@@ -889,7 +889,7 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       },
       {
         question: 'Is a white screen test safe for OLED displays?',
-        answer: 'Yes — briefly displaying a full white screen does not cause burn-in. Burn-in risk comes from static images left on screen for extended periods (hours), not from a short test.'
+        answer: 'Yes, briefly displaying a full white screen does not cause burn-in. Burn-in risk comes from static images left on screen for extended periods (hours), not from a short test.'
       },
       {
         question: 'How is a white screen test different from a black screen test?',
@@ -1121,7 +1121,7 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       },
       {
         question: 'What\'s the difference between dead pixels and stuck pixels?',
-        answer: 'Dead pixels stay permanently off (black) and don\'t respond to anything on screen. Stuck pixels are stuck displaying a single color instead — often red, green, or blue — and sometimes recover with gentle pressure or pixel-refresh software, unlike dead pixels.'
+        answer: 'Dead pixels stay permanently off (black) and don\'t respond to anything on screen. Stuck pixels are stuck displaying a single color instead, often red, green, or blue, and sometimes recover with gentle pressure or pixel-refresh software, unlike dead pixels.'
       },
       {
         question: 'Can backlight bleeding be fixed?',
@@ -1265,11 +1265,11 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       },
       {
         question: 'What shade of green works best for chroma key?',
-        answer: 'The industry-standard chroma key green is hex <strong>#00FF00</strong> — a saturated green far enough from natural skin tones that video software can key it out cleanly. This tool uses that exact shade by default.'
+        answer: 'The industry-standard chroma key green is hex <strong>#00FF00</strong>, a saturated green far enough from natural skin tones that video software can key it out cleanly. This tool uses that exact shade by default.'
       },
       {
         question: 'Can I use green screen backgrounds for TikTok, Instagram, or YouTube content?',
-        answer: 'Yes — a plain green backdrop works with any editor or app that supports chroma key/green screen effects, including CapCut, InShot, and built-in TikTok/Instagram effects, not just professional video software.'
+        answer: 'Yes, a plain green backdrop works with any editor or app that supports chroma key/green screen effects, including CapCut, InShot, and built-in TikTok/Instagram effects, not just professional video software.'
       }
     ],
     es: [
@@ -1295,7 +1295,7 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       },
       {
         question: '¿Puedo usar fondos de pantalla verde para contenido de TikTok, Instagram o YouTube?',
-        answer: 'Sí — un fondo verde liso funciona con cualquier editor o app que admita efectos de chroma key o pantalla verde, incluyendo CapCut, InShot y los efectos integrados de TikTok/Instagram, no solo software de video profesional.'
+        answer: 'Sí, un fondo verde liso funciona con cualquier editor o app que admita efectos de chroma key o pantalla verde, incluyendo CapCut, InShot y los efectos integrados de TikTok/Instagram, no solo software de video profesional.'
       }
     ],
     pt: [
@@ -1317,11 +1317,11 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       },
       {
         question: 'Qual tom de verde funciona melhor para chroma key?',
-        answer: 'O verde padrão da indústria para chroma key é o hexadecimal <strong>#00FF00</strong> — um verde saturado o suficiente distante do tom de pele natural para que o software de vídeo consiga recortá-lo com precisão. Esta ferramenta usa exatamente esse tom por padrão.'
+        answer: 'O verde padrão da indústria para chroma key é o hexadecimal <strong>#00FF00</strong>, um verde saturado o suficiente distante do tom de pele natural para que o software de vídeo consiga recortá-lo com precisão. Esta ferramenta usa exatamente esse tom por padrão.'
       },
       {
         question: 'Posso usar fundos de tela verde para conteúdo do TikTok, Instagram ou YouTube?',
-        answer: 'Sim — um fundo verde liso funciona com qualquer editor ou app que suporte efeitos de chroma key/tela verde, incluindo CapCut, InShot e os efeitos integrados do TikTok/Instagram, não apenas softwares de vídeo profissionais.'
+        answer: 'Sim, um fundo verde liso funciona com qualquer editor ou app que suporte efeitos de chroma key/tela verde, incluindo CapCut, InShot e os efeitos integrados do TikTok/Instagram, não apenas softwares de vídeo profissionais.'
       }
     ],
     fr: [
@@ -1343,11 +1343,11 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       },
       {
         question: 'Quelle nuance de vert fonctionne le mieux pour l\'incrustation chroma key ?',
-        answer: 'Le vert standard de l\'industrie pour le chroma key est le hexadécimal <strong>#00FF00</strong> — un vert saturé suffisamment éloigné des teintes de peau naturelles pour que les logiciels vidéo puissent le détourer proprement. Cet outil utilise cette teinte exacte par défaut.'
+        answer: 'Le vert standard de l\'industrie pour le chroma key est le hexadécimal <strong>#00FF00</strong>, un vert saturé suffisamment éloigné des teintes de peau naturelles pour que les logiciels vidéo puissent le détourer proprement. Cet outil utilise cette teinte exacte par défaut.'
       },
       {
         question: 'Puis-je utiliser des fonds d\'écran vert pour du contenu TikTok, Instagram ou YouTube ?',
-        answer: 'Oui — un fond vert uni fonctionne avec n\'importe quel éditeur ou application prenant en charge les effets chroma key/écran vert, y compris CapCut, InShot et les effets intégrés de TikTok/Instagram, pas seulement les logiciels vidéo professionnels.'
+        answer: 'Oui, un fond vert uni fonctionne avec n\'importe quel éditeur ou application prenant en charge les effets chroma key/écran vert, y compris CapCut, InShot et les effets intégrés de TikTok/Instagram, pas seulement les logiciels vidéo professionnels.'
       }
     ],
     de: [
@@ -1369,11 +1369,11 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       },
       {
         question: 'Welcher Grünton eignet sich am besten für Chroma Key?',
-        answer: 'Der branchenübliche Chroma-Key-Grünton ist Hex <strong>#00FF00</strong> — ein gesättigtes Grün, das weit genug von natürlichen Hauttönen entfernt ist, damit Videosoftware es sauber freistellen kann. Dieses Tool verwendet standardmäßig genau diesen Farbton.'
+        answer: 'Der branchenübliche Chroma-Key-Grünton ist Hex <strong>#00FF00</strong>, ein gesättigtes Grün, das weit genug von natürlichen Hauttönen entfernt ist, damit Videosoftware es sauber freistellen kann. Dieses Tool verwendet standardmäßig genau diesen Farbton.'
       },
       {
         question: 'Kann ich grüne Bildschirmhintergründe für TikTok-, Instagram- oder YouTube-Inhalte verwenden?',
-        answer: 'Ja — ein einfacher grüner Hintergrund funktioniert mit jedem Editor oder jeder App, die Chroma-Key-/Greenscreen-Effekte unterstützt, einschließlich CapCut, InShot und den integrierten TikTok/Instagram-Effekten, nicht nur professioneller Videosoftware.'
+        answer: 'Ja, ein einfacher grüner Hintergrund funktioniert mit jedem Editor oder jeder App, die Chroma-Key-/Greenscreen-Effekte unterstützt, einschließlich CapCut, InShot und den integrierten TikTok/Instagram-Effekten, nicht nur professioneller Videosoftware.'
       }
     ],
     hi: [
@@ -1395,11 +1395,11 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       },
       {
         question: 'क्रोमा की के लिए कौन सा हरा शेड सबसे अच्छा काम करता है?',
-        answer: 'इंडस्ट्री-स्टैंडर्ड क्रोमा की ग्रीन हेक्स <strong>#00FF00</strong> है — एक गहरा हरा रंग जो प्राकृतिक त्वचा टोन से इतना अलग है कि वीडियो सॉफ्टवेयर इसे साफ-साफ हटा सके। यह टूल डिफ़ॉल्ट रूप से ठीक यही शेड इस्तेमाल करता है।'
+        answer: 'इंडस्ट्री-स्टैंडर्ड क्रोमा की ग्रीन हेक्स <strong>#00FF00</strong> है, एक गहरा हरा रंग जो प्राकृतिक त्वचा टोन से इतना अलग है कि वीडियो सॉफ्टवेयर इसे साफ-साफ हटा सके। यह टूल डिफ़ॉल्ट रूप से ठीक यही शेड इस्तेमाल करता है।'
       },
       {
         question: 'क्या मैं TikTok, Instagram या YouTube कंटेंट के लिए ग्रीन स्क्रीन बैकग्राउंड का उपयोग कर सकता हूँ?',
-        answer: 'हाँ — एक सादा हरा बैकग्राउंड किसी भी ऐसे एडिटर या ऐप के साथ काम करता है जो क्रोमा की/ग्रीन स्क्रीन इफेक्ट्स सपोर्ट करता हो, जिसमें CapCut, InShot और TikTok/Instagram के बिल्ट-इन इफेक्ट्स शामिल हैं, सिर्फ प्रोफेशनल वीडियो सॉफ्टवेयर नहीं।'
+        answer: 'हाँ, एक सादा हरा बैकग्राउंड किसी भी ऐसे एडिटर या ऐप के साथ काम करता है जो क्रोमा की/ग्रीन स्क्रीन इफेक्ट्स सपोर्ट करता हो, जिसमें CapCut, InShot और TikTok/Instagram के बिल्ट-इन इफेक्ट्स शामिल हैं, सिर्फ प्रोफेशनल वीडियो सॉफ्टवेयर नहीं।'
       }
     ],
     ja: [
@@ -1421,11 +1421,11 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       },
       {
         question: 'クロマキーに最適な緑色の色合いは？',
-        answer: '業界標準のクロマキーグリーンは16進数の<strong>#00FF00</strong>です — 自然な肌の色から十分に離れた彩度の高い緑色で、動画編集ソフトがきれいに抜き取ることができます。このツールはデフォルトでこの正確な色合いを使用しています。'
+        answer: '業界標準のクロマキーグリーンは16進数の<strong>#00FF00</strong>です。自然な肌の色から十分に離れた彩度の高い緑色で、動画編集ソフトがきれいに抜き取ることができます。このツールはデフォルトでこの正確な色合いを使用しています。'
       },
       {
         question: 'TikTok、Instagram、YouTubeのコンテンツにグリーンスクリーンの背景を使用できますか？',
-        answer: 'はい — 無地の緑背景は、CapCutやInShot、TikTok/Instagramの内蔵エフェクトを含む、クロマキー/グリーンスクリーンエフェクトに対応したあらゆる編集アプリで使用できます。プロ向けの動画ソフトだけに限りません。'
+        answer: 'はい。無地の緑背景は、CapCutやInShot、TikTok/Instagramの内蔵エフェクトを含む、クロマキー/グリーンスクリーンエフェクトに対応したあらゆる編集アプリで使用できます。プロ向けの動画ソフトだけに限りません。'
       }
     ]
   },
@@ -1602,6 +1602,18 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       {
         question: 'Is there a DS Lite red screen error? (What is red screen door?)',
         answer: 'A ds lite red screen of death indicates a boot failure, often caused by a loose BIOS chip or faulty cartridge slot. Some retro gamers also mention the red screen door effect, which relates to subpixel layouts on older LCD panels that make the pixel borders visible, resembling a screen door.'
+      },
+      {
+        question: 'What does a red screen test detect that a black or white screen test doesn\'t?',
+        answer: 'Red isolates the red sub-pixel specifically. Since every pixel is made of red, green, and blue sub-pixels, a solid red screen makes it easy to spot a red sub-pixel that\'s dead, stuck, or dim, a problem that can be invisible against normal white content.'
+      },
+      {
+        question: 'Is a red screen test safe for OLED displays?',
+        answer: 'Yes, briefly. Momentary use for testing doesn\'t cause burn-in, the risk comes from static content left on screen for extended periods, not a short diagnostic check.'
+      },
+      {
+        question: 'How is a red screen different from a black or white screen test?',
+        answer: 'Black screens reveal stuck-on pixels and light leakage. White screens reveal dead pixels and backlight unevenness across all sub-pixels at once. Red isolates the red sub-pixel specifically, catching issues the other two can miss. Testing with all three gives the most complete picture.'
       }
     ],
     es: [
