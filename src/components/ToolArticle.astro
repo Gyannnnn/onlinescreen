@@ -12,11 +12,16 @@ const { tool, locale } = Astro.props;
 const useCases = tool.useCases.join(', ');
 const controls = tool.controls.join(', ');
 const name = toolName(locale, tool);
+const firstHeading = tool.id === 'white-screen'
+  ? 'How to Perform a White Screen Test'
+  : tool.id === 'black-screen'
+  ? 'How to Perform a Black Screen Test'
+  : `How to use ${name} well.`;
 const blog = (tool.id === 'white-screen' || tool.id === 'black-screen' || tool.id === 'green-screen' || tool.id === 'blue-screen' || tool.id === 'red-screen' || tool.id === 'orange-screen' || tool.id === 'yellow-screen' || tool.id === 'purple-screen' || tool.id === 'pink-screen' || tool.id === 'cyan-screen' || tool.id === 'brown-screen' || tool.id === 'grey-screen' || tool.id === 'custom-color-screen' || tool.id === 'gradient-screen' || tool.id === 'rgb-screen' || tool.id === 'hex-screen' || tool.id === 'fireplace-screen' || tool.id === 'aquarium-screen' || tool.id === 'matrix-screen' || tool.id === 'snow-screen' || tool.id === 'ambient-screen' || tool.id === 'rain-screen' || tool.id === 'clock-screen' || tool.id === 'broken-screen' || tool.id === 'blue-screen-prank' || tool.id === 'windows-xp-crash' || tool.id === 'radar-screen' || tool.id === 'white-noise-screen' || tool.id === 'fake-virus-screen' || tool.id === 'windows-update' || tool.id === 'ubuntu-screen' || tool.id === 'macos-screen' || tool.id === 'android-update') ? getBlogKeywordsContent(locale, tool.id) : null;
 ---
 
 <article class="site-shell rich-article max-w-3xl py-16">
-  <h2>How to use {name} well.</h2>
+  <h2>{firstHeading}</h2>
   <p>
     {name} is designed for people who need a fast, dependable fullscreen utility instead of a noisy page wrapped around a tiny demo.
     The goal is {tool.intent}. That matters because screen tools are usually opened in the middle of another workflow: checking a new
@@ -34,6 +39,15 @@ const blog = (tool.id === 'white-screen' || tool.id === 'black-screen' || tool.i
     influence perception. A white border can make grey look darker. A colorful header can change how saturated a solid color appears. A heavy
     animation can distract from pixel-level inspection. This page keeps the interface quiet and lets the screen state take priority.
   </p>
+  {tool.id === 'white-screen' && (
+    <p>
+      A white screen also works well as an improvised light box for tracing and drawing. Set your tablet, laptop, or monitor to fullscreen
+      white at full brightness, then lay a sheet of paper over it — the light shining through makes it easy to trace a photo, sketch, or
+      reference drawing underneath, the same trick artists use light tables and flipbook animation boards for. It also helps when checking a
+      printed photo or film negative for scratches and dust by holding it up to the glow. No extra hardware is needed, and the brightness
+      slider lets you dial in exactly how much light comes through for thinner or thicker paper.
+    </p>
+  )}
   <h2>Controls and workflow.</h2>
   <p>
     The reusable screen component includes {controls}. These controls are intentionally consistent across the site, so a person who learns one
@@ -276,6 +290,100 @@ const blog = (tool.id === 'white-screen' || tool.id === 'black-screen' || tool.i
         beforehand — unexpected audio can break the illusion before the visual has time to sink in.
       </p>
     </>
+  ) : tool.id === 'white-screen' ? (
+    <>
+      <h2>What Can a White Screen Test Detect?</h2>
+      <p>
+        A plain white screen is one of the fastest ways to spot problems a normal photo or video won't show you, because a single flat
+        color makes any inconsistency stand out immediately.
+      </p>
+      <h3>Dead pixel test</h3>
+      <p>
+        Dead and stuck pixels — dark or discolored dots that stay the same regardless of what's on screen — show up clearly against solid
+        white, especially at full brightness.
+      </p>
+      <h3>Backlight uniformity</h3>
+      <p>
+        On LCD and LED displays, a white screen reveals uneven brightness, dark patches, or clouding near the edges that's normally hidden
+        by regular content.
+      </p>
+      <h3>Color tint and white balance</h3>
+      <p>
+        If your "white" looks slightly yellow, pink, or blue, your display's color calibration may be off; comparing against a neutral
+        white screen makes this easy to judge.
+      </p>
+      <h3>Screen cleaning</h3>
+      <p>
+        A plain bright background is the easiest way to spot dust, smudges, and fingerprints before wiping down your screen.
+      </p>
+      <p>
+        For the clearest results, view at full brightness in a dimly lit room and check the screen from a few different angles.
+      </p>
+    </>
+  ) : tool.id === 'black-screen' ? (
+    <>
+      <h2>What Can a Black Screen Test Detect?</h2>
+      <p>
+        A solid black background makes problems visible that are easy to miss against normal content, because any unwanted light stands
+        out immediately in the dark.
+      </p>
+      <h3>Dead pixels</h3>
+      <p>
+        Spots that stay permanently off and don't respond to anything on screen are easiest to catch as a colored or bright dot against
+        black.
+      </p>
+      <h3>Stuck pixels</h3>
+      <p>
+        Different from dead pixels, these are stuck showing a single color (often red, green, or blue) rather than turning off. Stuck
+        pixels sometimes recover with gentle pressure or pixel-refresh software; dead pixels generally don't.
+      </p>
+      <h3>Backlight bleeding</h3>
+      <p>
+        On LCD and LED displays, light leaking in from the edges or corners shows up clearly against black, especially in a dim room.
+      </p>
+      <h3>Screen uniformity</h3>
+      <p>
+        A plain black screen reveals patchy brightness or discoloration that's normally hidden by regular content.
+      </p>
+      <p>
+        For the clearest results, test in a dim or dark room at full brightness, and check the screen from a few different viewing
+        angles.
+      </p>
+    </>
+  ) : tool.id === 'green-screen' ? (
+    <>
+      <h2>Popular Green Screen Use Cases</h2>
+      <h3>Chroma Key &amp; Video Editing</h3>
+      <p>
+        The standard chroma key green (hex <code class="rounded border border-hairline px-1 py-0.5 font-mono text-sm">#00FF00</code>) makes it easy
+        to key out the background in video editors like Premiere, Final Cut, DaVinci Resolve, or OBS. Use this fullscreen green as a clean backdrop
+        for recording, then key it out in post or live during a stream. Fill the frame edge-to-edge in fullscreen mode so the editor has a uniform
+        field to sample, with no browser chrome or scrollbars breaking the color.
+      </p>
+      <h3>Streaming &amp; Video Calls</h3>
+      <p>
+        A second device or spare monitor running this green screen behind you gives OBS, Zoom, and Teams a stable virtual-background key without
+        buying a physical backdrop. Keep the green screen evenly lit and separate from your subject to avoid green spill on hair or clothing, and
+        use the brightness control to match the color to your room's lighting before you key it out in your streaming software's background removal.
+      </p>
+      <h3>Content Creation &amp; Social Media</h3>
+      <p>
+        TikTok, Instagram Reels, and YouTube Shorts all support green screen effects natively, and this fullscreen backdrop works as a stand-in
+        for a physical green screen when filming with a phone propped in front of a laptop or monitor. It also works inside CapCut, InShot, and
+        other mobile editors for chroma-keying reaction videos, product demos, and meme-style overlays without buying a fabric backdrop.
+      </p>
+      <h3>Display Testing</h3>
+      <p>
+        A solid green fill is useful for spotting dead or stuck green subpixels, checking panel uniformity, and confirming color accuracy on a
+        new monitor or TV. Because green carries the most weight in perceived brightness on most displays, uneven backlighting and clouding often
+        show up more clearly here than on red or blue.
+      </p>
+      <h3>Photography &amp; Lighting Reference</h3>
+      <p>
+        Photographers use a bright, even green field as an improvised fill light or color reference when shooting near a screen, and as a
+        quick on-set backdrop test before committing to a full chroma key setup with fabric or paper.
+      </p>
+    </>
   ) : (
     <>
       <h2>Display testing notes.</h2>
@@ -296,13 +404,21 @@ const blog = (tool.id === 'white-screen' || tool.id === 'black-screen' || tool.i
     <>
       <h2>OLED Burn-In &amp; Dead Pixel Testing</h2>
       {tool.id === 'black-screen' ? (
-        <p>
-          A pure black fill (#000000) turns every OLED subpixel off, so it is the safe reference state for spotting <strong>backlight bleed</strong> on
-          LCD/IPS panels and <strong>stuck subpixels</strong> that glow faintly against true black. Hold the screen for 30&ndash;60 seconds in a dark
-          room and scan corners and edges first, since bleed concentrates there. On desktop monitors, back away a few feet to separate uniform glow
-          from a genuine defect; on phones and tablets, tilt the panel at an angle, where OLED black looks perfectly uniform while LCD shows faint
-          grey haze. Because black draws almost no power on OLED, it will not create burn-in — pair it with the <a href="/white-screen/">white screen</a> tool, which lights every subpixel and is the better check for dead or stuck pixels and early burn-in ghosting.
-        </p>
+        <>
+          <p>
+            A pure black fill (#000000) turns every OLED subpixel off, so it is the safe reference state for spotting <strong>backlight bleed</strong> on
+            LCD/IPS panels and <strong>stuck subpixels</strong> that glow faintly against true black. Hold the screen for 30&ndash;60 seconds in a dark
+            room and scan corners and edges first, since bleed concentrates there. On desktop monitors, back away a few feet to separate uniform glow
+            from a genuine defect; on phones and tablets, tilt the panel at an angle, where OLED black looks perfectly uniform while LCD shows faint
+            grey haze. Because black draws almost no power on OLED, it will not create burn-in — pair it with the <a href="/white-screen/">white screen</a> tool, which lights every subpixel and is the better check for dead or stuck pixels and early burn-in ghosting.
+          </p>
+          <h3>Why Black Screen Is Good for OLED Displays</h3>
+          <p>
+            Black screen is genuinely good for OLED displays, not just a testing tool. On OLED panels, black pixels are switched off
+            entirely rather than dimmed, so displaying black uses less power and adds no wear — unlike LCD, where the backlight stays lit
+            regardless of what color is on screen.
+          </p>
+        </>
       ) : (
         <p>
           A pure white fill (#ffffff) drives every subpixel to full brightness, making it the fastest way to reveal <strong>dead pixels</strong>

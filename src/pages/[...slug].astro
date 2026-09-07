@@ -34,6 +34,7 @@ import {
   alternatesForTool,
   allToolPaths,
   descriptionForTool,
+  h1ForTool,
   landingJsonLd,
   titleForTool,
   toolJsonLd,
@@ -93,7 +94,7 @@ const props = Astro.props as PageProps;
       <div class="mt-8 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center min-w-0">
         <div class="min-w-0">
           <p class="font-mono text-xs text-muted">{props.tool.category.toUpperCase()}</p>
-          <h1 class="mt-4 text-5xl font-semibold leading-[0.95] text-balance text-ink md:text-6xl">{toolName(props.locale, props.tool)}.</h1>
+          <h1 class="mt-4 text-5xl font-semibold leading-[0.95] text-balance text-ink md:text-6xl">{h1ForTool(props.tool, props.locale)}</h1>
           <p class="mt-5 text-lg leading-8 text-body">{toolSummary(props.locale, props.tool)}</p>
           <div class="mt-6 flex flex-wrap gap-2">
             {props.tool.controls.slice(0, 5).map((control) => <span class="rounded-full border border-hairline bg-canvas px-3 py-1 text-xs text-body">{control}</span>)}

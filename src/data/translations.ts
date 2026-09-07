@@ -886,6 +886,14 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       {
         question: 'How to photo a white background?',
         answer: 'Place your subject in front of a monitor or television running our fullscreen white screen. It will act as a bright, even white background and light source. Adjust camera exposure or use additional ambient lighting to avoid harsh silhouettes.'
+      },
+      {
+        question: 'Is a white screen test safe for OLED displays?',
+        answer: 'Yes — briefly displaying a full white screen does not cause burn-in. Burn-in risk comes from static images left on screen for extended periods (hours), not from a short test.'
+      },
+      {
+        question: 'How is a white screen test different from a black screen test?',
+        answer: 'A white screen reveals dead or dim pixels and backlight unevenness, since any flaw stands out against the bright background. A black screen reveals the opposite: stuck-on pixels and light leakage around the edges. Testing with both gives a fuller picture of your display\'s health.'
       }
     ],
     es: [
@@ -1110,6 +1118,22 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       {
         question: 'How can I turn my screen black?',
         answer: 'To turn your screen black instantly, load this free online tool on any monitor, laptop, or handset browser and activate fullscreen. Escape at any time by pressing Esc or clicking target settings.'
+      },
+      {
+        question: 'What\'s the difference between dead pixels and stuck pixels?',
+        answer: 'Dead pixels stay permanently off (black) and don\'t respond to anything on screen. Stuck pixels are stuck displaying a single color instead — often red, green, or blue — and sometimes recover with gentle pressure or pixel-refresh software, unlike dead pixels.'
+      },
+      {
+        question: 'Can backlight bleeding be fixed?',
+        answer: 'Minor bleeding around the edges is common on LCD/LED panels and mostly cosmetic. Severe bleeding is usually a hardware issue best handled through warranty or professional repair rather than a software fix.'
+      },
+      {
+        question: 'Is a black screen actually good for OLED displays?',
+        answer: 'Yes. On OLED, black pixels are switched off rather than dimmed, so displaying black uses less power and adds no wear, unlike LCD, where the backlight stays on regardless of color.'
+      },
+      {
+        question: 'How is a black screen test different from a white screen test?',
+        answer: 'A black screen reveals stuck-on pixels and light leakage, since any unwanted light stands out against the dark background. A white screen reveals the opposite: dead or dim pixels and backlight unevenness. Testing with both gives a fuller picture of your display\'s health.'
       }
     ],
     es: [
@@ -1238,6 +1262,14 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       {
         question: 'Can I download green screen backgrounds? (Green screen backgrounds free / 4k)',
         answer: 'Yes, click the download button in the toolbar to save <strong>green screen backgrounds free</strong> of charge. You can save a high-res <strong>real green screen png</strong> or capture <strong>green screen backgrounds 4k</strong> templates without copyright limits.'
+      },
+      {
+        question: 'What shade of green works best for chroma key?',
+        answer: 'The industry-standard chroma key green is hex <strong>#00FF00</strong> — a saturated green far enough from natural skin tones that video software can key it out cleanly. This tool uses that exact shade by default.'
+      },
+      {
+        question: 'Can I use green screen backgrounds for TikTok, Instagram, or YouTube content?',
+        answer: 'Yes — a plain green backdrop works with any editor or app that supports chroma key/green screen effects, including CapCut, InShot, and built-in TikTok/Instagram effects, not just professional video software.'
       }
     ],
     es: [
@@ -1256,6 +1288,14 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       {
         question: '¿Puedo descargar fondos de pantalla verde?',
         answer: 'Sí, puedes realizar una <strong>descarga de fondos de pantalla verde gratis</strong> desde la barra lateral. Descarga una <strong>imagen de pantalla verde png</strong> real o plantillas en resolución 4K sin derechos de autor.'
+      },
+      {
+        question: '¿Qué tono de verde funciona mejor para el chroma key?',
+        answer: 'El verde estándar de la industria para chroma key es el hexadecimal <strong>#00FF00</strong>, un verde saturado lo suficientemente alejado del tono de piel natural para que el software de video pueda recortarlo con precisión. Esta herramienta usa exactamente ese tono por defecto.'
+      },
+      {
+        question: '¿Puedo usar fondos de pantalla verde para contenido de TikTok, Instagram o YouTube?',
+        answer: 'Sí — un fondo verde liso funciona con cualquier editor o app que admita efectos de chroma key o pantalla verde, incluyendo CapCut, InShot y los efectos integrados de TikTok/Instagram, no solo software de video profesional.'
       }
     ],
     pt: [
@@ -1274,6 +1314,14 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       {
         question: 'Como baixar fundo de tela verde grátis? (Fundo de tela verde grátis / 4k)',
         answer: 'Você pode <strong>baixar fundos de tela verde gratuitamente</strong> em alta definição. Obtenha uma <strong>imagem de tela verde png</strong> ou layouts em 4K sem direitos autorais para usar em suas edições.'
+      },
+      {
+        question: 'Qual tom de verde funciona melhor para chroma key?',
+        answer: 'O verde padrão da indústria para chroma key é o hexadecimal <strong>#00FF00</strong> — um verde saturado o suficiente distante do tom de pele natural para que o software de vídeo consiga recortá-lo com precisão. Esta ferramenta usa exatamente esse tom por padrão.'
+      },
+      {
+        question: 'Posso usar fundos de tela verde para conteúdo do TikTok, Instagram ou YouTube?',
+        answer: 'Sim — um fundo verde liso funciona com qualquer editor ou app que suporte efeitos de chroma key/tela verde, incluindo CapCut, InShot e os efeitos integrados do TikTok/Instagram, não apenas softwares de vídeo profissionais.'
       }
     ],
     fr: [
@@ -1292,6 +1340,14 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       {
         question: 'Comment télécharger des arrière-plans d\'écran vert gratuits ?',
         answer: 'Utilisez les commandes pour <strong>télécharger des arrière-plans d\'écran vert gratuits</strong>. Enregistrez une image d\'<strong>écran vert réel png</strong> ou des fonds en 4K libres de droits pour vos créations.'
+      },
+      {
+        question: 'Quelle nuance de vert fonctionne le mieux pour l\'incrustation chroma key ?',
+        answer: 'Le vert standard de l\'industrie pour le chroma key est le hexadécimal <strong>#00FF00</strong> — un vert saturé suffisamment éloigné des teintes de peau naturelles pour que les logiciels vidéo puissent le détourer proprement. Cet outil utilise cette teinte exacte par défaut.'
+      },
+      {
+        question: 'Puis-je utiliser des fonds d\'écran vert pour du contenu TikTok, Instagram ou YouTube ?',
+        answer: 'Oui — un fond vert uni fonctionne avec n\'importe quel éditeur ou application prenant en charge les effets chroma key/écran vert, y compris CapCut, InShot et les effets intégrés de TikTok/Instagram, pas seulement les logiciels vidéo professionnels.'
       }
     ],
     de: [
@@ -1310,6 +1366,14 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       {
         question: 'Kann ich grüne Hintergründe kostenlos herunterladen?',
         answer: 'Ja, Sie können <strong>freie grüne bildschirmhintergründe</strong> über die Seitenleiste herunterladen. Sichern Sie sich eine <strong>echte grüne bildschirmdatei als png</strong> oder 4K-Hintergründe ohne Urheberrecht.'
+      },
+      {
+        question: 'Welcher Grünton eignet sich am besten für Chroma Key?',
+        answer: 'Der branchenübliche Chroma-Key-Grünton ist Hex <strong>#00FF00</strong> — ein gesättigtes Grün, das weit genug von natürlichen Hauttönen entfernt ist, damit Videosoftware es sauber freistellen kann. Dieses Tool verwendet standardmäßig genau diesen Farbton.'
+      },
+      {
+        question: 'Kann ich grüne Bildschirmhintergründe für TikTok-, Instagram- oder YouTube-Inhalte verwenden?',
+        answer: 'Ja — ein einfacher grüner Hintergrund funktioniert mit jedem Editor oder jeder App, die Chroma-Key-/Greenscreen-Effekte unterstützt, einschließlich CapCut, InShot und den integrierten TikTok/Instagram-Effekten, nicht nur professioneller Videosoftware.'
       }
     ],
     hi: [
@@ -1328,6 +1392,14 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       {
         question: 'क्या मैं नो-कॉपीराइट ग्रीन स्क्रीन बैकग्राउंड डाउनलोड कर सकता हूँ?',
         answer: 'हाँ, साइडबार का उपयोग करके <strong>फ्री ग्रीन स्क्रीन बैकग्राउंड</strong> डाउनलोड करें। आप अपनी एडिटिंग के लिए 4k और <strong>असली ग्रीन स्क्रीन PNG</strong> फाइलें बिना किसी कॉपीराइट के डाउनलोड कर सकते।'
+      },
+      {
+        question: 'क्रोमा की के लिए कौन सा हरा शेड सबसे अच्छा काम करता है?',
+        answer: 'इंडस्ट्री-स्टैंडर्ड क्रोमा की ग्रीन हेक्स <strong>#00FF00</strong> है — एक गहरा हरा रंग जो प्राकृतिक त्वचा टोन से इतना अलग है कि वीडियो सॉफ्टवेयर इसे साफ-साफ हटा सके। यह टूल डिफ़ॉल्ट रूप से ठीक यही शेड इस्तेमाल करता है।'
+      },
+      {
+        question: 'क्या मैं TikTok, Instagram या YouTube कंटेंट के लिए ग्रीन स्क्रीन बैकग्राउंड का उपयोग कर सकता हूँ?',
+        answer: 'हाँ — एक सादा हरा बैकग्राउंड किसी भी ऐसे एडिटर या ऐप के साथ काम करता है जो क्रोमा की/ग्रीन स्क्रीन इफेक्ट्स सपोर्ट करता हो, जिसमें CapCut, InShot और TikTok/Instagram के बिल्ट-इन इफेक्ट्स शामिल हैं, सिर्फ प्रोफेशनल वीडियो सॉफ्टवेयर नहीं।'
       }
     ],
     ja: [
@@ -1346,6 +1418,14 @@ export const localizedFaqs: Record<string, Partial<Record<Locale, { question: st
       {
         question: 'クロマキー合成用のグリーン背景素材をダウンロードできますか？',
         answer: 'はい、サイドメニューから**グリーンスクリーン背景無料ダウンロード**が可能です。動画や写真編集に最適な高解像度の**グリーンスクリーンpng**や4Kグリーン背景素材を、著作権フリーで保存していただけます。'
+      },
+      {
+        question: 'クロマキーに最適な緑色の色合いは？',
+        answer: '業界標準のクロマキーグリーンは16進数の<strong>#00FF00</strong>です — 自然な肌の色から十分に離れた彩度の高い緑色で、動画編集ソフトがきれいに抜き取ることができます。このツールはデフォルトでこの正確な色合いを使用しています。'
+      },
+      {
+        question: 'TikTok、Instagram、YouTubeのコンテンツにグリーンスクリーンの背景を使用できますか？',
+        answer: 'はい — 無地の緑背景は、CapCutやInShot、TikTok/Instagramの内蔵エフェクトを含む、クロマキー/グリーンスクリーンエフェクトに対応したあらゆる編集アプリで使用できます。プロ向けの動画ソフトだけに限りません。'
       }
     ]
   },

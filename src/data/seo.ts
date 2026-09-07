@@ -30,6 +30,21 @@ export function alternatesForTool(tool: Tool) {
 }
 
 const customTitles: Partial<Record<string, Partial<Record<Locale, string>>>> = {
+  'white-screen': {
+    en: 'White Screen Test - Free Fullscreen Tool | PixoraScreen',
+  },
+  'black-screen': {
+    en: 'Black Screen Test - Free Fullscreen Tool | PixoraScreen',
+  },
+  'green-screen': {
+    en: 'Green Screen Online - Free Chroma Key & Fullscreen Tool',
+    es: 'Pantalla Verde Online - Chroma Key Gratis y Pantalla Completa',
+    pt: 'Tela Verde Online - Chroma Key Grátis e Tela Cheia',
+    fr: 'Écran Vert en Ligne - Chroma Key Gratuit & Plein Écran',
+    de: 'Grüner Bildschirm Online - Kostenloser Chroma Key & Vollbild-Tool',
+    hi: 'ग्रीन स्क्रीन ऑनलाइन - मुफ्त क्रोमा की और फुलस्क्रीन टूल',
+    ja: 'グリーンスクリーン オンライン - 無料クロマキー＆全画面ツール',
+  },
   'red-screen': {
     en: 'Red Screen Online - Free Fullscreen Red Light & Display Test Tool',
     es: 'Pantalla Roja Online - Luz Roja en Pantalla Completa y Test de Monitor',
@@ -231,6 +246,21 @@ const customTitles: Partial<Record<string, Partial<Record<Locale, string>>>> = {
 };
 
 const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>>> = {
+  'white-screen': {
+    en: 'Run a free white screen test to check for dead pixels, LCD backlight bleed, and color tint. Fullscreen, brightness control, works on any device.',
+  },
+  'black-screen': {
+    en: 'Run a free black screen test to check for dead pixels, stuck pixels, and backlight bleeding. Fullscreen, dark-room safe, works on any device.',
+  },
+  'green-screen': {
+    en: 'Free online green screen for chroma key video, streaming backgrounds, and display testing. Fullscreen, adjustable brightness, works on any device.',
+    es: 'Pantalla verde online gratis para video con chroma key, fondos de streaming y pruebas de pantalla. Pantalla completa, brillo ajustable, funciona en cualquier dispositivo.',
+    pt: 'Tela verde online grátis para vídeo com chroma key, fundos de streaming e testes de tela. Tela cheia, brilho ajustável, funciona em qualquer dispositivo.',
+    fr: 'Écran vert en ligne gratuit pour la vidéo en incrustation chroma key, les arrière-plans de streaming et les tests d\'écran. Plein écran, luminosité réglable, fonctionne sur tout appareil.',
+    de: 'Kostenloser grüner Bildschirm online für Chroma-Key-Video, Streaming-Hintergründe und Display-Tests. Vollbild, einstellbare Helligkeit, funktioniert auf jedem Gerät.',
+    hi: 'क्रोमा की वीडियो, स्ट्रीमिंग बैकग्राउंड और डिस्प्ले टेस्टिंग के लिए मुफ्त ऑनलाइन ग्रीन स्क्रीन। फुलस्क्रीन, एडजस्टेबल ब्राइटनेस, किसी भी डिवाइस पर काम करे।',
+    ja: 'クロマキー動画、配信用背景、ディスプレイテストに使える無料のオンライングリーンスクリーン。全画面表示、明るさ調整、あらゆるデバイスで動作。',
+  },
   'red-screen': {
     en: 'Open a pure red screen online in full screen. Test red subpixels, find dead pixels, preserve night vision, create TikTok red ambient lighting, and inspect your display.',
     es: 'Abre una pantalla roja online a pantalla completa. Prueba subpíxeles rojos, detecta píxeles muertos, preserva la visión nocturna y crea iluminación ambiental de luz roja.',
@@ -447,6 +477,25 @@ export function descriptionForTool(tool: Tool, locale: Locale = defaultLocale) {
   return `${tSummary} Open in fullscreen, adjust brightness, and test your display.`;
 }
 
+const customH1: Partial<Record<string, Partial<Record<Locale, string>>>> = {
+  'white-screen': {
+    en: 'White Screen Test — Free Fullscreen Display & Dead Pixel Checker',
+  },
+  'black-screen': {
+    en: 'Black Screen Test — Free Fullscreen Display & Dead Pixel Checker',
+  },
+  'green-screen': {
+    en: 'Green Screen — Free Fullscreen Chroma Key & Video Background Tool',
+  },
+};
+
+export function h1ForTool(tool: Tool, locale: Locale = defaultLocale) {
+  if (customH1[tool.id]?.[locale]) {
+    return customH1[tool.id]![locale]!;
+  }
+  return `${toolName(locale, tool)}.`;
+}
+
 export function alternatesForHome() {
   return localeOrder.map((locale) => ({
     locale,
@@ -521,8 +570,8 @@ export function toolJsonLd(tool: Tool, path: string, locale: Locale = defaultLoc
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
-        { '@type': 'ListItem', position: 2, name: tName, item: url },
+        { '@type': 'ListItem', position: 1, item: { '@id': siteUrl, name: 'Home' } },
+        { '@type': 'ListItem', position: 2, item: { '@id': url, name: tName } },
       ],
     },
     {

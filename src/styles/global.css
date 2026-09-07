@@ -100,6 +100,15 @@ body {
   line-height: 1.15;
 }
 
+.rich-article h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-ink);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
 .rich-article p {
   margin-block: 1rem;
 }
