@@ -163,7 +163,7 @@ const customTitles: Partial<Record<string, Partial<Record<Locale, string>>>> = {
     ja: '壊れた画面 いたずら - 無料オンライン偽のひび割れ画面シミュレーター',
   },
   'blue-screen-prank': {
-    en: 'Fake Blue Screen Prank - BSOD Simulator & Windows Crash Prank Online',
+    en: 'Fake Blue Screen Prank - Windows 10/11 BSOD Simulator | PixoraScreen',
     es: 'Broma de Pantalla Azul Falsa - Simulador BSOD y Broma de Fallo de Windows',
     pt: 'Pegadinha de Tela Azul Falsa - Simulador BSOD e Pegadinha de Crash do Windows',
     fr: 'Blague d\'Écran Bleu Faux - Simulateur BSOD et Farce de Plantage Windows',
@@ -242,6 +242,15 @@ const customTitles: Partial<Record<string, Partial<Record<Locale, string>>>> = {
     de: 'Android-Update-Simulator Online - Kostenloser Gefälschter Android-Installationsbildschirm',
     hi: 'Android अपडेट सिम्युलेटर ऑनलाइन - मुफ्त फर्जी Android अपडेट और इंस्टॉलेशन स्क्रीन',
     ja: 'Androidアップデートシミュレーター オンライン - 無料偽Androidアップデート＆インストール画面',
+  },
+  'custom-color-screen': {
+    en: 'Custom Color Screen - Free Fullscreen Color Picker | PixoraScreen',
+  },
+  'orange-screen': {
+    en: 'Orange Screen Test - Free Fullscreen Display Tool | PixoraScreen',
+  },
+  'blue-screen': {
+    en: 'Blue Screen Online - Fullscreen Background & Display Test | PixoraScreen',
   },
 };
 
@@ -379,7 +388,7 @@ const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>
     ja: 'あらゆる画面をリアルな偽の壊れた画面に変身。エイプリルフール、オフィスジョーク、ソーシャルメディアコンテンツに最適な無料オンラインいたずらツール。全画面で8種類のひび割れスタイル。',
   },
   'blue-screen-prank': {
-    en: 'Turn any screen into a realistic fake Windows BSOD crash. The most convincing blue screen prank online with animated progress, 8 stop codes, QR code, and configurable simulation. Free, harmless, no download.',
+    en: 'Realistic fake Windows crash screen for pranks, streams, and tech training. Pixel-accurate Windows 10/11 BSOD with animated progress, 8 stop codes, and a QR code.',
     es: 'Convierte cualquier pantalla en un falso fallo BSOD de Windows realista. La broma de pantalla azul más convincente online con progreso animado, 8 códigos de fallo, código QR y simulación configurable. Gratis, inofensivo, sin descarga.',
     pt: 'Transforme qualquer tela em um falso crash BSOD do Windows realista. A pegadinha de tela azul mais convincente online com progresso animado, 8 códigos de parada, QR Code e simulação configurável. Grátis, inofensivo, sem download.',
     fr: 'Transformez n\'importe quel écran en un faux plantage BSOD Windows réaliste. La blague d\'écran bleu la plus convaincante en ligne avec progression animée, 8 codes d\'arrêt, QR code et simulation configurable. Gratuit, inoffensif, sans téléchargement.',
@@ -459,6 +468,15 @@ const customDescriptions: Partial<Record<string, Partial<Record<Locale, string>>
     hi: 'किसी भी स्क्रीन को प्रामाणिक Android रोबोट ब्रांडिंग, प्रोग्रेस एनिमेशन, रिस्टार्ट चक्र और कॉन्फ़िगरेबल अपडेट अवधि के साथ एक यथार्थवादी फर्जी Android सिस्टम अपडेट सिम्युलेटर में बदलें। मोबाइल UI डेमो, वीडियो निर्माण, कक्षा प्रशिक्षण और हानिरहित प्रैंक के लिए मुफ्त ऑनलाइन टूल। फुलस्क्रीन, कीबोर्ड शॉर्टकट और एडजस्टेबल स्टार्ट परसेंटेज। बिना डाउनलोड, बिना इंस्टॉलेशन, बिना जोखिम।',
     ja: '本物そっくりのAndroidロボットブランディング、進捗アニメーション、再起動サイクル、設定可能な更新時間を備えたリアルな偽Androidシステムアップデートシミュレーターにどんな画面でも変身。モバイルUIデモ、動画制作、教室トレーニング、無害ないたずらに最適な無料オンラインツール。全画面、キーボードショートカット、開始位置調整可能。ダウンロード不要、インストール不要、リスクなし。',
   },
+  'custom-color-screen': {
+    en: 'Pick any custom color and fill your screen fullscreen. Free color picker with HEX, RGB, and HSL input, saved favorites, and calibration-friendly display testing.',
+  },
+  'orange-screen': {
+    en: 'Free orange screen test for monitor and dead-pixel checks, plus ambient lighting and photography use. Fullscreen, brightness control, works on any device.',
+  },
+  'blue-screen': {
+    en: 'Free blue screen for display testing, video call backgrounds, and monitor checks. Fullscreen, adjustable brightness, works on any device.',
+  },
 };
 
 export function titleForTool(tool: Tool, locale: Locale = defaultLocale) {
@@ -489,6 +507,12 @@ const customH1: Partial<Record<string, Partial<Record<Locale, string>>>> = {
   },
   'red-screen': {
     en: 'Red Screen Test: Dead Pixel Checker & Red Light Screen',
+  },
+  'custom-color-screen': {
+    en: 'Custom Color Screen — Fullscreen Color Picker & Display Tester',
+  },
+  'orange-screen': {
+    en: 'Orange Screen Test — Fullscreen Display & Lighting Tool',
   },
 };
 
@@ -574,7 +598,7 @@ export function toolJsonLd(tool: Tool, path: string, locale: Locale = defaultLoc
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
-        { '@type': 'ListItem', position: 2, name: tName, item: url },
+        { '@type': 'ListItem', position: 2, name: tName || tool.name || tool.id },
       ],
     },
     {
